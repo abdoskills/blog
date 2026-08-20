@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import CopyButton from "@/components/CopyButton";
 
 export default function VelvetThroneWriteup() {
   return (
@@ -62,7 +63,7 @@ export default function VelvetThroneWriteup() {
             <div className="mt-4 pt-4 border-t border-zinc-800/80 flex flex-wrap gap-4 text-xs font-mono text-zinc-400">
               <span className="flex items-center gap-1.5"><span className="text-emerald-400">●</span> 15 Total Tasks</span>
               <span className="flex items-center gap-1.5"><span className="text-emerald-400">●</span> 4 Methods per Task (PowerShell, Python, Linux jq, GUI)</span>
-              <span className="flex items-center gap-1.5"><span className="text-emerald-400">●</span> Click any task below to expand</span>
+              <span className="flex items-center gap-1.5"><span className="text-emerald-400">●</span> 1-Click Clipboard Copying</span>
             </div>
           </div>
         </div>
@@ -124,24 +125,27 @@ export default function VelvetThroneWriteup() {
                 <p>MFA Push Bombing (MFA Fatigue, MITRE ATT&CK T1621 - Multi-Factor Authentication Request Generation) occurs when an adversary who already possesses valid primary credentials repeatedly triggers push notifications to a user's mobile authenticator app. In Okta System Logs (okta_system_log.json), challenge events appear as user.mfa.challenge, denials appear as user.authentication.auth_via_mfa with outcome FAILURE and reason 'User rejected Okta Verify push notification', followed by outcome SUCCESS.</p>
               </div>
 
-              {/* Log Evidence Box */}
-              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner">
-                <div className="flex gap-2 mb-3 border-b border-zinc-800 pb-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-                  <span className="ml-2 text-zinc-500 text-xs">okta_system_log.json • 8 Consecutive Push Rejections</span>
+              {/* Log Evidence Box with CopyButton */}
+              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner relative">
+                <div className="flex justify-between items-center mb-3 border-b border-zinc-800 pb-2">
+                  <div className="flex gap-2 items-center">
+                    <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
+                    <span className="ml-2 text-zinc-500 text-xs">okta_system_log.json • 8 Consecutive Push Rejections</span>
+                  </div>
+                  <CopyButton text={"2024-03-15T08:10:30Z | kyle.morrison@axiomfp.com | 45.33.32.156 | FAILURE (Rejected)\n2024-03-15T08:12:00Z | kyle.morrison@axiomfp.com | 45.33.32.156 | FAILURE (Rejected)\n2024-03-15T08:13:30Z | kyle.morrison@axiomfp.com | 45.33.32.156 | FAILURE (Rejected)\n...\n2024-03-15T08:21:00Z | kyle.morrison@axiomfp.com | 45.33.32.156 | FAILURE (Rejected)\n2024-03-15T08:22:14Z | kyle.morrison@axiomfp.com | 45.33.32.156 | SUCCESS (Accepted)"} />
                 </div>
                 <pre className="text-zinc-300 leading-relaxed">
                   <code>2024-03-15T08:10:30Z | kyle.morrison@axiomfp.com | 45.33.32.156 | FAILURE (Rejected)<br/>2024-03-15T08:12:00Z | kyle.morrison@axiomfp.com | 45.33.32.156 | FAILURE (Rejected)<br/>2024-03-15T08:13:30Z | kyle.morrison@axiomfp.com | 45.33.32.156 | FAILURE (Rejected)<br/>...<br/>2024-03-15T08:21:00Z | kyle.morrison@axiomfp.com | 45.33.32.156 | FAILURE (Rejected)<br/>2024-03-15T08:22:14Z | kyle.morrison@axiomfp.com | 45.33.32.156 | SUCCESS (Accepted)</code>
                 </pre>
               </div>
 
-              {/* 4 Investigation Methods */}
+              {/* 4 Investigation Methods with individual CopyButtons */}
               <div className="space-y-3 pt-2">
                 <h4 className="text-white font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-2">
                   <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
-                  Investigation Methods (Hover / Click to View Code)
+                  Investigation Methods (Click to Expand & Copy Code)
                 </h4>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono text-xs">
@@ -151,9 +155,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method A: PowerShell</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>Get-Content .\evidence\okta_system_log.json -Raw | ConvertFrom-Json |<br/>    Where-Object &#123; $_.outcome.reason -like "*rejected*" &#125; |<br/>    Select-Object published, @&#123;N='User';E=&#123;$_.actor.login&#125;&#125;, @&#123;N='IP';E=&#123;$_.client.ipAddress&#125;&#125;, @&#123;N='Result';E=&#123;$_.outcome.result&#125;&#125; | Format-Table -AutoSize</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"Get-Content .\\evidence\\okta_system_log.json -Raw | ConvertFrom-Json |\n    Where-Object { $_.outcome.reason -like \"*rejected*\" } |\n    Select-Object published, @{N='User';E={$_.actor.login}}, @{N='IP';E={$_.client.ipAddress}}, @{N='Result';E={$_.outcome.result}} | Format-Table -AutoSize"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>Get-Content .\evidence\okta_system_log.json -Raw | ConvertFrom-Json |<br/>    Where-Object &#123; $_.outcome.reason -like "*rejected*" &#125; |<br/>    Select-Object published, @&#123;N='User';E=&#123;$_.actor.login&#125;&#125;, @&#123;N='IP';E=&#123;$_.client.ipAddress&#125;&#125;, @&#123;N='Result';E=&#123;$_.outcome.result&#125;&#125; | Format-Table -AutoSize</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method B */}
@@ -162,9 +171,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method B: Python</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>import json<br/>with open('evidence/okta_system_log.json', 'r') as f: events = json.load(f)<br/>for e in events:<br/>    if 'rejected' in str(e.get('outcome',&#123;&#125;).get('reason','')).lower():<br/>        print(f"&#123;e['published']&#125; | &#123;e['actor']['login']&#125; | &#123;e['client']['ipAddress']&#125; | &#123;e['outcome']['result']&#125;")</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"import json\nwith open('evidence/okta_system_log.json', 'r') as f: events = json.load(f)\nfor e in events:\n    if 'rejected' in str(e.get('outcome',{}).get('reason','')).lower():\n        print(f\"{e['published']} | {e['actor']['login']} | {e['client']['ipAddress']} | {e['outcome']['result']}\")"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>import json<br/>with open('evidence/okta_system_log.json', 'r') as f: events = json.load(f)<br/>for e in events:<br/>    if 'rejected' in str(e.get('outcome',&#123;&#125;).get('reason','')).lower():<br/>        print(f"&#123;e['published']&#125; | &#123;e['actor']['login']&#125; | &#123;e['client']['ipAddress']&#125; | &#123;e['outcome']['result']&#125;")</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method C */}
@@ -173,9 +187,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method C: Linux CLI / jq</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>jq -r '.[] | select(.outcome.reason | test("rejected"; "i")) | "\(.published) | \(.actor.login) | \(.client.ipAddress) | \(.outcome.result)"' evidence/okta_system_log.json</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"jq -r '.[] | select(.outcome.reason | test(\"rejected\"; \"i\")) | \"\\(.published) | \\(.actor.login) | \\(.client.ipAddress) | \\(.outcome.result)\"' evidence/okta_system_log.json"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>jq -r '.[] | select(.outcome.reason | test("rejected"; "i")) | "\(.published) | \(.actor.login) | \(.client.ipAddress) | \(.outcome.result)"' evidence/okta_system_log.json</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method D */}
@@ -184,9 +203,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method D: GUI / Editor</span>
                       <span className="text-zinc-600 text-xs">steps ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
-                      <code>1. Open evidence/okta_system_log.json in VS Code / Notepad++.<br/>2. Press Ctrl + F and search for: rejected<br/>3. Locate actor.login on the matching lines to identify kyle.morrison@axiomfp.com.</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"1. Open evidence/okta_system_log.json in VS Code / Notepad++.\n2. Press Ctrl + F and search for: rejected\n3. Locate actor.login on the matching lines to identify kyle.morrison@axiomfp.com."} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
+                        <code>1. Open evidence/okta_system_log.json in VS Code / Notepad++.<br/>2. Press Ctrl + F and search for: rejected<br/>3. Locate actor.login on the matching lines to identify kyle.morrison@axiomfp.com.</code>
+                      </pre>
+                    </div>
                   </details>
                 </div>
               </div>
@@ -253,24 +277,27 @@ export default function VelvetThroneWriteup() {
                 <p>Adversaries leverage corporate VPN portals and cloud gateways to pivot inside after compromising credentials (MITRE ATT&CK T1133 - External Remote Services). Correlating Okta and Azure AD sign-in logs isolates external infrastructure and threat detection tags.</p>
               </div>
 
-              {/* Log Evidence Box */}
-              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner">
-                <div className="flex gap-2 mb-3 border-b border-zinc-800 pb-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-                  <span className="ml-2 text-zinc-500 text-xs">azure_ad_signin_log.json • Anonymized Proxy Detection</span>
+              {/* Log Evidence Box with CopyButton */}
+              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner relative">
+                <div className="flex justify-between items-center mb-3 border-b border-zinc-800 pb-2">
+                  <div className="flex gap-2 items-center">
+                    <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
+                    <span className="ml-2 text-zinc-500 text-xs">azure_ad_signin_log.json • Anonymized Proxy Detection</span>
+                  </div>
+                  <CopyButton text={"{\n  \"createdDateTime\": \"2024-03-15T08:23:15.221Z\",\n  \"userPrincipalName\": \"kyle.morrison@axiomfp.com\",\n  \"appDisplayName\": \"Microsoft Azure Portal\",\n  \"ipAddress\": \"45.33.32.156\",\n  \"riskLevelDuringSignIn\": \"high\",\n  \"riskEventTypes\": [\"unfamiliarFeatures\", \"anonymizedIPAddress\"],\n  \"additionalDetails\": \"Sign-in from IP address associated with anonymizing proxy.\"\n}"} />
                 </div>
                 <pre className="text-zinc-300 leading-relaxed">
                   <code>&#123;<br/>  "createdDateTime": "2024-03-15T08:23:15.221Z",<br/>  "userPrincipalName": "kyle.morrison@axiomfp.com",<br/>  "appDisplayName": "Microsoft Azure Portal",<br/>  "ipAddress": "45.33.32.156",<br/>  "riskLevelDuringSignIn": "high",<br/>  "riskEventTypes": ["unfamiliarFeatures", "anonymizedIPAddress"],<br/>  "additionalDetails": "Sign-in from IP address associated with anonymizing proxy."<br/>&#125;</code>
                 </pre>
               </div>
 
-              {/* 4 Investigation Methods */}
+              {/* 4 Investigation Methods with individual CopyButtons */}
               <div className="space-y-3 pt-2">
                 <h4 className="text-white font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-2">
                   <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
-                  Investigation Methods (Hover / Click to View Code)
+                  Investigation Methods (Click to Expand & Copy Code)
                 </h4>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono text-xs">
@@ -280,9 +307,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method A: PowerShell</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>Get-Content .\evidence\okta_system_log.json -Raw | ConvertFrom-Json |<br/>    Where-Object &#123; $_.actor.login -eq 'kyle.morrison@axiomfp.com' -and $_.outcome.result -eq 'SUCCESS' &#125; |<br/>    Select-Object published, @&#123;N='Event';E=&#123;$_.eventType&#125;&#125;, @&#123;N='IP';E=&#123;$_.client.ipAddress&#125;&#125;, @&#123;N='TargetApp';E=&#123;$_.target.displayName -join ', '&#125;&#125;</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"Get-Content .\\evidence\\okta_system_log.json -Raw | ConvertFrom-Json |\n    Where-Object { $_.actor.login -eq 'kyle.morrison@axiomfp.com' -and $_.outcome.result -eq 'SUCCESS' } |\n    Select-Object published, @{N='Event';E={$_.eventType}}, @{N='IP';E={$_.client.ipAddress}}, @{N='TargetApp';E={$_.target.displayName -join ', '}}"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>Get-Content .\evidence\okta_system_log.json -Raw | ConvertFrom-Json |<br/>    Where-Object &#123; $_.actor.login -eq 'kyle.morrison@axiomfp.com' -and $_.outcome.result -eq 'SUCCESS' &#125; |<br/>    Select-Object published, @&#123;N='Event';E=&#123;$_.eventType&#125;&#125;, @&#123;N='IP';E=&#123;$_.client.ipAddress&#125;&#125;, @&#123;N='TargetApp';E=&#123;$_.target.displayName -join ', '&#125;&#125;</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method B */}
@@ -291,9 +323,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method B: Python</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>import json<br/>with open('evidence/azure_ad_signin_log.json') as f: azure = json.load(f)<br/>for e in azure:<br/>    if 'kyle.morrison' in json.dumps(e):<br/>        print(f"&#123;e['createdDateTime']&#125; | IP: &#123;e['ipAddress']&#125; | App: &#123;e['appDisplayName']&#125; | Risk: &#123;e['riskEventTypes']&#125;")</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"import json\nwith open('evidence/azure_ad_signin_log.json') as f: azure = json.load(f)\nfor e in azure:\n    if 'kyle.morrison' in json.dumps(e):\n        print(f\"{e['createdDateTime']} | IP: {e['ipAddress']} | App: {e['appDisplayName']} | Risk: {e['riskEventTypes']}\")"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>import json<br/>with open('evidence/azure_ad_signin_log.json') as f: azure = json.load(f)<br/>for e in azure:<br/>    if 'kyle.morrison' in json.dumps(e):<br/>        print(f"&#123;e['createdDateTime']&#125; | IP: &#123;e['ipAddress']&#125; | App: &#123;e['appDisplayName']&#125; | Risk: &#123;e['riskEventTypes']&#125;")</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method C */}
@@ -302,9 +339,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method C: Linux CLI / jq</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>jq -r '.[] | select(.actor.login == "kyle.morrison@axiomfp.com" and .outcome.result == "SUCCESS") | "\(.published) | \(.client.ipAddress) | \(.target[].displayName)"' evidence/okta_system_log.json</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"jq -r '.[] | select(.actor.login == \"kyle.morrison@axiomfp.com\" and .outcome.result == \"SUCCESS\") | \"\\(.published) | \\(.client.ipAddress) | \\(.target[].displayName)\"' evidence/okta_system_log.json"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>jq -r '.[] | select(.actor.login == "kyle.morrison@axiomfp.com" and .outcome.result == "SUCCESS") | "\(.published) | \(.client.ipAddress) | \(.target[].displayName)"' evidence/okta_system_log.json</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method D */}
@@ -313,9 +355,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method D: GUI / Editor</span>
                       <span className="text-zinc-600 text-xs">steps ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
-                      <code>1. Open evidence/azure_ad_signin_log.json in VS Code.<br/>2. Search for: kyle.morrison<br/>3. Locate ipAddress field (45.33.32.156) with risk detection 'anonymizedIPAddress'.</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"1. Open evidence/azure_ad_signin_log.json in VS Code.\n2. Search for: kyle.morrison\n3. Locate ipAddress field (45.33.32.156) with risk detection 'anonymizedIPAddress'."} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
+                        <code>1. Open evidence/azure_ad_signin_log.json in VS Code.<br/>2. Search for: kyle.morrison<br/>3. Locate ipAddress field (45.33.32.156) with risk detection 'anonymizedIPAddress'.</code>
+                      </pre>
+                    </div>
                   </details>
                 </div>
               </div>
@@ -382,24 +429,27 @@ export default function VelvetThroneWriteup() {
                 <p>Adversaries deploy custom binaries (MITRE ATT&CK T1204.002 - User Execution: Malicious File) disguised as administrative utilities to establish interactive command execution. Sysmon Event ID 1 captures process invocations, file paths, parent trees, and SHA256 hashes.</p>
               </div>
 
-              {/* Log Evidence Box */}
-              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner">
-                <div className="flex gap-2 mb-3 border-b border-zinc-800 pb-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-                  <span className="ml-2 text-zinc-500 text-xs">Sysmon Event ID 1 • MSI Installer Drop</span>
+              {/* Log Evidence Box with CopyButton */}
+              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner relative">
+                <div className="flex justify-between items-center mb-3 border-b border-zinc-800 pb-2">
+                  <div className="flex gap-2 items-center">
+                    <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
+                    <span className="ml-2 text-zinc-500 text-xs">Sysmon Event ID 1 • MSI Installer Drop</span>
+                  </div>
+                  <CopyButton text={"{\n  \"TimeCreated\": \"2024-03-15T09:31:17\",\n  \"EventID\": 1,\n  \"Computer\": \"EXEC-WKSTN-01\",\n  \"Image\": \"C:\\Windows\\System32\\ProxyHealth.exe\",\n  \"CommandLine\": \"C:\\Windows\\System32\\ProxyHealth.exe --service --config=C:\\ProgramData\\Microsoft\\ProxyHealth\\config.enc\",\n  \"ParentImage\": \"C:\\Windows\\System32\\msiexec.exe\",\n  \"ParentCommandLine\": \"msiexec.exe /i C:\\Users\\kyle.morrison\\AppData\\Local\\Temp\\ProxyHealthSetup.msi /quiet\"\n}"} />
                 </div>
                 <pre className="text-zinc-300 leading-relaxed">
                   <code>&#123;<br/>  "TimeCreated": "2024-03-15T09:31:17",<br/>  "EventID": 1,<br/>  "Computer": "EXEC-WKSTN-01",<br/>  "Image": "C:\Windows\System32\ProxyHealth.exe",<br/>  "CommandLine": "C:\Windows\System32\ProxyHealth.exe --service --config=C:\ProgramData\Microsoft\ProxyHealth\config.enc",<br/>  "ParentImage": "C:\Windows\System32\msiexec.exe",<br/>  "ParentCommandLine": "msiexec.exe /i C:\Users\kyle.morrison\AppData\Local\Temp\ProxyHealthSetup.msi /quiet"<br/>&#125;</code>
                 </pre>
               </div>
 
-              {/* 4 Investigation Methods */}
+              {/* 4 Investigation Methods with individual CopyButtons */}
               <div className="space-y-3 pt-2">
                 <h4 className="text-white font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-2">
                   <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
-                  Investigation Methods (Hover / Click to View Code)
+                  Investigation Methods (Click to Expand & Copy Code)
                 </h4>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono text-xs">
@@ -409,9 +459,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method A: PowerShell</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>Get-Content .\evidence\sysmon_events.json -Raw | ConvertFrom-Json |<br/>    Where-Object &#123; $_.EventID -eq 1 -and $_.User -like "*kyle.morrison*" &#125; |<br/>    Select-Object TimeCreated, Computer, Image, CommandLine, ParentImage, ParentCommandLine | Format-Table -AutoSize</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"Get-Content .\\evidence\\sysmon_events.json -Raw | ConvertFrom-Json |\n    Where-Object { $_.EventID -eq 1 -and $_.User -like \"*kyle.morrison*\" } |\n    Select-Object TimeCreated, Computer, Image, CommandLine, ParentImage, ParentCommandLine | Format-Table -AutoSize"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>Get-Content .\evidence\sysmon_events.json -Raw | ConvertFrom-Json |<br/>    Where-Object &#123; $_.EventID -eq 1 -and $_.User -like "*kyle.morrison*" &#125; |<br/>    Select-Object TimeCreated, Computer, Image, CommandLine, ParentImage, ParentCommandLine | Format-Table -AutoSize</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method B */}
@@ -420,9 +475,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method B: Python</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>import json<br/>with open('evidence/sysmon_events.json') as f: events = json.load(f)<br/>for e in events:<br/>    if e.get('EventID') == 1 and 'kyle.morrison' in str(e.get('User', '')):<br/>        print(f"&#123;e.get('TimeCreated')&#125; | &#123;e.get('Image')&#125; | &#123;e.get('CommandLine')&#125;")</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"import json\nwith open('evidence/sysmon_events.json') as f: events = json.load(f)\nfor e in events:\n    if e.get('EventID') == 1 and 'kyle.morrison' in str(e.get('User', '')):\n        print(f\"{e.get('TimeCreated')} | {e.get('Image')} | {e.get('CommandLine')}\")"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>import json<br/>with open('evidence/sysmon_events.json') as f: events = json.load(f)<br/>for e in events:<br/>    if e.get('EventID') == 1 and 'kyle.morrison' in str(e.get('User', '')):<br/>        print(f"&#123;e.get('TimeCreated')&#125; | &#123;e.get('Image')&#125; | &#123;e.get('CommandLine')&#125;")</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method C */}
@@ -431,9 +491,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method C: Linux CLI / jq</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>jq -r '.[] | select(.EventID == 1 and (.User | test("kyle.morrison"; "i"))) | "\(.TimeCreated) | \(.Image) | \(.CommandLine)"' evidence/sysmon_events.json</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"jq -r '.[] | select(.EventID == 1 and (.User | test(\"kyle.morrison\"; \"i\"))) | \"\\(.TimeCreated) | \\(.Image) | \\(.CommandLine)\"' evidence/sysmon_events.json"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>jq -r '.[] | select(.EventID == 1 and (.User | test("kyle.morrison"; "i"))) | "\(.TimeCreated) | \(.Image) | \(.CommandLine)"' evidence/sysmon_events.json</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method D */}
@@ -442,9 +507,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method D: GUI / Editor</span>
                       <span className="text-zinc-600 text-xs">steps ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
-                      <code>1. Open evidence/sysmon_events.json.<br/>2. Search for: ProxyHealthSetup.msi or kyle.morrison.<br/>3. Locate the dropped binary: C:\Windows\System32\ProxyHealth.exe.</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"1. Open evidence/sysmon_events.json.\n2. Search for: ProxyHealthSetup.msi or kyle.morrison.\n3. Locate the dropped binary: C:\\Windows\\System32\\ProxyHealth.exe."} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
+                        <code>1. Open evidence/sysmon_events.json.<br/>2. Search for: ProxyHealthSetup.msi or kyle.morrison.<br/>3. Locate the dropped binary: C:\Windows\System32\ProxyHealth.exe.</code>
+                      </pre>
+                    </div>
                   </details>
                 </div>
               </div>
@@ -511,24 +581,27 @@ export default function VelvetThroneWriteup() {
                 <p>Adversaries use symmetric stream and block ciphers (MITRE ATT&CK T1573.001 - Encrypted Channel: Symmetric Cryptography) to encrypt network payloads. Static analysis on compiled Go binaries reveals cryptographic package imports and cipher runtime strings.</p>
               </div>
 
-              {/* Log Evidence Box */}
-              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner">
-                <div className="flex gap-2 mb-3 border-b border-zinc-800 pb-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-                  <span className="ml-2 text-zinc-500 text-xs">proxyhealth_strings.json • Go Cryptographic Packages</span>
+              {/* Log Evidence Box with CopyButton */}
+              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner relative">
+                <div className="flex justify-between items-center mb-3 border-b border-zinc-800 pb-2">
+                  <div className="flex gap-2 items-center">
+                    <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
+                    <span className="ml-2 text-zinc-500 text-xs">proxyhealth_strings.json • Go Cryptographic Packages</span>
+                  </div>
+                  <CopyButton text={"\u2022 golang.org/x/crypto/rc4\n\u2022 crypto/rc4\n\u2022 arcfour stream cipher\n\u2022 TLS_RSA_WITH_RC4_128_SHA"} />
                 </div>
                 <pre className="text-zinc-300 leading-relaxed">
                   <code>• golang.org/x/crypto/rc4<br/>• crypto/rc4<br/>• arcfour stream cipher<br/>• TLS_RSA_WITH_RC4_128_SHA</code>
                 </pre>
               </div>
 
-              {/* 4 Investigation Methods */}
+              {/* 4 Investigation Methods with individual CopyButtons */}
               <div className="space-y-3 pt-2">
                 <h4 className="text-white font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-2">
                   <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
-                  Investigation Methods (Hover / Click to View Code)
+                  Investigation Methods (Click to Expand & Copy Code)
                 </h4>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono text-xs">
@@ -538,9 +611,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method A: PowerShell</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>(Get-Content .\evidence\proxyhealth_strings.json -Raw | ConvertFrom-Json).strings | Where-Object &#123; $_ -match "rc4|arcfour|cipher" &#125;</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"(Get-Content .\\evidence\\proxyhealth_strings.json -Raw | ConvertFrom-Json).strings | Where-Object { $_ -match \"rc4|arcfour|cipher\" }"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>(Get-Content .\evidence\proxyhealth_strings.json -Raw | ConvertFrom-Json).strings | Where-Object &#123; $_ -match "rc4|arcfour|cipher" &#125;</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method B */}
@@ -549,9 +627,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method B: Python</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>import json<br/>with open('evidence/proxyhealth_strings.json') as f: data = json.load(f)<br/>print([s for s in data['strings'] if any(k in s.lower() for k in ['rc4', 'arcfour'])])</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"import json\nwith open('evidence/proxyhealth_strings.json') as f: data = json.load(f)\nprint([s for s in data['strings'] if any(k in s.lower() for k in ['rc4', 'arcfour'])])"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>import json<br/>with open('evidence/proxyhealth_strings.json') as f: data = json.load(f)<br/>print([s for s in data['strings'] if any(k in s.lower() for k in ['rc4', 'arcfour'])])</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method C */}
@@ -560,9 +643,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method C: Linux CLI / jq</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>grep -iE "rc4|arcfour" evidence/proxyhealth_strings.json</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"grep -iE \"rc4|arcfour\" evidence/proxyhealth_strings.json"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>grep -iE "rc4|arcfour" evidence/proxyhealth_strings.json</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method D */}
@@ -571,9 +659,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method D: GUI / Editor</span>
                       <span className="text-zinc-600 text-xs">steps ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
-                      <code>1. Open evidence/proxyhealth_strings.json in VS Code.<br/>2. Search for: rc4<br/>3. Observe: golang.org/x/crypto/rc4 and arcfour stream cipher.</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"1. Open evidence/proxyhealth_strings.json in VS Code.\n2. Search for: rc4\n3. Observe: golang.org/x/crypto/rc4 and arcfour stream cipher."} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
+                        <code>1. Open evidence/proxyhealth_strings.json in VS Code.<br/>2. Search for: rc4<br/>3. Observe: golang.org/x/crypto/rc4 and arcfour stream cipher.</code>
+                      </pre>
+                    </div>
                   </details>
                 </div>
               </div>
@@ -640,24 +733,27 @@ export default function VelvetThroneWriteup() {
                 <p>Command & Control domains (MITRE ATT&CK T1071.001 - Web Protocols) mimic legitimate cloud services to blend into enterprise egress traffic. Sysmon Event ID 3 and DNS resolver logs reveal the connection endpoint.</p>
               </div>
 
-              {/* Log Evidence Box */}
-              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner">
-                <div className="flex gap-2 mb-3 border-b border-zinc-800 pb-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-                  <span className="ml-2 text-zinc-500 text-xs">Sysmon Event ID 3 & DNS Resolver Query</span>
+              {/* Log Evidence Box with CopyButton */}
+              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner relative">
+                <div className="flex justify-between items-center mb-3 border-b border-zinc-800 pb-2">
+                  <div className="flex gap-2 items-center">
+                    <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
+                    <span className="ml-2 text-zinc-500 text-xs">Sysmon Event ID 3 & DNS Resolver Query</span>
+                  </div>
+                  <CopyButton text={"// Sysmon Event ID 3 (Network Connection):\nImage: C:\\Windows\\System32\\ProxyHealth.exe\nDestinationHostname: proxy-health-api.azurecloud-monitor.com\nDestinationIp: 193.42.33.114:443\n\n// DNS Resolver Log:\nquery_name: \"proxy-health-api.azurecloud-monitor.com\" -> answer: \"193.42.33.114\" "} />
                 </div>
                 <pre className="text-zinc-300 leading-relaxed">
                   <code>// Sysmon Event ID 3 (Network Connection):<br/>Image: C:\Windows\System32\ProxyHealth.exe<br/>DestinationHostname: proxy-health-api.azurecloud-monitor.com<br/>DestinationIp: 193.42.33.114:443<br/><br/>// DNS Resolver Log:<br/>query_name: "proxy-health-api.azurecloud-monitor.com" -&gt; answer: "193.42.33.114" </code>
                 </pre>
               </div>
 
-              {/* 4 Investigation Methods */}
+              {/* 4 Investigation Methods with individual CopyButtons */}
               <div className="space-y-3 pt-2">
                 <h4 className="text-white font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-2">
                   <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
-                  Investigation Methods (Hover / Click to View Code)
+                  Investigation Methods (Click to Expand & Copy Code)
                 </h4>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono text-xs">
@@ -667,9 +763,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method A: PowerShell</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>Get-Content .\evidence\sysmon_events.json -Raw | ConvertFrom-Json |<br/>    Where-Object &#123; $_.EventID -eq 3 -and $_.Image -like "*ProxyHealth*" &#125; |<br/>    Select-Object DestinationHostname, DestinationIp, DestinationPort -Unique</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"Get-Content .\\evidence\\sysmon_events.json -Raw | ConvertFrom-Json |\n    Where-Object { $_.EventID -eq 3 -and $_.Image -like \"*ProxyHealth*\" } |\n    Select-Object DestinationHostname, DestinationIp, DestinationPort -Unique"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>Get-Content .\evidence\sysmon_events.json -Raw | ConvertFrom-Json |<br/>    Where-Object &#123; $_.EventID -eq 3 -and $_.Image -like "*ProxyHealth*" &#125; |<br/>    Select-Object DestinationHostname, DestinationIp, DestinationPort -Unique</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method B */}
@@ -678,9 +779,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method B: Python</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>import json<br/>with open('evidence/sysmon_events.json') as f: events = json.load(f)<br/>for e in events:<br/>    if e.get('EventID') == 3 and 'proxyhealth' in str(e.get('Image', '')).lower():<br/>        print(f"&#123;e.get('DestinationHostname')&#125; -&gt; &#123;e.get('DestinationIp')&#125;:&#123;e.get('DestinationPort')&#125;")</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"import json\nwith open('evidence/sysmon_events.json') as f: events = json.load(f)\nfor e in events:\n    if e.get('EventID') == 3 and 'proxyhealth' in str(e.get('Image', '')).lower():\n        print(f\"{e.get('DestinationHostname')} -> {e.get('DestinationIp')}:{e.get('DestinationPort')}\")"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>import json<br/>with open('evidence/sysmon_events.json') as f: events = json.load(f)<br/>for e in events:<br/>    if e.get('EventID') == 3 and 'proxyhealth' in str(e.get('Image', '')).lower():<br/>        print(f"&#123;e.get('DestinationHostname')&#125; -&gt; &#123;e.get('DestinationIp')&#125;:&#123;e.get('DestinationPort')&#125;")</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method C */}
@@ -689,9 +795,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method C: Linux CLI / jq</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>jq -r '.[] | select(.EventID == 3 and (.Image | test("ProxyHealth"; "i"))) | "\(.DestinationHostname) | \(.DestinationIp)"' evidence/sysmon_events.json | sort -u</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"jq -r '.[] | select(.EventID == 3 and (.Image | test(\"ProxyHealth\"; \"i\"))) | \"\\(.DestinationHostname) | \\(.DestinationIp)\"' evidence/sysmon_events.json | sort -u"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>jq -r '.[] | select(.EventID == 3 and (.Image | test("ProxyHealth"; "i"))) | "\(.DestinationHostname) | \(.DestinationIp)"' evidence/sysmon_events.json | sort -u</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method D */}
@@ -700,9 +811,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method D: GUI / Editor</span>
                       <span className="text-zinc-600 text-xs">steps ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
-                      <code>1. Open evidence/proxyhealth_strings.json in VS Code.<br/>2. Search for: azurecloud-monitor.com<br/>3. Locate domain: proxy-health-api.azurecloud-monitor.com.</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"1. Open evidence/proxyhealth_strings.json in VS Code.\n2. Search for: azurecloud-monitor.com\n3. Locate domain: proxy-health-api.azurecloud-monitor.com."} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
+                        <code>1. Open evidence/proxyhealth_strings.json in VS Code.<br/>2. Search for: azurecloud-monitor.com<br/>3. Locate domain: proxy-health-api.azurecloud-monitor.com.</code>
+                      </pre>
+                    </div>
                   </details>
                 </div>
               </div>
@@ -769,24 +885,27 @@ export default function VelvetThroneWriteup() {
                 <p>Adversaries abuse the Windows Service Control Manager to install malicious services (MITRE ATT&CK T1543.003 - Windows Service). Windows Security Event ID 4697 logs ServiceName, ServiceFileName, ServiceAccount, and ServiceStartType (2 = Auto Start).</p>
               </div>
 
-              {/* Log Evidence Box */}
-              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner">
-                <div className="flex gap-2 mb-3 border-b border-zinc-800 pb-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-                  <span className="ml-2 text-zinc-500 text-xs">Windows Security Event ID 4697 • Service Installed</span>
+              {/* Log Evidence Box with CopyButton */}
+              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner relative">
+                <div className="flex justify-between items-center mb-3 border-b border-zinc-800 pb-2">
+                  <div className="flex gap-2 items-center">
+                    <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
+                    <span className="ml-2 text-zinc-500 text-xs">Windows Security Event ID 4697 • Service Installed</span>
+                  </div>
+                  <CopyButton text={"{\n  \"TimeCreated\": \"2024-03-15T03:31:45\",\n  \"EventID\": 4697,\n  \"Computer\": \"EXEC-WKSTN-01\",\n  \"EventData\": {\n    \"SubjectUserName\": \"kyle.morrison\",\n    \"ServiceName\": \"ProxyHealthSvc\",\n    \"ServiceStartType\": \"2\",\n    \"ServiceAccount\": \"LocalSystem\",\n    \"ServiceFileName\": \"C:\\Windows\\System32\\ProxyHealth.exe --service\"\n  }\n}"} />
                 </div>
                 <pre className="text-zinc-300 leading-relaxed">
                   <code>&#123;<br/>  "TimeCreated": "2024-03-15T03:31:45",<br/>  "EventID": 4697,<br/>  "Computer": "EXEC-WKSTN-01",<br/>  "EventData": &#123;<br/>    "SubjectUserName": "kyle.morrison",<br/>    "ServiceName": "ProxyHealthSvc",<br/>    "ServiceStartType": "2",<br/>    "ServiceAccount": "LocalSystem",<br/>    "ServiceFileName": "C:\Windows\System32\ProxyHealth.exe --service"<br/>  &#125;<br/>&#125;</code>
                 </pre>
               </div>
 
-              {/* 4 Investigation Methods */}
+              {/* 4 Investigation Methods with individual CopyButtons */}
               <div className="space-y-3 pt-2">
                 <h4 className="text-white font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-2">
                   <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
-                  Investigation Methods (Hover / Click to View Code)
+                  Investigation Methods (Click to Expand & Copy Code)
                 </h4>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono text-xs">
@@ -796,9 +915,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method A: PowerShell</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>Get-Content .\evidence\windows_security_events.json -Raw | ConvertFrom-Json |<br/>    Where-Object &#123; $_.EventID -eq 4697 -and $_.EventData.ServiceName -eq "ProxyHealthSvc" &#125; |<br/>    Select-Object TimeCreated, @&#123;N='Service';E=&#123;$_.EventData.ServiceName&#125;&#125;, @&#123;N='Binary';E=&#123;$_.EventData.ServiceFileName&#125;&#125;</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"Get-Content .\\evidence\\windows_security_events.json -Raw | ConvertFrom-Json |\n    Where-Object { $_.EventID -eq 4697 -and $_.EventData.ServiceName -eq \"ProxyHealthSvc\" } |\n    Select-Object TimeCreated, @{N='Service';E={$_.EventData.ServiceName}}, @{N='Binary';E={$_.EventData.ServiceFileName}}"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>Get-Content .\evidence\windows_security_events.json -Raw | ConvertFrom-Json |<br/>    Where-Object &#123; $_.EventID -eq 4697 -and $_.EventData.ServiceName -eq "ProxyHealthSvc" &#125; |<br/>    Select-Object TimeCreated, @&#123;N='Service';E=&#123;$_.EventData.ServiceName&#125;&#125;, @&#123;N='Binary';E=&#123;$_.EventData.ServiceFileName&#125;&#125;</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method B */}
@@ -807,9 +931,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method B: Python</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>import json<br/>with open('evidence/windows_security_events.json') as f: events = json.load(f)<br/>for e in events:<br/>    if e.get('EventID') == 4697 and 'proxyhealth' in json.dumps(e).lower():<br/>        print(json.dumps(e['EventData'], indent=2))</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"import json\nwith open('evidence/windows_security_events.json') as f: events = json.load(f)\nfor e in events:\n    if e.get('EventID') == 4697 and 'proxyhealth' in json.dumps(e).lower():\n        print(json.dumps(e['EventData'], indent=2))"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>import json<br/>with open('evidence/windows_security_events.json') as f: events = json.load(f)<br/>for e in events:<br/>    if e.get('EventID') == 4697 and 'proxyhealth' in json.dumps(e).lower():<br/>        print(json.dumps(e['EventData'], indent=2))</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method C */}
@@ -818,9 +947,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method C: Linux CLI / jq</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>jq -r '.[] | select(.EventID == 4697 and (.EventData.ServiceName | test("ProxyHealth"; "i"))) | "\(.TimeCreated) | \(.EventData.ServiceName) | \(.EventData.ServiceFileName)"' evidence/windows_security_events.json</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"jq -r '.[] | select(.EventID == 4697 and (.EventData.ServiceName | test(\"ProxyHealth\"; \"i\"))) | \"\\(.TimeCreated) | \\(.EventData.ServiceName) | \\(.EventData.ServiceFileName)\"' evidence/windows_security_events.json"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>jq -r '.[] | select(.EventID == 4697 and (.EventData.ServiceName | test("ProxyHealth"; "i"))) | "\(.TimeCreated) | \(.EventData.ServiceName) | \(.EventData.ServiceFileName)"' evidence/windows_security_events.json</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method D */}
@@ -829,9 +963,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method D: GUI / Editor</span>
                       <span className="text-zinc-600 text-xs">steps ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
-                      <code>1. Open evidence/windows_security_events.json.<br/>2. Search for: ProxyHealthSvc or Event ID 4697.<br/>3. Review the newly registered Windows service.</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"1. Open evidence/windows_security_events.json.\n2. Search for: ProxyHealthSvc or Event ID 4697.\n3. Review the newly registered Windows service."} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
+                        <code>1. Open evidence/windows_security_events.json.<br/>2. Search for: ProxyHealthSvc or Event ID 4697.<br/>3. Review the newly registered Windows service.</code>
+                      </pre>
+                    </div>
                   </details>
                 </div>
               </div>
@@ -898,24 +1037,27 @@ export default function VelvetThroneWriteup() {
                 <p>Adversaries abuse legitimate administrative binaries (Living off the Land / Sysinternals) to dump the memory of lsass.exe (MITRE ATT&CK T1003.001 - OS Credential Dumping: LSASS Memory). ProcDump produces full minidumps (-ma) while evading basic antivirus blocks.</p>
               </div>
 
-              {/* Log Evidence Box */}
-              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner">
-                <div className="flex gap-2 mb-3 border-b border-zinc-800 pb-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-                  <span className="ml-2 text-zinc-500 text-xs">Sysmon Event ID 1 • ProcDump LSASS Dump</span>
+              {/* Log Evidence Box with CopyButton */}
+              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner relative">
+                <div className="flex justify-between items-center mb-3 border-b border-zinc-800 pb-2">
+                  <div className="flex gap-2 items-center">
+                    <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
+                    <span className="ml-2 text-zinc-500 text-xs">Sysmon Event ID 1 • ProcDump LSASS Dump</span>
+                  </div>
+                  <CopyButton text={"{\n  \"TimeCreated\": \"2024-03-15T10:14:22\",\n  \"EventID\": 1,\n  \"Image\": \"C:\\Windows\\Temp\\procdump.exe\",\n  \"CommandLine\": \"procdump.exe -ma lsass.exe C:\\Windows\\Temp\\lsass.dmp\",\n  \"ParentImage\": \"C:\\Windows\\System32\\ProxyHealth.exe\",\n  \"User\": \"AXIOMFP\\kyle.morrison\"\n}"} />
                 </div>
                 <pre className="text-zinc-300 leading-relaxed">
                   <code>&#123;<br/>  "TimeCreated": "2024-03-15T10:14:22",<br/>  "EventID": 1,<br/>  "Image": "C:\Windows\Temp\procdump.exe",<br/>  "CommandLine": "procdump.exe -ma lsass.exe C:\Windows\Temp\lsass.dmp",<br/>  "ParentImage": "C:\Windows\System32\ProxyHealth.exe",<br/>  "User": "AXIOMFP\kyle.morrison"<br/>&#125;</code>
                 </pre>
               </div>
 
-              {/* 4 Investigation Methods */}
+              {/* 4 Investigation Methods with individual CopyButtons */}
               <div className="space-y-3 pt-2">
                 <h4 className="text-white font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-2">
                   <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
-                  Investigation Methods (Hover / Click to View Code)
+                  Investigation Methods (Click to Expand & Copy Code)
                 </h4>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono text-xs">
@@ -925,9 +1067,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method A: PowerShell</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>Get-Content .\evidence\sysmon_events.json -Raw | ConvertFrom-Json |<br/>    Where-Object &#123; $_.EventID -eq 1 -and ($_.CommandLine -like "*lsass.dmp*" -or $_.Image -like "*procdump*") &#125; |<br/>    Select-Object TimeCreated, Computer, Image, CommandLine, ParentImage | Format-Table -AutoSize</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"Get-Content .\\evidence\\sysmon_events.json -Raw | ConvertFrom-Json |\n    Where-Object { $_.EventID -eq 1 -and ($_.CommandLine -like \"*lsass.dmp*\" -or $_.Image -like \"*procdump*\") } |\n    Select-Object TimeCreated, Computer, Image, CommandLine, ParentImage | Format-Table -AutoSize"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>Get-Content .\evidence\sysmon_events.json -Raw | ConvertFrom-Json |<br/>    Where-Object &#123; $_.EventID -eq 1 -and ($_.CommandLine -like "*lsass.dmp*" -or $_.Image -like "*procdump*") &#125; |<br/>    Select-Object TimeCreated, Computer, Image, CommandLine, ParentImage | Format-Table -AutoSize</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method B */}
@@ -936,9 +1083,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method B: Python</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>import json<br/>with open('evidence/sysmon_events.json') as f: events = json.load(f)<br/>for e in events:<br/>    if e.get('EventID') == 1 and 'lsass' in str(e.get('CommandLine', '')).lower():<br/>        print(f"&#123;e.get('TimeCreated')&#125; | Tool: &#123;e.get('Image')&#125; | Cmd: &#123;e.get('CommandLine')&#125;")</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"import json\nwith open('evidence/sysmon_events.json') as f: events = json.load(f)\nfor e in events:\n    if e.get('EventID') == 1 and 'lsass' in str(e.get('CommandLine', '')).lower():\n        print(f\"{e.get('TimeCreated')} | Tool: {e.get('Image')} | Cmd: {e.get('CommandLine')}\")"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>import json<br/>with open('evidence/sysmon_events.json') as f: events = json.load(f)<br/>for e in events:<br/>    if e.get('EventID') == 1 and 'lsass' in str(e.get('CommandLine', '')).lower():<br/>        print(f"&#123;e.get('TimeCreated')&#125; | Tool: &#123;e.get('Image')&#125; | Cmd: &#123;e.get('CommandLine')&#125;")</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method C */}
@@ -947,9 +1099,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method C: Linux CLI / jq</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>jq -r '.[] | select(.EventID == 1 and (.CommandLine | test("lsass\\.dmp"; "i"))) | "\(.TimeCreated) | \(.Image) | \(.CommandLine)"' evidence/sysmon_events.json</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"jq -r '.[] | select(.EventID == 1 and (.CommandLine | test(\"lsass\\\\.dmp\"; \"i\"))) | \"\\(.TimeCreated) | \\(.Image) | \\(.CommandLine)\"' evidence/sysmon_events.json"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>jq -r '.[] | select(.EventID == 1 and (.CommandLine | test("lsass\\.dmp"; "i"))) | "\(.TimeCreated) | \(.Image) | \(.CommandLine)"' evidence/sysmon_events.json</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method D */}
@@ -958,9 +1115,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method D: GUI / Editor</span>
                       <span className="text-zinc-600 text-xs">steps ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
-                      <code>1. Open evidence/sysmon_events.json in VS Code.<br/>2. Search for: lsass.dmp<br/>3. Notice procdump.exe spawned by ProxyHealth.exe.</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"1. Open evidence/sysmon_events.json in VS Code.\n2. Search for: lsass.dmp\n3. Notice procdump.exe spawned by ProxyHealth.exe."} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
+                        <code>1. Open evidence/sysmon_events.json in VS Code.<br/>2. Search for: lsass.dmp<br/>3. Notice procdump.exe spawned by ProxyHealth.exe.</code>
+                      </pre>
+                    </div>
                   </details>
                 </div>
               </div>
@@ -1027,24 +1189,27 @@ export default function VelvetThroneWriteup() {
                 <p>Dumping LSASS memory allows attackers to extract Kerberos tickets, NTLM password hashes, and cleartext credentials of service accounts (MITRE ATT&CK T1003.001). SharePoint audit logs reveal the stolen service account accessing sensitive documents immediately following the dump.</p>
               </div>
 
-              {/* Log Evidence Box */}
-              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner">
-                <div className="flex gap-2 mb-3 border-b border-zinc-800 pb-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-                  <span className="ml-2 text-zinc-500 text-xs">sharepoint_audit_log.json • Unauthorized Access</span>
+              {/* Log Evidence Box with CopyButton */}
+              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner relative">
+                <div className="flex justify-between items-center mb-3 border-b border-zinc-800 pb-2">
+                  <div className="flex gap-2 items-center">
+                    <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
+                    <span className="ml-2 text-zinc-500 text-xs">sharepoint_audit_log.json • Unauthorized Access</span>
+                  </div>
+                  <CopyButton text={"{\n  \"CreationTime\": \"2024-03-15T10:33:24.000Z\",\n  \"Operation\": \"FileAccessed\",\n  \"UserId\": \"svc_sharepoint_farm@axiomfp.com\",\n  \"ClientIP\": \"10.10.20.30\",\n  \"SourceFileName\": \"AcquisitionTarget_DueDiligence_SigmaGroup.pptx\",\n  \"DownloadSize\": 89603579\n}"} />
                 </div>
                 <pre className="text-zinc-300 leading-relaxed">
                   <code>&#123;<br/>  "CreationTime": "2024-03-15T10:33:24.000Z",<br/>  "Operation": "FileAccessed",<br/>  "UserId": "svc_sharepoint_farm@axiomfp.com",<br/>  "ClientIP": "10.10.20.30",<br/>  "SourceFileName": "AcquisitionTarget_DueDiligence_SigmaGroup.pptx",<br/>  "DownloadSize": 89603579<br/>&#125;</code>
                 </pre>
               </div>
 
-              {/* 4 Investigation Methods */}
+              {/* 4 Investigation Methods with individual CopyButtons */}
               <div className="space-y-3 pt-2">
                 <h4 className="text-white font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-2">
                   <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
-                  Investigation Methods (Hover / Click to View Code)
+                  Investigation Methods (Click to Expand & Copy Code)
                 </h4>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono text-xs">
@@ -1054,9 +1219,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method A: PowerShell</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>Get-Content .\evidence\sharepoint_audit_log.json -Raw | ConvertFrom-Json |<br/>    Where-Object &#123; $_.UserId -like "svc_*" &#125; |<br/>    Select-Object CreationTime, UserId, ClientIP, Operation, SourceFileName -First 5 | Format-Table -AutoSize</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"Get-Content .\\evidence\\sharepoint_audit_log.json -Raw | ConvertFrom-Json |\n    Where-Object { $_.UserId -like \"svc_*\" } |\n    Select-Object CreationTime, UserId, ClientIP, Operation, SourceFileName -First 5 | Format-Table -AutoSize"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>Get-Content .\evidence\sharepoint_audit_log.json -Raw | ConvertFrom-Json |<br/>    Where-Object &#123; $_.UserId -like "svc_*" &#125; |<br/>    Select-Object CreationTime, UserId, ClientIP, Operation, SourceFileName -First 5 | Format-Table -AutoSize</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method B */}
@@ -1065,9 +1235,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method B: Python</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>import json<br/>with open('evidence/sharepoint_audit_log.json') as f: sp = json.load(f)<br/>print(set(e['UserId'] for e in sp if 'svc_' in str(e.get('UserId',''))))</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"import json\nwith open('evidence/sharepoint_audit_log.json') as f: sp = json.load(f)\nprint(set(e['UserId'] for e in sp if 'svc_' in str(e.get('UserId',''))))"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>import json<br/>with open('evidence/sharepoint_audit_log.json') as f: sp = json.load(f)<br/>print(set(e['UserId'] for e in sp if 'svc_' in str(e.get('UserId',''))))</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method C */}
@@ -1076,9 +1251,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method C: Linux CLI / jq</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>jq -r '.[] | select(.UserId | test("^svc_"; "i")) | "\(.CreationTime) | \(.UserId) | \(.ClientIP)"' evidence/sharepoint_audit_log.json | head -n 5</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"jq -r '.[] | select(.UserId | test(\"^svc_\"; \"i\")) | \"\\(.CreationTime) | \\(.UserId) | \\(.ClientIP)\"' evidence/sharepoint_audit_log.json | head -n 5"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>jq -r '.[] | select(.UserId | test("^svc_"; "i")) | "\(.CreationTime) | \(.UserId) | \(.ClientIP)"' evidence/sharepoint_audit_log.json | head -n 5</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method D */}
@@ -1087,9 +1267,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method D: GUI / Editor</span>
                       <span className="text-zinc-600 text-xs">steps ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
-                      <code>1. Open evidence/sharepoint_audit_log.json.<br/>2. Search for: svc_<br/>3. Locate: svc_sharepoint_farm@axiomfp.com.</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"1. Open evidence/sharepoint_audit_log.json.\n2. Search for: svc_\n3. Locate: svc_sharepoint_farm@axiomfp.com."} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
+                        <code>1. Open evidence/sharepoint_audit_log.json.<br/>2. Search for: svc_<br/>3. Locate: svc_sharepoint_farm@axiomfp.com.</code>
+                      </pre>
+                    </div>
                   </details>
                 </div>
               </div>
@@ -1156,24 +1341,27 @@ export default function VelvetThroneWriteup() {
                 <p>The NetBIOS Hostname uniquely identifies the Windows endpoint (MITRE ATT&CK T1082 - System Information Discovery). It is logged in Sysmon and Windows Event headers and embedded in malware session tokens.</p>
               </div>
 
-              {/* Log Evidence Box */}
-              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner">
-                <div className="flex gap-2 mb-3 border-b border-zinc-800 pb-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-                  <span className="ml-2 text-zinc-500 text-xs">Sysmon Computer Tag & Binary String Prefix</span>
+              {/* Log Evidence Box with CopyButton */}
+              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner relative">
+                <div className="flex justify-between items-center mb-3 border-b border-zinc-800 pb-2">
+                  <div className="flex gap-2 items-center">
+                    <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
+                    <span className="ml-2 text-zinc-500 text-xs">Sysmon Computer Tag & Binary String Prefix</span>
+                  </div>
+                  <CopyButton text={"\u2022 Sysmon Event Header: \"Computer\": \"EXEC-WKSTN-01\"\n\u2022 Static String in proxyhealth.bin: \"EXEC-WKSTN-01_\" "} />
                 </div>
                 <pre className="text-zinc-300 leading-relaxed">
                   <code>• Sysmon Event Header: "Computer": "EXEC-WKSTN-01"<br/>• Static String in proxyhealth.bin: "EXEC-WKSTN-01_" </code>
                 </pre>
               </div>
 
-              {/* 4 Investigation Methods */}
+              {/* 4 Investigation Methods with individual CopyButtons */}
               <div className="space-y-3 pt-2">
                 <h4 className="text-white font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-2">
                   <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
-                  Investigation Methods (Hover / Click to View Code)
+                  Investigation Methods (Click to Expand & Copy Code)
                 </h4>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono text-xs">
@@ -1183,9 +1371,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method A: PowerShell</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>Get-Content .\evidence\sysmon_events.json -Raw | ConvertFrom-Json |<br/>    Where-Object &#123; $_.User -like "*kyle.morrison*" &#125; | Select-Object Computer -Unique</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"Get-Content .\\evidence\\sysmon_events.json -Raw | ConvertFrom-Json |\n    Where-Object { $_.User -like \"*kyle.morrison*\" } | Select-Object Computer -Unique"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>Get-Content .\evidence\sysmon_events.json -Raw | ConvertFrom-Json |<br/>    Where-Object &#123; $_.User -like "*kyle.morrison*" &#125; | Select-Object Computer -Unique</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method B */}
@@ -1194,9 +1387,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method B: Python</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>import json<br/>with open('evidence/sysmon_events.json') as f: events = json.load(f)<br/>print(set(e['Computer'] for e in events if 'kyle.morrison' in str(e.get('User',''))))</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"import json\nwith open('evidence/sysmon_events.json') as f: events = json.load(f)\nprint(set(e['Computer'] for e in events if 'kyle.morrison' in str(e.get('User',''))))"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>import json<br/>with open('evidence/sysmon_events.json') as f: events = json.load(f)<br/>print(set(e['Computer'] for e in events if 'kyle.morrison' in str(e.get('User',''))))</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method C */}
@@ -1205,9 +1403,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method C: Linux CLI / jq</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>jq -r '.[] | select(.User | test("kyle.morrison"; "i")) | .Computer' evidence/sysmon_events.json | sort -u</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"jq -r '.[] | select(.User | test(\"kyle.morrison\"; \"i\")) | .Computer' evidence/sysmon_events.json | sort -u"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>jq -r '.[] | select(.User | test("kyle.morrison"; "i")) | .Computer' evidence/sysmon_events.json | sort -u</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method D */}
@@ -1216,9 +1419,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method D: GUI / Editor</span>
                       <span className="text-zinc-600 text-xs">steps ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
-                      <code>1. Open evidence/sysmon_events.json.<br/>2. Search for: kyle.morrison<br/>3. Check the 'Computer' field on matching events: EXEC-WKSTN-01.</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"1. Open evidence/sysmon_events.json.\n2. Search for: kyle.morrison\n3. Check the 'Computer' field on matching events: EXEC-WKSTN-01."} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
+                        <code>1. Open evidence/sysmon_events.json.<br/>2. Search for: kyle.morrison<br/>3. Check the 'Computer' field on matching events: EXEC-WKSTN-01.</code>
+                      </pre>
+                    </div>
                   </details>
                 </div>
               </div>
@@ -1285,24 +1493,27 @@ export default function VelvetThroneWriteup() {
                 <p>Malware authors fingerprint the victim machine (MITRE ATT&CK T1082) using hardware properties such as the NTFS Volume Serial Number via WMIC.exe (logicaldisk get volumeserialnumber,deviceid) to generate machine-unique encryption keys.</p>
               </div>
 
-              {/* Log Evidence Box */}
-              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner">
-                <div className="flex gap-2 mb-3 border-b border-zinc-800 pb-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-                  <span className="ml-2 text-zinc-500 text-xs">Sysmon Event ID 1 • WMIC Hardware Query</span>
+              {/* Log Evidence Box with CopyButton */}
+              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner relative">
+                <div className="flex justify-between items-center mb-3 border-b border-zinc-800 pb-2">
+                  <div className="flex gap-2 items-center">
+                    <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
+                    <span className="ml-2 text-zinc-500 text-xs">Sysmon Event ID 1 • WMIC Hardware Query</span>
+                  </div>
+                  <CopyButton text={"{\n  \"TimeCreated\": \"2024-03-15T09:32:45\",\n  \"CommandLine\": \"wmic logicaldisk get volumeserialnumber,deviceid\",\n  \"Details\": \"DeviceID  VolumeSerialNumber\\r\\nC:        4B7A2C9E\\r\\nD:        A81F30C2\\r\\n\"\n}"} />
                 </div>
                 <pre className="text-zinc-300 leading-relaxed">
                   <code>&#123;<br/>  "TimeCreated": "2024-03-15T09:32:45",<br/>  "CommandLine": "wmic logicaldisk get volumeserialnumber,deviceid",<br/>  "Details": "DeviceID  VolumeSerialNumber\r\nC:        4B7A2C9E\r\nD:        A81F30C2\r\n"<br/>&#125;</code>
                 </pre>
               </div>
 
-              {/* 4 Investigation Methods */}
+              {/* 4 Investigation Methods with individual CopyButtons */}
               <div className="space-y-3 pt-2">
                 <h4 className="text-white font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-2">
                   <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
-                  Investigation Methods (Hover / Click to View Code)
+                  Investigation Methods (Click to Expand & Copy Code)
                 </h4>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono text-xs">
@@ -1312,9 +1523,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method A: PowerShell</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>Get-Content .\evidence\sysmon_events.json -Raw | ConvertFrom-Json |<br/>    Where-Object &#123; $_.CommandLine -like "*volumeserialnumber*" &#125; | Select-Object TimeCreated, CommandLine, Details | Format-List</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"Get-Content .\\evidence\\sysmon_events.json -Raw | ConvertFrom-Json |\n    Where-Object { $_.CommandLine -like \"*volumeserialnumber*\" } | Select-Object TimeCreated, CommandLine, Details | Format-List"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>Get-Content .\evidence\sysmon_events.json -Raw | ConvertFrom-Json |<br/>    Where-Object &#123; $_.CommandLine -like "*volumeserialnumber*" &#125; | Select-Object TimeCreated, CommandLine, Details | Format-List</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method B */}
@@ -1323,9 +1539,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method B: Python</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>import json<br/>with open('evidence/sysmon_events.json') as f: events = json.load(f)<br/>for e in events:<br/>    if 'volumeserialnumber' in str(e.get('CommandLine','')).lower(): print(e.get('Details'))</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"import json\nwith open('evidence/sysmon_events.json') as f: events = json.load(f)\nfor e in events:\n    if 'volumeserialnumber' in str(e.get('CommandLine','')).lower(): print(e.get('Details'))"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>import json<br/>with open('evidence/sysmon_events.json') as f: events = json.load(f)<br/>for e in events:<br/>    if 'volumeserialnumber' in str(e.get('CommandLine','')).lower(): print(e.get('Details'))</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method C */}
@@ -1334,9 +1555,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method C: Linux CLI / jq</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>jq -r '.[] | select(.CommandLine | test("volumeserialnumber"; "i")) | "\(.CommandLine)\n\(.Details)"' evidence/sysmon_events.json</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"jq -r '.[] | select(.CommandLine | test(\"volumeserialnumber\"; \"i\")) | \"\\(.CommandLine)\\n\\(.Details)\"' evidence/sysmon_events.json"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>jq -r '.[] | select(.CommandLine | test("volumeserialnumber"; "i")) | "\(.CommandLine)\n\(.Details)"' evidence/sysmon_events.json</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method D */}
@@ -1345,9 +1571,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method D: GUI / Editor</span>
                       <span className="text-zinc-600 text-xs">steps ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
-                      <code>1. Open evidence/sysmon_events.json.<br/>2. Search for: volumeserialnumber<br/>3. Read the Details field showing C: 4B7A2C9E.</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"1. Open evidence/sysmon_events.json.\n2. Search for: volumeserialnumber\n3. Read the Details field showing C: 4B7A2C9E."} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
+                        <code>1. Open evidence/sysmon_events.json.<br/>2. Search for: volumeserialnumber<br/>3. Read the Details field showing C: 4B7A2C9E.</code>
+                      </pre>
+                    </div>
                   </details>
                 </div>
               </div>
@@ -1414,24 +1645,27 @@ export default function VelvetThroneWriteup() {
                 <p>After harvesting credentials from the executive workstation (10.10.20.15), the adversary pivoted laterally (MITRE ATT&CK T1021 - Remote Services) to 10.10.20.30 to coordinate document scraping and archive uploads.</p>
               </div>
 
-              {/* Log Evidence Box */}
-              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner">
-                <div className="flex gap-2 mb-3 border-b border-zinc-800 pb-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-                  <span className="ml-2 text-zinc-500 text-xs">sharepoint_audit_log.json & proxy_access_log.txt</span>
+              {/* Log Evidence Box with CopyButton */}
+              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner relative">
+                <div className="flex justify-between items-center mb-3 border-b border-zinc-800 pb-2">
+                  <div className="flex gap-2 items-center">
+                    <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
+                    <span className="ml-2 text-zinc-500 text-xs">sharepoint_audit_log.json & proxy_access_log.txt</span>
+                  </div>
+                  <CopyButton text={"\u2022 SharePoint Audit Log: All FileAccessed events for svc_sharepoint_farm originate from ClientIP: 10.10.20.30\n\u2022 Proxy Access Log: Outbound PUT exfiltration uploads originate from ClientIP: 10.10.20.30"} />
                 </div>
                 <pre className="text-zinc-300 leading-relaxed">
                   <code>• SharePoint Audit Log: All FileAccessed events for svc_sharepoint_farm originate from ClientIP: 10.10.20.30<br/>• Proxy Access Log: Outbound PUT exfiltration uploads originate from ClientIP: 10.10.20.30</code>
                 </pre>
               </div>
 
-              {/* 4 Investigation Methods */}
+              {/* 4 Investigation Methods with individual CopyButtons */}
               <div className="space-y-3 pt-2">
                 <h4 className="text-white font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-2">
                   <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
-                  Investigation Methods (Hover / Click to View Code)
+                  Investigation Methods (Click to Expand & Copy Code)
                 </h4>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono text-xs">
@@ -1441,9 +1675,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method A: PowerShell</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>Get-Content .\evidence\sharepoint_audit_log.json -Raw | ConvertFrom-Json |<br/>    Where-Object &#123; $_.UserId -eq "svc_sharepoint_farm@axiomfp.com" &#125; | Select-Object ClientIP -Unique</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"Get-Content .\\evidence\\sharepoint_audit_log.json -Raw | ConvertFrom-Json |\n    Where-Object { $_.UserId -eq \"svc_sharepoint_farm@axiomfp.com\" } | Select-Object ClientIP -Unique"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>Get-Content .\evidence\sharepoint_audit_log.json -Raw | ConvertFrom-Json |<br/>    Where-Object &#123; $_.UserId -eq "svc_sharepoint_farm@axiomfp.com" &#125; | Select-Object ClientIP -Unique</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method B */}
@@ -1452,9 +1691,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method B: Python</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>import json<br/>with open('evidence/sharepoint_audit_log.json') as f: sp = json.load(f)<br/>print(set(e['ClientIP'] for e in sp if e.get('UserId') == 'svc_sharepoint_farm@axiomfp.com'))</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"import json\nwith open('evidence/sharepoint_audit_log.json') as f: sp = json.load(f)\nprint(set(e['ClientIP'] for e in sp if e.get('UserId') == 'svc_sharepoint_farm@axiomfp.com'))"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>import json<br/>with open('evidence/sharepoint_audit_log.json') as f: sp = json.load(f)<br/>print(set(e['ClientIP'] for e in sp if e.get('UserId') == 'svc_sharepoint_farm@axiomfp.com'))</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method C */}
@@ -1463,9 +1707,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method C: Linux CLI / jq</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>jq -r '.[] | select(.UserId == "svc_sharepoint_farm@axiomfp.com") | .ClientIP' evidence/sharepoint_audit_log.json | sort -u</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"jq -r '.[] | select(.UserId == \"svc_sharepoint_farm@axiomfp.com\") | .ClientIP' evidence/sharepoint_audit_log.json | sort -u"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>jq -r '.[] | select(.UserId == "svc_sharepoint_farm@axiomfp.com") | .ClientIP' evidence/sharepoint_audit_log.json | sort -u</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method D */}
@@ -1474,9 +1723,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method D: GUI / Editor</span>
                       <span className="text-zinc-600 text-xs">steps ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
-                      <code>1. Open evidence/sharepoint_audit_log.json.<br/>2. Search for: svc_sharepoint_farm<br/>3. Observe ClientIP: 10.10.20.30.</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"1. Open evidence/sharepoint_audit_log.json.\n2. Search for: svc_sharepoint_farm\n3. Observe ClientIP: 10.10.20.30."} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
+                        <code>1. Open evidence/sharepoint_audit_log.json.<br/>2. Search for: svc_sharepoint_farm<br/>3. Observe ClientIP: 10.10.20.30.</code>
+                      </pre>
+                    </div>
                   </details>
                 </div>
               </div>
@@ -1543,24 +1797,27 @@ export default function VelvetThroneWriteup() {
                 <p>The implant formats a seed string 'EXEC-WKSTN-01_4B7A2C9E' and computes SHA-1 to yield the 20-byte RC4 key (0x345efe33e0c678491618618ff374c2c6f5411a8b). Stripping the 8-byte magic header ('C2SESS\x01\x00') reveals the JSON command payload.</p>
               </div>
 
-              {/* Log Evidence Box */}
-              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner">
-                <div className="flex gap-2 mb-3 border-b border-zinc-800 pb-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-                  <span className="ml-2 text-zinc-500 text-xs">Decrypted c2_session_capture.bin JSON Payload</span>
+              {/* Log Evidence Box with CopyButton */}
+              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner relative">
+                <div className="flex justify-between items-center mb-3 border-b border-zinc-800 pb-2">
+                  <div className="flex gap-2 items-center">
+                    <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
+                    <span className="ml-2 text-zinc-500 text-xs">Decrypted c2_session_capture.bin JSON Payload</span>
+                  </div>
+                  <CopyButton text={"{\n  \"session\": \"2a4f1b9c\",\n  \"cmd\": \"COMPRESS_AND_STAGE\",\n  \"target\": \"axiom_q1_portfolio.7z\",\n  \"bytes\": 24999591936,\n  \"status\": 200\n}"} />
                 </div>
                 <pre className="text-zinc-300 leading-relaxed">
                   <code>&#123;<br/>  "session": "2a4f1b9c",<br/>  "cmd": "COMPRESS_AND_STAGE",<br/>  "target": "axiom_q1_portfolio.7z",<br/>  "bytes": 24999591936,<br/>  "status": 200<br/>&#125;</code>
                 </pre>
               </div>
 
-              {/* 4 Investigation Methods */}
+              {/* 4 Investigation Methods with individual CopyButtons */}
               <div className="space-y-3 pt-2">
                 <h4 className="text-white font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-2">
                   <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
-                  Investigation Methods (Hover / Click to View Code)
+                  Investigation Methods (Click to Expand & Copy Code)
                 </h4>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono text-xs">
@@ -1570,9 +1827,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method A: PowerShell</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code># PowerShell / CyberChef Method:<br/># Input: EXEC-WKSTN-01_4B7A2C9E | SHA1 -&gt; 345efe33e0c678491618618ff374c2c6f5411a8b<br/># CyberChef Recipe: Drop bytes (8) -&gt; RC4 (Key: 345efe33e0c678491618618ff374c2c6f5411a8b)</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"# Input: EXEC-WKSTN-01_4B7A2C9E | SHA1 -> 345efe33e0c678491618618ff374c2c6f5411a8b\n# CyberChef Recipe: Drop bytes (8) -> RC4 (Key: 345efe33e0c678491618618ff374c2c6f5411a8b)"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code># Input: EXEC-WKSTN-01_4B7A2C9E | SHA1 -&gt; 345efe33e0c678491618618ff374c2c6f5411a8b<br/># CyberChef Recipe: Drop bytes (8) -&gt; RC4 (Key: 345efe33e0c678491618618ff374c2c6f5411a8b)</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method B */}
@@ -1581,9 +1843,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method B: Python</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>import hashlib<br/>raw = open('evidence/c2_session_capture.bin', 'rb').read()[8:]<br/>key = hashlib.sha1(b'EXEC-WKSTN-01_4B7A2C9E').digest()<br/># RC4 decrypt 'raw' using 'key' -&gt; cmd: COMPRESS_AND_STAGE</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"import hashlib\nraw = open('evidence/c2_session_capture.bin', 'rb').read()[8:]\nkey = hashlib.sha1(b'EXEC-WKSTN-01_4B7A2C9E').digest()\n# RC4 decrypt 'raw' using 'key' -> cmd: COMPRESS_AND_STAGE"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>import hashlib<br/>raw = open('evidence/c2_session_capture.bin', 'rb').read()[8:]<br/>key = hashlib.sha1(b'EXEC-WKSTN-01_4B7A2C9E').digest()<br/># RC4 decrypt 'raw' using 'key' -&gt; cmd: COMPRESS_AND_STAGE</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method C */}
@@ -1592,9 +1859,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method C: Linux CLI / jq</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>python3 -c "import hashlib; k=hashlib.sha1(b'EXEC-WKSTN-01_4B7A2C9E').digest(); ...; print(decrypted)"</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"python3 -c \"import hashlib; k=hashlib.sha1(b'EXEC-WKSTN-01_4B7A2C9E').digest(); ...; print(decrypted)\""} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>python3 -c "import hashlib; k=hashlib.sha1(b'EXEC-WKSTN-01_4B7A2C9E').digest(); ...; print(decrypted)"</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method D */}
@@ -1603,9 +1875,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method D: GUI / Editor</span>
                       <span className="text-zinc-600 text-xs">steps ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
-                      <code>1. CyberChef: SHA1('EXEC-WKSTN-01_4B7A2C9E') -&gt; 345efe33e0c678491618618ff374c2c6f5411a8b<br/>2. Load c2_session_capture.bin -&gt; Recipe: Drop bytes (8), RC4 -&gt; Decrypted JSON.</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"1. CyberChef: SHA1('EXEC-WKSTN-01_4B7A2C9E') -> 345efe33e0c678491618618ff374c2c6f5411a8b\n2. Load c2_session_capture.bin -> Recipe: Drop bytes (8), RC4 -> Decrypted JSON."} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
+                        <code>1. CyberChef: SHA1('EXEC-WKSTN-01_4B7A2C9E') -&gt; 345efe33e0c678491618618ff374c2c6f5411a8b<br/>2. Load c2_session_capture.bin -&gt; Recipe: Drop bytes (8), RC4 -&gt; Decrypted JSON.</code>
+                      </pre>
+                    </div>
                   </details>
                 </div>
               </div>
@@ -1672,24 +1949,27 @@ export default function VelvetThroneWriteup() {
                 <p>Adversaries compress and archive sensitive files prior to exfiltration (MITRE ATT&CK T1560.001 - Archive Collected Data). Splitting large archives into multi-part chunk files (.7z.0000, .7z.0001, etc.) allows smooth HTTP streaming.</p>
               </div>
 
-              {/* Log Evidence Box */}
-              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner">
-                <div className="flex gap-2 mb-3 border-b border-zinc-800 pb-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-                  <span className="ml-2 text-zinc-500 text-xs">proxy_access_log.txt • Multi-Part 7z Chunk Uploads</span>
+              {/* Log Evidence Box with CopyButton */}
+              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner relative">
+                <div className="flex justify-between items-center mb-3 border-b border-zinc-800 pb-2">
+                  <div className="flex gap-2 items-center">
+                    <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
+                    <span className="ml-2 text-zinc-500 text-xs">proxy_access_log.txt • Multi-Part 7z Chunk Uploads</span>
+                  </div>
+                  <CopyButton text={"1710500553.836  10.10.20.30 PUT https://blob-sync-backup.s3-azure-cdn.com/uploads/axiom_q1_portfolio.7z.0000 ...\n1710500614.629  10.10.20.30 PUT https://blob-sync-backup.s3-azure-cdn.com/uploads/axiom_q1_portfolio.7z.0001 ...\n...\n1710506073.679  10.10.20.30 PUT https://blob-sync-backup.s3-azure-cdn.com/uploads/axiom_q1_portfolio.7z.0046 ..."} />
                 </div>
                 <pre className="text-zinc-300 leading-relaxed">
                   <code>1710500553.836  10.10.20.30 PUT https://blob-sync-backup.s3-azure-cdn.com/uploads/axiom_q1_portfolio.7z.0000 ...<br/>1710500614.629  10.10.20.30 PUT https://blob-sync-backup.s3-azure-cdn.com/uploads/axiom_q1_portfolio.7z.0001 ...<br/>...<br/>1710506073.679  10.10.20.30 PUT https://blob-sync-backup.s3-azure-cdn.com/uploads/axiom_q1_portfolio.7z.0046 ...</code>
                 </pre>
               </div>
 
-              {/* 4 Investigation Methods */}
+              {/* 4 Investigation Methods with individual CopyButtons */}
               <div className="space-y-3 pt-2">
                 <h4 className="text-white font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-2">
                   <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
-                  Investigation Methods (Hover / Click to View Code)
+                  Investigation Methods (Click to Expand & Copy Code)
                 </h4>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono text-xs">
@@ -1699,9 +1979,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method A: PowerShell</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>Get-Content .\evidence\proxy_access_log.txt | Where-Object &#123; $_ -match "PUT" -and $_ -match "\.7z" &#125; | Select-Object -First 3</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"Get-Content .\\evidence\\proxy_access_log.txt | Where-Object { $_ -match \"PUT\" -and $_ -match \"\\.7z\" } | Select-Object -First 3"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>Get-Content .\evidence\proxy_access_log.txt | Where-Object &#123; $_ -match "PUT" -and $_ -match "\.7z" &#125; | Select-Object -First 3</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method B */}
@@ -1710,9 +1995,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method B: Python</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>import re<br/>with open('evidence/proxy_access_log.txt') as f: print(re.findall(r'uploads/([a-zA-Z0-9_\.]+\.7z)', f.read())[0])</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"import re\nwith open('evidence/proxy_access_log.txt') as f: print(re.findall(r'uploads/([a-zA-Z0-9_\\.]+\\.7z)', f.read())[0])"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>import re<br/>with open('evidence/proxy_access_log.txt') as f: print(re.findall(r'uploads/([a-zA-Z0-9_\.]+\.7z)', f.read())[0])</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method C */}
@@ -1721,9 +2011,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method C: Linux CLI / jq</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>grep -oE "[a-zA-Z0-9_\.]+\.7z" evidence/proxy_access_log.txt | head -n 1</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"grep -oE \"[a-zA-Z0-9_\\.]+\\.7z\" evidence/proxy_access_log.txt | head -n 1"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>grep -oE "[a-zA-Z0-9_\.]+\.7z" evidence/proxy_access_log.txt | head -n 1</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method D */}
@@ -1732,9 +2027,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method D: GUI / Editor</span>
                       <span className="text-zinc-600 text-xs">steps ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
-                      <code>1. Open evidence/proxy_access_log.txt.<br/>2. Search for: .7z or uploads/<br/>3. Locate base archive name: axiom_q1_portfolio.7z.</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"1. Open evidence/proxy_access_log.txt.\n2. Search for: .7z or uploads/\n3. Locate base archive name: axiom_q1_portfolio.7z."} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
+                        <code>1. Open evidence/proxy_access_log.txt.<br/>2. Search for: .7z or uploads/<br/>3. Locate base archive name: axiom_q1_portfolio.7z.</code>
+                      </pre>
+                    </div>
                   </details>
                 </div>
               </div>
@@ -1801,24 +2101,27 @@ export default function VelvetThroneWriteup() {
                 <p>Adversaries exfiltrate data over HTTP/HTTPS to cloud storage endpoints or actor-controlled web servers masquerading as legitimate cloud sync providers (MITRE ATT&CK T1567 - Exfiltration Over Web Service).</p>
               </div>
 
-              {/* Log Evidence Box */}
-              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner">
-                <div className="flex gap-2 mb-3 border-b border-zinc-800 pb-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-                  <span className="ml-2 text-zinc-500 text-xs">proxy_access_log.txt • Exfiltration Destination URL</span>
+              {/* Log Evidence Box with CopyButton */}
+              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner relative">
+                <div className="flex justify-between items-center mb-3 border-b border-zinc-800 pb-2">
+                  <div className="flex gap-2 items-center">
+                    <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
+                    <span className="ml-2 text-zinc-500 text-xs">proxy_access_log.txt • Exfiltration Destination URL</span>
+                  </div>
+                  <CopyButton text={"PUT https://blob-sync-backup.s3-azure-cdn.com/uploads/axiom_q1_portfolio.7z.0000 DIRECT/193.42.33.118"} />
                 </div>
                 <pre className="text-zinc-300 leading-relaxed">
                   <code>PUT https://blob-sync-backup.s3-azure-cdn.com/uploads/axiom_q1_portfolio.7z.0000 DIRECT/193.42.33.118</code>
                 </pre>
               </div>
 
-              {/* 4 Investigation Methods */}
+              {/* 4 Investigation Methods with individual CopyButtons */}
               <div className="space-y-3 pt-2">
                 <h4 className="text-white font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-2">
                   <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
-                  Investigation Methods (Hover / Click to View Code)
+                  Investigation Methods (Click to Expand & Copy Code)
                 </h4>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono text-xs">
@@ -1828,9 +2131,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method A: PowerShell</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>Get-Content .\evidence\proxy_access_log.txt | Where-Object &#123; $_ -match "PUT" -and $_ -match "uploads" &#125; | ForEach-Object &#123; ($_ -split " ")[6] &#125; | Select-Object -Unique</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"Get-Content .\\evidence\\proxy_access_log.txt | Where-Object { $_ -match \"PUT\" -and $_ -match \"uploads\" } | ForEach-Object { ($_ -split \" \")[6] } | Select-Object -Unique"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>Get-Content .\evidence\proxy_access_log.txt | Where-Object &#123; $_ -match "PUT" -and $_ -match "uploads" &#125; | ForEach-Object &#123; ($_ -split " ")[6] &#125; | Select-Object -Unique</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method B */}
@@ -1839,9 +2147,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method B: Python</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>from urllib.parse import urlparse<br/>with open('evidence/proxy_access_log.txt') as f:<br/>    for l in f:<br/>        if 'PUT ' in l and 'uploads/' in l:<br/>            print(urlparse(l.split()[6]).netloc); break</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"from urllib.parse import urlparse\nwith open('evidence/proxy_access_log.txt') as f:\n    for l in f:\n        if 'PUT ' in l and 'uploads/' in l:\n            print(urlparse(l.split()[6]).netloc); break"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>from urllib.parse import urlparse<br/>with open('evidence/proxy_access_log.txt') as f:<br/>    for l in f:<br/>        if 'PUT ' in l and 'uploads/' in l:<br/>            print(urlparse(l.split()[6]).netloc); break</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method C */}
@@ -1850,9 +2163,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method C: Linux CLI / jq</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>grep "PUT " evidence/proxy_access_log.txt | awk '&#123;print $7&#125;' | cut -d'/' -f3 | sort -u</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"grep \"PUT \" evidence/proxy_access_log.txt | awk '{print $7}' | cut -d'/' -f3 | sort -u"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>grep "PUT " evidence/proxy_access_log.txt | awk '&#123;print $7&#125;' | cut -d'/' -f3 | sort -u</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method D */}
@@ -1861,9 +2179,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method D: GUI / Editor</span>
                       <span className="text-zinc-600 text-xs">steps ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
-                      <code>1. Open evidence/proxy_access_log.txt in VS Code.<br/>2. Search for: PUT https://<br/>3. Extract domain: blob-sync-backup.s3-azure-cdn.com.</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"1. Open evidence/proxy_access_log.txt in VS Code.\n2. Search for: PUT https://\n3. Extract domain: blob-sync-backup.s3-azure-cdn.com."} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
+                        <code>1. Open evidence/proxy_access_log.txt in VS Code.<br/>2. Search for: PUT https://<br/>3. Extract domain: blob-sync-backup.s3-azure-cdn.com.</code>
+                      </pre>
+                    </div>
                   </details>
                 </div>
               </div>
@@ -1930,24 +2253,27 @@ export default function VelvetThroneWriteup() {
                 <p>Adversaries use DNS tunneling (MITRE ATT&CK T1071.004) to transmit telemetry or messages across strict firewalls. The hardcoded configuration covert_dns_xor_key=0x17 XORs each 2-character hex subdomain prefix with 0x17 to produce ASCII characters.</p>
               </div>
 
-              {/* Log Evidence Box */}
-              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner">
-                <div className="flex gap-2 mb-3 border-b border-zinc-800 pb-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-                  <span className="ml-2 text-zinc-500 text-xs">dns_resolver_log.json • 19 Covert Subdomain Queries</span>
+              {/* Log Evidence Box with CopyButton */}
+              <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner relative">
+                <div className="flex justify-between items-center mb-3 border-b border-zinc-800 pb-2">
+                  <div className="flex gap-2 items-center">
+                    <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
+                    <span className="ml-2 text-zinc-500 text-xs">dns_resolver_log.json • 19 Covert Subdomain Queries</span>
+                  </div>
+                  <CopyButton text={"4268119e.t.proxy-health-api.azurecloud-monitor.com -> 0x42 ^ 0x17 = 'U'\n5917263d.t.proxy-health-api.azurecloud-monitor.com -> 0x59 ^ 0x17 = 'N'\n5456bdc5.t.proxy-health-api.azurecloud-monitor.com -> 0x54 ^ 0x17 = 'C'\n...\n538aa366.t.proxy-health-api.azurecloud-monitor.com -> 0x53 ^ 0x17 = 'D'"} />
                 </div>
                 <pre className="text-zinc-300 leading-relaxed">
                   <code>4268119e.t.proxy-health-api.azurecloud-monitor.com -&gt; 0x42 ^ 0x17 = 'U'<br/>5917263d.t.proxy-health-api.azurecloud-monitor.com -&gt; 0x59 ^ 0x17 = 'N'<br/>5456bdc5.t.proxy-health-api.azurecloud-monitor.com -&gt; 0x54 ^ 0x17 = 'C'<br/>...<br/>538aa366.t.proxy-health-api.azurecloud-monitor.com -&gt; 0x53 ^ 0x17 = 'D'</code>
                 </pre>
               </div>
 
-              {/* 4 Investigation Methods */}
+              {/* 4 Investigation Methods with individual CopyButtons */}
               <div className="space-y-3 pt-2">
                 <h4 className="text-white font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-2">
                   <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
-                  Investigation Methods (Hover / Click to View Code)
+                  Investigation Methods (Click to Expand & Copy Code)
                 </h4>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono text-xs">
@@ -1957,9 +2283,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method A: PowerShell</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>$events = Get-Content .\evidence\dns_resolver_log.json -Raw | ConvertFrom-Json<br/>$queries = $events | Where-Object &#123; $_.query_name -like "*.t.proxy-health-api.azurecloud-monitor.com*" &#125; | Select-Object -ExpandProperty query_name<br/>$decoded = ($queries | ForEach-Object &#123; [char]([Convert]::ToByte(($_.Split('.')[0].Substring(0,2)), 16) -bxor 0x17) &#125;) -join ''<br/>Write-Output $decoded</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"$events = Get-Content .\\evidence\\dns_resolver_log.json -Raw | ConvertFrom-Json\n$queries = $events | Where-Object { $_.query_name -like \"*.t.proxy-health-api.azurecloud-monitor.com*\" } | Select-Object -ExpandProperty query_name\n$decoded = ($queries | ForEach-Object { [char]([Convert]::ToByte(($_.Split('.')[0].Substring(0,2)), 16) -bxor 0x17) }) -join ''\nWrite-Output $decoded"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>$events = Get-Content .\evidence\dns_resolver_log.json -Raw | ConvertFrom-Json<br/>$queries = $events | Where-Object &#123; $_.query_name -like "*.t.proxy-health-api.azurecloud-monitor.com*" &#125; | Select-Object -ExpandProperty query_name<br/>$decoded = ($queries | ForEach-Object &#123; [char]([Convert]::ToByte(($_.Split('.')[0].Substring(0,2)), 16) -bxor 0x17) &#125;) -join ''<br/>Write-Output $decoded</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method B */}
@@ -1968,9 +2299,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method B: Python</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>import json<br/>with open('evidence/dns_resolver_log.json') as f: dns = json.load(f)<br/>queries = [d['query_name'] for d in dns if '.t.proxy-health-api' in d.get('query_name','')]<br/>print(''.join(chr(int(q.split('.')[0][:2], 16) ^ 0x17) for q in queries))</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"import json\nwith open('evidence/dns_resolver_log.json') as f: dns = json.load(f)\nqueries = [d['query_name'] for d in dns if '.t.proxy-health-api' in d.get('query_name','')]\nprint(''.join(chr(int(q.split('.')[0][:2], 16) ^ 0x17) for q in queries))"} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>import json<br/>with open('evidence/dns_resolver_log.json') as f: dns = json.load(f)<br/>queries = [d['query_name'] for d in dns if '.t.proxy-health-api' in d.get('query_name','')]<br/>print(''.join(chr(int(q.split('.')[0][:2], 16) ^ 0x17) for q in queries))</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method C */}
@@ -1979,9 +2315,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method C: Linux CLI / jq</span>
                       <span className="text-zinc-600 text-xs">code ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
-                      <code>grep -oE "[a-f0-9]&#123;8&#125;\.t\.proxy-health" evidence/dns_resolver_log.json | cut -c1-2 | while read h; do printf "\x$(printf %x $(( 0x$h ^ 0x17 )))"; done; echo ""</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"grep -oE \"[a-f0-9]{8}\\.t\\.proxy-health\" evidence/dns_resolver_log.json | cut -c1-2 | while read h; do printf \"\\x$(printf %x $(( 0x$h ^ 0x17 )))\"; done; echo \"\""} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto">
+                        <code>grep -oE "[a-f0-9]&#123;8&#125;\.t\.proxy-health" evidence/dns_resolver_log.json | cut -c1-2 | while read h; do printf "\x$(printf %x $(( 0x$h ^ 0x17 )))"; done; echo ""</code>
+                      </pre>
+                    </div>
                   </details>
 
                   {/* Method D */}
@@ -1990,9 +2331,14 @@ export default function VelvetThroneWriteup() {
                       <span>Method D: GUI / Editor</span>
                       <span className="text-zinc-600 text-xs">steps ▼</span>
                     </summary>
-                    <pre className="mt-3 p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
-                      <code>1. Copy 19 hex prefixes from dns_resolver_log.json: 42 59 54 24 2e 23 23 48 56 4f 5e 58 5a 48 47 40 59 52 53<br/>2. CyberChef: From Hex -&gt; XOR (Key: 17, Format: Hex) -&gt; UNC3944_AXIOM_PWNED.</code>
-                    </pre>
+                    <div className="mt-3 relative">
+                      <div className="flex justify-end mb-1">
+                        <CopyButton text={"1. Copy 19 hex prefixes from dns_resolver_log.json: 42 59 54 24 2e 23 23 48 56 4f 5e 58 5a 48 47 40 59 52 53\n2. CyberChef: From Hex -> XOR (Key: 17, Format: Hex) -> UNC3944_AXIOM_PWNED."} />
+                      </div>
+                      <pre className="p-3 bg-black rounded border border-zinc-800/60 text-zinc-300 overflow-x-auto whitespace-pre-wrap">
+                        <code>1. Copy 19 hex prefixes from dns_resolver_log.json: 42 59 54 24 2e 23 23 48 56 4f 5e 58 5a 48 47 40 59 52 53<br/>2. CyberChef: From Hex -&gt; XOR (Key: 17, Format: Hex) -&gt; UNC3944_AXIOM_PWNED.</code>
+                      </pre>
+                    </div>
                   </details>
                 </div>
               </div>
