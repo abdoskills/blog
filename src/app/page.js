@@ -1,0 +1,118 @@
+import Image from "next/image";
+import Link from "next/link";
+
+export default function Home() {
+  return (
+    <div className="flex flex-col min-h-screen">
+      {/* Navigation Bar */}
+      <nav className="text-gray-200 p-4 transition-all duration-300 w-full z-50">
+        <div className="max-w-6xl mx-auto flex justify-between items-center relative h-8">
+          
+          {/* Centered 'Skills' Title (same level as search icon would be) */}
+          <div className="absolute left-1/2 transform -translate-x-1/2">
+            <Link href="/">
+              <span className="text-4xl font-extrabold text-white tracking-widest font-[family-name:var(--font-silkscreen)]">
+                Skills
+              </span>
+            </Link>
+          </div>
+          
+          {/* Fake Search Icon placeholder on right for alignment */}
+          <div className="absolute right-0 flex items-center justify-center w-8 h-8 opacity-70">
+            <svg aria-hidden="true" focusable="false" className="w-5 h-5 fill-current" viewBox="0 0 512 512"><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+          </div>
+        </div>
+      </nav>
+
+      {/* Main Content */}
+      <main className="flex-grow pt-24 pb-12">
+        
+        {/* Search Bar section */}
+        <div className="w-full max-w-3xl mx-auto px-4 mb-16 z-30 relative">
+          <div className="flex gap-2">
+            <div className="relative flex-grow">
+              <input 
+                type="text" 
+                placeholder="Search posts..." 
+                className="w-full p-4 pl-12 rounded-xl border border-gray-700 bg-zinc-900/60 focus:bg-zinc-900 focus:border-gray-400 focus:outline-none transition-all text-white placeholder-gray-500" 
+              />
+              <div className="absolute left-4 top-1/2 transform -translate-y-1/2 opacity-50">
+                <svg className="w-5 h-5 fill-current text-white" viewBox="0 0 512 512"><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+              </div>
+            </div>
+            <button className="px-5 py-4 rounded-xl border transition-all flex items-center justify-center min-w-[60px] border-gray-700 bg-zinc-900/60 text-gray-400 hover:border-gray-500 hover:text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 4h20v4h-2v2h-2v2h-2v2h-2v6h-4v-6h-2v-2h-2v-2h-2v-2h-2z"></path></svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Blog Post Grid (mushroom.cat style) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto px-6 w-full">
+          
+          {/* Card 1: Phobos Ransomware */}
+          <Link href="/posts/phobos-ransomware-analysis" className="bg-[#111111]/60 backdrop-blur-md rounded-2xl flex flex-col shadow-lg border-2 border-zinc-800/60 transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_10px_40px_rgba(0,0,0,0.5)] hover:border-zinc-700 group overflow-hidden">
+            <div className="relative w-full h-40 overflow-hidden bg-black/50">
+              {/* Subtle dark gradient overlay over image */}
+              <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-[#111111] z-10 opacity-80 group-hover:opacity-40 transition-opacity duration-500"></div>
+              <Image 
+                src="/images/phobos_thumbnail.jpg" 
+                alt="Phobos Ransomware Cover" 
+                fill 
+                className="object-cover transition-transform duration-700 group-hover:scale-105 brightness-[0.8] contrast-[1.2]" 
+              />
+            </div>
+            
+            <div className="p-6 flex flex-col flex-grow relative z-20 bg-transparent">
+              <div className="flex justify-center mb-3">
+                <p className="text-zinc-500 text-xs font-mono tracking-[0.2em] uppercase">13/08/26</p>
+              </div>
+              <div className="mb-3 flex-grow">
+                <h2 className="text-2xl font-bold mb-2 transition-colors duration-500 text-gray-200 group-hover:text-white text-center leading-tight font-[family-name:var(--font-share-tech)] uppercase">
+                  Phobos Ransomware Analysis
+                </h2>
+              </div>
+              <p className="text-gray-400 text-sm font-medium leading-relaxed text-center">
+                Unpacking & Decrypting | Threat Intel
+              </p>
+            </div>
+          </Link>
+
+          {/* Card 2: CGWars Hub */}
+          <Link href="/cgwars" className="bg-[#111111]/60 backdrop-blur-md rounded-2xl flex flex-col shadow-lg border-2 border-zinc-800/60 transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_10px_40px_rgba(0,0,0,0.5)] hover:border-zinc-700 group overflow-hidden">
+            <div className="relative w-full h-40 overflow-hidden bg-black/50">
+              <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-[#111111] z-10 opacity-80 group-hover:opacity-40 transition-opacity duration-500"></div>
+              <Image 
+                src="/images/cgwars_hub.jpg" 
+                alt="CGWars CTF Cover" 
+                fill 
+                className="object-cover transition-transform duration-700 group-hover:scale-105 brightness-[0.8] contrast-[1.2]" 
+              />
+            </div>
+            
+            <div className="p-6 flex flex-col flex-grow relative z-20 bg-transparent">
+              <div className="flex justify-center mb-3">
+                <div className="bg-pink-500/20 text-pink-400 border border-pink-500/30 px-2 py-0.5 rounded text-xs font-mono tracking-[0.2em] uppercase shadow-[0_0_10px_rgba(236,72,153,0.2)]">
+                  COMPETITION
+                </div>
+              </div>
+              <div className="mb-3 flex-grow">
+                <h2 className="text-2xl font-bold mb-2 transition-colors duration-500 text-gray-200 group-hover:text-white text-center leading-tight font-[family-name:var(--font-share-tech)] uppercase">
+                  CGWars CTF Hub
+                </h2>
+              </div>
+              <p className="text-gray-400 text-sm font-medium leading-relaxed text-center">
+                Forensics | Crypto | OSINT
+              </p>
+            </div>
+          </Link>
+
+          {/* Placeholder for future non-CGWars standalone writeups */}
+          <div className="bg-[#111111]/30 backdrop-blur-md rounded-2xl flex flex-col justify-center items-center shadow-lg border-2 border-dashed border-zinc-800/60 min-h-[300px] text-zinc-600 font-mono text-sm">
+            + MORE CASE FILES SOON
+          </div>
+
+        </div>
+      </main>
+    </div>
+  );
+}
