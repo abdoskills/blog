@@ -106,10 +106,34 @@ export default function Home() {
             </div>
           </Link>
 
-          {/* Placeholder for future non-CGWars standalone writeups */}
-          <div className="bg-[#111111]/30 backdrop-blur-md rounded-2xl flex flex-col justify-center items-center shadow-lg border-2 border-dashed border-zinc-800/60 min-h-[300px] text-zinc-600 font-mono text-sm">
-            + MORE CASE FILES SOON
-          </div>
+          {/* Card 3: HackTheBox Hub */}
+          <Link href="/hackthebox" className="bg-[#111111]/60 backdrop-blur-md rounded-2xl flex flex-col shadow-lg border-2 border-zinc-800/60 transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_10px_40px_rgba(16,185,129,0.2)] hover:border-emerald-500/50 group overflow-hidden">
+            <div className="relative w-full h-40 overflow-hidden bg-black/50">
+              <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-[#111111] z-10 opacity-80 group-hover:opacity-40 transition-opacity duration-500"></div>
+              <Image 
+                src="/images/hackthebox_hub.jpg" 
+                alt="HackTheBox Hub Cover" 
+                fill 
+                className="object-cover transition-transform duration-700 group-hover:scale-105 brightness-[0.85] contrast-[1.2]" 
+              />
+            </div>
+            
+            <div className="p-6 flex flex-col flex-grow relative z-20 bg-transparent">
+              <div className="flex justify-center mb-3">
+                <div className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded text-xs font-mono tracking-[0.2em] uppercase shadow-[0_0_10px_rgba(16,185,129,0.2)]">
+                  SHERLOCKS & LABS
+                </div>
+              </div>
+              <div className="mb-3 flex-grow">
+                <h2 className="text-2xl font-bold mb-2 transition-colors duration-500 text-gray-200 group-hover:text-white text-center leading-tight font-[family-name:var(--font-share-tech)] uppercase">
+                  HackTheBox Hub
+                </h2>
+              </div>
+              <p className="text-gray-400 text-sm font-medium leading-relaxed text-center">
+                Incident Response | DFIR | Malware
+              </p>
+            </div>
+          </Link>
 
         </div>
       </main>
