@@ -37,7 +37,7 @@ export default function SearchDudeWriteup() {
           <div className="w-full h-[300px] md:h-[400px] relative rounded-2xl overflow-hidden border border-zinc-700/50 bg-black/90 backdrop-blur-md p-1 animate-float shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
             <div className="relative w-full h-full rounded-xl overflow-hidden bg-[#000000]">
               <Image 
-                src="/images/search_dude.jpg" 
+                src="/images/search_dude_disk.jpg" 
                 alt="Windows Forensics Search"
                 fill
                 className="object-cover opacity-60 hover:opacity-100 transition-opacity duration-700"
