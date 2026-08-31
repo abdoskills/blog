@@ -32,7 +32,9 @@ with open('capture.pcap', 'rb') as f:
 
 print("🎉 Decoded Network Flag:", flag)`;
 
-  const tsharkCommand = `tshark -r capture.pcap -Y "udp.dstport == 22" -T fields -e udp.srcport`;
+  const oneliner = `python -c "import struct; f=open('capture.pcap','rb'); f.read(24); pkts=[]; [pkts.append(f.read(struct.unpack('<IIII',h)[2])) for h in iter(lambda: f.read(16), b'')]; print(''.join([chr(struct.unpack('>H',p[34:36])[0]-5000) for p in pkts if len(p)>=38 and struct.unpack('>H',p[36:38])[0]==22 and struct.unpack('>H',p[34:36])[0]>5000]))"`;
+
+  const tsharkCommand = `tshark -r capture.pcap -Y "udp.dstport == 22 && udp.srcport > 5000" -T fields -e udp.srcport | python -c "import sys; print(''.join([chr(int(x.strip())-5000) for x in sys.stdin if x.strip()]))"`;
 
   return (
     <div className="min-h-screen relative z-10 text-gray-200 selection:bg-emerald-500/30 selection:text-emerald-200">
@@ -59,7 +61,7 @@ print("🎉 Decoded Network Flag:", flag)`;
           </div>
           
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white font-[family-name:var(--font-share-tech)] leading-tight">
-            Shark on Wire 2: Network Steganography & UDP Port Carving
+            Shark on Wire 2: Network Steganography &amp; UDP Port Carving
           </h1>
           
           <div className="flex items-center gap-4 text-sm font-mono text-zinc-500 uppercase tracking-widest mb-8">
@@ -102,14 +104,18 @@ print("🎉 Decoded Network Flag:", flag)`;
             
             <div className="bg-[#050c0a] border border-emerald-500/20 rounded-xl p-4 flex flex-col justify-between space-y-3">
               <div>
-                <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">
-                  Provided File
+                <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-widest block mb-2">
+                  Provided File (Download &amp; Practice)
                 </span>
-                <div className="flex items-center gap-2 text-white font-mono text-sm font-bold">
-                  <svg className="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" /></svg>
-                  capture.pcap
-                </div>
-                <span className="text-[11px] font-mono text-zinc-400 block mt-1">Size: 115 KB • Packet Capture</span>
+                <a 
+                  href="/downloads/shark_on_wire_2_capture.pcap" 
+                  download="capture.pcap"
+                  className="flex items-center gap-2 text-emerald-300 hover:text-white font-mono text-sm font-bold bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 px-3 py-2 rounded-lg transition-all"
+                >
+                  <svg className="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                  <span>⬇️ Download capture.pcap</span>
+                </a>
+                <span className="text-[11px] font-mono text-zinc-400 block mt-2">Size: 115 KB • Packet Capture</span>
                 <span className="text-[11px] font-mono text-zinc-500 block">Type: Wireshark / libpcap</span>
               </div>
               <div className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded border border-emerald-500/20 text-center truncate">
@@ -122,7 +128,7 @@ print("🎉 Decoded Network Flag:", flag)`;
         {/* Section 1: The Intuitive Analogy */}
         <div className="space-y-6 text-zinc-300 leading-relaxed font-sans mb-12">
           <div className="bg-[#07130e] border-l-4 border-emerald-500 p-6 rounded-r-xl shadow-md">
-            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 THE INTUITIVE ANALOGY (The Spy's Return Address)</h4>
+            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 THE INTUITIVE ANALOGY (The Spy&apos;s Return Address)</h4>
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
               When normal people mail letters, they write the message inside the envelope (the payload) and put their house address on the back. If a spy wants to send a secret message past government mail censors, they leave the inside of the envelope completely blank (or write generic filler like &ldquo;hello&rdquo;), but they intentionally write specific <strong>fake return postal codes</strong> that spell out secret numbers! This is called <strong>Network Header Steganography</strong>.
             </p>
@@ -170,7 +176,7 @@ print("🎉 Decoded Network Flag:", flag)`;
               METHOD A: HANDS-ON WIRESHARK INVESTIGATION
             </span>
             <h2 className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider mt-3">
-              2. Manual Wireshark Filtering & Port Decoding
+              2. Manual Wireshark Filtering &amp; Port Decoding
             </h2>
             <p className="text-sm text-zinc-400 mt-2 font-sans">
               Step-by-step manual process to locate anomalous traffic and decode each byte by hand.
@@ -253,12 +259,12 @@ print("🎉 Decoded Network Flag:", flag)`;
           </div>
         </div>
 
-        {/* Section 4: METHOD B - AUTOMATED PYTHON PARSER */}
+        {/* Section 4: METHOD B - AUTOMATED PYTHON PARSER & ONELINER */}
         <div className="space-y-6 mb-14">
           <div className="border-b border-emerald-500/30 pb-4 flex justify-between items-end">
             <div>
               <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded text-xs font-mono font-bold uppercase tracking-wider">
-                METHOD B: AUTOMATED RAW PCAP PARSER
+                METHOD B: AUTOMATED RAW PCAP PARSER &amp; ONELINER
               </span>
               <h2 className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider mt-3">
                 3. High-Performance Python PCAP Parser (`solve.py`)
@@ -276,12 +282,23 @@ print("🎉 Decoded Network Flag:", flag)`;
               <code>{pythonScript}</code>
             </pre>
           </div>
+
+          {/* Terminal One-liner */}
+          <div className="space-y-2 pt-2">
+            <div className="flex justify-between items-center">
+              <span className="font-mono text-xs text-emerald-400 font-bold uppercase">⚡ Terminal One-Liner (PowerShell / Bash):</span>
+              <CopyButton text={oneliner} />
+            </div>
+            <div className="bg-black border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">
+              <code>{oneliner}</code>
+            </div>
+          </div>
         </div>
 
         {/* Section 5: Decoded Flag Box */}
         <div className="space-y-6 mb-12">
           <h2 className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
-            4. Decoded Flag & Verification
+            4. Decoded Flag &amp; Verification
           </h2>
 
           <div className="bg-[#050508] border border-emerald-500/30 rounded-2xl p-6 text-center space-y-4">
@@ -296,7 +313,7 @@ print("🎉 Decoded Network Flag:", flag)`;
         </div>
 
         {/* Section 6: Key Takeaways Table */}
-        <div className="space-y-4">
+        <div className="space-y-4 mb-12">
           <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
             5. Network Forensic Investigation Matrix
           </h3>
@@ -327,6 +344,79 @@ print("🎉 Decoded Network Flag:", flag)`;
                 </tr>
               </tbody>
             </table>
+          </div>
+        </div>
+
+        {/* Section 7: The Complete Investigation Path & Mental Roadmap */}
+        <div className="bg-[#081510] border border-emerald-500/30 rounded-2xl p-6 md:p-8 space-y-6 shadow-2xl relative overflow-hidden">
+          <div className="flex items-center gap-3">
+            <span className="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
+            <h3 className="text-xl md:text-2xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
+              6. The Complete Investigation Path &amp; Mental Roadmap
+            </h3>
+          </div>
+          
+          <p className="text-sm text-zinc-300 font-sans leading-relaxed">
+            Here is the step-by-step roadmap from initial PCAP loading to extracting the final network stego flag:
+          </p>
+
+          <div className="space-y-4 font-mono text-xs text-zinc-300">
+            
+            {/* Step 1 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-zinc-800">
+              <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded font-bold shrink-0">STEP 1</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">PCAP Triage &amp; Spotting the Decoy Trap</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Loaded <code>capture.pcap</code> in Wireshark. Inspected UDP streams and found <code>ico&#123;N0t_a_fLag&#125;</code> in Stream 6. Recognized it as an intentional decoy troll.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 2 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-zinc-800">
+              <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded font-bold shrink-0">STEP 2</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">Protocol Anomaly Hunting</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Filtered for port anomalies. Spotted UDP packets going to destination port <code>22</code> (SSH is strictly TCP). Applied filter <code>udp.dstport == 22</code>.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 3 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-zinc-800">
+              <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded font-bold shrink-0">STEP 3</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">Source Port Mathematical Analysis</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Examined the source ports of the 35 anomalous packets. Discovered all ports fall between <code>5048</code> and <code>5125</code> (ASCII range $5000 + \text{ASCII}$).
+                </p>
+              </div>
+            </div>
+
+            {/* Step 4 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-zinc-800">
+              <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded font-bold shrink-0">STEP 4</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">Automated Binary PCAP Parsing</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Wrote a standalone Python parser using <code>struct.unpack()</code> to extract every UDP packet destined for port 22 and subtract 5000 from each source port.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 5 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-emerald-500/40">
+              <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded font-bold shrink-0">STEP 5</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">Flag Capture &amp; Validation</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Assembled the 33 decoded characters to submit: <code>picoCTF&#123;p1LLf3r3d_data_v1a_st3g0&#125;</code>.
+                </p>
+              </div>
+            </div>
+
           </div>
         </div>
 
