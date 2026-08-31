@@ -390,7 +390,7 @@ print("🎉 Decoded Network Flag:", flag)`;
               <div>
                 <strong className="text-white block text-sm mb-1">Source Port Mathematical Analysis</strong>
                 <p className="text-zinc-400 font-sans text-xs">
-                  Examined the source ports of the 35 anomalous packets. Discovered all ports fall between <code>5048</code> and <code>5125</code> (ASCII range $5000 + \text{ASCII}$).
+                  Examined the source ports of the 35 anomalous packets. Discovered all ports fall between <code>5048</code> and <code>5125</code> (ASCII range 5000 + ASCII byte code).
                 </p>
               </div>
             </div>
