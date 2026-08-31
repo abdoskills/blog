@@ -373,7 +373,7 @@ print("🎉 Successfully repaired! fixed.png generated.")`;
         </div>
 
         {/* Section 7: Key Takeaways Summary Table */}
-        <div className="space-y-4">
+        <div className="space-y-4 mb-12">
           <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
             6. DFIR Diagnostic Cheat Sheet
           </h3>
@@ -404,6 +404,79 @@ print("🎉 Successfully repaired! fixed.png generated.")`;
                 </tr>
               </tbody>
             </table>
+          </div>
+        </div>
+
+        {/* Section 8: The Complete Investigation Path & Mental Roadmap */}
+        <div className="bg-[#0e0a16] border border-purple-500/30 rounded-2xl p-6 md:p-8 space-y-6 shadow-2xl relative overflow-hidden">
+          <div className="flex items-center gap-3">
+            <span className="w-3 h-3 rounded-full bg-purple-400 animate-pulse"></span>
+            <h3 className="text-xl md:text-2xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
+              7. The Complete Investigation Path &amp; Mental Roadmap
+            </h3>
+          </div>
+          
+          <p className="text-sm text-zinc-300 font-sans leading-relaxed">
+            Here is the complete chronological path and thought process from the initial broken file to the final extracted flag:
+          </p>
+
+          <div className="space-y-4 font-mono text-xs text-zinc-300">
+            
+            {/* Step 1 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-zinc-800">
+              <span className="bg-purple-500/20 text-purple-400 border border-purple-500/30 px-2.5 py-1 rounded font-bold shrink-0">STEP 1</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">Initial Triage &amp; Failure Mode</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Downloaded <code>mystery</code>. Opening it failed with &ldquo;Invalid image format&rdquo;. Running <code>pngcheck -v mystery</code> flagged invalid signature bytes at offset <code>0x00</code>.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 2 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-zinc-800">
+              <span className="bg-purple-500/20 text-purple-400 border border-purple-500/30 px-2.5 py-1 rounded font-bold shrink-0">STEP 2</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">Magic Header Surgery</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Opened file in HexEd.it. Discovered <code>.eN4</code> instead of <code>.PNG</code>. Replaced bytes <code>0..7</code> with official PNG signature <code>89 50 4E 47 0D 0A 1A 0A</code>.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 3 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-zinc-800">
+              <span className="bg-purple-500/20 text-purple-400 border border-purple-500/30 px-2.5 py-1 rounded font-bold shrink-0">STEP 3</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">IHDR &amp; pHYs Metadata Correction</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Fixed corrupted chunk name <code>C&quot;DR</code> back to <code>IHDR</code>. Removed extra stray byte <code>AA</code> from <code>pHYs</code> chunk to fix pixel resolution and restore CRC32 checksum.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 4 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-zinc-800">
+              <span className="bg-purple-500/20 text-purple-400 border border-purple-500/30 px-2.5 py-1 rounded font-bold shrink-0">STEP 4</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">IDAT Payload Calculation &amp; Restoration</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Calculated exact remaining payload size ($202,887 - 54 = 202,833\text{ bytes} = \text{0x00031851}$). Replaced corrupted <code>\xabDET</code> with <code>00 03 18 51 49 44 41 54</code>.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 5 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-purple-500/40">
+              <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded font-bold shrink-0">STEP 5</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">Export, Verify &amp; Capture Flag</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Exported <code>fixed.png</code>. Double-clicked image to render the visual flag: <code>picoCTF&#123;c0rrupt10n_15_n3v3r_50_b4d_534e7cb8&#125;</code>.
+                </p>
+              </div>
+            </div>
+
           </div>
         </div>
 
