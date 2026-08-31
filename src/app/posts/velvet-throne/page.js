@@ -2439,6 +2439,64 @@ export default function VelvetThroneWriteup() {
           </div>
         </div>
 
+        {/* Section: The Complete Investigation Path & Mental Roadmap */}
+        <div className="bg-[#0b1713] border border-emerald-500/30 rounded-2xl p-6 md:p-8 space-y-6 shadow-2xl relative overflow-hidden my-12">
+          <div className="flex items-center gap-3">
+            <span className="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
+            <h3 className="text-xl md:text-2xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
+              The Complete Enterprise DFIR Investigation Roadmap
+            </h3>
+          </div>
+          
+          <p className="text-sm text-zinc-300 font-sans leading-relaxed">
+            Chronological attack chain lifecycle reconstructed across 15 enterprise forensic tasks:
+          </p>
+
+          <div className="space-y-4 font-mono text-xs text-zinc-300">
+            
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-zinc-800">
+              <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded font-bold shrink-0">PHASE 1</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">Initial Access &amp; Identity Compromise (Tasks 1–2)</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Attacker at <code>45.33.32.156</code> launched MFA Push Fatigue against <code>kyle.morrison</code> until Okta Verify authorization was approved.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-zinc-800">
+              <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded font-bold shrink-0">PHASE 2</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">Backdoor Persistence &amp; C2 Beaconing (Tasks 3–6)</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Dropped <code>ProxyHealth.exe</code> and established a persistent Windows Service (T1543.003), initiating RC4 encrypted C2 beacons to <code>proxy-health-api.azurecloud-monitor.com</code>.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-zinc-800">
+              <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded font-bold shrink-0">PHASE 3</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">Credential Harvesting &amp; Lateral Pivot (Tasks 7–11)</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Dumped LSASS memory via <code>procdump.exe</code>, obtained <code>svc_sharepoint_farm</code> credentials, and laterally pivoted via WinRM/SMB to executive workstation <code>EXEC-WKSTN-01</code> (<code>10.10.20.30</code>).
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-zinc-800">
+              <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded font-bold shrink-0">PHASE 4</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">Staging, Cloud Exfiltration &amp; Covert DNS (Tasks 12–15)</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Issued decrypted C2 command <code>COMPRESS_AND_STAGE</code> to compress <code>axiom_q1_portfolio.7z</code>, exfiltrated data to Azure CDN, and signaled completion over covert XORed DNS queries: <code>UNC3944_AXIOM_PWNED</code>.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </article>
     </div>
   );
