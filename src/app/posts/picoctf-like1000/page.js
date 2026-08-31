@@ -25,6 +25,8 @@ if os.path.exists("filler.txt"):
 
 print("\\n🎉 Finished! Extracted flag.png.")`;
 
+  const oneliner = `python -c "import tarfile,os; [([tarfile.open(f'{i}.tar').extractall(), os.remove(f'{i}.tar')] if os.path.exists(f'{i}.tar') else None) for i in range(1000,0,-1)]; os.remove('filler.txt') if os.path.exists('filler.txt') else None; print('Done! flag.png extracted.')"`;
+
   const bashLoop = `while [ -f [0-9]*.tar ]; do
     tar -xvf *.tar
     rm -f [0-9]*.tar
@@ -108,18 +110,22 @@ Write-Host "Done! flag.png extracted."`;
             
             <div className="bg-[#0e0c08] border border-amber-500/20 rounded-xl p-4 flex flex-col justify-between space-y-3">
               <div>
-                <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">
-                  Provided File
+                <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-widest block mb-2">
+                  Provided File &amp; Solver
                 </span>
-                <div className="flex items-center gap-2 text-white font-mono text-sm font-bold">
-                  <svg className="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" /></svg>
-                  1000.tar
-                </div>
-                <span className="text-[11px] font-mono text-zinc-400 block mt-1">Size: 10,240,000 bytes</span>
-                <span className="text-[11px] font-mono text-zinc-500 block">Type: Nested POSIX tar</span>
+                <a 
+                  href="/downloads/like1000_solve.py" 
+                  download="solve.py"
+                  className="flex items-center gap-2 text-amber-300 hover:text-white font-mono text-sm font-bold bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 px-3 py-2 rounded-lg transition-all"
+                >
+                  <svg className="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                  <span>⬇️ Download solve.py</span>
+                </a>
+                <span className="text-[11px] font-mono text-zinc-400 block mt-2">Size: 10 MB initial archive</span>
+                <span className="text-[11px] font-mono text-zinc-500 block">Type: 1,000 Nested POSIX TARs</span>
               </div>
               <div className="text-[10px] font-mono text-amber-400 bg-amber-500/10 px-2 py-1 rounded border border-amber-500/20 text-center truncate">
-                Structure: 1,000 Nested Archives
+                Dissector: Python tarfile / Shell Loop
               </div>
             </div>
           </div>
@@ -159,10 +165,10 @@ Write-Host "Done! flag.png extracted."`;
         <div className="space-y-8 mb-14">
           <div className="border-b border-amber-500/30 pb-4">
             <span className="bg-amber-500/20 text-amber-400 border border-amber-500/30 px-3 py-1 rounded text-xs font-mono font-bold uppercase tracking-wider">
-              METHOD A: SHELL ONELINER & LOOPING
+              METHOD A: SHELL ONELINER &amp; LOOPING
             </span>
             <h2 className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider mt-3">
-              2. Command-Line Batch Loops (Bash & PowerShell)
+              2. Command-Line Batch Loops (Bash &amp; PowerShell)
             </h2>
             <p className="text-sm text-zinc-400 mt-2 font-sans">
               If you don&apos;t want to write a full Python script, you can run a one-line terminal loop that unpacks and deletes in real-time.
@@ -202,12 +208,12 @@ Write-Host "Done! flag.png extracted."`;
           </div>
         </div>
 
-        {/* Section 4: METHOD B - PYTHON AUTOMATION SCRIPT */}
+        {/* Section 4: METHOD B - PYTHON AUTOMATION SCRIPT & ONELINER */}
         <div className="space-y-6 mb-14">
           <div className="border-b border-amber-500/30 pb-4 flex justify-between items-end">
             <div>
               <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded text-xs font-mono font-bold uppercase tracking-wider">
-                METHOD B: HIGH-SPEED PYTHON AUTOMATION
+                METHOD B: HIGH-SPEED PYTHON AUTOMATION &amp; ONELINER
               </span>
               <h2 className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider mt-3">
                 3. The 3-Second Python Solver (`solve.py`)
@@ -224,6 +230,17 @@ Write-Host "Done! flag.png extracted."`;
             <pre>
               <code>{pythonScript}</code>
             </pre>
+          </div>
+
+          {/* Terminal One-liner */}
+          <div className="space-y-2 pt-2">
+            <div className="flex justify-between items-center">
+              <span className="font-mono text-xs text-amber-400 font-bold uppercase">⚡ Terminal One-Liner (PowerShell / Bash):</span>
+              <CopyButton text={oneliner} />
+            </div>
+            <div className="bg-black border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">
+              <code>{oneliner}</code>
+            </div>
           </div>
         </div>
 
@@ -254,7 +271,7 @@ Write-Host "Done! flag.png extracted."`;
         </div>
 
         {/* Section 6: Key Takeaways Reference */}
-        <div className="space-y-4">
+        <div className="space-y-4 mb-12">
           <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
             5. Key Takeaways for Archive Forensics
           </h3>
@@ -275,7 +292,7 @@ Write-Host "Done! flag.png extracted."`;
                 </tr>
                 <tr>
                   <td className="p-3 font-bold text-white">Python tarfile Module</td>
-                  <td className="p-3 text-amber-300">tarfile.open(path, 'r')</td>
+                  <td className="p-3 text-amber-300">tarfile.open(path, &apos;r&apos;)</td>
                   <td className="p-3 text-zinc-400">Cross-platform, standard library with 0 third-party dependencies required.</td>
                 </tr>
                 <tr>
@@ -285,6 +302,79 @@ Write-Host "Done! flag.png extracted."`;
                 </tr>
               </tbody>
             </table>
+          </div>
+        </div>
+
+        {/* Section 7: The Complete Investigation Path & Mental Roadmap */}
+        <div className="bg-[#141008] border border-amber-500/30 rounded-2xl p-6 md:p-8 space-y-6 shadow-2xl relative overflow-hidden">
+          <div className="flex items-center gap-3">
+            <span className="w-3 h-3 rounded-full bg-amber-400 animate-pulse"></span>
+            <h3 className="text-xl md:text-2xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
+              6. The Complete Investigation Path &amp; Mental Roadmap
+            </h3>
+          </div>
+          
+          <p className="text-sm text-zinc-300 font-sans leading-relaxed">
+            Here is the step-by-step roadmap from initial archive inspection to extracting the final PNG flag:
+          </p>
+
+          <div className="space-y-4 font-mono text-xs text-zinc-300">
+            
+            {/* Step 1 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-zinc-800">
+              <span className="bg-amber-500/20 text-amber-400 border border-amber-500/30 px-2.5 py-1 rounded font-bold shrink-0">STEP 1</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">Archive Inspection &amp; Pattern Identification</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Downloaded <code>1000.tar</code>. Extracted it once to reveal <code>999.tar</code> and <code>filler.txt</code>. Recognized the recursive nested pattern ($1000 \rightarrow 1$).
+                </p>
+              </div>
+            </div>
+
+            {/* Step 2 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-zinc-800">
+              <span className="bg-amber-500/20 text-amber-400 border border-amber-500/30 px-2.5 py-1 rounded font-bold shrink-0">STEP 2</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">Storage Strategy (Avoiding Disk Overflow)</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Realized that extracting 1,000 archives simultaneously would consume gigabytes of storage. Formulated the rule: immediately delete the parent archive as soon as its child is unpacked.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 3 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-zinc-800">
+              <span className="bg-amber-500/20 text-amber-400 border border-amber-500/30 px-2.5 py-1 rounded font-bold shrink-0">STEP 3</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">Scripted Decompression Loop</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Wrote a Python script using <code>tarfile.open()</code> with a decremental loop <code>range(1000, 0, -1)</code> and <code>os.remove()</code> in-flight garbage collection.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 4 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-zinc-800">
+              <span className="bg-amber-500/20 text-amber-400 border border-amber-500/30 px-2.5 py-1 rounded font-bold shrink-0">STEP 4</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">Execution &amp; Core Artifact Recovery</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Ran <code>solve.py</code>. Script unnested all 1,000 layers in 3.2 seconds, reaching layer <code>1.tar</code> and dropping <code>flag.png</code>.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 5 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-amber-500/40">
+              <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded font-bold shrink-0">STEP 5</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">Flag Extraction</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Rendered <code>flag.png</code> to submit the flag: <code>picoCTF&#123;l0t5_0f_tar5&#125;</code>.
+                </p>
+              </div>
+            </div>
+
           </div>
         </div>
 
