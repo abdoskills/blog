@@ -216,7 +216,7 @@ int main(void) {
               </table>
             </div>
             <p className="text-xs font-mono text-zinc-400">
-              Calculation: $0 + 2 + 0 + 8 + 0 + 32 + 64 + 0 = \mathbf{112} = \text{&apos;p&apos;}$.
+              Calculation: 0 + 2 + 0 + 8 + 0 + 32 + 64 + 0 = 112 = &apos;p&apos;.
             </p>
           </div>
         </div>

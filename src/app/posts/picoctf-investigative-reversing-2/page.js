@@ -211,7 +211,7 @@ char codedChar(int bit, char val, char orig_byte) {
               </table>
             </div>
             <p className="text-xs font-mono text-zinc-400">
-              Calculation: $0 + 2 + 0 + 8 + 0 + 32 + 64 + 0 = 106 + 5 = \mathbf{112} = \text{&apos;p&apos;}$.
+              Calculation: 0 + 2 + 0 + 8 + 0 + 32 + 64 + 0 = 106 (+ 5 shift) = 112 = &apos;p&apos;.
             </p>
           </div>
         </div>
