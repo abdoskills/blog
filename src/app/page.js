@@ -30,13 +30,13 @@ export default function Home() {
     {
       title: "DFIR & Threat Labs",
       slug: "labs",
-      category: "MULTI-PLATFORM",
-      points: "IR / DFIR",
-      tagline: "CyberDefenders • HTB • Blue Team",
-      description: "Multi-platform operational deep dives across CyberDefenders, HackTheBox Sherlocks, Enterprise Incident Response, Memory Forensics, and Malware Analysis.",
+      category: "LABS & DFIR",
+      points: "BLUE TEAM",
+      tagline: "CyberDefenders • Malware • Forensics",
+      description: "Operational deep dives across CyberDefenders, Blue Team forensic scenarios, Memory Forensics, Threat Hunting, and Malware Reverse Engineering.",
       image: "/images/cyber_defense_labs.jpg",
-      tags: ["Incident Response", "Phobos Malware", "VelvetThrone", "CyberDefenders"],
-      time: "Enterprise Labs",
+      tags: ["Incident Response", "Phobos Malware", "Threat Hunting", "CyberDefenders"],
+      time: "Forensic Labs",
       color: "emerald"
     }
   ];
@@ -102,7 +102,7 @@ export default function Home() {
             const colorClass = 
               c.color === "purple" ? "border-purple-500/20 hover:border-purple-400/60 hover:shadow-[0_15px_45px_rgba(168,85,247,0.2)] text-purple-400" :
               c.color === "pink" ? "border-pink-500/20 hover:border-pink-400/60 hover:shadow-[0_15px_45px_rgba(236,72,153,0.2)] text-pink-400" :
-              "border-emerald-500/20 hover:border-emerald-400/60 hover:shadow-[0_15px_45px_rgba(16,185,129,0.2)] text-emerald-400";
+              "border-emerald-500/20 hover:border-emerald-400/60 hover:shadow-[0_15px_45px_rgba(168,85,247,0.2)] text-emerald-400";
 
             const badgeBorder = 
               c.color === "purple" ? "border-purple-500/40 text-purple-300" :

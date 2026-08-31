@@ -4,20 +4,7 @@ import Link from "next/link";
 export default function ThreatLabsHub() {
   const challenges = [
     {
-      title: "VelvetThrone",
-      slug: "velvet-throne",
-      platform: "HackTheBox Sherlock",
-      category: "Enterprise DFIR",
-      points: "HARD • 15 TASKS",
-      tagline: "MFA Fatigue • LSASS • RC4 C2 • Covert DNS",
-      description: "Full incident response investigation for Axiom Financial Partners ($4.2B AUM). Analyzing Okta MFA fatigue, LSASS dumping via Procdump, RC4 C2 beacons, lateral movement, and XOR-encoded covert DNS exfiltration.",
-      image: "/images/velvet_throne.jpg",
-      tags: ["15 Tasks", "Okta Logs", "PowerShell", "Splunk / jq", "Covert DNS"],
-      time: "15 min read",
-      color: "emerald"
-    },
-    {
-      title: "Phobos Ransomware",
+      title: "Phobos Ransomware Analysis",
       slug: "phobos-ransomware-analysis",
       platform: "Malware DFIR Lab",
       category: "Reverse Engineering",
@@ -45,7 +32,7 @@ export default function ThreatLabsHub() {
         <div className="flex items-center gap-3">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            Multi-Platform DFIR Repository
+            CyberDefenders &amp; Threat Labs
           </span>
         </div>
       </nav>
@@ -57,7 +44,7 @@ export default function ThreatLabsHub() {
         <div className="max-w-4xl mx-auto px-6 mb-14 text-center">
           <div className="mb-4 inline-block bg-[#111111]/80 backdrop-blur-md border border-emerald-500/40 px-4 py-1.5 rounded-full animate-glow-pulse">
             <span className="font-mono text-xs text-emerald-400 uppercase tracking-[0.3em]">
-              CYBERDEFENDERS • HACKTHEBOX • BLUE TEAM LABS
+              CYBERDEFENDERS • BLUE TEAM • FORENSIC LABS
               <span className="animate-blink inline-block w-1.5 h-3 bg-emerald-400 ml-2 align-middle"></span>
             </span>
           </div>
@@ -65,7 +52,7 @@ export default function ThreatLabsHub() {
             DFIR &amp; Threat Labs
           </h1>
           <p className="text-zinc-400 text-base md:text-lg font-sans max-w-2xl mx-auto leading-relaxed">
-            Multi-platform operational deep dives across <strong>CyberDefenders</strong>, <strong>HackTheBox Sherlocks</strong>, <strong>Enterprise Incident Response</strong>, <strong>Memory Forensics</strong>, and <strong>Malware Analysis</strong>.
+            Forensic investigations and threat analysis covering <strong>CyberDefenders</strong>, <strong>Blue Team Labs</strong>, <strong>Memory Forensics</strong>, <strong>Network Threat Hunting</strong>, and <strong>Malware DFIR</strong>.
           </p>
         </div>
 
@@ -76,10 +63,10 @@ export default function ThreatLabsHub() {
               Operations &amp; Deep Dives
             </span>
             <h2 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
-              Enterprise Intrusion Cases
+              Threat Intelligence &amp; Lab Analyses
             </h2>
           </div>
-          <span className="text-xs font-mono text-zinc-500">Curated Lab Guides</span>
+          <span className="text-xs font-mono text-zinc-500">Curated Guides</span>
         </div>
 
         {/* Challenge Cards Grid */}
