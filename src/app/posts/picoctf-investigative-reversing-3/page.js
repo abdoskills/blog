@@ -297,7 +297,7 @@ int main(void) {
               <div>
                 <strong className="text-white block text-sm mb-1">Mathematical Stride Formula</strong>
                 <p className="text-zinc-400 font-sans text-xs">
-                  Formulated the exact character starting offset: $\text{Offset}(i) = 723 + (i \times 9)$.
+                  Formulated the exact character starting offset: Offset(i) = 723 + (i * 9).
                 </p>
               </div>
             </div>
