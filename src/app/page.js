@@ -2,84 +2,42 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
-  const featuredHubs = [
+  const hubs = [
     {
       title: "PicoCTF Master Hub",
       slug: "picoctf",
       category: "13 MISSIONS",
-      points: "FORENSICS",
+      points: "PICOCTF",
       tagline: "File Repair • LSB • PCAP • SSTV",
       description: "Complete archive of 13 forensic writeups covering PNG byte surgery, multi-image reverse engineering, whitespace steganography, and Apollo 11 audio demodulation.",
       image: "/images/picoctf_hub.jpg",
       tags: ["PNG Spec", "Ghidra", "Wireshark", "SSTV", "LSB Stego"],
-      time: "13 Guides",
-      color: "purple",
-      isHub: true
+      time: "13 Missions",
+      color: "purple"
     },
     {
-      title: "ASCWG Qualifications",
+      title: "ASCWG CTF Hub",
       slug: "ascwg",
       category: "4 MISSIONS",
-      points: "DFIR / OSINT",
+      points: "QUALIFICATIONS",
       tagline: "macOS • Windows • ICS • Blockchain",
       description: "Elite qualification challenges from Arab Security Cyber Wargames. Covers macOS Signal trojan triage, Windows.db ESE carving, SCADA TCP smuggling, and CoinJoin tracing.",
       image: "/images/ascwg_hub.jpg",
       tags: ["macOS Mach-O", "Windows.db", "TRACE-7", "TCP URG"],
-      time: "4 Guides",
-      color: "pink",
-      isHub: true
+      time: "4 Missions",
+      color: "pink"
     },
     {
-      title: "HackTheBox Sherlocks",
-      slug: "hackthebox",
-      category: "ENTERPRISE",
+      title: "DFIR & Threat Labs",
+      slug: "labs",
+      category: "MULTI-PLATFORM",
       points: "IR / DFIR",
-      tagline: "VelvetThrone & Hard Intrusion Labs",
-      description: "Deep enterprise incident response investigations. Analyzing MFA push fatigue, LSASS dumping via Procdump, RC4 C2 beacons, and covert XORed DNS queries.",
-      image: "/images/hackthebox_hub.jpg",
-      tags: ["Incident Response", "MFA Fatigue", "Covert DNS", "LSASS"],
-      time: "Hard Labs",
-      color: "emerald",
-      isHub: true
-    },
-    {
-      title: "Phobos Ransomware",
-      slug: "posts/phobos-ransomware-analysis",
-      category: "MALWARE DFIR",
-      points: "ADVANCED",
-      tagline: "Unpacking & Threat Intelligence",
-      description: "Comprehensive static and dynamic reverse engineering of Phobos ransomware. Decompiling cryptographic routines, infection vectors, and IOC extractions.",
-      image: "/images/phobos_thumbnail.jpg",
-      tags: ["Ghidra", "Ransomware", "x64dbg", "Threat Intel"],
-      time: "12 min read",
-      color: "purple",
-      isHub: false
-    },
-    {
-      title: "VelvetThrone",
-      slug: "posts/velvet-throne",
-      category: "HARD SHERLOCK",
-      points: "INCIDENT RESPONSE",
-      tagline: "15-Task Enterprise Investigation",
-      description: "Reconstructing a multi-stage intrusion against Axiom Financial Partners ($4.2B AUM). Okta MFA fatigue, LSASS dumping, and DNS exfiltration triage.",
-      image: "/images/velvet_throne.jpg",
-      tags: ["15 Tasks", "PowerShell", "Python", "jq / Splunk"],
-      time: "15 min read",
-      color: "emerald",
-      isHub: false
-    },
-    {
-      title: "c0rrupt",
-      slug: "posts/picoctf-c0rrupt",
-      category: "FILE SURGERY",
-      points: "250 PTS",
-      tagline: "PNG Chunk Hex Patching",
-      description: "Manual byte-by-byte binary reconstruction of corrupted PNG file headers, fixing IHDR and pHYs chunk lengths, and calculating IDAT mathematical offsets.",
-      image: "/images/pico_c0rrupt.jpg",
-      tags: ["HexEd.it", "pngcheck", "PNG RFC", "Python"],
-      time: "8 min read",
-      color: "cyan",
-      isHub: false
+      tagline: "CyberDefenders • HTB • Blue Team",
+      description: "Multi-platform operational deep dives across CyberDefenders, HackTheBox Sherlocks, Enterprise Incident Response, Memory Forensics, and Malware Analysis.",
+      image: "/images/cyber_defense_labs.jpg",
+      tags: ["Incident Response", "Phobos Malware", "VelvetThrone", "CyberDefenders"],
+      time: "Enterprise Labs",
+      color: "emerald"
     }
   ];
 
@@ -129,29 +87,37 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6 mb-8 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="bg-purple-500/20 text-purple-300 border border-purple-500/30 px-3 py-1 rounded-lg font-mono text-xs font-bold uppercase tracking-wider">
-              Featured Operations
+              Primary Archives
             </span>
             <h2 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
-              Forensic Hubs &amp; Deep Dives
+              Forensic &amp; Threat Intelligence Hubs
             </h2>
           </div>
-          <span className="text-xs font-mono text-zinc-500">Curated Writeups</span>
+          <span className="text-xs font-mono text-zinc-500">3 Core Repositories</span>
         </div>
 
-        {/* 6 Featured Cards Grid (Compact & Sleek) */}
+        {/* The 3 Core Hub Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-6 w-full">
-          {featuredHubs.map((c) => {
+          {hubs.map((c) => {
             const colorClass = 
               c.color === "purple" ? "border-purple-500/20 hover:border-purple-400/60 hover:shadow-[0_15px_45px_rgba(168,85,247,0.2)] text-purple-400" :
               c.color === "pink" ? "border-pink-500/20 hover:border-pink-400/60 hover:shadow-[0_15px_45px_rgba(236,72,153,0.2)] text-pink-400" :
-              c.color === "cyan" ? "border-cyan-500/20 hover:border-cyan-400/60 hover:shadow-[0_15px_45px_rgba(6,182,212,0.2)] text-cyan-400" :
               "border-emerald-500/20 hover:border-emerald-400/60 hover:shadow-[0_15px_45px_rgba(16,185,129,0.2)] text-emerald-400";
 
             const badgeBorder = 
               c.color === "purple" ? "border-purple-500/40 text-purple-300" :
               c.color === "pink" ? "border-pink-500/40 text-pink-300" :
-              c.color === "cyan" ? "border-cyan-500/40 text-cyan-300" :
               "border-emerald-500/40 text-emerald-300";
+
+            const glowText = 
+              c.color === "purple" ? "group-hover:text-purple-300" :
+              c.color === "pink" ? "group-hover:text-pink-300" :
+              "group-hover:text-emerald-300";
+
+            const footerText = 
+              c.color === "purple" ? "text-purple-400" :
+              c.color === "pink" ? "text-pink-400" :
+              "text-emerald-400";
 
             return (
               <Link 
@@ -185,7 +151,7 @@ export default function Home() {
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold mb-2 text-white group-hover:text-purple-300 transition-colors duration-300 font-[family-name:var(--font-share-tech)] uppercase tracking-wide">
+                  <h3 className={`text-xl font-bold mb-2 text-white ${glowText} transition-colors duration-300 font-[family-name:var(--font-share-tech)] uppercase tracking-wide`}>
                     {c.title}
                   </h3>
 
@@ -205,8 +171,8 @@ export default function Home() {
                   {/* Footer CTA */}
                   <div className="flex justify-between items-center text-[11px] font-mono text-zinc-500 pt-1">
                     <span>⏱ {c.time}</span>
-                    <span className="text-purple-400 group-hover:text-white font-bold flex items-center gap-1 transition-colors">
-                      {c.isHub ? "Enter Hub" : "Read Guide"} <span className="transform transition-transform group-hover:translate-x-1">→</span>
+                    <span className={`${footerText} group-hover:text-white font-bold flex items-center gap-1 transition-colors`}>
+                      Enter Repository <span className="transform transition-transform group-hover:translate-x-1">→</span>
                     </span>
                   </div>
                 </div>
