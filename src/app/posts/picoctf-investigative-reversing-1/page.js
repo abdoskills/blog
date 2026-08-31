@@ -353,9 +353,9 @@ print("🎉 Decoded Flag:", ''.join(flag))`;
         </div>
 
         {/* Section 6: Key Takeaways Table */}
-        <div className="space-y-4">
+        <div className="space-y-4 mb-12">
           <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
-            5. Key Takeaways & Lessons
+            5. Key Takeaways &amp; Lessons
           </h3>
           <div className="overflow-x-auto border border-zinc-800 rounded-xl bg-[#09090d]">
             <table className="w-full text-left font-mono text-xs">
@@ -368,8 +368,8 @@ print("🎉 Decoded Flag:", ''.join(flag))`;
               </thead>
               <tbody className="divide-y divide-zinc-800/60 text-zinc-300">
                 <tr>
-                  <td className="p-3 font-bold text-white">Append Mode ("a")</td>
-                  <td className="p-3 text-emerald-300">fopen(..., "a")</td>
+                  <td className="p-3 font-bold text-white">Append Mode (&quot;a&quot;)</td>
+                  <td className="p-3 text-emerald-300">fopen(..., &quot;a&quot;)</td>
                   <td className="p-3 text-zinc-400">Writes directly past the end of the file, creating trailing overlay data.</td>
                 </tr>
                 <tr>
@@ -384,6 +384,79 @@ print("🎉 Decoded Flag:", ''.join(flag))`;
                 </tr>
               </tbody>
             </table>
+          </div>
+        </div>
+
+        {/* Section 7: The Complete Investigation Path & Mental Roadmap */}
+        <div className="bg-[#081510] border border-emerald-500/30 rounded-2xl p-6 md:p-8 space-y-6 shadow-2xl relative overflow-hidden">
+          <div className="flex items-center gap-3">
+            <span className="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
+            <h3 className="text-xl md:text-2xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
+              6. The Complete Investigation Path &amp; Mental Roadmap
+            </h3>
+          </div>
+          
+          <p className="text-sm text-zinc-300 font-sans leading-relaxed">
+            Here is the step-by-step mental roadmap from binary decompilation to manual jigsaw assembly:
+          </p>
+
+          <div className="space-y-4 font-mono text-xs text-zinc-300">
+            
+            {/* Step 1 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-zinc-800">
+              <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded font-bold shrink-0">STEP 1</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">Decompiling the Encoding Binary</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Opened <code>mystery</code> in Ghidra. Traced <code>main()</code> and spotted <code>fopen(..., &quot;a&quot;)</code> appending 26 bytes across <code>mystery.png</code>, <code>mystery2.png</code>, and <code>mystery3.png</code>.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 2 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-zinc-800">
+              <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded font-bold shrink-0">STEP 2</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">Carving Trailing Overlays Past IEND</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Opened all 3 images in HxD / HexEd.it. Jumped past the <code>IEND</code> marker (<code>49 45 4E 44 AE 42 60 82</code>) and extracted 16 bytes from mystery.png, 2 bytes from mystery2.png, and 8 bytes from mystery3.png (Total: 26 bytes).
+                </p>
+              </div>
+            </div>
+
+            {/* Step 3 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-zinc-800">
+              <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded font-bold shrink-0">STEP 3</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">Reverse Math &amp; Scrambled Byte Recovery</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Calculated the 2 shifted bytes from mystery2.png: Slot 0 was $133 - 21 = 112$ (&apos;p&apos;), and Slot 3 was $115 - 4 = 111$ (&apos;o&apos;).
+                </p>
+              </div>
+            </div>
+
+            {/* Step 4 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-zinc-800">
+              <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded font-bold shrink-0">STEP 4</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">Jigsaw Assembly &amp; Automated Verification</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Constructed the 26-slot table mapping each byte slice back to its original index. Validated the assembly using our automated Python script <code>solve.py</code>.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 5 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-emerald-500/40">
+              <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded font-bold shrink-0">STEP 5</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">Flag Capture</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Submitted the verified flag string: <code>picoCTF&#123;An0tha_1_8a448cb2&#125;</code>.
+                </p>
+              </div>
+            </div>
+
           </div>
         </div>
 
