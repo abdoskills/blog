@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono, Silkscreen, Share_Tech_Mono } from "next/font/google";
 import "./globals.css";
+import CyberBackground from "@/components/CyberBackground";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,8 +25,8 @@ const shareTech = Share_Tech_Mono({
 });
 
 export const metadata = {
-  title: "Skills | Portfolio",
-  description: "Threat Intel and Malware Analysis Portfolio",
+  title: "Skills | Threat Intel & Forensics Portfolio",
+  description: "Digital Forensics, OSINT, and Threat Intel Master Operational Breakdowns",
 };
 
 export default function RootLayout({ children }) {
@@ -34,7 +35,12 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${silkscreen.variable} ${shareTech.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col relative bg-[#060709] text-gray-100 selection:bg-pink-500/30 selection:text-pink-200">
+        <CyberBackground />
+        <div className="relative z-10 flex flex-col flex-grow">
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
