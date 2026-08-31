@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import CopyButton from "@/components/CopyButton";
 
 export default function NightshadeVendorWriteup() {
   return (
@@ -127,11 +128,24 @@ export default function NightshadeVendorWriteup() {
             </summary>
             <div className="p-6 pt-0 border-t border-zinc-800/50 text-base text-zinc-400 leading-relaxed bg-[#050505]">
               <p className="mb-4 mt-4">Manual clicking through block explorers fails against highly active wallets. We automated the TRACE-7 walk using a Python script interacting with the Esplora REST API:</p>
-              <ol className="list-decimal pl-5 space-y-3 marker:text-pink-500">
+              <ol className="list-decimal pl-5 space-y-3 marker:text-pink-500 mb-4">
                 <li>Paginate through the entry address history using <code className="text-pink-400">/api/address/&#123;addr&#125;/txs/chain</code>.</li>
                 <li>Find the transaction that drains the most satoshis from the target.</li>
                 <li>Recursively fetch the <code className="text-pink-400">/api/tx/&#123;txid&#125;/outspends</code> to trace the maximum output value forward automatically.</li>
               </ol>
+              <div className="bg-[#0a0a0a] border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300">
+                <div className="flex justify-between items-center mb-2 pb-2 border-b border-zinc-800">
+                  <span className="text-purple-400 font-bold">trace7_walker.py</span>
+                  <CopyButton text={`import requests\n\ndef trace_pot(addr):\n    res = requests.get(f"https://blockstream.info/api/address/{addr}/txs").json()\n    max_tx = max(res, key=lambda tx: sum(vout['value'] for vout in tx['vout']))\n    print(f"Max Outflow Tx: {max_tx['txid']}")\n    return max_tx['txid']`} />
+                </div>
+                <pre><code>{`import requests
+
+def trace_pot(addr):
+    res = requests.get(f"https://blockstream.info/api/address/{addr}/txs").json()
+    max_tx = max(res, key=lambda tx: sum(vout['value'] for vout in tx['vout']))
+    print(f"Max Outflow Tx: {max_tx['txid']}")
+    return max_tx['txid']`}</code></pre>
+              </div>
             </div>
           </details>
 

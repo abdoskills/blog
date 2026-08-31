@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import CopyButton from "@/components/CopyButton";
 
 export default function SensorConfessionWriteup() {
   return (
@@ -124,11 +125,14 @@ export default function SensorConfessionWriteup() {
           </p>
 
           <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 my-6 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner">
-            <div className="flex gap-2 mb-3 border-b border-zinc-800 pb-2">
-              <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-              <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-              <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-              <span className="ml-2 text-zinc-600">tshark_extraction.sh</span>
+            <div className="flex justify-between items-center mb-3 border-b border-zinc-800 pb-2">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
+                <span className="ml-2 text-zinc-600">tshark_extraction.sh</span>
+              </div>
+              <CopyButton text={`tshark -r capture.pcap -Y "ip.src == 10.0.5.55 && tcp.urgent_pointer > 0" -T fields -e tcp.urgent_pointer`} />
             </div>
             <pre>
               <code className="text-zinc-300">

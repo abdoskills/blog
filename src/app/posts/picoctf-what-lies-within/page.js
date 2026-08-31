@@ -5,19 +5,21 @@ import CopyButton from "@/components/CopyButton";
 export default function PicoCTFWhatLiesWithinWriteup() {
   const pythonScript = `from PIL import Image
 
+# 1. Load image and raw pixel raster data
 img = Image.open('buildings.png')
 pixels = img.load()
 width, height = img.size
 
+# 2. Extract the Least Significant Bit (LSB) from R, G, and B channels
 bits = []
 for y in range(height):
     for x in range(width):
         r, g, b = pixels[x, y][:3]
-        bits.append(r & 1)
-        bits.append(g & 1)
-        bits.append(b & 1)
+        bits.append(r & 1)  # Red channel LSB
+        bits.append(g & 1)  # Green channel LSB
+        bits.append(b & 1)  # Blue channel LSB
 
-# Group bits into 8-bit ASCII characters
+# 3. Assemble consecutive 8 bits into 1 ASCII byte
 byte_list = []
 for i in range(0, len(bits), 8):
     byte_bits = bits[i:i+8]
@@ -27,11 +29,15 @@ for i in range(0, len(bits), 8):
             val = (val << 1) | b
         byte_list.append(val)
 
+# 4. Decode as string and locate picoCTF flag
 extracted_text = bytes(byte_list).decode('latin1', errors='ignore')
 
 if "picoCTF{" in extracted_text:
-    flag = extracted_text[extracted_text.index("picoCTF{"):extracted_text.index("}")+1]
-    print("🎉 Extracted Flag:", flag)`;
+    start_idx = extracted_text.index("picoCTF{")
+    end_idx = extracted_text.index("}", start_idx) + 1
+    print("🎉 Extracted Flag:", extracted_text[start_idx:end_idx])`;
+
+  const zstegCommand = `zsteg -a buildings.png`;
 
   return (
     <div className="min-h-screen relative z-10 text-gray-200 selection:bg-cyan-500/30 selection:text-cyan-200">
@@ -81,7 +87,7 @@ if "picoCTF{" in extracted_text:
         </header>
 
         {/* Challenge Description & Provided Artifacts Box */}
-        <div className="bg-[#0e161c]/90 border border-cyan-500/30 rounded-2xl p-6 shadow-xl relative overflow-hidden mb-10 backdrop-blur-md">
+        <div className="bg-[#0e161c]/90 border border-cyan-500/30 rounded-2xl p-6 shadow-xl relative overflow-hidden mb-12 backdrop-blur-md">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="md:col-span-2 space-y-3">
               <div className="flex items-center gap-2">
@@ -93,7 +99,7 @@ if "picoCTF{" in extracted_text:
                 &ldquo;There&apos;s something in the building. Can you retrieve the flag?&rdquo;
               </p>
               <div className="flex flex-wrap gap-4 text-xs font-mono text-zinc-400 pt-2">
-                <span>● <strong>Category:</strong> Steganography</span>
+                <span>● <strong>Category:</strong> Steganography / LSB Carving</span>
                 <span>● <strong>Points:</strong> 150 PTS</span>
                 <span>● <strong>Flag Format:</strong> <code>picoCTF&#123;...&#125;</code></span>
               </div>
@@ -109,7 +115,7 @@ if "picoCTF{" in extracted_text:
                   buildings.png
                 </div>
                 <span className="text-[11px] font-mono text-zinc-400 block mt-1">Size: 625 KB • PNG Image</span>
-                <span className="text-[11px] font-mono text-zinc-500 block">Encoding: RGB 8-bit/color</span>
+                <span className="text-[11px] font-mono text-zinc-500 block">Encoding: RGB 8-bit/channel</span>
               </div>
               <div className="text-[10px] font-mono text-cyan-400 bg-cyan-500/10 px-2 py-1 rounded border border-cyan-500/20 text-center truncate">
                 Method: LSB Extraction
@@ -118,81 +124,186 @@ if "picoCTF{" in extracted_text:
           </div>
         </div>
 
-        {/* Beginner Analogy */}
-        <div className="space-y-6 text-lg text-zinc-300 leading-relaxed font-sans mb-12">
-          <div className="bg-[#0d1318] border-l-4 border-cyan-500 p-5 rounded-r-xl shadow-md">
-            <h4 className="text-cyan-400 font-bold mb-2 font-mono text-xs uppercase tracking-wider">💡 THE BEGINNER BREAKDOWN</h4>
-            <p className="text-sm text-zinc-300 leading-relaxed">
-              Every color in an image is made of Red, Green, and Blue numbers from 0 to 255. If a red pixel is changed from <code>254</code> to <code>255</code>, the human eye cannot perceive any difference. By changing the very last bit (the 1s and 0s) across thousands of pixels, an attacker can secretly spell out an entire confidential text document without altering the visible picture!
+        {/* Section 1: Intuitive Analogy */}
+        <div className="space-y-6 text-zinc-300 leading-relaxed font-sans mb-12">
+          <div className="bg-[#0a1116] border-l-4 border-cyan-500 p-6 rounded-r-xl shadow-md">
+            <h4 className="text-cyan-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 THE INTUITIVE ANALOGY (How LSB Works)</h4>
+            <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
+              Every digital color is represented by numbers from <code>0</code> to <code>255</code> across Red, Green, and Blue. In binary, <code>254</code> is <code>11111110</code> and <code>255</code> is <code>11111111</code>. The human eye cannot tell the difference between shade 254 and shade 255. By flipping only the very last bit (the <strong>Least Significant Bit</strong>) of each pixel, an attacker can secretly store millions of secret binary 1s and 0s directly inside the image without modifying the visible picture!
             </p>
           </div>
         </div>
 
-        {/* Methodology Flow */}
+        {/* Section 2: Standard Forensic Checklist */}
         <div className="space-y-6 mb-12">
-          <h2 className="text-2xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
-            1. Image Stego Forensic Checklist
+          <h2 className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
+            1. The 5-Step Image Forensics Methodology
           </h2>
+          <p className="text-sm text-zinc-300 leading-relaxed font-sans">
+            Whenever investigating an image in a CTF or incident response investigation, follow this ordered testing pipeline:
+          </p>
 
-          <div className="bg-[#050508] border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">
+          <div className="bg-[#050508] border border-zinc-800 rounded-xl p-5 font-mono text-xs md:text-sm text-zinc-300 overflow-x-auto shadow-xl">
             <pre className="leading-relaxed">
-{`[Image File] 
+{`[Image File: buildings.png]
      │
-     ├── 1. File Magic Header (89 50 4E 47 ...)
-     ├── 2. ExifTool Metadata Inspection (Author, Copyright, Comments)
-     ├── 3. Strings Analysis (Appended payloads after IEND)
-     ├── 4. Binwalk / Foremost (Concatenated archives / zip files)
-     └── 5. LSB Steganography (zsteg / Aperi'Solve)  <-- Target Identified`}
+     ├── Step 1: Magic Header Check (Verify 89 50 4E 47 ...) ─────────> VALID
+     ├── Step 2: Metadata Inspection (ExifTool author/comments) ───────> CLEAN
+     ├── Step 3: Plaintext Strings (Check appended EOF strings) ───────> NONE
+     ├── Step 4: Signature Carving (Binwalk / Foremost for ZIPs) ──────> NONE
+     └── Step 5: LSB Steganography (zsteg / StegSolve / PIL) ─────────> 🎯 TARGET IDENTIFIED`}
             </pre>
           </div>
         </div>
 
-        {/* Investigation Tools */}
-        <div className="space-y-6 mb-12">
-          <h2 className="text-2xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
-            2. Solving via Aperi'Solve & zsteg
-          </h2>
+        {/* Section 3: METHOD A - MANUAL & GUI ANALYSIS */}
+        <div className="space-y-8 mb-14">
+          <div className="border-b border-cyan-500/30 pb-4">
+            <span className="bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 px-3 py-1 rounded text-xs font-mono font-bold uppercase tracking-wider">
+              METHOD A: MANUAL & GUI STEGANOGRAPHY ANALYSIS
+            </span>
+            <h2 className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider mt-3">
+              2. Inspecting Bit-Planes (Aperi'Solve, StegSolve, zsteg)
+            </h2>
+            <p className="text-sm text-zinc-400 mt-2 font-sans">
+              How to manually extract the secret payload using specialized stego utilities.
+            </p>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-mono text-xs">
-            <div className="bg-[#0a1116] border border-cyan-500/30 rounded-xl p-4 space-y-2">
-              <span className="text-cyan-400 font-bold uppercase tracking-wider">Aperi'Solve Analysis</span>
-              <p className="text-zinc-400 font-sans text-xs">Upload <code>buildings.png</code> to Aperi'Solve and inspect zsteg report.</p>
-              <div className="p-3 bg-black rounded border border-zinc-800 text-zinc-300">
-                <code>b1,rgb,lsb,xy .. text: "picoCTF&#123;h1d1ng_1n_th3_b1t5&#125;"</code>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            {/* Tool 1: Aperi'Solve */}
+            <div className="bg-[#0a1116] border border-cyan-500/40 rounded-2xl p-6 space-y-3">
+              <div className="flex justify-between items-center">
+                <span className="font-mono text-sm font-bold text-cyan-400 uppercase">1. Aperi'Solve (Web Platform)</span>
+                <span className="text-xs font-mono text-zinc-500">GUI Online</span>
+              </div>
+              <p className="text-xs md:text-sm text-zinc-300 font-sans leading-relaxed">
+                1. Navigate to <a href="https://www.aperisolve.com/" target="_blank" rel="noopener noreferrer" className="text-cyan-400 underline font-mono">aperisolve.com</a>.<br />
+                2. Upload <code>buildings.png</code>.<br />
+                3. Scroll down to the <strong>zsteg Analysis</strong> section.<br />
+                4. Notice the detected cleartext string:
+              </p>
+              <div className="p-3 bg-black rounded-lg border border-cyan-500/30 font-mono text-xs text-cyan-300">
+                b1,rgb,lsb,xy .. text: &quot;picoCTF&#123;h1d1ng_1n_th3_b1t5&#125;&quot;
               </div>
             </div>
 
-            <div className="bg-[#0a1116] border border-cyan-500/30 rounded-xl p-4 space-y-2">
-              <span className="text-cyan-400 font-bold uppercase tracking-wider">CLI Command</span>
-              <p className="text-zinc-400 font-sans text-xs">Run zsteg directly in terminal:</p>
-              <div className="p-3 bg-black rounded border border-zinc-800 text-zinc-300">
-                <code>$ zsteg buildings.png</code>
+            {/* Tool 2: zsteg CLI */}
+            <div className="bg-[#0a1116] border border-cyan-500/40 rounded-2xl p-6 space-y-3">
+              <div className="flex justify-between items-center">
+                <span className="font-mono text-sm font-bold text-cyan-400 uppercase">2. zsteg (CLI Tool)</span>
+                <span className="text-xs font-mono text-zinc-500">Terminal</span>
+              </div>
+              <p className="text-xs md:text-sm text-zinc-300 font-sans leading-relaxed">
+                Run <code>zsteg</code> to test all permutation combinations (RGB/BGR, MSB/LSB, 1-bit to 8-bit):
+              </p>
+              <div className="p-3 bg-black rounded-lg border border-zinc-800 font-mono text-xs text-zinc-300 space-y-1">
+                <div className="text-zinc-500">$ zsteg buildings.png</div>
+                <div className="text-emerald-400">b1,rgb,lsb,xy .. text: &quot;picoCTF&#123;h1d1ng_1n_th3_b1t5&#125;&quot;</div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Breakdown of zsteg syntax */}
+          <div className="bg-[#080d11] border border-zinc-800 rounded-xl p-5 space-y-2 font-mono text-xs">
+            <div className="text-cyan-400 font-bold uppercase">Decoding the parameter `b1,rgb,lsb,xy`:</div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-zinc-300 pt-2">
+              <div className="p-2 bg-black rounded border border-zinc-800">
+                <strong className="text-white block">b1</strong>
+                1 bit per color channel
+              </div>
+              <div className="p-2 bg-black rounded border border-zinc-800">
+                <strong className="text-white block">rgb</strong>
+                Order: Red &rarr; Green &rarr; Blue
+              </div>
+              <div className="p-2 bg-black rounded border border-zinc-800">
+                <strong className="text-white block">lsb</strong>
+                Least Significant Bit (bit 0)
+              </div>
+              <div className="p-2 bg-black rounded border border-zinc-800">
+                <strong className="text-white block">xy</strong>
+                Left-to-right, row-by-row
               </div>
             </div>
           </div>
         </div>
 
-        {/* Python Solver Script */}
-        <div className="space-y-4 mb-12">
-          <div className="flex justify-between items-center">
-            <h2 className="text-2xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
-              3. Python LSB Extractor (`solve.py`)
-            </h2>
+        {/* Section 4: METHOD B - AUTOMATED PYTHON SCRIPT */}
+        <div className="space-y-6 mb-14">
+          <div className="border-b border-cyan-500/30 pb-4 flex justify-between items-end">
+            <div>
+              <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded text-xs font-mono font-bold uppercase tracking-wider">
+                METHOD B: CUSTOM PYTHON SOLVER
+              </span>
+              <h2 className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider mt-3">
+                3. Pure Python LSB Bit Decoder (`solve.py`)
+              </h2>
+            </div>
             <CopyButton text={pythonScript} />
           </div>
 
-          <div className="bg-[#050508] border border-zinc-800 rounded-xl p-4 font-mono text-xs md:text-sm text-zinc-300 overflow-x-auto shadow-inner">
+          <p className="text-sm text-zinc-300 font-sans leading-relaxed">
+            Understanding the math behind LSB lets you write custom extractors with zero external stego tools using Python and the standard <code>PIL</code> (Pillow) library:
+          </p>
+
+          <div className="bg-[#050508] border border-zinc-800 rounded-xl p-5 font-mono text-xs md:text-sm text-zinc-300 overflow-x-auto shadow-inner">
             <pre>
               <code>{pythonScript}</code>
             </pre>
           </div>
         </div>
 
-        {/* Flag Box */}
-        <div className="bg-[#050508] border border-cyan-500/30 rounded-2xl p-6 text-center space-y-4">
-          <p className="text-xs font-mono text-zinc-400 uppercase tracking-widest">Extracted Secret Flag:</p>
-          <div className="inline-block bg-black border border-cyan-500/50 px-6 py-3 rounded-xl font-mono text-base md:text-lg text-cyan-300 font-bold shadow-[0_0_20px_rgba(6,182,212,0.3)]">
-            picoCTF&#123;h1d1ng_1n_th3_b1t5&#125;
+        {/* Section 5: Extracted Flag Box */}
+        <div className="space-y-6 mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
+            4. Recovered Flag & Verification
+          </h2>
+
+          <div className="bg-[#050508] border border-cyan-500/30 rounded-2xl p-6 text-center space-y-4">
+            <p className="text-xs font-mono text-zinc-400 uppercase tracking-widest">Extracted Flag Payload:</p>
+            <div className="inline-block bg-black border border-cyan-500/60 px-8 py-3.5 rounded-xl font-mono text-base md:text-xl text-cyan-300 font-bold shadow-[0_0_25px_rgba(6,182,212,0.4)]">
+              picoCTF&#123;h1d1ng_1n_th3_b1t5&#125;
+            </div>
+            <p className="text-xs text-zinc-400 font-mono italic">
+              (Literal meaning: &ldquo;hiding in the bits&rdquo; &mdash; a direct reference to LSB stego encoding).
+            </p>
+          </div>
+        </div>
+
+        {/* Section 6: Key Takeaways Reference Table */}
+        <div className="space-y-4">
+          <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
+            5. Steganography Tool Reference Matrix
+          </h3>
+          <div className="overflow-x-auto border border-zinc-800 rounded-xl bg-[#09090d]">
+            <table className="w-full text-left font-mono text-xs">
+              <thead className="bg-[#121217] text-cyan-400 border-b border-zinc-800">
+                <tr>
+                  <th className="p-3">Tool</th>
+                  <th className="p-3">Platform</th>
+                  <th className="p-3">Best Use Case</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-zinc-800/60 text-zinc-300">
+                <tr>
+                  <td className="p-3 font-bold text-white">Aperi'Solve</td>
+                  <td className="p-3 text-cyan-300">Web Browser</td>
+                  <td className="p-3 text-zinc-400">Automated all-in-one suite running zsteg, steghide, exiftool, and binwalk simultaneously.</td>
+                </tr>
+                <tr>
+                  <td className="p-3 font-bold text-white">zsteg</td>
+                  <td className="p-3 text-cyan-300">Ruby CLI</td>
+                  <td className="p-3 text-zinc-400">Gold-standard command-line tool for detecting LSB encoding in PNG and BMP formats.</td>
+                </tr>
+                <tr>
+                  <td className="p-3 font-bold text-white">StegSolve</td>
+                  <td className="p-3 text-cyan-300">Java Desktop</td>
+                  <td className="p-3 text-zinc-400">Visual plane-by-plane inspection (Red 0, Green 0, Blue 0, Inverted bitplanes).</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 

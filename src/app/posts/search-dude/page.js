@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import CopyButton from "@/components/CopyButton";
 
 export default function SearchDudeWriteup() {
   return (
@@ -124,11 +125,14 @@ export default function SearchDudeWriteup() {
           </p>
 
           <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 my-6 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner">
-            <div className="flex gap-2 mb-3 border-b border-zinc-800 pb-2">
-              <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
-              <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-              <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
-              <span className="ml-2 text-zinc-600">Windows.db [System.Search.AutoSummary]</span>
+            <div className="flex justify-between items-center mb-3 border-b border-zinc-800 pb-2">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
+                <span className="ml-2 text-zinc-600">Windows.db [System.Search.AutoSummary]</span>
+              </div>
+              <CopyButton text={`python decrypt_blob.py --key "{A92B31-..." --data payload.bin`} />
             </div>
             <pre>
               <code className="text-zinc-300">
