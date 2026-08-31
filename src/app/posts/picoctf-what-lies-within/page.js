@@ -15,7 +15,7 @@ bits = []
 for y in range(height):
     for x in range(width):
         r, g, b = pixels[x, y][:3]
-        bits.append(r & 1)  # Red channel LSB
+        bits.append(r & 1)  # Red channel LSB (0 or 1)
         bits.append(g & 1)  # Green channel LSB
         bits.append(b & 1)  # Blue channel LSB
 
@@ -37,7 +37,7 @@ if "picoCTF{" in extracted_text:
     end_idx = extracted_text.index("}", start_idx) + 1
     print("🎉 Extracted Flag:", extracted_text[start_idx:end_idx])`;
 
-  const zstegCommand = `zsteg -a buildings.png`;
+  const oneliner = `python -c "from PIL import Image; img=Image.open('buildings.png'); px=img.load(); w,h=img.size; bits=[c&1 for y in range(h) for x in range(w) for c in px[x,y][:3]]; chars=[chr(int(''.join(map(str,bits[i:i+8])),2)) for i in range(0,len(bits),8)]; txt=''.join(chars); print(txt[txt.find('picoCTF{'):txt.find('}',txt.find('picoCTF{'))+1])"`;
 
   return (
     <div className="min-h-screen relative z-10 text-gray-200 selection:bg-cyan-500/30 selection:text-cyan-200">
@@ -107,18 +107,22 @@ if "picoCTF{" in extracted_text:
             
             <div className="bg-[#060c10] border border-cyan-500/20 rounded-xl p-4 flex flex-col justify-between space-y-3">
               <div>
-                <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">
-                  Provided File
+                <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-widest block mb-2">
+                  Provided File (Download &amp; Practice)
                 </span>
-                <div className="flex items-center gap-2 text-white font-mono text-sm font-bold">
-                  <svg className="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                  buildings.png
-                </div>
-                <span className="text-[11px] font-mono text-zinc-400 block mt-1">Size: 625 KB • PNG Image</span>
+                <a 
+                  href="/downloads/buildings.png" 
+                  download="buildings.png"
+                  className="flex items-center gap-2 text-cyan-300 hover:text-white font-mono text-sm font-bold bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 px-3 py-2 rounded-lg transition-all"
+                >
+                  <svg className="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                  <span>⬇️ Download buildings.png</span>
+                </a>
+                <span className="text-[11px] font-mono text-zinc-400 block mt-2">Size: 625 KB • PNG Image</span>
                 <span className="text-[11px] font-mono text-zinc-500 block">Encoding: RGB 8-bit/channel</span>
               </div>
               <div className="text-[10px] font-mono text-cyan-400 bg-cyan-500/10 px-2 py-1 rounded border border-cyan-500/20 text-center truncate">
-                Method: LSB Extraction
+                Dissector: Aperi&apos;Solve / zsteg / PIL
               </div>
             </div>
           </div>
@@ -160,10 +164,10 @@ if "picoCTF{" in extracted_text:
         <div className="space-y-8 mb-14">
           <div className="border-b border-cyan-500/30 pb-4">
             <span className="bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 px-3 py-1 rounded text-xs font-mono font-bold uppercase tracking-wider">
-              METHOD A: MANUAL & GUI STEGANOGRAPHY ANALYSIS
+              METHOD A: MANUAL &amp; GUI STEGANOGRAPHY ANALYSIS
             </span>
             <h2 className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider mt-3">
-              2. Inspecting Bit-Planes (Aperi'Solve, StegSolve, zsteg)
+              2. Inspecting Bit-Planes (Aperi&apos;Solve, StegSolve, zsteg)
             </h2>
             <p className="text-sm text-zinc-400 mt-2 font-sans">
               How to manually extract the secret payload using specialized stego utilities.
@@ -175,7 +179,7 @@ if "picoCTF{" in extracted_text:
             {/* Tool 1: Aperi'Solve */}
             <div className="bg-[#0a1116] border border-cyan-500/40 rounded-2xl p-6 space-y-3">
               <div className="flex justify-between items-center">
-                <span className="font-mono text-sm font-bold text-cyan-400 uppercase">1. Aperi'Solve (Web Platform)</span>
+                <span className="font-mono text-sm font-bold text-cyan-400 uppercase">1. Aperi&apos;Solve (Web Platform)</span>
                 <span className="text-xs font-mono text-zinc-500">GUI Online</span>
               </div>
               <p className="text-xs md:text-sm text-zinc-300 font-sans leading-relaxed">
@@ -228,14 +232,40 @@ if "picoCTF{" in extracted_text:
               </div>
             </div>
           </div>
+
+          {/* Hands-on Bit Table */}
+          <div className="space-y-3 pt-2">
+            <h4 className="font-mono text-xs font-bold text-cyan-300 uppercase tracking-wider">
+              Step-by-Step Bit Assembly (How the first 4 characters are born):
+            </h4>
+            <div className="overflow-x-auto border border-zinc-800 rounded-xl bg-[#090a0d]">
+              <table className="w-full text-left font-mono text-xs">
+                <thead className="bg-[#12161b] text-cyan-400 border-b border-zinc-800">
+                  <tr>
+                    <th className="p-3">Character</th>
+                    <th className="p-3">8 Extracted Bits (R, G, B channels)</th>
+                    <th className="p-3">Binary to Decimal</th>
+                    <th className="p-3 text-right">ASCII Letter</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-zinc-800/60 text-zinc-300">
+                  <tr><td className="p-2.5 font-bold text-cyan-400">Byte 0</td><td className="p-2.5">0 1 1 1 0 0 0 0</td><td className="p-2.5">112</td><td className="p-2.5 text-right font-bold text-cyan-300 text-sm">&apos;p&apos;</td></tr>
+                  <tr><td className="p-2.5 font-bold text-cyan-400">Byte 1</td><td className="p-2.5">0 1 1 0 1 0 0 1</td><td className="p-2.5">105</td><td className="p-2.5 text-right font-bold text-cyan-300 text-sm">&apos;i&apos;</td></tr>
+                  <tr><td className="p-2.5 font-bold text-cyan-400">Byte 2</td><td className="p-2.5">0 1 1 0 0 0 1 1</td><td className="p-2.5">99</td><td className="p-2.5 text-right font-bold text-cyan-300 text-sm">&apos;c&apos;</td></tr>
+                  <tr><td className="p-2.5 font-bold text-cyan-400">Byte 3</td><td className="p-2.5">0 1 1 0 1 1 1 1</td><td className="p-2.5">111</td><td className="p-2.5 text-right font-bold text-cyan-300 text-sm">&apos;o&apos;</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
         </div>
 
-        {/* Section 4: METHOD B - AUTOMATED PYTHON SCRIPT */}
+        {/* Section 4: METHOD B - AUTOMATED PYTHON SCRIPT & ONELINER */}
         <div className="space-y-6 mb-14">
           <div className="border-b border-cyan-500/30 pb-4 flex justify-between items-end">
             <div>
               <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded text-xs font-mono font-bold uppercase tracking-wider">
-                METHOD B: CUSTOM PYTHON SOLVER
+                METHOD B: CUSTOM PYTHON SOLVER &amp; ONELINER
               </span>
               <h2 className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider mt-3">
                 3. Pure Python LSB Bit Decoder (`solve.py`)
@@ -253,12 +283,23 @@ if "picoCTF{" in extracted_text:
               <code>{pythonScript}</code>
             </pre>
           </div>
+
+          {/* Terminal One-liner */}
+          <div className="space-y-2 pt-2">
+            <div className="flex justify-between items-center">
+              <span className="font-mono text-xs text-cyan-400 font-bold uppercase">⚡ Terminal One-Liner (PowerShell / Bash):</span>
+              <CopyButton text={oneliner} />
+            </div>
+            <div className="bg-black border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">
+              <code>{oneliner}</code>
+            </div>
+          </div>
         </div>
 
         {/* Section 5: Extracted Flag Box */}
         <div className="space-y-6 mb-12">
           <h2 className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
-            4. Recovered Flag & Verification
+            4. Recovered Flag &amp; Verification
           </h2>
 
           <div className="bg-[#050508] border border-cyan-500/30 rounded-2xl p-6 text-center space-y-4">
@@ -273,7 +314,7 @@ if "picoCTF{" in extracted_text:
         </div>
 
         {/* Section 6: Key Takeaways Reference Table */}
-        <div className="space-y-4">
+        <div className="space-y-4 mb-12">
           <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
             5. Steganography Tool Reference Matrix
           </h3>
@@ -288,7 +329,7 @@ if "picoCTF{" in extracted_text:
               </thead>
               <tbody className="divide-y divide-zinc-800/60 text-zinc-300">
                 <tr>
-                  <td className="p-3 font-bold text-white">Aperi'Solve</td>
+                  <td className="p-3 font-bold text-white">Aperi&apos;Solve</td>
                   <td className="p-3 text-cyan-300">Web Browser</td>
                   <td className="p-3 text-zinc-400">Automated all-in-one suite running zsteg, steghide, exiftool, and binwalk simultaneously.</td>
                 </tr>
@@ -304,6 +345,79 @@ if "picoCTF{" in extracted_text:
                 </tr>
               </tbody>
             </table>
+          </div>
+        </div>
+
+        {/* Section 7: The Complete Investigation Path & Mental Roadmap */}
+        <div className="bg-[#07131a] border border-cyan-500/30 rounded-2xl p-6 md:p-8 space-y-6 shadow-2xl relative overflow-hidden">
+          <div className="flex items-center gap-3">
+            <span className="w-3 h-3 rounded-full bg-cyan-400 animate-pulse"></span>
+            <h3 className="text-xl md:text-2xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
+              6. The Complete Investigation Path &amp; Mental Roadmap
+            </h3>
+          </div>
+          
+          <p className="text-sm text-zinc-300 font-sans leading-relaxed">
+            Here is the step-by-step mental roadmap followed to systematically uncover the payload:
+          </p>
+
+          <div className="space-y-4 font-mono text-xs text-zinc-300">
+            
+            {/* Step 1 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-zinc-800">
+              <span className="bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 px-2.5 py-1 rounded font-bold shrink-0">STEP 1</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">Image Triage &amp; Metadata Inspection</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Downloaded <code>buildings.png</code>. Ran <code>exiftool</code> and <code>strings</code> to check for easy plain text comments or appended trailers. Results returned clean.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 2 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-zinc-800">
+              <span className="bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 px-2.5 py-1 rounded font-bold shrink-0">STEP 2</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">Embedded File Carving</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Executed <code>binwalk -e buildings.png</code> to check if another archive or executable was concatenated inside the file. No hidden archives were found.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 3 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-zinc-800">
+              <span className="bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 px-2.5 py-1 rounded font-bold shrink-0">STEP 3</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">Bitplane Stego Detection with zsteg / Aperi&apos;Solve</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Uploaded image to Aperi&apos;Solve and ran <code>zsteg buildings.png</code>. The scanner instantly identified ASCII flag text hiding on the 1-bit RGB LSB layer (<code>b1,rgb,lsb,xy</code>).
+                </p>
+              </div>
+            </div>
+
+            {/* Step 4 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-zinc-800">
+              <span className="bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 px-2.5 py-1 rounded font-bold shrink-0">STEP 4</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">Algorithmic Verification via Python PIL</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Wrote a standalone <code>PIL</code> bitmask extractor script to independently verify the bit extraction math without relying on black-box tools.
+                </p>
+              </div>
+            </div>
+
+            {/* Step 5 */}
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-black/60 border border-cyan-500/40">
+              <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded font-bold shrink-0">STEP 5</span>
+              <div>
+                <strong className="text-white block text-sm mb-1">Flag Capture</strong>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Recovered the secret flag: <code>picoCTF&#123;h1d1ng_1n_th3_b1t5&#125;</code>.
+                </p>
+              </div>
+            </div>
+
           </div>
         </div>
 
