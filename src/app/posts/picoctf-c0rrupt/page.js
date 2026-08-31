@@ -461,7 +461,7 @@ print("🎉 Successfully repaired! fixed.png generated.")`;
               <div>
                 <strong className="text-white block text-sm mb-1">IDAT Payload Calculation &amp; Restoration</strong>
                 <p className="text-zinc-400 font-sans text-xs">
-                  Calculated exact remaining payload size ($202,887 - 54 = 202,833\text{ bytes} = \text{0x00031851}$). Replaced corrupted <code>\xabDET</code> with <code>00 03 18 51 49 44 41 54</code>.
+                  Calculated exact remaining payload size (202,887 - 54 = 202,833 bytes = 0x00031851). Replaced corrupted <code>\xabDET</code> with <code>00 03 18 51 49 44 41 54</code>.
                 </p>
               </div>
             </div>
