@@ -43,7 +43,7 @@ print("🎉 Decoded Flag:", flag)`;
       <article className="max-w-4xl mx-auto px-6 pb-24">
         
         {/* Header / Hero Section */}
-        <header className="mb-12 flex flex-col items-center text-center">
+        <header className="mb-10 flex flex-col items-center text-center">
           <div className="mb-6 inline-block bg-[#111111]/80 backdrop-blur-md border border-emerald-500/40 px-4 py-1.5 rounded-full animate-glow-pulse">
             <span className="font-mono text-xs text-emerald-400 uppercase tracking-[0.3em]">
               PICOCTF 2019 • FORENSICS • NETWORK STEGANOGRAPHY
@@ -55,7 +55,7 @@ print("🎉 Decoded Flag:", flag)`;
             Shark on Wire 2: Network Steganography & UDP Port Carving
           </h1>
           
-          <div className="flex items-center gap-4 text-sm font-mono text-zinc-500 uppercase tracking-widest mb-10">
+          <div className="flex items-center gap-4 text-sm font-mono text-zinc-500 uppercase tracking-widest mb-8">
             <span>By Abdo</span>
             <span>•</span>
             <span>Aug 31, 2026</span>
@@ -74,19 +74,41 @@ print("🎉 Decoded Flag:", flag)`;
           </div>
         </header>
 
-        {/* Challenge Overview Card */}
-        <div className="bg-[#0b1814]/80 border border-emerald-500/30 rounded-2xl p-6 shadow-xl relative overflow-hidden mb-12">
-          <div className="absolute top-0 left-0 w-1 h-full bg-emerald-400 shadow-[0_0_15px_#34d399]"></div>
-          <h3 className="text-emerald-400 font-mono text-sm uppercase tracking-widest font-bold mb-2">
-            🎯 Mission Objective
-          </h3>
-          <p className="text-sm text-zinc-300 leading-relaxed font-sans">
-            We are tasked with investigating <code>capture.pcap</code>. The capture contains decoys and noise streams. We must bypass the troll flags, detect anomalous UDP traffic to destination port 22, and extract covert ASCII characters encoded in the source port numbers.
-          </p>
-          <div className="mt-4 pt-4 border-t border-zinc-800/80 flex flex-wrap gap-4 text-xs font-mono text-zinc-400">
-            <span>● <strong>Category:</strong> Network Forensics</span>
-            <span>● <strong>Points:</strong> 300 PTS</span>
-            <span>● <strong>Flag:</strong> <code>picoCTF&#123;p1LLf3r3d_data_v1a_st3g0&#125;</code></span>
+        {/* Challenge Description & Provided Artifacts Box */}
+        <div className="bg-[#0b1814]/90 border border-emerald-500/30 rounded-2xl p-6 shadow-xl relative overflow-hidden mb-10 backdrop-blur-md">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="md:col-span-2 space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-0.5 rounded text-xs font-mono font-bold uppercase tracking-wider">
+                  Official Challenge Prompt
+                </span>
+              </div>
+              <p className="text-zinc-300 text-sm md:text-base leading-relaxed italic font-sans">
+                &ldquo;We found this packet capture. Recover the flag that was pilfered from the network.&rdquo;
+              </p>
+              <div className="flex flex-wrap gap-4 text-xs font-mono text-zinc-400 pt-2">
+                <span>● <strong>Category:</strong> Network Forensics</span>
+                <span>● <strong>Points:</strong> 300 PTS</span>
+                <span>● <strong>Flag Format:</strong> <code>picoCTF&#123;...&#125;</code></span>
+              </div>
+            </div>
+            
+            <div className="bg-[#050c0a] border border-emerald-500/20 rounded-xl p-4 flex flex-col justify-between space-y-3">
+              <div>
+                <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">
+                  Provided File
+                </span>
+                <div className="flex items-center gap-2 text-white font-mono text-sm font-bold">
+                  <svg className="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" /></svg>
+                  capture.pcap
+                </div>
+                <span className="text-[11px] font-mono text-zinc-400 block mt-1">Size: 115 KB • PCAP</span>
+                <span className="text-[11px] font-mono text-zinc-500 block">Type: Wireshark / libpcap</span>
+              </div>
+              <div className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded border border-emerald-500/20 text-center truncate">
+                Target: UDP Port 22 Stream
+              </div>
+            </div>
           </div>
         </div>
 

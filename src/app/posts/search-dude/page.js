@@ -47,6 +47,43 @@ export default function SearchDudeWriteup() {
           </div>
         </header>
 
+        {/* Challenge Description & Provided Artifacts Box */}
+        <div className="bg-[#1c170e]/90 border border-amber-500/30 rounded-2xl p-6 shadow-xl relative overflow-hidden mb-10 backdrop-blur-md">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="md:col-span-2 space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="bg-amber-500/20 text-amber-400 border border-amber-500/30 px-2.5 py-0.5 rounded text-xs font-mono font-bold uppercase tracking-wider">
+                  Challenge Prompt
+                </span>
+              </div>
+              <p className="text-zinc-300 text-sm md:text-base leading-relaxed italic font-sans">
+                &ldquo;A CEO&apos;s corporate workstation was compromised. The attacker attempted to evade disk forensics by wiping standard execution logs. Analyze the Windows.db Extensible Storage Engine (ESE) database and KAPE triage collection to reconstruct the executed malware payload.&rdquo;
+              </p>
+              <div className="flex flex-wrap gap-4 text-xs font-mono text-zinc-400 pt-2">
+                <span>● <strong>Category:</strong> Windows Forensics / ESE Database Carving</span>
+                <span>● <strong>Platform:</strong> ASCWG Qualifications 2026</span>
+              </div>
+            </div>
+            
+            <div className="bg-[#0e0b06] border border-amber-500/20 rounded-xl p-4 flex flex-col justify-between space-y-3">
+              <div>
+                <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">
+                  Provided Artifacts
+                </span>
+                <div className="flex items-center gap-2 text-white font-mono text-sm font-bold">
+                  <svg className="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 7v10c0 2 1.5 3 3.5 3h9c2 0 3.5-1 3.5-3V7c0-2-1.5-3-3.5-3h-9C5.5 4 4 5 4 7zm0 3h16m-16 4h16" /></svg>
+                  Windows.db / KAPE.zip
+                </div>
+                <span className="text-[11px] font-mono text-zinc-400 block mt-1">Size: 285 MB • ESE Database</span>
+                <span className="text-[11px] font-mono text-zinc-500 block">Path: Windows\Windows.edb</span>
+              </div>
+              <div className="text-[10px] font-mono text-amber-400 bg-amber-500/10 px-2 py-1 rounded border border-amber-500/20 text-center truncate">
+                Parser: ESEDatabaseView / NirSoft
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="space-y-8 text-lg text-zinc-300 leading-relaxed font-sans">
           
           <p>

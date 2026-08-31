@@ -41,7 +41,7 @@ print("\\n🎉 Finished! Extracted flag.png.")`;
       <article className="max-w-4xl mx-auto px-6 pb-24">
         
         {/* Header / Hero Section */}
-        <header className="mb-12 flex flex-col items-center text-center">
+        <header className="mb-10 flex flex-col items-center text-center">
           <div className="mb-6 inline-block bg-[#111111]/80 backdrop-blur-md border border-amber-500/40 px-4 py-1.5 rounded-full animate-glow-pulse">
             <span className="font-mono text-xs text-amber-400 uppercase tracking-[0.3em]">
               PICOCTF 2019 • FORENSICS • ARCHIVE AUTOMATION
@@ -53,7 +53,7 @@ print("\\n🎉 Finished! Extracted flag.png.")`;
             like1000: Automated Recursive TAR Decompression
           </h1>
           
-          <div className="flex items-center gap-4 text-sm font-mono text-zinc-500 uppercase tracking-widest mb-10">
+          <div className="flex items-center gap-4 text-sm font-mono text-zinc-500 uppercase tracking-widest mb-8">
             <span>By Abdo</span>
             <span>•</span>
             <span>Aug 31, 2026</span>
@@ -72,19 +72,41 @@ print("\\n🎉 Finished! Extracted flag.png.")`;
           </div>
         </header>
 
-        {/* Challenge Overview Card */}
-        <div className="bg-[#1a160e]/80 border border-amber-500/30 rounded-2xl p-6 shadow-xl relative overflow-hidden mb-12">
-          <div className="absolute top-0 left-0 w-1 h-full bg-amber-400 shadow-[0_0_15px_#fbbf24]"></div>
-          <h3 className="text-amber-400 font-mono text-sm uppercase tracking-widest font-bold mb-2">
-            🎯 Mission Objective
-          </h3>
-          <p className="text-sm text-zinc-300 leading-relaxed font-sans">
-            We are given a 10MB archive named <code>1000.tar</code>. Extracting it produces <code>999.tar</code> and a dummy text file. This repeats 1,000 times like a Russian Matryoshka doll. We must automate the unpacking and cleanup process to retrieve <code>flag.png</code>.
-          </p>
-          <div className="mt-4 pt-4 border-t border-zinc-800/80 flex flex-wrap gap-4 text-xs font-mono text-zinc-400">
-            <span>● <strong>Category:</strong> Forensics / Scripting</span>
-            <span>● <strong>Points:</strong> 250 PTS</span>
-            <span>● <strong>Flag:</strong> <code>picoCTF&#123;l0t5_0f_tar5&#125;</code></span>
+        {/* Challenge Description & Provided Artifacts Box */}
+        <div className="bg-[#1a160e]/90 border border-amber-500/30 rounded-2xl p-6 shadow-xl relative overflow-hidden mb-10 backdrop-blur-md">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="md:col-span-2 space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="bg-amber-500/20 text-amber-400 border border-amber-500/30 px-2.5 py-0.5 rounded text-xs font-mono font-bold uppercase tracking-wider">
+                  Official Challenge Prompt
+                </span>
+              </div>
+              <p className="text-zinc-300 text-sm md:text-base leading-relaxed italic font-sans">
+                &ldquo;This .tar file got tarred a lot. Also available at <code>/problems/like1000_0_369bbdea2672ad260f212633f7368499</code> on the shell server.&rdquo;
+              </p>
+              <div className="flex flex-wrap gap-4 text-xs font-mono text-zinc-400 pt-2">
+                <span>● <strong>Category:</strong> Forensics / Scripting</span>
+                <span>● <strong>Points:</strong> 250 PTS</span>
+                <span>● <strong>Flag Format:</strong> <code>picoCTF&#123;...&#125;</code></span>
+              </div>
+            </div>
+            
+            <div className="bg-[#0e0c08] border border-amber-500/20 rounded-xl p-4 flex flex-col justify-between space-y-3">
+              <div>
+                <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">
+                  Provided File
+                </span>
+                <div className="flex items-center gap-2 text-white font-mono text-sm font-bold">
+                  <svg className="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" /></svg>
+                  1000.tar
+                </div>
+                <span className="text-[11px] font-mono text-zinc-400 block mt-1">Size: 10,240,000 bytes</span>
+                <span className="text-[11px] font-mono text-zinc-500 block">Type: Nested POSIX tar</span>
+              </div>
+              <div className="text-[10px] font-mono text-amber-400 bg-amber-500/10 px-2 py-1 rounded border border-amber-500/20 text-center truncate">
+                Structure: 1000 Nested Layers
+              </div>
+            </div>
           </div>
         </div>
 

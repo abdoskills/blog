@@ -47,6 +47,43 @@ export default function TheThrushesWriteup() {
           </div>
         </header>
 
+        {/* Challenge Description & Provided Artifacts Box */}
+        <div className="bg-[#12161c]/90 border border-cyan-500/30 rounded-2xl p-6 shadow-xl relative overflow-hidden mb-10 backdrop-blur-md">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="md:col-span-2 space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 px-2.5 py-0.5 rounded text-xs font-mono font-bold uppercase tracking-wider">
+                  Challenge Prompt
+                </span>
+              </div>
+              <p className="text-zinc-300 text-sm md:text-base leading-relaxed italic font-sans">
+                &ldquo;A high-profile CTO had his private encrypted communications leaked despite zero unauthorized physical access. Investigate the provided macOS triage image to determine the interception mechanism and extract the adversary&apos;s command-and-control keys.&rdquo;
+              </p>
+              <div className="flex flex-wrap gap-4 text-xs font-mono text-zinc-400 pt-2">
+                <span>● <strong>Category:</strong> macOS Forensics / Reverse Engineering</span>
+                <span>● <strong>Platform:</strong> ASCWG Qualifications 2026</span>
+              </div>
+            </div>
+            
+            <div className="bg-[#080d11] border border-cyan-500/20 rounded-xl p-4 flex flex-col justify-between space-y-3">
+              <div>
+                <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">
+                  Provided Artifacts
+                </span>
+                <div className="flex items-center gap-2 text-white font-mono text-sm font-bold">
+                  <svg className="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                  macos_triage.tar.gz
+                </div>
+                <span className="text-[11px] font-mono text-zinc-400 block mt-1">Size: 412 MB • Triage Image</span>
+                <span className="text-[11px] font-mono text-zinc-500 block">Key Binary: Signal.app (Mach-O)</span>
+              </div>
+              <div className="text-[10px] font-mono text-cyan-400 bg-cyan-500/10 px-2 py-1 rounded border border-cyan-500/20 text-center truncate">
+                Dissector: Ghidra / Hopper
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="space-y-8 text-lg text-zinc-300 leading-relaxed font-sans">
           
           <p>

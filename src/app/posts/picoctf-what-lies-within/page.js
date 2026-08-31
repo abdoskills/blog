@@ -49,7 +49,7 @@ if "picoCTF{" in extracted_text:
       <article className="max-w-4xl mx-auto px-6 pb-24">
         
         {/* Header / Hero Section */}
-        <header className="mb-12 flex flex-col items-center text-center">
+        <header className="mb-10 flex flex-col items-center text-center">
           <div className="mb-6 inline-block bg-[#111111]/80 backdrop-blur-md border border-cyan-500/40 px-4 py-1.5 rounded-full animate-glow-pulse">
             <span className="font-mono text-xs text-cyan-400 uppercase tracking-[0.3em]">
               PICOCTF 2019 • FORENSICS • LSB STEGANOGRAPHY
@@ -61,7 +61,7 @@ if "picoCTF{" in extracted_text:
             What Lies Within: LSB Image Steganography Deconstruction
           </h1>
           
-          <div className="flex items-center gap-4 text-sm font-mono text-zinc-500 uppercase tracking-widest mb-10">
+          <div className="flex items-center gap-4 text-sm font-mono text-zinc-500 uppercase tracking-widest mb-8">
             <span>By Abdo</span>
             <span>•</span>
             <span>Aug 31, 2026</span>
@@ -80,19 +80,41 @@ if "picoCTF{" in extracted_text:
           </div>
         </header>
 
-        {/* Challenge Overview Card */}
-        <div className="bg-[#0e161c]/80 border border-cyan-500/30 rounded-2xl p-6 shadow-xl relative overflow-hidden mb-12">
-          <div className="absolute top-0 left-0 w-1 h-full bg-cyan-400 shadow-[0_0_15px_#22d3ee]"></div>
-          <h3 className="text-cyan-400 font-mono text-sm uppercase tracking-widest font-bold mb-2">
-            🎯 Mission Objective
-          </h3>
-          <p className="text-sm text-zinc-300 leading-relaxed font-sans">
-            We are given a scenic image of skyscraper buildings (<code>buildings.png</code>). The title "What Lies Within" hints that data is concealed within the lowest visual layers. We need to extract the Least Significant Bit (LSB) encoding to recover the hidden flag.
-          </p>
-          <div className="mt-4 pt-4 border-t border-zinc-800/80 flex flex-wrap gap-4 text-xs font-mono text-zinc-400">
-            <span>● <strong>Category:</strong> Steganography</span>
-            <span>● <strong>Points:</strong> 150 PTS</span>
-            <span>● <strong>Flag:</strong> <code>picoCTF&#123;h1d1ng_1n_th3_b1t5&#125;</code></span>
+        {/* Challenge Description & Provided Artifacts Box */}
+        <div className="bg-[#0e161c]/90 border border-cyan-500/30 rounded-2xl p-6 shadow-xl relative overflow-hidden mb-10 backdrop-blur-md">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="md:col-span-2 space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 px-2.5 py-0.5 rounded text-xs font-mono font-bold uppercase tracking-wider">
+                  Official Challenge Prompt
+                </span>
+              </div>
+              <p className="text-zinc-300 text-sm md:text-base leading-relaxed italic font-sans">
+                &ldquo;There&apos;s something in the building. Can you retrieve the flag?&rdquo;
+              </p>
+              <div className="flex flex-wrap gap-4 text-xs font-mono text-zinc-400 pt-2">
+                <span>● <strong>Category:</strong> Steganography</span>
+                <span>● <strong>Points:</strong> 150 PTS</span>
+                <span>● <strong>Flag Format:</strong> <code>picoCTF&#123;...&#125;</code></span>
+              </div>
+            </div>
+            
+            <div className="bg-[#060c10] border border-cyan-500/20 rounded-xl p-4 flex flex-col justify-between space-y-3">
+              <div>
+                <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">
+                  Provided File
+                </span>
+                <div className="flex items-center gap-2 text-white font-mono text-sm font-bold">
+                  <svg className="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                  buildings.png
+                </div>
+                <span className="text-[11px] font-mono text-zinc-400 block mt-1">Size: 625 KB • PNG Image</span>
+                <span className="text-[11px] font-mono text-zinc-500 block">Encoding: RGB 8-bit/color</span>
+              </div>
+              <div className="text-[10px] font-mono text-cyan-400 bg-cyan-500/10 px-2 py-1 rounded border border-cyan-500/20 text-center truncate">
+                Method: LSB Extraction
+              </div>
+            </div>
           </div>
         </div>
 

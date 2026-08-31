@@ -41,7 +41,7 @@ print("🎉 Successfully repaired! fixed.png generated.")`;
       <article className="max-w-4xl mx-auto px-6 pb-24">
         
         {/* Header / Hero Section */}
-        <header className="mb-12 flex flex-col items-center text-center">
+        <header className="mb-10 flex flex-col items-center text-center">
           <div className="mb-6 inline-block bg-[#111111]/80 backdrop-blur-md border border-purple-500/40 px-4 py-1.5 rounded-full animate-glow-pulse">
             <span className="font-mono text-xs text-purple-400 uppercase tracking-[0.3em]">
               PICOCTF 2019 • FORENSICS • FILE HEADER SURGERY
@@ -53,7 +53,7 @@ print("🎉 Successfully repaired! fixed.png generated.")`;
             c0rrupt: PNG Binary Specification & Hex Reconstruction
           </h1>
           
-          <div className="flex items-center gap-4 text-sm font-mono text-zinc-500 uppercase tracking-widest mb-10">
+          <div className="flex items-center gap-4 text-sm font-mono text-zinc-500 uppercase tracking-widest mb-8">
             <span>By Abdo</span>
             <span>•</span>
             <span>Aug 31, 2026</span>
@@ -72,19 +72,41 @@ print("🎉 Successfully repaired! fixed.png generated.")`;
           </div>
         </header>
 
-        {/* Challenge Overview Card */}
-        <div className="bg-[#120d1c]/80 border border-purple-500/30 rounded-2xl p-6 shadow-xl relative overflow-hidden mb-12">
-          <div className="absolute top-0 left-0 w-1 h-full bg-purple-400 shadow-[0_0_15px_#c084fc]"></div>
-          <h3 className="text-purple-400 font-mono text-sm uppercase tracking-widest font-bold mb-2">
-            🎯 Mission Objective
-          </h3>
-          <p className="text-sm text-zinc-300 leading-relaxed font-sans">
-            We are provided with an unrecognizable binary file named <code>mystery</code>. Any image viewer throws an "Invalid / Corrupted File" error. Our mission is to dissect the raw hex structure, identify corrupted chunks against the official W3C PNG specification, repair the broken bytes, and restore the visual flag.
-          </p>
-          <div className="mt-4 pt-4 border-t border-zinc-800/80 flex flex-wrap gap-4 text-xs font-mono text-zinc-400">
-            <span>● <strong>Category:</strong> Forensics / Binary Carving</span>
-            <span>● <strong>Points:</strong> 250 PTS</span>
-            <span>● <strong>Flag Format:</strong> <code>picoCTF&#123;...&#125;</code></span>
+        {/* Challenge Description & Provided Artifacts Box */}
+        <div className="bg-[#120d1c]/90 border border-purple-500/30 rounded-2xl p-6 shadow-xl relative overflow-hidden mb-10 backdrop-blur-md">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="md:col-span-2 space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="bg-purple-500/20 text-purple-400 border border-purple-500/30 px-2.5 py-0.5 rounded text-xs font-mono font-bold uppercase tracking-wider">
+                  Official Challenge Prompt
+                </span>
+              </div>
+              <p className="text-zinc-300 text-sm md:text-base leading-relaxed italic font-sans">
+                &ldquo;We found this file. Recover the flag. You can also find the file in <code>/problems/c0rrupt_0_1fcad1353b2255f250d60c14afed2100</code> on the shell server.&rdquo;
+              </p>
+              <div className="flex flex-wrap gap-4 text-xs font-mono text-zinc-400 pt-2">
+                <span>● <strong>Category:</strong> Forensics / File Repair</span>
+                <span>● <strong>Points:</strong> 250 PTS</span>
+                <span>● <strong>Flag Format:</strong> <code>picoCTF&#123;...&#125;</code></span>
+              </div>
+            </div>
+            
+            <div className="bg-[#09070e] border border-purple-500/20 rounded-xl p-4 flex flex-col justify-between space-y-3">
+              <div>
+                <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">
+                  Provided File
+                </span>
+                <div className="flex items-center gap-2 text-white font-mono text-sm font-bold">
+                  <svg className="w-4 h-4 text-purple-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+                  mystery
+                </div>
+                <span className="text-[11px] font-mono text-zinc-400 block mt-1">Size: 202,887 bytes</span>
+                <span className="text-[11px] font-mono text-zinc-500 block">Type: Raw Corrupted Binary</span>
+              </div>
+              <div className="text-[10px] font-mono text-purple-400 bg-purple-500/10 px-2 py-1 rounded border border-purple-500/20 text-center truncate">
+                Target: Valid PNG Image
+              </div>
+            </div>
           </div>
         </div>
 

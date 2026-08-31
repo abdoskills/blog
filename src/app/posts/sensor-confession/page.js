@@ -47,6 +47,43 @@ export default function SensorConfessionWriteup() {
           </div>
         </header>
 
+        {/* Challenge Description & Provided Artifacts Box */}
+        <div className="bg-[#1c0e12]/90 border border-rose-500/30 rounded-2xl p-6 shadow-xl relative overflow-hidden mb-10 backdrop-blur-md">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="md:col-span-2 space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="bg-rose-500/20 text-rose-400 border border-rose-500/30 px-2.5 py-0.5 rounded text-xs font-mono font-bold uppercase tracking-wider">
+                  Challenge Prompt
+                </span>
+              </div>
+              <p className="text-zinc-300 text-sm md:text-base leading-relaxed italic font-sans">
+                &ldquo;Our perimeter IDS flagged anomalous telemetry between industrial SCADA sensor controllers. Deep packet inspection indicates covert data exfiltration hiding inside legitimate TCP protocol header fields. Analyze the PCAP to reconstruct the leak.&rdquo;
+              </p>
+              <div className="flex flex-wrap gap-4 text-xs font-mono text-zinc-400 pt-2">
+                <span>● <strong>Category:</strong> Network Forensics / Covert Channels</span>
+                <span>● <strong>Platform:</strong> ASCWG Qualifications 2026</span>
+              </div>
+            </div>
+            
+            <div className="bg-[#0e0608] border border-rose-500/20 rounded-xl p-4 flex flex-col justify-between space-y-3">
+              <div>
+                <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">
+                  Provided Artifacts
+                </span>
+                <div className="flex items-center gap-2 text-white font-mono text-sm font-bold">
+                  <svg className="w-4 h-4 text-rose-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                  sensor_dump.pcap
+                </div>
+                <span className="text-[11px] font-mono text-zinc-400 block mt-1">Size: 94 MB • Packet Capture</span>
+                <span className="text-[11px] font-mono text-zinc-500 block">Protocol: TCP Urgent Pointer (URG)</span>
+              </div>
+              <div className="text-[10px] font-mono text-rose-400 bg-rose-500/10 px-2 py-1 rounded border border-rose-500/20 text-center truncate">
+                Analyzer: Wireshark / TShark / Scapy
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="space-y-8 text-lg text-zinc-300 leading-relaxed font-sans">
           
           <p>
