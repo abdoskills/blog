@@ -50,7 +50,7 @@ export default function PicoCTFHub() {
               Core Forensic Investigations
             </h2>
           </div>
-          <span className="text-xs font-mono text-zinc-500">4 Solved Missions</span>
+          <span className="text-xs font-mono text-zinc-500">5 Solved Missions</span>
         </div>
 
         {/* 4 Premium Challenge Cards */}
@@ -304,6 +304,70 @@ export default function PicoCTFHub() {
               {/* Footer CTA */}
               <div className="flex justify-between items-center text-xs font-mono text-zinc-500 pt-1">
                 <span>⏱ 7 min read</span>
+                <span className="text-emerald-400 group-hover:text-white font-bold flex items-center gap-1 transition-colors">
+                  Explore Mission <span className="transform transition-transform group-hover:translate-x-1.5">→</span>
+                </span>
+              </div>
+            </div>
+          </Link>
+
+
+          {/* ========================================================================= */}
+          {/* Card 5: Investigative Reversing 1 (Multi-PNG Overlay Carving) */}
+          {/* ========================================================================= */}
+          <Link 
+            href="/posts/picoctf-investigative-reversing-1" 
+            className="group relative bg-gradient-to-b from-[#101b18]/90 via-[#0b1411]/90 to-[#070c0a]/90 rounded-3xl flex flex-col border border-emerald-500/20 hover:border-emerald-400/60 transition-all duration-500 hover:shadow-[0_15px_45px_rgba(16,185,129,0.2)] hover:-translate-y-1.5 overflow-hidden backdrop-blur-xl md:col-span-2"
+          >
+            <div className="relative w-full h-56 md:h-64 overflow-hidden bg-black/80">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0b1411] via-transparent to-black/40 z-10 opacity-90 group-hover:opacity-60 transition-opacity duration-500"></div>
+              <Image 
+                src="/images/pico_investigative_reversing_1.jpg" 
+                alt="Investigative Reversing 1 - Multi-PNG Overlay Carving" 
+                fill 
+                className="object-cover transition-transform duration-700 group-hover:scale-105 brightness-[0.9] contrast-[1.15]" 
+                priority
+              />
+              <div className="absolute top-4 left-4 z-20 flex gap-2">
+                <span className="bg-black/70 backdrop-blur-md border border-emerald-500/40 text-emerald-300 font-mono text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
+                  Reverse Engineering
+                </span>
+                <span className="bg-black/70 backdrop-blur-md border border-zinc-700 text-zinc-300 font-mono text-[11px] px-2.5 py-1 rounded-full">
+                  350 PTS
+                </span>
+              </div>
+            </div>
+            
+            <div className="p-6 md:p-7 flex flex-col flex-grow relative z-20">
+              <div className="flex justify-between items-center mb-3">
+                <span className="font-mono text-xs text-emerald-400/80 uppercase tracking-widest">
+                  Binary Tracing &amp; Multi-Image Jigsaw Carving
+                </span>
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]"></span>
+                  <span className="font-mono text-[10px] text-zinc-500 uppercase">SOLVED</span>
+                </div>
+              </div>
+
+              <h2 className="text-2xl md:text-3xl font-bold mb-3 text-white group-hover:text-emerald-300 transition-colors duration-300 font-[family-name:var(--font-share-tech)] uppercase tracking-wide">
+                Investigative Reversing 1
+              </h2>
+
+              <p className="text-zinc-400 text-sm leading-relaxed mb-6 font-sans">
+                Decompiling ELF binaries in Ghidra to reconstruct a 26-character flag split across the trailing overlays of three PNG files past the <code>IEND</code> marker with arithmetic encoding.
+              </p>
+
+              {/* Tags */}
+              <div className="mt-auto pt-4 border-t border-zinc-800/80 flex flex-wrap gap-2 mb-4">
+                <span className="bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 text-[11px] font-mono px-2.5 py-0.5 rounded-md">Ghidra</span>
+                <span className="bg-zinc-900 text-zinc-400 border border-zinc-800 text-[11px] font-mono px-2.5 py-0.5 rounded-md">HxD / HexEd.it</span>
+                <span className="bg-zinc-900 text-zinc-400 border border-zinc-800 text-[11px] font-mono px-2.5 py-0.5 rounded-md">PNG IEND Overlays</span>
+                <span className="bg-zinc-900 text-zinc-400 border border-zinc-800 text-[11px] font-mono px-2.5 py-0.5 rounded-md">Python Oneliner</span>
+              </div>
+
+              {/* Footer CTA */}
+              <div className="flex justify-between items-center text-xs font-mono text-zinc-500 pt-1">
+                <span>⏱ 9 min read</span>
                 <span className="text-emerald-400 group-hover:text-white font-bold flex items-center gap-1 transition-colors">
                   Explore Mission <span className="transform transition-transform group-hover:translate-x-1.5">→</span>
                 </span>

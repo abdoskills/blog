@@ -25,6 +25,8 @@ with open("fixed.png", "wb") as f:
 
 print("🎉 Successfully repaired! fixed.png generated.")`;
 
+  const oneliner = `python -c "d=bytearray(open('mystery','rb').read()); d[0:8]=b'\\x89PNG\\r\\n\\x1a\\n'; d[12:16]=b'IHDR'; d[0x46:0x4A]=b'\\x00\\x00\\x16\\x25'; d[0x53:0x5B]=b'\\x00\\x03\\x18\\x51IDAT'; open('fixed.png','wb').write(d); print('fixed.png generated!')"`;
+
   return (
     <div className="min-h-screen relative z-10 text-gray-200 selection:bg-purple-500/30 selection:text-purple-200">
       
@@ -93,18 +95,22 @@ print("🎉 Successfully repaired! fixed.png generated.")`;
             
             <div className="bg-[#09070e] border border-purple-500/20 rounded-xl p-4 flex flex-col justify-between space-y-3">
               <div>
-                <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">
-                  Provided File
+                <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-widest block mb-2">
+                  Provided File (Download & Practice)
                 </span>
-                <div className="flex items-center gap-2 text-white font-mono text-sm font-bold">
-                  <svg className="w-4 h-4 text-purple-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
-                  mystery
-                </div>
-                <span className="text-[11px] font-mono text-zinc-400 block mt-1">Size: 202,887 bytes</span>
-                <span className="text-[11px] font-mono text-zinc-500 block">Type: Raw Corrupted Binary</span>
+                <a 
+                  href="/downloads/c0rrupt_mystery" 
+                  download="mystery"
+                  className="flex items-center gap-2 text-purple-300 hover:text-white font-mono text-sm font-bold bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 px-3 py-2 rounded-lg transition-all"
+                >
+                  <svg className="w-4 h-4 text-purple-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                  <span>⬇️ Download mystery</span>
+                </a>
+                <span className="text-[11px] font-mono text-zinc-400 block mt-2">Size: 202,887 bytes</span>
+                <span className="text-[11px] font-mono text-zinc-500 block">Type: Corrupted PNG Binary</span>
               </div>
               <div className="text-[10px] font-mono text-purple-400 bg-purple-500/10 px-2 py-1 rounded border border-purple-500/20 text-center truncate">
-                Target: Valid PNG Image
+                Dissector: HexEd.it / HxD
               </div>
             </div>
           </div>
@@ -113,7 +119,7 @@ print("🎉 Successfully repaired! fixed.png generated.")`;
         {/* Section 1: The Beginner Breakdown */}
         <div className="space-y-6 text-zinc-300 leading-relaxed font-sans mb-12">
           <div className="bg-[#0f1118] border-l-4 border-purple-500 p-6 rounded-r-xl shadow-md">
-            <h4 className="text-purple-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 THE INTUITIVE ANALOGY (Why did it break?)</h4>
+            <h4 className="text-purple-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 THE INTUITIVE ANALOGY (Why did the image break?)</h4>
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
               Imagine receiving a sealed shipping container. The barcode on the outside is smudged, the label that says what is inside is torn off, and the weight sticker doesn&apos;t match the contents. The customs inspector immediately refuses to process it. That is exactly what happens when your OS tries to open <code>mystery</code>. The challenge creator took a legitimate PNG image and intentionally sabotaged 4 specific barcode and header bytes so every image viewer rejects it as corrupted.
             </p>
@@ -131,7 +137,7 @@ print("🎉 Successfully repaired! fixed.png generated.")`;
 
           <div className="bg-[#050508] border border-zinc-800 rounded-xl p-5 font-mono text-xs md:text-sm text-zinc-300 overflow-x-auto shadow-xl">
             <pre className="leading-relaxed">
-{`1. The 8-Byte Magic Header:
+{`1. The 8-Byte Magic Header (Official Signature):
    Hex:   89  50  4E  47  0D  0A  1A  0A
    ASCII: \\x89  P   N   G  \\r  \\n \\x1a \\n
 
@@ -278,6 +284,9 @@ print("🎉 Successfully repaired! fixed.png generated.")`;
               <p className="text-sm text-zinc-300 font-sans">
                 <strong>Why it broke:</strong> The actual image pixel data chunk header was scrambled from <code>IDAT</code> into <code>\xabDET</code> with an invalid length prefix.
               </p>
+              <div className="bg-[#0e0a16] p-3 rounded-lg border border-purple-500/20 text-xs text-zinc-400 font-sans mb-2">
+                💡 <em>How we calculate IDAT length: Total file size (202,887 bytes) minus all header and other chunk bytes = 202,833 bytes = <code>0x00031851</code> in hex.</em>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-mono text-xs">
                 <div className="p-3 bg-black/80 rounded-lg border border-red-500/30">
                   <div className="text-zinc-500 mb-1">Current Corrupted Bytes:</div>
@@ -301,12 +310,12 @@ print("🎉 Successfully repaired! fixed.png generated.")`;
           </div>
         </div>
 
-        {/* Section 5: FAST AUTOMATED SOLVER */}
+        {/* Section 5: FAST AUTOMATED SOLVER & ONELINER */}
         <div className="space-y-6 mb-14">
           <div className="border-b border-purple-500/30 pb-4 flex justify-between items-end">
             <div>
               <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded text-xs font-mono font-bold uppercase tracking-wider">
-                METHOD B: AUTOMATED FAST SOLVE
+                METHOD B: AUTOMATED FAST SOLVE & ONELINER
               </span>
               <h2 className="text-2xl md:text-3xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider mt-3">
                 4. The 0.1-Second Python Fixer (`solve.py`)
@@ -323,6 +332,17 @@ print("🎉 Successfully repaired! fixed.png generated.")`;
             <pre>
               <code>{solverScript}</code>
             </pre>
+          </div>
+
+          {/* Fast Oneliner */}
+          <div className="space-y-2 pt-2">
+            <div className="flex justify-between items-center">
+              <span className="font-mono text-xs text-emerald-400 font-bold uppercase">⚡ Terminal One-Liner (PowerShell / Bash):</span>
+              <CopyButton text={oneliner} />
+            </div>
+            <div className="bg-black border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">
+              <code>{oneliner}</code>
+            </div>
           </div>
         </div>
 
