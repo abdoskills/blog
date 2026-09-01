@@ -5,9 +5,45 @@ import Navbar from "@/components/Navbar";
 export default function ThreatLabsHub() {
   const challenges = [
     {
+      title: "Ping Pong Show",
+      slug: "kaspersky-ping-pong-show",
+      platform: "Kaspersky CTF",
+      category: "Memory Forensics",
+      points: "500 PTS",
+      tagline: "PoolParty & Havoc Demon Reversing",
+      description: "Investigating a 4.5 GB Windows 10 RAM dump. Carving Outlook phishing attachments, reversing PoolParty ThreadPool injection into Acrobat, and decrypting Havoc Demon C2 traffic.",
+      image: "/images/kaspersky_ping_pong_show.jpg",
+      tags: ["Volatility 3", "PoolParty", "Havoc Demon", "AES-CTR", "Outlook MPFS"],
+      time: "10 min read"
+    },
+    {
+      title: "Ryan Guzling",
+      slug: "kaspersky-ryan-guzling",
+      platform: "Kaspersky CTF",
+      category: "macOS DFIR",
+      points: "500 PTS",
+      tagline: "CoreStorage Fusion Drive & FileVault",
+      description: "Reassembling an Apple CoreStorage Fusion Drive split across SSD and HDD images. Carving an HFS+ trash volume to recover the FileVault recovery key and unlock the volume.",
+      image: "/images/kaspersky_ryan_guzling.jpg",
+      tags: ["CoreStorage", "FileVault", "HFS+", "SleuthKit", "hdiutil"],
+      time: "8 min read"
+    },
+    {
+      title: "Time to Install Arch",
+      slug: "kaspersky-time-to-install-arch",
+      platform: "Kaspersky CTF",
+      category: "Network Forensics",
+      points: "500 PTS",
+      tagline: "TLS GREASE Covert Channel & DLL Sideloading",
+      description: "Forensic analysis of a Windows Server 2016 VMDK and PCAP. Spotting GAC DLL sideloading, decoding a covert channel inside TLS GREASE 0x0a0a extensions, and ChaCha20 decryption.",
+      image: "/images/kaspersky_time_to_install_arch.jpg",
+      tags: ["Wireshark", "DLL Sideloading", "TLS GREASE", "ChaCha20", "tshark"],
+      time: "9 min read"
+    },
+    {
       title: "Phobos Ransomware Analysis",
       slug: "phobos-ransomware-analysis",
-      platform: "Malware DFIR Lab",
+      platform: "Threat Labs",
       category: "Reverse Engineering",
       points: "ADVANCED",
       tagline: "Unpacking, Decrypting & Threat Intel",
@@ -30,7 +66,7 @@ export default function ThreatLabsHub() {
         <div className="max-w-4xl mx-auto px-6 mb-14 text-center">
           <div className="mb-4 inline-block bg-[#111111]/80 backdrop-blur-md border border-emerald-500/40 px-4 py-1.5 rounded-full animate-glow-pulse">
             <span className="font-mono text-xs text-emerald-400 uppercase tracking-[0.3em]">
-              CYBERDEFENDERS • BLUE TEAM • FORENSIC LABS
+              KASPERSKY CTF • CYBERDEFENDERS • BLUE TEAM LABS
               <span className="animate-blink inline-block w-1.5 h-3 bg-emerald-400 ml-2 align-middle"></span>
             </span>
           </div>
@@ -38,7 +74,7 @@ export default function ThreatLabsHub() {
             DFIR &amp; Threat Labs
           </h1>
           <p className="text-zinc-400 text-base md:text-lg font-sans max-w-2xl mx-auto leading-relaxed">
-            Hands-on walkthroughs and case studies covering malware reverse engineering, memory dump analysis, threat hunting, and blue team forensics.
+            Hands-on deep dives covering enterprise memory analysis, macOS CoreStorage recovery, TLS covert channel decoding, and malware reverse engineering.
           </p>
         </div>
 
@@ -49,13 +85,13 @@ export default function ThreatLabsHub() {
               Lab Investigations
             </span>
             <h2 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
-              Deep Dives &amp; Analyses
+              Published Writeups ({challenges.length})
             </h2>
           </div>
-          <span className="text-xs font-mono text-zinc-500">Guides &amp; Labs</span>
+          <span className="text-xs font-mono text-zinc-500">4 Guides</span>
         </div>
 
-        {/* Challenge Cards Grid (Unified Theme) */}
+        {/* Challenge Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-6 w-full">
           {challenges.map((c) => {
             return (
@@ -118,19 +154,6 @@ export default function ThreatLabsHub() {
               </Link>
             );
           })}
-
-          {/* Incoming CyberDefenders / Blue Team Lab Card */}
-          <div className="bg-[#0e0e13]/40 border border-dashed border-zinc-800/80 rounded-2xl p-6 flex flex-col justify-center items-center text-center backdrop-blur-md min-h-[300px]">
-            <div className="w-10 h-10 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-lg mb-3">
-              🛡️
-            </div>
-            <span className="font-mono text-xs text-zinc-400 uppercase tracking-wider font-bold mb-1">
-              CyberDefenders &amp; Blue Team Labs
-            </span>
-            <p className="text-zinc-500 text-xs font-sans max-w-xs">
-              More memory analysis, Volatility 3 plugins, and network packet investigations are coming soon.
-            </p>
-          </div>
         </div>
 
       </main>

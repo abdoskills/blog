@@ -101,7 +101,43 @@ export default function Home() {
       time: "9 min read"
     },
 
-    // --- Threat Labs Challenges ---
+    // --- Threat Labs & Kaspersky CTF Challenges ---
+    {
+      title: "Ping Pong Show",
+      slug: "kaspersky-ping-pong-show",
+      platform: "Kaspersky CTF",
+      category: "Memory Forensics",
+      points: "500 PTS",
+      tagline: "PoolParty & Havoc Demon Reversing",
+      description: "Investigating a 4.5 GB Windows 10 RAM dump. Carving Outlook phishing attachments, reversing PoolParty ThreadPool injection into Acrobat, and decrypting Havoc Demon C2 traffic.",
+      image: "/images/kaspersky_ping_pong_show.jpg",
+      tags: ["Volatility 3", "PoolParty", "Havoc Demon", "AES-CTR", "Outlook MPFS"],
+      time: "10 min read"
+    },
+    {
+      title: "Ryan Guzling",
+      slug: "kaspersky-ryan-guzling",
+      platform: "Kaspersky CTF",
+      category: "macOS DFIR",
+      points: "500 PTS",
+      tagline: "CoreStorage Fusion Drive & FileVault",
+      description: "Reassembling an Apple CoreStorage Fusion Drive split across SSD and HDD images. Carving an HFS+ trash volume to recover the FileVault recovery key and unlock the volume.",
+      image: "/images/kaspersky_ryan_guzling.jpg",
+      tags: ["CoreStorage", "FileVault", "HFS+", "SleuthKit", "hdiutil"],
+      time: "8 min read"
+    },
+    {
+      title: "Time to Install Arch",
+      slug: "kaspersky-time-to-install-arch",
+      platform: "Kaspersky CTF",
+      category: "Network Forensics",
+      points: "500 PTS",
+      tagline: "TLS GREASE Covert Channel & DLL Sideloading",
+      description: "Forensic analysis of a Windows Server 2016 VMDK and PCAP. Spotting GAC DLL sideloading, decoding a covert channel inside TLS GREASE 0x0a0a extensions, and ChaCha20 decryption.",
+      image: "/images/kaspersky_time_to_install_arch.jpg",
+      tags: ["Wireshark", "DLL Sideloading", "TLS GREASE", "ChaCha20", "tshark"],
+      time: "9 min read"
+    },
     {
       title: "Phobos Ransomware Analysis",
       slug: "phobos-ransomware-analysis",
