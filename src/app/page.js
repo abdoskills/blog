@@ -32,7 +32,7 @@ export default function Home() {
       points: "Qualifications",
       tagline: "macOS • Windows • Network • Bitcoin",
       description: "Solutions for the Arab Security Cyber Wargames 2026 forensics and OSINT tracks: reversing a trojanized Signal app, ESE database carving, and Bitcoin mixer tracing.",
-      image: "/images/ascwg_hub.jpg",
+      image: "/images/cgwars_hub.jpg",
       tags: ["Mach-O", "Windows.db", "TRACE-7", "TCP Urg"],
       time: "4 Writeups"
     },
