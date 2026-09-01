@@ -12,8 +12,7 @@ export default function PicoCTFHub() {
       description: "Fixing a broken PNG file byte-by-byte in a hex editor. Restoring missing magic headers, repairing IHDR and pHYs chunks, and calculating the exact IDAT length.",
       image: "/images/pico_c0rrupt.jpg",
       tags: ["HexEd.it / HxD", "pngcheck", "PNG Spec", "Python Bytearray"],
-      time: "8 min read",
-      color: "purple"
+      time: "8 min read"
     },
     {
       title: "What Lies Within",
@@ -24,8 +23,7 @@ export default function PicoCTFHub() {
       description: "Extracting secret text hidden inside the least significant bits of an RGB image using zsteg, Aperi'Solve, and a quick custom Python script.",
       image: "/images/pico_what_lies_within.jpg",
       tags: ["Aperi'Solve", "zsteg", "LSB Bit-Planes", "Python PIL"],
-      time: "5 min read",
-      color: "cyan"
+      time: "5 min read"
     },
     {
       title: "like1000",
@@ -36,8 +34,7 @@ export default function PicoCTFHub() {
       description: "Extracting 1,000 nested TAR archives in seconds using a short Python loop with tarfile and automatic cleanup to get the flag.",
       image: "/images/pico_like1000.jpg",
       tags: ["Python tarfile", "TAR Archives", "Automation", "Garbage Collection"],
-      time: "4 min read",
-      color: "amber"
+      time: "4 min read"
     },
     {
       title: "Shark on Wire 2",
@@ -48,8 +45,7 @@ export default function PicoCTFHub() {
       description: "Finding secret data smuggled across UDP source port numbers. We filter the packets in Wireshark and decode ASCII characters by subtracting 5000 from each port.",
       image: "/images/pico_shark_on_wire_2.jpg",
       tags: ["Wireshark", "UDP Stream Triage", "Port Steganography", "Python struct"],
-      time: "7 min read",
-      color: "emerald"
+      time: "7 min read"
     },
     {
       title: "Investigative Reversing 0",
@@ -60,8 +56,7 @@ export default function PicoCTFHub() {
       description: "Decompiling a binary that appends altered characters right after the PNG IEND marker. We pull the trailing bytes in HxD and reverse the arithmetic shifts (+5 / -3).",
       image: "/images/pico_ir0.jpg",
       tags: ["Ghidra", "PNG IEND", "File Overlays", "Reverse Math"],
-      time: "6 min read",
-      color: "emerald"
+      time: "6 min read"
     },
     {
       title: "Investigative Reversing 1",
@@ -72,8 +67,7 @@ export default function PicoCTFHub() {
       description: "Reversing how a binary splits a 26-character flag across 3 separate PNG images. We carve the bytes past each IEND and put the jigsaw pieces back in place.",
       image: "/images/pico_investigative_reversing_1.jpg",
       tags: ["Ghidra", "Multi-Image Carving", "Jigsaw Assembly", "Python Solver"],
-      time: "8 min read",
-      color: "purple"
+      time: "8 min read"
     },
     {
       title: "Investigative Reversing 2",
@@ -84,8 +78,7 @@ export default function PicoCTFHub() {
       description: "Reversing a custom BMP LSB encoder. Finding offset 2000, reading 8 LSB bits per character, and undoing the binary's +5 shift to recover the flag.",
       image: "/images/pico_ir2.jpg",
       tags: ["Ghidra", "Bitmap LSB", "HexEd.it", "Shift Inversion"],
-      time: "7 min read",
-      color: "cyan"
+      time: "7 min read"
     },
     {
       title: "Investigative Reversing 3",
@@ -96,8 +89,7 @@ export default function PicoCTFHub() {
       description: "Overcoming interleaved dummy bytes in BMP steganography. We spot the 9-byte stride pattern in Ghidra and write a Python script that ignores the filler byte.",
       image: "/images/pico_ir3.jpg",
       tags: ["Ghidra", "Stride Analysis", "Dummy Skipping", "Binary Decompilation"],
-      time: "8 min read",
-      color: "amber"
+      time: "8 min read"
     },
     {
       title: "So Meta",
@@ -108,8 +100,7 @@ export default function PicoCTFHub() {
       description: "Extracting the flag hidden directly inside an image's metadata text chunks using ExifTool, strings, and Python PIL.",
       image: "/images/pico_so_meta.jpg",
       tags: ["ExifTool", "strings", "PNG tEXt Chunks", "Python PIL"],
-      time: "3 min read",
-      color: "purple"
+      time: "3 min read"
     },
     {
       title: "WhitePages",
@@ -120,8 +111,7 @@ export default function PicoCTFHub() {
       description: "Decoding a text file that looks completely blank. We analyze the raw bytes and map Unicode EM spaces and normal spaces into binary 0s and 1s.",
       image: "/images/pico_whitepages.jpg",
       tags: ["Format-Hex", "CyberChef", "Unicode Stego", "Binary Demodulation"],
-      time: "5 min read",
-      color: "emerald"
+      time: "5 min read"
     },
     {
       title: "Extensions",
@@ -132,8 +122,7 @@ export default function PicoCTFHub() {
       description: "Inspecting raw magic bytes on a misnamed text file, verifying that it is actually a PNG image, and changing the extension to view the flag.",
       image: "/images/pico_extensions.jpg",
       tags: ["Magic Bytes", "file", "Format-Hex", "File Signatures"],
-      time: "3 min read",
-      color: "amber"
+      time: "3 min read"
     },
     {
       title: "m00nwalk",
@@ -144,8 +133,7 @@ export default function PicoCTFHub() {
       description: "Decoding an SSTV audio signal from the Apollo 11 moon mission. We play the audio into Robot36 or Python PySSTV to draw the secret image line-by-line.",
       image: "/images/pico_m00nwalk.jpg",
       tags: ["SSTV", "Scottie 1", "Audio Forensics", "Robot36 / PySSTV"],
-      time: "6 min read",
-      color: "cyan"
+      time: "6 min read"
     },
     {
       title: "Shark on Wire 1",
@@ -156,13 +144,12 @@ export default function PicoCTFHub() {
       description: "Following UDP conversation streams in Wireshark, avoiding fake decoy flags, and pulling the real flag from Stream 5.",
       image: "/images/pico_shark_on_wire_1.jpg",
       tags: ["Wireshark", "UDP Stream Follow", "Decoy Trapping", "Scapy Reassembly"],
-      time: "4 min read",
-      color: "emerald"
+      time: "4 min read"
     }
   ];
 
   return (
-    <div className="flex flex-col min-h-screen relative z-10 text-gray-200 selection:bg-purple-500/30 selection:text-purple-200">
+    <div className="flex flex-col min-h-screen relative z-10 text-zinc-200 selection:bg-emerald-500/30 selection:text-emerald-200">
       
       {/* Top Header Navigation */}
       <nav className="w-full p-6 flex justify-between items-center max-w-6xl mx-auto z-50 relative">
@@ -173,8 +160,8 @@ export default function PicoCTFHub() {
           <span className="transform transition-transform group-hover:-translate-x-1">←</span> Back Home
         </Link>
         <div className="flex items-center gap-3">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-purple-500/10 text-purple-400 border border-purple-500/30">
-            <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse"></span>
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
             PicoCTF 2019
           </span>
         </div>
@@ -185,13 +172,13 @@ export default function PicoCTFHub() {
         
         {/* Hub Header */}
         <div className="max-w-4xl mx-auto px-6 mb-14 text-center">
-          <div className="mb-4 inline-block bg-[#111111]/80 backdrop-blur-md border border-purple-500/40 px-4 py-1.5 rounded-full animate-glow-pulse">
-            <span className="font-mono text-xs text-purple-400 uppercase tracking-[0.3em]">
+          <div className="mb-4 inline-block bg-[#111111]/80 backdrop-blur-md border border-emerald-500/40 px-4 py-1.5 rounded-full animate-glow-pulse">
+            <span className="font-mono text-xs text-emerald-400 uppercase tracking-[0.3em]">
               PICOCTF 2019 • FORENSICS &amp; REVERSING
-              <span className="animate-blink inline-block w-1.5 h-3 bg-purple-400 ml-2 align-middle"></span>
+              <span className="animate-blink inline-block w-1.5 h-3 bg-emerald-400 ml-2 align-middle"></span>
             </span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-extrabold text-white tracking-widest font-[family-name:var(--font-silkscreen)] mb-4 drop-shadow-[0_0_25px_rgba(168,85,247,0.4)]">
+          <h1 className="text-4xl md:text-6xl font-extrabold text-white tracking-widest font-[family-name:var(--font-silkscreen)] mb-4 drop-shadow-[0_0_25px_rgba(16,185,129,0.3)]">
             PicoCTF Hub
           </h1>
           <p className="text-zinc-400 text-base md:text-lg font-sans max-w-2xl mx-auto leading-relaxed">
@@ -202,7 +189,7 @@ export default function PicoCTFHub() {
         {/* Category Header */}
         <div className="max-w-6xl mx-auto px-6 mb-8 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <span className="bg-purple-500/20 text-purple-300 border border-purple-500/30 px-3 py-1 rounded-lg font-mono text-xs font-bold uppercase tracking-wider">
+            <span className="bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 px-3 py-1 rounded-lg font-mono text-xs font-bold uppercase tracking-wider">
               Forensics 2019
             </span>
             <h2 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
@@ -212,29 +199,17 @@ export default function PicoCTFHub() {
           <span className="text-xs font-mono text-zinc-500">13 Guides</span>
         </div>
 
-        {/* 13 Challenge Cards Grid */}
+        {/* 13 Challenge Cards Grid (Unified Theme) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-6 w-full">
           {challenges.map((c) => {
-            const colorClass = 
-              c.color === "purple" ? "border-purple-500/20 hover:border-purple-400/60 hover:shadow-[0_15px_45px_rgba(168,85,247,0.2)] text-purple-400" :
-              c.color === "cyan" ? "border-cyan-500/20 hover:border-cyan-400/60 hover:shadow-[0_15px_45px_rgba(6,182,212,0.2)] text-cyan-400" :
-              c.color === "amber" ? "border-amber-500/20 hover:border-amber-400/60 hover:shadow-[0_15px_45px_rgba(245,158,11,0.2)] text-amber-400" :
-              "border-emerald-500/20 hover:border-emerald-400/60 hover:shadow-[0_15px_45px_rgba(16,185,129,0.2)] text-emerald-400";
-
-            const badgeBorder = 
-              c.color === "purple" ? "border-purple-500/40 text-purple-300" :
-              c.color === "cyan" ? "border-cyan-500/40 text-cyan-300" :
-              c.color === "amber" ? "border-amber-500/40 text-amber-300" :
-              "border-emerald-500/40 text-emerald-300";
-
             return (
               <Link 
                 key={c.slug}
                 href={`/posts/${c.slug}`} 
-                className={`group relative bg-gradient-to-b from-[#111115]/90 via-[#0d0d12]/90 to-[#07070a]/90 rounded-2xl flex flex-col border ${colorClass} transition-all duration-500 hover:-translate-y-1.5 overflow-hidden backdrop-blur-xl`}
+                className="group relative bg-[#0e0e13]/90 rounded-2xl flex flex-col border border-zinc-800/80 hover:border-emerald-500/50 hover:shadow-[0_15px_35px_rgba(16,185,129,0.15)] transition-all duration-500 hover:-translate-y-1.5 overflow-hidden backdrop-blur-xl"
               >
                 <div className="relative w-full h-44 overflow-hidden bg-black/80">
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d12] via-transparent to-black/40 z-10 opacity-90 group-hover:opacity-60 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e13] via-transparent to-black/40 z-10 opacity-90 group-hover:opacity-60 transition-opacity duration-500"></div>
                   <Image 
                     src={c.image} 
                     alt={c.title} 
@@ -243,10 +218,10 @@ export default function PicoCTFHub() {
                     priority
                   />
                   <div className="absolute top-3 left-3 z-20 flex gap-2">
-                    <span className={`bg-black/70 backdrop-blur-md border ${badgeBorder} font-mono text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-md`}>
+                    <span className="bg-black/80 backdrop-blur-md border border-emerald-500/30 text-emerald-300 font-mono text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-md">
                       {c.category}
                     </span>
-                    <span className="bg-black/70 backdrop-blur-md border border-zinc-700 text-zinc-300 font-mono text-[10px] px-2 py-0.5 rounded-full">
+                    <span className="bg-black/80 backdrop-blur-md border border-zinc-700 text-zinc-300 font-mono text-[10px] px-2 py-0.5 rounded-full">
                       {c.points}
                     </span>
                   </div>
@@ -270,7 +245,7 @@ export default function PicoCTFHub() {
                   {/* Tags */}
                   <div className="mt-auto pt-3 border-t border-zinc-800/80 flex flex-wrap gap-1.5 mb-3">
                     {c.tags.map((tag) => (
-                      <span key={tag} className="bg-zinc-900 text-zinc-400 border border-zinc-800 text-[10px] font-mono px-2 py-0.5 rounded">
+                      <span key={tag} className="bg-zinc-900/90 text-zinc-400 border border-zinc-800 text-[10px] font-mono px-2 py-0.5 rounded">
                         {tag}
                       </span>
                     ))}
