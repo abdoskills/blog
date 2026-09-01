@@ -98,7 +98,7 @@ export default function ThreatLabsHub() {
               <Link 
                 key={c.slug}
                 href={`/posts/${c.slug}`} 
-                className="group relative bg-[#0e0e13]/90 rounded-2xl flex flex-col border border-zinc-800/80 hover:border-emerald-500/50 hover:shadow-[0_15px_35px_rgba(16,185,129,0.15)] transition-all duration-500 hover:-translate-y-1.5 overflow-hidden backdrop-blur-xl"
+                className="group relative bg-[#0e0e13]/90 rounded-2xl flex flex-col border theme-card transition-all duration-500 hover:-translate-y-1.5 overflow-hidden backdrop-blur-xl"
               >
                 <div className="relative w-full h-44 overflow-hidden bg-black/80">
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e13] via-transparent to-black/40 z-10 opacity-90 group-hover:opacity-60 transition-opacity duration-500"></div>
@@ -110,7 +110,7 @@ export default function ThreatLabsHub() {
                     priority
                   />
                   <div className="absolute top-3 left-3 z-20 flex gap-2">
-                    <span className="bg-black/80 backdrop-blur-md border border-emerald-500/30 text-emerald-300 font-mono text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-md">
+                    <span className="bg-black/80 backdrop-blur-md border theme-badge font-mono text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-md">
                       {c.platform}
                     </span>
                     <span className="bg-black/80 backdrop-blur-md border border-zinc-700 text-zinc-300 font-mono text-[10px] px-2 py-0.5 rounded-full">
@@ -126,7 +126,7 @@ export default function ThreatLabsHub() {
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold mb-2 text-white group-hover:text-emerald-300 transition-colors duration-300 font-[family-name:var(--font-share-tech)] uppercase tracking-wide">
+                  <h3 className="text-xl font-bold mb-2 text-white group-hover:theme-text transition-colors duration-300 font-[family-name:var(--font-share-tech)] uppercase tracking-wide">
                     {c.title}
                   </h3>
 
@@ -146,7 +146,7 @@ export default function ThreatLabsHub() {
                   {/* Footer CTA */}
                   <div className="flex justify-between items-center text-[11px] font-mono text-zinc-500 pt-1">
                     <span>⏱ {c.time}</span>
-                    <span className="text-emerald-400 group-hover:text-white font-bold flex items-center gap-1 transition-colors">
+                    <span className="theme-cta font-bold flex items-center gap-1 transition-colors">
                       Read Investigation <span className="transform transition-transform group-hover:translate-x-1">→</span>
                     </span>
                   </div>

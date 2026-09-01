@@ -7,12 +7,12 @@
   /* Real-time Dynamic Theme Colors */
   --accent-color: #10b981;
   --accent-rgb: 16, 185, 129;
-  --accent-glow: rgba(16, 185, 129, 0.35);
+  --accent-glow: rgba(16, 185, 129, 0.4);
   --accent-dim: rgba(16, 185, 129, 0.12);
   --accent-border: rgba(16, 185, 129, 0.35);
-  --accent-hover-border: rgba(16, 185, 129, 0.65);
+  --accent-hover-border: rgba(16, 185, 129, 0.7);
   --accent-text: #34d399;
-  --accent-shadow: 0 0 25px rgba(16, 185, 129, 0.25);
+  --accent-shadow: 0 0 25px rgba(16, 185, 129, 0.3);
 }
 
 body {
@@ -35,6 +35,55 @@ body {
   transition-property: color, background-color, border-color, box-shadow;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 250ms;
+}
+
+/* Custom Dynamic Theme Utilities */
+.theme-text {
+  color: var(--accent-color) !important;
+}
+.theme-text-glow {
+  color: var(--accent-color) !important;
+  text-shadow: 0 0 15px var(--accent-glow) !important;
+}
+.theme-border {
+  border-color: var(--accent-border) !important;
+}
+.theme-border-glow {
+  border-color: var(--accent-border) !important;
+  box-shadow: 0 0 15px var(--accent-glow) !important;
+}
+.theme-bg-dim {
+  background-color: var(--accent-dim) !important;
+}
+.theme-bg-solid {
+  background-color: var(--accent-color) !important;
+  color: #000000 !important;
+}
+.theme-card {
+  border-color: rgba(39, 39, 42, 0.8) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.theme-card:hover {
+  border-color: var(--accent-hover-border) !important;
+  box-shadow: 0 15px 35px var(--accent-glow) !important;
+}
+.theme-badge {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  border-color: var(--accent-border) !important;
+  color: var(--accent-text) !important;
+}
+.theme-cta {
+  color: var(--accent-color) !important;
+}
+.theme-cta:hover {
+  color: #ffffff !important;
+}
+.theme-input {
+  border-color: rgba(39, 39, 42, 0.8) !important;
+}
+.theme-input:focus {
+  border-color: var(--accent-hover-border) !important;
+  box-shadow: 0 0 15px var(--accent-dim) !important;
 }
 
 /* Custom Cyberpunk Cursors */
