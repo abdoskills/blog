@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono, Silkscreen, Share_Tech_Mono } from "next/font/google";
 import "./globals.css";
 import CyberBackground from "@/components/CyberBackground";
+import ThemeController from "@/components/ThemeController";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,11 +36,12 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${silkscreen.variable} ${shareTech.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col relative bg-[#060709] text-gray-100 selection:bg-pink-500/30 selection:text-pink-200">
+      <body className="min-h-full flex flex-col relative bg-[#060709] text-gray-100">
         <CyberBackground />
         <div className="relative z-10 flex flex-col flex-grow">
           {children}
         </div>
+        <ThemeController />
       </body>
     </html>
   );

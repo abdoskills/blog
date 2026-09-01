@@ -3,6 +3,16 @@
 :root {
   --background: #060709;
   --foreground: #ededed;
+
+  /* Real-time Dynamic Theme Colors */
+  --accent-color: #10b981;
+  --accent-rgb: 16, 185, 129;
+  --accent-glow: rgba(16, 185, 129, 0.35);
+  --accent-dim: rgba(16, 185, 129, 0.12);
+  --accent-border: rgba(16, 185, 129, 0.35);
+  --accent-hover-border: rgba(16, 185, 129, 0.65);
+  --accent-text: #34d399;
+  --accent-shadow: 0 0 25px rgba(16, 185, 129, 0.25);
 }
 
 body {
@@ -14,13 +24,26 @@ body {
   overflow-x: hidden;
 }
 
+/* Dynamic Selection Highlight */
+::selection {
+  background-color: var(--accent-dim) !important;
+  color: var(--accent-text) !important;
+}
+
+/* Smooth transition for theme variable changes */
+*, *::before, *::after {
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 250ms;
+}
+
 /* Custom Cyberpunk Cursors */
 body {
   cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%234ade80" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>') 12 12, crosshair;
 }
 
 a, button, summary, .cursor-pointer, [role="button"], details summary {
-  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23ec4899" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="3" fill="%23ec4899"/></svg>') 12 12, pointer !important;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%2310b981" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="3" fill="%2310b981"/></svg>') 12 12, pointer !important;
 }
 
 .cursor-help {
@@ -38,9 +61,9 @@ a, button, summary, .cursor-pointer, [role="button"], details summary {
 }
 
 @keyframes glow-pulse {
-  0% { box-shadow: 0 0 5px rgba(74, 222, 128, 0.2), inset 0 0 5px rgba(74, 222, 128, 0.1); }
-  50% { box-shadow: 0 0 20px rgba(74, 222, 128, 0.6), inset 0 0 10px rgba(74, 222, 128, 0.2); }
-  100% { box-shadow: 0 0 5px rgba(74, 222, 128, 0.2), inset 0 0 5px rgba(74, 222, 128, 0.1); }
+  0% { box-shadow: 0 0 5px var(--accent-glow), inset 0 0 5px var(--accent-dim); }
+  50% { box-shadow: 0 0 20px var(--accent-glow), inset 0 0 10px var(--accent-glow); }
+  100% { box-shadow: 0 0 5px var(--accent-glow), inset 0 0 5px var(--accent-dim); }
 }
 .animate-glow-pulse {
   animation: glow-pulse 3s infinite;
