@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Navbar from "@/components/Navbar";
 
 export default function ASCWGHub() {
   const challenges = [
@@ -52,21 +53,7 @@ export default function ASCWGHub() {
   return (
     <div className="flex flex-col min-h-screen relative z-10 text-zinc-200 selection:bg-emerald-500/30 selection:text-emerald-200">
       
-      {/* Top Header Navigation */}
-      <nav className="w-full p-6 flex justify-between items-center max-w-6xl mx-auto z-50 relative">
-        <Link 
-          href="/" 
-          className="group flex items-center gap-2 text-zinc-400 hover:text-white transition-colors font-mono text-sm uppercase tracking-widest"
-        >
-          <span className="transform transition-transform group-hover:-translate-x-1">←</span> Back Home
-        </Link>
-        <div className="flex items-center gap-3">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            ASCWG 2026
-          </span>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Main Content */}
       <main className="flex-grow pt-6 pb-20">

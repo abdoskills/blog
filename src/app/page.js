@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -340,25 +341,11 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen relative z-10 text-zinc-200 selection:bg-emerald-500/30 selection:text-emerald-200">
       
-      {/* Navigation Bar */}
-      <nav className="text-zinc-200 p-4 transition-all duration-300 w-full z-50">
-        <div className="max-w-6xl mx-auto flex justify-between items-center relative h-8">
-          <div className="absolute left-1/2 transform -translate-x-1/2">
-            <Link href="/">
-              <span className="text-4xl font-extrabold text-white tracking-widest font-[family-name:var(--font-silkscreen)] drop-shadow-[0_0_15px_rgba(16,185,129,0.3)]">
-                Skills
-              </span>
-            </Link>
-          </div>
-          
-          <div className="absolute right-0 flex items-center justify-center w-8 h-8 opacity-70">
-            <svg aria-hidden="true" focusable="false" className="w-5 h-5 fill-current text-zinc-400" viewBox="0 0 512 512"><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
-          </div>
-        </div>
-      </nav>
+      {/* Universal Navigation Bar with Menu */}
+      <Navbar />
 
       {/* Main Content */}
-      <main className="flex-grow pt-16 pb-20">
+      <main className="flex-grow pt-8 pb-20">
         
         {/* Search Bar & Filter Controls */}
         <div className="w-full max-w-3xl mx-auto px-4 mb-8 z-30 relative">
