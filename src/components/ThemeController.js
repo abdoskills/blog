@@ -135,14 +135,18 @@ export default function ThemeController() {
   }, [applyTheme]);
 
   const handleWheelMove = useCallback((e) => {
-    latestMouseRef.current = { clientX: e.clientX, clientY: e.clientY };
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    latestMouseRef.current = { clientX, clientY };
     if (!rafIdRef.current) {
       rafIdRef.current = requestAnimationFrame(processWheelMove);
     }
   }, [processWheelMove]);
 
   const handleWheelClick = (e) => {
-    latestMouseRef.current = { clientX: e.clientX, clientY: e.clientY };
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    latestMouseRef.current = { clientX, clientY };
     processWheelMove();
     setLockedColor(currentColor);
     try {
@@ -225,8 +229,10 @@ export default function ThemeController() {
           <div
             ref={wheelRef}
             onMouseMove={handleWheelMove}
+            onTouchMove={handleWheelMove}
+            onTouchStart={handleWheelMove}
             onClick={handleWheelClick}
-            className="relative w-44 h-44 rounded-full cursor-crosshair shadow-[0_0_25px_rgba(0,0,0,0.8)] transition-transform duration-150 hover:scale-105 active:scale-95"
+            className="relative w-44 h-44 rounded-full cursor-crosshair shadow-[0_0_25px_rgba(0,0,0,0.8)] transition-transform duration-150 hover:scale-105 active:scale-95 touch-none"
             style={{
               background: `conic-gradient(
                 from 0deg,
