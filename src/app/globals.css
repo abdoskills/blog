@@ -30,7 +30,7 @@ body {
   color: var(--accent-text) !important;
 }
 
-/* Smooth transition for theme variable changes */
+/* Smooth transition for all theme variable changes */
 *, *::before, *::after {
   transition-property: color, background-color, border-color, box-shadow, text-shadow;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -86,7 +86,56 @@ body {
   box-shadow: 0 0 15px var(--accent-dim) !important;
 }
 
-/* Custom Cyberpunk Cursors */
+/* ========================================================================= */
+/* UNIVERSAL POST THEME DYNAMIC MAPPING                                       */
+/* Automatically maps all post writeups (headings, badges, code, flag boxes) */
+/* to the active theme color in real time!                                   */
+/* ========================================================================= */
+
+main [class*="text-emerald-"],
+main [class*="text-cyan-"],
+main [class*="text-amber-"],
+main [class*="text-teal-"],
+main [class*="text-green-"],
+main [class*="text-yellow-"] {
+  color: var(--accent-text) !important;
+}
+
+main [class*="border-emerald-"],
+main [class*="border-cyan-"],
+main [class*="border-amber-"],
+main [class*="border-teal-"],
+main [class*="border-green-"],
+main [class*="border-yellow-"] {
+  border-color: var(--accent-border) !important;
+}
+
+main [class*="bg-emerald-500/"],
+main [class*="bg-emerald-400/"],
+main [class*="bg-cyan-500/"],
+main [class*="bg-cyan-400/"],
+main [class*="bg-amber-500/"],
+main [class*="bg-amber-400/"],
+main [class*="bg-teal-500/"],
+main [class*="bg-green-500/"],
+main [class*="bg-yellow-500/"] {
+  background-color: var(--accent-dim) !important;
+}
+
+main [class*="shadow-[0_0_40px_rgba("],
+main [class*="shadow-[0_0_30px_rgba("],
+main [class*="shadow-[0_0_20px_rgba("],
+main [class*="shadow-[0_0_25px_rgba("] {
+  box-shadow: 0 0 35px var(--accent-glow) !important;
+}
+
+/* Flag & Methodology Box Dynamic Glow */
+main section[class*="from-[#"] {
+  border-color: var(--accent-hover-border) !important;
+  box-shadow: 0 0 40px var(--accent-glow) !important;
+}
+
+/* Dynamic Cursor Sync */
 body {
   cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23f59e0b" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>') 12 12, crosshair;
 }
