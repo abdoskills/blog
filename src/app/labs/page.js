@@ -10,7 +10,7 @@ export default function ThreatLabsHub() {
       category: "Reverse Engineering",
       points: "ADVANCED",
       tagline: "Unpacking, Decrypting & Threat Intel",
-      description: "Static and dynamic malware analysis of Phobos ransomware. Decompiling cryptographic routines, reconstructing infection vectors, analyzing persistence keys, and extracting actionable YARA rules and IOCs.",
+      description: "Static and dynamic analysis of Phobos ransomware. Decompiling its crypto routine in Ghidra, mapping out persistence keys, and writing custom YARA detection rules.",
       image: "/images/phobos_thumbnail.jpg",
       tags: ["Ghidra", "Ransomware DFIR", "x64dbg", "Threat Intel", "YARA"],
       time: "12 min read",
@@ -32,7 +32,7 @@ export default function ThreatLabsHub() {
         <div className="flex items-center gap-3">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-            CyberDefenders &amp; Threat Labs
+            Hands-on Labs
           </span>
         </div>
       </nav>
@@ -52,7 +52,7 @@ export default function ThreatLabsHub() {
             DFIR &amp; Threat Labs
           </h1>
           <p className="text-zinc-400 text-base md:text-lg font-sans max-w-2xl mx-auto leading-relaxed">
-            Forensic investigations and threat analysis covering <strong>CyberDefenders</strong>, <strong>Blue Team Labs</strong>, <strong>Memory Forensics</strong>, <strong>Network Threat Hunting</strong>, and <strong>Malware DFIR</strong>.
+            Hands-on walkthroughs and case studies covering malware reverse engineering, memory dump analysis, threat hunting, and blue team forensics.
           </p>
         </div>
 
@@ -60,13 +60,13 @@ export default function ThreatLabsHub() {
         <div className="max-w-6xl mx-auto px-6 mb-8 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-3 py-1 rounded-lg font-mono text-xs font-bold uppercase tracking-wider">
-              Operations &amp; Deep Dives
+              Lab Investigations
             </span>
             <h2 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
-              Threat Intelligence &amp; Lab Analyses
+              Deep Dives &amp; Analyses
             </h2>
           </div>
-          <span className="text-xs font-mono text-zinc-500">Curated Guides</span>
+          <span className="text-xs font-mono text-zinc-500">Guides &amp; Labs</span>
         </div>
 
         {/* Challenge Cards Grid */}
@@ -150,7 +150,7 @@ export default function ThreatLabsHub() {
               CyberDefenders &amp; Blue Team Labs
             </span>
             <p className="text-zinc-500 text-xs font-sans max-w-xs">
-              Upcoming writeups on memory dumps, Volatility 3 plugins, KAPE triage, and network packet forensics are being staged.
+              More memory analysis, Volatility 3 plugins, and network packet investigations are coming soon.
             </p>
           </div>
         </div>

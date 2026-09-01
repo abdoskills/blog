@@ -9,7 +9,7 @@ export default function ASCWGHub() {
       category: "macOS DFIR",
       points: "MEDIUM",
       tagline: "Signal App Reverse Engineering",
-      description: "Forensic triage of an infected macOS Ventura endpoint. Uncovering a trojanized Signal Desktop binary, decompiling malicious background threads in Ghidra, and extracting hardcoded AES-256 exfiltration keys.",
+      description: "Investigating an infected macOS machine. We decompile a trojanized Signal Desktop binary in Ghidra, uncover hidden threads, and pull out hardcoded AES-256 keys.",
       image: "/images/thrushes_macho.jpg",
       tags: ["Ghidra", "Mach-O 64-bit", "macOS Triage", "AES-CBC"],
       time: "7 min read",
@@ -21,7 +21,7 @@ export default function ASCWGHub() {
       category: "Windows Forensics",
       points: "MEDIUM",
       tagline: "Windows Search Database Carving",
-      description: "Deep dive into Windows Search artifacts. Carving Extensible Storage Engine (ESE) Windows.db databases, parsing Program Compatibility Assistant (PCA) execution logs, and tracing malicious payload origins.",
+      description: "Carving Windows Search (Windows.db) ESE databases and parsing Program Compatibility Assistant (PCA) logs to trace how malware was executed on the host.",
       image: "/images/search_dude_disk.jpg",
       tags: ["Windows.db", "KAPE", "ESE Database", "PCA Artifacts"],
       time: "8 min read",
@@ -30,10 +30,10 @@ export default function ASCWGHub() {
     {
       title: "Sensor Confession",
       slug: "sensor-confession",
-      category: "Network DFIR",
+      category: "Network Forensics",
       points: "MEDIUM",
       tagline: "Covert Channel Smuggling",
-      description: "Dissecting abnormal IoT sensor telemetry across enterprise PCAP captures. Extracting hidden ASCII payload bytes smuggled inside raw TCP Urgent Pointers and reconstructing the exfiltration stream.",
+      description: "Finding data hidden inside raw PCAP traffic. We inspect unusual TCP packets, spot data smuggled inside TCP Urgent Pointers, and reconstruct the full stream.",
       image: "/images/sensor_confession_fiber.jpg",
       tags: ["Wireshark", "tshark", "TCP Urgent Pointer", "PCAP Analysis"],
       time: "6 min read",
@@ -45,7 +45,7 @@ export default function ASCWGHub() {
       category: "Blockchain OSINT",
       points: "MEDIUM",
       tagline: "CoinJoin Mixer De-Anonymization",
-      description: "Tracing illicit dark web vendor Bitcoin transactions through Wasabi CoinJoin mixing pools. Applying the TRACE-7 Peel-Chain algorithm and multi-input clustering to break anonymity sets.",
+      description: "Tracking illicit Bitcoin transactions through a Wasabi CoinJoin mixer. Using the TRACE-7 Peel-Chain method and multi-input clustering to unmask the real destination.",
       image: "/images/nightshade_bitcoin.jpg",
       tags: ["TRACE-7", "CoinJoin Mixing", "Esplora API", "UTXO Graph"],
       time: "9 min read",
@@ -67,7 +67,7 @@ export default function ASCWGHub() {
         <div className="flex items-center gap-3">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-pink-500/10 text-pink-400 border border-pink-500/30">
             <span className="w-1.5 h-1.5 rounded-full bg-pink-400 animate-pulse"></span>
-            ASCWG Qualifications
+            ASCWG 2026
           </span>
         </div>
       </nav>
@@ -87,7 +87,7 @@ export default function ASCWGHub() {
             ASCWG CTF
           </h1>
           <p className="text-zinc-400 text-base md:text-lg font-sans max-w-2xl mx-auto leading-relaxed">
-            High-fidelity operational writeups exclusively covering <strong>Digital Forensics</strong>, <strong>Reverse Engineering</strong>, and <strong>Blockchain OSINT</strong>.
+            Detailed walkthroughs for the ASCWG 2026 Qualifications, covering macOS endpoint triage, Windows artifact carving, covert packet analysis, and Bitcoin transaction tracking.
           </p>
         </div>
 
@@ -95,13 +95,13 @@ export default function ASCWGHub() {
         <div className="max-w-6xl mx-auto px-6 mb-8 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="bg-pink-500/20 text-pink-300 border border-pink-500/30 px-3 py-1 rounded-lg font-mono text-xs font-bold uppercase tracking-wider">
-              Qualifications 2026
+              Qualifications Track
             </span>
             <h2 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
-              Active Forensic Missions
+              Solved Challenges
             </h2>
           </div>
-          <span className="text-xs font-mono text-zinc-500">4 / 4 Solved Missions</span>
+          <span className="text-xs font-mono text-zinc-500">4 Guides</span>
         </div>
 
         {/* Challenge Cards Grid */}
