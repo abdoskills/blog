@@ -4,15 +4,15 @@
   --background: #060709;
   --foreground: #ededed;
 
-  /* Real-time Dynamic Theme Colors */
-  --accent-color: #10b981;
-  --accent-rgb: 16, 185, 129;
-  --accent-glow: rgba(16, 185, 129, 0.4);
-  --accent-dim: rgba(16, 185, 129, 0.12);
-  --accent-border: rgba(16, 185, 129, 0.35);
-  --accent-hover-border: rgba(16, 185, 129, 0.7);
-  --accent-text: #34d399;
-  --accent-shadow: 0 0 25px rgba(16, 185, 129, 0.3);
+  /* Default Theme: Cyber Amber Gold (Search-Dude Aesthetic) */
+  --accent-color: #f59e0b;
+  --accent-rgb: 245, 158, 11;
+  --accent-glow: rgba(245, 158, 11, 0.45);
+  --accent-dim: rgba(245, 158, 11, 0.12);
+  --accent-border: rgba(245, 158, 11, 0.35);
+  --accent-hover-border: rgba(245, 158, 11, 0.75);
+  --accent-text: #fbbf24;
+  --accent-shadow: 0 0 25px rgba(245, 158, 11, 0.3);
 }
 
 body {
@@ -32,17 +32,17 @@ body {
 
 /* Smooth transition for theme variable changes */
 *, *::before, *::after {
-  transition-property: color, background-color, border-color, box-shadow;
+  transition-property: color, background-color, border-color, box-shadow, text-shadow;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 250ms;
+  transition-duration: 200ms;
 }
 
-/* Custom Dynamic Theme Utilities */
+/* Global Dynamic Theme Utilities */
 .theme-text {
   color: var(--accent-color) !important;
 }
 .theme-text-glow {
-  color: var(--accent-color) !important;
+  color: var(--accent-text) !important;
   text-shadow: 0 0 15px var(--accent-glow) !important;
 }
 .theme-border {
@@ -61,7 +61,7 @@ body {
 }
 .theme-card {
   border-color: rgba(39, 39, 42, 0.8) !important;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 .theme-card:hover {
   border-color: var(--accent-hover-border) !important;
@@ -88,15 +88,15 @@ body {
 
 /* Custom Cyberpunk Cursors */
 body {
-  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%234ade80" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>') 12 12, crosshair;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23f59e0b" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>') 12 12, crosshair;
 }
 
 a, button, summary, .cursor-pointer, [role="button"], details summary {
-  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%2310b981" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="3" fill="%2310b981"/></svg>') 12 12, pointer !important;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23fbbf24" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="3" fill="%23fbbf24"/></svg>') 12 12, pointer !important;
 }
 
 .cursor-help {
-  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23eab308" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="5" stroke-dasharray="2,2"/></svg>') 12 12, help !important;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23f59e0b" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="5" stroke-dasharray="2,2"/></svg>') 12 12, help !important;
 }
 
 /* Custom Cyberpunk Animations */

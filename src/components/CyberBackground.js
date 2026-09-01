@@ -44,7 +44,7 @@ export default function CyberBackground() {
     
     // Custom vertex/fragment material with cyber glow
     const material = new THREE.MeshBasicMaterial({
-      color: 0x34d399,
+      color: 0xfbbf24,
       wireframe: true,
       transparent: true,
       opacity: 0.35,
@@ -54,14 +54,18 @@ export default function CyberBackground() {
     const dummy = new THREE.Object3D();
     const particleData = [];
 
-    // Colors palette: emerald, cyan, neon pink, deep indigo
-    const colors = [
-      new THREE.Color(0x10b981), // Emerald
-      new THREE.Color(0x06b6d4), // Cyan
-      new THREE.Color(0xec4899), // Pink
-      new THREE.Color(0x3b82f6), // Blue
-      new THREE.Color(0xa855f7), // Purple
-    ];
+    // Colors palette (Default Cyber Amber Yellow)
+    let currentAccentHex = getComputedStyle(document.documentElement).getPropertyValue("--accent-color").trim() || "#f59e0b";
+    
+    const getThemeColors = (hex) => {
+      const base = new THREE.Color(hex);
+      const bright = new THREE.Color(hex).offsetHSL(0.05, 0.2, 0.15);
+      const dark = new THREE.Color(hex).offsetHSL(-0.05, -0.1, -0.2);
+      const complement = new THREE.Color(hex).offsetHSL(0.5, 0, 0);
+      return [base, bright, dark, complement];
+    };
+
+    let colors = getThemeColors(currentAccentHex);
 
     for (let i = 0; i < instanceCount; i++) {
       const x = (Math.random() - 0.5) * 1600;
@@ -160,12 +164,38 @@ export default function CyberBackground() {
 
     window.addEventListener("resize", handleResize);
 
-    // --- Animation Loop ---
-    const matrix = new THREE.Matrix4();
+    // --- Animation Loop with Dynamic Theme Color Sync ---
+    let lastCheckedHex = currentAccentHex;
     const currentDummy = new THREE.Object3D();
 
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
+
+      // Check if root accent color changed from the color wheel
+      const newHex = getComputedStyle(document.documentElement).getPropertyValue("--accent-color").trim();
+      if (newHex && newHex !== lastCheckedHex) {
+        lastCheckedHex = newHex;
+        colors = getThemeColors(newHex);
+        material.color.set(newHex);
+
+        for (let i = 0; i < instanceCount; i++) {
+          instancedMesh.setColorAt(i, colors[Math.floor(Math.random() * colors.length)]);
+        }
+        if (instancedMesh.instanceColor) {
+          instancedMesh.instanceColor.needsUpdate = true;
+        }
+
+        const colAttr = dustGeometry.attributes.color;
+        if (colAttr) {
+          for (let i = 0; i < dustCount * 3; i += 3) {
+            const col = colors[Math.floor(Math.random() * colors.length)];
+            colAttr.array[i] = col.r;
+            colAttr.array[i + 1] = col.g;
+            colAttr.array[i + 2] = col.b;
+          }
+          colAttr.needsUpdate = true;
+        }
+      }
 
       // Smooth camera interpolation
       targetX += (mouseX - targetX) * 0.03;

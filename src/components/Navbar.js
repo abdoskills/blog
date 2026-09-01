@@ -1,28 +1,26 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState, useEffect, useRef } from "react";
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
-  const pathname = usePathname();
 
-  // Close menu on route change
+  // Close menu on click outside or ESC key
   useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
-
-  // Close on outside click or ESC key
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (menuRef.current && !menuRef.current.contains(e.target)) {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
         setIsOpen(false);
       }
     };
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") setIsOpen(false);
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+      }
     };
 
     if (isOpen) {
@@ -54,35 +52,35 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Center: Subtle Title / Breadcrumb */}
+        {/* Center: Dynamic Title / Breadcrumb */}
         <div className="hidden md:flex items-center gap-2">
           {pathname === "/picoctf" && (
-            <span className="font-mono text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full">
+            <span className="font-mono text-xs theme-badge px-3 py-1 rounded-full border">
               PicoCTF Master Hub
             </span>
           )}
           {pathname === "/ascwg" && (
-            <span className="font-mono text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full">
+            <span className="font-mono text-xs theme-badge px-3 py-1 rounded-full border">
               ASCWG 2026 CTF
             </span>
           )}
           {pathname === "/kaspersky" && (
-            <span className="font-mono text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full">
+            <span className="font-mono text-xs theme-badge px-3 py-1 rounded-full border">
               Kaspersky CTF 2026
             </span>
           )}
           {pathname === "/labs" && (
-            <span className="font-mono text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full">
+            <span className="font-mono text-xs theme-badge px-3 py-1 rounded-full border">
               DFIR &amp; Threat Labs
             </span>
           )}
           {pathname === "/about" && (
-            <span className="font-mono text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full">
+            <span className="font-mono text-xs theme-badge px-3 py-1 rounded-full border">
               About Me
             </span>
           )}
           {pathname === "/cv" && (
-            <span className="font-mono text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full">
+            <span className="font-mono text-xs theme-badge px-3 py-1 rounded-full border">
               Curriculum Vitae
             </span>
           )}
@@ -97,7 +95,7 @@ export default function Navbar() {
               href="/picoctf" 
               className={`px-3 py-1.5 rounded-lg transition-all ${
                 pathname === "/picoctf" 
-                  ? "bg-emerald-500/10 text-emerald-300 border border-emerald-500/30" 
+                  ? "theme-bg-dim theme-text border theme-border font-bold" 
                   : "text-zinc-400 hover:text-white hover:bg-zinc-900"
               }`}
             >
@@ -107,7 +105,7 @@ export default function Navbar() {
               href="/ascwg" 
               className={`px-3 py-1.5 rounded-lg transition-all ${
                 pathname === "/ascwg" 
-                  ? "bg-emerald-500/10 text-emerald-300 border border-emerald-500/30" 
+                  ? "theme-bg-dim theme-text border theme-border font-bold" 
                   : "text-zinc-400 hover:text-white hover:bg-zinc-900"
               }`}
             >
@@ -117,7 +115,7 @@ export default function Navbar() {
               href="/kaspersky" 
               className={`px-3 py-1.5 rounded-lg transition-all ${
                 pathname === "/kaspersky" 
-                  ? "bg-emerald-500/10 text-emerald-300 border border-emerald-500/30" 
+                  ? "theme-bg-dim theme-text border theme-border font-bold" 
                   : "text-zinc-400 hover:text-white hover:bg-zinc-900"
               }`}
             >
@@ -127,7 +125,7 @@ export default function Navbar() {
               href="/labs" 
               className={`px-3 py-1.5 rounded-lg transition-all ${
                 pathname === "/labs" 
-                  ? "bg-emerald-500/10 text-emerald-300 border border-emerald-500/30" 
+                  ? "theme-bg-dim theme-text border theme-border font-bold" 
                   : "text-zinc-400 hover:text-white hover:bg-zinc-900"
               }`}
             >
@@ -141,8 +139,8 @@ export default function Navbar() {
             aria-label="Toggle Navigation Menu"
             className={`flex items-center gap-2 px-3.5 py-2 rounded-xl border font-mono text-xs uppercase tracking-wider transition-all backdrop-blur-md ${
               isOpen 
-                ? "bg-emerald-500 text-black font-bold border-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.4)]" 
-                : "bg-[#0d0d12]/90 border-zinc-800 text-zinc-300 hover:border-emerald-500/50 hover:text-white"
+                ? "theme-bg-solid font-bold border-transparent" 
+                : "bg-[#0d0d12]/90 border-zinc-800 text-zinc-300 hover:theme-border hover:text-white"
             }`}
           >
             <span className="relative w-4 h-4 flex flex-col justify-center gap-1">
@@ -155,7 +153,7 @@ export default function Navbar() {
 
           {/* Floating Dropdown Drawer */}
           {isOpen && (
-            <div className="absolute right-0 top-full mt-3 w-72 sm:w-80 rounded-2xl bg-[#0d0d12]/95 border border-emerald-500/30 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.9)] p-4 space-y-4 animate-fadeIn z-50">
+            <div className="absolute right-0 top-full mt-3 w-72 sm:w-80 rounded-2xl bg-[#0d0d12]/95 border theme-border backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.9)] p-4 space-y-4 animate-fadeIn z-50">
               
               {/* Section 1: Writeups & Hubs */}
               <div>
@@ -165,58 +163,62 @@ export default function Navbar() {
                 <div className="flex flex-col gap-1">
                   <Link 
                     href="/picoctf"
-                    className="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-sans text-zinc-300 hover:bg-zinc-900/90 hover:text-emerald-300 transition-all border border-transparent hover:border-zinc-800"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-sans text-zinc-300 hover:bg-zinc-900/90 hover:theme-text transition-all border border-transparent hover:border-zinc-800"
                   >
                     <div className="flex items-center gap-2.5">
-                      <span className="text-emerald-400 text-base">🧩</span>
+                      <span className="theme-text text-base">🧩</span>
                       <div>
                         <strong className="block text-white text-xs font-mono">PicoCTF 2019 Hub</strong>
                         <span className="text-[11px] text-zinc-500">13 Forensics Challenges</span>
                       </div>
                     </div>
-                    <span className="text-xs font-mono text-emerald-400 font-bold">13</span>
+                    <span className="text-xs font-mono theme-text font-bold">13</span>
                   </Link>
 
                   <Link 
                     href="/ascwg"
-                    className="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-sans text-zinc-300 hover:bg-zinc-900/90 hover:text-emerald-300 transition-all border border-transparent hover:border-zinc-800"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-sans text-zinc-300 hover:bg-zinc-900/90 hover:theme-text transition-all border border-transparent hover:border-zinc-800"
                   >
                     <div className="flex items-center gap-2.5">
-                      <span className="text-emerald-400 text-base">⚔️</span>
+                      <span className="theme-text text-base">⚔️</span>
                       <div>
                         <strong className="block text-white text-xs font-mono">ASCWG 2026 CTF</strong>
                         <span className="text-[11px] text-zinc-500">macOS, ESE, Bitcoin</span>
                       </div>
                     </div>
-                    <span className="text-xs font-mono text-emerald-400 font-bold">4</span>
+                    <span className="text-xs font-mono theme-text font-bold">4</span>
                   </Link>
 
                   <Link 
                     href="/kaspersky"
-                    className="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-sans text-zinc-300 hover:bg-zinc-900/90 hover:text-emerald-300 transition-all border border-transparent hover:border-zinc-800"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-sans text-zinc-300 hover:bg-zinc-900/90 hover:theme-text transition-all border border-transparent hover:border-zinc-800"
                   >
                     <div className="flex items-center gap-2.5">
-                      <span className="text-emerald-400 text-base">🛡️</span>
+                      <span className="theme-text text-base">🛡️</span>
                       <div>
                         <strong className="block text-white text-xs font-mono">Kaspersky CTF 2026</strong>
                         <span className="text-[11px] text-zinc-500">PoolParty, CoreStorage, TLS</span>
                       </div>
                     </div>
-                    <span className="text-xs font-mono text-emerald-400 font-bold">3</span>
+                    <span className="text-xs font-mono theme-text font-bold">3</span>
                   </Link>
 
                   <Link 
                     href="/labs"
-                    className="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-sans text-zinc-300 hover:bg-zinc-900/90 hover:text-emerald-300 transition-all border border-transparent hover:border-zinc-800"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-sans text-zinc-300 hover:bg-zinc-900/90 hover:theme-text transition-all border border-transparent hover:border-zinc-800"
                   >
                     <div className="flex items-center gap-2.5">
-                      <span className="text-emerald-400 text-base">🧪</span>
+                      <span className="theme-text text-base">🧪</span>
                       <div>
                         <strong className="block text-white text-xs font-mono">DFIR &amp; Threat Labs</strong>
                         <span className="text-[11px] text-zinc-500">Malware &amp; Blue Team</span>
                       </div>
                     </div>
-                    <span className="text-xs font-mono text-emerald-400 font-bold">Lab</span>
+                    <span className="text-xs font-mono theme-text font-bold">Lab</span>
                   </Link>
                 </div>
               </div>
@@ -229,47 +231,41 @@ export default function Navbar() {
                 <div className="flex flex-col gap-1">
                   <Link 
                     href="/about"
-                    className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-sans text-zinc-300 hover:bg-zinc-900/90 hover:text-emerald-300 transition-all border border-transparent hover:border-zinc-800"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-sans text-zinc-300 hover:bg-zinc-900/90 hover:theme-text transition-all border border-transparent hover:border-zinc-800"
                   >
-                    <span className="text-emerald-400">⚡</span>
-                    <div>
-                      <strong className="block text-white text-xs font-mono">About Me</strong>
-                      <span className="text-[11px] text-zinc-500">Background, Skills &amp; Focus</span>
+                    <div className="flex items-center gap-2.5">
+                      <span className="theme-text text-base">📄</span>
+                      <div>
+                        <strong className="block text-white text-xs font-mono">About Me</strong>
+                        <span className="text-[11px] text-zinc-500">Profile, Focus &amp; Tools</span>
+                      </div>
                     </div>
+                    <span className="text-xs font-mono text-zinc-600">→</span>
                   </Link>
 
                   <Link 
                     href="/cv"
-                    className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-sans text-zinc-300 hover:bg-zinc-900/90 hover:text-emerald-300 transition-all border border-transparent hover:border-zinc-800"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-sans text-zinc-300 hover:bg-zinc-900/90 hover:theme-text transition-all border border-transparent hover:border-zinc-800"
                   >
-                    <span className="text-emerald-400">📄</span>
-                    <div>
-                      <strong className="block text-white text-xs font-mono">CV / Resume</strong>
-                      <span className="text-[11px] text-zinc-500">Skills, Experience &amp; PDF</span>
+                    <div className="flex items-center gap-2.5">
+                      <span className="theme-text text-base">💼</span>
+                      <div>
+                        <strong className="block text-white text-xs font-mono">Curriculum Vitae</strong>
+                        <span className="text-[11px] text-zinc-500">Experience, Certs &amp; PDF</span>
+                      </div>
                     </div>
+                    <span className="text-xs font-mono text-zinc-600">PDF</span>
                   </Link>
                 </div>
-              </div>
-
-              {/* Quick Footer Links */}
-              <div className="pt-3 border-t border-zinc-800/80 flex items-center justify-between text-xs font-mono text-zinc-500 px-2">
-                <Link href="/" className="hover:text-emerald-400 transition-colors">
-                  🏠 Home
-                </Link>
-                <a 
-                  href="https://github.com/abdoskills" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="hover:text-emerald-400 transition-colors flex items-center gap-1"
-                >
-                  GitHub ↗
-                </a>
               </div>
 
             </div>
           )}
 
         </div>
+
       </div>
     </header>
   );
