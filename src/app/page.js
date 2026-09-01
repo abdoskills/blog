@@ -37,6 +37,17 @@ export default function Home() {
       time: "4 Writeups"
     },
     {
+      title: "Kaspersky CTF 2026",
+      slug: "kaspersky",
+      category: "3 CHALLENGES",
+      points: "Forensics Track",
+      tagline: "RAM Dumps • CoreStorage • TLS GREASE",
+      description: "Complete solutions for Kaspersky CTF 2026 forensics: PoolParty injection into Acrobat, Apple CoreStorage Fusion Drive recovery, and TLS GREASE covert channel decryption.",
+      image: "/images/kaspersky_hub.jpg",
+      tags: ["Volatility 3", "PoolParty", "Havoc Demon", "CoreStorage", "TLS GREASE"],
+      time: "3 Writeups"
+    },
+    {
       title: "DFIR & Threat Labs",
       slug: "labs",
       category: "HANDS-ON LABS",

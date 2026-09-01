@@ -66,6 +66,11 @@ export default function Navbar() {
               ASCWG 2026 CTF
             </span>
           )}
+          {pathname === "/kaspersky" && (
+            <span className="font-mono text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full">
+              Kaspersky CTF 2026
+            </span>
+          )}
           {pathname === "/labs" && (
             <span className="font-mono text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full">
               DFIR &amp; Threat Labs
@@ -107,6 +112,16 @@ export default function Navbar() {
               }`}
             >
               ASCWG
+            </Link>
+            <Link 
+              href="/kaspersky" 
+              className={`px-3 py-1.5 rounded-lg transition-all ${
+                pathname === "/kaspersky" 
+                  ? "bg-emerald-500/10 text-emerald-300 border border-emerald-500/30" 
+                  : "text-zinc-400 hover:text-white hover:bg-zinc-900"
+              }`}
+            >
+              Kaspersky
             </Link>
             <Link 
               href="/labs" 
@@ -177,11 +192,25 @@ export default function Navbar() {
                   </Link>
 
                   <Link 
-                    href="/labs"
+                    href="/kaspersky"
                     className="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-sans text-zinc-300 hover:bg-zinc-900/90 hover:text-emerald-300 transition-all border border-transparent hover:border-zinc-800"
                   >
                     <div className="flex items-center gap-2.5">
                       <span className="text-emerald-400 text-base">🛡️</span>
+                      <div>
+                        <strong className="block text-white text-xs font-mono">Kaspersky CTF 2026</strong>
+                        <span className="text-[11px] text-zinc-500">PoolParty, CoreStorage, TLS</span>
+                      </div>
+                    </div>
+                    <span className="text-xs font-mono text-emerald-400 font-bold">3</span>
+                  </Link>
+
+                  <Link 
+                    href="/labs"
+                    className="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-sans text-zinc-300 hover:bg-zinc-900/90 hover:text-emerald-300 transition-all border border-transparent hover:border-zinc-800"
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <span className="text-emerald-400 text-base">🧪</span>
                       <div>
                         <strong className="block text-white text-xs font-mono">DFIR &amp; Threat Labs</strong>
                         <span className="text-[11px] text-zinc-500">Malware &amp; Blue Team</span>
