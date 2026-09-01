@@ -66,8 +66,8 @@ export default function ASCWGHub() {
               <span className="animate-blink inline-block w-1.5 h-3 bg-emerald-400 ml-2 align-middle"></span>
             </span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-extrabold text-white tracking-widest font-[family-name:var(--font-silkscreen)] mb-4 drop-shadow-[0_0_25px_rgba(16,185,129,0.3)]">
-            ASCWG CTF
+          <h1 className="text-4xl md:text-6xl font-extrabold text-white tracking-widest font-[family-name:var(--font-silkscreen)] mb-4 drop-shadow-[0_0_25px_var(--accent-glow)]">
+            ASCWG 2026
           </h1>
           <p className="text-zinc-400 text-base md:text-lg font-sans max-w-2xl mx-auto leading-relaxed">
             Detailed walkthroughs for the ASCWG 2026 Qualifications, covering macOS endpoint triage, Windows artifact carving, covert packet analysis, and Bitcoin transaction tracking.
