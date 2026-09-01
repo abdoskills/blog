@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 
-// HSL to RGB helper
+// Fast HSL to RGB helper
 function hslToRgb(h, s, l) {
   s /= 100;
   l /= 100;
@@ -15,7 +15,7 @@ function hslToRgb(h, s, l) {
   return [r, g, b];
 }
 
-// RGB to Hex helper
+// Fast RGB to Hex helper
 function rgbToHex(r, g, b) {
   return (
     "#" +
@@ -57,20 +57,21 @@ export default function ThemeController() {
   });
   const [isOpen, setIsOpen] = useState(false);
   const wheelRef = useRef(null);
-  const isDraggingRef = useRef(false);
+  const rafIdRef = useRef(null);
+  const latestMouseRef = useRef(null);
 
-  // Apply theme variables directly to document root
+  // Apply theme variables directly to document root (high-performance batching)
   const applyTheme = useCallback((hex, rgb, text) => {
     if (typeof document === "undefined") return;
-    const root = document.documentElement;
-    root.style.setProperty("--accent-color", hex);
-    root.style.setProperty("--accent-rgb", rgb);
-    root.style.setProperty("--accent-glow", `rgba(${rgb}, 0.45)`);
-    root.style.setProperty("--accent-dim", `rgba(${rgb}, 0.15)`);
-    root.style.setProperty("--accent-border", `rgba(${rgb}, 0.4)`);
-    root.style.setProperty("--accent-hover-border", `rgba(${rgb}, 0.8)`);
-    root.style.setProperty("--accent-text", text || hex);
-    root.style.setProperty("--accent-shadow", `0 0 25px rgba(${rgb}, 0.35)`);
+    const rootStyle = document.documentElement.style;
+    rootStyle.setProperty("--accent-color", hex);
+    rootStyle.setProperty("--accent-rgb", rgb);
+    rootStyle.setProperty("--accent-glow", `rgba(${rgb}, 0.45)`);
+    rootStyle.setProperty("--accent-dim", `rgba(${rgb}, 0.15)`);
+    rootStyle.setProperty("--accent-border", `rgba(${rgb}, 0.4)`);
+    rootStyle.setProperty("--accent-hover-border", `rgba(${rgb}, 0.8)`);
+    rootStyle.setProperty("--accent-text", text || hex);
+    rootStyle.setProperty("--accent-shadow", `0 0 25px rgba(${rgb}, 0.35)`);
   }, []);
 
   // Initialize from localStorage or default Cyber Amber
@@ -90,18 +91,19 @@ export default function ThemeController() {
     }
   }, [applyTheme]);
 
-  // Compute color from Mouse coordinates on the 360-degree color wheel
-  const handleWheelMove = useCallback((e) => {
-    if (!wheelRef.current) return;
+  // Compute color from Mouse coordinates on the 360-degree color wheel (120 FPS RAF loop)
+  const processWheelMove = useCallback(() => {
+    if (!wheelRef.current || !latestMouseRef.current) return;
+    const { clientX, clientY } = latestMouseRef.current;
     const rect = wheelRef.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
-    const dx = e.clientX - centerX;
-    const dy = e.clientY - centerY;
+    const dx = clientX - centerX;
+    const dy = clientY - centerY;
 
     const distance = Math.sqrt(dx * dx + dy * dy);
     const maxRadius = rect.width / 2;
-    if (distance > maxRadius + 10) return; // Outside wheel tolerance
+    if (distance > maxRadius + 12) return; // Outside wheel tolerance
 
     // Angle in degrees [0, 360]
     let angle = (Math.atan2(dy, dx) * 180) / Math.PI;
@@ -129,10 +131,19 @@ export default function ThemeController() {
 
     setCurrentColor(newColor);
     applyTheme(hex, rgbStr, textHex);
+    rafIdRef.current = null;
   }, [applyTheme]);
 
+  const handleWheelMove = useCallback((e) => {
+    latestMouseRef.current = { clientX: e.clientX, clientY: e.clientY };
+    if (!rafIdRef.current) {
+      rafIdRef.current = requestAnimationFrame(processWheelMove);
+    }
+  }, [processWheelMove]);
+
   const handleWheelClick = (e) => {
-    handleWheelMove(e);
+    latestMouseRef.current = { clientX: e.clientX, clientY: e.clientY };
+    processWheelMove();
     setLockedColor(currentColor);
     try {
       localStorage.setItem("abdoskills_custom_theme", JSON.stringify(currentColor));
@@ -161,6 +172,10 @@ export default function ThemeController() {
 
   const handleMouseLeaveContainer = () => {
     setIsOpen(false);
+    if (rafIdRef.current) {
+      cancelAnimationFrame(rafIdRef.current);
+      rafIdRef.current = null;
+    }
     // Restore locked color
     setCurrentColor(lockedColor);
     applyTheme(lockedColor.hex, lockedColor.rgb, lockedColor.text);
@@ -173,7 +188,7 @@ export default function ThemeController() {
     >
       {/* 360-Degree Continuous Chromatic Color Wheel Panel */}
       <div
-        className={`absolute bottom-0 right-0 p-5 rounded-3xl bg-[#0d0d12]/95 border backdrop-blur-2xl transition-all duration-400 ease-out origin-bottom-right flex flex-col items-center gap-4 ${
+        className={`absolute bottom-0 right-0 p-5 rounded-3xl bg-[#0d0d12]/95 border backdrop-blur-2xl transition-all duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] origin-bottom-right flex flex-col items-center gap-4 ${
           isOpen
             ? "opacity-100 scale-100 translate-x-0 translate-y-0 pointer-events-auto shadow-[0_20px_50px_rgba(0,0,0,0.9)]"
             : "opacity-0 scale-50 translate-x-2 translate-y-2 pointer-events-none"
@@ -211,7 +226,7 @@ export default function ThemeController() {
             ref={wheelRef}
             onMouseMove={handleWheelMove}
             onClick={handleWheelClick}
-            className="relative w-44 h-44 rounded-full cursor-crosshair shadow-[0_0_25px_rgba(0,0,0,0.8)] transition-transform duration-200 hover:scale-105 active:scale-95"
+            className="relative w-44 h-44 rounded-full cursor-crosshair shadow-[0_0_25px_rgba(0,0,0,0.8)] transition-transform duration-150 hover:scale-105 active:scale-95"
             style={{
               background: `conic-gradient(
                 from 0deg,
@@ -239,7 +254,7 @@ export default function ThemeController() {
               style={{ borderColor: currentColor.hex }}
             >
               <span
-                className="w-5 h-5 rounded-full transition-all duration-200"
+                className="w-5 h-5 rounded-full transition-all duration-150"
                 style={{
                   backgroundColor: currentColor.hex,
                   boxShadow: `0 0 12px ${currentColor.hex}`
@@ -266,7 +281,7 @@ export default function ThemeController() {
                     setCurrentColor(preset);
                     applyTheme(preset.hex, preset.rgb, preset.text);
                   }}
-                  className={`w-6 h-6 rounded-full transition-all duration-200 transform hover:scale-125 focus:outline-none flex items-center justify-center ${
+                  className={`w-6 h-6 rounded-full transition-all duration-150 transform hover:scale-125 focus:outline-none flex items-center justify-center ${
                     isLocked ? "scale-115 ring-2 ring-white" : "opacity-80 hover:opacity-100"
                   }`}
                   style={{
