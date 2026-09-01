@@ -45,7 +45,7 @@ print("🎉 Decoded Network Flag:", flag)`;
           href="/picoctf" 
           className="group flex items-center gap-2 text-zinc-400 hover:text-white transition-colors font-mono text-sm uppercase tracking-widest"
         >
-          <span className="transform transition-transform group-hover:-translate-x-1">←</span> Back to PicoCTF Hub
+          <span className="transform transition-transform group-hover:-translate-x-1">←</span> Back to PicoCTF
         </Link>
       </nav>
 

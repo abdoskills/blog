@@ -56,7 +56,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-2">
           {pathname === "/picoctf" && (
             <span className="font-mono text-xs theme-badge px-3 py-1 rounded-full border">
-              PicoCTF Master Hub
+              PicoCTF
             </span>
           )}
           {pathname === "/ascwg" && (
@@ -169,7 +169,7 @@ export default function Navbar() {
                     <div className="flex items-center gap-2.5">
                       <span className="theme-text text-base">🧩</span>
                       <div>
-                        <strong className="block text-white text-xs font-mono">PicoCTF 2019 Hub</strong>
+                        <strong className="block text-white text-xs font-mono">PicoCTF</strong>
                         <span className="text-[11px] text-zinc-500">13 Forensics Challenges</span>
                       </div>
                     </div>

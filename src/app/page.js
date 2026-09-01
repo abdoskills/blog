@@ -15,7 +15,7 @@ export default function Home() {
   // The 3 Primary Category Hubs
   const primaryHubs = [
     {
-      title: "PicoCTF Forensics",
+      title: "PicoCTF",
       slug: "picoctf",
       category: "13 CHALLENGES",
       points: "PicoCTF 2019",
