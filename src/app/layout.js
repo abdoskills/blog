@@ -26,7 +26,7 @@ const shareTech = Share_Tech_Mono({
 });
 
 export const metadata = {
-  title: "Skills | Threat Intel & Forensics Portfolio",
+  title: "Skills | Threat Intel & Forensics",
   description: "Digital Forensics, OSINT, and Threat Intel Master Operational Breakdowns",
 };
 
