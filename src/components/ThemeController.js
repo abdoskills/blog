@@ -55,6 +55,7 @@ export default function ThemeController() {
     name: "Cyber Amber",
     hue: 38
   });
+  const [isLightMode, setIsLightMode] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const wheelRef = useRef(null);
   const rafIdRef = useRef(null);
@@ -74,22 +75,42 @@ export default function ThemeController() {
     rootStyle.setProperty("--accent-shadow", `0 0 25px rgba(${rgb}, 0.35)`);
   }, []);
 
-  // Initialize from localStorage or default Cyber Amber
+  // Initialize from localStorage (Custom Theme Color & Light/Dark Mode)
   useEffect(() => {
     try {
-      const saved = localStorage.getItem("abdoskills_custom_theme");
-      if (saved) {
-        const parsed = JSON.parse(saved);
+      const savedTheme = localStorage.getItem("abdoskills_custom_theme");
+      if (savedTheme) {
+        const parsed = JSON.parse(savedTheme);
         setCurrentColor(parsed);
         setLockedColor(parsed);
         applyTheme(parsed.hex, parsed.rgb, parsed.text);
       } else {
         applyTheme("#f59e0b", "245, 158, 11", "#fbbf24");
       }
+
+      const savedMode = localStorage.getItem("abdoskills_mode");
+      if (savedMode === "light") {
+        setIsLightMode(true);
+        document.documentElement.setAttribute("data-theme", "light");
+      } else {
+        document.documentElement.removeAttribute("data-theme");
+      }
     } catch {
       applyTheme("#f59e0b", "245, 158, 11", "#fbbf24");
     }
   }, [applyTheme]);
+
+  const toggleLightDarkMode = () => {
+    const nextMode = !isLightMode;
+    setIsLightMode(nextMode);
+    if (nextMode) {
+      document.documentElement.setAttribute("data-theme", "light");
+      try { localStorage.setItem("abdoskills_mode", "light"); } catch {}
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+      try { localStorage.setItem("abdoskills_mode", "dark"); } catch {}
+    }
+  };
 
   // Compute color from Mouse coordinates on the 360-degree color wheel (120 FPS RAF loop)
   const processWheelMove = useCallback(() => {
@@ -202,7 +223,7 @@ export default function ThemeController() {
           boxShadow: `0 0 35px rgba(${currentColor.rgb}, 0.25)`
         }}
       >
-        {/* Header: Live Color Badge */}
+        {/* Header: Live Color Badge + Light/Dark Mode Switch */}
         <div className="flex items-center justify-between w-full gap-3 border-b border-zinc-800/80 pb-2.5">
           <div className="flex items-center gap-2">
             <span
@@ -213,15 +234,27 @@ export default function ThemeController() {
               {currentColor.name}
             </span>
           </div>
-          <span
-            className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/60 border"
-            style={{
-              color: currentColor.text,
-              borderColor: `rgba(${currentColor.rgb}, 0.4)`
-            }}
-          >
-            {currentColor.hex}
-          </span>
+
+          <div className="flex items-center gap-1.5">
+            {/* Light / Dark Mode Toggle Button */}
+            <button
+              onClick={toggleLightDarkMode}
+              className="px-2.5 py-1 rounded-xl bg-zinc-900 border border-zinc-700 text-xs text-zinc-300 hover:text-white transition-all flex items-center gap-1"
+              title={isLightMode ? "Switch to Dark Mode" : "Switch to Light Mode"}
+            >
+              <span>{isLightMode ? "☀️ Light" : "🌙 Dark"}</span>
+            </button>
+
+            <span
+              className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-full bg-black/60 border"
+              style={{
+                color: currentColor.text,
+                borderColor: `rgba(${currentColor.rgb}, 0.4)`
+              }}
+            >
+              {currentColor.hex}
+            </span>
+          </div>
         </div>
 
         {/* 360° Chromatic Spectrum Color Wheel */}
@@ -316,7 +349,7 @@ export default function ThemeController() {
           borderColor: `rgba(${currentColor.rgb}, 0.7)`,
           boxShadow: `0 0 20px rgba(${currentColor.rgb}, 0.5), inset 0 0 10px rgba(${currentColor.rgb}, 0.2)`
         }}
-        title="Hover to open 360° Chromatic Color Wheel"
+        title="Hover to open 360° Chromatic Color Wheel & Light/Dark Mode"
       >
         {/* Continuous 360° Conic Wheel Core */}
         <span

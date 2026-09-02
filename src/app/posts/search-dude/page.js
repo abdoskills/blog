@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import CopyButton from "@/components/CopyButton";
-import ReaderModeToolbar from "@/components/ReaderModeToolbar";
 
 export default function SearchDudeWriteup() {
   const pythonScript = `from Crypto.Cipher import AES
@@ -21,25 +20,17 @@ print("🎉 Decrypted Flag:", decrypted.decode('utf-8', errors='ignore'))`;
 
   const oneliner = `python -c "from Crypto.Cipher import AES; import hashlib; k=hashlib.sha256('{A92B31C4-7D4F-4A92-B582-82E9104A7F11}'.encode('utf-16le')).digest()[:16]; print(AES.new(k,AES.MODE_CBC,b'\\x00'*16).decrypt(bytes.fromhex('...')).decode('latin1'))"`;
 
-  const sections = [
-    { id: "stage-1", label: "Stage 1: The Execution Anchor" },
-    { id: "stage-2", label: "Stage 2: Carving Windows.db" },
-    { id: "stage-3", label: "Stage 3: Automated Decryption" },
-    { id: "flag", label: "Flag & Cheat Sheet" }
-  ];
-
   return (
     <div className="min-h-screen relative z-10 text-gray-200 selection:bg-orange-500/30 selection:text-orange-200">
       
-      {/* Hallmark / Editorial Zen Reader Mode Toolbar */}
-      <ReaderModeToolbar 
-        title="Search-Dude"
-        category="Windows Forensics • ESE Carving"
-        readTime="7 min read"
-        backUrl="/ctfs"
-        backLabel="Back to CTFs"
-        sections={sections}
-      />
+      <nav className="w-full p-6 flex justify-between items-center max-w-5xl mx-auto">
+        <Link 
+          href="/ctfs" 
+          className="group flex items-center gap-2 text-zinc-400 hover:text-white transition-colors font-mono text-sm uppercase tracking-widest"
+        >
+          <span className="transform transition-transform group-hover:-translate-x-1">←</span> Back to CTFs
+        </Link>
+      </nav>
 
       <article className="max-w-4xl mx-auto px-6 pb-24">
         

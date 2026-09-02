@@ -123,6 +123,28 @@ export default function Navbar() {
             </Link>
           </nav>
 
+          {/* Light / Dark Mode Toggle */}
+          <button
+            onClick={() => {
+              if (typeof document === "undefined") return;
+              const isCurrentLight = document.documentElement.getAttribute("data-theme") === "light";
+              if (isCurrentLight) {
+                document.documentElement.removeAttribute("data-theme");
+                try { localStorage.setItem("abdoskills_mode", "dark"); } catch {}
+              } else {
+                document.documentElement.setAttribute("data-theme", "light");
+                try { localStorage.setItem("abdoskills_mode", "light"); } catch {}
+              }
+              // Force component re-render if needed
+              setIsOpen(false);
+            }}
+            aria-label="Toggle Light / Dark Mode"
+            className="flex items-center justify-center w-9 h-9 rounded-xl border border-zinc-800 bg-[#0d0d12]/90 text-zinc-300 hover:text-white hover:theme-border transition-all"
+            title="Toggle Light / Dark Mode"
+          >
+            <span className="text-sm">🌓</span>
+          </button>
+
           {/* Hamburger / Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
