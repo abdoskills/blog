@@ -16,9 +16,12 @@ export default function CyberBackground() {
     const container = containerRef.current;
     let animationFrameId;
 
+    // Check initial mode
+    let isLightMode = document.documentElement.getAttribute("data-theme") === "light";
+
     // --- Scene Setup ---
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x050508, 0.0018);
+    scene.fog = new THREE.FogExp2(isLightMode ? 0xf1f5f9 : 0x050508, 0.0018);
 
     const camera = new THREE.PerspectiveCamera(
       60,
@@ -35,7 +38,7 @@ export default function CyberBackground() {
     });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(0x050508, 0.95);
+    renderer.setClearColor(isLightMode ? 0xf8fafc : 0x050508, 0.95);
     container.appendChild(renderer.domElement);
 
     // --- 3D Geometric Instanced Floating Polyhedrons / Cubes ---
@@ -44,10 +47,10 @@ export default function CyberBackground() {
     
     // Custom vertex/fragment material with cyber glow
     const material = new THREE.MeshBasicMaterial({
-      color: 0xfbbf24,
+      color: 0xf59e0b,
       wireframe: true,
       transparent: true,
-      opacity: 0.35,
+      opacity: isLightMode ? 0.55 : 0.35,
     });
 
     const instancedMesh = new THREE.InstancedMesh(geometry, material, instanceCount);
@@ -57,15 +60,15 @@ export default function CyberBackground() {
     // Colors palette (Default Cyber Amber Yellow)
     let currentAccentHex = getComputedStyle(document.documentElement).getPropertyValue("--accent-color").trim() || "#f59e0b";
     
-    const getThemeColors = (hex) => {
+    const getThemeColors = (hex, lightMode) => {
       const base = new THREE.Color(hex);
-      const bright = new THREE.Color(hex).offsetHSL(0.05, 0.2, 0.15);
-      const dark = new THREE.Color(hex).offsetHSL(-0.05, -0.1, -0.2);
-      const complement = new THREE.Color(hex).offsetHSL(0.5, 0, 0);
+      const bright = new THREE.Color(hex).offsetHSL(0.05, 0.2, lightMode ? -0.1 : 0.15);
+      const dark = new THREE.Color(hex).offsetHSL(-0.05, -0.1, lightMode ? -0.25 : -0.2);
+      const complement = new THREE.Color(hex).offsetHSL(0.5, 0, lightMode ? -0.15 : 0);
       return [base, bright, dark, complement];
     };
 
-    let colors = getThemeColors(currentAccentHex);
+    let colors = getThemeColors(currentAccentHex, isLightMode);
 
     for (let i = 0; i < instanceCount; i++) {
       const x = (Math.random() - 0.5) * 1600;
@@ -133,8 +136,8 @@ export default function CyberBackground() {
       size: 2.2,
       vertexColors: true,
       transparent: true,
-      opacity: 0.45,
-      blending: THREE.AdditiveBlending,
+      opacity: isLightMode ? 0.6 : 0.45,
+      blending: isLightMode ? THREE.NormalBlending : THREE.AdditiveBlending,
     });
 
     const dustPoints = new THREE.Points(dustGeometry, dustMaterial);
@@ -164,6 +167,40 @@ export default function CyberBackground() {
 
     window.addEventListener("resize", handleResize);
 
+    // --- MutationObserver for Live Light/Dark Theme Switching ---
+    const updateThemeMode = () => {
+      const light = document.documentElement.getAttribute("data-theme") === "light";
+      isLightMode = light;
+      renderer.setClearColor(light ? 0xf8fafc : 0x050508, 0.95);
+      if (scene.fog) {
+        scene.fog.color.set(light ? 0xf1f5f9 : 0x050508);
+      }
+      material.opacity = light ? 0.55 : 0.35;
+      dustMaterial.opacity = light ? 0.6 : 0.45;
+      dustMaterial.blending = light ? THREE.NormalBlending : THREE.AdditiveBlending;
+      dustMaterial.needsUpdate = true;
+      material.needsUpdate = true;
+
+      const currentHex = getComputedStyle(document.documentElement).getPropertyValue("--accent-color").trim() || "#f59e0b";
+      colors = getThemeColors(currentHex, light);
+      for (let i = 0; i < instanceCount; i++) {
+        instancedMesh.setColorAt(i, colors[Math.floor(Math.random() * colors.length)]);
+      }
+      if (instancedMesh.instanceColor) {
+        instancedMesh.instanceColor.needsUpdate = true;
+      }
+    };
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === "data-theme") {
+          updateThemeMode();
+        }
+      });
+    });
+
+    observer.observe(document.documentElement, { attributes: true });
+
     // --- Animation Loop with Dynamic Theme Color Sync ---
     let lastCheckedHex = currentAccentHex;
     const currentDummy = new THREE.Object3D();
@@ -175,7 +212,7 @@ export default function CyberBackground() {
       const newHex = getComputedStyle(document.documentElement).getPropertyValue("--accent-color").trim();
       if (newHex && newHex !== lastCheckedHex) {
         lastCheckedHex = newHex;
-        colors = getThemeColors(newHex);
+        colors = getThemeColors(newHex, isLightMode);
         material.color.set(newHex);
 
         for (let i = 0; i < instanceCount; i++) {
@@ -242,6 +279,7 @@ export default function CyberBackground() {
 
     // --- Cleanup ---
     return () => {
+      observer.disconnect();
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("resize", handleResize);
       cancelAnimationFrame(animationFrameId);
@@ -261,10 +299,7 @@ export default function CyberBackground() {
     <div
       ref={containerRef}
       id="cyber-3d-bg"
-      className="fixed inset-0 pointer-events-none z-0 overflow-hidden"
-      style={{
-        background: "radial-gradient(ellipse at center, #0b0f14 0%, #050608 70%, #020304 100%)",
-      }}
+      className="fixed inset-0 pointer-events-none z-0 overflow-hidden transition-all duration-500"
     />
   );
 }

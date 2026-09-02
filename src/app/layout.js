@@ -133,7 +133,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col relative bg-[#060709] text-gray-100">
+      <body className="min-h-full flex flex-col relative transition-colors duration-300">
         <CyberBackground />
         <div className="relative z-10 flex flex-col flex-grow">
           {children}
