@@ -206,3 +206,57 @@ a, button, summary, .cursor-pointer, [role="button"], details summary {
 .animate-blink {
   animation: blink 1s step-end infinite;
 }
+
+/* ========================================================================= */
+/* ZEN READER MODE (HALLMARK & XELESSAWAY.ME INSPIRED EDITORIAL VIEW)        */
+/* ========================================================================= */
+
+html[data-reader-mode="true"] {
+  background-color: #090a0f !important;
+}
+
+html[data-reader-mode="true"] canvas {
+  opacity: 0.08 !important;
+  filter: blur(2px);
+  transition: opacity 0.5s ease, filter 0.5s ease;
+}
+
+html[data-reader-mode="true"] article {
+  max-width: 48rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+html[data-reader-mode="true"] article p {
+  line-height: 1.85 !important;
+  font-size: 1.05rem !important;
+  color: #d1d5db !important;
+  letter-spacing: 0.01em;
+}
+
+html[data-reader-mode="true"] article h1,
+html[data-reader-mode="true"] article h2,
+html[data-reader-mode="true"] article h3 {
+  letter-spacing: normal !important;
+  text-shadow: none !important;
+}
+
+html[data-reader-mode="true"] article pre {
+  background-color: #11131a !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-reader-mode="true"] article [class*="animate-float"] {
+  animation: none !important;
+  transform: none !important;
+}
+
+html[data-reader-mode="true"] article [class*="animate-glow-pulse"] {
+  animation: none !important;
+  box-shadow: none !important;
+}
+
