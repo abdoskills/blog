@@ -11,7 +11,7 @@ export default function PhobosWriteup() {
           href="/" 
           className="group flex items-center gap-2 text-zinc-400 hover:text-white transition-colors font-mono text-sm uppercase tracking-widest"
         >
-          <span className="transform transition-transform group-hover:-translate-x-1">←</span> Back to Command Center
+          <span className="transform transition-transform group-hover:-translate-x-1">←</span> Back to Threat Labs
         </Link>
       </nav>
 

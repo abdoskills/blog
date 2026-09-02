@@ -3,9 +3,7 @@ export default function sitemap() {
 
   const staticRoutes = [
     "",
-    "/picoctf",
-    "/ascwg",
-    "/kaspersky",
+    "/ctfs",
     "/labs",
     "/about",
     "/cv",

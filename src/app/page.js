@@ -12,40 +12,18 @@ export default function Home() {
   const [selectedTag, setSelectedTag] = useState("ALL");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-  // The 3 Primary Category Hubs
+  // The 2 Primary Master Hubs
   const primaryHubs = [
     {
-      title: "PicoCTF",
-      slug: "picoctf",
-      category: "13 CHALLENGES",
-      points: "PicoCTF 2019",
-      tagline: "File Repair • Stego • PCAP • Audio",
-      description: "My complete writeups for all 13 PicoCTF forensics challenges. Includes manual hex breakdowns, Wireshark steps, Python solver scripts, and one-liners.",
-      image: "/images/picoctf_hub.jpg",
-      tags: ["PNG Repair", "Ghidra", "Wireshark", "SSTV", "LSB Stego"],
-      time: "13 Writeups"
-    },
-    {
-      title: "ASCWG 2026 CTF",
-      slug: "ascwg",
-      category: "4 CHALLENGES",
-      points: "Qualifications",
-      tagline: "macOS • Windows • Network • Bitcoin",
-      description: "Solutions for the Arab Security Cyber Wargames 2026 forensics and OSINT tracks: reversing a trojanized Signal app, ESE database carving, and Bitcoin mixer tracing.",
-      image: "/images/cgwars_hub.jpg",
-      tags: ["Mach-O", "Windows.db", "TRACE-7", "TCP Urg"],
-      time: "4 Writeups"
-    },
-    {
-      title: "Kaspersky CTF 2026",
-      slug: "kaspersky",
-      category: "3 CHALLENGES",
-      points: "Forensics Track",
-      tagline: "RAM Dumps • CoreStorage • TLS GREASE",
-      description: "Complete solutions for Kaspersky CTF 2026 forensics: PoolParty injection into Acrobat, Apple CoreStorage Fusion Drive recovery, and TLS GREASE covert channel decryption.",
-      image: "/images/kaspersky_hub.jpg",
-      tags: ["Volatility 3", "PoolParty", "Havoc Demon", "CoreStorage", "TLS GREASE"],
-      time: "3 Writeups"
+      title: "CTF Competitions",
+      slug: "ctfs",
+      category: "20 CHALLENGES",
+      points: "Multi-CTF",
+      tagline: "Kaspersky • ASCWG • PicoCTF",
+      description: "Complete solutions and operational breakdowns across top CTF competitions: memory forensics, macOS CoreStorage, Windows.db carving, covert channels, and reverse engineering.",
+      image: "/images/ctfs_hub.jpg",
+      tags: ["Kaspersky CTF", "ASCWG 2026", "PicoCTF", "Volatility 3", "Ghidra"],
+      time: "20 Writeups"
     },
     {
       title: "DFIR & Threat Labs",
@@ -582,11 +560,11 @@ export default function Home() {
                   Writeup Hubs &amp; Categories
                 </h2>
               </div>
-              <span className="text-xs font-mono text-zinc-500">3 Hubs</span>
+              <span className="text-xs font-mono text-zinc-500">2 Categories</span>
             </div>
 
-            {/* The 4 Core Hub Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-6 w-full">
+            {/* The 2 Primary Hub Cards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto px-6 w-full">
               {primaryHubs.map((c) => {
                 return (
                   <Link 

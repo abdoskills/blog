@@ -54,19 +54,9 @@ export default function Navbar() {
 
         {/* Center: Dynamic Title / Breadcrumb */}
         <div className="hidden md:flex items-center gap-2">
-          {pathname === "/picoctf" && (
+          {pathname === "/ctfs" && (
             <span className="font-mono text-xs theme-badge px-3 py-1 rounded-full border">
-              PicoCTF
-            </span>
-          )}
-          {pathname === "/ascwg" && (
-            <span className="font-mono text-xs theme-badge px-3 py-1 rounded-full border">
-              ASCWG 2026 CTF
-            </span>
-          )}
-          {pathname === "/kaspersky" && (
-            <span className="font-mono text-xs theme-badge px-3 py-1 rounded-full border">
-              Kaspersky CTF 2026
+              CTF Competitions
             </span>
           )}
           {pathname === "/labs" && (
@@ -92,34 +82,14 @@ export default function Navbar() {
           {/* Quick Desktop Links */}
           <nav className="hidden sm:flex items-center gap-1 font-mono text-xs">
             <Link 
-              href="/picoctf" 
+              href="/ctfs" 
               className={`px-3 py-1.5 rounded-lg transition-all ${
-                pathname === "/picoctf" 
+                pathname === "/ctfs" || pathname === "/picoctf" || pathname === "/ascwg" || pathname === "/kaspersky"
                   ? "theme-bg-dim theme-text border theme-border font-bold" 
                   : "text-zinc-400 hover:text-white hover:bg-zinc-900"
               }`}
             >
-              PicoCTF
-            </Link>
-            <Link 
-              href="/ascwg" 
-              className={`px-3 py-1.5 rounded-lg transition-all ${
-                pathname === "/ascwg" 
-                  ? "theme-bg-dim theme-text border theme-border font-bold" 
-                  : "text-zinc-400 hover:text-white hover:bg-zinc-900"
-              }`}
-            >
-              ASCWG
-            </Link>
-            <Link 
-              href="/kaspersky" 
-              className={`px-3 py-1.5 rounded-lg transition-all ${
-                pathname === "/kaspersky" 
-                  ? "theme-bg-dim theme-text border theme-border font-bold" 
-                  : "text-zinc-400 hover:text-white hover:bg-zinc-900"
-              }`}
-            >
-              Kaspersky
+              CTFs
             </Link>
             <Link 
               href="/labs" 
@@ -129,7 +99,27 @@ export default function Navbar() {
                   : "text-zinc-400 hover:text-white hover:bg-zinc-900"
               }`}
             >
-              Labs
+              Threat Labs
+            </Link>
+            <Link 
+              href="/about" 
+              className={`px-3 py-1.5 rounded-lg transition-all ${
+                pathname === "/about" 
+                  ? "theme-bg-dim theme-text border theme-border font-bold" 
+                  : "text-zinc-400 hover:text-white hover:bg-zinc-900"
+              }`}
+            >
+              About
+            </Link>
+            <Link 
+              href="/cv" 
+              className={`px-3 py-1.5 rounded-lg transition-all ${
+                pathname === "/cv" 
+                  ? "theme-bg-dim theme-text border theme-border font-bold" 
+                  : "text-zinc-400 hover:text-white hover:bg-zinc-900"
+              }`}
+            >
+              CV
             </Link>
           </nav>
 
@@ -158,52 +148,22 @@ export default function Navbar() {
               {/* Section 1: Writeups & Hubs */}
               <div>
                 <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-widest px-2 block mb-2">
-                  📂 Writeups &amp; Hubs
+                  📂 Writeups &amp; Categories
                 </span>
                 <div className="flex flex-col gap-1">
                   <Link 
-                    href="/picoctf"
+                    href="/ctfs"
                     onClick={() => setIsOpen(false)}
                     className="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-sans text-zinc-300 hover:bg-zinc-900/90 hover:theme-text transition-all border border-transparent hover:border-zinc-800"
                   >
                     <div className="flex items-center gap-2.5">
-                      <span className="theme-text text-base">🧩</span>
+                      <span className="theme-text text-base">🏆</span>
                       <div>
-                        <strong className="block text-white text-xs font-mono">PicoCTF</strong>
-                        <span className="text-[11px] text-zinc-500">13 Forensics Challenges</span>
+                        <strong className="block text-white text-xs font-mono">CTF Competitions</strong>
+                        <span className="text-[11px] text-zinc-500">Kaspersky, ASCWG, PicoCTF</span>
                       </div>
                     </div>
-                    <span className="text-xs font-mono theme-text font-bold">13</span>
-                  </Link>
-
-                  <Link 
-                    href="/ascwg"
-                    onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-sans text-zinc-300 hover:bg-zinc-900/90 hover:theme-text transition-all border border-transparent hover:border-zinc-800"
-                  >
-                    <div className="flex items-center gap-2.5">
-                      <span className="theme-text text-base">⚔️</span>
-                      <div>
-                        <strong className="block text-white text-xs font-mono">ASCWG 2026 CTF</strong>
-                        <span className="text-[11px] text-zinc-500">macOS, ESE, Bitcoin</span>
-                      </div>
-                    </div>
-                    <span className="text-xs font-mono theme-text font-bold">4</span>
-                  </Link>
-
-                  <Link 
-                    href="/kaspersky"
-                    onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-sans text-zinc-300 hover:bg-zinc-900/90 hover:theme-text transition-all border border-transparent hover:border-zinc-800"
-                  >
-                    <div className="flex items-center gap-2.5">
-                      <span className="theme-text text-base">🛡️</span>
-                      <div>
-                        <strong className="block text-white text-xs font-mono">Kaspersky CTF 2026</strong>
-                        <span className="text-[11px] text-zinc-500">PoolParty, CoreStorage, TLS</span>
-                      </div>
-                    </div>
-                    <span className="text-xs font-mono theme-text font-bold">3</span>
+                    <span className="text-xs font-mono theme-text font-bold">20</span>
                   </Link>
 
                   <Link 

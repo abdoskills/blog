@@ -42,10 +42,10 @@ print("🎉 Decoded Network Flag:", flag)`;
       {/* Navigation */}
       <nav className="w-full p-6 flex justify-between items-center max-w-5xl mx-auto">
         <Link 
-          href="/picoctf" 
+          href="/ctfs" 
           className="group flex items-center gap-2 text-zinc-400 hover:text-white transition-colors font-mono text-sm uppercase tracking-widest"
         >
-          <span className="transform transition-transform group-hover:-translate-x-1">←</span> Back to PicoCTF
+          <span className="transform transition-transform group-hover:-translate-x-1">←</span> Back to CTFs
         </Link>
       </nav>
 
