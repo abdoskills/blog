@@ -101,6 +101,18 @@ export default function CtfsHub() {
 
     // --- PicoCTF 2019 Forensics ---
     {
+      title: "B1g_Mac",
+      slug: "picoctf-b1g-mac",
+      platform: "PicoCTF",
+      category: "Anti-Forensics",
+      points: "350 PTS",
+      tagline: "NTFS MACB Timestomping & Zip Extra Fields",
+      description: "Recovering data exfiltrated into sub-second nanosecond NTFS Modification (Mtime) timestamps. Parsing PKWARE Extra Field 0x000A, reversing MinGW directory alternation, and carving the flag.",
+      image: "/images/pico_b1g_mac.jpg",
+      tags: ["NTFS MACB", "Timestomping", "FILETIME", "Zip Extra 0x000A", "Python struct"],
+      time: "7 min read"
+    },
+    {
       title: "c0rrupt",
       slug: "picoctf-c0rrupt",
       platform: "PicoCTF",
