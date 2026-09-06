@@ -15,6 +15,7 @@ export default function sitemap() {
     "/posts/sensor-confession",
     "/posts/nightshade-vendor",
     "/posts/phobos-ransomware-analysis",
+    "/posts/picoctf-webnet0",
     "/posts/picoctf-b1g-mac",
     "/posts/picoctf-c0rrupt",
     "/posts/picoctf-extensions",

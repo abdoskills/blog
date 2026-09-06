@@ -101,6 +101,18 @@ export default function CtfsHub() {
 
     // --- PicoCTF 2019 Forensics ---
     {
+      title: "WebNet0",
+      slug: "picoctf-webnet0",
+      platform: "PicoCTF",
+      category: "Network Forensics",
+      points: "350 PTS",
+      tagline: "TLS Decryption & RSA Key Injection",
+      description: "Decrypting encrypted HTTPS packet captures using a server RSA private key. Importing keys into Wireshark's cryptographic dissector and carving cleartext HTTP response headers with tshark.",
+      image: "/images/pico_webnet0.jpg",
+      tags: ["Wireshark", "tshark", "TLS Decryption", "RSA Private Key", "HTTP Carving"],
+      time: "4 min read"
+    },
+    {
       title: "B1g_Mac",
       slug: "picoctf-b1g-mac",
       platform: "PicoCTF",
