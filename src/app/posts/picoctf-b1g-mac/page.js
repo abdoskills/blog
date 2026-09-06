@@ -300,12 +300,13 @@ eip=00401c20 esp=0061fe40 ebp=0061fea8 iopl=0         nv up ei pl zr na pe nc
                   </span>
                   <CopyButton text={windbgCommands} label="Copy WinDbg Commands" />
                 </div>
-                <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden border border-zinc-800">
+                <div className="w-full overflow-x-auto">
                   <Image 
                     src="/images/b1g_mac/windbg_eip_hijack.png" 
                     alt="WinDbg Live EIP Hijack session" 
-                    fill 
-                    className="object-cover"
+                    width={2866}
+                    height={1798}
+                    className="w-full h-auto rounded-lg border border-zinc-800"
                   />
                 </div>
               </div>
@@ -315,12 +316,13 @@ eip=00401c20 esp=0061fe40 ebp=0061fea8 iopl=0         nv up ei pl zr na pe nc
                 <span className="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider block">
                   FIGURE 5: Live Execution Output — Flag Captured!
                 </span>
-                <div className="relative w-full aspect-[32/9] rounded-lg overflow-hidden border border-zinc-800">
+                <div className="w-full overflow-x-auto">
                   <Image 
                     src="/images/b1g_mac/decoded_flag_console.png" 
                     alt="Console output displaying the captured flag" 
-                    fill 
-                    className="object-cover"
+                    width={1756}
+                    height={384}
+                    className="w-full h-auto rounded-lg border border-zinc-800"
                   />
                 </div>
               </div>

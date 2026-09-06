@@ -146,12 +146,13 @@ export default function PicoCTFWebNet0Writeup() {
               <span className="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider block">
                 FIGURE 2: Adding picopico.key to Wireshark RSA Keys Preferences
               </span>
-              <div className="relative w-full aspect-[4/3] max-w-2xl mx-auto rounded-lg overflow-hidden border border-zinc-800">
+              <div className="flex justify-center">
                 <Image 
                   src="/images/webnet0/wireshark_rsa_import.png" 
                   alt="Wireshark RSA Keys configuration window" 
-                  fill 
-                  className="object-contain"
+                  width={1394}
+                  height={1106}
+                  className="w-full max-w-2xl h-auto rounded-lg border border-zinc-800 shadow-md"
                 />
               </div>
             </div>
@@ -177,12 +178,13 @@ export default function PicoCTFWebNet0Writeup() {
               <span className="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider block">
                 FIGURE 3: TLS Traffic Decrypted into Cleartext HTTP Packets
               </span>
-              <div className="relative w-full aspect-[16/6] rounded-lg overflow-hidden border border-zinc-800">
+              <div className="w-full overflow-x-auto">
                 <Image 
                   src="/images/webnet0/decrypted_http_stream.png" 
                   alt="Decrypted HTTP packets in Wireshark packet list" 
-                  fill 
-                  className="object-cover"
+                  width={2878}
+                  height={686}
+                  className="w-full h-auto rounded-lg border border-zinc-800 shadow-md"
                 />
               </div>
             </div>
@@ -192,33 +194,35 @@ export default function PicoCTFWebNet0Writeup() {
             </p>
 
             {/* Real Screenshot 3 & 4: Packet 32 & HTTP Flag Header */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-black/60 border border-zinc-800 rounded-xl p-3 space-y-2">
-                <div className="relative h-16 w-full rounded-lg overflow-hidden border border-zinc-800">
+            <div className="space-y-4">
+              <div className="bg-black/60 border border-zinc-800 rounded-xl p-4 space-y-2">
+                <span className="text-xs font-mono text-zinc-400 block">
+                  FIGURE 4: Target Response (Packet 32 — HTTP/1.1 200 OK)
+                </span>
+                <div className="w-full overflow-x-auto">
                   <Image 
                     src="/images/webnet0/packet_32_highlight.png" 
                     alt="Packet 32 HTTP 200 OK selected" 
-                    fill 
-                    className="object-contain"
+                    width={2880}
+                    height={28}
+                    className="w-full h-auto rounded border border-zinc-800"
                   />
                 </div>
-                <span className="text-[11px] font-mono text-zinc-400 block text-center">
-                  FIGURE 4: Target Response (Packet 32)
-                </span>
               </div>
 
-              <div className="bg-black/60 border border-zinc-800 rounded-xl p-3 space-y-2">
-                <div className="relative h-36 w-full rounded-lg overflow-hidden border border-zinc-800">
+              <div className="bg-black/60 border border-zinc-800 rounded-xl p-4 space-y-2">
+                <span className="text-xs font-mono text-zinc-400 block text-center">
+                  FIGURE 5: Custom Header in Packet Details Tree (<code className="text-cyan-300">Pico-Flag</code>)
+                </span>
+                <div className="flex justify-center">
                   <Image 
                     src="/images/webnet0/http_flag_header.png" 
                     alt="Pico-Flag header containing flag in HTTP tree" 
-                    fill 
-                    className="object-contain"
+                    width={948}
+                    height={524}
+                    className="w-full max-w-xl h-auto rounded-lg border border-zinc-800 shadow-md"
                   />
                 </div>
-                <span className="text-[11px] font-mono text-zinc-400 block text-center">
-                  FIGURE 5: Custom Header <code className="text-cyan-300">Pico-Flag</code>
-                </span>
               </div>
             </div>
 
@@ -267,12 +271,13 @@ export default function PicoCTFWebNet0Writeup() {
               <span className="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider block">
                 FIGURE 6: Terminal Extraction Output via tshark
               </span>
-              <div className="relative w-full aspect-[32/6] rounded-lg overflow-hidden border border-zinc-800">
+              <div className="w-full overflow-x-auto">
                 <Image 
                   src="/images/webnet0/tshark_cli_grep.png" 
                   alt="tshark command extracting picoCTF flag" 
-                  fill 
-                  className="object-cover"
+                  width={2302}
+                  height={180}
+                  className="w-full h-auto rounded-lg border border-zinc-800 shadow-md"
                 />
               </div>
             </div>
