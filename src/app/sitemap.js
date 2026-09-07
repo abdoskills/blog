@@ -25,6 +25,7 @@ export default function sitemap() {
     "/posts/picoctf-investigative-reversing-3",
     "/posts/picoctf-like1000",
     "/posts/picoctf-m00nwalk",
+    "/posts/picoctf-m00nwalk2",
     "/posts/picoctf-shark-on-wire-1",
     "/posts/picoctf-shark-on-wire-2",
     "/posts/picoctf-so-meta",

@@ -101,6 +101,18 @@ export default function CtfsHub() {
 
     // --- PicoCTF 2019 Forensics ---
     {
+      title: "m00nwalk2",
+      slug: "picoctf-m00nwalk2",
+      platform: "PicoCTF",
+      category: "Audio Steganography",
+      points: "300 PTS",
+      tagline: "SSTV Audio Demodulation & Steghide LSB Carving",
+      description: "Decoding multi-layered radio audio signals. Demodulating Apollo-era SSTV frequency shifts to uncover steganographic clues, and extracting embedded payloads with steghide.",
+      image: "/images/pico_m00nwalk.jpg",
+      tags: ["SSTV", "steghide", "Audio Forensics", "LSB Steganography", "PicoCTF 2019"],
+      time: "5 min read"
+    },
+    {
       title: "WebNet0",
       slug: "picoctf-webnet0",
       platform: "PicoCTF",
