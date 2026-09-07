@@ -233,18 +233,6 @@ export default function CtfsHub() {
       time: "4 min read"
     },
     {
-      title: "m00nwalk",
-      slug: "picoctf-m00nwalk",
-      platform: "PicoCTF",
-      category: "Audio Forensics",
-      points: "250 PTS",
-      tagline: "Apollo 11 SSTV Demodulation",
-      description: "Decoding an SSTV audio signal from the Apollo 11 moon mission. Demodulating the audio into Robot36 or Python PySSTV to draw the secret image.",
-      image: "/images/pico_m00nwalk.jpg",
-      tags: ["SSTV", "Scottie 1", "Audio Forensics", "Robot36 / PySSTV"],
-      time: "6 min read"
-    },
-    {
       title: "Shark on Wire 1",
       slug: "picoctf-shark-on-wire-1",
       platform: "PicoCTF",
