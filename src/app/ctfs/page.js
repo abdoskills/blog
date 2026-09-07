@@ -101,10 +101,22 @@ export default function CtfsHub() {
 
     // --- PicoCTF 2019 Forensics ---
     {
+      title: "m00nwalk",
+      slug: "picoctf-m00nwalk",
+      platform: "PicoCTF",
+      category: "Audio Forensics",
+      points: "250 PTS",
+      tagline: "Apollo 11 SSTV Demodulation",
+      description: "Decoding an SSTV audio signal from the Apollo 11 moon mission. We play the audio into Robot36 or Python PySSTV to draw the secret image line-by-line.",
+      image: "/images/pico_m00nwalk.jpg",
+      tags: ["SSTV", "Scottie 1", "Audio Forensics", "Robot36 / PySSTV"],
+      time: "6 min read"
+    },
+    {
       title: "m00nwalk2",
       slug: "picoctf-m00nwalk2",
       platform: "PicoCTF",
-      category: "Audio Steganography",
+      category: "Audio Forensics",
       points: "300 PTS",
       tagline: "SSTV Audio Demodulation & Steghide LSB Carving",
       description: "Decoding multi-layered radio audio signals. Demodulating Apollo-era SSTV frequency shifts to uncover steganographic clues, and extracting embedded payloads with steghide.",

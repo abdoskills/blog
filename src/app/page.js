@@ -286,6 +286,30 @@ export default function Home() {
       time: "6 min read"
     },
     {
+      title: "m00nwalk2",
+      slug: "picoctf-m00nwalk2",
+      platform: "PicoCTF",
+      category: "Audio Forensics",
+      points: "300 PTS",
+      tagline: "SSTV Audio Demodulation & Steghide LSB Carving",
+      description: "Decoding multi-layered radio audio signals. Demodulating Apollo-era SSTV frequency shifts to uncover steganographic clues, and extracting embedded payloads with steghide.",
+      image: "/images/pico_m00nwalk.jpg",
+      tags: ["SSTV", "steghide", "Audio Forensics", "LSB Steganography", "PicoCTF 2019"],
+      time: "5 min read"
+    },
+    {
+      title: "WebNet0",
+      slug: "picoctf-webnet0",
+      platform: "PicoCTF",
+      category: "Network Forensics",
+      points: "350 PTS",
+      tagline: "TLS Decryption & RSA Key Injection",
+      description: "Decrypting encrypted HTTPS packet captures using a server RSA private key. Importing keys into Wireshark's cryptographic dissector and carving cleartext HTTP response headers with tshark.",
+      image: "/images/pico_webnet0.jpg",
+      tags: ["Wireshark", "tshark", "TLS Decryption", "RSA Private Key", "HTTP Carving"],
+      time: "4 min read"
+    },
+    {
       title: "Shark on Wire 1",
       slug: "picoctf-shark-on-wire-1",
       platform: "PicoCTF",
