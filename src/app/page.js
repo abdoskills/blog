@@ -274,6 +274,30 @@ export default function Home() {
       time: "3 min read"
     },
     {
+      title: "Rogue Tower",
+      slug: "picoctf-rogue-tower",
+      platform: "PicoCTF",
+      category: "Network Forensics",
+      points: "350 PTS",
+      tagline: "Cellular IMSI Catcher & KPA Decryption",
+      description: "Analyzing cellular base station broadcast beacons, tracing victim IMSI registrations to an unauthorized tower, reassembling fragmented HTTP POST payloads, and executing a Known Plaintext Attack (KPA) XOR decryption.",
+      image: "/images/pico_rogue_tower.jpg",
+      tags: ["Wireshark", "tshark", "IMSI Catcher", "XOR Cipher", "KPA Decryption", "Cellular DFIR"],
+      time: "6 min read"
+    },
+    {
+      title: "Timeline",
+      slug: "picoctf-timeline",
+      platform: "PicoCTF",
+      category: "Disk Forensics",
+      points: "300 PTS",
+      tagline: "Linux Filesystem MAC Timeline & Inode Carving",
+      description: "Investigating a raw ext4 partition image using The Sleuth Kit. Generating bodyfiles with fls, sorting chronological MAC timelines with mactime, and carving suspect pre-shutdown artifacts with icat.",
+      image: "/images/pico_timeline.jpg",
+      tags: ["The Sleuth Kit", "fls", "mactime", "icat", "ext4 Forensics", "Timeline Analysis"],
+      time: "5 min read"
+    },
+    {
       title: "m00nwalk",
       slug: "picoctf-m00nwalk",
       platform: "PicoCTF",
