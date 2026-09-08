@@ -17,13 +17,13 @@ export default function Home() {
     {
       title: "CTF Competitions",
       slug: "ctfs",
-      category: "25 CHALLENGES",
+      category: "29 CHALLENGES",
       points: "Multi-CTF",
-      tagline: "Kaspersky • ASCWG • PicoCTF",
-      description: "Complete solutions and operational breakdowns across top CTF competitions: memory forensics, macOS CoreStorage, Windows.db carving, covert channels, and reverse engineering.",
+      tagline: "PicoCTF • ASCWG • Kaspersky • Threat Labs",
+      description: "Complete solutions and operational breakdowns across top CTF competitions: memory forensics, cellular IMSI catchers, smart contract exploits, macOS CoreStorage, and reverse engineering.",
       image: "/images/ctfs_hub.jpg",
-      tags: ["Kaspersky CTF", "ASCWG 2026", "PicoCTF", "Volatility 3", "Ghidra"],
-      time: "25 Writeups"
+      tags: ["PicoCTF", "ASCWG 2026", "Kaspersky CTF", "Threat Labs", "Volatility 3", "Ghidra"],
+      time: "29 Writeups"
     },
     {
       title: "DFIR & Threat Labs",
@@ -114,6 +114,42 @@ export default function Home() {
       image: "/images/nightshade_bitcoin.jpg",
       tags: ["TRACE-7", "CoinJoin Mixing", "Esplora API", "UTXO Graph"],
       time: "9 min read"
+    },
+    {
+      title: "Cascaded Fallacy",
+      slug: "cascaded-fallacy",
+      platform: "ASCWG",
+      category: "Smart Contracts",
+      points: "500 PTS",
+      tagline: "DeFi Reentrancy & EVM Trace Carving",
+      description: "Investigating a multi-stage decentralized finance exploit on the Ethereum Sepolia testnet. Analyzing internal opcode traces on Blockscout to spot reentrancy and broken access control.",
+      image: "/images/cascaded_fallacy.jpg",
+      tags: ["Solidity", "EVM Opcodes", "Reentrancy", "Sepolia Trace", "DeFi Forensics", "ASCWG 2026"],
+      time: "8 min read"
+    },
+    {
+      title: "Crypto Suite",
+      slug: "crypto-suite",
+      platform: "ASCWG",
+      category: "Cryptography",
+      points: "450 PTS",
+      tagline: "Lattice Reduction & Coppersmith Small Roots",
+      description: "Solving advanced math CTF challenges using SageMath. Applying Coppersmith's small roots algorithm and solving Shortest Vector Problems (SVP) via LLL lattice reduction.",
+      image: "/images/crypto_suite.jpg",
+      tags: ["SageMath", "Lattice Reduction", "LLL Algorithm", "Coppersmith", "RSA", "ASCWG 2026"],
+      time: "10 min read"
+    },
+    {
+      title: "Sol-Net Node",
+      slug: "sol-net",
+      platform: "ASCWG",
+      category: "Web Security",
+      points: "350 PTS",
+      tagline: "Node Auth Bypass & OTP Webhook Interception",
+      description: "Exploiting an authentication bypass on an enterprise telemetry gateway. Bypassing host header checks and redirecting outbound OTP webhooks in Burp Suite.",
+      image: "/images/sol_net.jpg",
+      tags: ["Burp Suite", "Auth Bypass", "Host Header Injection", "Webhook Interception", "Web Security", "ASCWG 2026"],
+      time: "6 min read"
     },
 
     // --- Threat Labs & Kaspersky CTF Challenges ---
@@ -298,6 +334,18 @@ export default function Home() {
       image: "/images/pico_extensions.jpg",
       tags: ["Magic Bytes", "file", "Format-Hex", "File Signatures"],
       time: "3 min read"
+    },
+    {
+      title: "B1g_Mac",
+      slug: "picoctf-b1g-mac",
+      platform: "PicoCTF",
+      category: "Anti-Forensics",
+      points: "350 PTS",
+      tagline: "NTFS MACB Timestomping & Zip Extra Fields",
+      description: "Recovering data exfiltrated into sub-second nanosecond NTFS Modification (Mtime) timestamps. Parsing PKWARE Extra Field 0x000A, reversing MinGW directory alternation, and carving the flag.",
+      image: "/images/pico_b1g_mac.jpg",
+      tags: ["NTFS MACB", "Timestomping", "FILETIME", "Zip Extra 0x000A", "Python struct", "PicoCTF"],
+      time: "7 min read"
     },
     {
       title: "m00nwalk",

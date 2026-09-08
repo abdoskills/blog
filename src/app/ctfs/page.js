@@ -124,6 +124,42 @@ export default function CtfsHub() {
       tags: ["TRACE-7", "CoinJoin Mixing", "Esplora API", "UTXO Graph"],
       time: "9 min read"
     },
+    {
+      title: "Cascaded Fallacy",
+      slug: "cascaded-fallacy",
+      platform: "ASCWG 2026",
+      category: "Smart Contracts",
+      points: "500 PTS",
+      tagline: "DeFi Reentrancy & EVM Trace Carving",
+      description: "Investigating a multi-stage decentralized finance exploit on the Ethereum Sepolia testnet. Analyzing internal opcode traces on Blockscout to spot reentrancy and broken access control.",
+      image: "/images/cascaded_fallacy.jpg",
+      tags: ["Solidity", "EVM Opcodes", "Reentrancy", "Sepolia Trace", "DeFi Forensics", "ASCWG 2026"],
+      time: "8 min read"
+    },
+    {
+      title: "Crypto Suite",
+      slug: "crypto-suite",
+      platform: "ASCWG 2026",
+      category: "Cryptography",
+      points: "450 PTS",
+      tagline: "Lattice Reduction & Coppersmith Small Roots",
+      description: "Solving advanced math CTF challenges using SageMath. Applying Coppersmith's small roots algorithm and solving Shortest Vector Problems (SVP) via LLL lattice reduction.",
+      image: "/images/crypto_suite.jpg",
+      tags: ["SageMath", "Lattice Reduction", "LLL Algorithm", "Coppersmith", "RSA", "ASCWG 2026"],
+      time: "10 min read"
+    },
+    {
+      title: "Sol-Net Node",
+      slug: "sol-net",
+      platform: "ASCWG 2026",
+      category: "Web Security",
+      points: "350 PTS",
+      tagline: "Node Auth Bypass & OTP Webhook Interception",
+      description: "Exploiting an authentication bypass on an enterprise telemetry gateway. Bypassing host header checks and redirecting outbound OTP webhooks in Burp Suite.",
+      image: "/images/sol_net.jpg",
+      tags: ["Burp Suite", "Auth Bypass", "Host Header Injection", "Webhook Interception", "Web Security", "ASCWG 2026"],
+      time: "6 min read"
+    },
 
     // --- PicoCTF Forensics ---
     {
@@ -317,11 +353,34 @@ export default function CtfsHub() {
       image: "/images/pico_whitepages.jpg",
       tags: ["Unicode Stego", "Hex Analysis", "Python Binary Decoder"],
       time: "5 min read"
+    },
+
+    // --- Threat Labs & Practical DFIR ---
+    {
+      title: "Phobos Ransomware Analysis",
+      slug: "phobos-ransomware-analysis",
+      platform: "Threat Labs",
+      category: "Reverse Engineering",
+      points: "ADVANCED",
+      tagline: "Unpacking, Decrypting & Threat Intel",
+      description: "Static and dynamic analysis of Phobos ransomware. Decompiling its crypto routine in Ghidra, mapping out persistence keys, and writing custom YARA detection rules.",
+      image: "/images/phobos_thumbnail.jpg",
+      tags: ["Ghidra", "Ransomware DFIR", "x64dbg", "Threat Intel", "YARA", "Threat Labs"],
+      time: "12 min read"
     }
   ];
 
-  // Distinct Platforms & Categories for Filters
-  const platforms = ["ALL", "Kaspersky CTF", "ASCWG 2026", "PicoCTF"];
+  // Distinct Platforms with prioritized ordering
+  const platforms = useMemo(() => {
+    const priority = ["ALL", "PicoCTF", "ASCWG 2026", "Kaspersky CTF", "Threat Labs"];
+    const current = new Set(challenges.map((c) => c.platform));
+    const result = priority.filter((p) => p === "ALL" || current.has(p));
+    current.forEach((p) => {
+      if (!result.includes(p)) result.push(p);
+    });
+    return result;
+  }, [challenges]);
+
   const categories = useMemo(() => {
     const cats = new Set(challenges.map((c) => c.category));
     return ["ALL", ...Array.from(cats).sort()];
@@ -334,6 +393,7 @@ export default function CtfsHub() {
       const matchQuery =
         !q ||
         c.title.toLowerCase().includes(q) ||
+        c.slug.toLowerCase().includes(q) ||
         c.platform.toLowerCase().includes(q) ||
         c.category.toLowerCase().includes(q) ||
         c.tagline.toLowerCase().includes(q) ||
@@ -341,10 +401,13 @@ export default function CtfsHub() {
         c.tags.some((t) => t.toLowerCase().includes(q));
 
       const matchPlatform =
-        selectedPlatform === "ALL" || c.platform.toLowerCase().includes(selectedPlatform.toLowerCase());
+        selectedPlatform === "ALL" ||
+        c.platform.toLowerCase() === selectedPlatform.toLowerCase() ||
+        c.platform.toLowerCase().includes(selectedPlatform.toLowerCase());
 
       const matchCategory =
-        selectedCategory === "ALL" || c.category === selectedCategory;
+        selectedCategory === "ALL" ||
+        c.category.toLowerCase() === selectedCategory.toLowerCase();
 
       return matchQuery && matchPlatform && matchCategory;
     });
