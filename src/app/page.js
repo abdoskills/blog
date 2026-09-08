@@ -17,13 +17,13 @@ export default function Home() {
     {
       title: "CTF Competitions",
       slug: "ctfs",
-      category: "20 CHALLENGES",
+      category: "25 CHALLENGES",
       points: "Multi-CTF",
       tagline: "Kaspersky • ASCWG • PicoCTF",
       description: "Complete solutions and operational breakdowns across top CTF competitions: memory forensics, macOS CoreStorage, Windows.db carving, covert channels, and reverse engineering.",
       image: "/images/ctfs_hub.jpg",
       tags: ["Kaspersky CTF", "ASCWG 2026", "PicoCTF", "Volatility 3", "Ghidra"],
-      time: "20 Writeups"
+      time: "25 Writeups"
     },
     {
       title: "DFIR & Threat Labs",
@@ -38,8 +38,34 @@ export default function Home() {
     }
   ];
 
-  // All 18 Individual Challenges Across All Hubs
+  // All Individual Challenges Across All Hubs
   const allChallenges = [
+    // --- Latest 2026 Additions ---
+    {
+      title: "Rogue Tower",
+      slug: "picoctf-rogue-tower",
+      platform: "PicoCTF",
+      category: "Network Forensics",
+      points: "350 PTS",
+      tagline: "Cellular IMSI Catcher & KPA Decryption",
+      description: "Analyzing cellular base station broadcast beacons, tracing victim IMSI registrations to an unauthorized tower, reassembling fragmented HTTP POST payloads, and executing a Known Plaintext Attack (KPA) XOR decryption.",
+      image: "/images/pico_rogue_tower.jpg",
+      tags: ["Wireshark", "tshark", "IMSI Catcher", "XOR Cipher", "KPA Decryption", "Cellular DFIR", "Rogue Tower", "rogue_tower", "PicoCTF 2026"],
+      time: "6 min read"
+    },
+    {
+      title: "Timeline 1",
+      slug: "picoctf-timeline",
+      platform: "PicoCTF",
+      category: "Disk Forensics",
+      points: "300 PTS",
+      tagline: "Linux Filesystem MAC Timeline & Inode Carving",
+      description: "Investigating a raw ext4 partition image from Timeline 1 using The Sleuth Kit. Generating bodyfiles with fls, sorting chronological MAC timelines with mactime, and carving suspect pre-shutdown artifacts with icat.",
+      image: "/images/pico_timeline.jpg",
+      tags: ["The Sleuth Kit", "fls", "mactime", "icat", "ext4 Forensics", "Timeline Analysis", "Timeline 1", "timeline", "PicoCTF 2026"],
+      time: "5 min read"
+    },
+
     // --- ASCWG Challenges ---
     {
       title: "The Thrushes",
@@ -272,30 +298,6 @@ export default function Home() {
       image: "/images/pico_extensions.jpg",
       tags: ["Magic Bytes", "file", "Format-Hex", "File Signatures"],
       time: "3 min read"
-    },
-    {
-      title: "Rogue Tower",
-      slug: "picoctf-rogue-tower",
-      platform: "PicoCTF",
-      category: "Network Forensics",
-      points: "350 PTS",
-      tagline: "Cellular IMSI Catcher & KPA Decryption",
-      description: "Analyzing cellular base station broadcast beacons, tracing victim IMSI registrations to an unauthorized tower, reassembling fragmented HTTP POST payloads, and executing a Known Plaintext Attack (KPA) XOR decryption.",
-      image: "/images/pico_rogue_tower.jpg",
-      tags: ["Wireshark", "tshark", "IMSI Catcher", "XOR Cipher", "KPA Decryption", "Cellular DFIR"],
-      time: "6 min read"
-    },
-    {
-      title: "Timeline",
-      slug: "picoctf-timeline",
-      platform: "PicoCTF",
-      category: "Disk Forensics",
-      points: "300 PTS",
-      tagline: "Linux Filesystem MAC Timeline & Inode Carving",
-      description: "Investigating a raw ext4 partition image using The Sleuth Kit. Generating bodyfiles with fls, sorting chronological MAC timelines with mactime, and carving suspect pre-shutdown artifacts with icat.",
-      image: "/images/pico_timeline.jpg",
-      tags: ["The Sleuth Kit", "fls", "mactime", "icat", "ext4 Forensics", "Timeline Analysis"],
-      time: "5 min read"
     },
     {
       title: "m00nwalk",
@@ -674,6 +676,87 @@ export default function Home() {
                   </Link>
                 );
               })}
+            </div>
+
+            {/* Latest Forensic Writeups Section */}
+            <div className="pt-8 max-w-6xl mx-auto px-6 space-y-6">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <span className="bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 px-3 py-1 rounded-lg font-mono text-xs font-bold uppercase tracking-wider">
+                    New
+                  </span>
+                  <h2 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
+                    Latest Forensic Writeups
+                  </h2>
+                </div>
+                <Link 
+                  href="/ctfs" 
+                  className="text-xs font-mono text-emerald-400 hover:underline flex items-center gap-1"
+                >
+                  View All Challenges →
+                </Link>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+                {allChallenges.slice(0, 6).map((c) => {
+                  return (
+                    <Link 
+                      key={c.slug}
+                      href={`/posts/${c.slug}`} 
+                      className="group relative bg-[#0e0e13]/90 rounded-2xl flex flex-col border theme-card transition-all duration-500 hover:-translate-y-1.5 overflow-hidden backdrop-blur-xl"
+                    >
+                      <div className="relative w-full h-44 overflow-hidden bg-black/80">
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e13] via-transparent to-black/40 z-10 opacity-90 group-hover:opacity-60 transition-opacity duration-500"></div>
+                        <Image 
+                          src={c.image} 
+                          alt={c.title} 
+                          fill 
+                          className="object-cover transition-transform duration-700 group-hover:scale-105 brightness-[0.9] contrast-[1.15]" 
+                        />
+                        <div className="absolute top-3 left-3 z-20 flex gap-2">
+                          <span className="bg-black/80 backdrop-blur-md border theme-badge font-mono text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-md">
+                            {c.category}
+                          </span>
+                          <span className="bg-black/80 backdrop-blur-md border border-zinc-700 text-zinc-300 font-mono text-[10px] px-2 py-0.5 rounded-full">
+                            {c.points}
+                          </span>
+                        </div>
+                      </div>
+                      
+                      <div className="p-5 flex flex-col flex-grow relative z-20">
+                        <div className="flex justify-between items-center mb-2">
+                          <span className="font-mono text-[11px] text-zinc-400 uppercase tracking-wider truncate">
+                            {c.tagline}
+                          </span>
+                        </div>
+
+                        <h3 className="text-xl font-bold mb-2 text-white group-hover:theme-text transition-colors duration-300 font-[family-name:var(--font-share-tech)] uppercase tracking-wide">
+                          {c.title}
+                        </h3>
+
+                        <p className="text-zinc-400 text-xs leading-relaxed mb-4 font-sans line-clamp-3">
+                          {c.description}
+                        </p>
+
+                        <div className="mt-auto pt-3 border-t border-zinc-800/80 flex flex-wrap gap-1.5 mb-3">
+                          {c.tags.slice(0, 4).map((tag) => (
+                            <span key={tag} className="bg-zinc-900/90 text-zinc-400 border border-zinc-800 text-[10px] font-mono px-2 py-0.5 rounded">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+
+                        <div className="flex justify-between items-center text-[11px] font-mono text-zinc-500 pt-1">
+                          <span>⏱ {c.time}</span>
+                          <span className="theme-cta font-bold flex items-center gap-1 transition-colors">
+                            Read Guide <span className="transform transition-transform group-hover:translate-x-1">→</span>
+                          </span>
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
           </div>
         ) : (
