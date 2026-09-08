@@ -174,6 +174,40 @@ if "picoCTF{" in extracted_text:
             </p>
           </div>
 
+          {/* Real Tool Screenshot: StegoToolkit zsteg Online */}
+          <div className="bg-[#0a1116] border border-cyan-500/40 rounded-2xl p-6 shadow-xl space-y-4 mb-6">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-zinc-800 pb-3">
+              <span className="font-mono text-sm font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                Visual LSB Extraction: StegoToolkit (zsteg Online)
+              </span>
+              <span className="text-xs font-mono text-zinc-500">Zero-Install Browser Scanner • 65 Combinations Tested</span>
+            </div>
+
+            <p className="text-xs md:text-sm text-zinc-300 font-sans leading-relaxed">
+              If you don&apos;t have Ruby and the native <code>zsteg</code> gem installed on your host machine, you can drop <code className="text-white">buildings.png</code> directly into <strong>StegoToolkit / zsteg Online</strong>. Within 120ms, it automatically iterates through all bitplanes and highlights the cleartext flag:
+            </p>
+
+            <div className="relative w-full aspect-[16/10] max-w-3xl mx-auto rounded-xl overflow-hidden border border-zinc-800 bg-black shadow-2xl">
+              <Image 
+                src="/images/stegotoolkit_zsteg_scan.png" 
+                alt="StegoToolkit zsteg Online scan results detecting flag in buildings.png" 
+                fill
+                className="object-contain"
+              />
+            </div>
+
+            <div className="p-3 bg-black/60 border border-emerald-500/30 rounded-xl font-mono text-xs text-zinc-300 flex flex-col md:flex-row items-center justify-between gap-3">
+              <div>
+                <span className="text-zinc-500 block text-[11px]">SCAN VERDICT:</span>
+                <span className="text-emerald-400 font-bold text-sm">🚩 CTF flag detected (80% confidence)</span>
+              </div>
+              <div className="bg-zinc-900 border border-emerald-500/40 px-3 py-1.5 rounded-lg text-emerald-300 font-bold">
+                picoCTF&#123;h1d1ng_1n_th3_b1t5&#125;
+              </div>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             
             {/* Tool 1: Aperi'Solve */}

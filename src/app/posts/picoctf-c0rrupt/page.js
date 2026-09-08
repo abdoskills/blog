@@ -154,6 +154,52 @@ print("🎉 Successfully repaired! fixed.png generated.")`;
           <p className="text-sm text-zinc-400 font-sans leading-relaxed">
             If the chunk name is misspelled or the Length doesn&apos;t match the number of data bytes, the CRC32 check fails, and the image viewer aborts rendering.
           </p>
+
+          {/* Reference Hex Inspection Graphic */}
+          <div className="bg-[#0b0813] border border-purple-500/40 rounded-2xl p-6 shadow-xl space-y-4">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-zinc-800 pb-3">
+              <span className="font-mono text-sm font-bold text-purple-400 uppercase tracking-wider flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
+                The Golden Standard: Valid PNG Header in Bless Hex Editor
+              </span>
+              <span className="text-xs font-mono text-zinc-500">Benchmark Reference • PNG-Gradient.png</span>
+            </div>
+
+            <p className="text-xs md:text-sm text-zinc-300 font-sans leading-relaxed">
+              Below is what a healthy, uncorrupted PNG file looks like when inspected in a hex editor. Notice how the first 8 bytes contain the universal magic signature, immediately followed by the <code className="text-purple-300">IHDR</code> chunk header:
+            </p>
+
+            <div className="relative w-full aspect-[4/3] max-w-2xl mx-auto rounded-xl overflow-hidden border border-zinc-800 bg-black shadow-2xl">
+              <Image 
+                src="/images/png_gradient_hex.png" 
+                alt="Valid PNG Header shown in Bless Hex Editor" 
+                fill
+                className="object-contain"
+              />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-mono text-xs pt-2">
+              <div className="p-3.5 bg-black/80 rounded-xl border border-emerald-500/30 space-y-1">
+                <span className="text-emerald-400 font-bold block text-sm">✅ Standard Healthy PNG (Reference):</span>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Offset <code className="text-emerald-300">0x00</code>: <code className="text-emerald-300">89 50 4E 47 0D 0A 1A 0A</code> (.PNG\r\n\x1a\n)<br />
+                  Offset <code className="text-emerald-300">0x0C</code>: <code className="text-emerald-300">49 48 44 52</code> (Chunk Type: <strong>IHDR</strong>)
+                </p>
+              </div>
+
+              <div className="p-3.5 bg-black/80 rounded-xl border border-red-500/30 space-y-1">
+                <span className="text-red-400 font-bold block text-sm">❌ Our Sabotaged File (`mystery`):</span>
+                <p className="text-zinc-400 font-sans text-xs">
+                  Offset <code className="text-red-300">0x00</code>: <code className="text-red-300">89 65 4E 34 0D 0A B0 AA</code> (.eN4...)<br />
+                  Offset <code className="text-red-300">0x0C</code>: <code className="text-red-300">43 22 44 52</code> (Scrambled chunk: <strong>C&quot;DR</strong>)
+                </p>
+              </div>
+            </div>
+
+            <div className="p-3 bg-purple-950/20 border border-purple-500/30 rounded-lg text-xs font-sans text-purple-200 leading-relaxed">
+              💡 <strong>The Core Forensic Objective:</strong> By comparing our broken <code className="text-white">mystery</code> file directly against this golden hex template, our goal is clear: change the corrupted bytes back to the specification standard, save the repaired file as <code className="text-white">fixed.png</code>, and the visual image along with the secret flag will immediately render!
+            </div>
+          </div>
         </div>
 
         {/* Section 3: Diagnostic Step (pngcheck) */}
