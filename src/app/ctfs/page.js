@@ -12,7 +12,19 @@ export default function CtfsHub() {
 
   const challenges = [
     // --- Latest 2026 Additions ---
-    {
+        {
+      title: "Disko 4",
+      slug: "picoctf-disko-4",
+      platform: "PicoCTF",
+      category: "Disk Forensics",
+      points: "300 PTS",
+      tagline: "FAT32 Deleted File Recovery & Inode Carving",
+      description: "Forensic analysis of a raw 100 MB FAT32 volume image using The Sleuth Kit. Filtering deleted directory entries with fls -d, avoiding the Windows PowerShell UTF-16 redirection trap, carving Inode 532021, and inflating gzip payloads.",
+      image: "/images/pico_disko_4.jpg",
+      tags: ["The Sleuth Kit", "FAT32 Forensics", "fls", "icat", "fsstat", "Deleted File Recovery", "gzip Inflate", "Disko 4", "PicoCTF 2026"],
+      time: "5 min read"
+    },
+{
       title: "Forensics Git 0",
       slug: "picoctf-forensics-git-0",
       platform: "PicoCTF",

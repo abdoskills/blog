@@ -17,13 +17,13 @@ export default function Home() {
     {
       title: "CTF Competitions",
       slug: "ctfs",
-      category: "33 CHALLENGES",
+      category: "34 CHALLENGES",
       points: "Multi-CTF",
       tagline: "PicoCTF • ASCWG • Kaspersky • Threat Labs",
       description: "Complete solutions and operational breakdowns across top CTF competitions: memory forensics, cellular IMSI catchers, smart contract exploits, macOS CoreStorage, and reverse engineering.",
       image: "/images/ctfs_hub.jpg",
       tags: ["PicoCTF", "ASCWG 2026", "Kaspersky CTF", "Threat Labs", "Volatility 3", "Ghidra"],
-      time: "33 Writeups"
+      time: "34 Writeups"
     },
     {
       title: "DFIR & Threat Labs",
@@ -41,7 +41,19 @@ export default function Home() {
   // All Individual Challenges Across All Hubs
   const allChallenges = [
     // --- Latest 2026 Additions ---
-    {
+        {
+      title: "Disko 4",
+      slug: "picoctf-disko-4",
+      platform: "PicoCTF",
+      category: "Disk Forensics",
+      points: "300 PTS",
+      tagline: "FAT32 Deleted File Recovery & Inode Carving",
+      description: "Forensic analysis of a raw 100 MB FAT32 volume image using The Sleuth Kit. Filtering deleted directory entries with fls -d, avoiding the Windows PowerShell UTF-16 redirection trap, carving Inode 532021, and inflating gzip payloads.",
+      image: "/images/pico_disko_4.jpg",
+      tags: ["The Sleuth Kit", "FAT32 Forensics", "fls", "icat", "fsstat", "Deleted File Recovery", "gzip Inflate", "Disko 4", "PicoCTF 2026"],
+      time: "5 min read"
+    },
+{
       title: "Forensics Git 0",
       slug: "picoctf-forensics-git-0",
       platform: "PicoCTF",
