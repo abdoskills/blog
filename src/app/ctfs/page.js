@@ -13,6 +13,30 @@ export default function CtfsHub() {
   const challenges = [
     // --- Latest 2026 Additions ---
     {
+      title: "Forensics Git 0",
+      slug: "picoctf-forensics-git-0",
+      platform: "PicoCTF",
+      category: "Disk Forensics",
+      points: "350 PTS",
+      tagline: "Linux Disk Partitioning & Inode Git Carving",
+      description: "Forensic analysis of a 1 GB raw disk image using The Sleuth Kit. Mapping MBR partition tables with mmls, calculating sector offsets, traversing directory trees with fls, and carving git commit artifacts.",
+      image: "/images/pico_git_0.jpg",
+      tags: ["The Sleuth Kit", "mmls", "fls", "icat", "ext4 Forensics", "Partition Offsets", "Git Forensics", "Forensics Git 0", "git", "PicoCTF 2026"],
+      time: "6 min read"
+    },
+    {
+      title: "Forensics Git 1",
+      slug: "picoctf-forensics-git-1",
+      platform: "PicoCTF",
+      category: "Disk Forensics",
+      points: "350 PTS",
+      tagline: "Tracing Deleted Commits & Git Object Carving",
+      description: "Forensic analysis of a raw disk image using The Sleuth Kit. Tracing Git reflogs to discover deleted commits, navigating the Git DAG (Commit -> Tree -> Blob), and inflating zlib-compressed objects.",
+      image: "/images/pico_git_1.jpg",
+      tags: ["The Sleuth Kit", "Git Reflogs", "zlib Inflate", "Git Internals", "icat", "CyberChef", "git cat-file", "Forensics Git 1", "git", "PicoCTF 2026"],
+      time: "7 min read"
+    },
+    {
       title: "Rogue Tower",
       slug: "picoctf-rogue-tower",
       platform: "PicoCTF",
