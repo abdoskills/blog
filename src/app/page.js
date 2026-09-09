@@ -17,13 +17,13 @@ export default function Home() {
     {
       title: "CTF Competitions",
       slug: "ctfs",
-      category: "32 CHALLENGES",
+      category: "33 CHALLENGES",
       points: "Multi-CTF",
       tagline: "PicoCTF • ASCWG • Kaspersky • Threat Labs",
       description: "Complete solutions and operational breakdowns across top CTF competitions: memory forensics, cellular IMSI catchers, smart contract exploits, macOS CoreStorage, and reverse engineering.",
       image: "/images/ctfs_hub.jpg",
       tags: ["PicoCTF", "ASCWG 2026", "Kaspersky CTF", "Threat Labs", "Volatility 3", "Ghidra"],
-      time: "32 Writeups"
+      time: "33 Writeups"
     },
     {
       title: "DFIR & Threat Labs",
@@ -65,6 +65,19 @@ export default function Home() {
       tags: ["The Sleuth Kit", "Git Reflogs", "zlib Inflate", "Git Internals", "icat", "CyberChef", "git cat-file", "Forensics Git 1", "git", "PicoCTF 2026"],
       time: "7 min read"
     },
+    {
+      title: "Forensics Git 2",
+      slug: "picoctf-forensics-git-2",
+      platform: "PicoCTF",
+      category: "Disk Forensics",
+      points: "350 PTS",
+      tagline: "Recovering Deleted Directory Trees & Git Artifacts",
+      description: "Forensic analysis of a raw disk image using The Sleuth Kit. Tracing missing file sequences, traversing nested Git subtrees (Commit -> Root Tree -> Subdirectory Tree -> Blob), and inflating zlib-compressed chat logs.",
+      image: "/images/pico_git_2.jpg",
+      tags: ["The Sleuth Kit", "Git Subtrees", "zlib Inflate", "Git Internals", "Tree Objects", "icat", "fls", "Forensics Git 2", "git", "PicoCTF 2026"],
+      time: "8 min read"
+    },
+
     {
       title: "Timeline 0",
       slug: "picoctf-timeline-0",
