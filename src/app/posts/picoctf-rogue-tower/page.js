@@ -38,11 +38,11 @@ export default function PicoCTFRogueTowerWriteup() {
             </span>
           </div>
           
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white font-[family-name:var(--font-share-tech)] leading-tight">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-6 text-white font-[family-name:var(--font-share-tech)] leading-tight break-words">
             Rogue Tower: Cellular IMSI Catcher &amp; Exfiltration Analysis
           </h1>
           
-          <div className="flex items-center gap-4 text-sm font-mono text-zinc-500 uppercase tracking-widest mb-8">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs sm:text-sm font-mono text-zinc-500 uppercase tracking-widest mb-8">
             <span>By Abdo</span>
             <span>•</span>
             <span>6 min read</span>
@@ -51,22 +51,22 @@ export default function PicoCTFRogueTowerWriteup() {
           </div>
 
           {/* Quick Metrics Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full text-left font-mono text-xs">
-            <div className="bg-[#0e0e13]/90 border border-zinc-800 p-4 rounded-xl">
-              <span className="text-zinc-500 block mb-1">EVIDENCE PCAP</span>
-              <span className="text-white font-bold">rogue_tower.pcap</span>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 w-full text-left font-mono text-xs">
+            <div className="bg-[#0e0e13]/90 border border-zinc-800 p-3 sm:p-4 rounded-xl min-w-0">
+              <span className="text-zinc-500 block mb-1 text-[11px]">EVIDENCE PCAP</span>
+              <span className="text-white font-bold truncate block">rogue_tower.pcap</span>
             </div>
-            <div className="bg-[#0e0e13]/90 border border-zinc-800 p-4 rounded-xl">
-              <span className="text-zinc-500 block mb-1">ROGUE TOWER</span>
-              <span className="text-red-400 font-bold">CELLID: 92058</span>
+            <div className="bg-[#0e0e13]/90 border border-zinc-800 p-3 sm:p-4 rounded-xl min-w-0">
+              <span className="text-zinc-500 block mb-1 text-[11px]">ROGUE TOWER</span>
+              <span className="text-red-400 font-bold truncate block">CELLID: 92058</span>
             </div>
-            <div className="bg-[#0e0e13]/90 border border-zinc-800 p-4 rounded-xl">
-              <span className="text-zinc-500 block mb-1">VICTIM IMSI</span>
-              <span className="text-amber-400 font-bold">310410308555787</span>
+            <div className="bg-[#0e0e13]/90 border border-zinc-800 p-3 sm:p-4 rounded-xl min-w-0">
+              <span className="text-zinc-500 block mb-1 text-[11px]">VICTIM IMSI</span>
+              <span className="text-amber-400 font-bold break-all block">310410308555787</span>
             </div>
-            <div className="bg-[#0e0e13]/90 border border-zinc-800 p-4 rounded-xl">
-              <span className="text-zinc-500 block mb-1">RECOVERED FLAG</span>
-              <span className="text-emerald-400 font-bold">picoCTF&#123;r0gu3...&#125;</span>
+            <div className="bg-[#0e0e13]/90 border border-zinc-800 p-3 sm:p-4 rounded-xl min-w-0">
+              <span className="text-zinc-500 block mb-1 text-[11px]">RECOVERED FLAG</span>
+              <span className="text-emerald-400 font-bold truncate block">picoCTF&#123;r0gu3...&#125;</span>
             </div>
           </div>
         </header>
@@ -295,13 +295,13 @@ export default function PicoCTFRogueTowerWriteup() {
           </div>
 
           {/* Flag Box */}
-          <div className="bg-gradient-to-r from-emerald-950/40 via-[#0a1813] to-emerald-950/40 border border-emerald-500/50 rounded-2xl p-6 shadow-2xl relative overflow-hidden mt-8">
+          <div className="bg-gradient-to-r from-emerald-950/40 via-[#0a1813] to-emerald-950/40 border border-emerald-500/50 rounded-2xl p-4 sm:p-6 shadow-2xl relative overflow-hidden mt-8">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <div>
+              <div className="min-w-0 max-w-full">
                 <span className="text-emerald-400 text-xs font-mono font-bold uppercase tracking-widest block mb-1">
                   OFFICIAL CAPTURED FLAG
                 </span>
-                <span className="text-xl md:text-2xl font-mono font-bold text-white tracking-wide">
+                <span className="text-base sm:text-xl md:text-2xl font-mono font-bold text-white tracking-wide break-all block">
                   {flagText}
                 </span>
               </div>

@@ -165,7 +165,7 @@ export default function Navbar() {
 
           {/* Floating Dropdown Drawer */}
           {isOpen && (
-            <div className="absolute right-0 top-full mt-3 w-72 sm:w-80 rounded-2xl bg-[#0d0d12]/95 border theme-border backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.9)] p-4 space-y-4 animate-fadeIn z-50">
+            <div className="absolute right-0 top-full mt-3 w-72 sm:w-80 max-w-[calc(100vw-2rem)] rounded-2xl bg-[#0d0d12]/95 border theme-border backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.9)] p-4 space-y-4 animate-fadeIn z-50">
               
               {/* Section 1: Writeups & Hubs */}
               <div>
@@ -185,7 +185,7 @@ export default function Navbar() {
                         <span className="text-[11px] text-zinc-500">Kaspersky, ASCWG, PicoCTF</span>
                       </div>
                     </div>
-                    <span className="text-xs font-mono theme-text font-bold">20</span>
+                    <span className="text-xs font-mono theme-text font-bold">29</span>
                   </Link>
 
                   <Link 

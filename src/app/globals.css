@@ -341,3 +341,106 @@ html[data-theme="light"] main pre[class*="bg-"] {
 html[data-theme="light"] main pre code {
   color: var(--accent-text) !important;
 }
+
+/* ========================================================================= */
+/* UNIVERSAL MOBILE RESPONSIVENESS ENGINE (Prevents Box & Text Overflow)    */
+/* ========================================================================= */
+
+html, body {
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+  width: 100% !important;
+  position: relative;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Code & Terminal Blocks must scroll internally on small screens */
+pre,
+main pre,
+pre[class*="bg-"] {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+  word-break: normal !important;
+  word-wrap: normal !important;
+}
+
+pre code,
+main pre code {
+  white-space: pre !important;
+  word-break: normal !important;
+}
+
+/* Inline code tags outside pre must wrap gracefully */
+:not(pre) > code {
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+  white-space: normal !important;
+}
+
+/* Universal table responsiveness */
+table {
+  max-width: 100% !important;
+}
+
+.overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+/* Images & embedded media strictly stay in bounds */
+img, video, canvas {
+  max-width: 100% !important;
+  height: auto;
+}
+
+/* Flag & Decoded Plaintext Boxes Word Breaking */
+.break-all,
+[class*="from-emerald"] span,
+[class*="from-"] .font-mono,
+main section[class*="from-"] span {
+  word-break: break-all !important;
+  overflow-wrap: anywhere !important;
+}
+
+/* Mobile Screens Adjustments (<= 640px) */
+@media (max-width: 640px) {
+  /* Prevent header pill badges from overflowing the screen */
+  [class*="tracking-[0.3em]"] {
+    letter-spacing: 0.1em !important;
+    font-size: 10px !important;
+    white-space: normal !important;
+    text-align: center !important;
+    word-break: break-word !important;
+  }
+  
+  .animate-glow-pulse {
+    max-width: 100% !important;
+    white-space: normal !important;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+    border-radius: 1rem !important;
+  }
+
+  /* Compact padding for main article on phones */
+  main article {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Ensure grids do not force wide min-width */
+  .grid {
+    min-width: 0 !important;
+  }
+
+  /* Ensure theme floating controller stays inside screen margins */
+  .fixed.bottom-6.right-6 {
+    bottom: 1rem !important;
+    right: 1rem !important;
+  }
+}
+

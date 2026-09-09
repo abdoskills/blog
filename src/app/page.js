@@ -473,7 +473,7 @@ export default function Home() {
         {/* Search Bar & Filter Controls */}
         <div className="w-full max-w-3xl mx-auto px-4 mb-8 z-30 relative">
           <div className="flex gap-2">
-            <div className="relative flex-grow">
+            <div className="relative flex-grow min-w-0">
               <input 
                 type="text" 
                 value={searchQuery}
@@ -649,7 +649,7 @@ export default function Home() {
           /* DEFAULT VIEW: The 3 Primary Category Hubs                                 */
           /* ========================================================================= */
           <div className="space-y-8">
-            <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <span className="bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 px-3 py-1 rounded-lg font-mono text-xs font-bold uppercase tracking-wider">
                   Featured
@@ -662,7 +662,7 @@ export default function Home() {
             </div>
 
             {/* The 2 Primary Hub Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto px-6 w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto px-4 sm:px-6 w-full">
               {primaryHubs.map((c) => {
                 return (
                   <Link 
@@ -689,18 +689,18 @@ export default function Home() {
                       </div>
                     </div>
                     
-                    <div className="p-5 flex flex-col flex-grow relative z-20">
-                      <div className="flex justify-between items-center mb-2">
+                    <div className="p-4 sm:p-5 flex flex-col flex-grow relative z-20 min-w-0">
+                      <div className="flex justify-between items-center mb-2 min-w-0">
                         <span className="font-mono text-[11px] text-zinc-400 uppercase tracking-wider truncate">
                           {c.tagline}
                         </span>
                       </div>
 
-                      <h3 className="text-xl font-bold mb-2 text-white group-hover:theme-text transition-colors duration-300 font-[family-name:var(--font-share-tech)] uppercase tracking-wide">
+                      <h3 className="text-xl font-bold mb-2 text-white group-hover:theme-text transition-colors duration-300 font-[family-name:var(--font-share-tech)] uppercase tracking-wide break-words">
                         {c.title}
                       </h3>
 
-                      <p className="text-zinc-400 text-xs leading-relaxed mb-4 font-sans line-clamp-3">
+                      <p className="text-zinc-400 text-xs leading-relaxed mb-4 font-sans line-clamp-3 break-words">
                         {c.description}
                       </p>
 
@@ -727,7 +727,7 @@ export default function Home() {
             </div>
 
             {/* Latest Forensic Writeups Section */}
-            <div className="pt-8 max-w-6xl mx-auto px-6 space-y-6">
+            <div className="pt-8 max-w-6xl mx-auto px-4 sm:px-6 space-y-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <span className="bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 px-3 py-1 rounded-lg font-mono text-xs font-bold uppercase tracking-wider">
@@ -771,18 +771,18 @@ export default function Home() {
                         </div>
                       </div>
                       
-                      <div className="p-5 flex flex-col flex-grow relative z-20">
-                        <div className="flex justify-between items-center mb-2">
+                      <div className="p-4 sm:p-5 flex flex-col flex-grow relative z-20 min-w-0">
+                        <div className="flex justify-between items-center mb-2 min-w-0">
                           <span className="font-mono text-[11px] text-zinc-400 uppercase tracking-wider truncate">
                             {c.tagline}
                           </span>
                         </div>
 
-                        <h3 className="text-xl font-bold mb-2 text-white group-hover:theme-text transition-colors duration-300 font-[family-name:var(--font-share-tech)] uppercase tracking-wide">
+                        <h3 className="text-xl font-bold mb-2 text-white group-hover:theme-text transition-colors duration-300 font-[family-name:var(--font-share-tech)] uppercase tracking-wide break-words">
                           {c.title}
                         </h3>
 
-                        <p className="text-zinc-400 text-xs leading-relaxed mb-4 font-sans line-clamp-3">
+                        <p className="text-zinc-400 text-xs leading-relaxed mb-4 font-sans line-clamp-3 break-words">
                           {c.description}
                         </p>
 
@@ -812,31 +812,31 @@ export default function Home() {
           /* FILTERED / SEARCH VIEW: Individual Matched Challenges                     */
           /* ========================================================================= */
           <div className="space-y-8">
-            <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div className="flex items-center gap-3">
                 <span className="bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 px-3 py-1 rounded-lg font-mono text-xs font-bold uppercase tracking-wider">
                   Search Results
                 </span>
-                <h2 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
+                <h2 className="text-lg sm:text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
                   Matching Challenges ({filteredChallenges.length})
                 </h2>
               </div>
               <button 
                 onClick={clearAllFilters}
-                className="text-xs font-mono text-emerald-400 hover:underline flex items-center gap-1"
+                className="text-xs font-mono text-emerald-400 hover:underline flex items-center gap-1 self-start sm:self-auto"
               >
                 ← Back to All Hubs
               </button>
             </div>
 
             {filteredChallenges.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-6 w-full">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 sm:px-6 w-full">
                 {filteredChallenges.map((c) => {
                   return (
                     <Link 
                       key={c.slug}
                       href={`/posts/${c.slug}`} 
-                      className="group relative bg-[#0e0e13]/90 rounded-2xl flex flex-col border theme-card transition-all duration-500 hover:-translate-y-1.5 overflow-hidden backdrop-blur-xl"
+                      className="group relative bg-[#0e0e13]/90 rounded-2xl flex flex-col border theme-card transition-all duration-500 hover:-translate-y-1.5 overflow-hidden backdrop-blur-xl min-w-0"
                     >
                       <div className="relative w-full h-44 overflow-hidden bg-black/80">
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e13] via-transparent to-black/40 z-10 opacity-90 group-hover:opacity-60 transition-opacity duration-500"></div>
@@ -857,18 +857,18 @@ export default function Home() {
                         </div>
                       </div>
                       
-                      <div className="p-5 flex flex-col flex-grow relative z-20">
-                        <div className="flex justify-between items-center mb-2">
+                      <div className="p-4 sm:p-5 flex flex-col flex-grow relative z-20 min-w-0">
+                        <div className="flex justify-between items-center mb-2 min-w-0">
                           <span className="font-mono text-[11px] text-zinc-400 uppercase tracking-wider truncate">
                             {c.tagline}
                           </span>
                         </div>
 
-                        <h3 className="text-xl font-bold mb-2 text-white group-hover:theme-text transition-colors duration-300 font-[family-name:var(--font-share-tech)] uppercase tracking-wide">
+                        <h3 className="text-xl font-bold mb-2 text-white group-hover:theme-text transition-colors duration-300 font-[family-name:var(--font-share-tech)] uppercase tracking-wide break-words">
                           {c.title}
                         </h3>
 
-                        <p className="text-zinc-400 text-xs leading-relaxed mb-4 font-sans line-clamp-3">
+                        <p className="text-zinc-400 text-xs leading-relaxed mb-4 font-sans line-clamp-3 break-words">
                           {c.description}
                         </p>
 

@@ -422,23 +422,23 @@ export default function CtfsHub() {
       <main className="flex-grow pt-6 pb-20">
         
         {/* Master Hub Header */}
-        <div className="max-w-4xl mx-auto px-6 mb-10 text-center">
-          <div className="mb-4 inline-block bg-[#111111]/80 backdrop-blur-md border theme-border px-4 py-1.5 rounded-full animate-glow-pulse">
-            <span className="font-mono text-xs theme-text uppercase tracking-[0.3em]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-10 text-center">
+          <div className="mb-4 inline-flex max-w-full items-center justify-center bg-[#111111]/80 backdrop-blur-md border theme-border px-3 sm:px-4 py-1.5 rounded-full animate-glow-pulse">
+            <span className="font-mono text-[10px] sm:text-xs theme-text uppercase tracking-wider sm:tracking-[0.3em] text-center">
               KASPERSKY • ASCWG • PICOCTF • CYBER WARGAMES
               <span className="animate-blink inline-block w-1.5 h-3 bg-amber-400 ml-2 align-middle"></span>
             </span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-extrabold text-white tracking-widest font-[family-name:var(--font-silkscreen)] mb-4 drop-shadow-[0_0_25px_var(--accent-glow)]">
+          <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold text-white tracking-normal sm:tracking-widest font-[family-name:var(--font-silkscreen)] mb-4 drop-shadow-[0_0_25px_var(--accent-glow)] break-words">
             CTF Competitions
           </h1>
-          <p className="text-zinc-400 text-base md:text-lg font-sans max-w-2xl mx-auto leading-relaxed">
+          <p className="text-zinc-400 text-sm md:text-base font-sans max-w-2xl mx-auto leading-relaxed">
             All CTF challenge solutions and operational breakdowns gathered in one place. Filter by competition, tool, or forensic category.
           </p>
         </div>
 
         {/* Filter & Search Toolbar */}
-        <div className="max-w-6xl mx-auto px-6 mb-10 space-y-4">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-10 space-y-4">
           <div className="flex flex-col sm:flex-row gap-3 items-center justify-between bg-[#0d0d12]/90 border border-zinc-800/90 p-4 rounded-2xl backdrop-blur-xl">
             
             {/* Search Input */}
@@ -500,10 +500,10 @@ export default function CtfsHub() {
         </div>
 
         {/* Results Count Header */}
-        <div className="max-w-6xl mx-auto px-6 mb-6 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-6 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-xs font-mono theme-badge px-3 py-1 rounded-full border">
-              Showing {filtered.length} Challenges
+              Showing {filtered.length} of {challenges.length} Challenges
             </span>
           </div>
           {(searchQuery || selectedPlatform !== "ALL" || selectedCategory !== "ALL") && (
@@ -521,7 +521,7 @@ export default function CtfsHub() {
         </div>
 
         {/* All Challenge Cards Grid (Unified 120 FPS Layout) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-6 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 sm:px-6 w-full">
           {filtered.map((c) => {
             return (
               <Link 
@@ -540,7 +540,7 @@ export default function CtfsHub() {
                   />
                   
                   {/* Top Badges: Competition Name + Points Pill */}
-                  <div className="absolute top-3 left-3 z-20 flex flex-wrap gap-1.5">
+                  <div className="absolute top-3 left-3 right-3 z-20 flex flex-wrap gap-1.5 pointer-events-none">
                     <span className="bg-black/90 backdrop-blur-md border theme-border theme-text font-mono text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-md">
                       {c.platform}
                     </span>
@@ -550,18 +550,18 @@ export default function CtfsHub() {
                   </div>
                 </div>
                 
-                <div className="p-5 flex flex-col flex-grow relative z-20">
-                  <div className="flex justify-between items-center mb-1.5">
+                <div className="p-4 sm:p-5 flex flex-col flex-grow relative z-20 min-w-0">
+                  <div className="flex justify-between items-center mb-1.5 min-w-0">
                     <span className="font-mono text-[11px] text-zinc-400 uppercase tracking-wider truncate">
                       {c.category} • {c.tagline}
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold mb-2 text-white group-hover:theme-text transition-colors duration-200 font-[family-name:var(--font-share-tech)] uppercase tracking-wide">
+                  <h3 className="text-lg font-bold mb-2 text-white group-hover:theme-text transition-colors duration-200 font-[family-name:var(--font-share-tech)] uppercase tracking-wide break-words">
                     {c.title}
                   </h3>
 
-                  <p className="text-zinc-400 text-xs leading-relaxed mb-4 font-sans line-clamp-2">
+                  <p className="text-zinc-400 text-xs leading-relaxed mb-4 font-sans line-clamp-2 break-words">
                     {c.description}
                   </p>
 

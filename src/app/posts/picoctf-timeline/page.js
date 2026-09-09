@@ -39,11 +39,11 @@ export default function PicoCTFTimelineWriteup() {
             </span>
           </div>
           
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white font-[family-name:var(--font-share-tech)] leading-tight">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-6 text-white font-[family-name:var(--font-share-tech)] leading-tight break-words">
             Timeline: Linux Filesystem MAC Timeline Analysis
           </h1>
           
-          <div className="flex items-center gap-4 text-sm font-mono text-zinc-500 uppercase tracking-widest mb-8">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs sm:text-sm font-mono text-zinc-500 uppercase tracking-widest mb-8">
             <span>By Abdo</span>
             <span>•</span>
             <span>5 min read</span>
@@ -52,22 +52,22 @@ export default function PicoCTFTimelineWriteup() {
           </div>
 
           {/* Quick Metrics Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full text-left font-mono text-xs">
-            <div className="bg-[#0e0e13]/90 border border-zinc-800 p-4 rounded-xl">
-              <span className="text-zinc-500 block mb-1">TARGET IMAGE</span>
-              <span className="text-white font-bold">partition4.img (ext4)</span>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 w-full text-left font-mono text-xs">
+            <div className="bg-[#0e0e13]/90 border border-zinc-800 p-3 sm:p-4 rounded-xl min-w-0">
+              <span className="text-zinc-500 block mb-1 text-[11px]">TARGET IMAGE</span>
+              <span className="text-white font-bold truncate block">partition4.img</span>
             </div>
-            <div className="bg-[#0e0e13]/90 border border-zinc-800 p-4 rounded-xl">
-              <span className="text-zinc-500 block mb-1">TOOLCHAIN</span>
-              <span className="text-cyan-400 font-bold">The Sleuth Kit (fls, mactime)</span>
+            <div className="bg-[#0e0e13]/90 border border-zinc-800 p-3 sm:p-4 rounded-xl min-w-0">
+              <span className="text-zinc-500 block mb-1 text-[11px]">TOOLCHAIN</span>
+              <span className="text-cyan-400 font-bold truncate block">fls, mactime, icat</span>
             </div>
-            <div className="bg-[#0e0e13]/90 border border-zinc-800 p-4 rounded-xl">
-              <span className="text-zinc-500 block mb-1">ANOMALY INODE</span>
-              <span className="text-amber-400 font-bold">32716 (/etc/chat)</span>
+            <div className="bg-[#0e0e13]/90 border border-zinc-800 p-3 sm:p-4 rounded-xl min-w-0">
+              <span className="text-zinc-500 block mb-1 text-[11px]">ANOMALY INODE</span>
+              <span className="text-amber-400 font-bold truncate block">32716 (/etc/chat)</span>
             </div>
-            <div className="bg-[#0e0e13]/90 border border-zinc-800 p-4 rounded-xl">
-              <span className="text-zinc-500 block mb-1">FLAG</span>
-              <span className="text-emerald-400 font-bold">picoCTF&#123;573417...&#125;</span>
+            <div className="bg-[#0e0e13]/90 border border-zinc-800 p-3 sm:p-4 rounded-xl min-w-0">
+              <span className="text-zinc-500 block mb-1 text-[11px]">FLAG</span>
+              <span className="text-emerald-400 font-bold truncate block">picoCTF&#123;573417...&#125;</span>
             </div>
           </div>
         </header>
@@ -213,18 +213,18 @@ export default function PicoCTFTimelineWriteup() {
 
           <div className="bg-[#0e0e14] p-3 rounded-xl border border-zinc-800 font-mono text-xs text-zinc-300">
             <span className="text-zinc-500">// Decoded Plaintext: </span>
-            <span className="text-emerald-400 font-bold">573417h13r_7h4n_7h3_1457_58527bb222</span>
+            <span className="text-emerald-400 font-bold break-all block sm:inline">573417h13r_7h4n_7h3_1457_58527bb222</span>
             <span className="text-zinc-500 block text-[11px] mt-1">(L33tspeak: &quot;stealthier_than_the_last_58527bb222&quot;)</span>
           </div>
 
           {/* Flag Box */}
-          <div className="bg-gradient-to-r from-emerald-950/40 via-[#0a1813] to-emerald-950/40 border border-emerald-500/50 rounded-2xl p-6 shadow-2xl relative overflow-hidden mt-8">
+          <div className="bg-gradient-to-r from-emerald-950/40 via-[#0a1813] to-emerald-950/40 border border-emerald-500/50 rounded-2xl p-4 sm:p-6 shadow-2xl relative overflow-hidden mt-8">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <div>
+              <div className="min-w-0 max-w-full">
                 <span className="text-emerald-400 text-xs font-mono font-bold uppercase tracking-widest block mb-1">
                   OFFICIAL CAPTURED FLAG
                 </span>
-                <span className="text-xl md:text-2xl font-mono font-bold text-white tracking-wide">
+                <span className="text-base sm:text-xl md:text-2xl font-mono font-bold text-white tracking-wide break-all block">
                   {flagText}
                 </span>
               </div>
