@@ -17,13 +17,13 @@ export default function Home() {
     {
       title: "CTF Competitions",
       slug: "ctfs",
-      category: "29 CHALLENGES",
+      category: "30 CHALLENGES",
       points: "Multi-CTF",
       tagline: "PicoCTF • ASCWG • Kaspersky • Threat Labs",
       description: "Complete solutions and operational breakdowns across top CTF competitions: memory forensics, cellular IMSI catchers, smart contract exploits, macOS CoreStorage, and reverse engineering.",
       image: "/images/ctfs_hub.jpg",
       tags: ["PicoCTF", "ASCWG 2026", "Kaspersky CTF", "Threat Labs", "Volatility 3", "Ghidra"],
-      time: "29 Writeups"
+      time: "30 Writeups"
     },
     {
       title: "DFIR & Threat Labs",
@@ -41,6 +41,18 @@ export default function Home() {
   // All Individual Challenges Across All Hubs
   const allChallenges = [
     // --- Latest 2026 Additions ---
+    {
+      title: "Timeline 0",
+      slug: "picoctf-timeline-0",
+      platform: "PicoCTF",
+      category: "Disk Forensics",
+      points: "300 PTS",
+      tagline: "Timestomping & Filesystem Outlier Analysis",
+      description: "Forensic analysis of a raw ext4 partition image using The Sleuth Kit. Generating bodyfiles with fls, building chronological timelines with mactime, spotting an extreme 1985 timestomped outlier, and carving Inode 4945.",
+      image: "/images/pico_timeline_0.jpg",
+      tags: ["The Sleuth Kit", "fls", "mactime", "icat", "ext4 Forensics", "Timestomping", "Outlier Analysis", "Timeline 0", "timeline0", "PicoCTF 2026"],
+      time: "5 min read"
+    },
     {
       title: "Rogue Tower",
       slug: "picoctf-rogue-tower",

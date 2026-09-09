@@ -185,7 +185,7 @@ export default function Navbar() {
                         <span className="text-[11px] text-zinc-500">Kaspersky, ASCWG, PicoCTF</span>
                       </div>
                     </div>
-                    <span className="text-xs font-mono theme-text font-bold">29</span>
+                    <span className="text-xs font-mono theme-text font-bold">30</span>
                   </Link>
 
                   <Link 
