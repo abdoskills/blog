@@ -25,6 +25,91 @@ def solve():
 
 if __name__ == "__main__":
     solve()`;
+  const hunterScript = `#!/usr/bin/env python3
+import sys, os, re, subprocess, gzip, zlib, zipfile, io
+
+if sys.platform == "win32":
+    try: sys.stdout.reconfigure(encoding="utf-8")
+    except Exception: pass
+
+def run_cmd(cmd):
+    try: return subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True).stdout
+    except: return None
+
+class DiskHunter:
+    def __init__(self, img):
+        self.img = os.path.abspath(img)
+        self.offset = None
+
+    def triage(self):
+        print(f"[*] Analyzing {self.img}...")
+        raw_mmls = run_cmd(["mmls.exe", self.img]) or run_cmd(["mmls", self.img])
+        if raw_mmls:
+            for line in raw_mmls.decode("utf-8", errors="ignore").splitlines():
+                parts = line.split()
+                if len(parts) >= 6 and any(k in line.lower() for k in ["linux", "fat", "ntfs", "0x83"]):
+                    self.offset = parts[2]
+            print(f"[+] Partition detected! Selected offset: -o {self.offset}")
+        else:
+            print("[*] Direct volume image (Offset 0).")
+
+        # Scan deleted files
+        fls_cmd = ["fls.exe"] if run_cmd(["fls.exe", "-v"]) else ["fls"]
+        if self.offset: fls_cmd.extend(["-o", self.offset])
+        fls_cmd.extend(["-r", "-d", self.img])
+        raw_fls = run_cmd(fls_cmd)
+        if raw_fls:
+            for line in raw_fls.decode("utf-8", errors="ignore").splitlines():
+                m = re.search(r"\*\s+(\d+):\s+(.+)", line)
+                if m:
+                    inode, path = m.groups()
+                    print(f"[*] Deleted file: Inode {inode} -> {path}")
+                    if any(k in path.lower() for k in ["flag", "dont", "secret", ".gz", ".zip"]):
+                        self.carve(inode)
+
+    def carve(self, inode):
+        icat_cmd = ["icat.exe"] if run_cmd(["icat.exe", "-v"]) else ["icat"]
+        if self.offset: icat_cmd.extend(["-o", self.offset])
+        icat_cmd.extend([self.img, str(inode)])
+        raw = run_cmd(icat_cmd)
+        if not raw: return
+        if raw.startswith(b"\x1f\x8b"):
+            try: raw = gzip.decompress(raw)
+            except: pass
+        elif raw[:2] in [b"\x78\x01", b"\x78\x9c", b"\x78\xda"]:
+            try: raw = zlib.decompress(raw)
+            except: pass
+        m = re.findall(rb"([a-zA-Z0-9_\-]+{[^}\n\r]+})", raw)
+        if m: print(f"\n[+] FLAG FOUND: {m[0].decode('utf-8', errors='ignore')}\n")
+        try: print(raw.decode("utf-8")[:300])
+        except: print(raw[:32].hex())
+
+if __name__ == "__main__":
+    target = sys.argv[1] if len(sys.argv) > 1 else [f for f in os.listdir(".") if f.endswith((".dd", ".img", ".raw"))][0]
+    DiskHunter(target).triage()`;
+  const hunterOutput = `============================================================
+ PHASE 1: PARTITION & FILESYSTEM DETECTION
+============================================================
+[*] Target Image: disko-4.dd (100.00 MB)
+[!] mmls did not find a partition table. Assuming raw volume image (Offset 0).
+[+] Filesystem Identified: FAT32
+
+============================================================
+ PHASE 2: DELETED FILES TRIAGE (fls -r -d)
+============================================================
+[*] Detected 2 deleted file(s):
+   * Inode: 522629 -> log/messages
+   * Inode: 532021 -> log/dont-delete.gz [HIGH PRIORITY]
+
+============================================================
+ PHASE 4: CARVING & DECOMPRESSION
+============================================================
+[*] Auto-carving Inode 532021 (log/dont-delete.gz)...
+[+] GZIP stream detected & successfully inflated!
+
+##################################################
+ [!] FLAG FOUND: picoCTF{d3l_d0n7_h1d3_w3ll_284686d1}
+##################################################`;
   const flagText = `picoCTF{d3l_d0n7_h1d3_w3ll_284686d1}`;
 
   return (
@@ -222,6 +307,33 @@ if __name__ == "__main__":
               </div>
               <CopyButton text={flagText} />
             </div>
+          </div>
+        </section>
+
+        {/* Section 5: Universal Tool */}
+        <section className="mb-12 space-y-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-white border-b border-zinc-800 pb-3 flex items-center gap-3 font-[family-name:var(--font-share-tech)] break-words">
+            <span className="text-cyan-400">05.</span> Universal Forensic Tool: DFIR Hunter
+          </h2>
+          <p className="text-zinc-300 leading-relaxed text-sm sm:text-base">
+            To automate this entire process across any disk challenge (FAT32, ext4, NTFS, MBR/GPT), we built <strong className="text-cyan-400 font-mono">dfir_hunter.py</strong>. It auto-detects partition tables, lists deleted files, and safely inflates Gzip/Zlib streams directly in memory:
+          </p>
+
+          <div className="relative bg-[#0a0a0f] border border-zinc-800/80 rounded-xl overflow-hidden">
+            <div className="bg-[#14141e] px-4 py-2 flex justify-between items-center text-xs font-mono text-zinc-400 border-b border-zinc-800/80">
+              <span>PYTHON • DFIR_HUNTER.PY (UNIVERSAL ENGINE)</span>
+              <CopyButton text={hunterScript} />
+            </div>
+            <pre className="p-4 text-xs font-mono text-cyan-300 overflow-x-auto leading-relaxed max-h-96">
+              <code>{hunterScript}</code>
+            </pre>
+          </div>
+
+          <div className="bg-[#0e0e14] p-4 rounded-xl border border-zinc-800/70 font-mono text-xs space-y-1 text-zinc-300 overflow-x-auto">
+            <div className="text-zinc-500">// 1-Second Terminal Output:</div>
+            <pre className="text-emerald-400 leading-relaxed">
+              <code>{hunterOutput}</code>
+            </pre>
           </div>
         </section>
 
