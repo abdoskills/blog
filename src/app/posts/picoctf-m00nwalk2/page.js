@@ -72,7 +72,7 @@ export default function PicoCTFM00nwalk2Writeup() {
         {/* Featured Graphic */}
         <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-zinc-800/80 mb-12 shadow-2xl group bg-black">
           <Image
-            src="/images/pico_m00nwalk.jpg"
+            src="/images/pico_m00nwalk2.jpg"
             alt="Audio Steganography & SSTV Demodulation"
             fill
             priority

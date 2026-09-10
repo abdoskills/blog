@@ -428,7 +428,7 @@ export default function Home() {
       points: "300 PTS",
       tagline: "SSTV Audio Demodulation & Steghide LSB Carving",
       description: "Decoding multi-layered radio audio signals. Demodulating Apollo-era SSTV frequency shifts to uncover steganographic clues, and extracting embedded payloads with steghide.",
-      image: "/images/pico_m00nwalk.jpg",
+      image: "/images/pico_m00nwalk2.jpg",
       tags: ["SSTV", "steghide", "Audio Forensics", "LSB Steganography", "PicoCTF 2019"],
       time: "5 min read"
     },
