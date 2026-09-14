@@ -12,7 +12,19 @@ export default function CtfsHub() {
 
   const challenges = [
     // --- Latest 2026 Additions ---
-        {
+    {
+      title: "HORUS Ra",
+      slug: "catctf-horus-ra",
+      platform: "CAT CTF 2026",
+      category: "Incident Response",
+      points: "500 PTS",
+      tagline: "Multi-Stage Fileless Malware DFIR & Horus Protector",
+      description: "Comprehensive Incident Response investigation of a multi-stage credential stealer. Analyzing Edge browser SQLite artifacts, PowerShell Event ID 400 stagers, registry chunk reassembly via dnfile, and PCAP stream reconstruction of MoDi RAT.",
+      image: "/images/catctf_horus_ra.jpg",
+      tags: ["Incident Response", "DFIR", "Memory Forensics", "Registry Forensics", "dnfile / dnSpy", "Event Logs", "Horus Protector", "MoDi RAT", "PCAP Analysis", "CAT CTF 2026"],
+      time: "16 min read"
+    },
+    {
       title: "Disko 4",
       slug: "picoctf-disko-4",
       platform: "PicoCTF",

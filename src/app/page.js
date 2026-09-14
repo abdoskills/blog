@@ -17,13 +17,13 @@ export default function Home() {
     {
       title: "CTF Competitions",
       slug: "ctfs",
-      category: "34 CHALLENGES",
+      category: "35 CHALLENGES",
       points: "Multi-CTF",
-      tagline: "PicoCTF • ASCWG • Kaspersky • Threat Labs",
+      tagline: "PicoCTF • CAT CTF • ASCWG • Kaspersky",
       description: "Complete solutions and operational breakdowns across top CTF competitions: memory forensics, cellular IMSI catchers, smart contract exploits, macOS CoreStorage, and reverse engineering.",
       image: "/images/ctfs_hub.jpg",
-      tags: ["PicoCTF", "ASCWG 2026", "Kaspersky CTF", "Threat Labs", "Volatility 3", "Ghidra"],
-      time: "34 Writeups"
+      tags: ["PicoCTF", "CAT CTF 2026", "ASCWG 2026", "Kaspersky CTF", "Threat Labs", "Volatility 3", "Ghidra"],
+      time: "35 Writeups"
     },
     {
       title: "DFIR & Threat Labs",
@@ -41,7 +41,19 @@ export default function Home() {
   // All Individual Challenges Across All Hubs
   const allChallenges = [
     // --- Latest 2026 Additions ---
-        {
+    {
+      title: "HORUS Ra",
+      slug: "catctf-horus-ra",
+      platform: "CAT CTF 2026",
+      category: "Incident Response",
+      points: "500 PTS",
+      tagline: "Multi-Stage Fileless Malware DFIR & Horus Protector",
+      description: "Comprehensive Incident Response investigation of a multi-stage credential stealer. Analyzing Edge browser SQLite artifacts, PowerShell Event ID 400 stagers, registry chunk reassembly via dnfile, and PCAP stream reconstruction of MoDi RAT.",
+      image: "/images/catctf_horus_ra.jpg",
+      tags: ["Incident Response", "DFIR", "Memory Forensics", "Registry Forensics", "dnfile / dnSpy", "Event Logs", "Horus Protector", "MoDi RAT", "PCAP Analysis", "CAT CTF 2026"],
+      time: "16 min read"
+    },
+    {
       title: "Disko 4",
       slug: "picoctf-disko-4",
       platform: "PicoCTF",
