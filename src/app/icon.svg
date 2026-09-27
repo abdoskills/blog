@@ -1,6 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" rx="20" fill="#111111" />
-  <rect width="100" height="100" rx="20" fill="none" stroke="#4ade80" stroke-width="4" stroke-opacity="0.3" />
-  <path d="M 25 30 L 55 50 L 25 70" fill="none" stroke="#4ade80" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
-  <line x1="60" y1="75" x2="85" y2="75" stroke="#4ade80" stroke-width="12" stroke-linecap="round" />
+  <!-- Outer CRT TV Cabinet -->
+  <rect x="6" y="10" width="88" height="80" rx="14" fill="#09090b" stroke="#ffffff" stroke-width="4" />
+  
+  <!-- Curved Cathode Ray Tube Screen -->
+  <rect x="14" y="18" width="56" height="64" rx="8" fill="#18181b" stroke="#3f3f46" stroke-width="2" />
+  
+  <!-- Subtle Phosphor Horizontal Scanlines -->
+  <line x1="16" y1="30" x2="68" y2="30" stroke="#27272a" stroke-width="1.5" stroke-opacity="0.6" />
+  <line x1="16" y1="42" x2="68" y2="42" stroke="#27272a" stroke-width="1.5" stroke-opacity="0.6" />
+  <line x1="16" y1="54" x2="68" y2="54" stroke="#27272a" stroke-width="1.5" stroke-opacity="0.6" />
+  <line x1="16" y1="66" x2="68" y2="66" stroke="#27272a" stroke-width="1.5" stroke-opacity="0.6" />
+  
+  <!-- Phosphor White Terminal Prompt > _ -->
+  <path d="M 25 38 L 37 50 L 25 62" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+  <line x1="43" y1="62" x2="57" y2="62" stroke="#ffffff" stroke-width="6" stroke-linecap="round" />
+  
+  <!-- TV Tuner and Volume Rotary Knobs -->
+  <circle cx="81" cy="33" r="5" fill="#27272a" stroke="#ffffff" stroke-width="2" />
+  <circle cx="81" cy="49" r="5" fill="#27272a" stroke="#ffffff" stroke-width="2" />
+  
+  <!-- TV Speaker Grille -->
+  <line x1="75" y1="64" x2="87" y2="64" stroke="#71717a" stroke-width="2" stroke-linecap="round" />
+  <line x1="75" y1="71" x2="87" y2="71" stroke="#71717a" stroke-width="2" stroke-linecap="round" />
+  <line x1="75" y1="78" x2="87" y2="78" stroke="#71717a" stroke-width="2" stroke-linecap="round" />
 </svg>

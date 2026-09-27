@@ -28,10 +28,10 @@ const shareTech = Share_Tech_Mono({
 export const metadata = {
   metadataBase: new URL("https://www.abdoskills.me"),
   title: {
-    default: "Skills | Threat Intel & Forensics",
-    template: "%s | Skills",
+    default: "waiting for you",
+    template: "%s | waiting for you",
   },
-  description: "Digital Forensics, Incident Response, OSINT, and Threat Intelligence Master Operational Breakdowns by abdoskills.",
+  description: "waiting for you",
   keywords: [
     "abdoskills",
     "abdo skills",
@@ -57,16 +57,16 @@ export const metadata = {
     canonical: "https://www.abdoskills.me",
   },
   openGraph: {
-    title: "Skills | Threat Intel & Forensics",
-    description: "Digital Forensics, Incident Response, OSINT, and Threat Intelligence Master Operational Breakdowns by abdoskills.",
+    title: "waiting for you",
+    description: "waiting for you",
     url: "https://www.abdoskills.me",
-    siteName: "abdoskills",
+    siteName: "waiting for you",
     images: [
       {
-        url: "/images/linkedin_banner.jpg",
+        url: "/images/waiting_for_you.jpg",
         width: 1200,
         height: 630,
-        alt: "Skills | Threat Intel & Forensics by abdoskills",
+        alt: "waiting for you",
       },
     ],
     locale: "en_US",
@@ -74,9 +74,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Skills | Threat Intel & Forensics",
-    description: "Digital Forensics, Incident Response, OSINT, and Threat Intelligence Master Operational Breakdowns by abdoskills.",
-    images: ["/images/linkedin_banner.jpg"],
+    title: "waiting for you",
+    description: "waiting for you",
+    images: ["/images/waiting_for_you.jpg"],
     creator: "@abdoskills",
   },
   robots: {
