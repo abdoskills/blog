@@ -557,8 +557,8 @@ export default function CtfsHub() {
         
         {/* Master Hub Header */}
         <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-10 text-center">
-          <div className="mb-4 inline-flex max-w-full items-center justify-center theme-hero-badge px-3.5 sm:px-4 py-1.5 rounded-full border animate-glow-pulse">
-            <span className="font-mono text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-[0.3em] text-center font-bold">
+          <div className="mb-3 inline-flex max-w-full items-center justify-center">
+            <span className="font-mono text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-[0.3em] text-center font-bold text-zinc-400">
               SUNSHINECTF • KASPERSKY • ASCWG • PICOCTF • CYBER WARGAMES
               <span className="animate-blink inline-block w-1.5 h-3 ml-2 align-middle bg-current"></span>
             </span>

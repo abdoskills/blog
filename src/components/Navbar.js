@@ -65,29 +65,7 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Center: Dynamic Title / Breadcrumb */}
-        <div className="hidden md:flex items-center gap-2">
-          {pathname === "/ctfs" && (
-            <span className="font-mono text-xs theme-badge px-3 py-1 rounded-full border">
-              CTF Competitions
-            </span>
-          )}
-          {pathname === "/labs" && (
-            <span className="font-mono text-xs theme-badge px-3 py-1 rounded-full border">
-              DFIR &amp; Threat Labs
-            </span>
-          )}
-          {pathname === "/about" && (
-            <span className="font-mono text-xs theme-badge px-3 py-1 rounded-full border">
-              About Me
-            </span>
-          )}
-          {pathname === "/cv" && (
-            <span className="font-mono text-xs theme-badge px-3 py-1 rounded-full border">
-              Curriculum Vitae
-            </span>
-          )}
-        </div>
+
 
         {/* Right: Quick Links + Menu Button */}
         <div className="flex items-center gap-3 relative" ref={menuRef}>
