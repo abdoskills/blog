@@ -563,7 +563,7 @@ export default function CtfsHub() {
               <span className="animate-blink inline-block w-1.5 h-3 ml-2 align-middle bg-current"></span>
             </span>
           </div>
-          <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold text-white tracking-normal sm:tracking-widest font-[family-name:var(--font-silkscreen)] mb-4 drop-shadow-[0_0_25px_rgba(255,255,255,0.15)] break-words">
+          <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold text-white tracking-normal sm:tracking-widest font-[family-name:var(--font-silkscreen)] mb-4 break-words">
             CTF Competitions
           </h1>
           <p className="text-zinc-400 text-sm md:text-base font-sans max-w-2xl mx-auto leading-relaxed">

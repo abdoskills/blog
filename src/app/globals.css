@@ -251,12 +251,17 @@ main [class*="bg-purple-500/"], article [class*="bg-purple-500/"] {
   color: var(--accent-text) !important;
 }
 
-main [class*="shadow-[0_0_40px_rgba("], article [class*="shadow-[0_0_40px_rgba("],
-main [class*="shadow-[0_0_30px_rgba("], article [class*="shadow-[0_0_30px_rgba("],
-main [class*="shadow-[0_0_25px_rgba("], article [class*="shadow-[0_0_25px_rgba("],
-main [class*="shadow-[0_0_20px_rgba("], article [class*="shadow-[0_0_20px_rgba("],
-main [class*="shadow-[0_0_15px_rgba("], article [class*="shadow-[0_0_15px_rgba("] {
+main div[class*="shadow-[0_0_40px_rgba("], article div[class*="shadow-[0_0_40px_rgba("],
+main div[class*="shadow-[0_0_30px_rgba("], article div[class*="shadow-[0_0_30px_rgba("],
+main div[class*="shadow-[0_0_25px_rgba("], article div[class*="shadow-[0_0_25px_rgba("],
+main div[class*="shadow-[0_0_20px_rgba("], article div[class*="shadow-[0_0_20px_rgba("],
+main div[class*="shadow-[0_0_15px_rgba("], article div[class*="shadow-[0_0_15px_rgba("],
+main section[class*="shadow-[0_0_25px_rgba("], article section[class*="shadow-[0_0_25px_rgba("] {
   box-shadow: 0 0 35px var(--accent-glow) !important;
+}
+
+h1, h2, h3, h4 {
+  box-shadow: none !important;
 }
 
 /* Flag & Decoded Sections in Writeups */
