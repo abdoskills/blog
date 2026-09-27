@@ -28,7 +28,7 @@ export default function ThemeController() {
       try { localStorage.setItem("abdoskills_mode", "light"); } catch {}
     } else {
       document.documentElement.removeAttribute("data-theme");
-      rootStyle.setProperty("--background", "#070b14");
+      rootStyle.setProperty("--background", "#0a0a0c");
       rootStyle.setProperty("--foreground", "#f1f5f9");
       rootStyle.setProperty("--accent-color", "#38bdf8");
       rootStyle.setProperty("--accent-rgb", "56, 189, 248");

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #070b14;
+  --background: #0a0a0c;
   --foreground: #f1f5f9;
 
   /* Modern Cyber Blue & Sky Cyan Palette */
@@ -78,7 +78,34 @@ a, button, [role="button"], .theme-card, .theme-badge, .theme-text, .theme-borde
 .theme-card:hover {
   border-color: var(--accent-hover-border) !important;
   box-shadow: 0 16px 40px rgba(56, 189, 248, 0.18), 0 0 25px rgba(56, 189, 248, 0.1) !important;
-  transform: translateY(-4px);
+}
+
+/* Card Image Melting Gradient Overlay */
+.theme-card-overlay {
+  background: linear-gradient(to bottom, rgba(20, 20, 20, 0.4) 0%, transparent 40%, #111111 100%) !important;
+}
+
+html[data-theme="light"] .theme-card-overlay {
+  background: linear-gradient(to bottom, rgba(226, 232, 240, 0.3) 0%, transparent 40%, #f1f5f9 100%) !important;
+}
+
+/* Vintage Old TV CRT Scanlines & Screen Vignette Overlay */
+.crt-tv-overlay {
+  background: 
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.22) 50%),
+    radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.5) 100%);
+  background-size: 100% 4px, 100% 100%;
+  opacity: 0.85;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+html[data-theme="light"] .crt-tv-overlay {
+  background: 
+    linear-gradient(rgba(240, 240, 240, 0) 50%, rgba(100, 100, 100, 0.1) 50%),
+    radial-gradient(ellipse at center, transparent 65%, rgba(100, 116, 139, 0.28) 100%);
+  background-size: 100% 4px, 100% 100%;
+  opacity: 0.65;
 }
 
 /* ========================================================================= */

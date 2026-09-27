@@ -653,69 +653,50 @@ export default function CtfsHub() {
           )}
         </div>
 
-        {/* All Challenge Cards Grid (Unified 120 FPS Layout) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 sm:px-6 w-full">
+        {/* All Challenge Cards Grid (Mushroom.Cat Clean Minimalist Aesthetic) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto px-4 sm:px-6 w-full pb-12">
           {filtered.map((c) => {
             return (
               <Link 
                 key={c.slug}
                 href={`/posts/${c.slug}`} 
-                className="group relative rounded-2xl flex flex-col border theme-card transition-all duration-300 hover:-translate-y-1.5 overflow-hidden backdrop-blur-xl"
+                className="bg-[#111111] rounded-xl flex flex-col shadow-lg border-2 border-zinc-900/60 transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.015] hover:shadow-[0_15px_35px_rgba(0,0,0,0.5)] hover:border-zinc-800/80 group overflow-hidden theme-card"
               >
-                {/* Subtle top laser glow line on hover */}
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-sky-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 pointer-events-none" />
-
-                <div className="relative w-full h-48 overflow-hidden bg-black/80">
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-transparent to-black/30 z-10 opacity-80 group-hover:opacity-50 transition-opacity duration-300"></div>
+                {/* Image Container with Seamless Melting Gradient */}
+                <div className="relative w-full h-48 sm:h-52 overflow-hidden rounded-t-xl bg-black/90">
+                  <div className="absolute inset-0 bg-gradient-to-b from-[#141414]/50 via-transparent to-[#111111] z-10 rounded-t-xl group-hover:opacity-75 transition-opacity duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] theme-card-overlay" />
                   <Image 
                     src={c.image} 
                     alt={c.title} 
-                    fill 
-                    className="object-cover transition-transform duration-500 group-hover:scale-105 brightness-[0.95] contrast-[1.1]" 
+                    fill
+                    className="rounded-t-xl w-full object-cover transition-transform duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06] brightness-[0.88] contrast-[1.1]" 
                     priority
                   />
-                  
-                  {/* Top Badges: Competition Name + Points Pill */}
-                  <div className="absolute top-3 left-3 right-3 z-20 flex flex-wrap gap-1.5 pointer-events-none">
-                    <span className="bg-[#070b14]/90 backdrop-blur-md border border-sky-500/40 text-sky-300 font-mono text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-md">
-                      {c.platform}
-                    </span>
-                    <span className="bg-[#070b14]/80 backdrop-blur-md border border-slate-700 text-slate-300 font-mono text-[10px] px-2 py-0.5 rounded-full">
-                      {c.points}
-                    </span>
-                  </div>
                 </div>
                 
-                <div className="p-4 sm:p-5 flex flex-col flex-grow relative z-20 min-w-0">
-                  <div className="flex justify-between items-center mb-1.5 min-w-0">
-                    <span className="font-mono text-[11px] text-zinc-400 uppercase tracking-wider truncate">
-                      {c.category} • {c.tagline}
-                    </span>
+                {/* Card Body - Clean Centered Layout */}
+                <div className="p-5 flex flex-col flex-grow text-center">
+                  <div className="flex justify-center items-center gap-2 mb-2">
+                    <p className="text-zinc-500 text-xs font-mono tracking-widest uppercase">
+                      {c.platform || "FORENSICS"} • {c.points}
+                    </p>
                   </div>
 
-                  <h3 className="text-lg font-bold mb-2 text-white group-hover:theme-text transition-colors duration-200 font-[family-name:var(--font-share-tech)] uppercase tracking-wide break-words">
+                  <h2 className="text-xl md:text-2xl font-semibold mb-2 transition-colors duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] text-gray-100 group-hover:text-white group-hover:theme-text text-center font-[family-name:var(--font-share-tech)] tracking-wide">
                     {c.title}
-                  </h3>
+                  </h2>
 
-                  <p className="text-zinc-400 text-xs leading-relaxed mb-4 font-sans line-clamp-2 break-words">
-                    {c.description}
+                  <p className="text-zinc-400 text-sm font-medium leading-relaxed text-center line-clamp-2 mb-4 font-sans">
+                    {c.tagline || c.description}
                   </p>
 
-                  {/* Tags */}
-                  <div className="mt-auto pt-3 border-t border-zinc-800/80 flex flex-wrap gap-1.5 mb-3">
-                    {c.tags.slice(0, 4).map((tag) => (
-                      <span key={tag} className="bg-zinc-900/90 text-zinc-400 border border-zinc-800 text-[10px] font-mono px-2 py-0.5 rounded">
+                  {/* Clean Centered Minimalist Tags */}
+                  <div className="mt-auto pt-3 border-t border-zinc-900/80 flex flex-wrap justify-center gap-1.5">
+                    {c.tags.slice(0, 3).map((tag) => (
+                      <span key={tag} className="bg-zinc-900/90 text-zinc-400 border border-zinc-800/90 text-[11px] font-mono px-2.5 py-0.5 rounded-md">
                         {tag}
                       </span>
                     ))}
-                  </div>
-
-                  {/* Footer CTA */}
-                  <div className="flex justify-between items-center text-[11px] font-mono text-zinc-500 pt-1">
-                    <span>⏱ {c.time}</span>
-                    <span className="theme-cta font-bold flex items-center gap-1 transition-colors">
-                      Read Breakdown <span className="transform transition-transform group-hover:translate-x-1">→</span>
-                    </span>
                   </div>
                 </div>
               </Link>
