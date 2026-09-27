@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import CrtCardHeader from "@/components/CrtCardHeader";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -803,24 +804,13 @@ export default function Home() {
                     href={`/${c.slug}`} 
                     className="group relative bg-[#0e0e13]/90 rounded-2xl flex flex-col border theme-card transition-all duration-500 hover:-translate-y-1.5 overflow-hidden backdrop-blur-xl"
                   >
-                    <div className="relative w-full h-44 overflow-hidden bg-black/80">
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e13] via-transparent to-black/40 z-10 opacity-90 group-hover:opacity-60 transition-opacity duration-500"></div>
-                      <Image 
-                        src={c.image} 
-                        alt={c.title} 
-                        fill 
-                        className="object-cover transition-transform duration-700 group-hover:scale-105 brightness-[0.9] contrast-[1.15]" 
-                        priority
-                      />
-                      <div className="absolute top-3 left-3 z-20 flex gap-2">
-                        <span className="bg-black/80 backdrop-blur-md border theme-badge font-mono text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-md">
-                          {c.category}
-                        </span>
-                        <span className="bg-black/80 backdrop-blur-md border border-zinc-700 text-zinc-300 font-mono text-[10px] px-2 py-0.5 rounded-full">
-                          {c.points}
-                        </span>
-                      </div>
-                    </div>
+                    {/* CRT Monitor Header with Oscilloscope Waveform & Telemetry */}
+                    <CrtCardHeader 
+                      platform={c.title}
+                      category={c.category}
+                      points={c.points}
+                      slug={c.slug}
+                    />
                     
                     <div className="p-4 sm:p-5 flex flex-col flex-grow relative z-20 min-w-0">
                       <div className="flex justify-between items-center mb-2 min-w-0">
@@ -889,16 +879,13 @@ export default function Home() {
                       {/* Vintage CRT Phosphor Top Glow Line */}
                       <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-30 pointer-events-none" />
 
-                      {/* Image Container with Seamless Melting Gradient */}
-                      <div className="relative w-full h-52 sm:h-56 overflow-hidden rounded-t-xl bg-black/90">
-                        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#111114] z-10 rounded-t-xl group-hover:opacity-65 transition-opacity duration-[500ms] theme-card-overlay" />
-                        <Image 
-                          src={c.image} 
-                          alt={c.title} 
-                          fill
-                          className="rounded-t-xl w-full object-cover transition-all duration-[700ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05] grayscale-[25%] contrast-[1.12] brightness-[0.88] group-hover:grayscale-0 group-hover:brightness-[1]" 
-                        />
-                      </div>
+                      {/* CRT Monitor Header with Oscilloscope Waveform & Telemetry */}
+                      <CrtCardHeader 
+                        platform={c.platform || "FORENSICS"}
+                        category={c.category || "ANALYSIS"}
+                        points={c.points || "SOLVED"}
+                        slug={c.slug}
+                      />
                       
                       {/* Card Body - Clean Centered Layout */}
                       <div className="p-5 sm:p-6 flex flex-col flex-grow text-center">
@@ -965,17 +952,13 @@ export default function Home() {
                       {/* Vintage CRT Phosphor Top Glow Line */}
                       <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-30 pointer-events-none" />
 
-                      {/* Image Container with Seamless Melting Gradient */}
-                      <div className="relative w-full h-52 sm:h-56 overflow-hidden rounded-t-xl bg-black/90">
-                        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#111114] z-10 rounded-t-xl group-hover:opacity-65 transition-opacity duration-[500ms] theme-card-overlay" />
-                        <Image 
-                          src={c.image} 
-                          alt={c.title} 
-                          fill
-                          className="rounded-t-xl w-full object-cover transition-all duration-[700ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05] grayscale-[25%] contrast-[1.12] brightness-[0.88] group-hover:grayscale-0 group-hover:brightness-[1]" 
-                          priority
-                        />
-                      </div>
+                      {/* CRT Monitor Header with Oscilloscope Waveform & Telemetry */}
+                      <CrtCardHeader 
+                        platform={c.platform || "FORENSICS"}
+                        category={c.category || "ANALYSIS"}
+                        points={c.points || "SOLVED"}
+                        slug={c.slug}
+                      />
                       
                       {/* Card Body - Clean Centered Layout */}
                       <div className="p-5 sm:p-6 flex flex-col flex-grow text-center min-w-0">

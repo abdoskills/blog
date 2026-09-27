@@ -108,6 +108,26 @@ html[data-theme="light"] .crt-tv-overlay {
   opacity: 0.65;
 }
 
+/* CRT Card Screen Background */
+.crt-screen-bg {
+  background-color: #0b0b0e;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.5) 50%);
+  background-size: 20px 20px, 20px 20px, 100% 3px;
+}
+
+html[data-theme="light"] .crt-screen-bg {
+  background-color: #e4e4e7;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.08) 50%);
+  background-size: 20px 20px, 20px 20px, 100% 3px;
+}
+
+
 /* ========================================================================= */
 /* CONTENT FRAMING SHIELD: Separating writing from animated 3D background    */
 /* ========================================================================= */

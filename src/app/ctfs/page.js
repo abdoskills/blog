@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import CrtCardHeader from "@/components/CrtCardHeader";
 
 export default function CtfsHub() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -665,17 +666,13 @@ export default function CtfsHub() {
                 {/* Vintage CRT Phosphor Top Glow Line */}
                 <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-30 pointer-events-none" />
 
-                {/* Image Container with Seamless Melting Gradient */}
-                <div className="relative w-full h-52 sm:h-56 overflow-hidden rounded-t-xl bg-black/90">
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#111114] z-10 rounded-t-xl group-hover:opacity-65 transition-opacity duration-[500ms] theme-card-overlay" />
-                  <Image 
-                    src={c.image} 
-                    alt={c.title} 
-                    fill
-                    className="rounded-t-xl w-full object-cover transition-all duration-[700ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05] grayscale-[25%] contrast-[1.12] brightness-[0.88] group-hover:grayscale-0 group-hover:brightness-[1]" 
-                    priority
-                  />
-                </div>
+                {/* CRT Monitor Header with Oscilloscope Waveform & Telemetry */}
+                <CrtCardHeader 
+                  platform={c.platform || "CTF"}
+                  category={c.category || "FORENSICS"}
+                  points={c.points || "SOLVED"}
+                  slug={c.slug}
+                />
                 
                 {/* Card Body - Clean Centered Layout */}
                 <div className="p-5 sm:p-6 flex flex-col flex-grow text-center">

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import CrtCardHeader from "@/components/CrtCardHeader";
 
 export default function ThreatLabsHub() {
   const challenges = [
@@ -100,24 +101,13 @@ export default function ThreatLabsHub() {
                 href={`/posts/${c.slug}`} 
                 className="group relative bg-[#0e0e13]/90 rounded-2xl flex flex-col border theme-card transition-all duration-500 hover:-translate-y-1.5 overflow-hidden backdrop-blur-xl min-w-0"
               >
-                <div className="relative w-full h-44 overflow-hidden bg-black/80">
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e13] via-transparent to-black/40 z-10 opacity-90 group-hover:opacity-60 transition-opacity duration-500"></div>
-                  <Image 
-                    src={c.image} 
-                    alt={c.title} 
-                    fill 
-                    className="object-cover transition-transform duration-700 group-hover:scale-105 brightness-[0.9] contrast-[1.15]" 
-                    priority
-                  />
-                  <div className="absolute top-3 left-3 z-20 flex gap-2">
-                    <span className="bg-black/80 backdrop-blur-md border theme-badge font-mono text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-md">
-                      {c.platform}
-                    </span>
-                    <span className="bg-black/80 backdrop-blur-md border border-zinc-700 text-zinc-300 font-mono text-[10px] px-2 py-0.5 rounded-full">
-                      {c.points}
-                    </span>
-                  </div>
-                </div>
+                {/* CRT Monitor Header with Oscilloscope Waveform & Telemetry */}
+                <CrtCardHeader 
+                  platform={c.platform || "THREAT LABS"}
+                  category={c.category || "INVESTIGATION"}
+                  points={c.points || "ADVANCED"}
+                  slug={c.slug}
+                />
                 
                 <div className="p-4 sm:p-5 flex flex-col flex-grow relative z-20 min-w-0">
                   <div className="flex justify-between items-center mb-2 min-w-0">
