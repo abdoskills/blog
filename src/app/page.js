@@ -595,7 +595,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen relative z-10 text-zinc-200 selection:bg-emerald-500/30 selection:text-emerald-200">
+    <div className="flex flex-col min-h-screen relative z-10 text-zinc-200 selection:bg-sky-500/30 selection:text-sky-200">
       
       {/* Universal Navigation Bar with Menu */}
       <Navbar />
@@ -884,21 +884,24 @@ export default function Home() {
                     <Link 
                       key={c.slug}
                       href={`/posts/${c.slug}`} 
-                      className="group relative bg-[#0e0e13]/90 rounded-2xl flex flex-col border theme-card transition-all duration-500 hover:-translate-y-1.5 overflow-hidden backdrop-blur-xl"
+                      className="group relative rounded-2xl flex flex-col border theme-card transition-all duration-300 hover:-translate-y-1.5 overflow-hidden backdrop-blur-xl"
                     >
-                      <div className="relative w-full h-44 overflow-hidden bg-black/80">
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e13] via-transparent to-black/40 z-10 opacity-90 group-hover:opacity-60 transition-opacity duration-500"></div>
+                      {/* Subtle top laser glow line on hover */}
+                      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-sky-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 pointer-events-none" />
+
+                      <div className="relative w-full h-48 overflow-hidden bg-black/80">
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-transparent to-black/30 z-10 opacity-80 group-hover:opacity-50 transition-opacity duration-300"></div>
                         <Image 
                           src={c.image} 
                           alt={c.title} 
                           fill 
-                          className="object-cover transition-transform duration-700 group-hover:scale-105 brightness-[0.9] contrast-[1.15]" 
+                          className="object-cover transition-transform duration-500 group-hover:scale-105 brightness-[0.95] contrast-[1.1]" 
                         />
                         <div className="absolute top-3 left-3 z-20 flex gap-2">
-                          <span className="bg-black/80 backdrop-blur-md border theme-badge font-mono text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-md">
-                            {c.category}
+                          <span className="bg-[#070b14]/90 backdrop-blur-md border border-sky-500/40 text-sky-300 font-mono text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-md">
+                            {c.platform || c.category}
                           </span>
-                          <span className="bg-black/80 backdrop-blur-md border border-zinc-700 text-zinc-300 font-mono text-[10px] px-2 py-0.5 rounded-full">
+                          <span className="bg-[#070b14]/80 backdrop-blur-md border border-slate-700 text-slate-300 font-mono text-[10px] px-2 py-0.5 rounded-full">
                             {c.points}
                           </span>
                         </div>
@@ -969,22 +972,25 @@ export default function Home() {
                     <Link 
                       key={c.slug}
                       href={`/posts/${c.slug}`} 
-                      className="group relative bg-[#0e0e13]/90 rounded-2xl flex flex-col border theme-card transition-all duration-500 hover:-translate-y-1.5 overflow-hidden backdrop-blur-xl min-w-0"
+                      className="group relative rounded-2xl flex flex-col border theme-card transition-all duration-300 hover:-translate-y-1.5 overflow-hidden backdrop-blur-xl min-w-0"
                     >
-                      <div className="relative w-full h-44 overflow-hidden bg-black/80">
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e13] via-transparent to-black/40 z-10 opacity-90 group-hover:opacity-60 transition-opacity duration-500"></div>
+                      {/* Subtle top laser glow line on hover */}
+                      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-sky-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 pointer-events-none" />
+
+                      <div className="relative w-full h-48 overflow-hidden bg-black/80">
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#070b14] via-transparent to-black/30 z-10 opacity-80 group-hover:opacity-50 transition-opacity duration-300"></div>
                         <Image 
                           src={c.image} 
                           alt={c.title} 
                           fill 
-                          className="object-cover transition-transform duration-700 group-hover:scale-105 brightness-[0.9] contrast-[1.15]" 
+                          className="object-cover transition-transform duration-500 group-hover:scale-105 brightness-[0.95] contrast-[1.1]" 
                           priority
                         />
                         <div className="absolute top-3 left-3 z-20 flex gap-2">
-                          <span className="bg-black/80 backdrop-blur-md border theme-badge font-mono text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-md">
-                            {c.category}
+                          <span className="bg-[#070b14]/90 backdrop-blur-md border border-sky-500/40 text-sky-300 font-mono text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-md">
+                            {c.platform || c.category}
                           </span>
-                          <span className="bg-black/80 backdrop-blur-md border border-zinc-700 text-zinc-300 font-mono text-[10px] px-2 py-0.5 rounded-full">
+                          <span className="bg-[#070b14]/80 backdrop-blur-md border border-slate-700 text-slate-300 font-mono text-[10px] px-2 py-0.5 rounded-full">
                             {c.points}
                           </span>
                         </div>

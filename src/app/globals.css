@@ -1,18 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #060709;
-  --foreground: #ededed;
+  --background: #070b14;
+  --foreground: #f1f5f9;
 
-  /* Default Theme: Cyber Amber Gold (Search-Dude Style) */
-  --accent-color: #f59e0b;
-  --accent-rgb: 245, 158, 11;
-  --accent-glow: rgba(245, 158, 11, 0.45);
-  --accent-dim: rgba(245, 158, 11, 0.12);
-  --accent-border: rgba(245, 158, 11, 0.35);
-  --accent-hover-border: rgba(245, 158, 11, 0.75);
-  --accent-text: #fbbf24;
-  --accent-shadow: 0 0 25px rgba(245, 158, 11, 0.3);
+  /* Modern Cyber Blue & Sky Cyan Palette */
+  --accent-color: #38bdf8;
+  --accent-rgb: 56, 189, 248;
+  --accent-glow: rgba(56, 189, 248, 0.35);
+  --accent-dim: rgba(56, 189, 248, 0.12);
+  --accent-border: rgba(56, 189, 248, 0.3);
+  --accent-hover-border: rgba(56, 189, 248, 0.7);
+  --accent-text: #7dd3fc;
+  --accent-shadow: 0 0 25px rgba(56, 189, 248, 0.25);
+
+  --card-bg: rgba(11, 17, 32, 0.92);
+  --card-border: rgba(59, 130, 246, 0.22);
 }
 
 body {
@@ -64,14 +67,49 @@ a, button, [role="button"], .theme-card, .theme-badge, .theme-text, .theme-borde
   color: #000000 !important;
 }
 .theme-card {
-  border-color: rgba(39, 39, 42, 0.8) !important;
+  background-color: var(--card-bg) !important;
+  border-color: var(--card-border) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
   transform: translateZ(0);
   backface-visibility: hidden;
 }
 .theme-card:hover {
   border-color: var(--accent-hover-border) !important;
-  box-shadow: 0 15px 35px var(--accent-glow) !important;
+  box-shadow: 0 16px 40px rgba(56, 189, 248, 0.18), 0 0 25px rgba(56, 189, 248, 0.1) !important;
+  transform: translateY(-4px);
 }
+
+/* ========================================================================= */
+/* CONTENT FRAMING SHIELD: Separating writing from animated 3D background    */
+/* ========================================================================= */
+article, .content-frame {
+  background: rgba(9, 14, 26, 0.90) !important;
+  border: 1px solid rgba(56, 189, 248, 0.22) !important;
+  border-radius: 1.75rem !important;
+  backdrop-filter: blur(28px) !important;
+  -webkit-backdrop-filter: blur(28px) !important;
+  box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.85), 0 0 35px rgba(56, 189, 248, 0.05) !important;
+  padding: 2rem 1.5rem !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 4rem !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+@media (min-width: 640px) {
+  article, .content-frame {
+    padding: 2.75rem 2.25rem !important;
+  }
+}
+
+@media (min-width: 768px) {
+  article, .content-frame {
+    padding: 3.5rem 3rem !important;
+  }
+}
+
 .theme-badge {
   background-color: rgba(0, 0, 0, 0.8) !important;
   border-color: var(--accent-border) !important;
@@ -167,15 +205,15 @@ main pre code {
 
 /* Custom Cyberpunk Cursors */
 body {
-  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23f59e0b" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>') 12 12, crosshair;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%2338bdf8" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>') 12 12, crosshair;
 }
 
 a, button, summary, .cursor-pointer, [role="button"], details summary {
-  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23fbbf24" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="3" fill="%23fbbf24"/></svg>') 12 12, pointer !important;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%237dd3fc" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="3" fill="%237dd3fc"/></svg>') 12 12, pointer !important;
 }
 
 .cursor-help {
-  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23f59e0b" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="5" stroke-dasharray="2,2"/></svg>') 12 12, help !important;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%2338bdf8" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="5" stroke-dasharray="2,2"/></svg>') 12 12, help !important;
 }
 
 /* Cyberpunk Animations */
@@ -211,11 +249,26 @@ a, button, summary, .cursor-pointer, [role="button"], details summary {
 
 html[data-theme="light"] {
   --background: #f8fafc;
-  --foreground: #09090b;
-  --accent-text: var(--accent-color);
-  --accent-dim: rgba(var(--accent-rgb), 0.1);
-  --accent-border: rgba(var(--accent-rgb), 0.35);
-  --accent-hover-border: rgba(var(--accent-rgb), 0.8);
+  --foreground: #0f172a;
+  --accent-color: #2563eb;
+  --accent-rgb: 37, 99, 235;
+  --accent-glow: rgba(37, 99, 235, 0.22);
+  --accent-dim: rgba(37, 99, 235, 0.08);
+  --accent-border: rgba(37, 99, 235, 0.25);
+  --accent-hover-border: rgba(37, 99, 235, 0.65);
+  --accent-text: #1d4ed8;
+  --accent-shadow: 0 0 20px rgba(37, 99, 235, 0.15);
+
+  --card-bg: rgba(255, 255, 255, 0.94);
+  --card-border: rgba(226, 232, 240, 0.95);
+}
+
+html[data-theme="light"] article,
+html[data-theme="light"] .content-frame {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(226, 232, 240, 0.95) !important;
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.08) !important;
+  color: #1e293b !important;
 }
 
 html[data-theme="light"] body {

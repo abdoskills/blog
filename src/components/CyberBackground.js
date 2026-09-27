@@ -21,7 +21,9 @@ export default function CyberBackground() {
 
     // --- Scene Setup ---
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(isLightMode ? 0xf1f5f9 : 0x050508, 0.0018);
+    const darkFogColor = 0x070b14; // Deep Dark Blue / Midnight Navy
+    const lightFogColor = 0xf1f5f9; // Crisp Off-White / Light Grey
+    scene.fog = new THREE.FogExp2(isLightMode ? lightFogColor : darkFogColor, 0.0016);
 
     const camera = new THREE.PerspectiveCamera(
       60,
@@ -38,37 +40,43 @@ export default function CyberBackground() {
     });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(isLightMode ? 0xf8fafc : 0x050508, 0.95);
+    renderer.setClearColor(isLightMode ? 0xf8fafc : 0x070b14, 0.96);
     container.appendChild(renderer.domElement);
 
     // --- 3D Geometric Instanced Floating Polyhedrons / Cubes ---
     const instanceCount = 650;
     const geometry = new THREE.BoxGeometry(7, 7, 7);
     
-    // Custom vertex/fragment material with cyber glow
+    // Cyber Material
     const material = new THREE.MeshBasicMaterial({
-      color: 0xf59e0b,
+      color: isLightMode ? 0x64748b : 0x38bdf8,
       wireframe: true,
       transparent: true,
-      opacity: isLightMode ? 0.55 : 0.35,
+      opacity: isLightMode ? 0.45 : 0.38,
     });
 
     const instancedMesh = new THREE.InstancedMesh(geometry, material, instanceCount);
     const dummy = new THREE.Object3D();
     const particleData = [];
 
-    // Colors palette (Default Cyber Amber Yellow)
-    let currentAccentHex = getComputedStyle(document.documentElement).getPropertyValue("--accent-color").trim() || "#f59e0b";
-    
-    const getThemeColors = (hex, lightMode) => {
-      const base = new THREE.Color(hex);
-      const bright = new THREE.Color(hex).offsetHSL(0.05, 0.2, lightMode ? -0.1 : 0.15);
-      const dark = new THREE.Color(hex).offsetHSL(-0.05, -0.1, lightMode ? -0.25 : -0.2);
-      const complement = new THREE.Color(hex).offsetHSL(0.5, 0, lightMode ? -0.15 : 0);
-      return [base, bright, dark, complement];
-    };
+    // Distinct Theme Palettes:
+    // Dark: Cyber Sky Blue, Deep Royal Blue, Soft Icy Cyan, Midnight Indigo
+    const darkPalette = [
+      new THREE.Color("#38bdf8"),
+      new THREE.Color("#2563eb"),
+      new THREE.Color("#7dd3fc"),
+      new THREE.Color("#1e3a8a"),
+    ];
 
-    let colors = getThemeColors(currentAccentHex, isLightMode);
+    // Light: Slate, Steel Grey, Subtle Blue
+    const lightPalette = [
+      new THREE.Color("#64748b"),
+      new THREE.Color("#94a3b8"),
+      new THREE.Color("#3b82f6"),
+      new THREE.Color("#cbd5e1"),
+    ];
+
+    let currentPalette = isLightMode ? lightPalette : darkPalette;
 
     for (let i = 0; i < instanceCount; i++) {
       const x = (Math.random() - 0.5) * 1600;
@@ -87,13 +95,13 @@ export default function CyberBackground() {
       dummy.updateMatrix();
 
       instancedMesh.setMatrixAt(i, dummy.matrix);
-      instancedMesh.setColorAt(i, colors[Math.floor(Math.random() * colors.length)]);
+      instancedMesh.setColorAt(i, currentPalette[Math.floor(Math.random() * currentPalette.length)]);
 
       particleData.push({
         velocity: new THREE.Vector3(
-          (Math.random() - 0.5) * 0.3,
-          (Math.random() - 0.5) * 0.3,
-          (Math.random() - 0.5) * 0.3
+          (Math.random() - 0.5) * 0.35,
+          (Math.random() - 0.5) * 0.35,
+          (Math.random() - 0.5) * 0.35
         ),
         rotationSpeed: new THREE.Vector3(
           (Math.random() - 0.5) * 0.015,
@@ -123,7 +131,7 @@ export default function CyberBackground() {
       dustPositions[i + 1] = (Math.random() - 0.5) * 1800;
       dustPositions[i + 2] = (Math.random() - 0.5) * 1400;
 
-      const col = colors[Math.floor(Math.random() * colors.length)];
+      const col = currentPalette[Math.floor(Math.random() * currentPalette.length)];
       dustColors[i] = col.r;
       dustColors[i + 1] = col.g;
       dustColors[i + 2] = col.b;
@@ -136,14 +144,15 @@ export default function CyberBackground() {
       size: 2.2,
       vertexColors: true,
       transparent: true,
-      opacity: isLightMode ? 0.6 : 0.45,
+      opacity: isLightMode ? 0.45 : 0.5,
       blending: isLightMode ? THREE.NormalBlending : THREE.AdditiveBlending,
     });
 
     const dustPoints = new THREE.Points(dustGeometry, dustMaterial);
     scene.add(dustPoints);
 
-    // --- Interactive Mouse Parallax ---
+    // --- Autonomous Looping + Interactive Mouse Parallax ---
+    const clock = new THREE.Clock();
     let mouseX = 0;
     let mouseY = 0;
     let targetX = 0;
@@ -152,8 +161,8 @@ export default function CyberBackground() {
     const handleMouseMove = (e) => {
       const windowHalfX = window.innerWidth / 2;
       const windowHalfY = window.innerHeight / 2;
-      mouseX = (e.clientX - windowHalfX) * 0.15;
-      mouseY = (e.clientY - windowHalfY) * 0.15;
+      mouseX = (e.clientX - windowHalfX) * 0.12;
+      mouseY = (e.clientY - windowHalfY) * 0.12;
     };
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
@@ -167,27 +176,38 @@ export default function CyberBackground() {
 
     window.addEventListener("resize", handleResize);
 
-    // --- MutationObserver for Live Light/Dark Theme Switching ---
+    // --- Live Light/Dark Theme Switching Observer ---
     const updateThemeMode = () => {
       const light = document.documentElement.getAttribute("data-theme") === "light";
       isLightMode = light;
-      renderer.setClearColor(light ? 0xf8fafc : 0x050508, 0.95);
+      renderer.setClearColor(light ? 0xf8fafc : 0x070b14, 0.96);
       if (scene.fog) {
-        scene.fog.color.set(light ? 0xf1f5f9 : 0x050508);
+        scene.fog.color.set(light ? lightFogColor : darkFogColor);
       }
-      material.opacity = light ? 0.55 : 0.35;
-      dustMaterial.opacity = light ? 0.6 : 0.45;
+      material.color.set(light ? 0x64748b : 0x38bdf8);
+      material.opacity = light ? 0.45 : 0.38;
+      dustMaterial.opacity = light ? 0.45 : 0.5;
       dustMaterial.blending = light ? THREE.NormalBlending : THREE.AdditiveBlending;
       dustMaterial.needsUpdate = true;
       material.needsUpdate = true;
 
-      const currentHex = getComputedStyle(document.documentElement).getPropertyValue("--accent-color").trim() || "#f59e0b";
-      colors = getThemeColors(currentHex, light);
+      currentPalette = light ? lightPalette : darkPalette;
       for (let i = 0; i < instanceCount; i++) {
-        instancedMesh.setColorAt(i, colors[Math.floor(Math.random() * colors.length)]);
+        instancedMesh.setColorAt(i, currentPalette[Math.floor(Math.random() * currentPalette.length)]);
       }
       if (instancedMesh.instanceColor) {
         instancedMesh.instanceColor.needsUpdate = true;
+      }
+
+      const colAttr = dustGeometry.attributes.color;
+      if (colAttr) {
+        for (let i = 0; i < dustCount * 3; i += 3) {
+          const col = currentPalette[Math.floor(Math.random() * currentPalette.length)];
+          colAttr.array[i] = col.r;
+          colAttr.array[i + 1] = col.g;
+          colAttr.array[i + 2] = col.b;
+        }
+        colAttr.needsUpdate = true;
       }
     };
 
@@ -201,50 +221,32 @@ export default function CyberBackground() {
 
     observer.observe(document.documentElement, { attributes: true });
 
-    // --- Animation Loop with Dynamic Theme Color Sync ---
-    let lastCheckedHex = currentAccentHex;
+    // --- Continuous Looping Animation Frame ---
     const currentDummy = new THREE.Object3D();
 
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
 
-      // Check if root accent color changed from the color wheel
-      const newHex = getComputedStyle(document.documentElement).getPropertyValue("--accent-color").trim();
-      if (newHex && newHex !== lastCheckedHex) {
-        lastCheckedHex = newHex;
-        colors = getThemeColors(newHex, isLightMode);
-        material.color.set(newHex);
+      const elapsedTime = clock.getElapsedTime();
 
-        for (let i = 0; i < instanceCount; i++) {
-          instancedMesh.setColorAt(i, colors[Math.floor(Math.random() * colors.length)]);
-        }
-        if (instancedMesh.instanceColor) {
-          instancedMesh.instanceColor.needsUpdate = true;
-        }
+      // Continuous autonomous movement - loops smoothly on its own without needing mouse
+      const autoOrbitX = Math.sin(elapsedTime * 0.22) * 110 + Math.cos(elapsedTime * 0.09) * 45;
+      const autoOrbitY = Math.cos(elapsedTime * 0.16) * 70 + Math.sin(elapsedTime * 0.07) * 35;
+      const autoOrbitZ = Math.sin(elapsedTime * 0.12) * 55;
 
-        const colAttr = dustGeometry.attributes.color;
-        if (colAttr) {
-          for (let i = 0; i < dustCount * 3; i += 3) {
-            const col = colors[Math.floor(Math.random() * colors.length)];
-            colAttr.array[i] = col.r;
-            colAttr.array[i + 1] = col.g;
-            colAttr.array[i + 2] = col.b;
-          }
-          colAttr.needsUpdate = true;
-        }
-      }
-
-      // Smooth camera interpolation
-      targetX += (mouseX - targetX) * 0.03;
-      targetY += (mouseY - targetY) * 0.03;
+      // Smooth camera interpolation combining autonomous loop + mouse parallax
+      targetX += (mouseX + autoOrbitX - targetX) * 0.025;
+      targetY += (mouseY + autoOrbitY - targetY) * 0.025;
       camera.position.x = targetX;
       camera.position.y = -targetY;
-      camera.lookAt(scene.position);
+      camera.position.z = 700 + autoOrbitZ;
+      camera.lookAt(0, 0, 0);
 
-      // Slow scene rotation
-      scene.rotation.y += 0.0003;
-      dustPoints.rotation.y += 0.0004;
-      dustPoints.rotation.x += 0.0002;
+      // Slow scene rotation & drift
+      scene.rotation.y = elapsedTime * 0.025;
+      scene.rotation.x = Math.sin(elapsedTime * 0.015) * 0.06;
+      dustPoints.rotation.y = elapsedTime * 0.035;
+      dustPoints.rotation.x = Math.cos(elapsedTime * 0.02) * 0.05;
 
       // Update instanced mesh positions and rotations
       for (let i = 0; i < instanceCount; i++) {
