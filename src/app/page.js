@@ -672,10 +672,10 @@ export default function Home() {
                     <button
                       key={cat}
                       onClick={() => setSelectedCategory(cat)}
-                      className={`px-3 py-1 rounded-lg font-mono text-xs transition-all ${
+                      className={`px-3 py-1 rounded-lg font-mono text-xs transition-all border ${
                         selectedCategory === cat
-                          ? "bg-emerald-500 text-black font-bold shadow-[0_0_10px_rgba(16,185,129,0.4)]"
-                          : "bg-zinc-900 text-zinc-400 border border-zinc-800 hover:border-emerald-500/50 hover:text-white"
+                          ? "theme-filter-active scale-105"
+                          : "theme-filter-inactive"
                       }`}
                     >
                       {cat === "ALL" ? "🌟 All Categories" : cat}
@@ -687,7 +687,7 @@ export default function Home() {
               {/* Platform / Hub Filter Chips */}
               <div>
                 <div className="flex justify-between items-center mb-2.5">
-                  <span className="font-mono text-xs text-emerald-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                  <span className="font-mono text-xs text-zinc-300 font-bold uppercase tracking-wider flex items-center gap-1.5">
                     <span>🏛️</span> Filter by CTF / Source:
                   </span>
                   {selectedPlatform !== "ALL" && (
@@ -704,10 +704,10 @@ export default function Home() {
                     <button
                       key={plat}
                       onClick={() => setSelectedPlatform(plat)}
-                      className={`px-3 py-1 rounded-lg font-mono text-xs transition-all ${
+                      className={`px-3 py-1 rounded-lg font-mono text-xs transition-all border ${
                         selectedPlatform === plat
-                          ? "bg-emerald-500 text-black font-bold shadow-[0_0_10px_rgba(16,185,129,0.4)]"
-                          : "bg-zinc-900 text-zinc-400 border border-zinc-800 hover:border-emerald-500/50 hover:text-white"
+                          ? "theme-filter-active scale-105"
+                          : "theme-filter-inactive"
                       }`}
                     >
                       {plat === "ALL" ? "🌐 All Sources" : plat}
@@ -719,7 +719,7 @@ export default function Home() {
               {/* Popular Tags */}
               <div>
                 <div className="flex justify-between items-center mb-2.5">
-                  <span className="font-mono text-xs text-emerald-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                  <span className="font-mono text-xs text-zinc-300 font-bold uppercase tracking-wider flex items-center gap-1.5">
                     <span>⚡</span> Filter by Tool / Concept:
                   </span>
                   {selectedTag !== "ALL" && (
@@ -734,10 +734,10 @@ export default function Home() {
                 <div className="flex flex-wrap gap-1.5">
                   <button
                     onClick={() => setSelectedTag("ALL")}
-                    className={`px-2.5 py-0.5 rounded font-mono text-[11px] transition-all ${
+                    className={`px-2.5 py-0.5 rounded font-mono text-[11px] transition-all border ${
                       selectedTag === "ALL"
-                        ? "bg-emerald-500 text-black font-bold"
-                        : "bg-zinc-900 text-zinc-400 border border-zinc-800 hover:text-white"
+                        ? "theme-filter-active scale-105"
+                        : "theme-filter-inactive"
                     }`}
                   >
                     All Tools
@@ -746,10 +746,10 @@ export default function Home() {
                     <button
                       key={tag}
                       onClick={() => setSelectedTag(tag === selectedTag ? "ALL" : tag)}
-                      className={`px-2.5 py-0.5 rounded font-mono text-[11px] transition-all ${
+                      className={`px-2.5 py-0.5 rounded font-mono text-[11px] transition-all border ${
                         selectedTag === tag
-                          ? "bg-emerald-500 text-black font-bold shadow-[0_0_10px_rgba(16,185,129,0.4)]"
-                          : "bg-zinc-900 text-zinc-400 border border-zinc-800 hover:border-emerald-500/50 hover:text-white"
+                          ? "theme-filter-active scale-105"
+                          : "theme-filter-inactive"
                       }`}
                     >
                       #{tag}

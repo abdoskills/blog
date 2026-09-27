@@ -557,13 +557,13 @@ export default function CtfsHub() {
         
         {/* Master Hub Header */}
         <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-10 text-center">
-          <div className="mb-4 inline-flex max-w-full items-center justify-center bg-[#0b101d]/90 backdrop-blur-md border border-sky-500/30 px-3 sm:px-4 py-1.5 rounded-full animate-glow-pulse">
-            <span className="font-mono text-[10px] sm:text-xs text-sky-400 uppercase tracking-wider sm:tracking-[0.3em] text-center">
+          <div className="mb-4 inline-flex max-w-full items-center justify-center theme-hero-badge px-3.5 sm:px-4 py-1.5 rounded-full border animate-glow-pulse">
+            <span className="font-mono text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-[0.3em] text-center font-bold">
               SUNSHINECTF • KASPERSKY • ASCWG • PICOCTF • CYBER WARGAMES
-              <span className="animate-blink inline-block w-1.5 h-3 bg-sky-400 ml-2 align-middle"></span>
+              <span className="animate-blink inline-block w-1.5 h-3 ml-2 align-middle bg-current"></span>
             </span>
           </div>
-          <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold text-white tracking-normal sm:tracking-widest font-[family-name:var(--font-silkscreen)] mb-4 drop-shadow-[0_0_25px_rgba(56,189,248,0.3)] break-words">
+          <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold text-white tracking-normal sm:tracking-widest font-[family-name:var(--font-silkscreen)] mb-4 drop-shadow-[0_0_25px_rgba(255,255,255,0.15)] break-words">
             CTF Competitions
           </h1>
           <p className="text-zinc-400 text-sm md:text-base font-sans max-w-2xl mx-auto leading-relaxed">
@@ -601,10 +601,10 @@ export default function CtfsHub() {
                 <button
                   key={p}
                   onClick={() => setSelectedPlatform(p)}
-                  className={`px-3 py-1.5 rounded-xl font-mono text-xs font-bold transition-all ${
+                  className={`px-3 py-1.5 rounded-xl font-mono text-xs font-bold transition-all border ${
                     selectedPlatform === p
-                      ? "theme-bg-solid text-black shadow-md scale-105"
-                      : "bg-zinc-900/90 text-zinc-400 border border-zinc-800 hover:text-white hover:theme-border"
+                      ? "theme-filter-active scale-105"
+                      : "theme-filter-inactive"
                   }`}
                 >
                   {p === "ALL" ? "🌐 All CTFs" : p}
@@ -616,15 +616,15 @@ export default function CtfsHub() {
 
           {/* Category Chips Bar */}
           <div className="flex flex-wrap items-center gap-1.5 text-xs font-mono">
-            <span className="text-zinc-500 mr-1 text-[11px] uppercase tracking-wider">Category:</span>
+            <span className="text-zinc-500 mr-1 text-[11px] uppercase tracking-wider font-bold">Category:</span>
             {categories.map((c) => (
               <button
                 key={c}
                 onClick={() => setSelectedCategory(c)}
-                className={`px-2.5 py-1 rounded-lg transition-all ${
+                className={`px-2.5 py-1 rounded-lg transition-all font-mono text-xs border ${
                   selectedCategory === c
-                    ? "theme-bg-dim theme-text border theme-border font-bold"
-                    : "text-zinc-500 hover:text-zinc-300 bg-zinc-900/50 border border-transparent hover:border-zinc-800"
+                    ? "theme-filter-active font-bold scale-105"
+                    : "theme-filter-inactive"
                 }`}
               >
                 {c}
