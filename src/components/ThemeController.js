@@ -13,33 +13,33 @@ export default function ThemeController() {
 
     if (light) {
       document.documentElement.setAttribute("data-theme", "light");
-      rootStyle.setProperty("--background", "#e2e8f0");
-      rootStyle.setProperty("--foreground", "#0f172a");
-      rootStyle.setProperty("--accent-color", "#2563eb");
-      rootStyle.setProperty("--accent-rgb", "37, 99, 235");
-      rootStyle.setProperty("--accent-glow", "rgba(37, 99, 235, 0.22)");
-      rootStyle.setProperty("--accent-dim", "rgba(37, 99, 235, 0.08)");
-      rootStyle.setProperty("--accent-border", "rgba(37, 99, 235, 0.25)");
-      rootStyle.setProperty("--accent-hover-border", "rgba(37, 99, 235, 0.65)");
-      rootStyle.setProperty("--accent-text", "#1d4ed8");
-      rootStyle.setProperty("--accent-shadow", "0 0 20px rgba(37, 99, 235, 0.15)");
-      rootStyle.setProperty("--card-bg", "rgba(241, 245, 249, 0.96)");
-      rootStyle.setProperty("--card-border", "#cbd5e1");
+      rootStyle.setProperty("--background", "#e4e4e7");
+      rootStyle.setProperty("--foreground", "#09090b");
+      rootStyle.setProperty("--accent-color", "#09090b");
+      rootStyle.setProperty("--accent-rgb", "9, 9, 11");
+      rootStyle.setProperty("--accent-glow", "rgba(0, 0, 0, 0.15)");
+      rootStyle.setProperty("--accent-dim", "rgba(0, 0, 0, 0.06)");
+      rootStyle.setProperty("--accent-border", "rgba(0, 0, 0, 0.2)");
+      rootStyle.setProperty("--accent-hover-border", "rgba(0, 0, 0, 0.6)");
+      rootStyle.setProperty("--accent-text", "#09090b");
+      rootStyle.setProperty("--accent-shadow", "0 0 15px rgba(0, 0, 0, 0.08)");
+      rootStyle.setProperty("--card-bg", "#f4f4f5");
+      rootStyle.setProperty("--card-border", "#d4d4d8");
       try { localStorage.setItem("abdoskills_mode", "light"); } catch {}
     } else {
       document.documentElement.removeAttribute("data-theme");
-      rootStyle.setProperty("--background", "#0a0a0c");
-      rootStyle.setProperty("--foreground", "#f1f5f9");
-      rootStyle.setProperty("--accent-color", "#38bdf8");
-      rootStyle.setProperty("--accent-rgb", "56, 189, 248");
-      rootStyle.setProperty("--accent-glow", "rgba(56, 189, 248, 0.35)");
-      rootStyle.setProperty("--accent-dim", "rgba(56, 189, 248, 0.12)");
-      rootStyle.setProperty("--accent-border", "rgba(56, 189, 248, 0.3)");
-      rootStyle.setProperty("--accent-hover-border", "rgba(56, 189, 248, 0.7)");
-      rootStyle.setProperty("--accent-text", "#7dd3fc");
-      rootStyle.setProperty("--accent-shadow", "0 0 25px rgba(56, 189, 248, 0.25)");
-      rootStyle.setProperty("--card-bg", "rgba(11, 17, 32, 0.92)");
-      rootStyle.setProperty("--card-border", "rgba(59, 130, 246, 0.22)");
+      rootStyle.setProperty("--background", "#09090b");
+      rootStyle.setProperty("--foreground", "#f4f4f5");
+      rootStyle.setProperty("--accent-color", "#ffffff");
+      rootStyle.setProperty("--accent-rgb", "255, 255, 255");
+      rootStyle.setProperty("--accent-glow", "rgba(255, 255, 255, 0.22)");
+      rootStyle.setProperty("--accent-dim", "rgba(255, 255, 255, 0.08)");
+      rootStyle.setProperty("--accent-border", "rgba(255, 255, 255, 0.18)");
+      rootStyle.setProperty("--accent-hover-border", "rgba(255, 255, 255, 0.65)");
+      rootStyle.setProperty("--accent-text", "#f4f4f5");
+      rootStyle.setProperty("--accent-shadow", "0 0 20px rgba(255, 255, 255, 0.12)");
+      rootStyle.setProperty("--card-bg", "#111114");
+      rootStyle.setProperty("--card-border", "#27272a");
       try { localStorage.setItem("abdoskills_mode", "dark"); } catch {}
     }
   }, []);
@@ -88,19 +88,19 @@ export default function ThemeController() {
         aria-label="Toggle Theme"
         className={`group flex items-center gap-2.5 px-4 py-2.5 rounded-full border backdrop-blur-2xl transition-all duration-300 shadow-xl ${
           isLightMode
-            ? "bg-[#e2e8f0]/95 border-slate-400 text-slate-800 hover:border-blue-600 hover:shadow-blue-500/10 shadow-slate-300/50"
-            : "bg-[#0b101d]/90 border-blue-500/30 text-slate-200 hover:border-sky-400 hover:shadow-[0_0_20px_rgba(56,189,248,0.25)] shadow-black/60"
+            ? "bg-[#e4e4e7]/95 border-zinc-400 text-zinc-900 hover:border-zinc-900 shadow-zinc-300/50"
+            : "bg-[#111114]/95 border-zinc-700/80 text-zinc-200 hover:border-white hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] shadow-black/80"
         }`}
       >
         <span className="text-base transform transition-transform group-hover:scale-110">
-          {isLightMode ? "☀️" : "🌙"}
+          {isLightMode ? "☀️" : "📺"}
         </span>
         <span className="text-xs font-bold tracking-wider uppercase">
-          {isLightMode ? "Light Gray" : "Night Mode"}
+          {isLightMode ? "CRT Day" : "CRT Night"}
         </span>
         <span
           className={`w-2 h-2 rounded-full transition-colors ${
-            isLightMode ? "bg-blue-600" : "bg-sky-400 shadow-[0_0_8px_#38bdf8]"
+            isLightMode ? "bg-zinc-900" : "bg-white shadow-[0_0_8px_#ffffff]"
           }`}
         />
       </button>

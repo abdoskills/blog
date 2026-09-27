@@ -884,39 +884,42 @@ export default function Home() {
                     <Link 
                       key={c.slug}
                       href={`/posts/${c.slug}`} 
-                      className="bg-[#111111] rounded-xl flex flex-col shadow-lg border-2 border-zinc-900/60 transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.015] hover:shadow-[0_15px_35px_rgba(0,0,0,0.5)] hover:border-zinc-800/80 group overflow-hidden theme-card"
+                      className="bg-[#111114] rounded-xl flex flex-col border border-zinc-800/80 transition-all duration-[500ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.015] hover:shadow-[0_20px_45px_rgba(0,0,0,0.7)] hover:border-zinc-500/80 group overflow-hidden theme-card relative"
                     >
+                      {/* Vintage CRT Phosphor Top Glow Line */}
+                      <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-30 pointer-events-none" />
+
                       {/* Image Container with Seamless Melting Gradient */}
-                      <div className="relative w-full h-48 sm:h-52 overflow-hidden rounded-t-xl bg-black/90">
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#141414]/50 via-transparent to-[#111111] z-10 rounded-t-xl group-hover:opacity-75 transition-opacity duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] theme-card-overlay" />
+                      <div className="relative w-full h-52 sm:h-56 overflow-hidden rounded-t-xl bg-black/90">
+                        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#111114] z-10 rounded-t-xl group-hover:opacity-65 transition-opacity duration-[500ms] theme-card-overlay" />
                         <Image 
                           src={c.image} 
                           alt={c.title} 
                           fill
-                          className="rounded-t-xl w-full object-cover transition-transform duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06] brightness-[0.88] contrast-[1.1]" 
+                          className="rounded-t-xl w-full object-cover transition-all duration-[700ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05] grayscale-[25%] contrast-[1.12] brightness-[0.88] group-hover:grayscale-0 group-hover:brightness-[1]" 
                         />
                       </div>
                       
                       {/* Card Body - Clean Centered Layout */}
-                      <div className="p-5 flex flex-col flex-grow text-center">
+                      <div className="p-5 sm:p-6 flex flex-col flex-grow text-center">
                         <div className="flex justify-center items-center gap-2 mb-2">
-                          <p className="text-zinc-500 text-xs font-mono tracking-widest uppercase">
-                            {c.platform || "FORENSICS"} • {c.points}
+                          <p className="text-zinc-500 group-hover:text-zinc-400 transition-colors text-[11px] font-mono tracking-[0.25em] uppercase font-bold">
+                            {c.platform || "FORENSICS"} {c.points ? `• ${c.points}` : ""}
                           </p>
                         </div>
 
-                        <h2 className="text-xl md:text-2xl font-semibold mb-2 transition-colors duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] text-gray-100 group-hover:text-white group-hover:theme-text text-center font-[family-name:var(--font-share-tech)] tracking-wide">
+                        <h2 className="text-xl sm:text-2xl font-bold mb-2 transition-colors duration-300 text-zinc-100 group-hover:text-white text-center font-[family-name:var(--font-share-tech)] tracking-wide">
                           {c.title}
                         </h2>
 
-                        <p className="text-zinc-400 text-sm font-medium leading-relaxed text-center line-clamp-2 mb-4 font-sans">
+                        <p className="text-zinc-400 text-xs sm:text-sm font-sans leading-relaxed text-center line-clamp-2 mb-4">
                           {c.tagline || c.description}
                         </p>
 
                         {/* Clean Centered Minimalist Tags */}
-                        <div className="mt-auto pt-3 border-t border-zinc-900/80 flex flex-wrap justify-center gap-1.5">
+                        <div className="mt-auto pt-3.5 border-t border-zinc-800/80 flex flex-wrap justify-center gap-1.5">
                           {c.tags.slice(0, 3).map((tag) => (
-                            <span key={tag} className="bg-zinc-900/90 text-zinc-400 border border-zinc-800/90 text-[11px] font-mono px-2.5 py-0.5 rounded-md">
+                            <span key={tag} className="bg-zinc-900/90 text-zinc-400 border border-zinc-800/90 text-[10px] font-mono px-2.5 py-0.5 rounded tracking-wider uppercase group-hover:border-zinc-700 transition-colors">
                               {tag}
                             </span>
                           ))}
@@ -957,40 +960,43 @@ export default function Home() {
                     <Link 
                       key={c.slug}
                       href={`/posts/${c.slug}`} 
-                      className="bg-[#111111] rounded-xl flex flex-col shadow-lg border-2 border-zinc-900/60 transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.015] hover:shadow-[0_15px_35px_rgba(0,0,0,0.5)] hover:border-zinc-800/80 group overflow-hidden theme-card min-w-0"
+                      className="bg-[#111114] rounded-xl flex flex-col border border-zinc-800/80 transition-all duration-[500ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.015] hover:shadow-[0_20px_45px_rgba(0,0,0,0.7)] hover:border-zinc-500/80 group overflow-hidden theme-card min-w-0 relative"
                     >
+                      {/* Vintage CRT Phosphor Top Glow Line */}
+                      <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-30 pointer-events-none" />
+
                       {/* Image Container with Seamless Melting Gradient */}
-                      <div className="relative w-full h-48 sm:h-52 overflow-hidden rounded-t-xl bg-black/90">
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#141414]/50 via-transparent to-[#111111] z-10 rounded-t-xl group-hover:opacity-75 transition-opacity duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] theme-card-overlay" />
+                      <div className="relative w-full h-52 sm:h-56 overflow-hidden rounded-t-xl bg-black/90">
+                        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-[#111114] z-10 rounded-t-xl group-hover:opacity-65 transition-opacity duration-[500ms] theme-card-overlay" />
                         <Image 
                           src={c.image} 
                           alt={c.title} 
                           fill
-                          className="rounded-t-xl w-full object-cover transition-transform duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06] brightness-[0.88] contrast-[1.1]" 
+                          className="rounded-t-xl w-full object-cover transition-all duration-[700ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05] grayscale-[25%] contrast-[1.12] brightness-[0.88] group-hover:grayscale-0 group-hover:brightness-[1]" 
                           priority
                         />
                       </div>
                       
                       {/* Card Body - Clean Centered Layout */}
-                      <div className="p-5 flex flex-col flex-grow text-center min-w-0">
+                      <div className="p-5 sm:p-6 flex flex-col flex-grow text-center min-w-0">
                         <div className="flex justify-center items-center gap-2 mb-2">
-                          <p className="text-zinc-500 text-xs font-mono tracking-widest uppercase">
-                            {c.platform || "FORENSICS"} • {c.points}
+                          <p className="text-zinc-500 group-hover:text-zinc-400 transition-colors text-[11px] font-mono tracking-[0.25em] uppercase font-bold">
+                            {c.platform || "FORENSICS"} {c.points ? `• ${c.points}` : ""}
                           </p>
                         </div>
 
-                        <h2 className="text-xl md:text-2xl font-semibold mb-2 transition-colors duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] text-gray-100 group-hover:text-white group-hover:theme-text text-center font-[family-name:var(--font-share-tech)] tracking-wide">
+                        <h2 className="text-xl sm:text-2xl font-bold mb-2 transition-colors duration-300 text-zinc-100 group-hover:text-white text-center font-[family-name:var(--font-share-tech)] tracking-wide">
                           {c.title}
                         </h2>
 
-                        <p className="text-zinc-400 text-sm font-medium leading-relaxed text-center line-clamp-2 mb-4 font-sans">
+                        <p className="text-zinc-400 text-xs sm:text-sm font-sans leading-relaxed text-center line-clamp-2 mb-4">
                           {c.tagline || c.description}
                         </p>
 
                         {/* Clean Centered Minimalist Tags */}
-                        <div className="mt-auto pt-3 border-t border-zinc-900/80 flex flex-wrap justify-center gap-1.5">
+                        <div className="mt-auto pt-3.5 border-t border-zinc-800/80 flex flex-wrap justify-center gap-1.5">
                           {c.tags.slice(0, 3).map((tag) => (
-                            <span key={tag} className="bg-zinc-900/90 text-zinc-400 border border-zinc-800/90 text-[11px] font-mono px-2.5 py-0.5 rounded-md">
+                            <span key={tag} className="bg-zinc-900/90 text-zinc-400 border border-zinc-800/90 text-[10px] font-mono px-2.5 py-0.5 rounded tracking-wider uppercase group-hover:border-zinc-700 transition-colors">
                               {tag}
                             </span>
                           ))}

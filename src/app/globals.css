@@ -1,21 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0c;
-  --foreground: #f1f5f9;
+  --background: #09090b;
+  --foreground: #f4f4f5;
 
-  /* Modern Cyber Blue & Sky Cyan Palette */
-  --accent-color: #38bdf8;
-  --accent-rgb: 56, 189, 248;
-  --accent-glow: rgba(56, 189, 248, 0.35);
-  --accent-dim: rgba(56, 189, 248, 0.12);
-  --accent-border: rgba(56, 189, 248, 0.3);
-  --accent-hover-border: rgba(56, 189, 248, 0.7);
-  --accent-text: #7dd3fc;
-  --accent-shadow: 0 0 25px rgba(56, 189, 248, 0.25);
+  /* Pure Vintage Monochrome CRT TV Palette */
+  --accent-color: #ffffff;
+  --accent-rgb: 255, 255, 255;
+  --accent-glow: rgba(255, 255, 255, 0.22);
+  --accent-dim: rgba(255, 255, 255, 0.08);
+  --accent-border: rgba(255, 255, 255, 0.18);
+  --accent-hover-border: rgba(255, 255, 255, 0.65);
+  --accent-text: #f4f4f5;
+  --accent-shadow: 0 0 20px rgba(255, 255, 255, 0.12);
 
-  --card-bg: rgba(11, 17, 32, 0.92);
-  --card-border: rgba(59, 130, 246, 0.22);
+  --card-bg: #111114;
+  --card-border: #27272a;
 }
 
 body {
@@ -30,8 +30,8 @@ body {
 
 /* Global Selection Highlight */
 *::selection, ::selection {
-  background-color: var(--accent-dim) !important;
-  color: var(--accent-text) !important;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
 }
 
 /* 120 FPS High-Performance Smooth CSS Transitions */
@@ -69,31 +69,31 @@ a, button, [role="button"], .theme-card, .theme-badge, .theme-text, .theme-borde
 .theme-card {
   background-color: var(--card-bg) !important;
   border-color: var(--card-border) !important;
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8) !important;
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
   transform: translateZ(0);
   backface-visibility: hidden;
 }
 .theme-card:hover {
-  border-color: var(--accent-hover-border) !important;
-  box-shadow: 0 16px 40px rgba(56, 189, 248, 0.18), 0 0 25px rgba(56, 189, 248, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85), 0 0 20px rgba(255, 255, 255, 0.08) !important;
 }
 
 /* Card Image Melting Gradient Overlay */
 .theme-card-overlay {
-  background: linear-gradient(to bottom, rgba(20, 20, 20, 0.4) 0%, transparent 40%, #111111 100%) !important;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, transparent 40%, #111114 100%) !important;
 }
 
 html[data-theme="light"] .theme-card-overlay {
-  background: linear-gradient(to bottom, rgba(226, 232, 240, 0.3) 0%, transparent 40%, #f1f5f9 100%) !important;
+  background: linear-gradient(to bottom, rgba(228, 228, 231, 0.3) 0%, transparent 40%, #f4f4f5 100%) !important;
 }
 
 /* Vintage Old TV CRT Scanlines & Screen Vignette Overlay */
 .crt-tv-overlay {
   background: 
-    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.22) 50%),
-    radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.5) 100%);
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.24) 50%),
+    radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.55) 100%);
   background-size: 100% 4px, 100% 100%;
   opacity: 0.85;
   mix-blend-mode: overlay;
@@ -102,8 +102,8 @@ html[data-theme="light"] .theme-card-overlay {
 
 html[data-theme="light"] .crt-tv-overlay {
   background: 
-    linear-gradient(rgba(240, 240, 240, 0) 50%, rgba(100, 100, 100, 0.1) 50%),
-    radial-gradient(ellipse at center, transparent 65%, rgba(100, 116, 139, 0.28) 100%);
+    linear-gradient(rgba(240, 240, 240, 0) 50%, rgba(80, 80, 80, 0.1) 50%),
+    radial-gradient(ellipse at center, transparent 65%, rgba(60, 60, 60, 0.28) 100%);
   background-size: 100% 4px, 100% 100%;
   opacity: 0.65;
 }
@@ -112,12 +112,12 @@ html[data-theme="light"] .crt-tv-overlay {
 /* CONTENT FRAMING SHIELD: Separating writing from animated 3D background    */
 /* ========================================================================= */
 article, .content-frame {
-  background: rgba(9, 14, 26, 0.90) !important;
-  border: 1px solid rgba(56, 189, 248, 0.22) !important;
+  background: rgba(14, 14, 18, 0.94) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
   border-radius: 1.75rem !important;
   backdrop-filter: blur(28px) !important;
   -webkit-backdrop-filter: blur(28px) !important;
-  box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.85), 0 0 35px rgba(56, 189, 248, 0.05) !important;
+  box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.9), 0 0 30px rgba(255, 255, 255, 0.03) !important;
   padding: 2rem 1.5rem !important;
   margin-top: 1.5rem !important;
   margin-bottom: 4rem !important;
@@ -230,17 +230,17 @@ main pre code {
   color: var(--accent-text) !important;
 }
 
-/* Custom Cyberpunk Cursors */
+/* Custom Monochrome CRT Cursors */
 body {
-  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%2338bdf8" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>') 12 12, crosshair;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23ffffff" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>') 12 12, crosshair;
 }
 
 a, button, summary, .cursor-pointer, [role="button"], details summary {
-  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%237dd3fc" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="3" fill="%237dd3fc"/></svg>') 12 12, pointer !important;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23ffffff" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="3" fill="%23ffffff"/></svg>') 12 12, pointer !important;
 }
 
 .cursor-help {
-  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%2338bdf8" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="5" stroke-dasharray="2,2"/></svg>') 12 12, help !important;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23ffffff" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="5" stroke-dasharray="2,2"/></svg>') 12 12, help !important;
 }
 
 /* Cyberpunk Animations */
@@ -275,19 +275,19 @@ a, button, summary, .cursor-pointer, [role="button"], details summary {
 /* ========================================================================= */
 
 html[data-theme="light"] {
-  --background: #e2e8f0;
-  --foreground: #0f172a;
-  --accent-color: #2563eb;
-  --accent-rgb: 37, 99, 235;
-  --accent-glow: rgba(37, 99, 235, 0.22);
-  --accent-dim: rgba(37, 99, 235, 0.08);
-  --accent-border: rgba(37, 99, 235, 0.25);
-  --accent-hover-border: rgba(37, 99, 235, 0.65);
-  --accent-text: #1d4ed8;
-  --accent-shadow: 0 0 20px rgba(37, 99, 235, 0.15);
+  --background: #e4e4e7;
+  --foreground: #09090b;
+  --accent-color: #09090b;
+  --accent-rgb: 9, 9, 11;
+  --accent-glow: rgba(0, 0, 0, 0.15);
+  --accent-dim: rgba(0, 0, 0, 0.06);
+  --accent-border: rgba(0, 0, 0, 0.2);
+  --accent-hover-border: rgba(0, 0, 0, 0.6);
+  --accent-text: #09090b;
+  --accent-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
 
-  --card-bg: rgba(241, 245, 249, 0.96);
-  --card-border: #cbd5e1;
+  --card-bg: #f4f4f5;
+  --card-border: #d4d4d8;
 }
 
 html[data-theme="light"] article,
@@ -299,13 +299,13 @@ html[data-theme="light"] .content-frame {
 }
 
 html[data-theme="light"] body {
-  background-color: #e2e8f0 !important;
-  color: #1e293b !important;
+  background-color: #e4e4e7 !important;
+  color: #18181b !important;
 }
 
 /* Light Mode 3D Background Canvas */
 html[data-theme="light"] #cyber-3d-bg {
-  background: radial-gradient(ellipse at center, #eaedf2 0%, #e2e8f0 60%, #cbd5e1 100%) !important;
+  background: radial-gradient(ellipse at center, #f4f4f5 0%, #e4e4e7 60%, #d4d4d8 100%) !important;
 }
 
 /* Headings & Text in Light Mode */
@@ -318,7 +318,7 @@ html[data-theme="light"] .text-white,
 html[data-theme="light"] .text-zinc-200,
 html[data-theme="light"] .text-gray-200,
 html[data-theme="light"] .text-gray-100 {
-  color: #0f172a !important;
+  color: #09090b !important;
   text-shadow: none !important;
 }
 
@@ -329,7 +329,7 @@ html[data-theme="light"] span.text-zinc-500,
 html[data-theme="light"] .text-zinc-400,
 html[data-theme="light"] .text-zinc-300,
 html[data-theme="light"] .text-zinc-500 {
-  color: #475569 !important;
+  color: #52525b !important;
 }
 
 /* Cards, Hub Panels, Containers in Light Mode */
@@ -344,15 +344,15 @@ html[data-theme="light"] [class*="bg-\[\#0e0b06\]"],
 html[data-theme="light"] [class*="bg-\[\#0a0a0e\]"],
 html[data-theme="light"] [class*="bg-\[\#050505\]"],
 html[data-theme="light"] [class*="bg-\[\#050508\]"] {
-  background-color: #f1f5f9 !important;
-  border-color: #cbd5e1 !important;
-  color: #1e293b !important;
-  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05) !important;
+  background-color: #f4f4f5 !important;
+  border-color: #d4d4d8 !important;
+  color: #18181b !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
 }
 
 html[data-theme="light"] .theme-card:hover {
-  border-color: var(--accent-hover-border) !important;
-  box-shadow: 0 15px 35px var(--accent-glow) !important;
+  border-color: #71717a !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Navbar & Floating Header in Light Mode */
@@ -360,16 +360,16 @@ html[data-theme="light"] header,
 html[data-theme="light"] nav,
 html[data-theme="light"] nav .bg-\[\#0d0d12\]\/90,
 html[data-theme="light"] nav .bg-\[\#0d0d12\]\/95 {
-  background-color: rgba(226, 232, 240, 0.92) !important;
-  border-color: #cbd5e1 !important;
-  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06) !important;
+  background-color: rgba(228, 228, 231, 0.92) !important;
+  border-color: #d4d4d8 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
 }
 
 /* Dropdown Menu Drawers in Light Mode */
 html[data-theme="light"] .shadow-\[0_20px_50px_rgba\(0\,0\,0\,0\.9\)\] {
-  background-color: #f1f5f9 !important;
-  border-color: #cbd5e1 !important;
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12) !important;
+  background-color: #f4f4f5 !important;
+  border-color: #d4d4d8 !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12) !important;
 }
 
 /* Badges, Pills & Tag Chips in Light Mode */
@@ -377,9 +377,9 @@ html[data-theme="light"] .theme-badge,
 html[data-theme="light"] [class*="bg-black/"],
 html[data-theme="light"] [class*="bg-zinc-900"],
 html[data-theme="light"] [class*="bg-zinc-800"] {
-  background-color: #e2e8f0 !important;
-  border-color: #cbd5e1 !important;
-  color: #1e293b !important;
+  background-color: #e4e4e7 !important;
+  border-color: #d4d4d8 !important;
+  color: #18181b !important;
 }
 
 html[data-theme="light"] .theme-badge {
