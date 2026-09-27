@@ -29,6 +29,48 @@ export default function SuntrailWriteup() {
 30\tB\t0\t2192\t006b\t-1
 31\tN\t0\t2196\t0073\t-1`;
 
+  const pythonGraphSolver = `import re
+
+# Keyboard matrix rows with physical typewriter stagger
+# Row 0: Q(0,0) W(0,1) E(0,2) R(0,3) T(0,4)
+# Row 1:  A(1,0) S(1,1) D(1,2) F(1,3) G(1,4) H(1,5)
+# Row 2:   Z(2,0) X(2,1) C(2,2) V(2,3) B(2,4) N(2,5)
+
+KEY_MAP = {
+    (0,0): 'Q', (0,1): 'W', (0,2): 'E', (0,3): 'R', (0,4): 'T',
+    (1,0): 'A', (1,1): 'S', (1,2): 'D', (1,3): 'F', (1,4): 'G', (1,5): 'H',
+    (2,0): 'Z', (2,1): 'X', (2,2): 'C', (2,3): 'V', (2,4): 'B', (2,5): 'N'
+}
+COORD_MAP = {v: k for k, v in KEY_MAP.items()}
+
+# Parse suntrail.klc
+moves, payloads = {}, {}
+with open('suntrail.klc', 'r', encoding='utf-16le', errors='ignore') as f:
+    for line in f:
+        m = re.match(r'^[0-9a-fA-F]+\\s+([A-Z])\\s+0\\s+([0-9a-fA-F]+)\\s+([0-9a-fA-F]+)', line)
+        if m:
+            key, arrow, char_hex = m.groups()
+            moves[key] = arrow.lower()
+            payloads[key] = chr(int(char_hex, 16))
+
+# Traverse graph from 'Q' following mechanical vectors
+curr = 'Q'
+flag = []
+while curr in moves:
+    flag.append(payloads[curr])
+    arrow = moves[curr]
+    if arrow == '25a0': # Stop
+        break
+    r, c = COORD_MAP[curr]
+    if arrow == '2198':   # ↘ Down-Right
+        curr = KEY_MAP[(r + 1, c)]
+    elif arrow == '2192': # → Right
+        curr = KEY_MAP[(r, c + 1)]
+    elif arrow == '2196': # ↖ Up-Left
+        curr = KEY_MAP[(r - 1, c)]
+
+print("[+] Recovered Flag:", "".join(flag))`;
+
   const flagText = "sun{qwerty_sucks}";
 
   return (
@@ -133,18 +175,55 @@ export default function SuntrailWriteup() {
 
           <section>
             <h2 className="text-2xl font-bold text-white font-[family-name:var(--font-share-tech)] mb-4 flex items-center gap-3">
-              <span className="text-amber-400">03.</span> Following the Keyboard Snake Trail
+              <span className="text-amber-400">03.</span> The Core Concept: Mechanical Stagger &amp; Directed Graph
             </h2>
             <p className="mb-4">
-              Because standard QWERTY keyboard rows are mechanically staggered:
+              To solve this challenge, one must understand both <strong>historical keyboard mechanics</strong> and <strong>graph theory</strong>:
             </p>
-            <div className="bg-[#0e0e13] border border-zinc-800 p-4 rounded-xl font-mono text-xs text-zinc-300 mb-6">
-              Row 0: [Q] [W] [E] [R] [T]<br />
-              Row 1:  [A] [S] [D] [F] [G] [H]<br />
-              Row 2:   [Z] [X] [C] [V] [B] [N]
+
+            <div className="bg-[#0e0e13] border border-zinc-800 rounded-xl p-5 mb-6 space-y-4 text-sm leading-relaxed">
+              <div className="flex items-start gap-3">
+                <span className="text-amber-400 text-lg">⚙️</span>
+                <div>
+                  <strong className="text-white">Why &ldquo;QWERTY Sucks&rdquo;? The Mechanical Stagger:</strong>
+                  <p className="text-zinc-400 mt-1">
+                    On standard typewriter-derived keyboards, keys are not arranged in a clean rectilinear grid. Because early mechanical typewriters had physical metal linkages that collided if arranged vertically, each row was shifted horizontally by a diagonal offset (Row 1 is shifted right of Row 0; Row 2 is shifted right of Row 1). Modern ergonomic keyboard advocates criticize this legacy design, hence the challenge flag: <code className="text-emerald-400 font-mono font-bold">sun&#123;qwerty_sucks&#125;</code>.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <span className="text-amber-400 text-lg">🔗</span>
+                <div>
+                  <strong className="text-white">Why You Cannot Read the File Top-to-Bottom:</strong>
+                  <p className="text-zinc-400 mt-1">
+                    Inside <code className="text-amber-300 font-mono">suntrail.klc</code>, keys are listed strictly sorted by their internal Windows hardware scancodes (<code className="text-zinc-300 font-mono">10=Q</code>, <code className="text-zinc-300 font-mono">11=W</code>, <code className="text-zinc-300 font-mono">12=E</code>, etc.). Reading the characters linearly produces total gibberish. The file is actually an <strong>unordered directed linked list</strong> where each node contains:
+                  </p>
+                  <ul className="list-disc list-inside mt-2 space-y-1 text-zinc-300 font-mono text-xs">
+                    <li><span className="text-amber-400">Shift State 0</span> = Edge Pointer (Direction Vector: &searr;, &rarr;, &nwarr;, or &block;)</li>
+                    <li><span className="text-emerald-400">Shift State 1</span> = Node Payload (Single Flag Character ASCII)</li>
+                  </ul>
+                </div>
+              </div>
             </div>
+
+            <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] mb-3">
+              The 3 Serpentine Wave Cycles:
+            </h3>
             <p className="mb-4">
-              Moving &searr; from <strong>Q</strong> lands on <strong>A</strong>. Moving &searr; from <strong>A</strong> lands on <strong>Z</strong>. Moving &rarr; from <strong>Z</strong> lands on <strong>X</strong>... following this trail key-by-key until the stop marker at <strong>H</strong>:
+              When we start at <strong className="text-white">Q</strong> and follow the direction arrows across the physical keyboard matrix, the path traces three repeating serpentine wave loops:
+            </p>
+
+            <div className="bg-[#050508] border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto mb-6 leading-relaxed">
+              <span className="text-zinc-500">// Physical Key Matrix Zigzag Walk</span><br />
+              <span className="text-amber-400 font-bold">[Cycle 1]</span> Q &searr; A &searr; Z &rarr; X &nwarr; S &nwarr; W &rarr; E &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rarr; Yields: <span className="text-emerald-400 font-bold">s u n &#123; q w</span><br />
+              <span className="text-amber-400 font-bold">[Cycle 2]</span> E &searr; D &searr; C &rarr; V &nwarr; F &nwarr; R &rarr; T &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rarr; Yields: <span className="text-emerald-400 font-bold">e r t y _ s</span><br />
+              <span className="text-amber-400 font-bold">[Cycle 3]</span> T &searr; G &searr; B &rarr; N &nwarr; H &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&rarr; Yields: <span className="text-emerald-400 font-bold">u c k s &#125;</span><br />
+              <span className="text-zinc-500">// Terminal Node H outputs &#x25a0; (25a0: Stop Marker)</span>
+            </div>
+
+            <p className="mb-4">
+              Here is the complete step-by-step trace showing every vector transition and running flag reconstruction:
             </p>
 
             <div className="overflow-x-auto my-6">
@@ -181,6 +260,21 @@ export default function SuntrailWriteup() {
                 </tbody>
               </table>
             </div>
+
+            <details className="group bg-[#0e0e13] border border-zinc-800 rounded-xl overflow-hidden my-6">
+              <summary className="p-4 cursor-pointer font-mono text-sm text-amber-400 hover:text-amber-300 flex items-center justify-between list-none">
+                <span>[ Python 1-Click Automated Graph Walker ]</span>
+                <span className="transition group-open:rotate-180">▼</span>
+              </summary>
+              <div className="p-4 pt-0 border-t border-zinc-800/60 bg-[#09090d]">
+                <div className="relative mt-3">
+                  <CopyButton text={pythonGraphSolver} />
+                  <pre className="p-4 rounded-lg bg-black/60 font-mono text-xs overflow-x-auto text-zinc-300">
+                    {pythonGraphSolver}
+                  </pre>
+                </div>
+              </div>
+            </details>
           </section>
 
           {/* Flag Section */}

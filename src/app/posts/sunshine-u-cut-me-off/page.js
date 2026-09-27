@@ -111,6 +111,21 @@ print("[+] Successfully repaired IHDR height and CRC!")`;
             <p className="mb-4">
               We received a single image named <code className="text-pink-300 bg-pink-950/40 px-1.5 py-0.5 rounded border border-pink-500/20">hereyougo.png</code> depicting a Discord chat. The message prompt at the bottom was abruptly truncated. Combined with the challenge title, this pointed directly to <strong>IHDR height tampering</strong>—a classic steganography technique where the displayed height in the file header is made smaller than the actual compressed image scanlines stored in the <code className="text-zinc-200">IDAT</code> chunk.
             </p>
+
+            <div className="relative w-full aspect-[492/382] max-w-xl mx-auto rounded-2xl overflow-hidden border border-zinc-800/80 my-6 shadow-xl group bg-black">
+              <Image
+                src="/images/sunshine/hereyougo.png"
+                alt="Original cropped hereyougo.png showing truncated message input"
+                fill
+                sizes="(max-width: 1200px) 100vw, 800px"
+                className="object-contain object-center group-hover:scale-105 transition-transform duration-500 opacity-90"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center text-xs font-mono text-zinc-400">
+                <span>ORIGINAL FILE: hereyougo.png (Truncated at bottom)</span>
+                <span className="text-rose-400 font-bold">492 &times; 382 px</span>
+              </div>
+            </div>
           </section>
 
           <section>
@@ -193,6 +208,22 @@ print("[+] Successfully repaired IHDR height and CRC!")`;
             <p className="mb-4 text-zinc-300">
               Opening the repaired image reveals the full Discord input bar with the uncropped flag:
             </p>
+
+            <div className="relative w-full aspect-[492/418] max-w-xl mx-auto rounded-2xl overflow-hidden border border-zinc-800/80 mb-6 shadow-2xl group bg-black">
+              <Image
+                src="/images/sunshine/recovered_flag.png"
+                alt="Repaired PNG showing the uncropped flag in the Discord chat prompt"
+                fill
+                sizes="(max-width: 1200px) 100vw, 800px"
+                className="object-contain object-center group-hover:scale-105 transition-transform duration-500 opacity-95"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent"></div>
+              <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center text-xs font-mono text-zinc-400">
+                <span>RECOVERED FILE: recovered.png (Uncropped Flag Revealed)</span>
+                <span className="text-emerald-400 font-bold">492 &times; 418 px (+36 px)</span>
+              </div>
+            </div>
+
             <div className="relative bg-[#0d1217] border border-emerald-500/40 rounded-xl p-5 shadow-[0_0_25px_rgba(16,185,129,0.15)] flex justify-between items-center">
               <span className="font-mono text-lg md:text-xl text-emerald-400 font-bold tracking-wider">
                 {flagText}
