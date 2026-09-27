@@ -177,78 +177,99 @@ article, .content-frame {
 }
 
 /* Universal Writeup Elements (Dark Mode Defaults) */
-main [class*="text-emerald"],
-main [class*="text-cyan"],
-main [class*="text-amber"],
-main [class*="text-teal"],
-main [class*="text-green"],
-main [class*="text-yellow"],
-main [class*="text-pink"],
-main [class*="text-blue"],
-main span.font-mono[class*="text-"],
-main pre code,
-main code[class*="text-"] {
+/* Universal Writeup & Content Elements (Dark Mode Defaults) */
+main [class*="text-emerald"], article [class*="text-emerald"], .content-frame [class*="text-emerald"],
+main [class*="text-cyan"], article [class*="text-cyan"], .content-frame [class*="text-cyan"],
+main [class*="text-amber"], article [class*="text-amber"], .content-frame [class*="text-amber"],
+main [class*="text-teal"], article [class*="text-teal"], .content-frame [class*="text-teal"],
+main [class*="text-green"], article [class*="text-green"], .content-frame [class*="text-green"],
+main [class*="text-yellow"], article [class*="text-yellow"], .content-frame [class*="text-yellow"],
+main [class*="text-pink"], article [class*="text-pink"], .content-frame [class*="text-pink"],
+main [class*="text-blue"], article [class*="text-blue"], .content-frame [class*="text-blue"],
+main [class*="text-purple"], article [class*="text-purple"], .content-frame [class*="text-purple"],
+main span.font-mono[class*="text-"], article span.font-mono[class*="text-"],
+main pre code, article pre code,
+main code[class*="text-"], article code[class*="text-"] {
   color: var(--accent-text) !important;
 }
 
-main [class*="border-emerald"],
-main [class*="border-cyan"],
-main [class*="border-amber"],
-main [class*="border-teal"],
-main [class*="border-green"],
-main [class*="border-yellow"],
-main [class*="border-pink"],
-main [class*="border-blue"] {
+main [class*="border-emerald"], article [class*="border-emerald"], .content-frame [class*="border-emerald"],
+main [class*="border-cyan"], article [class*="border-cyan"], .content-frame [class*="border-cyan"],
+main [class*="border-amber"], article [class*="border-amber"], .content-frame [class*="border-amber"],
+main [class*="border-teal"], article [class*="border-teal"], .content-frame [class*="border-teal"],
+main [class*="border-green"], article [class*="border-green"], .content-frame [class*="border-green"],
+main [class*="border-yellow"], article [class*="border-yellow"], .content-frame [class*="border-yellow"],
+main [class*="border-pink"], article [class*="border-pink"], .content-frame [class*="border-pink"],
+main [class*="border-blue"], article [class*="border-blue"], .content-frame [class*="border-blue"],
+main [class*="border-purple"], article [class*="border-purple"], .content-frame [class*="border-purple"] {
   border-color: var(--accent-border) !important;
 }
 
-main [class*="bg-emerald-500/"],
-main [class*="bg-emerald-400/"],
-main [class*="bg-cyan-500/"],
-main [class*="bg-cyan-400/"],
-main [class*="bg-amber-500/"],
-main [class*="bg-amber-400/"],
-main [class*="bg-teal-500/"],
-main [class*="bg-green-500/"],
-main [class*="bg-yellow-500/"],
-main [class*="bg-pink-500/"],
-main [class*="bg-blue-500/"] {
+main [class*="bg-emerald-500/"], article [class*="bg-emerald-500/"],
+main [class*="bg-emerald-400/"], article [class*="bg-emerald-400/"],
+main [class*="bg-cyan-500/"], article [class*="bg-cyan-500/"],
+main [class*="bg-cyan-400/"], article [class*="bg-cyan-400/"],
+main [class*="bg-amber-500/"], article [class*="bg-amber-500/"],
+main [class*="bg-amber-400/"], article [class*="bg-amber-400/"],
+main [class*="bg-teal-500/"], article [class*="bg-teal-500/"],
+main [class*="bg-green-500/"], article [class*="bg-green-500/"],
+main [class*="bg-yellow-500/"], article [class*="bg-yellow-500/"],
+main [class*="bg-pink-500/"], article [class*="bg-pink-500/"],
+main [class*="bg-blue-500/"], article [class*="bg-blue-500/"],
+main [class*="bg-purple-500/"], article [class*="bg-purple-500/"] {
   background-color: var(--accent-dim) !important;
   color: var(--accent-text) !important;
 }
 
-main [class*="shadow-[0_0_40px_rgba("],
-main [class*="shadow-[0_0_30px_rgba("],
-main [class*="shadow-[0_0_25px_rgba("],
-main [class*="shadow-[0_0_20px_rgba("],
-main [class*="shadow-[0_0_15px_rgba("] {
+main [class*="shadow-[0_0_40px_rgba("], article [class*="shadow-[0_0_40px_rgba("],
+main [class*="shadow-[0_0_30px_rgba("], article [class*="shadow-[0_0_30px_rgba("],
+main [class*="shadow-[0_0_25px_rgba("], article [class*="shadow-[0_0_25px_rgba("],
+main [class*="shadow-[0_0_20px_rgba("], article [class*="shadow-[0_0_20px_rgba("],
+main [class*="shadow-[0_0_15px_rgba("], article [class*="shadow-[0_0_15px_rgba("] {
   box-shadow: 0 0 35px var(--accent-glow) !important;
 }
 
-/* Flag & Decoded Sections */
-main section[class*="from-"],
-main section[class*="bg-gradient-to-r"] {
+/* Flag & Decoded Sections in Writeups */
+main section[class*="from-"], article section[class*="from-"],
+main section[class*="bg-gradient-to-r"], article section[class*="bg-gradient-to-r"] {
   background: radial-gradient(ellipse at center, rgba(var(--accent-rgb), 0.12) 0%, rgba(13, 13, 18, 0.95) 75%) !important;
   border-color: var(--accent-hover-border) !important;
   box-shadow: 0 0 45px var(--accent-glow) !important;
 }
 
-main section[class*="from-"] > div:first-child,
-main section[class*="from-"] .font-mono {
+main section[class*="from-"] > div:first-child, article section[class*="from-"] > div:first-child,
+main section[class*="from-"] .font-mono, article section[class*="from-"] .font-mono {
   color: var(--accent-text) !important;
 }
 
-/* Code Blocks & Terminal Boxes */
-main pre.bg-\[\#0a0a0e\],
-main pre[class*="bg-"] {
+/* Code Blocks & Terminal Boxes in Writeups */
+main pre, article pre,
+main pre.bg-\[\#0a0a0e\], article pre.bg-\[\#0a0a0e\],
+main pre[class*="bg-"], article pre[class*="bg-"] {
   background-color: #0d1117 !important;
   border-color: var(--accent-border) !important;
   box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8), 0 0 15px var(--accent-dim) !important;
 }
 
-main pre code {
+main pre code, article pre code {
   color: var(--accent-text) !important;
 }
+
+/* Featured Hero Graphic in Writeups with CRT Scanline Shield */
+article .aspect-video {
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8) !important;
+}
+
+article .aspect-video img {
+  filter: grayscale(25%) contrast(1.12) brightness(0.9);
+  transition: all 0.5s ease;
+}
+
+article .aspect-video:hover img {
+  filter: grayscale(0%) contrast(1.05) brightness(1);
+}
+
 
 /* Custom Monochrome CRT Cursors */
 body {
@@ -312,10 +333,10 @@ html[data-theme="light"] {
 
 html[data-theme="light"] article,
 html[data-theme="light"] .content-frame {
-  background: rgba(241, 245, 249, 0.95) !important;
-  border: 1px solid #cbd5e1 !important;
-  box-shadow: 0 20px 50px -10px rgba(15, 23, 42, 0.08) !important;
-  color: #1e293b !important;
+  background: rgba(244, 244, 245, 0.96) !important;
+  border: 1px solid #d4d4d8 !important;
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.08) !important;
+  color: #18181b !important;
 }
 
 html[data-theme="light"] body {
@@ -423,23 +444,42 @@ html[data-theme="light"] input::placeholder {
 
 /* Writeup Flag & Summary Boxes in Light Mode */
 html[data-theme="light"] main section[class*="from-"],
-html[data-theme="light"] main section[class*="bg-gradient-to-r"] {
-  background: radial-gradient(ellipse at center, rgba(var(--accent-rgb), 0.08) 0%, #f1f5f9 80%) !important;
-  border-color: #93c5fd !important;
-  box-shadow: 0 4px 25px rgba(15, 23, 42, 0.06) !important;
+html[data-theme="light"] article section[class*="from-"],
+html[data-theme="light"] main section[class*="bg-gradient-to-r"],
+html[data-theme="light"] article section[class*="bg-gradient-to-r"] {
+  background: radial-gradient(ellipse at center, rgba(var(--accent-rgb), 0.06) 0%, #e4e4e7 80%) !important;
+  border-color: #71717a !important;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06) !important;
 }
 
 /* Code Blocks stay clean dark high-contrast terminal for readability */
 html[data-theme="light"] main pre,
+html[data-theme="light"] article pre,
 html[data-theme="light"] main pre.bg-\[\#0a0a0e\],
-html[data-theme="light"] main pre[class*="bg-"] {
-  background-color: #0f172a !important;
-  border-color: #334155 !important;
+html[data-theme="light"] article pre.bg-\[\#0a0a0e\],
+html[data-theme="light"] main pre[class*="bg-"],
+html[data-theme="light"] article pre[class*="bg-"] {
+  background-color: #18181b !important;
+  border-color: #3f3f46 !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
 }
 
-html[data-theme="light"] main pre code {
-  color: var(--accent-text) !important;
+html[data-theme="light"] main pre code,
+html[data-theme="light"] article pre code {
+  color: #f4f4f5 !important;
+}
+
+/* Writeup Metrics Grid & Hero Graphic in Light Mode */
+html[data-theme="light"] article [class*="bg-\[\#0e0e13\]"],
+html[data-theme="light"] article [class*="border-zinc-800"] {
+  background-color: #e4e4e7 !important;
+  border-color: #d4d4d8 !important;
+  color: #18181b !important;
+}
+
+html[data-theme="light"] article .aspect-video {
+  border-color: #d4d4d8 !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* ========================================================================= */

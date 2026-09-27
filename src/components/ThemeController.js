@@ -6,13 +6,20 @@ export default function ThemeController() {
   const [isLightMode, setIsLightMode] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  // Apply dark blue (night) or off-white (day) theme variables
+  // Apply CRT Day or CRT Night theme variables
   const applyThemeMode = useCallback((light) => {
     if (typeof document === "undefined") return;
-    const rootStyle = document.documentElement.style;
+    const root = document.documentElement;
+    const isCurrentlyLight = root.getAttribute("data-theme") === "light";
 
+    if (light && !isCurrentlyLight) {
+      root.setAttribute("data-theme", "light");
+    } else if (!light && isCurrentlyLight) {
+      root.removeAttribute("data-theme");
+    }
+
+    const rootStyle = root.style;
     if (light) {
-      document.documentElement.setAttribute("data-theme", "light");
       rootStyle.setProperty("--background", "#e4e4e7");
       rootStyle.setProperty("--foreground", "#09090b");
       rootStyle.setProperty("--accent-color", "#09090b");
@@ -27,7 +34,6 @@ export default function ThemeController() {
       rootStyle.setProperty("--card-border", "#d4d4d8");
       try { localStorage.setItem("abdoskills_mode", "light"); } catch {}
     } else {
-      document.documentElement.removeAttribute("data-theme");
       rootStyle.setProperty("--background", "#09090b");
       rootStyle.setProperty("--foreground", "#f4f4f5");
       rootStyle.setProperty("--accent-color", "#ffffff");
@@ -59,15 +65,20 @@ export default function ThemeController() {
       applyThemeMode(false);
     }
 
-    // Keep state synced with any external toggle (e.g. Navbar)
+    // Keep state synced with any external toggle without recursive loops
     const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
+      for (const mutation of mutations) {
         if (mutation.attributeName === "data-theme") {
           const isLight = document.documentElement.getAttribute("data-theme") === "light";
-          setIsLightMode(isLight);
-          applyThemeMode(isLight);
+          setIsLightMode((prev) => {
+            if (prev !== isLight) {
+              applyThemeMode(isLight);
+              return isLight;
+            }
+            return prev;
+          });
         }
-      });
+      }
     });
     observer.observe(document.documentElement, { attributes: true });
     return () => observer.disconnect();

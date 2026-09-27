@@ -318,6 +318,7 @@ export default function CyberBackground() {
     // --- Live Light/Dark Theme Switching Observer ---
     const updateThemeMode = () => {
       const light = document.documentElement.getAttribute("data-theme") === "light";
+      if (light === isLightMode) return;
       isLightMode = light;
       renderer.setClearColor(light ? 0xe2e8f0 : 0x0a0a0c, 0.98);
       if (scene.fog) {
