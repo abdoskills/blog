@@ -22,7 +22,7 @@ export default function CyberBackground() {
     // --- Scene Setup ---
     const scene = new THREE.Scene();
     const darkFogColor = 0x070b14; // Deep Dark Blue / Midnight Navy
-    const lightFogColor = 0xf1f5f9; // Crisp Off-White / Light Grey
+    const lightFogColor = 0xe2e8f0; // Soothing Light Slate Grey
     scene.fog = new THREE.FogExp2(isLightMode ? lightFogColor : darkFogColor, 0.0016);
 
     const camera = new THREE.PerspectiveCamera(
@@ -40,7 +40,7 @@ export default function CyberBackground() {
     });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(isLightMode ? 0xf8fafc : 0x070b14, 0.96);
+    renderer.setClearColor(isLightMode ? 0xe2e8f0 : 0x070b14, 0.98);
     container.appendChild(renderer.domElement);
 
     // --- 3D Geometric Instanced Floating Polyhedrons / Cubes ---
@@ -180,7 +180,7 @@ export default function CyberBackground() {
     const updateThemeMode = () => {
       const light = document.documentElement.getAttribute("data-theme") === "light";
       isLightMode = light;
-      renderer.setClearColor(light ? 0xf8fafc : 0x070b14, 0.96);
+      renderer.setClearColor(light ? 0xe2e8f0 : 0x070b14, 0.98);
       if (scene.fog) {
         scene.fog.color.set(light ? lightFogColor : darkFogColor);
       }

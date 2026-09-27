@@ -248,7 +248,7 @@ a, button, summary, .cursor-pointer, [role="button"], details summary {
 /* ========================================================================= */
 
 html[data-theme="light"] {
-  --background: #f8fafc;
+  --background: #e2e8f0;
   --foreground: #0f172a;
   --accent-color: #2563eb;
   --accent-rgb: 37, 99, 235;
@@ -259,26 +259,26 @@ html[data-theme="light"] {
   --accent-text: #1d4ed8;
   --accent-shadow: 0 0 20px rgba(37, 99, 235, 0.15);
 
-  --card-bg: rgba(255, 255, 255, 0.94);
-  --card-border: rgba(226, 232, 240, 0.95);
+  --card-bg: rgba(241, 245, 249, 0.96);
+  --card-border: #cbd5e1;
 }
 
 html[data-theme="light"] article,
 html[data-theme="light"] .content-frame {
-  background: rgba(255, 255, 255, 0.95) !important;
-  border: 1px solid rgba(226, 232, 240, 0.95) !important;
-  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.08) !important;
+  background: rgba(241, 245, 249, 0.95) !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 20px 50px -10px rgba(15, 23, 42, 0.08) !important;
   color: #1e293b !important;
 }
 
 html[data-theme="light"] body {
-  background-color: #f8fafc !important;
+  background-color: #e2e8f0 !important;
   color: #1e293b !important;
 }
 
 /* Light Mode 3D Background Canvas */
 html[data-theme="light"] #cyber-3d-bg {
-  background: radial-gradient(ellipse at center, #ffffff 0%, #f1f5f9 65%, #e2e8f0 100%) !important;
+  background: radial-gradient(ellipse at center, #eaedf2 0%, #e2e8f0 60%, #cbd5e1 100%) !important;
 }
 
 /* Headings & Text in Light Mode */
@@ -317,10 +317,10 @@ html[data-theme="light"] [class*="bg-\[\#0e0b06\]"],
 html[data-theme="light"] [class*="bg-\[\#0a0a0e\]"],
 html[data-theme="light"] [class*="bg-\[\#050505\]"],
 html[data-theme="light"] [class*="bg-\[\#050508\]"] {
-  background-color: #ffffff !important;
-  border-color: #e2e8f0 !important;
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
   color: #1e293b !important;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05) !important;
 }
 
 html[data-theme="light"] .theme-card:hover {
@@ -333,16 +333,16 @@ html[data-theme="light"] header,
 html[data-theme="light"] nav,
 html[data-theme="light"] nav .bg-\[\#0d0d12\]\/90,
 html[data-theme="light"] nav .bg-\[\#0d0d12\]\/95 {
-  background-color: rgba(255, 255, 255, 0.9) !important;
-  border-color: #e2e8f0 !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
+  background-color: rgba(226, 232, 240, 0.92) !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06) !important;
 }
 
 /* Dropdown Menu Drawers in Light Mode */
 html[data-theme="light"] .shadow-\[0_20px_50px_rgba\(0\,0\,0\,0\.9\)\] {
-  background-color: #ffffff !important;
+  background-color: #f1f5f9 !important;
   border-color: #cbd5e1 !important;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12) !important;
 }
 
 /* Badges, Pills & Tag Chips in Light Mode */
@@ -350,7 +350,7 @@ html[data-theme="light"] .theme-badge,
 html[data-theme="light"] [class*="bg-black/"],
 html[data-theme="light"] [class*="bg-zinc-900"],
 html[data-theme="light"] [class*="bg-zinc-800"] {
-  background-color: #f1f5f9 !important;
+  background-color: #e2e8f0 !important;
   border-color: #cbd5e1 !important;
   color: #1e293b !important;
 }
@@ -365,21 +365,21 @@ html[data-theme="light"] .theme-badge {
 html[data-theme="light"] input,
 html[data-theme="light"] textarea,
 html[data-theme="light"] .theme-input {
-  background-color: #ffffff !important;
+  background-color: #f1f5f9 !important;
   border-color: #cbd5e1 !important;
   color: #0f172a !important;
 }
 
 html[data-theme="light"] input::placeholder {
-  color: #94a3b8 !important;
+  color: #64748b !important;
 }
 
 /* Writeup Flag & Summary Boxes in Light Mode */
 html[data-theme="light"] main section[class*="from-"],
 html[data-theme="light"] main section[class*="bg-gradient-to-r"] {
-  background: radial-gradient(ellipse at center, rgba(var(--accent-rgb), 0.08) 0%, #ffffff 80%) !important;
-  border-color: var(--accent-hover-border) !important;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06) !important;
+  background: radial-gradient(ellipse at center, rgba(var(--accent-rgb), 0.08) 0%, #f1f5f9 80%) !important;
+  border-color: #93c5fd !important;
+  box-shadow: 0 4px 25px rgba(15, 23, 42, 0.06) !important;
 }
 
 /* Code Blocks stay clean dark high-contrast terminal for readability */

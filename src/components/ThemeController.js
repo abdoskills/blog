@@ -13,7 +13,7 @@ export default function ThemeController() {
 
     if (light) {
       document.documentElement.setAttribute("data-theme", "light");
-      rootStyle.setProperty("--background", "#f8fafc");
+      rootStyle.setProperty("--background", "#e2e8f0");
       rootStyle.setProperty("--foreground", "#0f172a");
       rootStyle.setProperty("--accent-color", "#2563eb");
       rootStyle.setProperty("--accent-rgb", "37, 99, 235");
@@ -23,6 +23,8 @@ export default function ThemeController() {
       rootStyle.setProperty("--accent-hover-border", "rgba(37, 99, 235, 0.65)");
       rootStyle.setProperty("--accent-text", "#1d4ed8");
       rootStyle.setProperty("--accent-shadow", "0 0 20px rgba(37, 99, 235, 0.15)");
+      rootStyle.setProperty("--card-bg", "rgba(241, 245, 249, 0.96)");
+      rootStyle.setProperty("--card-border", "#cbd5e1");
       try { localStorage.setItem("abdoskills_mode", "light"); } catch {}
     } else {
       document.documentElement.removeAttribute("data-theme");
@@ -36,6 +38,8 @@ export default function ThemeController() {
       rootStyle.setProperty("--accent-hover-border", "rgba(56, 189, 248, 0.7)");
       rootStyle.setProperty("--accent-text", "#7dd3fc");
       rootStyle.setProperty("--accent-shadow", "0 0 25px rgba(56, 189, 248, 0.25)");
+      rootStyle.setProperty("--card-bg", "rgba(11, 17, 32, 0.92)");
+      rootStyle.setProperty("--card-border", "rgba(59, 130, 246, 0.22)");
       try { localStorage.setItem("abdoskills_mode", "dark"); } catch {}
     }
   }, []);
@@ -54,6 +58,19 @@ export default function ThemeController() {
     } catch {
       applyThemeMode(false);
     }
+
+    // Keep state synced with any external toggle (e.g. Navbar)
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === "data-theme") {
+          const isLight = document.documentElement.getAttribute("data-theme") === "light";
+          setIsLightMode(isLight);
+          applyThemeMode(isLight);
+        }
+      });
+    });
+    observer.observe(document.documentElement, { attributes: true });
+    return () => observer.disconnect();
   }, [applyThemeMode]);
 
   const toggleTheme = () => {
@@ -71,7 +88,7 @@ export default function ThemeController() {
         aria-label="Toggle Theme"
         className={`group flex items-center gap-2.5 px-4 py-2.5 rounded-full border backdrop-blur-2xl transition-all duration-300 shadow-xl ${
           isLightMode
-            ? "bg-white/90 border-slate-300 text-slate-800 hover:border-blue-500 hover:shadow-blue-500/10 shadow-slate-200/50"
+            ? "bg-[#e2e8f0]/95 border-slate-400 text-slate-800 hover:border-blue-600 hover:shadow-blue-500/10 shadow-slate-300/50"
             : "bg-[#0b101d]/90 border-blue-500/30 text-slate-200 hover:border-sky-400 hover:shadow-[0_0_20px_rgba(56,189,248,0.25)] shadow-black/60"
         }`}
       >
@@ -79,7 +96,7 @@ export default function ThemeController() {
           {isLightMode ? "☀️" : "🌙"}
         </span>
         <span className="text-xs font-bold tracking-wider uppercase">
-          {isLightMode ? "Day Mode" : "Night Mode"}
+          {isLightMode ? "Light Gray" : "Night Mode"}
         </span>
         <span
           className={`w-2 h-2 rounded-full transition-colors ${
