@@ -20,7 +20,7 @@ export default function CtfsHub() {
       points: "100 PTS",
       tagline: "VoIP Telephony Forensics & Audio Backmasking",
       description: "Inspecting SIP handshakes and G.711 mu-law SDP parameters, extracting raw RTP voice streams via Python and Wireshark, and reversing audio backmasking in Audacity to recover the flag.",
-      image: "/images/sunshine/welcome_voip.png",
+      image: "/images/sunshine_welcome_call.jpg",
       tags: ["Wireshark", "VoIP Forensics", "SIP / SDP", "RTP Streams", "Audacity", "Reverse Audio", "SunshineCTF 2026"],
       time: "5 min read"
     },
@@ -32,7 +32,7 @@ export default function CtfsHub() {
       points: "150 PTS",
       tagline: "PNG IHDR Height Tampering & CRC32 Repair",
       description: "Forensic analysis of a cropped Discord screenshot. Calculating scanline byte counts from decompressed IDAT streams, identifying hidden image height, patching IHDR dimensions in hex, and recalculating CRC32.",
-      image: "/images/sunshine/recovered_flag.png",
+      image: "/images/sunshine_u_cut_me_off.jpg",
       tags: ["PNG Forensics", "IHDR Chunk", "CRC32", "Hex Editing", "Steganography", "SunshineCTF 2026"],
       time: "5 min read"
     },
@@ -44,7 +44,7 @@ export default function CtfsHub() {
       points: "250 PTS",
       tagline: "MSKLC Keyboard Layout Snake Trail Walkthrough",
       description: "Reverse engineering a Microsoft Keyboard Layout Creator (.klc) file. Decoding Shift State 0 directional arrows and Shift State 1 hidden hex chars to trace a snake path across staggered QWERTY keyboard keys.",
-      image: "/images/sunshine/welcome_hierarchy.png",
+      image: "/images/sunshine_suntrail.jpg",
       tags: ["MSKLC", "Keyboard Layouts", "Unicode Analysis", "QWERTY Matrix", "Forensics", "SunshineCTF 2026"],
       time: "6 min read"
     },
@@ -56,7 +56,7 @@ export default function CtfsHub() {
       points: "425 PTS",
       tagline: "PPTM Macro Forensics & PowerShell Base64 Deobfuscation",
       description: "Forensic analysis of a malicious PowerPoint Macro-Enabled Presentation (.pptm). Extracting VBA code via olevba, analyzing MediaCache.bas, and decoding UTF-16LE Base64 PowerShell payload to recover the flag.",
-      image: "/images/sunshine/nas_coal_olevba.png",
+      image: "/images/sunshine_nas_coal.jpg",
       tags: ["olevba", "oletools", "VBA Macros", "PowerShell", "Base64 UTF-16LE", "Malware Analysis", "SunshineCTF 2026"],
       time: "4 min read"
     },
@@ -68,7 +68,7 @@ export default function CtfsHub() {
       points: "300 PTS",
       tagline: "MSKLC Dead Key Finite State Machine",
       description: "Reverse engineering a Microsoft Keyboard Layout Creator (.klc) file. Analyzing dead key chaining and state transitions from scancode 29 to Unicode U+2600 (Black Sun With Rays) to extract the flag.",
-      image: "/images/sunshine/welcome_sip.png",
+      image: "/images/sunshine_my_eyes_burn.jpg",
       tags: ["MSKLC", "Dead Keys", "Finite State Machine", "Keyboard Forensics", "Unicode U+2600", "SunshineCTF 2026"],
       time: "4 min read"
     },
