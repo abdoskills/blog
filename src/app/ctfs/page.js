@@ -12,6 +12,21 @@ export default function CtfsHub() {
   const [selectedCategory, setSelectedCategory] = useState("ALL");
 
   const challenges = [
+    // --- KubSTU CTF 2026 Autumn ---
+    {
+      title: "Baby (WORKSTATION-23)",
+      slug: "kubstu-baby",
+      href: "/posts/kubstu-baby",
+      platform: "KubSTU CTF 2026",
+      category: "Endpoint Forensics",
+      points: "SOLVED",
+      tagline: "PSReadLine Command History, ProgramData C2 Cache & VBScript Persistence",
+      description: "Forensic analysis of a compromised Windows host triage image. We investigate downloaded payloads, find which executable was launched, locate the hidden C2 endpoint in application cache files, and extract the persistence script from the user Startup directory.",
+      image: "/images/cyber_defense_labs.jpg",
+      tags: ["PSReadLine", "Chrome History", "ProgramData", "VBScript Persistence", "Endpoint DFIR", "KubSTU CTF 2026"],
+      time: "5 min read"
+    },
+
     // --- Byte Me CTF 2026 (PCCOE) ---
     {
       title: "Byte Me CTF 2026: Vormir Expedition",
