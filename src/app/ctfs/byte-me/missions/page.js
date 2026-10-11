@@ -19,7 +19,12 @@ export default function ByteMeMissionsPage() {
       points: "100 PTS",
       tagline: "Manual Edge Alignment & Quiet Zone Boundary Analysis",
       description: "Nine fragments of an ancient seal have been scattered across the gate of Vormir. Reconstruct the fragments into a unified symbol to recover the first passkey.",
-      summary: "9 pieces (400x400 px) forming a 1200x1200 px QR canvas. Exploiting white border quiet zones to immediately solve the top and bottom rows."
+      summary: "9 pieces (400x400 px) forming a 1200x1200 px QR canvas. Exploiting white border quiet zones to immediately solve the top and bottom rows.",
+      sections: [
+        { id: "lvl0-quiet-zone", title: "Quiet Zone Edge Detection", tag: "Margins" },
+        { id: "lvl0-matrix", title: "3x3 Grid Matrix Assembly", tag: "9 Pieces" },
+        { id: "lvl0-solver", title: "Python Assembler Script", tag: "OpenCV" },
+      ]
     },
     {
       id: "level-1",
@@ -29,7 +34,12 @@ export default function ByteMeMissionsPage() {
       points: "200 PTS",
       tagline: "1D Pixel Seam Matching & Automated OpenCV Reconstruction",
       description: "Sixteen fractured memory tiles remain. The borders are subtle and the pieces are scattered in a 4x4 matrix. Realign the seams to reveal the shattered truth.",
-      summary: "16 pieces (300x300 px) forming a 1200x1200 px QR canvas. Slashing 16! permutations down to O(N^2) by matching exact pixel seams on tile borders."
+      summary: "16 pieces (300x300 px) forming a 1200x1200 px QR canvas. Slashing 16! permutations down to O(N^2) by matching exact pixel seams on tile borders.",
+      sections: [
+        { id: "lvl1-seams", title: "1D Seam-Matching Logic", tag: "O(N^2)" },
+        { id: "lvl1-matrix", title: "4x4 Grid Matrix Assembly", tag: "Zero Jitter" },
+        { id: "lvl1-solver", title: "Python Seam Solver Script", tag: "OpenCV" },
+      ]
     },
     {
       id: "level-2",
@@ -39,7 +49,12 @@ export default function ByteMeMissionsPage() {
       points: "300 PTS",
       tagline: "Dihedral Rotations (D4) & Degree-of-Matching Impostor Filtering",
       description: "Not every fragment belongs to the Soul Stone. Among the scattered remains, false souls have been mixed with the genuine pieces. Identify the four impostors and reconstruct the true message before the deception consumes the trail.",
-      summary: "29 pieces (240x240 px) with 4-way rotation invariance. Isolating 4 synthetic impostors via seam connectivity graph audits and solving the 5x5 grid."
+      summary: "29 pieces (240x240 px) with 4-way rotation invariance. Isolating 4 synthetic impostors via seam connectivity graph audits and solving the 5x5 grid.",
+      sections: [
+        { id: "lvl2-impostors", title: "Catching Impostor Pieces", tag: "4 Pruned" },
+        { id: "lvl2-dfs", title: "Backtracking DFS Search", tag: "Rotations" },
+        { id: "lvl2-solver", title: "Python Backtracker Script", tag: "SAT Solver" },
+      ]
     },
     {
       id: "level-3",
@@ -49,7 +64,12 @@ export default function ByteMeMissionsPage() {
       points: "400 PTS",
       tagline: "Informative Seam Clustering into 2x2 Super-Tiles",
       description: "A portion of the Soul Stone's edge has vanished into the ruins of Vormir. Forty-one fragments remain, but five are echoes of something that never existed. Separate truth from illusion and restore the lost pattern.",
-      summary: "41 pieces (200x200 px) reduced from 36! to 9 blocks by clustering pairs into 2x2 super-tiles and permuting the meta-grid with zxing-cpp."
+      summary: "41 pieces (200x200 px) reduced from 36! to 9 blocks by clustering pairs into 2x2 super-tiles and permuting the meta-grid with zxing-cpp.",
+      sections: [
+        { id: "lvl3-impostors", title: "Eliminating Impostors", tag: "5 Pruned" },
+        { id: "lvl3-supertiles", title: "Clustering 2x2 Super-Tiles", tag: "9 Blocks" },
+        { id: "lvl3-solver", title: "Python Super-Tile Solver", tag: "zxing-cpp" },
+      ]
     },
     {
       id: "level-4",
@@ -59,7 +79,12 @@ export default function ByteMeMissionsPage() {
       points: "500 PTS",
       tagline: "Constraint Satisfaction Problem & MRV Heuristic Solver",
       description: "The final threshold of Vormir. Forty-nine fragments forming a massive 7x7 matrix. To pass, truth must be separated from deception through constraint satisfaction and strict border alignment.",
-      summary: "Master 7x7 grid (1400x1400 px) with 57 candidate pieces. Solved via Minimum Remaining Values (MRV) constraint propagation to eliminate backtracking depth."
+      summary: "Master 7x7 grid (1400x1400 px) with 57 candidate pieces. Solved via Minimum Remaining Values (MRV) constraint propagation to eliminate backtracking depth.",
+      sections: [
+        { id: "lvl4-mrv", title: "Minimum Remaining Values", tag: "MRV Rule" },
+        { id: "lvl4-grid", title: "7x7 Master Grid Assembly", tag: "Dominoes" },
+        { id: "lvl4-solver", title: "Python MRV Solver Script", tag: "fill2.py" },
+      ]
     },
     {
       id: "osint-witness",
@@ -69,33 +94,55 @@ export default function ByteMeMissionsPage() {
       points: "150 PTS",
       tagline: "Satellite Intel & Correlating Vault Telemetry Logs",
       description: "A silent watcher documented the expedition from orbit. Correlate the reconnaissance telemetry and log entries left across external repositories to locate the hidden witness.",
-      summary: "Investigating satellite tracking files, cross-referencing stalker intel images with vault.log to reveal the watcher's orbital telemetry."
+      summary: "Investigating satellite tracking files, cross-referencing stalker intel images with vault.log to reveal the watcher's orbital telemetry.",
+      sections: [
+        { id: "osint-intel", title: "Satellite Recon Intel", tag: "Stalker Photo" },
+        { id: "osint-vault", title: "Correlating Vault Telemetry", tag: "vault.log" },
+      ]
     }
   ];
 
-  // ScrollSpy to track active heading
+  const [activeMissionId, setActiveMissionId] = useState("level-0");
+  const [activeSectionId, setActiveSectionId] = useState("lvl0-quiet-zone");
+
+  // ScrollSpy to track both active mission and active section
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 160;
+
+      // Track sections
+      const allSections = missions.flatMap((m) => m.sections.map((s) => s.id));
+      for (let i = allSections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(allSections[i]);
+        if (el) {
+          const top = el.offsetTop;
+          if (top <= scrollPosition) {
+            setActiveSectionId(allSections[i]);
+            break;
           }
-        });
-      },
-      { rootMargin: "-20% 0px -60% 0px", threshold: 0 }
-    );
+        }
+      }
 
-    missions.forEach((m) => {
-      const el = document.getElementById(m.id);
-      if (el) observer.observe(el);
-    });
+      // Track missions
+      const missionIds = missions.map((m) => m.id);
+      for (let i = missionIds.length - 1; i >= 0; i--) {
+        const el = document.getElementById(missionIds[i]);
+        if (el) {
+          const top = el.offsetTop;
+          if (top <= scrollPosition) {
+            setActiveMissionId(missionIds[i]);
+            break;
+          }
+        }
+      }
+    };
 
-    return () => observer.disconnect();
-  }, [missions]);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  const scrollToMission = (id) => {
-    setActiveId(id);
+  const scrollToElement = (id) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -111,9 +158,9 @@ export default function ByteMeMissionsPage() {
         {missions.map((m) => (
           <button
             key={m.id}
-            onClick={() => scrollToMission(m.id)}
+            onClick={() => scrollToElement(m.id)}
             className={`whitespace-nowrap px-3 py-1 rounded-lg text-xs font-mono transition-all duration-200 flex items-center gap-1.5 ${
-              activeId === m.id
+              activeMissionId === m.id
                 ? "bg-white text-black font-bold shadow-[0_0_15px_rgba(255,255,255,0.4)]"
                 : "bg-zinc-900/90 text-zinc-400 border border-zinc-800 hover:text-white"
             }`}
@@ -149,7 +196,7 @@ export default function ByteMeMissionsPage() {
         </div>
 
         {/* 2-Column Layout: Main Content + Sticky Navigation Rail */}
-        <div className="flex gap-8 relative items-start">
+        <div className="flex gap-8 relative">
           
           {/* ================= LEFT / MAIN CONTENT AREA ================= */}
           <div className="flex-grow min-w-0 space-y-20">
@@ -207,7 +254,7 @@ export default function ByteMeMissionsPage() {
               </div>
 
               {/* Step-by-Step Walkthrough */}
-              <div className="space-y-4 mb-6">
+              <div id="lvl0-quiet-zone" className="scroll-mt-24 space-y-4 mb-6">
                 <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center gap-2">
                   <span className="text-emerald-400">⚡</span> Step-by-Step Triage: Detecting Quiet Zones &amp; Locking Grid Positions
                 </h4>
@@ -242,7 +289,7 @@ piece_006: Bot=True,  Right=True -> BOT-RIGHT CORNER (Row 2, Col 2)`}</pre>
                 </div>
 
                 {/* The Assembled Grid Diagram */}
-                <div className="bg-[#12131a] border border-zinc-700/60 rounded-xl p-4 text-xs font-mono text-zinc-300">
+                <div id="lvl0-matrix" className="scroll-mt-24 bg-[#12131a] border border-zinc-700/60 rounded-xl p-4 text-xs font-mono text-zinc-300">
                   <span className="text-emerald-400 font-bold block mb-2 uppercase tracking-wider">
                     [ 📐 Locked-in 3x3 Grid Matrix ]
                   </span>
@@ -273,7 +320,7 @@ piece_006: Bot=True,  Right=True -> BOT-RIGHT CORNER (Row 2, Col 2)`}</pre>
               </div>
 
               {/* Expandable Full Python Solver */}
-              <details className="group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
+              <details id="lvl0-solver" className="scroll-mt-24 group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
                 <summary className="p-4 cursor-pointer font-mono text-xs text-zinc-400 hover:text-white flex items-center justify-between list-none bg-zinc-900/40">
                   <span className="flex items-center gap-2 text-emerald-400 font-bold uppercase">
                     <span>⚡</span> [ Show Complete Standalone Python Stitcher &amp; Decoder Script ]
@@ -375,7 +422,7 @@ print(f"[🎯] Decoded Flag: {flag}")
               </div>
 
               {/* Step-by-Step Walkthrough */}
-              <div className="space-y-4 mb-6">
+              <div id="lvl1-seams" className="scroll-mt-24 space-y-4 mb-6">
                 <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center gap-2">
                   <span className="text-emerald-400">⚡</span> Step-by-Step Triage: Calculating Boundary Compatibility
                 </h4>
@@ -392,7 +439,7 @@ is_valid_horizontal_seam = np.array_equal(tileA[:, -1], tileB[:, 0])`}</pre>
                 </div>
 
                 {/* OUTPUT BOX */}
-                <div className="bg-[#0b0c10] border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">
+                <div id="lvl1-matrix" className="scroll-mt-24 bg-[#0b0c10] border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">
                   <span className="text-zinc-500 block mb-1 font-bold">[ 📤 RECONSTRUCTED 4x4 GRID ]</span>
                   <pre className="text-emerald-400">{`+-----------------+-----------------+-----------------+-----------------+
 | piece_008_2.png | piece_011.png   | piece_016.png   | piece_009_2.png |  <- Row 0
@@ -423,7 +470,7 @@ is_valid_horizontal_seam = np.array_equal(tileA[:, -1], tileB[:, 0])`}</pre>
               </div>
 
               {/* Expandable Full Python Solver */}
-              <details className="group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
+              <details id="lvl1-solver" className="scroll-mt-24 group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
                 <summary className="p-4 cursor-pointer font-mono text-xs text-zinc-400 hover:text-white flex items-center justify-between list-none bg-zinc-900/40">
                   <span className="flex items-center gap-2 text-emerald-400 font-bold uppercase">
                     <span>⚡</span> [ Show Complete Standalone Python Seam Solver Script ]
@@ -524,7 +571,7 @@ print(f"[🎯] Decoded Flag: {flag}")
               </div>
 
               {/* Step-by-Step Walkthrough */}
-              <div className="space-y-4 mb-6">
+              <div id="lvl2-impostors" className="scroll-mt-24 space-y-4 mb-6">
                 <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center gap-2">
                   <span className="text-emerald-400">⚡</span> Step-by-Step Triage: Degree-of-Matching Audit &amp; 5x5 Grid Placement
                 </h4>
@@ -553,7 +600,7 @@ for tileA in pool:
                 </div>
 
                 {/* Assembled QR Image Preview */}
-                <div className="flex items-center gap-6 pt-2">
+                <div id="lvl2-dfs" className="scroll-mt-24 flex items-center gap-6 pt-2">
                   <div className="relative w-44 h-44 rounded-xl overflow-hidden border border-zinc-800 bg-white p-2 shrink-0">
                     <Image
                       src="/images/byteme_l2_qr.png"
@@ -570,7 +617,7 @@ for tileA in pool:
               </div>
 
               {/* Expandable Full Python Solver */}
-              <details className="group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
+              <details id="lvl2-solver" className="scroll-mt-24 group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
                 <summary className="p-4 cursor-pointer font-mono text-xs text-zinc-400 hover:text-white flex items-center justify-between list-none bg-zinc-900/40">
                   <span className="flex items-center gap-2 text-emerald-400 font-bold uppercase">
                     <span>⚡</span> [ Show Complete Standalone Python SAT Backtracking Solver ]
@@ -677,7 +724,7 @@ print(f"[🎯] Decoded Flag: {flag}")
                 </h4>
 
                 {/* Impostor Filtering */}
-                <div className="bg-[#0b0c10] border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300">
+                <div id="lvl3-impostors" className="scroll-mt-24 bg-[#0b0c10] border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300">
                   <span className="text-zinc-500 block mb-1 font-bold">[ 📤 AUDIT RESULTS: THE 5 ELIMINATED IMPOSTORS ]</span>
                   <div className="flex flex-wrap gap-2 my-2 font-mono text-xs">
                     <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">❌ Impostor: piece_007.png</span>
@@ -689,7 +736,7 @@ print(f"[🎯] Decoded Flag: {flag}")
                 </div>
 
                 {/* Super-Tiles Montage */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div id="lvl3-supertiles" className="scroll-mt-24 grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="relative h-44 rounded-xl overflow-hidden border border-zinc-800 bg-black">
                     <Image
                       src="/images/byteme_l3_montage.png"
@@ -726,7 +773,7 @@ print(f"[🎯] Decoded Flag: {flag}")
               </div>
 
               {/* Expandable Full Python Solver */}
-              <details className="group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
+              <details id="lvl3-solver" className="scroll-mt-24 group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
                 <summary className="p-4 cursor-pointer font-mono text-xs text-zinc-400 hover:text-white flex items-center justify-between list-none bg-zinc-900/40">
                   <span className="flex items-center gap-2 text-emerald-400 font-bold uppercase">
                     <span>⚡</span> [ Show Complete Standalone Python Super-Tile &amp; ZXing Solver ]
@@ -814,13 +861,13 @@ print(f"[🎯] Decoded Flag: {flag}")
               </div>
 
               {/* Step-by-Step Walkthrough */}
-              <div className="space-y-4 mb-6">
+              <div id="lvl4-mrv" className="scroll-mt-24 space-y-4 mb-6">
                 <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center gap-2">
                   <span className="text-emerald-400">⚡</span> Step-by-Step Triage: MRV Propagation &amp; 7x7 Grid Assembly
                 </h4>
 
                 {/* Assembled QR Image Preview */}
-                <div className="flex items-center gap-6 pt-2">
+                <div id="lvl4-grid" className="scroll-mt-24 flex items-center gap-6 pt-2">
                   <div className="relative w-48 h-48 rounded-xl overflow-hidden border border-zinc-800 bg-white p-2 shrink-0">
                     <Image
                       src="/images/byteme_l4_qr.png"
@@ -837,7 +884,7 @@ print(f"[🎯] Decoded Flag: {flag}")
               </div>
 
               {/* Expandable Full Python Solver */}
-              <details className="group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
+              <details id="lvl4-solver" className="scroll-mt-24 group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
                 <summary className="p-4 cursor-pointer font-mono text-xs text-zinc-400 hover:text-white flex items-center justify-between list-none bg-zinc-900/40">
                   <span className="flex items-center gap-2 text-emerald-400 font-bold uppercase">
                     <span>⚡</span> [ Show Complete Standalone Python MRV Solver Script (fill2.py) ]
@@ -933,7 +980,7 @@ layout = {
               </div>
 
               {/* What We Do Section */}
-              <div className="mb-6 space-y-4">
+              <div id="osint-intel" className="scroll-mt-24 mb-6 space-y-4">
                 <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3 flex items-center gap-2">
                   <span className="text-emerald-400">⚡</span> What We Do: Satellite Recon &amp; Vault Telemetry Correlation
                 </h3>
@@ -947,7 +994,7 @@ layout = {
                   </p>
                 </div>
 
-                <div className="bg-black/90 border border-zinc-800 p-5 rounded-xl font-mono text-xs text-zinc-400 leading-relaxed mb-6">
+                <div id="osint-vault" className="scroll-mt-24 bg-black/90 border border-zinc-800 p-5 rounded-xl font-mono text-xs text-zinc-400 leading-relaxed mb-6">
                   <span className="text-white font-bold">[ VAULT RECORD RECOVERED ]</span>
                   <br />
                   OPEN vault
@@ -968,57 +1015,109 @@ layout = {
           </div>
 
           {/* ================= RIGHT / STICKY SLIDER RAIL ================= */}
-          <aside className="hidden lg:block w-72 shrink-0">
-            <div className="sticky top-24 bg-[#0d0d12]/95 border border-zinc-800 rounded-2xl p-4 backdrop-blur-xl shadow-2xl">
-              <div className="flex items-center justify-between pb-3 mb-3 border-b border-zinc-800/80">
-                <span className="font-mono text-[11px] text-zinc-400 font-bold uppercase tracking-widest flex items-center gap-2">
+          <aside className="hidden lg:block w-80 shrink-0 sticky top-24 self-start">
+            <div className="max-h-[calc(100vh-7rem)] overflow-y-auto no-scrollbar bg-[#0d0d12]/95 border border-zinc-800 rounded-2xl p-4 backdrop-blur-xl shadow-2xl flex flex-col">
+              <div className="flex items-center justify-between pb-3 mb-3 border-b border-zinc-800/80 shrink-0">
+                <span className="font-mono text-[11px] text-zinc-300 font-bold uppercase tracking-widest flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                   MISSION INDEX
                 </span>
-                <span className="font-mono text-[10px] text-zinc-500">{missions.length} LEVELS</span>
+                <span className="font-mono text-[10px] text-zinc-400 bg-zinc-900 border border-zinc-800 px-2 py-0.5 rounded font-bold">
+                  {missions.length} LEVELS
+                </span>
               </div>
 
-              <p className="text-[11px] text-zinc-500 mb-3 font-mono">
+              <p className="text-[11px] text-zinc-400 mb-3 font-mono shrink-0">
                 Click any level to jump to its solution &amp; code:
               </p>
 
-              <nav className="flex flex-col gap-2">
+              {/* Navigation List */}
+              <nav className="flex flex-col gap-2.5 overflow-y-auto no-scrollbar pr-0.5">
                 {missions.map((m) => {
-                  const isActive = activeId === m.id;
+                  const isMissionActive = activeMissionId === m.id;
                   return (
-                    <button
+                    <div
                       key={m.id}
-                      onClick={() => scrollToMission(m.id)}
-                      className={`text-left p-3 rounded-xl border transition-all duration-300 flex flex-col gap-1 ${
-                        isActive
-                          ? "bg-zinc-900 border-white text-white shadow-[0_0_20px_rgba(255,255,255,0.15)]"
-                          : "bg-black/40 border-zinc-800/80 text-zinc-400 hover:text-zinc-200 hover:border-zinc-700"
+                      className={`rounded-xl border transition-all duration-300 overflow-hidden ${
+                        isMissionActive
+                          ? "bg-zinc-900/90 border-white text-white shadow-[0_0_20px_rgba(255,255,255,0.12)]"
+                          : "bg-black/40 border-zinc-800/80 text-zinc-400 hover:border-zinc-700 hover:text-zinc-300"
                       }`}
                     >
-                      <div className="flex items-center justify-between">
-                        <span className="font-mono text-[10px] uppercase font-bold text-zinc-500">
-                          {m.num}
-                        </span>
-                        <span className={`text-[9px] font-mono px-1.5 py-0.2 rounded border ${
-                          isActive 
-                            ? "border-emerald-500/50 text-emerald-400 bg-emerald-500/10" 
-                            : "border-zinc-800 text-zinc-500"
+                      {/* Main Level Jump Button */}
+                      <button
+                        onClick={() => scrollToElement(m.id)}
+                        className="w-full text-left p-3 flex flex-col gap-1 focus:outline-none transition-colors"
+                      >
+                        <div className="flex items-center justify-between">
+                          <span className={`font-mono text-[10px] uppercase font-bold ${
+                            isMissionActive ? "text-zinc-300" : "text-zinc-500"
+                          }`}>
+                            {m.num}
+                          </span>
+                          <span
+                            className={`text-[9px] font-mono px-1.5 py-0.5 rounded border ${
+                              isMissionActive
+                                ? "border-emerald-500/50 text-emerald-400 bg-emerald-500/10 font-bold"
+                                : "border-zinc-800 text-zinc-500"
+                            }`}
+                          >
+                            {m.points}
+                          </span>
+                        </div>
+                        <span className={`font-bold text-xs uppercase tracking-wider ${
+                          isMissionActive ? "text-white" : "text-zinc-300"
                         }`}>
-                          {m.points}
+                          {m.title}
                         </span>
-                      </div>
-                      <span className={`font-bold text-xs uppercase tracking-wider ${isActive ? "text-white" : ""}`}>
-                        {m.title}
-                      </span>
-                      <span className="text-[10px] font-mono text-zinc-500 truncate">
-                        {m.grid}
-                      </span>
-                    </button>
+                        <span className="text-[10px] font-mono text-zinc-500 truncate">
+                          {m.grid}
+                        </span>
+                      </button>
+
+                      {/* Content Headers / Stages Sub-Menu */}
+                      {m.sections && m.sections.length > 0 && (
+                        <div className={`border-t border-zinc-800/80 px-2.5 py-2 space-y-1 transition-all ${
+                          isMissionActive ? "bg-black/60 block" : "hidden hover:block"
+                        }`}>
+                          <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-wider block px-1 mb-1 font-bold">
+                            CONTENT HEADERS:
+                          </span>
+                          {m.sections.map((sec) => {
+                            const isSecActive = activeSectionId === sec.id;
+                            return (
+                              <button
+                                key={sec.id}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  scrollToElement(sec.id);
+                                }}
+                                className={`w-full text-left px-2 py-1 rounded text-[11px] font-mono transition-all flex items-center justify-between gap-1.5 ${
+                                  isSecActive
+                                    ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-bold shadow-[0_0_10px_rgba(16,185,129,0.2)]"
+                                    : "text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/60"
+                                }`}
+                              >
+                                <span className="truncate flex items-center gap-1.5">
+                                  <span className={isSecActive ? "text-emerald-400 font-bold" : "text-zinc-600"}>
+                                    {isSecActive ? "▶" : "•"}
+                                  </span>
+                                  <span>{sec.title}</span>
+                                </span>
+                                <span className="text-[9px] text-zinc-500 shrink-0 font-normal">
+                                  {sec.tag}
+                                </span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
                   );
                 })}
               </nav>
 
-              <div className="mt-6 pt-4 border-t border-zinc-800/80 flex flex-col gap-2">
+              <div className="mt-4 pt-3 border-t border-zinc-800/80 flex flex-col gap-2 shrink-0">
                 <Link
                   href="/ctfs/byte-me/forensics"
                   className="w-full text-center py-2 px-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-300 hover:text-white font-mono text-xs transition-colors flex items-center justify-center gap-1.5"

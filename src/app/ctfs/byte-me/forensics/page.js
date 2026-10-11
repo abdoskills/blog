@@ -19,7 +19,14 @@ export default function ByteMeForensicsPage() {
       points: "500 PTS",
       badge: "4 STAGES // 4 FLAGS",
       tagline: "Windows x64 Kernel Dump & MS Paint VAD Surface Carving",
-      summary: "Comprehensive investigation of a 2.77 GB Windows memory dump (`soul.mem`) using Volatility 3. Extracting KUSER_SHARED_DATA timestamps, hunting encoded PowerShell stagers, carving bottom-up 32bpp DIB canvas bitmaps from mspaint VADs, and recovering the unrendered UTF-16 text tail."
+      summary: "Comprehensive investigation of a 2.77 GB Windows memory dump (`soul.mem`) using Volatility 3. Extracting KUSER_SHARED_DATA timestamps, hunting encoded PowerShell stagers, carving bottom-up 32bpp DIB canvas bitmaps from mspaint VADs, and recovering the unrendered UTF-16 text tail.",
+      sections: [
+        { id: "mem-stage-1", title: "Stage 1: SystemTime Triage", tag: "KUSER_SHARED" },
+        { id: "mem-stage-2", title: "Stage 2: Soul Hunt Process", tag: "PEB / Cmdline" },
+        { id: "mem-stage-3", title: "Stage 3: Painted Soul Bitmap", tag: "VAD Carving" },
+        { id: "mem-stage-4", title: "Stage 4: Final Record", tag: "expedition.txt" },
+        { id: "mem-decoys", title: "Decoys & Honeypots Table", tag: "Deconstructed" },
+      ]
     },
     {
       id: "sacrifice",
@@ -29,7 +36,14 @@ export default function ByteMeForensicsPage() {
       points: "200 PTS",
       badge: "PCAP // FTP CARVE",
       tagline: "Localhost FTP Session Reconstruction & Nested Archive Pipeline",
-      summary: "Forensic analysis of `s0ul.pcap` capturing an automated exfiltration pipeline over localhost FTP. Carving `manifest_final_047.jpg`, decoding hidden JPEG comment chunks (0xFF 0xFE), carving password-protected ZIP trailers, unraveling nested Gzip/Bzip2/Tar streams, and base64 flag extraction."
+      summary: "Forensic analysis of `s0ul.pcap` capturing an automated exfiltration pipeline over localhost FTP. Carving `manifest_final_047.jpg`, decoding hidden JPEG comment chunks (0xFF 0xFE), carving password-protected ZIP trailers, unraveling nested Gzip/Bzip2/Tar streams, and base64 flag extraction.",
+      sections: [
+        { id: "sac-step-1", title: "Step 1: FTP Packet Recon", tag: "Credentials" },
+        { id: "sac-step-2", title: "Step 2: JPEG Comment & ZIP", tag: "Trailer Overlay" },
+        { id: "sac-step-3", title: "Step 3: Nested Decompression", tag: "Matryoshka" },
+        { id: "sac-step-4", title: "Step 4: Avengers Lore Triage", tag: "Natasha Log" },
+        { id: "sac-solver", title: "Python Pipeline Solver", tag: "Standalone Script" },
+      ]
     },
     {
       id: "the-last-memory-of-vormir",
@@ -39,33 +53,57 @@ export default function ByteMeForensicsPage() {
       points: "300 PTS",
       badge: "AUDIO // XOR CIPHER",
       tagline: "Speech Reversal Transcription & Appended RIFF Hex Carving",
-      summary: "Investigating `memory.wav`. Reversing the stereo PCM audio stream to recover the Keeper's spoken oath via Whisper, carving a 213-byte hex payload appended after the RIFF chunk, and decrypting with repeated-key XOR."
+      summary: "Investigating `memory.wav`. Reversing the stereo PCM audio stream to recover the Keeper's spoken oath via Whisper, carving a 213-byte hex payload appended after the RIFF chunk, and decrypting with repeated-key XOR.",
+      sections: [
+        { id: "audio-step-1", title: "Step 1: Audio Reversal", tag: "Voice Key" },
+        { id: "audio-step-2", title: "Step 2: WAV Slack Space", tag: "RIFF Hex Carve" },
+        { id: "audio-step-3", title: "Step 3: Repeating XOR", tag: "Decryption & Riddle" },
+        { id: "audio-solver", title: "Python Standalone Solver", tag: "Wave & XOR" },
+      ]
     }
   ];
 
-  // ScrollSpy to track active heading
+  const [activeChallengeId, setActiveChallengeId] = useState("echoes-of-vormir");
+  const [activeSectionId, setActiveSectionId] = useState("mem-stage-1");
+
+  // ScrollSpy to track both active challenge and active section
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 160;
+
+      // Track sections
+      const allSections = challenges.flatMap((c) => c.sections.map((s) => s.id));
+      for (let i = allSections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(allSections[i]);
+        if (el) {
+          const top = el.offsetTop;
+          if (top <= scrollPosition) {
+            setActiveSectionId(allSections[i]);
+            break;
           }
-        });
-      },
-      { rootMargin: "-20% 0px -60% 0px", threshold: 0 }
-    );
+        }
+      }
 
-    challenges.forEach((c) => {
-      const el = document.getElementById(c.id);
-      if (el) observer.observe(el);
-    });
+      // Track challenges
+      const challengeIds = challenges.map((c) => c.id);
+      for (let i = challengeIds.length - 1; i >= 0; i--) {
+        const el = document.getElementById(challengeIds[i]);
+        if (el) {
+          const top = el.offsetTop;
+          if (top <= scrollPosition) {
+            setActiveChallengeId(challengeIds[i]);
+            break;
+          }
+        }
+      }
+    };
 
-    return () => observer.disconnect();
-  }, [challenges]);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  const scrollToChallenge = (id) => {
-    setActiveId(id);
+  const scrollToElement = (id) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -81,9 +119,9 @@ export default function ByteMeForensicsPage() {
         {challenges.map((c) => (
           <button
             key={c.id}
-            onClick={() => scrollToChallenge(c.id)}
+            onClick={() => scrollToElement(c.id)}
             className={`whitespace-nowrap px-3 py-1 rounded-lg text-xs font-mono transition-all duration-200 flex items-center gap-1.5 ${
-              activeId === c.id
+              activeChallengeId === c.id
                 ? "bg-white text-black font-bold shadow-[0_0_15px_rgba(255,255,255,0.4)]"
                 : "bg-zinc-900/90 text-zinc-400 border border-zinc-800 hover:text-white"
             }`}
@@ -118,7 +156,7 @@ export default function ByteMeForensicsPage() {
         </div>
 
         {/* 2-Column Layout: Main Content + Sticky Navigation Rail */}
-        <div className="flex gap-8 relative items-start">
+        <div className="flex gap-8 relative">
           
           {/* ================= LEFT / MAIN CONTENT AREA ================= */}
           <div className="flex-grow min-w-0 space-y-20">
@@ -160,7 +198,7 @@ export default function ByteMeForensicsPage() {
               {/* ========================================================= */}
               {/* STAGE 1: WHEN IT HAPPENED (MEM-1)                         */}
               {/* ========================================================= */}
-              <div className="mb-14 border-b border-zinc-800/60 pb-12">
+              <div id="mem-stage-1" className="scroll-mt-24 mb-14 border-b border-zinc-800/60 pb-12">
                 <div className="flex items-center gap-3 mb-3">
                   <span className="w-8 h-8 rounded-full bg-zinc-800 text-emerald-400 font-mono text-sm flex items-center justify-center font-bold border border-zinc-700">1</span>
                   <h3 className="text-xl sm:text-2xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase">
@@ -276,7 +314,7 @@ print("[+] Recovered Timestamp:", converted_date.strftime("%Y-%m-%d %H:%M:%S"))
               {/* ========================================================= */}
               {/* STAGE 2: SOUL HUNT (MEM-2)                                */}
               {/* ========================================================= */}
-              <div className="mb-14 border-b border-zinc-800/60 pb-12">
+              <div id="mem-stage-2" className="scroll-mt-24 mb-14 border-b border-zinc-800/60 pb-12">
                 <div className="flex items-center gap-3 mb-3">
                   <span className="w-8 h-8 rounded-full bg-zinc-800 text-emerald-400 font-mono text-sm flex items-center justify-center font-bold border border-zinc-700">2</span>
                   <h3 className="text-xl sm:text-2xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase">
@@ -372,7 +410,7 @@ print("[+] Recovered Timestamp:", converted_date.strftime("%Y-%m-%d %H:%M:%S"))
               {/* ========================================================= */}
               {/* STAGE 3: THE PAINTED SOUL (MEM-3 DEEP CARVE)              */}
               {/* ========================================================= */}
-              <div className="mb-14 border-b border-zinc-800/60 pb-12">
+              <div id="mem-stage-3" className="scroll-mt-24 mb-14 border-b border-zinc-800/60 pb-12">
                 <div className="flex items-center gap-3 mb-3">
                   <span className="w-8 h-8 rounded-full bg-zinc-800 text-emerald-400 font-mono text-sm flex items-center justify-center font-bold border border-zinc-700">3</span>
                   <h3 className="text-xl sm:text-2xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase">
@@ -614,7 +652,7 @@ if offset != -1:
               {/* ========================================================= */}
               {/* STAGE 4: FINAL EXPEDITION RECORD                          */}
               {/* ========================================================= */}
-              <div className="mb-10">
+              <div id="mem-stage-4" className="scroll-mt-24 mb-10">
                 <div className="flex items-center gap-3 mb-3">
                   <span className="w-8 h-8 rounded-full bg-zinc-800 text-emerald-400 font-mono text-sm flex items-center justify-center font-bold border border-zinc-700">4</span>
                   <h3 className="text-xl sm:text-2xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase">
@@ -691,7 +729,7 @@ Well done, traveler.`}</pre>
               </div>
 
               {/* Honeypots & Decoys Table */}
-              <div className="mt-8 pt-6 border-t border-zinc-800">
+              <div id="mem-decoys" className="scroll-mt-24 mt-8 pt-6 border-t border-zinc-800">
                 <h4 className="text-xs font-mono uppercase tracking-widest text-zinc-400 mb-3 font-bold flex items-center gap-2">
                   <span>⚠️</span> Deconstructed Decoys &amp; Honeypots (Do NOT submit)
                 </h4>
@@ -781,7 +819,7 @@ Well done, traveler.`}</pre>
               {/* Step-by-Step Walkthrough */}
               <div className="space-y-6 mb-8">
                 {/* STEP 1: PCAP RECON */}
-                <div>
+                <div id="sac-step-1" className="scroll-mt-24">
                   <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center gap-2 mb-2">
                     <span className="text-emerald-400">⚡</span> Step 1: Packet Stream Reconstruction &amp; FTP Credentials
                   </h4>
@@ -804,7 +842,7 @@ Well done, traveler.`}</pre>
                 </div>
 
                 {/* STEP 2: JPEG COMMENT & ZIP OVERLAY */}
-                <div>
+                <div id="sac-step-2" className="scroll-mt-24">
                   <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center gap-2 mb-2">
                     <span className="text-emerald-400">⚡</span> Step 2: Carving manifest_final_047.jpg &amp; Unlocking the Trailing ZIP
                   </h4>
@@ -838,7 +876,7 @@ Well done, traveler.`}</pre>
                 </div>
 
                 {/* STEP 3: NESTED MATRYOSHKA DECOMPRESSION */}
-                <div>
+                <div id="sac-step-3" className="scroll-mt-24">
                   <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center gap-2 mb-2">
                     <span className="text-emerald-400">⚡</span> Step 3: Russian Doll (Matryoshka) Recursive Decompression
                   </h4>
@@ -854,7 +892,7 @@ Well done, traveler.`}</pre>
                 </div>
 
                 {/* STEP 4: LORE TRIAGE & BASE64 DECODE */}
-                <div>
+                <div id="sac-step-4" className="scroll-mt-24">
                   <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center gap-2 mb-2">
                     <span className="text-emerald-400">⚡</span> Step 4: Avengers Lore Triage &amp; Base64 Decoding
                   </h4>
@@ -897,7 +935,7 @@ Well done, traveler.`}</pre>
               </div>
 
               {/* Expandable Full Python Solver */}
-              <details className="group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
+              <details id="sac-solver" className="scroll-mt-24 group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
                 <summary className="p-4 cursor-pointer font-mono text-xs text-zinc-400 hover:text-white flex items-center justify-between list-none bg-zinc-900/40">
                   <span className="flex items-center gap-2 text-emerald-400 font-bold uppercase">
                     <span>⚡</span> [ Show Complete Standalone Python Pipeline Solver ]
@@ -1016,7 +1054,7 @@ def solve_sacrifice_challenge(carved_jpeg_bytes):
               {/* Step-by-Step Walkthrough */}
               <div className="space-y-6 mb-8">
                 {/* STEP 1: AUDIO REVERSAL */}
-                <div>
+                <div id="audio-step-1" className="scroll-mt-24">
                   <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center gap-2 mb-2">
                     <span className="text-emerald-400">⚡</span> Step 1: Reversing Audio &amp; Transcribing the Keeper&apos;s Voice
                   </h4>
@@ -1046,7 +1084,7 @@ wav.write("reversed.wav", rate, data[::-1])`}</pre>
                 </div>
 
                 {/* STEP 2: CARVING APPARENT SLACK SPACE */}
-                <div>
+                <div id="audio-step-2" className="scroll-mt-24">
                   <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center gap-2 mb-2">
                     <span className="text-emerald-400">⚡</span> Step 2: Carving Appended Trailing RIFF Hex Payload
                   </h4>
@@ -1072,7 +1110,7 @@ wav.write("reversed.wav", rate, data[::-1])`}</pre>
                 </div>
 
                 {/* STEP 3: XOR DECRYPTION */}
-                <div>
+                <div id="audio-step-3" className="scroll-mt-24">
                   <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center gap-2 mb-2">
                     <span className="text-emerald-400">⚡</span> Step 3: Repeated-Key XOR Decryption &amp; Riddle Resolution
                   </h4>
@@ -1114,7 +1152,7 @@ print(plaintext)`}</pre>
               </div>
 
               {/* Expandable Full Python Solver */}
-              <details className="group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
+              <details id="audio-solver" className="scroll-mt-24 group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
                 <summary className="p-4 cursor-pointer font-mono text-xs text-zinc-400 hover:text-white flex items-center justify-between list-none bg-zinc-900/40">
                   <span className="flex items-center gap-2 text-emerald-400 font-bold uppercase">
                     <span>⚡</span> [ Show Standalone Python Audio Reverser &amp; XOR Decryptor ]
@@ -1169,57 +1207,110 @@ print("\\n[+] Decrypted Keeper Message:\\n", decrypted_message)
           </div>
 
           {/* ================= RIGHT / STICKY SLIDER RAIL ================= */}
-          <aside className="hidden lg:block w-72 shrink-0">
-            <div className="sticky top-24 bg-[#0d0d12]/95 border border-zinc-800 rounded-2xl p-4 backdrop-blur-xl shadow-2xl">
-              <div className="flex items-center justify-between pb-3 mb-3 border-b border-zinc-800/80">
-                <span className="font-mono text-[11px] text-zinc-400 font-bold uppercase tracking-widest flex items-center gap-2">
+          {/* ================= RIGHT / STICKY SLIDER RAIL ================= */}
+          <aside className="hidden lg:block w-80 shrink-0 sticky top-24 self-start">
+            <div className="max-h-[calc(100vh-7rem)] overflow-y-auto no-scrollbar bg-[#0d0d12]/95 border border-zinc-800 rounded-2xl p-4 backdrop-blur-xl shadow-2xl flex flex-col">
+              <div className="flex items-center justify-between pb-3 mb-3 border-b border-zinc-800/80 shrink-0">
+                <span className="font-mono text-[11px] text-zinc-300 font-bold uppercase tracking-widest flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                   CHALLENGE INDEX
                 </span>
-                <span className="font-mono text-[10px] text-zinc-500">3 LABS</span>
+                <span className="font-mono text-[10px] text-zinc-400 bg-zinc-900 border border-zinc-800 px-2 py-0.5 rounded font-bold">
+                  3 LABS
+                </span>
               </div>
 
-              <p className="text-[11px] text-zinc-500 mb-3 font-mono">
+              <p className="text-[11px] text-zinc-400 mb-3 font-mono shrink-0">
                 Click any challenge to jump to its full writeup:
               </p>
 
-              <nav className="flex flex-col gap-2">
+              {/* Navigation List */}
+              <nav className="flex flex-col gap-2.5 overflow-y-auto no-scrollbar pr-0.5">
                 {challenges.map((c) => {
-                  const isActive = activeId === c.id;
+                  const isChallengeActive = activeChallengeId === c.id;
                   return (
-                    <button
+                    <div
                       key={c.id}
-                      onClick={() => scrollToChallenge(c.id)}
-                      className={`text-left p-3 rounded-xl border transition-all duration-300 flex flex-col gap-1 ${
-                        isActive
-                          ? "bg-zinc-900 border-white text-white shadow-[0_0_20px_rgba(255,255,255,0.15)]"
-                          : "bg-black/40 border-zinc-800/80 text-zinc-400 hover:text-zinc-200 hover:border-zinc-700"
+                      className={`rounded-xl border transition-all duration-300 overflow-hidden ${
+                        isChallengeActive
+                          ? "bg-zinc-900/90 border-white text-white shadow-[0_0_20px_rgba(255,255,255,0.12)]"
+                          : "bg-black/40 border-zinc-800/80 text-zinc-400 hover:border-zinc-700 hover:text-zinc-300"
                       }`}
                     >
-                      <div className="flex items-center justify-between">
-                        <span className="font-mono text-[10px] uppercase font-bold text-zinc-500">
-                          LAB #{c.num}
-                        </span>
-                        <span className={`text-[9px] font-mono px-1.5 py-0.2 rounded border ${
-                          isActive 
-                            ? "border-emerald-500/50 text-emerald-400 bg-emerald-500/10" 
-                            : "border-zinc-800 text-zinc-500"
+                      {/* Main Challenge Jump Button */}
+                      <button
+                        onClick={() => scrollToElement(c.id)}
+                        className="w-full text-left p-3 flex flex-col gap-1 focus:outline-none transition-colors"
+                      >
+                        <div className="flex items-center justify-between">
+                          <span className={`font-mono text-[10px] uppercase font-bold ${
+                            isChallengeActive ? "text-zinc-300" : "text-zinc-500"
+                          }`}>
+                            LAB #{c.num}
+                          </span>
+                          <span
+                            className={`text-[9px] font-mono px-1.5 py-0.5 rounded border ${
+                              isChallengeActive
+                                ? "border-emerald-500/50 text-emerald-400 bg-emerald-500/10 font-bold"
+                                : "border-zinc-800 text-zinc-500"
+                            }`}
+                          >
+                            {c.points}
+                          </span>
+                        </div>
+                        <span className={`font-bold text-xs uppercase tracking-wider ${
+                          isChallengeActive ? "text-white" : "text-zinc-300"
                         }`}>
-                          {c.points}
+                          {c.title}
                         </span>
-                      </div>
-                      <span className={`font-bold text-xs uppercase tracking-wider ${isActive ? "text-white" : ""}`}>
-                        {c.title}
-                      </span>
-                      <span className="text-[10px] font-mono text-zinc-500 truncate">
-                        {c.category}
-                      </span>
-                    </button>
+                        <span className="text-[10px] font-mono text-zinc-500 truncate">
+                          {c.category}
+                        </span>
+                      </button>
+
+                      {/* Content Headers / Stages Sub-Menu */}
+                      {c.sections && c.sections.length > 0 && (
+                        <div className={`border-t border-zinc-800/80 px-2.5 py-2 space-y-1 transition-all ${
+                          isChallengeActive ? "bg-black/60 block" : "hidden hover:block"
+                        }`}>
+                          <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-wider block px-1 mb-1 font-bold">
+                            CONTENT HEADERS:
+                          </span>
+                          {c.sections.map((sec) => {
+                            const isSecActive = activeSectionId === sec.id;
+                            return (
+                              <button
+                                key={sec.id}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  scrollToElement(sec.id);
+                                }}
+                                className={`w-full text-left px-2 py-1 rounded text-[11px] font-mono transition-all flex items-center justify-between gap-1.5 ${
+                                  isSecActive
+                                    ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-bold shadow-[0_0_10px_rgba(16,185,129,0.2)]"
+                                    : "text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/60"
+                                }`}
+                              >
+                                <span className="truncate flex items-center gap-1.5">
+                                  <span className={isSecActive ? "text-emerald-400 font-bold" : "text-zinc-600"}>
+                                    {isSecActive ? "▶" : "•"}
+                                  </span>
+                                  <span>{sec.title}</span>
+                                </span>
+                                <span className="text-[9px] text-zinc-500 shrink-0 font-normal">
+                                  {sec.tag}
+                                </span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
                   );
                 })}
               </nav>
 
-              <div className="mt-6 pt-4 border-t border-zinc-800/80 flex flex-col gap-2">
+              <div className="mt-4 pt-3 border-t border-zinc-800/80 flex flex-col gap-2 shrink-0">
                 <Link
                   href="/ctfs/byte-me/missions"
                   className="w-full text-center py-2 px-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-300 hover:text-white font-mono text-xs transition-colors flex items-center justify-center gap-1.5"
