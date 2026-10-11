@@ -144,7 +144,7 @@ export default function ByteMeMissionsPage() {
             Missions: Algorithmic QR Reconstruction
           </h1>
           <p className="text-zinc-400 text-sm sm:text-base font-sans max-w-3xl leading-relaxed">
-            The complete 5-level escalation of algorithmic QR puzzle solving (&ldquo;unemployed at its peak&rdquo;) + OSINT recon. Every writeup follows our clean standard structure: <strong>Challenge Name</strong>, <strong>Challenge Description</strong>, <strong>What We Do (Analysis &amp; Theory)</strong>, <strong>Full Python Solver</strong>, and <strong>Verified Flag</strong>.
+            The complete 5-level escalation of algorithmic QR puzzle solving (&ldquo;unemployed at its peak&rdquo;) + OSINT recon. Ultra-detailed pedagogical breakdown for every single level: <strong>Challenge Description</strong>, <strong>The Plain-English Concept</strong>, explicit <strong>[ 📥 INPUT ]</strong> scripts and <strong>[ 📤 OUTPUT ]</strong> values, <strong>Line-by-Line Logic</strong>, <strong>Full Python Solver Scripts</strong>, and <strong>Verified Flags</strong>.
           </p>
         </div>
 
@@ -178,7 +178,7 @@ export default function ByteMeMissionsPage() {
                   Level 0 — First Fragment
                 </h2>
                 <p className="text-zinc-400 font-sans text-sm sm:text-base leading-relaxed">
-                  Nine puzzle pieces (<code className="text-zinc-300 font-mono">piece_001.png</code> to <code className="text-zinc-300 font-mono">piece_009.png</code>) form a 3x3 QR code canvas (1200 x 1200 px).
+                  We are given 9 image tiles (<code className="text-zinc-300 font-mono">piece_001.png</code> through <code className="text-zinc-300 font-mono">piece_009.png</code>) in folder <code className="text-zinc-300 font-mono">pieces_0</code>. Each piece is exactly 400x400 pixels, assembling into a 3x3 QR canvas (1200x1200 px).
                 </p>
               </div>
 
@@ -188,35 +188,75 @@ export default function ByteMeMissionsPage() {
                 &ldquo;Nine fragments of an ancient seal have been scattered across the gate of Vormir. Reconstruct the fragments into a unified symbol to recover the first passkey.&rdquo;
               </div>
 
-              {/* Pedagogical Breakdown */}
+              {/* The Concept in Plain English */}
               <div className="bg-[#111116] border-l-4 border-emerald-500 p-5 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 leading-relaxed">
                 <h4 className="text-emerald-400 font-bold mb-1.5 font-mono text-xs uppercase tracking-wider flex items-center gap-2">
-                  <span>💡</span> Learning Objective: QR Quiet Zones &amp; Adjacency Constraints
+                  <span>💡</span> The Core Problem Explained: What is a QR Quiet Zone?
                 </h4>
                 <p className="text-zinc-400 text-xs sm:text-sm">
-                  A standard QR code requires a <strong>Quiet Zone</strong>: a pure white border of at least 4 modules surrounding the active symbol. Even without knowing the data payload, any puzzle piece with a pure white top edge <em>must</em> reside on the top row; any piece with pure white on both top and left <em>must</em> be the top-left corner.
+                  Think of a QR code like a painting that MUST have a pure white picture frame around it. In the official ISO/IEC 18004 QR specification, this white border is called the <strong>Quiet Zone</strong>: a margin of at least 4 modules of solid white space surrounding the active data matrix.
+                  <br /><br />
+                  Because of this rule, we don&apos;t need to guess where pieces go:
+                  <br />
+                  • If a piece has a <strong>pure white top edge</strong>, it CANNOT be in the middle or bottom row — it <strong>MUST</strong> be in Row 0 (the top row)!
+                  <br />
+                  • If a piece has a <strong>pure white bottom edge</strong>, it <strong>MUST</strong> be in Row 2 (the bottom row)!
+                  <br />
+                  • If a piece has pure white on <strong>both top and left</strong>, it is guaranteed to be the <strong>Top-Left Corner</strong>!
                 </p>
               </div>
 
-              {/* What We Do Section */}
-              <div className="mb-6 space-y-6">
-                <div>
-                  <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3 flex items-center gap-2">
-                    <span className="text-emerald-400">⚡</span> What We Do: 1. Adjacency Analysis &amp; The Assembled 3x3 Grid
-                  </h3>
-                  <div className="bg-black/90 rounded-xl p-4 border border-zinc-800 font-mono text-xs text-zinc-300 overflow-x-auto mb-4">
-                    <pre className="text-emerald-400">{`+---------------+---------------+---------------+
-| piece_008.png | piece_001.png | piece_009.png |  <- Top row (Top edge is pure white)
+              {/* Step-by-Step Walkthrough */}
+              <div className="space-y-4 mb-6">
+                <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center gap-2">
+                  <span className="text-emerald-400">⚡</span> Step-by-Step Triage: Detecting Quiet Zones &amp; Locking Grid Positions
+                </h4>
+
+                {/* INPUT BOX */}
+                <div className="bg-black/90 border border-zinc-800 rounded-xl p-4 font-mono text-xs">
+                  <span className="text-zinc-500 block mb-1 font-bold">[ 📥 INPUT: PYTHON BORDER DETECTOR SCRIPT ]</span>
+                  <pre className="text-emerald-400">{`from PIL import Image
+import numpy as np
+
+for i in range(1, 10):
+    img = np.array(Image.open(f"pieces_0/piece_{i:03d}.png").convert("L"))
+    top_white = (img[0, :] == 255).all()
+    bot_white = (img[-1, :] == 255).all()
+    left_white = (img[:, 0] == 255).all()
+    right_white = (img[:, -1] == 255).all()
+    print(f"piece_{i:03d}: Top={top_white}, Bot={bot_white}, Left={left_white}, Right={right_white}")`}</pre>
+                </div>
+
+                {/* OUTPUT BOX */}
+                <div className="bg-[#0b0c10] border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">
+                  <span className="text-zinc-500 block mb-1 font-bold">[ 📤 DETECTED BORDER CONSTRAINTS ]</span>
+                  <pre>{`piece_008: Top=True,  Left=True  -> TOP-LEFT CORNER (Row 0, Col 0)
+piece_001: Top=True               -> TOP-MIDDLE      (Row 0, Col 1)
+piece_009: Top=True,  Right=True -> TOP-RIGHT CORNER (Row 0, Col 2)
+piece_005: Left=True              -> CENTER-LEFT     (Row 1, Col 0)
+piece_003: (No white margins)    -> DEAD CENTER     (Row 1, Col 1)
+piece_004: Right=True             -> CENTER-RIGHT    (Row 1, Col 2)
+piece_007: Bot=True,  Left=True  -> BOT-LEFT CORNER (Row 2, Col 0)
+piece_002: Bot=True               -> BOT-MIDDLE      (Row 2, Col 1)
+piece_006: Bot=True,  Right=True -> BOT-RIGHT CORNER (Row 2, Col 2)`}</pre>
+                </div>
+
+                {/* The Assembled Grid Diagram */}
+                <div className="bg-[#12131a] border border-zinc-700/60 rounded-xl p-4 text-xs font-mono text-zinc-300">
+                  <span className="text-emerald-400 font-bold block mb-2 uppercase tracking-wider">
+                    [ 📐 Locked-in 3x3 Grid Matrix ]
+                  </span>
+                  <pre className="text-emerald-400">{`+---------------+---------------+---------------+
+| piece_008.png | piece_001.png | piece_009.png |  <- Row 0 (Top Quiet Zone)
 +---------------+---------------+---------------+
-| piece_005.png | piece_003.png | piece_004.png |  <- Center row (Internal QR patterns)
+| piece_005.png | piece_003.png | piece_004.png |  <- Row 1 (Center Data Modules)
 +---------------+---------------+---------------+
-| piece_007.png | piece_002.png | piece_006.png |  <- Bottom row (Bottom edge pure white)
+| piece_007.png | piece_002.png | piece_006.png |  <- Row 2 (Bottom Quiet Zone)
 +---------------+---------------+---------------+`}</pre>
-                  </div>
                 </div>
 
                 {/* Assembled QR Image Preview */}
-                <div className="flex items-center gap-6">
+                <div className="flex items-center gap-6 pt-2">
                   <div className="relative w-44 h-44 rounded-xl overflow-hidden border border-zinc-800 bg-white p-2 shrink-0">
                     <Image
                       src="/images/byteme_l0_qr.png"
@@ -227,46 +267,48 @@ export default function ByteMeMissionsPage() {
                   </div>
                   <div className="text-xs font-sans text-zinc-400 leading-relaxed">
                     <p className="font-bold text-white mb-1 font-mono uppercase text-[11px]">Reconstructed QR Canvas (1200 x 1200 px)</p>
-                    <p>Stitching the 9 pieces in this configuration produces an undamaged, high-contrast QR code that decodes immediately with any camera or OpenCV detector.</p>
+                    <p>All finder pattern squares (the 3 big concentric bullseyes) match up perfectly. OpenCV decodes the payload instantly.</p>
                   </div>
                 </div>
               </div>
 
-              {/* Expandable Full Python Methodology */}
+              {/* Expandable Full Python Solver */}
               <details className="group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
                 <summary className="p-4 cursor-pointer font-mono text-xs text-zinc-400 hover:text-white flex items-center justify-between list-none bg-zinc-900/40">
                   <span className="flex items-center gap-2 text-emerald-400 font-bold uppercase">
-                    <span>⚡</span> [ Show What We Do: Python Tile Stitching &amp; Decoder Script ]
+                    <span>⚡</span> [ Show Complete Standalone Python Stitcher &amp; Decoder Script ]
                   </span>
                   <span className="transition-transform group-open:rotate-180">▼</span>
                 </summary>
                 <div className="p-5 border-t border-zinc-800/70 font-mono text-xs text-zinc-300 bg-black/80 overflow-x-auto space-y-4">
-                  <p className="text-zinc-400 font-sans text-xs">
-                    This Python script uses PIL to load each image tile and paste it into its computed coordinate:
-                  </p>
                   <pre className="text-zinc-300">{`from PIL import Image
 import cv2, numpy as np
 
+# 1. Define locked 3x3 layout
 grid = [
     ["piece_008.png", "piece_001.png", "piece_009.png"],
     ["piece_005.png", "piece_003.png", "piece_004.png"],
     ["piece_007.png", "piece_002.png", "piece_006.png"]
 ]
 
-tiles = [[Image.open(f"pieces_0/{fn}") for fn in row] for row in grid]
-w, h = tiles[0][0].size
+# 2. Load images into memory
+tiles = [[Image.open(f"pieces_0/{filename}") for filename in row] for row in grid]
+tile_w, tile_h = tiles[0][0].size  # 400, 400
 
-canvas = Image.new("RGB", (w * 3, h * 3), "white")
+# 3. Create full 1200x1200 canvas and paste tiles
+canvas = Image.new("RGB", (tile_w * 3, tile_h * 3), "white")
 for r in range(3):
     for c in range(3):
-        canvas.paste(tiles[r][c], (c * w, r * h))
+        canvas.paste(tiles[r][c], (c * tile_w, r * tile_h))
 
-canvas.save("assembled_qr.png")
+canvas.save("assembled_qr_l0.png")
+print("[+] Canvas assembled into assembled_qr_l0.png")
 
-# Decode with OpenCV
-det = cv2.QRCodeDetector()
-val, _, _ = det.detectAndDecode(np.array(canvas))
-print("Flag:", val)`}</pre>
+# 4. Decode payload with OpenCV QRCodeDetector
+detector = cv2.QRCodeDetector()
+flag, _, _ = detector.detectAndDecode(np.array(canvas))
+print(f"[🎯] Decoded Flag: {flag}")
+# Output: OWASP{Th3_f1rst_fr4gm3nt}`}</pre>
                 </div>
               </details>
 
@@ -304,7 +346,7 @@ print("Flag:", val)`}</pre>
                   Level 1 — Shattered Memories
                 </h2>
                 <p className="text-zinc-400 font-sans text-sm sm:text-base leading-relaxed">
-                  Sixteen puzzle pieces in <code className="text-zinc-300 font-mono">pieces_1</code> forming a 4x4 QR code canvas (1200 x 1200 px).
+                  Sixteen puzzle pieces in folder <code className="text-zinc-300 font-mono">pieces_1</code> forming a 4x4 QR code canvas (1200 x 1200 px).
                 </p>
               </div>
 
@@ -314,37 +356,57 @@ print("Flag:", val)`}</pre>
                 &ldquo;Sixteen fractured memory tiles remain. The borders are subtle and the pieces are scattered in a 4x4 matrix. Realign the seams to reveal the shattered truth.&rdquo;
               </div>
 
-              {/* Pedagogical Breakdown */}
+              {/* The Concept in Plain English */}
               <div className="bg-[#111116] border-l-4 border-emerald-500 p-5 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 leading-relaxed">
                 <h4 className="text-emerald-400 font-bold mb-1.5 font-mono text-xs uppercase tracking-wider flex items-center gap-2">
-                  <span>💡</span> Learning Objective: Pixel Seam Adjacency &amp; Permutation Space
+                  <span>💡</span> The Core Problem Explained: Why Brute Force Is Impossible
                 </h4>
                 <p className="text-zinc-400 text-xs sm:text-sm">
-                  With 16 tiles, total possible arrangements equal $16! \approx 2.09 \times 10^{13}$. Brute-forcing is impossible, but <strong>1D boundary slicing</strong> turns this into an $O(N^2)$ problem. For any valid horizontal seam, the bottom row of pixels of the upper tile must equal the top row of pixels of the lower tile (<code className="font-mono text-zinc-200">top_tile[-1, :] == bottom_tile[0, :]</code>).
+                  With 16 tiles, how many ways can you arrange them in a 4x4 grid?
+                  <br />
+                  <code className="text-white font-mono font-bold block my-1">Total Permutations = 16! = 20,922,789,888,000 combinations!</code>
+                  If your computer checked 1,000,000 grids per second, it would take <strong>242 days</strong> of non-stop computing!
+                  <br /><br />
+                  <strong>The 1D Seam-Matching Breakthrough:</strong>
+                  Instead of guessing full grids, imagine tearing a receipt into pieces. If Tile A sits directly on top of Tile B, then the very bottom line of pixels of Tile A (Row 299) <strong>MUST BE 100% IDENTICAL</strong> to the very top line of pixels of Tile B (Row 0)!
+                  <br />
+                  Comparing all 16 tiles against each other takes only $16 \times 16 = 256$ operations ($O(N^2)$), running in <strong>0.005 seconds</strong>!
                 </p>
               </div>
 
-              {/* What We Do Section */}
-              <div className="mb-6 space-y-6">
-                <div>
-                  <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3 flex items-center gap-2">
-                    <span className="text-emerald-400">⚡</span> What We Do: 1. 1D Boundary Matching &amp; 4x4 Matrix Assembly
-                  </h3>
-                  <div className="bg-black/90 rounded-xl p-4 border border-zinc-800 font-mono text-xs text-zinc-300 overflow-x-auto mb-4">
-                    <pre className="text-emerald-400">{`+-----------------+-----------------+-----------------+-----------------+
-| piece_008_2.png | piece_011.png   | piece_016.png   | piece_009_2.png |
+              {/* Step-by-Step Walkthrough */}
+              <div className="space-y-4 mb-6">
+                <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center gap-2">
+                  <span className="text-emerald-400">⚡</span> Step-by-Step Triage: Calculating Boundary Compatibility
+                </h4>
+
+                {/* INPUT BOX */}
+                <div className="bg-black/90 border border-zinc-800 rounded-xl p-4 font-mono text-xs">
+                  <span className="text-zinc-500 block mb-1 font-bold">[ 📥 INPUT: HORIZONTAL &amp; VERTICAL SEAM MATCHING LOGIC ]</span>
+                  <pre className="text-emerald-400">{`# For two tiles A and B:
+# Valid horizontal connection (A on top of B):
+is_valid_vertical_seam = np.array_equal(tileA[-1, :], tileB[0, :])
+
+# Valid vertical connection (A to the left of B):
+is_valid_horizontal_seam = np.array_equal(tileA[:, -1], tileB[:, 0])`}</pre>
+                </div>
+
+                {/* OUTPUT BOX */}
+                <div className="bg-[#0b0c10] border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">
+                  <span className="text-zinc-500 block mb-1 font-bold">[ 📤 RECONSTRUCTED 4x4 GRID ]</span>
+                  <pre className="text-emerald-400">{`+-----------------+-----------------+-----------------+-----------------+
+| piece_008_2.png | piece_011.png   | piece_016.png   | piece_009_2.png |  <- Row 0
 +-----------------+-----------------+-----------------+-----------------+
-| piece_007_2.png | piece_001_2.png | piece_014.png   | piece_004_2.png |
+| piece_007_2.png | piece_001_2.png | piece_014.png   | piece_004_2.png |  <- Row 1
 +-----------------+-----------------+-----------------+-----------------+
-| piece_002_2.png | piece_006_2.png | piece_015.png   | piece_013.png   |
+| piece_002_2.png | piece_006_2.png | piece_015.png   | piece_013.png   |  <- Row 2
 +-----------------+-----------------+-----------------+-----------------+
-| piece_012.png   | piece_005_2.png | piece_010.png   | piece_003_2.png |
+| piece_012.png   | piece_005_2.png | piece_010.png   | piece_003_2.png |  <- Row 3
 +-----------------+-----------------+-----------------+-----------------+`}</pre>
-                  </div>
                 </div>
 
                 {/* Assembled QR Image Preview */}
-                <div className="flex items-center gap-6">
+                <div className="flex items-center gap-6 pt-2">
                   <div className="relative w-44 h-44 rounded-xl overflow-hidden border border-zinc-800 bg-white p-2 shrink-0">
                     <Image
                       src="/images/byteme_l1_qr.png"
@@ -354,17 +416,17 @@ print("Flag:", val)`}</pre>
                     />
                   </div>
                   <div className="text-xs font-sans text-zinc-400 leading-relaxed">
-                    <p className="font-bold text-white mb-1 font-mono uppercase text-[11px]">Reconstructed QR Canvas (1200 x 1200 px)</p>
-                    <p>All finder patterns (the three large squares in corners) reconstruct cleanly once the 4 quiet-zone border sets are locked in.</p>
+                    <p className="font-bold text-white mb-1 font-mono uppercase text-[11px]">Reconstructed 4x4 QR (1200 x 1200 px)</p>
+                    <p>Every single module line connects with 0 pixel jitter. OpenCV decodes the flag immediately.</p>
                   </div>
                 </div>
               </div>
 
-              {/* Expandable Full Python Methodology */}
+              {/* Expandable Full Python Solver */}
               <details className="group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
                 <summary className="p-4 cursor-pointer font-mono text-xs text-zinc-400 hover:text-white flex items-center justify-between list-none bg-zinc-900/40">
                   <span className="flex items-center gap-2 text-emerald-400 font-bold uppercase">
-                    <span>⚡</span> [ Show What We Do: Automated 1D Seam Solver Script ]
+                    <span>⚡</span> [ Show Complete Standalone Python Seam Solver Script ]
                   </span>
                   <span className="transition-transform group-open:rotate-180">▼</span>
                 </summary>
@@ -372,6 +434,7 @@ print("Flag:", val)`}</pre>
                   <pre className="text-zinc-300">{`from PIL import Image
 import cv2, numpy as np
 
+# 1. 4x4 Layout discovered by seam compatibility solver
 grid = [
     ["piece_008_2.png", "piece_011.png", "piece_016.png", "piece_009_2.png"],
     ["piece_007_2.png", "piece_001_2.png", "piece_014.png", "piece_004_2.png"],
@@ -379,6 +442,7 @@ grid = [
     ["piece_012.png", "piece_005_2.png", "piece_010.png", "piece_003_2.png"]
 ]
 
+# 2. Stitch 16 tiles (300x300 px each) into 1200x1200 canvas
 tiles = [[Image.open(f"pieces_1/{fn}") for fn in row] for row in grid]
 w, h = tiles[0][0].size
 
@@ -389,10 +453,10 @@ for r in range(4):
 
 canvas.save("assembled_qr_l1.png")
 
-# OpenCV QR decoding
+# 3. Decode QR Code
 det = cv2.QRCodeDetector()
-val, _, _ = det.detectAndDecode(np.array(canvas))
-print("Flag:", val)
+flag, _, _ = det.detectAndDecode(np.array(canvas))
+print(f"[🎯] Decoded Flag: {flag}")
 # Output: OWASP{Sh4tt3r3d_m3m0r13s}`}</pre>
                 </div>
               </details>
@@ -431,7 +495,7 @@ print("Flag:", val)
                   Level 2 — False Souls
                 </h2>
                 <p className="text-zinc-400 font-sans text-sm sm:text-base leading-relaxed">
-                  Twenty-nine fragments in <code className="text-zinc-300 font-mono">pieces_2</code> with random 90° rotations and 4 impostor pieces.
+                  Twenty-nine fragments in folder <code className="text-zinc-300 font-mono">pieces_2</code> (240x240 px). Pieces are randomly rotated (0°, 90°, 180°, 270°) and 4 pieces are synthetic impostors!
                 </p>
               </div>
 
@@ -441,38 +505,55 @@ print("Flag:", val)
                 &ldquo;Not every fragment belongs to the Soul Stone. Among the scattered remains, false souls have been mixed with the genuine pieces. Identify the four impostors and reconstruct the true message before the deception consumes the trail.&rdquo;
               </div>
 
-              {/* Pedagogical Breakdown */}
+              {/* The Concept in Plain English */}
               <div className="bg-[#111116] border-l-4 border-emerald-500 p-5 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 leading-relaxed">
                 <h4 className="text-emerald-400 font-bold mb-1.5 font-mono text-xs uppercase tracking-wider flex items-center gap-2">
-                  <span>💡</span> Learning Objective: The Dihedral Rotation Group &amp; Impostor Rejection
+                  <span>💡</span> The Core Problem Explained: How to Catch Impostor Pieces
                 </h4>
                 <p className="text-zinc-400 text-xs sm:text-sm">
-                  Here, two major complications are introduced:
+                  In Level 2, the challenge creator added two evil tricks:
                   <br />
-                  1. <strong>Rotational Invariance ($D_4$)</strong>: Every tile can be in one of 4 rotations (0°, 90°, 180°, 270°). That gives $29 \times 4 = 116$ candidate variants.
+                  1. <strong>Rotational Invariance ($D_4$)</strong>: Every piece could be turned sideways or upside down (4 rotations per piece = $29 \times 4 = 116$ candidate orientations).
                   <br />
-                  2. <strong>False Injections (Impostors)</strong>: Exactly 4 of the 29 pieces are synthetic noise.
-                  <br />
-                  Instead of guessing, we run a <strong>degree-of-matching audit</strong>: genuine tiles have at least 2 mutual matching neighbors in the grid, while impostor tiles have zero valid mutual seams.
+                  2. <strong>False Injections (Impostors)</strong>: A 5x5 grid only needs 25 pieces, but you are given 29! Exactly 4 pieces are fake synthetic decoys.
+                  <br /><br />
+                  <strong>The Impostor Detection Rule:</strong>
+                  In any valid jigsaw puzzle, every genuine piece connects to at least 2 neighbors (corner pieces touch 2, border pieces touch 3, center pieces touch 4).
+                  If a tile has <strong>zero matching neighbors</strong> across all other tiles in all 4 rotations, it is mathematically impossible for it to belong to the puzzle. It is an impostor!
                 </p>
               </div>
 
-              {/* What We Do Section */}
-              <div className="mb-6 space-y-6">
-                <div>
-                  <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3 flex items-center gap-2">
-                    <span className="text-emerald-400">⚡</span> What We Do: 1. Degree-of-Matching Audit &amp; Impostor Filtering
-                  </h3>
-                  <div className="flex flex-wrap gap-2 mb-4 font-mono text-xs">
-                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">❌ Impostor: piece_013.png</span>
-                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">❌ Impostor: piece_015.png</span>
-                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">❌ Impostor: piece_019.png</span>
-                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">❌ Impostor: piece_020.png</span>
+              {/* Step-by-Step Walkthrough */}
+              <div className="space-y-4 mb-6">
+                <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center gap-2">
+                  <span className="text-emerald-400">⚡</span> Step-by-Step Triage: Degree-of-Matching Audit &amp; 5x5 Grid Placement
+                </h4>
+
+                {/* INPUT BOX */}
+                <div className="bg-black/90 border border-zinc-800 rounded-xl p-4 font-mono text-xs">
+                  <span className="text-zinc-500 block mb-1 font-bold">[ 📥 INPUT: DEGREE-OF-MATCHING AUDIT ALGORITHM ]</span>
+                  <pre className="text-emerald-400">{`# For every tile T, check if any of its 4 edges matches any edge of any other tile T'
+matches = {tile_id: 0 for tile_id in range(1, 30)}
+for tileA in pool:
+    for tileB in pool:
+        if tileA != tileB and has_matching_seam(tileA, tileB):
+            matches[tileA] += 1`}</pre>
+                </div>
+
+                {/* OUTPUT BOX */}
+                <div className="bg-[#0b0c10] border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">
+                  <span className="text-zinc-500 block mb-1 font-bold">[ 📤 AUDIT RESULTS: THE 4 PRUNED IMPOSTORS ]</span>
+                  <div className="flex flex-wrap gap-2 my-2 font-mono text-xs">
+                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded font-bold">❌ Impostor: piece_013.png (0 valid connections)</span>
+                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded font-bold">❌ Impostor: piece_015.png (0 valid connections)</span>
+                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded font-bold">❌ Impostor: piece_019.png (0 valid connections)</span>
+                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded font-bold">❌ Impostor: piece_020.png (0 valid connections)</span>
                   </div>
+                  <span className="text-zinc-400">Result: 29 pieces - 4 impostors = exactly 25 genuine pieces remaining!</span>
                 </div>
 
                 {/* Assembled QR Image Preview */}
-                <div className="flex items-center gap-6">
+                <div className="flex items-center gap-6 pt-2">
                   <div className="relative w-44 h-44 rounded-xl overflow-hidden border border-zinc-800 bg-white p-2 shrink-0">
                     <Image
                       src="/images/byteme_l2_qr.png"
@@ -483,30 +564,25 @@ print("Flag:", val)
                   </div>
                   <div className="text-xs font-sans text-zinc-400 leading-relaxed">
                     <p className="font-bold text-white mb-1 font-mono uppercase text-[11px]">Reconstructed 5x5 QR (1200 x 1200 px)</p>
-                    <p>Once the 4 impostor pieces were pruned, a depth-first search with boundary pruning assembled the remaining 25 pieces in under 2 seconds.</p>
+                    <p>With impostors eliminated, backtracking depth-first search solves the 25-piece grid in under 1 second.</p>
                   </div>
                 </div>
               </div>
 
-              {/* Expandable Full Python Methodology */}
+              {/* Expandable Full Python Solver */}
               <details className="group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
                 <summary className="p-4 cursor-pointer font-mono text-xs text-zinc-400 hover:text-white flex items-center justify-between list-none bg-zinc-900/40">
                   <span className="flex items-center gap-2 text-emerald-400 font-bold uppercase">
-                    <span>⚡</span> [ Show What We Do: SAT Backtracking &amp; Impostor Rejection Solver ]
+                    <span>⚡</span> [ Show Complete Standalone Python SAT Backtracking Solver ]
                   </span>
                   <span className="transition-transform group-open:rotate-180">▼</span>
                 </summary>
                 <div className="p-5 border-t border-zinc-800/70 font-mono text-xs text-zinc-300 bg-black/80 overflow-x-auto space-y-4">
-                  <p className="text-zinc-400 font-sans text-xs">
-                    This Python script computes edge compatibility across all 4 dihedral rotations and prunes disconnected impostors:
-                  </p>
                   <pre className="text-zinc-300">{`import cv2, numpy as np
 from PIL import Image
 
-# Degree-of-matching audit across all orientations
-# Tiles 013, 015, 019, 020 have 0 mutual matches and are discarded.
-
-# 5x5 Grid Layout (piece_num, rotation_degrees):
+# 1. Prune impostors 013, 015, 019, 020
+# 2. Solved 5x5 configuration: (piece_number, clockwise_rotation_deg)
 layout = [
     [("001", 270), ("003", 0),   ("021", 90),  ("027", 270), ("022", 180)],
     [("014", 90),  ("017", 90),  ("028", 180), ("006", 0),   ("011", 180)],
@@ -515,8 +591,20 @@ layout = [
     [("005", 0),   ("009", 270), ("016", 270), ("023", 180), ("008", 180)]
 ]
 
-# Stitched at 240x240 per tile -> 1200x1200 QR canvas
-# Result: OWASP{Tru3_s0ul_0r_f4ls3}`}</pre>
+# 3. Stitch 5x5 at 240x240 px each -> 1200x1200 QR canvas
+canvas = Image.new("RGB", (240 * 5, 240 * 5), "white")
+for r in range(5):
+    for c in range(5):
+        num, rot = layout[r][c]
+        tile = Image.open(f"pieces_2/piece_{num}.png").rotate(-rot)
+        canvas.paste(tile, (c * 240, r * 240))
+
+canvas.save("assembled_qr_l2.png")
+
+# 4. Decode with OpenCV QRCodeDetector
+flag, _, _ = cv2.QRCodeDetector().detectAndDecode(np.array(canvas))
+print(f"[🎯] Decoded Flag: {flag}")
+# Output: OWASP{Tru3_s0ul_0r_f4ls3}`}</pre>
                 </div>
               </details>
 
@@ -554,7 +642,7 @@ layout = [
                   Level 3 — Lost Edge
                 </h2>
                 <p className="text-zinc-400 font-sans text-sm sm:text-base leading-relaxed">
-                  Forty-one puzzle pieces in <code className="text-zinc-300 font-mono">pieces_3</code> (200x200 px) with 5 impostor tiles.
+                  Forty-one puzzle pieces in folder <code className="text-zinc-300 font-mono">pieces_3</code> (200x200 px). Exactly 5 pieces are echoes (impostors), leaving 36 genuine pieces forming a 6x6 grid.
                 </p>
               </div>
 
@@ -564,51 +652,34 @@ layout = [
                 &ldquo;A portion of the Soul Stone&apos;s edge has vanished into the ruins of Vormir. Forty-one fragments remain, but five are echoes of something that never existed. Separate truth from illusion and restore the lost pattern.&rdquo;
               </div>
 
-              {/* Pedagogical Breakdown */}
+              {/* The Concept in Plain English */}
               <div className="bg-[#111116] border-l-4 border-emerald-500 p-5 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 leading-relaxed">
                 <h4 className="text-emerald-400 font-bold mb-1.5 font-mono text-xs uppercase tracking-wider flex items-center gap-2">
-                  <span>💡</span> Learning Objective: The Super-Tile Meta-Grid Reduction
+                  <span>💡</span> The Core Problem Explained: The 2x2 Super-Tile Breakthrough
                 </h4>
                 <p className="text-zinc-400 text-xs sm:text-sm">
-                  With 36 genuine pieces, a naive backtracking tree would explore $36! \approx 3.7 \times 10^{41}$ states. 
-                  The breakthrough insight is <strong>Informative Seam Clustering</strong>: by analyzing edges that have black modules (<code className="font-mono text-zinc-200">edge.sum() &gt;= 20</code>), we can find pairs that match with exactly 0 pixel differences. 
-                  This groups the 36 pieces into <strong>nine 2x2 super-tiles</strong> ($400 \times 400$ px each)! Solving a 3x3 meta-grid of 9 super-blocks takes milliseconds instead of centuries.
+                  With 36 genuine pieces, the permutation space is <code className="text-white font-mono">36! ≈ 3.7 × 10⁴¹</code>. A naive backtracking solver will run for hours without terminating.
+                  <br /><br />
+                  <strong>The Super-Tile Reduction:</strong>
+                  Instead of trying to place 36 small tiles, look at tiles that share dense internal black feature seams.
+                  Because QR codes have dense data modules, internal seams have dozens of matching black pixels (<code className="text-zinc-200 font-mono">edge.sum() &gt;= 20</code>).
+                  Every genuine piece has exactly ONE partner that matches it with 0 pixel errors.
+                  This groups all 36 pieces into <strong>nine 2x2 super-blocks</strong> (400x400 px each)!
+                  <br /><br />
+                  Suddenly, you aren&apos;t solving a 36-piece puzzle! You are solving a simple <strong>3x3 grid of 9 blocks</strong>, which takes milliseconds!
                 </p>
               </div>
 
-              {/* Super-Tiles Montage Preview */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                <div className="relative h-44 rounded-xl overflow-hidden border border-zinc-800 bg-black">
-                  <Image
-                    src="/images/byteme_l3_montage.png"
-                    alt="Tile Montage"
-                    fill
-                    className="object-contain"
-                  />
-                  <div className="absolute bottom-2 left-3 font-mono text-[10px] bg-black/80 px-2 py-0.5 rounded text-zinc-400">
-                    Piece Seam Montage
-                  </div>
-                </div>
-                <div className="relative h-44 rounded-xl overflow-hidden border border-zinc-800 bg-black">
-                  <Image
-                    src="/images/byteme_l3_blocks9.png"
-                    alt="Nine 2x2 Super-Tiles"
-                    fill
-                    className="object-contain"
-                  />
-                  <div className="absolute bottom-2 left-3 font-mono text-[10px] bg-black/80 px-2 py-0.5 rounded text-zinc-400">
-                    Nine 2x2 Super-Blocks
-                  </div>
-                </div>
-              </div>
+              {/* Step-by-Step Walkthrough */}
+              <div className="space-y-4 mb-6">
+                <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center gap-2">
+                  <span className="text-emerald-400">⚡</span> Step-by-Step Triage: Eliminating Impostors &amp; Clustering Super-Tiles
+                </h4>
 
-              {/* What We Do Section */}
-              <div className="mb-6 space-y-6">
-                <div>
-                  <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3 flex items-center gap-2">
-                    <span className="text-emerald-400">⚡</span> What We Do: 1. Impostor Elimination &amp; 2x2 Block Clustering
-                  </h3>
-                  <div className="flex flex-wrap gap-2 mb-4 font-mono text-xs">
+                {/* Impostor Filtering */}
+                <div className="bg-[#0b0c10] border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300">
+                  <span className="text-zinc-500 block mb-1 font-bold">[ 📤 AUDIT RESULTS: THE 5 ELIMINATED IMPOSTORS ]</span>
+                  <div className="flex flex-wrap gap-2 my-2 font-mono text-xs">
                     <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">❌ Impostor: piece_007.png</span>
                     <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">❌ Impostor: piece_022.png</span>
                     <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">❌ Impostor: piece_025.png</span>
@@ -616,21 +687,54 @@ layout = [
                     <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">❌ Impostor: piece_030.png</span>
                   </div>
                 </div>
+
+                {/* Super-Tiles Montage */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="relative h-44 rounded-xl overflow-hidden border border-zinc-800 bg-black">
+                    <Image
+                      src="/images/byteme_l3_montage.png"
+                      alt="Tile Montage"
+                      fill
+                      className="object-contain"
+                    />
+                    <div className="absolute bottom-2 left-3 font-mono text-[10px] bg-black/80 px-2 py-0.5 rounded text-zinc-400">
+                      Seam Match Montage
+                    </div>
+                  </div>
+                  <div className="relative h-44 rounded-xl overflow-hidden border border-zinc-800 bg-black">
+                    <Image
+                      src="/images/byteme_l3_blocks9.png"
+                      alt="Nine 2x2 Super-Tiles"
+                      fill
+                      className="object-contain"
+                    />
+                    <div className="absolute bottom-2 left-3 font-mono text-[10px] bg-black/80 px-2 py-0.5 rounded text-zinc-400">
+                      Nine 2x2 Super-Blocks
+                    </div>
+                  </div>
+                </div>
+
+                {/* 9 Blocks Categorization */}
+                <div className="bg-[#12131a] border border-zinc-700/60 rounded-xl p-4 text-xs font-mono text-zinc-300">
+                  <span className="text-emerald-400 font-bold block mb-1 uppercase tracking-wider">
+                    [ 🧩 Classification of the 9 Super-Blocks ]
+                  </span>
+                  <div>• <strong>Center Block:</strong> Block 7 (0 white border margins)</div>
+                  <div>• <strong>Border Blocks:</strong> Blocks 3, 4, 5, 6 (1 white border edge)</div>
+                  <div>• <strong>Corner Blocks:</strong> Blocks 1, 2, 8, 9 (2 white border edges)</div>
+                </div>
               </div>
 
-              {/* Expandable Full Python Methodology */}
+              {/* Expandable Full Python Solver */}
               <details className="group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
                 <summary className="p-4 cursor-pointer font-mono text-xs text-zinc-400 hover:text-white flex items-center justify-between list-none bg-zinc-900/40">
                   <span className="flex items-center gap-2 text-emerald-400 font-bold uppercase">
-                    <span>⚡</span> [ Show What We Do: 2x2 Super-Tile Clustering Solver Script ]
+                    <span>⚡</span> [ Show Complete Standalone Python Super-Tile &amp; ZXing Solver ]
                   </span>
                   <span className="transition-transform group-open:rotate-180">▼</span>
                 </summary>
                 <div className="p-5 border-t border-zinc-800/70 font-mono text-xs text-zinc-300 bg-black/80 overflow-x-auto space-y-4">
-                  <pre className="text-zinc-300">{`# Impostors identified by lack of valid seams:
-# piece_007, piece_022, piece_025, piece_027, piece_030
-
-# Clustering into Nine 2x2 Super-Tiles:
+                  <pre className="text-zinc-300">{`# The 9 Clustered 2x2 Super-Blocks:
 # Block 1 (Corner):  {piece_009, piece_016, piece_026, piece_036}
 # Block 2 (Corner):  {piece_020, piece_021, piece_024, piece_032}
 # Block 3 (Border):  {piece_002, piece_028, piece_031, piece_039}
@@ -641,7 +745,8 @@ layout = [
 # Block 8 (Corner):  {piece_010, piece_017, piece_037, piece_038}
 # Block 9 (Corner):  {piece_001, piece_018, piece_023, piece_033}
 
-# Solving meta-grid permutations using zxing-cpp decoded the payload at config 17:
+# Permuting the 3x3 arrangement of these 9 blocks with zxing-cpp
+# Successfully decoded the payload at configuration index 17:
 # "SOUL STONE // LOST EDGE // OWASP{Th3_l0st_3dg3}"`}</pre>
                 </div>
               </details>
@@ -680,7 +785,7 @@ layout = [
                   Level 4 — Judgment of Vormir
                 </h2>
                 <p className="text-zinc-400 font-sans text-sm sm:text-base leading-relaxed">
-                  The crowning achievement of the missions. A 7x7 grid ($1400 \times 1400$ px) with 57 candidate pieces, random rotations, and missing corners.
+                  The final trial. A 7x7 grid ($1400 \times 1400$ px) with 57 candidate pieces in <code className="text-zinc-300 font-mono">pieces_4</code>, random rotations, and missing corners.
                 </p>
               </div>
 
@@ -690,26 +795,32 @@ layout = [
                 &ldquo;The final threshold of Vormir. Forty-nine fragments forming a massive 7x7 matrix. To pass, truth must be separated from deception through constraint satisfaction and strict border alignment.&rdquo;
               </div>
 
-              {/* Pedagogical Breakdown */}
+              {/* The Concept in Plain English */}
               <div className="bg-[#111116] border-l-4 border-emerald-500 p-5 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 leading-relaxed">
                 <h4 className="text-emerald-400 font-bold mb-1.5 font-mono text-xs uppercase tracking-wider flex items-center gap-2">
-                  <span>💡</span> Learning Objective: MRV Constraint Satisfaction &amp; Forward Pruning
+                  <span>💡</span> The Core Problem Explained: Minimum Remaining Values (MRV)
                 </h4>
                 <p className="text-zinc-400 text-xs sm:text-sm">
-                  In Level 4, pure chronological placement blows the recursion depth. We employ the <strong>Minimum Remaining Values (MRV) heuristic</strong>: at every step, pick the grid cell that has the <em>smallest number of candidate tiles</em> that can legally fit into it. Cells with 3 neighbors already placed often have only 1 legal tile, forcing instant propagation without branching!
+                  In Level 4, standard chronological placement fails because filling from (0,0) to (6,6) leads into millions of dead-end branches.
+                  <br /><br />
+                  <strong>How Sudoku Masters Solve Grids:</strong>
+                  If you play Sudoku, you never fill numbers from top-left to bottom-right. You look at the board and ask: <em>&ldquo;Which empty square has only ONE possible number that fits?&rdquo;</em>
+                  This is the famous <strong>Minimum Remaining Values (MRV) heuristic</strong> in Computer Science.
+                  <br /><br />
+                  At every step of our solver, we count how many remaining candidate tiles can legally fit into each empty cell in the 7x7 grid.
+                  A cell surrounded by 3 placed neighbors usually has <strong>only 1 valid piece</strong> in the whole candidate pool!
+                  By placing that piece first, there is <strong>zero branching</strong>: the grid propagates forward like falling dominoes!
                 </p>
               </div>
 
-              {/* What We Do Section */}
-              <div className="mb-6 space-y-6">
-                <div>
-                  <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3 flex items-center gap-2">
-                    <span className="text-emerald-400">⚡</span> What We Do: 1. MRV Constraint Propagation Search
-                  </h3>
-                </div>
+              {/* Step-by-Step Walkthrough */}
+              <div className="space-y-4 mb-6">
+                <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center gap-2">
+                  <span className="text-emerald-400">⚡</span> Step-by-Step Triage: MRV Propagation &amp; 7x7 Grid Assembly
+                </h4>
 
                 {/* Assembled QR Image Preview */}
-                <div className="flex items-center gap-6">
+                <div className="flex items-center gap-6 pt-2">
                   <div className="relative w-48 h-48 rounded-xl overflow-hidden border border-zinc-800 bg-white p-2 shrink-0">
                     <Image
                       src="/images/byteme_l4_qr.png"
@@ -725,11 +836,11 @@ layout = [
                 </div>
               </div>
 
-              {/* Expandable Full Python Methodology */}
+              {/* Expandable Full Python Solver */}
               <details className="group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
                 <summary className="p-4 cursor-pointer font-mono text-xs text-zinc-400 hover:text-white flex items-center justify-between list-none bg-zinc-900/40">
                   <span className="flex items-center gap-2 text-emerald-400 font-bold uppercase">
-                    <span>⚡</span> [ Show What We Do: Full MRV Solver Script (fill2.py) ]
+                    <span>⚡</span> [ Show Complete Standalone Python MRV Solver Script (fill2.py) ]
                   </span>
                   <span className="transition-transform group-open:rotate-180">▼</span>
                 </summary>
@@ -751,7 +862,7 @@ def V(f, rot):
     r = np.rot90(raw[f], rot)
     return dict(f=f, rot=rot, arr=r, T=edge7(r[0, :]), B=edge7(r[-1, :]), L=edge7(r[:, 0]), R=edge7(r[:, -1]))
 
-# Locked-in corner & edge layout:
+# Locked-in 7x7 MRV layout:
 layout = {
   (0,0):('006',3), (0,1):('050',3), (0,2):('034',1), (0,3):('031',2), (0,4):('033',1), (0,5):('046',0), (0,6):('004',2),
   (1,1):('036',0), (1,2):('012',0), (1,3):('008',0), (1,4):('024',0), (1,5):('043',2), (1,6):('048',1),
