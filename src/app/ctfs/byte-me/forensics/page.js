@@ -15,16 +15,16 @@ export default function ByteMeForensicsPage() {
       id: "echoes-of-vormir",
       num: "01",
       title: "Echoes of Vormir",
-      category: "Memory Forensics",
+      category: "Memory Forensics Track",
       points: "500 PTS",
-      badge: "4 STAGES // 4 FLAGS",
+      badge: "4 MISSIONS // 4 FLAGS",
       tagline: "Windows x64 Kernel Dump & MS Paint VAD Surface Carving",
-      summary: "Comprehensive investigation of a 2.77 GB Windows memory dump (`soul.mem`) using Volatility 3. Extracting KUSER_SHARED_DATA timestamps, hunting encoded PowerShell stagers, carving bottom-up 32bpp DIB canvas bitmaps from mspaint VADs, and recovering the unrendered UTF-16 text tail.",
+      summary: "Comprehensive sequential mission investigation of a 2.77 GB Windows memory dump (`soul.mem`) using Volatility 3. Extracting KUSER_SHARED_DATA timestamps, hunting encoded PowerShell stagers, carving bottom-up 32bpp DIB canvas bitmaps from mspaint VADs, and recovering the unrendered UTF-16 text tail.",
       sections: [
-        { id: "mem-stage-1", title: "Stage 1: SystemTime Triage", tag: "KUSER_SHARED" },
-        { id: "mem-stage-2", title: "Stage 2: Soul Hunt Process", tag: "PEB / Cmdline" },
-        { id: "mem-stage-3", title: "Stage 3: Painted Soul Bitmap", tag: "VAD Carving" },
-        { id: "mem-stage-4", title: "Stage 4: Final Record", tag: "expedition.txt" },
+        { id: "mem-mission-1", title: "Mission 01: When It Happened", tag: "SystemTime" },
+        { id: "mem-mission-2", title: "Mission 02: Soul Hunt", tag: "Process Masquerade" },
+        { id: "mem-mission-3", title: "Mission 03: The Painted Soul", tag: "VAD DIB Carve" },
+        { id: "mem-mission-4", title: "Mission 04: The Trail Ends", tag: "expedition.txt" },
         { id: "mem-decoys", title: "Decoys & Honeypots Table", tag: "Deconstructed" },
       ]
     },
@@ -64,7 +64,7 @@ export default function ByteMeForensicsPage() {
   ];
 
   const [activeChallengeId, setActiveChallengeId] = useState("echoes-of-vormir");
-  const [activeSectionId, setActiveSectionId] = useState("mem-stage-1");
+  const [activeSectionId, setActiveSectionId] = useState("mem-mission-1");
 
   // ScrollSpy to track both active challenge and active section
   useEffect(() => {
@@ -175,35 +175,90 @@ export default function ByteMeForensicsPage() {
               <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
                   <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-mono text-xs px-2.5 py-0.5 rounded font-bold uppercase">
-                    4 STAGES // 4 FLAGS VERIFIED
+                    4 MISSIONS // 4 FLAGS VERIFIED
                   </span>
                   <span className="bg-zinc-900 text-zinc-400 border border-zinc-800 font-mono text-xs px-2.5 py-0.5 rounded">
                     Windows x64 Kernel Dump (2.77 GB)
                   </span>
+                  <span className="bg-zinc-900 text-zinc-400 border border-zinc-800 font-mono text-xs px-2.5 py-0.5 rounded">
+                    Volatility 3 Enterprise Triage
+                  </span>
                 </div>
                 <h2 className="text-2xl sm:text-4xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wide mb-3">
-                  01. Echoes of Vormir: Memory Forensics
+                  01. Echoes of Vormir: Memory Forensics Track
                 </h2>
                 <p className="text-zinc-400 font-sans text-sm sm:text-base leading-relaxed">
-                  We are provided with a 2.77 GB raw physical memory dump named <code className="text-zinc-200 bg-black/60 px-1.5 py-0.5 rounded font-mono">soul.mem</code>. Five artifacts remain scattered across the expedition. Follow the traces to extract all 4 genuine flags while bypassing deceptive honeypot strings.
+                  A multi-mission sequential memory investigation of a 2.77 GB raw physical memory dump (<code className="text-zinc-200 bg-black/60 px-1.5 py-0.5 rounded font-mono">soul.mem</code>). Structured as four progressive CTF missions: temporal kernel triage, rogue threat process hunting, deep MS Paint VAD DIB surface carving, and recovering the expedition record.
                 </p>
               </div>
 
               {/* Campaign Narrative */}
-              <div className="bg-[#0e0e14] border-l-4 border-zinc-600 p-4 rounded-r-xl mb-8 font-sans text-sm text-zinc-300 italic">
-                <span className="text-zinc-500 font-mono text-[11px] uppercase tracking-wider block not-italic font-bold mb-1">CAMPAIGN NARRATIVE:</span>
+              <div className="bg-[#0e0e14] border-l-4 border-zinc-600 p-4 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 italic">
+                <span className="text-zinc-500 font-mono text-[11px] uppercase tracking-wider block not-italic font-bold mb-1">MISSION TRACK NARRATIVE:</span>
                 &ldquo;Vormir remembers. Something happened on a Windows machine before its memory was captured. The evidence is scattered, and not everything left behind is what it seems. Begin by understanding the memory you&apos;ve been given. Then follow the traces left behind by the expedition. Five artifacts remain. The expedition ends when the final record is found.&rdquo;
               </div>
 
+              {/* Mission Progression Bar / Track Navigator */}
+              <div className="mb-10 bg-[#0d0d12] border border-zinc-800/80 rounded-2xl p-4 sm:p-5">
+                <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block font-bold mb-3 flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  MISSION ESCALATION ROADMAP (4 OBJECTIVES)
+                </span>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs font-mono">
+                  <button
+                    onClick={() => scrollToElement("mem-mission-1")}
+                    className="p-2.5 rounded-xl border border-zinc-800 hover:border-emerald-500/50 bg-black/40 hover:bg-zinc-900/60 transition-all text-left group"
+                  >
+                    <span className="text-[10px] text-zinc-500 block group-hover:text-emerald-400">MISSION 01</span>
+                    <span className="text-zinc-200 font-bold block truncate">When It Happened</span>
+                    <span className="text-[10px] text-emerald-400">100 PTS • SystemTime</span>
+                  </button>
+                  <button
+                    onClick={() => scrollToElement("mem-mission-2")}
+                    className="p-2.5 rounded-xl border border-zinc-800 hover:border-emerald-500/50 bg-black/40 hover:bg-zinc-900/60 transition-all text-left group"
+                  >
+                    <span className="text-[10px] text-zinc-500 block group-hover:text-emerald-400">MISSION 02</span>
+                    <span className="text-zinc-200 font-bold block truncate">Soul Hunt</span>
+                    <span className="text-[10px] text-emerald-400">150 PTS • PID 2580</span>
+                  </button>
+                  <button
+                    onClick={() => scrollToElement("mem-mission-3")}
+                    className="p-2.5 rounded-xl border border-zinc-800 hover:border-emerald-500/50 bg-black/40 hover:bg-zinc-900/60 transition-all text-left group"
+                  >
+                    <span className="text-[10px] text-zinc-500 block group-hover:text-emerald-400">MISSION 03</span>
+                    <span className="text-zinc-200 font-bold block truncate">The Painted Soul</span>
+                    <span className="text-[10px] text-emerald-400">200 PTS • GDI Carving</span>
+                  </button>
+                  <button
+                    onClick={() => scrollToElement("mem-mission-4")}
+                    className="p-2.5 rounded-xl border border-zinc-800 hover:border-emerald-500/50 bg-black/40 hover:bg-zinc-900/60 transition-all text-left group"
+                  >
+                    <span className="text-[10px] text-zinc-500 block group-hover:text-emerald-400">MISSION 04</span>
+                    <span className="text-zinc-200 font-bold block truncate">The Trail Ends</span>
+                    <span className="text-[10px] text-emerald-400">150 PTS • Hex Decrypt</span>
+                  </button>
+                </div>
+              </div>
+
               {/* ========================================================= */}
-              {/* STAGE 1: WHEN IT HAPPENED (MEM-1)                         */}
+              {/* MISSION 01: WHEN IT HAPPENED (MEM-1)                      */}
               {/* ========================================================= */}
-              <div id="mem-stage-1" className="scroll-mt-24 mb-14 border-b border-zinc-800/60 pb-12">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="w-8 h-8 rounded-full bg-zinc-800 text-emerald-400 font-mono text-sm flex items-center justify-center font-bold border border-zinc-700">1</span>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase">
-                    Stage 1: When It Happened (Mem-1)
-                  </h3>
+              <div id="mem-mission-1" className="scroll-mt-24 mb-14 border-b border-zinc-800/60 pb-12">
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                  <div className="flex items-center gap-3">
+                    <span className="w-8 h-8 rounded-full bg-zinc-800 text-emerald-400 font-mono text-sm flex items-center justify-center font-bold border border-zinc-700">1</span>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase">
+                      Mission 01: When It Happened (Mem-1)
+                    </h3>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-mono text-xs px-2.5 py-0.5 rounded font-bold">
+                      100 PTS
+                    </span>
+                    <span className="bg-zinc-900 text-zinc-400 border border-zinc-800 font-mono text-xs px-2 py-0.5 rounded">
+                      Kernel Triage
+                    </span>
+                  </div>
                 </div>
 
                 {/* Challenge Description */}
@@ -304,7 +359,7 @@ print("[+] Recovered Timestamp:", converted_date.strftime("%Y-%m-%d %H:%M:%S"))
                 {/* Flag Box */}
                 <div className="bg-[#111116] border border-emerald-500/30 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div>
-                    <span className="text-[10px] font-mono uppercase text-emerald-400 tracking-widest block font-bold">STAGE 1 VERIFIED FLAG</span>
+                    <span className="text-[10px] font-mono uppercase text-emerald-400 tracking-widest block font-bold">MISSION 01 VERIFIED FLAG</span>
                     <code className="text-sm font-mono text-white font-bold">OWASP&#123;2026-10-08 05:07:43&#125;</code>
                   </div>
                   <CopyButton text="OWASP{2026-10-08 05:07:43}" />
@@ -312,14 +367,24 @@ print("[+] Recovered Timestamp:", converted_date.strftime("%Y-%m-%d %H:%M:%S"))
               </div>
 
               {/* ========================================================= */}
-              {/* STAGE 2: SOUL HUNT (MEM-2)                                */}
+              {/* MISSION 02: SOUL HUNT (MEM-2)                             */}
               {/* ========================================================= */}
-              <div id="mem-stage-2" className="scroll-mt-24 mb-14 border-b border-zinc-800/60 pb-12">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="w-8 h-8 rounded-full bg-zinc-800 text-emerald-400 font-mono text-sm flex items-center justify-center font-bold border border-zinc-700">2</span>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase">
-                    Stage 2: Soul Hunt (Mem-2)
-                  </h3>
+              <div id="mem-mission-2" className="scroll-mt-24 mb-14 border-b border-zinc-800/60 pb-12">
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                  <div className="flex items-center gap-3">
+                    <span className="w-8 h-8 rounded-full bg-zinc-800 text-emerald-400 font-mono text-sm flex items-center justify-center font-bold border border-zinc-700">2</span>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase">
+                      Mission 02: Soul Hunt (Mem-2)
+                    </h3>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-mono text-xs px-2.5 py-0.5 rounded font-bold">
+                      150 PTS
+                    </span>
+                    <span className="bg-zinc-900 text-zinc-400 border border-zinc-800 font-mono text-xs px-2 py-0.5 rounded">
+                      Process Hunting
+                    </span>
+                  </div>
                 </div>
 
                 {/* Challenge Description */}
@@ -400,7 +465,7 @@ print("[+] Recovered Timestamp:", converted_date.strftime("%Y-%m-%d %H:%M:%S"))
                 {/* Flag Box */}
                 <div className="bg-[#111116] border border-emerald-500/30 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div>
-                    <span className="text-[10px] font-mono uppercase text-emerald-400 tracking-widest block font-bold">STAGE 2 VERIFIED FLAG</span>
+                    <span className="text-[10px] font-mono uppercase text-emerald-400 tracking-widest block font-bold">MISSION 02 VERIFIED FLAG</span>
                     <code className="text-sm font-mono text-white font-bold">OWASP&#123;SoulHunt_7F31&#125;</code>
                   </div>
                   <CopyButton text="OWASP{SoulHunt_7F31}" />
@@ -408,14 +473,24 @@ print("[+] Recovered Timestamp:", converted_date.strftime("%Y-%m-%d %H:%M:%S"))
               </div>
 
               {/* ========================================================= */}
-              {/* STAGE 3: THE PAINTED SOUL (MEM-3 DEEP CARVE)              */}
+              {/* MISSION 03: THE PAINTED SOUL (MEM-3 DEEP CARVE)           */}
               {/* ========================================================= */}
-              <div id="mem-stage-3" className="scroll-mt-24 mb-14 border-b border-zinc-800/60 pb-12">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="w-8 h-8 rounded-full bg-zinc-800 text-emerald-400 font-mono text-sm flex items-center justify-center font-bold border border-zinc-700">3</span>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase">
-                    Stage 3: The Painted Soul (Mem-3 Deep Carve)
-                  </h3>
+              <div id="mem-mission-3" className="scroll-mt-24 mb-14 border-b border-zinc-800/60 pb-12">
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                  <div className="flex items-center gap-3">
+                    <span className="w-8 h-8 rounded-full bg-zinc-800 text-emerald-400 font-mono text-sm flex items-center justify-center font-bold border border-zinc-700">3</span>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase">
+                      Mission 03: The Painted Soul (Mem-3 Deep Carve)
+                    </h3>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-mono text-xs px-2.5 py-0.5 rounded font-bold">
+                      200 PTS
+                    </span>
+                    <span className="bg-zinc-900 text-zinc-400 border border-zinc-800 font-mono text-xs px-2 py-0.5 rounded">
+                      VAD GDI Carving
+                    </span>
+                  </div>
                 </div>
 
                 {/* Challenge Description */}
@@ -642,7 +717,7 @@ if offset != -1:
                 {/* Flag Box */}
                 <div className="bg-[#111116] border border-emerald-500/30 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div>
-                    <span className="text-[10px] font-mono uppercase text-emerald-400 tracking-widest block font-bold">STAGE 3 VERIFIED FLAG</span>
+                    <span className="text-[10px] font-mono uppercase text-emerald-400 tracking-widest block font-bold">MISSION 03 VERIFIED FLAG</span>
                     <code className="text-sm font-mono text-white font-bold">OWASP&#123;soulstone_paint_52af&#125;</code>
                   </div>
                   <CopyButton text="OWASP{soulstone_paint_52af}" />
@@ -650,14 +725,24 @@ if offset != -1:
               </div>
 
               {/* ========================================================= */}
-              {/* STAGE 4: FINAL EXPEDITION RECORD                          */}
+              {/* MISSION 04: FINAL EXPEDITION RECORD (MEM-4)               */}
               {/* ========================================================= */}
-              <div id="mem-stage-4" className="scroll-mt-24 mb-10">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="w-8 h-8 rounded-full bg-zinc-800 text-emerald-400 font-mono text-sm flex items-center justify-center font-bold border border-zinc-700">4</span>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase">
-                    Stage 4: Final Expedition Record
-                  </h3>
+              <div id="mem-mission-4" className="scroll-mt-24 mb-10">
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                  <div className="flex items-center gap-3">
+                    <span className="w-8 h-8 rounded-full bg-zinc-800 text-emerald-400 font-mono text-sm flex items-center justify-center font-bold border border-zinc-700">4</span>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase">
+                      Mission 04: The Trail Ends (Final Expedition Record)
+                    </h3>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-mono text-xs px-2.5 py-0.5 rounded font-bold">
+                      150 PTS
+                    </span>
+                    <span className="bg-zinc-900 text-zinc-400 border border-zinc-800 font-mono text-xs px-2 py-0.5 rounded">
+                      Hex Slack Carving
+                    </span>
+                  </div>
                 </div>
 
                 {/* Challenge Description */}
@@ -721,7 +806,7 @@ Well done, traveler.`}</pre>
                 {/* Flag Box */}
                 <div className="bg-[#111116] border border-emerald-500/30 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div>
-                    <span className="text-[10px] font-mono uppercase text-emerald-400 tracking-widest block font-bold">STAGE 4 VERIFIED FLAG</span>
+                    <span className="text-[10px] font-mono uppercase text-emerald-400 tracking-widest block font-bold">MISSION 04 VERIFIED FLAG</span>
                     <code className="text-sm font-mono text-white font-bold">OWASP&#123;soulstone_note_3c91&#125;</code>
                   </div>
                   <CopyButton text="OWASP{soulstone_note_3c91}" />

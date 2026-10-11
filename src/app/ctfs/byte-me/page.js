@@ -13,11 +13,11 @@ export default function ByteMeHub() {
       platform: "Byte Me CTF 2026",
       category: "FORENSICS TRACK",
       points: "3 LABS // 6 FLAGS",
-      tagline: "Memory Triage • Audio Reversing • Network PCAP Carving",
-      description: "Deep technical breakdowns across Windows x64 kernel memory dump analysis (2.77 GB), bottom-up 32bpp DIB Paint carving, FTP packet reconstruction, and audio speech reversal with trailing XOR decryption.",
+      tagline: "4 Sequential Memory Missions • Audio Reversing • Network PCAP Carving",
+      description: "Deep technical breakdowns across Windows x64 kernel memory dump analysis (2.77 GB) structured as 4 sequential missions, plus localhost FTP reconstruction and audio speech reversal with trailing XOR decryption.",
       image: "/images/byteme_echoes_sacrifice.png",
       tags: ["Volatility 3", "Windows Memory", "VAD Carving", "Wireshark", "Audio Forensics", "Whisper", "Repeated XOR"],
-      challengesCount: "3 Writeups (4 Memory Stages + PCAP + Audio)",
+      challengesCount: "3 Operations (4 Sequential Memory Missions + PCAP + Audio)",
       href: "/ctfs/byte-me/forensics"
     },
     {
@@ -25,12 +25,12 @@ export default function ByteMeHub() {
       slug: "missions",
       platform: "Byte Me CTF 2026",
       category: "MISC / RECON TRACK",
-      points: "5 LEVELS + OSINT // 5 FLAGS",
-      tagline: "Algorithmic QR Assembly • Impostor Elimination • Vormir Intel",
-      description: "Full reverse engineering of scattered QR code puzzle pieces across 5 escalation tiers: from 3x3 adjacency matching to 7x7 constraint satisfaction solving, rotation handling, impostor tile filtering, and OpenCV stitching.",
+      points: "5 SOLVED // 1 UNSOLVED",
+      tagline: "Algorithmic QR Assembly • Impostor Elimination • Orbital Telemetry Triage",
+      description: "Full reverse engineering of scattered QR code puzzle pieces across 5 escalation tiers (Levels 0 through 4 Solved), along with post-mortem triage of the unsolved Vormir's Hidden Witness orbital reconnaissance challenge.",
       image: "/images/byteme_l3_montage.png",
       tags: ["Python", "OpenCV", "SAT / Backtracking", "Super-Tiles", "zxing-cpp", "QR Forensics", "OSINT"],
-      challengesCount: "5 Mission Levels + OSINT Track",
+      challengesCount: "5 Solved Levels + 1 Unsolved OSINT Dossier",
       href: "/ctfs/byte-me/missions"
     }
   ];
@@ -64,13 +64,13 @@ export default function ByteMeHub() {
           {/* Quick Metrics Bar */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-xs font-mono">
             <div className="bg-zinc-900/90 border border-zinc-800 px-3.5 py-1.5 rounded-lg text-zinc-300 flex items-center gap-2">
-              <span className="text-emerald-400 font-bold">●</span> 8 Total Challenges Solved
+              <span className="text-emerald-400 font-bold">●</span> 8 Solved Operations (9 Flags)
             </div>
             <div className="bg-zinc-900/90 border border-zinc-800 px-3.5 py-1.5 rounded-lg text-zinc-300 flex items-center gap-2">
               <span className="text-emerald-400 font-bold">●</span> 11 Verified Flags Extracted
             </div>
-            <div className="bg-zinc-900/90 border border-zinc-800 px-3.5 py-1.5 rounded-lg text-zinc-300 flex items-center gap-2">
-              <span className="text-emerald-400 font-bold">●</span> 2 Investigation Tracks
+            <div className="bg-zinc-900/90 border border-zinc-800 px-3.5 py-1.5 rounded-lg text-amber-400 flex items-center gap-2">
+              <span className="text-amber-400 font-bold">▲</span> 1 Unsolved OSINT Dossier
             </div>
           </div>
         </div>
