@@ -150,24 +150,6 @@ export default function Home() {
       ]
     },
     {
-      title: "KubSTU CTF 2026: Baby (WORKSTATION-23)",
-      slug: "kubstu-baby",
-      href: "/posts/kubstu-baby",
-      platform: "KubSTU CTF 2026",
-      category: "Endpoint Forensics",
-      points: "SOLVED // FULL TRIAGE",
-      tagline: "PSReadLine Command History, ProgramData C2 Cache & VBScript Persistence",
-      description: "Forensic analysis of a compromised Windows host triage image. We investigate downloaded payloads, find which executable was launched, locate the hidden C2 endpoint in application cache files, and extract the persistence script from the user Startup directory.",
-      image: "/images/cyber_defense_labs.jpg",
-      tags: ["PSReadLine", "Chrome History", "ProgramData", "VBScript Persistence", "Endpoint DFIR", "KubSTU CTF 2026"],
-      time: "5 min read",
-      includedChallenges: [
-        "Q1: Downloaded Payload (InvoiceViewer.exe)",
-        "Q2: Hidden C2 Server (198.51.100.23:4444)",
-        "Q3: Persistence Mechanism (OneDriveUpdate.vbs)"
-      ]
-    },
-    {
       title: "All CTFs Master Directory",
       slug: "ctfs-all",
       href: "/ctfs",
