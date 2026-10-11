@@ -112,12 +112,12 @@ for (src, dst, sport, dport), data in streams.items():
           </div>
         </div>
 
-        {/* Section 1: The Intuitive Analogy */}
+        {/* Section 1: PCAP Stream Triage */}
         <div className="space-y-6 text-zinc-300 leading-relaxed font-sans mb-12">
           <div className="bg-[#07130e] border-l-4 border-emerald-500 p-6 rounded-r-xl shadow-md">
-            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 THE INTUITIVE ANALOGY (The Busy Post Office &amp; The Decoy Letter)</h4>
+            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Network Forensics: UDP Stream Reassembly &amp; Decoy Filtering</h4>
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
-              Imagine thousands of letters passing through a mail sorting room. If you follow conversations between specific people (Streams), you find that one conversation has an envelope with a prank label inside saying &ldquo;Not a Flag&rdquo;, while another conversation contains the real confidential letter. Following full conversations instead of looking at single packets reveals the real truth!
+              In unencrypted UDP traffic captures, individual packet payloads often look like isolated fragments. Using Wireshark&apos;s Follow UDP Stream feature reconstructs complete conversations between specific endpoints. In this capture, Stream 0 to 5 contain decoy strings and deceptive flags, while inspecting higher stream indices (specifically UDP Stream 6 between <code>10.0.0.2</code> and <code>10.0.0.12</code>) reconstructs the actual plaintext flag.
             </p>
           </div>
         </div>

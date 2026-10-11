@@ -116,12 +116,12 @@ print("🎉 Successfully repaired! fixed.png generated.")`;
           </div>
         </div>
 
-        {/* Section 1: The Beginner Breakdown */}
+        {/* Section 1: PNG Corruption Triage */}
         <div className="space-y-6 text-zinc-300 leading-relaxed font-sans mb-12">
           <div className="bg-[#0f1118] border-l-4 border-purple-500 p-6 rounded-r-xl shadow-md">
-            <h4 className="text-purple-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 THE INTUITIVE ANALOGY (Why did the image break?)</h4>
+            <h4 className="text-purple-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Forensic Triage: PNG Chunk Structure Corruption</h4>
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
-              Imagine receiving a sealed shipping container. The barcode on the outside is smudged, the label that says what is inside is torn off, and the weight sticker doesn&apos;t match the contents. The customs inspector immediately refuses to process it. That is exactly what happens when your OS tries to open <code>mystery</code>. The challenge creator took a legitimate PNG image and intentionally sabotaged 4 specific barcode and header bytes so every image viewer rejects it as corrupted.
+              When an image viewer fails to render a file, the parser is encountering invalid signatures or checksum mismatches during chunk header validation. In <code>mystery</code>, the file has deliberate byte corruption across the 8-byte file signature, the critical <code>IHDR</code> header length and chunk name, and downstream chunk metadata (<code>pHYs</code> and <code>IDAT</code>), causing parsers like libpng to reject the file immediately.
             </p>
           </div>
         </div>

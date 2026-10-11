@@ -265,7 +265,7 @@ export default function CtfsHub() {
       category: "Multi-Track CTF",
       points: "3 LABS // 3 FLAGS",
       tagline: "Windows RAM, Apple CoreStorage & TLS GREASE Channels",
-      description: "End-to-end pedagogical breakdowns across all 3 advanced Kaspersky CTF operations: Windows 10 RAM PoolParty & Havoc Demon triage, Apple CoreStorage Fusion Drive volume reassembly, and TLS 1.3 GREASE covert channels.",
+      description: "Detailed technical walkthroughs for all 3 Kaspersky CTF operations: Windows 10 RAM PoolParty and Havoc Demon triage, Apple CoreStorage Fusion Drive volume reassembly, and TLS 1.3 GREASE covert channels.",
       image: "/images/kaspersky_ping_pong_show.jpg",
       tags: ["Volatility 3", "PoolParty", "CoreStorage", "FileVault", "TLS GREASE", "Kaspersky CTF"],
       time: "3 Writeups"

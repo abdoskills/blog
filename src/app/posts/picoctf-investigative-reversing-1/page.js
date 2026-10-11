@@ -161,12 +161,12 @@ print("🎉 Decoded Flag:", ''.join(flag))`;
           </div>
         </div>
 
-        {/* Section 1: The Intuitive Analogy */}
+        {/* Section 1: Multi-File Overlay Distribution */}
         <div className="space-y-6 text-zinc-300 leading-relaxed font-sans mb-12">
           <div className="bg-[#07130e] border-l-4 border-emerald-500 p-6 rounded-r-xl shadow-md">
-            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 THE INTUITIVE ANALOGY (The Shredded Letter)</h4>
+            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Forensic Analysis: Multi-File Trailing Overlay Splitting</h4>
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
-              Imagine an author writing a 26-letter secret password. Instead of mailing one letter, they tear the password into 3 pieces. They slip piece #1 into an envelope labeled <code>mystery.png</code>, piece #2 into <code>mystery2.png</code> (and add 21 to the first letter just to scramble it), and piece #3 into <code>mystery3.png</code>. They tape these scraps to the very outside bottom of each envelope (past the <code>IEND</code> seal). To solve it, we simply inspect the bottom of all 3 envelopes and solve the 26-slot jigsaw puzzle!
+              The binary reads <code>flag.txt</code> and fragments the 26-byte flag string across three separate target PNG images (<code>mystery.png</code>, <code>mystery2.png</code>, and <code>mystery3.png</code>). Each fragment is appended past the standard <code>IEND</code> end-of-file marker. Additionally, specific character transformations are applied (such as adding 21 to index 7 before writing to the second image). Extracting the full flag requires carving the trailing bytes from all three images and reversing the assignment indices.
             </p>
           </div>
         </div>

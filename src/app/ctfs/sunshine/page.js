@@ -366,7 +366,7 @@ while True:
             SunshineCTF 2026: Forensics Operations Dossier
           </h1>
           <p className="text-zinc-400 text-sm sm:text-base font-sans max-w-3xl leading-relaxed">
-            Ultra-detailed pedagogical writeups breaking down all 5 SunshineCTF forensics challenges: VoIP telephony stream carving, PNG IHDR height tampering, MSKLC typewriter snake trail graph walking, PPTM VBA macro deobfuscation, and dead key finite state machine analysis.
+            Full technical writeups for all 5 SunshineCTF forensics challenges: VoIP telephony stream carving, PNG IHDR height tampering, MSKLC typewriter snake trail graph walking, PPTM VBA macro deobfuscation, and dead key finite state machine analysis.
           </p>
         </div>
 
@@ -704,7 +704,7 @@ while True:
               {/* Step 2 */}
               <div id="sun-coal-olevba" className="scroll-mt-28 space-y-4 mb-8">
                 <div className="flex justify-between items-center">
-                  <span className="font-mono text-xs text-emerald-400 uppercase font-bold">MediaCache.bas — Extracted VBA Macro:</span>
+                  <span className="font-mono text-xs text-emerald-400 uppercase font-bold">MediaCache.bas: Extracted VBA Macro:</span>
                   <CopyButton text={nasVbaCode} />
                 </div>
                 <div className="bg-[#050508] border border-zinc-800 rounded-xl p-4 font-mono text-xs text-emerald-300/90 overflow-x-auto">

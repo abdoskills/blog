@@ -118,29 +118,29 @@ print("🎉 Reconstructed Sensor Flag:", flag)`;
           </h3>
 
           <div className="bg-[#111111] border-l-4 border-rose-500 p-6 rounded-r-xl my-6 shadow-lg">
-            <h4 className="text-rose-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 THE BEGINNER BREAKDOWN (The Smuggler&apos;s Truck Fleet)</h4>
+            <h4 className="text-rose-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Protocol Forensics: Covert Channel via TCP Urgent Pointer</h4>
             <p className="text-sm text-zinc-300 leading-relaxed">
-              Think of network traffic like cars driving on a busy highway. Most of the cars are just regular commuters (normal data). But if you look closely, you might notice a fleet of identical delivery trucks repeatedly driving by, and each truck has a single letter painted on its roof. If you write down the letters as the trucks pass by, they spell out a secret message! In this challenge, the attacker hid the stolen flag by splitting it into tiny pieces and smuggling it inside the &ldquo;headers&rdquo; (the roof) of normal-looking network packets.
+              Standard network traffic carries data inside the payload section. When packet payload is empty or filtered, covert channels can encode exfiltrated bytes into uninspected header fields. Here, the malware set the 16-bit TCP Urgent Pointer field on routine sensor heartbeat frames to transmit one ASCII byte per packet.
             </p>
           </div>
 
           <div className="bg-[#0a0a0a] border border-zinc-800 rounded-xl p-6 my-6 font-mono text-sm relative overflow-hidden">
             <div className="absolute top-0 left-0 w-1 h-full bg-rose-500 shadow-[0_0_15px_#f43f5e] animate-pulse"></div>
             <p className="text-zinc-400 mb-2"><span className="text-zinc-600">Q:</span> How was the flag exfiltrated from the sensor network?</p>
-            <p className="text-rose-400"><span className="text-zinc-600">A:</span> <code className="bg-black/50 px-2 py-0.5 rounded text-rose-300">Data Smuggling via Protocol Header Manipulation (TCP URG)</code></p>
+            <p className="text-rose-400"><span className="text-zinc-600">A:</span> <code className="bg-black/50 px-2 py-0.5 rounded text-rose-300">Data Exfiltration via TCP Urgent Pointer (URG) Covert Channel</code></p>
           </div>
 
           <p>
-            By utilizing Wireshark and <code className="text-rose-400 bg-rose-400/10 px-1 rounded">tshark</code>, we filtered out standard TCP handshakes and focused purely on anomalous packet lengths and malformed headers originating from the sensor subnet. The attacker was exploiting the{' '}
+            Using Wireshark and <code className="text-rose-400 bg-rose-400/10 px-1 rounded">tshark</code>, we filtered out standard TCP handshakes and focused on non-zero urgent pointer fields originating from the sensor subnet. The attacker exploited the{' '}
             <span className="relative group inline-block cursor-help z-50">
               <code className="font-mono text-sm text-rose-400 bg-rose-400/10 px-1.5 py-0.5 rounded border border-rose-400/20 hover:bg-rose-400/20 transition-colors">
                 TCP Urgent Pointer
               </code>
               <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-max max-w-xs px-3 py-2 bg-black border border-zinc-700 text-xs text-zinc-300 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-xl text-center">
-                A flag in the TCP header intended to prioritize data, rarely used today, making it perfect for stealthy data exfiltration.
+                A field in the TCP header historically intended to prioritize data, rarely used today, making it suited for covert data exfiltration.
               </span>
             </span>
-            {' '}field—typically unused in modern networks—to slowly bleed the flag out over thousands of seemingly benign heartbeat packets, one byte at a time.
+            {' '}field, typically unused in modern networks, to leak the flag byte-by-byte across consecutive packets.
           </p>
 
           <div className="bg-[#050505] border border-zinc-800 rounded-xl p-4 my-6 font-mono text-xs md:text-sm text-zinc-400 overflow-x-auto shadow-inner">

@@ -108,7 +108,7 @@ if __name__ == "__main__":
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-bold text-white font-[family-name:var(--font-share-tech)] tracking-wide">
-            Ping Pong Show — Memory Forensics, PoolParty &amp; Havoc Demon
+            Ping Pong Show: Memory Forensics, PoolParty &amp; Havoc Demon
           </h1>
           
           <p className="text-zinc-400 text-base sm:text-lg font-sans leading-relaxed">
@@ -127,10 +127,10 @@ if __name__ == "__main__":
           />
         </div>
 
-        {/* Intuitive Analogy / Attack Chain Overview */}
+        {/* Attack Flow Overview */}
         <section className="bg-[#0e0e13]/90 border border-zinc-800/80 rounded-2xl p-6 md:p-8 space-y-4 backdrop-blur-xl mb-12 shadow-xl">
           <h2 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider flex items-center gap-2.5">
-            <span className="text-emerald-400">⚡</span> The Intuitive Attack Chain
+            <span className="text-emerald-400">⚡</span> Attack Flow Overview
           </h2>
           <p className="text-sm md:text-base text-zinc-300 font-sans leading-relaxed">
             This challenge represents a realistic APT intrusion chain. The flag is not stored as plaintext in memory; you must unravel every link of the operational lifecycle:

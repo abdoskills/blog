@@ -162,14 +162,14 @@ print("Decoded Network Flag:", flag)`;
         {/* Content Body */}
         <div className="prose prose-invert max-w-none text-zinc-300 font-sans space-y-12">
 
-          {/* SECTION 1: THE INTUITIVE ANALOGY */}
+          {/* SECTION 1: COVERT CHANNEL ARCHITECTURE */}
           <section className="space-y-4">
             <div className="bg-[#07130e] border-l-4 border-emerald-500 p-6 rounded-r-xl shadow-md">
               <h3 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider m-0">
-                💡 The Intuitive Analogy: The Spy&apos;s Return Address
+                💡 Protocol Forensics: UDP Source Port Covert Channel
               </h3>
               <p className="text-sm md:text-base text-zinc-300 leading-relaxed m-0">
-                When ordinary people mail letters, they write the message inside the envelope (the payload) and put their address on the back. If a spy wants to exfiltrate secret data past mail censors who inspect letter contents, they write generic filler inside every envelope (like &ldquo;hello&rdquo; or &ldquo;aaaaa&rdquo;), but they intentionally forge <strong>fake return postal codes</strong> that encode secret ASCII bytes! This is called <strong>Network Header Steganography (Covert Channel)</strong>.
+                When network payloads are monitored or normalized, covert channels can encode exfiltration data directly into protocol header fields. In this capture, the sender dispatches UDP datagrams to port 22, but modulates the 16-bit <strong>UDP source port</strong> field using an arithmetic offset: <code>source_port = 5000 + ASCII_byte</code>. The transmission is bounded by delimiter packets with port 5000 representing start and end sentinels.
               </p>
             </div>
           </section>

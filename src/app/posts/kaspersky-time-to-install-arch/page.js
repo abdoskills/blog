@@ -90,7 +90,7 @@ if __name__ == "__main__":
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-bold text-white font-[family-name:var(--font-share-tech)] tracking-wide">
-            Time to Install Arch — TLS GREASE Covert Channel &amp; DLL Sideloading
+            Time to Install Arch: TLS GREASE Covert Channel &amp; DLL Sideloading
           </h1>
           
           <p className="text-zinc-400 text-base sm:text-lg font-sans leading-relaxed">
@@ -109,10 +109,10 @@ if __name__ == "__main__":
           />
         </div>
 
-        {/* Intuitive Analogy / Overview */}
+        {/* Covert Channel Concept */}
         <section className="bg-[#0e0e13]/90 border border-zinc-800/80 rounded-2xl p-6 md:p-8 space-y-4 backdrop-blur-xl mb-12 shadow-xl">
           <h2 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider flex items-center gap-2.5">
-            <span className="text-emerald-400">⚡</span> The Intuitive Attack Concept
+            <span className="text-emerald-400">⚡</span> Covert Channel Concept: TLS GREASE
           </h2>
           <p className="text-sm md:text-base text-zinc-300 font-sans leading-relaxed">
             In modern TLS 1.3 handshakes, <strong>GREASE (Generate Random Extensions And Sustain Extensibility)</strong> values like <code className="text-emerald-300 font-mono">0x0a0a</code> are randomly sent to ensure middleboxes don&apos;t break on unknown extensions. Here, the malware abused this mechanism by packing 16 bytes of encrypted C2 commands inside the GREASE extension of every handshake:

@@ -140,12 +140,12 @@ char codedChar(int bit, char val, char orig_byte) {
           </div>
         </div>
 
-        {/* Section 1: The Intuitive Analogy */}
+        {/* Section 1: LSB Bit Extraction Analysis */}
         <div className="space-y-6 text-zinc-300 leading-relaxed font-sans mb-12">
           <div className="bg-[#07130e] border-l-4 border-emerald-500 p-6 rounded-r-xl shadow-md">
-            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 THE INTUITIVE ANALOGY (The Even/Odd Morse Code)</h4>
+            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Forensic Analysis: BMP LSB Steganography &amp; Arithmetic Encoding</h4>
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
-              Suppose a spy wants to send a secret number. Instead of writing the number down, he gives you a list of 8 large numbers. If a number is <strong>Even</strong>, it represents a <strong>0</strong>. If a number is <strong>Odd</strong>, it represents a <strong>1</strong>. By reading the even/odd state of 8 consecutive pixels in an uncompressed Bitmap image, you get an 8-bit binary number. Then add 5 to reveal the secret letter!
+              Decompilation reveals that the binary embeds flag characters into the pixel raster of an uncompressed Bitmap file (<code>encoded.bmp</code>) using Least Significant Bit (LSB) steganography. For each flag byte, 5 is added arithmetically before the 8 bits are mapped into the parity (LSB) of 8 sequential image bytes starting at offset <code>0x7E3</code>. Reversing the process requires extracting the LSB stream, assembling each 8-bit byte, and subtracting 5.
             </p>
           </div>
         </div>

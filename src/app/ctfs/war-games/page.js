@@ -289,10 +289,10 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
           </div>
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white font-[family-name:var(--font-silkscreen)] tracking-wide mb-3">
-            War Games 2026: ASCWG Operations Dossier
+            War Games 2026: ASCWG Operations
           </h1>
           <p className="text-zinc-400 text-sm sm:text-base font-sans max-w-3xl leading-relaxed">
-            Complete, end-to-end operational writeups across all 7 official Arab Security Cyber Wargames (ASCWG 2026) challenges: macOS Mach-O reverse engineering, Windows ESE database carving, ICS telemetry covert channels, Bitcoin CoinJoin de-anonymization, Ethereum DeFi reentrancy, lattice cryptography, and web auth bypass.
+            Writeups for all 7 Arab Security Cyber Wargames (ASCWG 2026) challenges: macOS Mach-O reverse engineering, Windows ESE database carving, ICS network covert channels, Bitcoin CoinJoin tracking, Ethereum DeFi reentrancy, post-quantum cryptography, and web auth bypass.
           </p>
         </div>
 
@@ -369,9 +369,9 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
                 </h3>
 
                 <div className="bg-[#0b131a] border-l-4 border-cyan-500 p-5 rounded-r-xl shadow-lg">
-                  <h4 className="text-cyan-400 font-bold mb-1 font-mono text-xs uppercase tracking-wider">💡 THE BEGINNER BREAKDOWN (The Trojanized Engine)</h4>
+                  <h4 className="text-cyan-400 font-bold mb-1 font-mono text-xs uppercase tracking-wider">💡 Trojanized Signal Binary</h4>
                   <p className="text-sm text-zinc-300 leading-relaxed font-sans">
-                    Imagine you download a secure messaging app like Signal. You trust it because the icon looks right and the name is right. But what if a hacker replaced the internal engine of that app with a spy camera? Every time you send a secure message, the &ldquo;spy camera&rdquo; takes a picture and sends it to the hacker&apos;s server, all while the app still functions normally on your screen. This is a trojanized application.
+                    Inspection of the macOS application bundle revealed that the legitimate Signal binary had been swapped out for a backdoored Mach-O executable. The modified binary intercepts outgoing messages and exfiltrates them over a raw TCP socket to an attacker-controlled C2 server before delivering them to the real Signal service.
                   </p>
                 </div>
 
@@ -547,9 +547,9 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
                 </h3>
 
                 <div className="bg-[#141008] border-l-4 border-amber-500 p-5 rounded-r-xl shadow-lg">
-                  <h4 className="text-amber-400 font-bold mb-1 font-mono text-xs uppercase tracking-wider">💡 THE BEGINNER BREAKDOWN (Footprints in the Registry)</h4>
+                  <h4 className="text-amber-400 font-bold mb-1 font-mono text-xs uppercase tracking-wider">💡 Forensic Analysis: Execution &amp; Artifact Staging</h4>
                   <p className="text-sm text-zinc-300 leading-relaxed font-sans">
-                    If a burglar breaks into a house, they usually leave footprints near the window they smashed. In Windows, every time a program is run, the operating system quietly takes notes about it (like &ldquo;Program Compatibility&rdquo; logs) just in case the program crashes later. We found a footprint showing that a fake program called <code>OfficeUpdater.exe</code> was launched. But searching for the stolen goods inside that file was a trap! The burglar actually hid the loot inside the house&apos;s own security ledger.
+                    Windows Program Compatibility Assistant (PCA) keeps execution evidence in the registry and diagnostic stores. While <code>OfficeUpdater.exe</code> execution was confirmed via PCA entries, the binary itself was a decoy dropper. The encrypted payload buffer was staged directly inside the Windows Search database (<code>Windows.db</code>), requiring ESE database parsing to carve the raw ciphertext blob.
                   </p>
                 </div>
 
@@ -703,20 +703,20 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
                 </h3>
 
                 <div className="bg-[#111111] border-l-4 border-rose-500 p-5 rounded-r-xl shadow-lg">
-                  <h4 className="text-rose-400 font-bold mb-1 font-mono text-xs uppercase tracking-wider">💡 THE BEGINNER BREAKDOWN (The Smuggler&apos;s Truck Fleet)</h4>
+                  <h4 className="text-rose-400 font-bold mb-1 font-mono text-xs uppercase tracking-wider">💡 Protocol Forensics: Covert Channel via TCP Urgent Pointer</h4>
                   <p className="text-sm text-zinc-300 leading-relaxed font-sans">
-                    Think of network traffic like cars driving on a busy highway. Most of the cars are just regular commuters (normal data). But if you look closely, you might notice a fleet of identical delivery trucks repeatedly driving by, and each truck has a single letter painted on its roof. If you write down the letters as the trucks pass by, they spell out a secret message! In this challenge, the attacker hid the stolen flag by splitting it into tiny pieces and smuggling it inside the &ldquo;headers&rdquo; (the roof) of normal-looking network packets.
+                    Standard network traffic carries data inside the payload section. When packet payload is empty or filtered, covert channels can encode exfiltrated bytes into uninspected header fields. Here, the malware set the 16-bit TCP Urgent Pointer field on routine sensor heartbeat frames to transmit one ASCII byte per packet.
                   </p>
                 </div>
 
                 <div className="bg-[#0a0a0a] border border-zinc-800 rounded-xl p-4 font-mono text-sm relative overflow-hidden">
                   <div className="absolute top-0 left-0 w-1 h-full bg-rose-500"></div>
                   <p className="text-zinc-400 mb-1"><span className="text-zinc-600">Q:</span> How was the flag exfiltrated from the sensor network?</p>
-                  <p className="text-rose-400"><span className="text-zinc-600">A:</span> <code className="bg-black/50 px-2 py-0.5 rounded text-rose-300">Data Smuggling via Protocol Header Manipulation (TCP URG)</code></p>
+                  <p className="text-rose-400"><span className="text-zinc-600">A:</span> <code className="bg-black/50 px-2 py-0.5 rounded text-rose-300">Data Exfiltration via TCP Urgent Pointer (URG) Covert Channel</code></p>
                 </div>
 
                 <p className="text-sm text-zinc-300 leading-relaxed font-sans">
-                  By utilizing Wireshark and <code className="text-rose-400 bg-rose-400/10 px-1 rounded">tshark</code>, we filtered out standard TCP handshakes and focused purely on anomalous packet lengths and malformed headers originating from the sensor subnet. The attacker was exploiting the TCP Urgent Pointer field—typically unused in modern networks—to slowly bleed the flag out over thousands of heartbeat packets, one byte at a time.
+                  Using Wireshark and <code className="text-rose-400 bg-rose-400/10 px-1 rounded">tshark</code>, we filtered out normal handshakes and targeted non-zero urgent pointer fields from the sensor IP. The attacker abused the TCP Urgent Pointer field, usually unused in modern network traffic, to leak the flag byte-by-byte across consecutive packets.
                 </p>
               </div>
 
@@ -845,9 +845,9 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
                 </h3>
 
                 <div className="bg-[#100d1a] border-l-4 border-purple-500 p-5 rounded-r-xl shadow-lg">
-                  <h4 className="text-purple-400 font-bold mb-1 font-mono text-xs uppercase tracking-wider">💡 THE BEGINNER BREAKDOWN (The Criminal&apos;s $100 Bill)</h4>
+                  <h4 className="text-purple-400 font-bold mb-1 font-mono text-xs uppercase tracking-wider">💡 Blockchain Forensics: Peel Chain Mechanics</h4>
                   <p className="text-sm text-zinc-300 leading-relaxed font-sans">
-                    When a criminal steals $100,000, they rarely spend it all at once. They will send $99,000 to a new wallet, and spend $1,000 on a fake ID. Then they send $98,000 to another wallet, and spend $1,000 on server hosting. This leaves a trail of &ldquo;peels&rdquo; (the small spends) and the &ldquo;pot&rdquo; (the main bulk of money moving forward). In blockchain tracing, we ignore the peels and relentlessly follow the biggest pot.
+                    A peel chain is a laundering pattern where an address with a large balance repeatedly sends small fractions to payment or cash-out endpoints while forwarding the majority of funds to a fresh change address. In UTXO graph analysis, isolating the largest output value at each transaction hop allows us to track the principal fund stream across multiple hops.
                   </p>
                 </div>
 
@@ -951,9 +951,9 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
                 </h3>
 
                 <div className="bg-[#111111] border-l-4 border-blue-500 p-5 rounded-r-xl shadow-lg">
-                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">💡 THE BEGINNER BREAKDOWN</h4>
+                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">💡 Vulnerability: Checks-Effects-Interactions Violation</h4>
                   <p className="text-sm text-zinc-400 leading-relaxed font-sans">
-                    Imagine you go to an ATM to withdraw $100. The ATM hands you the cash, but right before it updates your account balance to zero, you quickly press &quot;Withdraw&quot; again. Because the machine hasn&apos;t updated its records yet, it hands you another $100. This is a <strong>Reentrancy Attack</strong>—tricking a computer program into giving you money multiple times before it realizes you&apos;re broke.
+                    GenesisVault executed an external ETH transfer before decrementing the user&apos;s internal ledger balance. A malicious fallback function can repeatedly call into the withdrawal function during the execution frame before the state update occurs, draining the vault liquidity.
                   </p>
                 </div>
 
@@ -971,9 +971,9 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
                 </h3>
 
                 <div className="bg-[#111111] border-l-4 border-blue-500 p-5 rounded-r-xl shadow-lg">
-                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">💡 THE BEGINNER BREAKDOWN</h4>
+                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">💡 Vulnerability: Missing Caller Ownership Validation</h4>
                   <p className="text-sm text-zinc-400 leading-relaxed font-sans">
-                    Think of an exclusive club where you need a VIP ID card to enter. The bouncer asks, &quot;Do you have an ID card?&quot; You show them a picture of your friend&apos;s ID card. The bouncer says, &quot;Yep, that&apos;s a valid ID card,&quot; and lets you in without checking if the face on the card matches <em>your</em> face.
+                    PatchedVault checked whether the provided GhostShare NFT token ID possessed liquidation rights, but failed to verify whether <code>msg.sender</code> actually owned or had approval for that specific token ID. Any caller could supply a valid token ID held by an external user and trigger unauthorized liquidations.
                   </p>
                 </div>
 
@@ -989,9 +989,9 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
                 </h3>
 
                 <div className="bg-[#111111] border-l-4 border-blue-500 p-5 rounded-r-xl shadow-lg">
-                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">💡 THE BEGINNER BREAKDOWN</h4>
+                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">💡 Vulnerability: EIP-712 Signature Replay (Missing Nonce)</h4>
                   <p className="text-sm text-zinc-400 leading-relaxed font-sans">
-                    Imagine writing a physical check for $100 and signing it. The bank cashes it. But what if the bank teller kept a photocopy of your signature and just pasted it onto a blank check the next day? To prevent this, real checks have unique Check Numbers (Nonces). If the bank sees the same Check Number twice, they reject it. This vault forgot to use Check Numbers.
+                    SignedVault verified off-chain admin signatures using EIP-712 typed structured data. Because the hash schema lacked a per-user nonce or deadline timestamp, an intercepted signature remained valid indefinitely and was replayed to drain additional funds.
                   </p>
                 </div>
 
@@ -1009,9 +1009,9 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
                 </h3>
 
                 <div className="bg-[#111111] border-l-4 border-blue-500 p-5 rounded-r-xl shadow-lg">
-                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">💡 THE BEGINNER BREAKDOWN</h4>
+                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">💡 Vulnerability: Spot AMM Price Oracle Manipulation</h4>
                   <p className="text-sm text-zinc-400 leading-relaxed font-sans">
-                    Imagine a bank uses a single local pawn shop to determine the price of gold. A thief walks into the pawn shop, dumps 10 tons of fake gold on the counter, and causes the local price of gold to crash to $1. The thief then runs across the street to the bank and says, &quot;Look, gold is worthless now! Liquidate all your customers&apos; gold accounts and sell them to me for $1!&quot;
+                    OracleVault queried instantaneous token reserves from a low-liquidity AMM pool rather than a Time-Weighted Average Price (TWAP) or decentralized oracle feed. By leveraging a flash loan to swap against the pool, the attacker manipulated the spot price within a single transaction block to force bad-debt liquidations.
                   </p>
                 </div>
 
@@ -1070,9 +1070,9 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
                 </h3>
 
                 <div className="bg-[#111111] border-l-4 border-blue-500 p-5 rounded-r-xl shadow-lg">
-                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">💡 THE BEGINNER BREAKDOWN</h4>
+                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">💡 Cryptanalysis: Coppersmith&apos;s Small Roots via LLL</h4>
                   <p className="text-sm text-zinc-400 leading-relaxed font-sans">
-                    Imagine you are trying to guess a secret recipe where you only know the final taste of the soup. Normally, this is impossible because there are infinite ways to make soup. But what if you know the chef <em>only</em> measures ingredients in whole cups (1 cup, 2 cups... never 1.5 cups)? Because the possibilities are locked to whole numbers, we can use a &quot;mathematical sorting machine&quot; (Lattice Reduction) to test combinations until we find the exact recipe that creates that taste.
+                    When RSA plaintext is partially known or stereotypic, the unknown portion can be expressed as a root of a monic polynomial modulo N. If the root size is bounded (here x &lt; 2^256), Coppersmith&apos;s theorem maps the problem to finding a short vector in a polynomial lattice using LLL, solving for the secret root in polynomial time.
                   </p>
                 </div>
 
@@ -1102,9 +1102,9 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
                 </h3>
 
                 <div className="bg-[#111111] border-l-4 border-blue-500 p-5 rounded-r-xl shadow-lg">
-                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">💡 THE BEGINNER BREAKDOWN</h4>
+                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">💡 Protocol Analysis: Honest-Verifier ZKP Flaw</h4>
                   <p className="text-sm text-zinc-400 leading-relaxed font-sans">
-                    In a Zero-Knowledge Proof, you prove you know a secret without revealing it. Imagine a blindfolded guard asks you to pick a colored ball from a bag, then asks you what color it is. If you answer correctly, you pass. But what if the guard is poorly trained and says: &quot;Tell me a color, <em>then</em> I will pick a ball to match it!&quot; You can just say &quot;Red,&quot; and he is forced to pull a red ball. The order of the conversation is reversed, completely destroying the security.
+                    In interactive identification protocols (like Schnorr or Fiat-Shamir variants), the prover must commit before receiving the verifier&apos;s random challenge. If the verifier emits the challenge prior to receiving the commitment, or allows the prover to dictate challenge ordering, the simulator can forge valid proofs without possessing the private discrete logarithm.
                   </p>
                 </div>
 
@@ -1122,9 +1122,9 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
                 </h3>
 
                 <div className="bg-[#111111] border-l-4 border-blue-500 p-5 rounded-r-xl shadow-lg">
-                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">💡 THE BEGINNER BREAKDOWN</h4>
+                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">💡 Post-Quantum Analysis: SIDH Torsion Point Attack</h4>
                   <p className="text-sm text-zinc-400 leading-relaxed font-sans">
-                    Standard cryptography is like locking a door with a key. Quantum computers act like a sledgehammer that breaks the door down entirely. <strong>Isogenies</strong> are a &quot;Post-Quantum&quot; idea: instead of locking a door, you hide the treasure at the end of a massive, complex maze. Even a sledgehammer can&apos;t help you navigate a maze. However, in this challenge, the maze creator accidentally dropped breadcrumbs (auxiliary points) that let us trace the exact path to the treasure.
+                    Supersingular Isogeny Diffie-Hellman protocols exchange images of auxiliary torsion points to evaluate shared secrets. Providing auxiliary point images allows an adversary to evaluate the endomorphism ring structure (Castryck-Decru attack style), recovering the private isogeny degree step-by-step using Vélu&apos;s formulas.
                   </p>
                 </div>
 
@@ -1171,9 +1171,9 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
                 </h3>
 
                 <div className="bg-[#111111] border-l-4 border-blue-500 p-5 rounded-r-xl shadow-lg">
-                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">💡 THE BEGINNER BREAKDOWN</h4>
+                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">💡 Web Security: Host Header Webhook Poisoning</h4>
                   <p className="text-sm text-zinc-400 leading-relaxed font-sans">
-                    Imagine an automated post office that mails a secret PIN code to an admin&apos;s house so they can log in. The post office decides where to mail the letter based on the return address written on the envelope. By forging the return address (HTTP Headers) to point to <em>our</em> house instead of the admin&apos;s house, the post office accidentally mails the secret PIN directly to us, allowing us to log in as the admin.
+                    The backend authentication service generated an outbound OTP webhook request by constructing the callback target from the client-supplied <code>Host</code> header without strict domain allowlisting. By replacing the <code>Host</code> header with an attacker-controlled endpoint while preserving <code>X-Original-Host</code>, the server dispatched the plaintext OTP directly to our listener.
                   </p>
                 </div>
 

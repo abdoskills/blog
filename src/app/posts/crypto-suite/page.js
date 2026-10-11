@@ -61,9 +61,9 @@ export default function CryptoSuiteWriteup() {
           </h3>
           
           <div className="bg-[#111111] border-l-4 border-blue-500 p-6 rounded-r-xl my-6 shadow-lg">
-            <h4 className="text-blue-400 font-bold mb-2 font-mono text-sm">💡 THE BEGINNER BREAKDOWN</h4>
+            <h4 className="text-blue-400 font-bold mb-2 font-mono text-sm">💡 Cryptanalysis: Coppersmith&apos;s Small Roots via LLL</h4>
             <p className="text-sm text-zinc-400 leading-relaxed">
-              Imagine you are trying to guess a secret recipe where you only know the final taste of the soup. Normally, this is impossible because there are infinite ways to make soup. But what if you know the chef <em>only</em> measures ingredients in whole cups (1 cup, 2 cups... never 1.5 cups)? Because the possibilities are locked to whole numbers, we can use a "mathematical sorting machine" (Lattice Reduction) to test combinations until we find the exact recipe that creates that taste.
+              When RSA plaintext is partially known or stereotypic, the unknown portion can be expressed as a root of a monic polynomial modulo N. If the root size is bounded (here x &lt; 2^256), Coppersmith&apos;s theorem maps the problem to finding a short vector in a polynomial lattice using LLL, solving for the secret root in polynomial time.
             </p>
           </div>
 
@@ -124,10 +124,9 @@ export default function CryptoSuiteWriteup() {
           </h3>
 
           <div className="bg-[#111111] border-l-4 border-blue-500 p-6 rounded-r-xl my-6 shadow-lg">
-            <h4 className="text-blue-400 font-bold mb-2 font-mono text-sm">💡 THE BEGINNER BREAKDOWN</h4>
+            <h4 className="text-blue-400 font-bold mb-2 font-mono text-sm">💡 Protocol Analysis: Honest-Verifier ZKP Flaw</h4>
             <p className="text-sm text-zinc-400 leading-relaxed">
-              In a Zero-Knowledge Proof, you prove you know a secret without revealing it. Imagine a blindfolded guard asks you to pick a colored ball from a bag, then asks you what color it is. If you answer correctly, you pass. <br/><br/>
-              But what if the guard is poorly trained and says: "Tell me a color, <em>then</em> I will pick a ball to match it!" You can just say "Red," and he is forced to pull a red ball. The order of the conversation is reversed, completely destroying the security.
+              In interactive identification protocols (like Schnorr or Fiat-Shamir variants), the prover must commit before receiving the verifier&apos;s random challenge. If the verifier emits the challenge prior to receiving the commitment, or allows the prover to dictate challenge ordering, the simulator can forge valid proofs without possessing the private discrete logarithm.
             </p>
           </div>
 
@@ -151,9 +150,9 @@ export default function CryptoSuiteWriteup() {
           </h3>
           
           <div className="bg-[#111111] border-l-4 border-blue-500 p-6 rounded-r-xl my-6 shadow-lg">
-            <h4 className="text-blue-400 font-bold mb-2 font-mono text-sm">💡 THE BEGINNER BREAKDOWN</h4>
+            <h4 className="text-blue-400 font-bold mb-2 font-mono text-sm">💡 Post-Quantum Analysis: SIDH Torsion Point Attack</h4>
             <p className="text-sm text-zinc-400 leading-relaxed">
-              Standard cryptography is like locking a door with a key. Quantum computers act like a sledgehammer that breaks the door down entirely. <strong>Isogenies</strong> are a "Post-Quantum" idea: instead of locking a door, you hide the treasure at the end of a massive, complex maze. Even a sledgehammer can&apos;t help you navigate a maze. However, in this challenge, the maze creator accidentally dropped breadcrumbs (auxiliary points) that let us trace the exact path to the treasure.
+              Supersingular Isogeny Diffie-Hellman protocols exchange images of auxiliary torsion points to evaluate shared secrets. Providing auxiliary point images allows an adversary to evaluate the endomorphism ring structure (Castryck-Decru attack style), recovering the private isogeny degree step-by-step using Vélu&apos;s formulas.
             </p>
           </div>
 

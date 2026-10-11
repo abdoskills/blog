@@ -139,12 +139,12 @@ print("🎉 Decoded Flag:", flag)`;
           </div>
         </div>
 
-        {/* Section 1: The Intuitive Analogy */}
+        {/* Section 1: PNG Overlay Trailing Bytes Analysis */}
         <div className="space-y-6 text-zinc-300 leading-relaxed font-sans mb-12">
           <div className="bg-[#07130e] border-l-4 border-emerald-500 p-6 rounded-r-xl shadow-md">
-            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 THE INTUITIVE ANALOGY (The Envelope Sticky Note)</h4>
+            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Forensic Analysis: Trailing Overlay Injection</h4>
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
-              Imagine you seal a letter inside an envelope (a valid PNG file). After sealing the envelope with wax (the <code>IEND</code> marker), you tape a sticky note onto the outside back of the envelope with a message where some letters are shifted by $+5$ in the alphabet. Standard mail scanning machines only look at the address on the front and ignore anything taped past the seal. To read the secret, we just look past the seal and shift the letters back!
+              Standard image parsers terminate processing once the <code>IEND</code> trailer chunk (<code>49 45 4E 44 AE 42 60 82</code>) is reached, ignoring any data appended past that marker. The compiled <code>mystery</code> binary reads <code>flag.txt</code>, applies an arithmetic shift (+5) to byte indices 6 through 15, and appends the transformed stream to the end of <code>mystery.png</code> as an unparsed trailing overlay.
             </p>
           </div>
         </div>

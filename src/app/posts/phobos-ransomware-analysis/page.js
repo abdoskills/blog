@@ -145,7 +145,7 @@ export default function PhobosWriteup() {
           </div>
 
           <p>
-            Instead of reading thousands of lines of Assembly, I searched the memory in Ghidra for standard cryptographic constants. This led me straight to <code className="font-mono text-sm text-pink-400 bg-pink-400/10 px-1.5 py-0.5 rounded">0xEDB88320</code>—the universal magic constant for CRC32.
+            Instead of reading thousands of lines of Assembly, I searched the memory in Ghidra for standard cryptographic constants. This led me straight to <code className="font-mono text-sm text-pink-400 bg-pink-400/10 px-1.5 py-0.5 rounded">0xEDB88320</code>, the universal magic constant for CRC32.
           </p>
 
           <hr className="border-zinc-800 my-12" />
@@ -184,7 +184,7 @@ export default function PhobosWriteup() {
           
           <ul className="list-disc pl-6 space-y-2 marker:text-green-500">
             <li>If a file is smaller than 1.5MB, it encrypts the whole thing.</li>
-            <li>If a file is larger, it utilizes <strong>Partial Encryption</strong>—skipping the middle and only destroying the file headers and footers.</li>
+            <li>If a file is larger, it utilizes <strong>Partial Encryption</strong>: skipping the middle and only destroying the file headers and footers.</li>
           </ul>
 
           <p>The file is permanently corrupted, but the encryption finishes in seconds instead of hours.</p>

@@ -58,7 +58,7 @@ export default function ByteMeHub() {
             Byte Me CTF 2026
           </h1>
           <p className="text-zinc-400 text-sm sm:text-base md:text-lg font-sans max-w-2xl mx-auto leading-relaxed">
-            Full operational breakdowns for the Vormir expedition — Enterprise Windows memory forensics, audio spectrograms, network stream carving, and algorithmic puzzle reconstruction.
+            Writeups for Byte Me CTF 2026: Windows memory forensics, audio analysis, network stream carving, and algorithmic QR puzzle reconstruction.
           </p>
 
           {/* Quick Metrics Bar */}

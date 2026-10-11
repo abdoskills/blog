@@ -105,12 +105,12 @@ if header == b'\\x89PNG\\r\\n\\x1a\\n':
           </div>
         </div>
 
-        {/* Section 1: The Intuitive Analogy */}
+        {/* Section 1: Magic Bytes vs Extensions */}
         <div className="space-y-6 text-zinc-300 leading-relaxed font-sans mb-12">
           <div className="bg-[#07130e] border-l-4 border-emerald-500 p-6 rounded-r-xl shadow-md">
-            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 THE INTUITIVE ANALOGY (The Misleading Label)</h4>
+            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Forensic Principle: Magic Bytes vs File Extensions</h4>
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
-              Imagine you have a jar of strawberry jam, but someone sticks a label on it that says &ldquo;Motor Oil&rdquo;. The label on the outside doesn&apos;t change the delicious strawberry jam inside! File extensions (like <code>.txt</code> or <code>.png</code>) are just labels for human convenience. Computers inspect the first few bytes (the &ldquo;Magic Bytes&rdquo;) to know what the file actually is.
+              Operating system shells often rely on file extensions to associate default handler applications, but the true file format is determined by its header signature (magic bytes). If a PNG file is renamed with a <code>.txt</code> extension, text editors fail or display binary noise, while inspecting the initial 8 bytes immediately exposes the standard PNG magic signature: <code>89 50 4E 47 0D 0A 1A 0A</code>.
             </p>
           </div>
         </div>

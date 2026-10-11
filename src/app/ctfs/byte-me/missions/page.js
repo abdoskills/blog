@@ -192,7 +192,7 @@ export default function ByteMeMissionsPage() {
             Missions: Algorithmic QR Reconstruction
           </h1>
           <p className="text-zinc-400 text-sm sm:text-base font-sans max-w-3xl leading-relaxed">
-            The complete 5-level escalation of algorithmic QR puzzle solving (&ldquo;unemployed at its peak&rdquo;) + OSINT recon. Ultra-detailed pedagogical breakdown for every single level: <strong>Challenge Description</strong>, <strong>The Plain-English Concept</strong>, explicit <strong>[ 📥 INPUT ]</strong> scripts and <strong>[ 📤 OUTPUT ]</strong> values, <strong>Line-by-Line Logic</strong>, <strong>Full Python Solver Scripts</strong>, and <strong>Verified Flags</strong>.
+            Walkthrough of the 5-level QR reconstruction track and OSINT challenge from Byte Me CTF 2026. For each level: piece analysis, matching strategy, full Python solver scripts, and flags.
           </p>
         </div>
 
@@ -223,7 +223,7 @@ export default function ByteMeMissionsPage() {
                   </span>
                 </div>
                 <h2 className="text-2xl sm:text-4xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wide mb-3">
-                  Level 0 — First Fragment
+                  Level 0: First Fragment
                 </h2>
                 <p className="text-zinc-400 font-sans text-sm sm:text-base leading-relaxed">
                   We are given 9 image tiles (<code className="text-zinc-300 font-mono">piece_001.png</code> through <code className="text-zinc-300 font-mono">piece_009.png</code>) in folder <code className="text-zinc-300 font-mono">pieces_0</code>. Each piece is exactly 400x400 pixels, assembling into a 3x3 QR canvas (1200x1200 px).
@@ -236,21 +236,21 @@ export default function ByteMeMissionsPage() {
                 &ldquo;Nine fragments of an ancient seal have been scattered across the gate of Vormir. Reconstruct the fragments into a unified symbol to recover the first passkey.&rdquo;
               </div>
 
-              {/* The Concept in Plain English */}
+              {/* How to solve */}
               <div className="bg-[#111116] border-l-4 border-emerald-500 p-5 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 leading-relaxed">
                 <h4 className="text-emerald-400 font-bold mb-1.5 font-mono text-xs uppercase tracking-wider flex items-center gap-2">
-                  <span>💡</span> The Core Problem Explained: What is a QR Quiet Zone?
+                  <span>💡</span> Using QR quiet zones to place border pieces
                 </h4>
                 <p className="text-zinc-400 text-xs sm:text-sm">
-                  Think of a QR code like a painting that MUST have a pure white picture frame around it. In the official ISO/IEC 18004 QR specification, this white border is called the <strong>Quiet Zone</strong>: a margin of at least 4 modules of solid white space surrounding the active data matrix.
+                  QR codes require a solid white margin around the entire active code (called the Quiet Zone).
                   <br /><br />
-                  Because of this rule, we don&apos;t need to guess where pieces go:
+                  Because of this:
                   <br />
-                  • If a piece has a <strong>pure white top edge</strong>, it CANNOT be in the middle or bottom row — it <strong>MUST</strong> be in Row 0 (the top row)!
+                  • If a piece has a solid white top edge, it has to be in Row 0 (the top row).
                   <br />
-                  • If a piece has a <strong>pure white bottom edge</strong>, it <strong>MUST</strong> be in Row 2 (the bottom row)!
+                  • If a piece has a solid white bottom edge, it has to be in Row 2 (the bottom row).
                   <br />
-                  • If a piece has pure white on <strong>both top and left</strong>, it is guaranteed to be the <strong>Top-Left Corner</strong>!
+                  • If a piece has white on both top and left, it has to be the top-left corner.
                 </p>
               </div>
 
@@ -391,7 +391,7 @@ print(f"[🎯] Decoded Flag: {flag}")
                   </span>
                 </div>
                 <h2 className="text-2xl sm:text-4xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wide mb-3">
-                  Level 1 — Shattered Memories
+                  Level 1: Shattered Memories
                 </h2>
                 <p className="text-zinc-400 font-sans text-sm sm:text-base leading-relaxed">
                   Sixteen puzzle pieces in folder <code className="text-zinc-300 font-mono">pieces_1</code> forming a 4x4 QR code canvas (1200 x 1200 px).
@@ -404,21 +404,17 @@ print(f"[🎯] Decoded Flag: {flag}")
                 &ldquo;Sixteen fractured memory tiles remain. The borders are subtle and the pieces are scattered in a 4x4 matrix. Realign the seams to reveal the shattered truth.&rdquo;
               </div>
 
-              {/* The Concept in Plain English */}
+              {/* The Concept */}
               <div className="bg-[#111116] border-l-4 border-emerald-500 p-5 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 leading-relaxed">
                 <h4 className="text-emerald-400 font-bold mb-1.5 font-mono text-xs uppercase tracking-wider flex items-center gap-2">
-                  <span>💡</span> The Core Problem Explained: Why Brute Force Is Impossible
+                  <span>💡</span> Seam matching instead of brute force
                 </h4>
                 <p className="text-zinc-400 text-xs sm:text-sm">
-                  With 16 tiles, how many ways can you arrange them in a 4x4 grid?
-                  <br />
-                  <code className="text-white font-mono font-bold block my-1">Total Permutations = 16! = 20,922,789,888,000 combinations!</code>
-                  If your computer checked 1,000,000 grids per second, it would take <strong>242 days</strong> of non-stop computing!
+                  With 16 tiles in a 4x4 grid, brute forcing all combinations ($16! \approx 2 \times 10^{13}$) is impossible.
                   <br /><br />
-                  <strong>The 1D Seam-Matching Breakthrough:</strong>
-                  Instead of guessing full grids, imagine tearing a receipt into pieces. If Tile A sits directly on top of Tile B, then the very bottom line of pixels of Tile A (Row 299) <strong>MUST BE 100% IDENTICAL</strong> to the very top line of pixels of Tile B (Row 0)!
+                  Instead, we match adjacent pixel seams: if Tile A sits directly above Tile B, the bottom row of pixels of Tile A (Row 299) must match the top row of pixels of Tile B (Row 0).
                   <br />
-                  Comparing all 16 tiles against each other takes only $16 \times 16 = 256$ operations ($O(N^2)$), running in <strong>0.005 seconds</strong>!
+                  Comparing the edges of all 16 tiles takes only $16 \times 16 = 256$ operations ($O(N^2)$), running in milliseconds.
                 </p>
               </div>
 
@@ -540,10 +536,10 @@ print(f"[🎯] Decoded Flag: {flag}")
                   </span>
                 </div>
                 <h2 className="text-2xl sm:text-4xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wide mb-3">
-                  Level 2 — False Souls
+                  Level 2: False Souls
                 </h2>
                 <p className="text-zinc-400 font-sans text-sm sm:text-base leading-relaxed">
-                  Twenty-nine fragments in folder <code className="text-zinc-300 font-mono">pieces_2</code> (240x240 px). Pieces are randomly rotated (0°, 90°, 180°, 270°) and 4 pieces are synthetic impostors!
+                  Twenty-nine fragments in folder <code className="text-zinc-300 font-mono">pieces_2</code> (240x240 px). Pieces are randomly rotated (0°, 90°, 180°, 270°) and 4 pieces are synthetic impostors.
                 </p>
               </div>
 
@@ -553,21 +549,19 @@ print(f"[🎯] Decoded Flag: {flag}")
                 &ldquo;Not every fragment belongs to the Soul Stone. Among the scattered remains, false souls have been mixed with the genuine pieces. Identify the four impostors and reconstruct the true message before the deception consumes the trail.&rdquo;
               </div>
 
-              {/* The Concept in Plain English */}
+              {/* The Concept */}
               <div className="bg-[#111116] border-l-4 border-emerald-500 p-5 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 leading-relaxed">
                 <h4 className="text-emerald-400 font-bold mb-1.5 font-mono text-xs uppercase tracking-wider flex items-center gap-2">
-                  <span>💡</span> The Core Problem Explained: How to Catch Impostor Pieces
+                  <span>💡</span> Filtering out impostor tiles
                 </h4>
                 <p className="text-zinc-400 text-xs sm:text-sm">
-                  In Level 2, the challenge creator added two evil tricks:
+                  Level 2 adds two complications:
                   <br />
-                  1. <strong>Rotational Invariance ($D_4$)</strong>: Every piece could be turned sideways or upside down (4 rotations per piece = $29 \times 4 = 116$ candidate orientations).
+                  1. <strong>Rotations ($D_4$)</strong>: Each piece can be oriented in 4 directions ($29 \times 4 = 116$ candidate orientations).
                   <br />
-                  2. <strong>False Injections (Impostors)</strong>: A 5x5 grid only needs 25 pieces, but you are given 29! Exactly 4 pieces are fake synthetic decoys.
+                  2. <strong>Impostors</strong>: The 5x5 grid only needs 25 pieces, but 29 are provided (4 are decoys).
                   <br /><br />
-                  <strong>The Impostor Detection Rule:</strong>
-                  In any valid jigsaw puzzle, every genuine piece connects to at least 2 neighbors (corner pieces touch 2, border pieces touch 3, center pieces touch 4).
-                  If a tile has <strong>zero matching neighbors</strong> across all other tiles in all 4 rotations, it is mathematically impossible for it to belong to the puzzle. It is an impostor!
+                  In any valid puzzle, every real piece connects to at least 2 neighbors. If a piece has zero matching edges with any other piece in any orientation, it cannot be part of the solution. We can prune those 4 impostors before assembling the grid.
                 </p>
               </div>
 
@@ -687,7 +681,7 @@ print(f"[🎯] Decoded Flag: {flag}")
                   </span>
                 </div>
                 <h2 className="text-2xl sm:text-4xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wide mb-3">
-                  Level 3 — Lost Edge
+                  Level 3: Lost Edge
                 </h2>
                 <p className="text-zinc-400 font-sans text-sm sm:text-base leading-relaxed">
                   Forty-one puzzle pieces in folder <code className="text-zinc-300 font-mono">pieces_3</code> (200x200 px). Exactly 5 pieces are echoes (impostors), leaving 36 genuine pieces forming a 6x6 grid.
@@ -700,21 +694,17 @@ print(f"[🎯] Decoded Flag: {flag}")
                 &ldquo;A portion of the Soul Stone&apos;s edge has vanished into the ruins of Vormir. Forty-one fragments remain, but five are echoes of something that never existed. Separate truth from illusion and restore the lost pattern.&rdquo;
               </div>
 
-              {/* The Concept in Plain English */}
+              {/* The Concept */}
               <div className="bg-[#111116] border-l-4 border-emerald-500 p-5 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 leading-relaxed">
                 <h4 className="text-emerald-400 font-bold mb-1.5 font-mono text-xs uppercase tracking-wider flex items-center gap-2">
-                  <span>💡</span> The Core Problem Explained: The 2x2 Super-Tile Breakthrough
+                  <span>💡</span> Clustering tiles into 2x2 blocks
                 </h4>
                 <p className="text-zinc-400 text-xs sm:text-sm">
-                  With 36 genuine pieces, the permutation space is <code className="text-white font-mono">36! ≈ 3.7 × 10⁴¹</code>. A naive backtracking solver will run for hours without terminating.
+                  With 36 real pieces, standard backtracking would take forever. But internal seams have high-density feature lines with dozens of matching black pixels (<code className="text-zinc-200 font-mono">edge.sum() &gt;= 20</code>).
                   <br /><br />
-                  <strong>The Super-Tile Reduction:</strong>
-                  Instead of trying to place 36 small tiles, look at tiles that share dense internal black feature seams.
-                  Because QR codes have dense data modules, internal seams have dozens of matching black pixels (<code className="text-zinc-200 font-mono">edge.sum() &gt;= 20</code>).
-                  Every genuine piece has exactly ONE partner that matches it with 0 pixel errors.
-                  This groups all 36 pieces into <strong>nine 2x2 super-blocks</strong> (400x400 px each)!
+                  Every real piece has exactly one neighbor that matches it with zero errors on an internal seam. Pair matching groups the 36 pieces into nine 2x2 super-blocks (400x400 px each).
                   <br /><br />
-                  Suddenly, you aren&apos;t solving a 36-piece puzzle! You are solving a simple <strong>3x3 grid of 9 blocks</strong>, which takes milliseconds!
+                  Solving the final grid is then just arranging 9 blocks in a 3x3 layout, which runs in milliseconds.
                 </p>
               </div>
 
@@ -830,10 +820,10 @@ print(f"[🎯] Decoded Flag: {flag}")
                   </span>
                 </div>
                 <h2 className="text-2xl sm:text-4xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wide mb-3">
-                  Level 4 — Judgment of Vormir
+                  Level 4: Judgment of Vormir
                 </h2>
                 <p className="text-zinc-400 font-sans text-sm sm:text-base leading-relaxed">
-                  The final trial. A 7x7 grid ($1400 \times 1400$ px) with 57 candidate pieces in <code className="text-zinc-300 font-mono">pieces_4</code>, random rotations, and missing corners.
+                  The final trial: a 7x7 grid ($1400 \times 1400$ px) with 57 candidate pieces in <code className="text-zinc-300 font-mono">pieces_4</code>, random rotations, and missing corners.
                 </p>
               </div>
 
@@ -843,21 +833,15 @@ print(f"[🎯] Decoded Flag: {flag}")
                 &ldquo;The final threshold of Vormir. Forty-nine fragments forming a massive 7x7 matrix. To pass, truth must be separated from deception through constraint satisfaction and strict border alignment.&rdquo;
               </div>
 
-              {/* The Concept in Plain English */}
+              {/* The Concept */}
               <div className="bg-[#111116] border-l-4 border-emerald-500 p-5 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 leading-relaxed">
                 <h4 className="text-emerald-400 font-bold mb-1.5 font-mono text-xs uppercase tracking-wider flex items-center gap-2">
-                  <span>💡</span> The Core Problem Explained: Minimum Remaining Values (MRV)
+                  <span>💡</span> Solving constraints with MRV (Minimum Remaining Values)
                 </h4>
                 <p className="text-zinc-400 text-xs sm:text-sm">
-                  In Level 4, standard chronological placement fails because filling from (0,0) to (6,6) leads into millions of dead-end branches.
+                  Filling the 7x7 grid sequentially from (0,0) to (6,6) creates too many branches.
                   <br /><br />
-                  <strong>How Sudoku Masters Solve Grids:</strong>
-                  If you play Sudoku, you never fill numbers from top-left to bottom-right. You look at the board and ask: <em>&ldquo;Which empty square has only ONE possible number that fits?&rdquo;</em>
-                  This is the famous <strong>Minimum Remaining Values (MRV) heuristic</strong> in Computer Science.
-                  <br /><br />
-                  At every step of our solver, we count how many remaining candidate tiles can legally fit into each empty cell in the 7x7 grid.
-                  A cell surrounded by 3 placed neighbors usually has <strong>only 1 valid piece</strong> in the whole candidate pool!
-                  By placing that piece first, there is <strong>zero branching</strong>: the grid propagates forward like falling dominoes!
+                  Instead, we use the MRV heuristic (the same way people solve Sudoku): at each step, find the empty cell that has the fewest valid candidate pieces that fit its current neighbors. A cell surrounded on multiple sides usually has only 1 matching piece left in the pool. Placing that piece first eliminates backtracking depth.
                 </p>
               </div>
 
@@ -1000,7 +984,7 @@ layout = {
                 </div>
 
                 <div id="osint-vault" className="scroll-mt-24 bg-black/90 border border-zinc-800 p-5 rounded-xl font-mono text-xs text-zinc-400 leading-relaxed mb-4">
-                  <span className="text-emerald-400 font-bold">[ VAULT RECORD RECOVERED — vault.log ]</span>
+                  <span className="text-emerald-400 font-bold">[ VAULT RECORD RECOVERED: vault.log ]</span>
                   <br />
                   OPEN vault
                   <br />

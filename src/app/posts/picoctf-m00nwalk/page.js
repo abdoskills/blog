@@ -109,12 +109,12 @@ print("🎉 SSTV Decoded successfully! Check result_rotated.png")`;
           </div>
         </div>
 
-        {/* Section 1: The Intuitive Analogy */}
+        {/* Section 1: Slow-Scan Television (SSTV) Protocol */}
         <div className="space-y-6 text-zinc-300 leading-relaxed font-sans mb-12">
           <div className="bg-[#07130e] border-l-4 border-emerald-500 p-6 rounded-r-xl shadow-md">
-            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 THE INTUITIVE ANALOGY (Fax Machine from the Moon)</h4>
+            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Signal Analysis: Slow-Scan Television (SSTV) Protocol</h4>
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
-              In 1969, NASA astronauts on the moon couldn&apos;t send high-definition digital videos. Instead, they used <strong>Slow-Scan Television (SSTV)</strong>, which turns pictures into screeching audio tones (very similar to an old-school dial-up modem or fax machine). The pitch of the sound represents the brightness and color of each pixel row by row. If you play the audio into an SSTV receiver, it draws the original photograph right before your eyes!
+              The provided audio artifact (<code>message.wav</code>) is an analog frequency-modulated audio transmission encoded using Slow-Scan Television (SSTV). The challenge title and hint (&ldquo;how did pictures get sent from moon on Apollo 11&rdquo;) points to SSTV modulation. The audio signal frequency encodes raster scan line luminance and chrominance (specifically the <code>Scottie 1</code> mode header calibration tone), which decodes back into an RGB raster image when passed through a demodulator.
             </p>
           </div>
         </div>

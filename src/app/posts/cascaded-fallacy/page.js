@@ -61,9 +61,9 @@ export default function CascadedFallacyWriteup() {
           </h3>
 
           <div className="bg-[#111111] border-l-4 border-blue-500 p-6 rounded-r-xl my-6 shadow-lg">
-            <h4 className="text-blue-400 font-bold mb-2 font-mono text-sm">💡 THE BEGINNER BREAKDOWN</h4>
+            <h4 className="text-blue-400 font-bold mb-2 font-mono text-sm">💡 Vulnerability: Checks-Effects-Interactions Violation</h4>
             <p className="text-sm text-zinc-400 leading-relaxed">
-              Imagine you go to an ATM to withdraw $100. The ATM hands you the cash, but right before it updates your account balance to zero, you quickly press "Withdraw" again. Because the machine hasn&apos;t updated its records yet, it hands you another $100. This is a <strong>Reentrancy Attack</strong>—tricking a computer program into giving you money multiple times before it realizes you&apos;re broke.
+              GenesisVault executed an external ETH transfer before decrementing the user&apos;s internal ledger balance. A malicious fallback function can repeatedly call into the withdrawal function during the execution frame before the state update occurs, draining the vault liquidity.
             </p>
           </div>
 
@@ -101,9 +101,9 @@ export default function CascadedFallacyWriteup() {
           </h3>
 
           <div className="bg-[#111111] border-l-4 border-blue-500 p-6 rounded-r-xl my-6 shadow-lg">
-            <h4 className="text-blue-400 font-bold mb-2 font-mono text-sm">💡 THE BEGINNER BREAKDOWN</h4>
+            <h4 className="text-blue-400 font-bold mb-2 font-mono text-sm">💡 Vulnerability: Missing Caller Ownership Validation</h4>
             <p className="text-sm text-zinc-400 leading-relaxed">
-              Think of an exclusive club where you need a VIP ID card to enter. The bouncer asks, "Do you have an ID card?" You show them a picture of your friend&apos;s ID card. The bouncer says, "Yep, that&apos;s a valid ID card," and lets you in without checking if the face on the card matches <em>your</em> face. 
+              PatchedVault checked whether the provided GhostShare NFT token ID possessed liquidation rights, but failed to verify whether <code>msg.sender</code> actually owned or had approval for that specific token ID. Any caller could supply a valid token ID held by an external user and trigger unauthorized liquidations.
             </p>
           </div>
 
@@ -118,9 +118,9 @@ export default function CascadedFallacyWriteup() {
           </h3>
 
           <div className="bg-[#111111] border-l-4 border-blue-500 p-6 rounded-r-xl my-6 shadow-lg">
-            <h4 className="text-blue-400 font-bold mb-2 font-mono text-sm">💡 THE BEGINNER BREAKDOWN</h4>
+            <h4 className="text-blue-400 font-bold mb-2 font-mono text-sm">💡 Vulnerability: EIP-712 Signature Replay (Missing Nonce)</h4>
             <p className="text-sm text-zinc-400 leading-relaxed">
-              Imagine writing a physical check for $100 and signing it. The bank cashes it. But what if the bank teller kept a photocopy of your signature and just pasted it onto a blank check the next day? To prevent this, real checks have unique Check Numbers (Nonces). If the bank sees the same Check Number twice, they reject it. This vault forgot to use Check Numbers.
+              SignedVault verified off-chain admin signatures using EIP-712 typed structured data. Because the hash schema lacked a per-user nonce or deadline timestamp, an intercepted signature remained valid indefinitely and was replayed to drain additional funds.
             </p>
           </div>
 
@@ -150,9 +150,9 @@ export default function CascadedFallacyWriteup() {
           </h3>
 
           <div className="bg-[#111111] border-l-4 border-blue-500 p-6 rounded-r-xl my-6 shadow-lg">
-            <h4 className="text-blue-400 font-bold mb-2 font-mono text-sm">💡 THE BEGINNER BREAKDOWN</h4>
+            <h4 className="text-blue-400 font-bold mb-2 font-mono text-sm">💡 Vulnerability: Spot AMM Price Oracle Manipulation</h4>
             <p className="text-sm text-zinc-400 leading-relaxed">
-              Imagine a bank uses a single local pawn shop to determine the price of gold. A thief walks into the pawn shop, dumps 10 tons of fake gold on the counter, and causes the local price of gold to crash to $1. The thief then runs across the street to the bank and says, "Look, gold is worthless now! Liquidate all your customers&apos; gold accounts and sell them to me for $1!" 
+              OracleVault queried instantaneous token reserves from a low-liquidity AMM pool rather than a Time-Weighted Average Price (TWAP) or decentralized oracle feed. By leveraging a flash loan to swap against the pool, the attacker manipulated the spot price within a single transaction block to force bad-debt liquidations.
             </p>
           </div>
 

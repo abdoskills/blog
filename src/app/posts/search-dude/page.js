@@ -117,9 +117,9 @@ print("🎉 Decrypted Flag:", decrypted.decode('utf-8', errors='ignore'))`;
           </h3>
 
           <div className="bg-[#141008] border-l-4 border-amber-500 p-6 rounded-r-xl my-6 shadow-lg">
-            <h4 className="text-amber-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 THE BEGINNER BREAKDOWN (Footprints in the Registry)</h4>
+            <h4 className="text-amber-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Forensic Analysis: Execution &amp; Artifact Staging</h4>
             <p className="text-sm text-zinc-300 leading-relaxed">
-              If a burglar breaks into a house, they usually leave footprints near the window they smashed. In Windows, every time a program is run, the operating system quietly takes notes about it (like &ldquo;Program Compatibility&rdquo; logs) just in case the program crashes later. We found a footprint showing that a fake program called <code>OfficeUpdater.exe</code> was launched. But searching for the stolen goods inside that file was a trap! The burglar actually hid the loot inside the house&apos;s own security ledger.
+              Windows Program Compatibility Assistant (PCA) keeps execution evidence in the registry and diagnostic stores. While <code>OfficeUpdater.exe</code> execution was confirmed via PCA entries, the binary itself was a decoy dropper. The encrypted payload buffer was staged directly inside the Windows Search database (<code>Windows.db</code>), requiring ESE database parsing to carve the raw ciphertext blob.
             </p>
           </div>
 

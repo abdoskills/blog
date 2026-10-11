@@ -127,9 +127,9 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
           </h3>
 
           <div className="bg-[#100d1a] border-l-4 border-purple-500 p-6 rounded-r-xl my-6 shadow-lg">
-            <h4 className="text-purple-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 THE BEGINNER BREAKDOWN (The Criminal&apos;s $100 Bill)</h4>
+            <h4 className="text-purple-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Blockchain Forensics: Peel Chain Mechanics</h4>
             <p className="text-sm text-zinc-300 leading-relaxed">
-              When a criminal steals $100,000, they rarely spend it all at once. They will send $99,000 to a new wallet, and spend $1,000 on a fake ID. Then they send $98,000 to another wallet, and spend $1,000 on server hosting. This leaves a trail of &ldquo;peels&rdquo; (the small spends) and the &ldquo;pot&rdquo; (the main bulk of money moving forward). In blockchain tracing, we ignore the peels and relentlessly follow the biggest pot.
+              A peel chain is a laundering pattern where an address with a large balance repeatedly sends small fractions to payment or cash-out endpoints while forwarding the majority of funds to a fresh change address. In UTXO graph analysis, isolating the largest output value at each transaction hop allows us to track the principal fund stream across multiple hops.
             </p>
           </div>
 
@@ -226,7 +226,7 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
           </h3>
           
           <p className="mb-6">
-            The challenge required us to collect six evidence tokens (T1–T6) across our investigation—including the number of exchanges used, the true identity of the vendor, and the Peel-Chain metrics. To retrieve the final flag, we concatenated all six tokens sequentially and generated a SHA-256 hash.
+            The challenge required collecting six evidence tokens (T1 through T6) across the investigation, including the number of exchanges used, the true identity of the vendor, and the peel chain metrics. To retrieve the final flag, we concatenated all six tokens sequentially and computed a SHA-256 hash.
           </p>
 
           <div className="bg-[#0a0a0a] border border-zinc-800 rounded-xl p-6 my-6 font-mono text-sm relative overflow-hidden break-all shadow-lg shadow-green-500/10">

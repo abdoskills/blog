@@ -19,7 +19,7 @@ export default function KasperskyPage() {
       tagline: "PoolParty & Havoc Demon Reversing",
       summary: "Investigating a 4.5 GB Windows 10 RAM dump. Carving Outlook phishing attachments, reversing PoolParty ThreadPool injection into Acrobat, and decrypting Havoc Demon C2 traffic.",
       sections: [
-        { id: "k-ping-chain", title: "The Intuitive Attack Chain", tag: "APT Lifecycle" },
+        { id: "k-ping-chain", title: "Attack Flow Overview", tag: "APT Lifecycle" },
         { id: "k-ping-step-1", title: "Step 1: Volatility 3 Memory Triage", tag: "Timeline" },
         { id: "k-ping-step-2", title: "Step 2: Carving inquiry.js & MPFS", tag: "Sparse PE" },
         { id: "k-ping-step-3", title: "Step 3: PoolParty Variant 7", tag: "Acrobat" },
@@ -56,7 +56,7 @@ export default function KasperskyPage() {
       tagline: "TLS GREASE Covert Channel & DLL Sideloading",
       summary: "Forensic analysis of a Windows Server 2016 VMDK and PCAP. Spotting GAC DLL sideloading, decoding a covert channel inside TLS GREASE 0x0a0a extensions, and ChaCha20 decryption.",
       sections: [
-        { id: "k-arch-concept", title: "Intuitive Concept: TLS GREASE", tag: "Covert Ch" },
+        { id: "k-arch-concept", title: "Covert Channel: TLS GREASE", tag: "Covert Ch" },
         { id: "k-arch-step-1", title: "Step 1: Disk Timeline & GAC DLL", tag: "ntdll.dll" },
         { id: "k-arch-step-2", title: "Step 2: PCAP Triage & 0x0a0a", tag: "Handshake" },
         { id: "k-arch-step-3", title: "Step 3: ChaCha20 Decompilation", tag: "Keystream" },
@@ -290,7 +290,7 @@ if __name__ == "__main__":
             Kaspersky CTF 2026: Threat Labs Dossier
           </h1>
           <p className="text-zinc-400 text-sm sm:text-base font-sans max-w-3xl leading-relaxed">
-            End-to-end pedagogical breakdowns across all 3 advanced Kaspersky CTF operations: Windows 10 RAM PoolParty &amp; Havoc Demon triage, Apple CoreStorage Fusion Drive &amp; FileVault volume reassembly, and TLS 1.3 GREASE covert channel decryption.
+            Detailed technical walkthroughs for all 3 Kaspersky CTF operations: Windows 10 RAM PoolParty and Havoc Demon triage, Apple CoreStorage Fusion Drive and FileVault volume reassembly, and TLS 1.3 GREASE covert channel decryption.
           </p>
         </div>
 
@@ -321,7 +321,7 @@ if __name__ == "__main__":
                   </span>
                 </div>
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-[family-name:var(--font-share-tech)] mb-2">
-                  Ping Pong Show — Memory Forensics, PoolParty &amp; Havoc Demon
+                  Ping Pong Show: Memory Forensics, PoolParty &amp; Havoc Demon
                 </h2>
                 <p className="text-zinc-400 text-sm font-sans">
                   Investigating a 4.5 GB Windows 10 memory image. Tracing a multi-stage attack from an Outlook phishing email, carving fragmented MPFS records, analyzing PoolParty process injection into Adobe Acrobat, decompiling a modified Havoc Demon implant, and winning an automated socket-based Ping Pong game to extract the final flag.
@@ -331,7 +331,7 @@ if __name__ == "__main__":
               {/* Attack Chain */}
               <div id="k-ping-chain" className="scroll-mt-28 bg-[#0e0e13]/90 border border-zinc-800/80 rounded-2xl p-6 space-y-3 mb-8">
                 <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider flex items-center gap-2">
-                  <span className="text-emerald-400">⚡</span> The Intuitive Attack Chain
+                  <span className="text-emerald-400">⚡</span> Attack Flow Overview
                 </h3>
                 <p className="text-sm text-zinc-300 font-sans leading-relaxed">
                   This challenge represents a realistic APT intrusion chain. The flag is not stored as plaintext in memory; you must unravel every link of the operational lifecycle:
@@ -451,7 +451,7 @@ if __name__ == "__main__":
                   </span>
                 </div>
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-[family-name:var(--font-share-tech)] mb-2">
-                  Ryan Guzling — macOS CoreStorage Fusion Drive &amp; FileVault Carving
+                  Ryan Guzling: macOS CoreStorage Fusion Drive &amp; FileVault Carving
                 </h2>
                 <p className="text-zinc-400 text-sm font-sans">
                   Deconstructing an encrypted Apple CoreStorage Fusion Drive setup across split SSD and HDD raw images. Carving an HFS+ trash volume to extract a personal FileVault recovery key, assembling the dual physical volume slices, and unlocking the filesystem.
@@ -467,10 +467,10 @@ if __name__ == "__main__":
                   An Apple Fusion Drive logically binds an SSD and an HDD into a single <strong>CoreStorage Logical Volume Group (LVG)</strong>. If you try to open `ssd.dd` or `hdd.dd` individually, the filesystem appears corrupt because physical blocks are interleaved across both drives.
                 </p>
                 <div className="p-4 rounded-xl bg-black/60 border border-emerald-500/20 font-mono text-xs text-emerald-300 space-y-1 overflow-x-auto">
-                  <div>📦 Provided Artifacts (`guz.zip` — 11.7 GB):</div>
-                  <div>&nbsp;&nbsp;├── `ssd.dd` (16.1 GB) — CoreStorage Physical Volume 0 (SSD Slice)</div>
-                  <div>&nbsp;&nbsp;├── `hdd.dd` (19.3 GB) — CoreStorage Physical Volume 1 (HDD Slice)</div>
-                  <div>&nbsp;&nbsp;└── `trash.dd` (536 MB) — HFS+ Volume holding hidden recovery keys</div>
+                  <div>📦 Provided Artifacts (`guz.zip` - 11.7 GB):</div>
+                  <div>&nbsp;&nbsp;├── `ssd.dd` (16.1 GB) - CoreStorage Physical Volume 0 (SSD Slice)</div>
+                  <div>&nbsp;&nbsp;├── `hdd.dd` (19.3 GB) - CoreStorage Physical Volume 1 (HDD Slice)</div>
+                  <div>&nbsp;&nbsp;└── `trash.dd` (536 MB) - HFS+ Volume holding hidden recovery keys</div>
                 </div>
               </div>
 
@@ -569,7 +569,7 @@ if __name__ == "__main__":
                   </span>
                 </div>
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-[family-name:var(--font-share-tech)] mb-2">
-                  Time to Install Arch — TLS GREASE Covert Channel &amp; DLL Sideloading
+                  Time to Install Arch: TLS GREASE Covert Channel &amp; DLL Sideloading
                 </h2>
                 <p className="text-zinc-400 text-sm font-sans">
                   Investigating a Windows Server 2016 disk image (`ctf-disk1.vmdk`) and network packet capture (`task.pcap`). Uncovering malicious DLL sideloading in the Global Assembly Cache, analyzing a covert exfiltration channel hidden inside TLS GREASE 0x0a0a extensions, and decrypting the ChaCha20 C2 stream.
@@ -579,7 +579,7 @@ if __name__ == "__main__":
               {/* Concept */}
               <div id="k-arch-concept" className="scroll-mt-28 bg-[#0e0e13]/90 border border-zinc-800/80 rounded-2xl p-6 space-y-3 mb-8">
                 <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider flex items-center gap-2">
-                  <span className="text-emerald-400">⚡</span> The Intuitive Attack Concept
+                  <span className="text-emerald-400">⚡</span> Covert Channel Concept: TLS GREASE
                 </h3>
                 <p className="text-sm text-zinc-300 font-sans leading-relaxed">
                   In modern TLS 1.3 handshakes, <strong>GREASE (Generate Random Extensions And Sustain Extensibility)</strong> values like <code className="text-emerald-300 font-mono">0x0a0a</code> are randomly sent to ensure middleboxes don&apos;t break on unknown extensions. Here, the malware packed 16 bytes of encrypted C2 commands inside the GREASE extension of every handshake:

@@ -141,12 +141,12 @@ int main(void) {
           </div>
         </div>
 
-        {/* Section 1: The Intuitive Analogy */}
+        {/* Section 1: 9-Byte Stride Pattern Analysis */}
         <div className="space-y-6 text-zinc-300 leading-relaxed font-sans mb-12">
           <div className="bg-[#07130e] border-l-4 border-emerald-500 p-6 rounded-r-xl shadow-md">
-            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 THE INTUITIVE ANALOGY (The 9th Dummy Spacer)</h4>
+            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Forensic Analysis: 9-Byte Cadence &amp; Dummy Spacer Desynchronization</h4>
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
-              Imagine writing secret letters into a book where every 8 words contain 1 secret letter, but between every sentence you intentionally insert 1 random, meaningless filler word to throw off automated decoders. If an automated script reads continuously without accounting for that 1 filler word, all subsequent letters get desynchronized into complete gibberish!
+              Decompiling <code>mystery</code> indicates that each flag character is bit-encoded into 8 sequential BMP raster bytes, immediately followed by 1 dummy padding byte. This creates a periodic 9-byte stride (8 data bytes + 1 spacer byte) starting at offset <code>0x2D3</code>. Any extraction routine that assumes an uninterrupted contiguous bitstream experiences immediate phase desynchronization on every subsequent character.
             </p>
           </div>
         </div>

@@ -122,9 +122,9 @@ print("🎉 Extracted Flag:", flag)`;
           </h3>
 
           <div className="bg-[#0b131a] border-l-4 border-cyan-500 p-6 rounded-r-xl my-6 shadow-lg">
-            <h4 className="text-cyan-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 THE BEGINNER BREAKDOWN (The Trojanized Engine)</h4>
+            <h4 className="text-cyan-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Trojanized Signal Binary</h4>
             <p className="text-sm text-zinc-300 leading-relaxed">
-              Imagine you download a secure messaging app like Signal. You trust it because the icon looks right and the name is right. But what if a hacker replaced the internal engine of that app with a spy camera? Every time you send a secure message, the &ldquo;spy camera&rdquo; takes a picture and sends it to the hacker&apos;s server, all while the app still functions normally on your screen. This is a trojanized application.
+              Inspection of the macOS application bundle revealed that the legitimate Signal binary had been swapped out for a backdoored Mach-O executable. The modified binary intercepts outgoing messages and exfiltrates them over a raw TCP socket to an attacker-controlled C2 server before delivering them to the real Signal service.
             </p>
           </div>
 

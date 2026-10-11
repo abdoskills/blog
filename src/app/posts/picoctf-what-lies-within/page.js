@@ -128,12 +128,12 @@ if "picoCTF{" in extracted_text:
           </div>
         </div>
 
-        {/* Section 1: Intuitive Analogy */}
+        {/* Section 1: LSB Steganography Principles */}
         <div className="space-y-6 text-zinc-300 leading-relaxed font-sans mb-12">
           <div className="bg-[#0a1116] border-l-4 border-cyan-500 p-6 rounded-r-xl shadow-md">
-            <h4 className="text-cyan-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 THE INTUITIVE ANALOGY (How LSB Works)</h4>
+            <h4 className="text-cyan-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Steganography Principle: Least Significant Bit (LSB) Modulation</h4>
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
-              Every digital color is represented by numbers from <code>0</code> to <code>255</code> across Red, Green, and Blue. In binary, <code>254</code> is <code>11111110</code> and <code>255</code> is <code>11111111</code>. The human eye cannot tell the difference between shade 254 and shade 255. By flipping only the very last bit (the <strong>Least Significant Bit</strong>) of each pixel, an attacker can secretly store millions of secret binary 1s and 0s directly inside the image without modifying the visible picture!
+              In 24-bit RGB images, each color channel uses an 8-bit integer (0-255). Modifying the least significant bit (bit 0) alters pixel intensity by at most 1 unit, which is imperceptible to human vision and undetectable on standard displays. By packing consecutive ASCII message bits across the LSBs of sequential color channels (RGB planar order), data is hidden without creating visible visual artifacts.
             </p>
           </div>
         </div>

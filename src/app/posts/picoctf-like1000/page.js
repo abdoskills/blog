@@ -131,12 +131,12 @@ Write-Host "Done! flag.png extracted."`;
           </div>
         </div>
 
-        {/* Section 1: The Intuitive Analogy */}
+        {/* Section 1: Recursive Archive Architecture */}
         <div className="space-y-6 text-zinc-300 leading-relaxed font-sans mb-12">
           <div className="bg-[#14120a] border-l-4 border-amber-500 p-6 rounded-r-xl shadow-md">
-            <h4 className="text-amber-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 THE INTUITIVE ANALOGY (The Matryoshka Trap)</h4>
+            <h4 className="text-amber-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Forensic Strategy: Automated Recursive Extraction</h4>
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
-              This challenge is the digital equivalent of a <strong>Russian Nesting Doll</strong> (Matryoshka). You open box #1000, and inside you find box #999 and packing peanuts (<code>filler.txt</code>). You open #999, and inside is #998. Doing this by hand in 7-Zip or Finder would require clicking 1,000 times, taking over 3 hours and cluttering your storage drive with gigabytes of redundant archives. In DFIR and CTFs, the golden rule is: <strong>if a task repeats more than 3 times, automate it immediately!</strong>
+              The artifact contains 1,000 sequentially nested POSIX TAR archives (<code>1000.tar</code> down to <code>1.tar</code>), each bundling the next archive alongside junk padding files (<code>filler.txt</code>). Manual extraction with GUI archive tools is inefficient and consumes unnecessary disk space. Instead, an in-memory or streamed Python extraction script walks down the recursion chain and terminates upon encountering the final payload (<code>flag.png</code>).
             </p>
           </div>
         </div>

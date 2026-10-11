@@ -110,12 +110,12 @@ print(flag_bytes.decode('utf-8', errors='ignore'))`;
           </div>
         </div>
 
-        {/* Section 1: The Intuitive Analogy */}
+        {/* Section 1: Whitespace Steganography Analysis */}
         <div className="space-y-6 text-zinc-300 leading-relaxed font-sans mb-12">
           <div className="bg-[#07130e] border-l-4 border-emerald-500 p-6 rounded-r-xl shadow-md">
-            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 THE INTUITIVE ANALOGY (Invisible Ink with Wide &amp; Narrow Spaces)</h4>
+            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Forensic Analysis: Unicode Whitespace Steganography</h4>
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
-              If someone hands you a piece of paper that looks totally blank, you might think it has no information. But if you look under a microscope, you notice the document is filled with thousands of spaces: some are normal narrow spaces (<code>0x20</code>), and some are extra-wide Unicode &ldquo;EM Spaces&rdquo; (<code>\u2003</code>). Because there are exactly two types of spaces, they form a secret binary code: <strong>Wide = 0</strong>, <strong>Narrow = 1</strong>!
+              When opened in standard text editors, <code>whitepages.txt</code> renders as a blank document. Hex inspection reveals that the 2,770-byte file consists entirely of two alternating whitespace characters: standard ASCII spaces (<code>0x20</code>) and Unicode EM Spaces (UTF-8 bytes <code>E2 80 83</code> / <code>\u2003</code>). Because only two discrete characters exist, they form a binary alphabet (0 and 1) that translates directly into ASCII character bytes.
             </p>
           </div>
         </div>

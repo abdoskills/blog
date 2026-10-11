@@ -76,7 +76,7 @@ if __name__ == "__main__":
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-bold text-white font-[family-name:var(--font-share-tech)] tracking-wide">
-            Ryan Guzling — macOS CoreStorage Fusion Drive &amp; FileVault Carving
+            Ryan Guzling: macOS CoreStorage Fusion Drive &amp; FileVault Carving
           </h1>
           
           <p className="text-zinc-400 text-base sm:text-lg font-sans leading-relaxed">
@@ -95,7 +95,7 @@ if __name__ == "__main__":
           />
         </div>
 
-        {/* Intuitive Analogy / Overview */}
+        {/* Core Concept */}
         <section className="bg-[#0e0e13]/90 border border-zinc-800/80 rounded-2xl p-6 md:p-8 space-y-4 backdrop-blur-xl mb-12 shadow-xl">
           <h2 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider flex items-center gap-2.5">
             <span className="text-emerald-400">⚡</span> The Core Concept: Apple Fusion Drive
@@ -105,10 +105,10 @@ if __name__ == "__main__":
           </p>
 
           <div className="p-4 rounded-xl bg-black/60 border border-emerald-500/20 font-mono text-xs md:text-sm text-emerald-300 space-y-1.5 overflow-x-auto">
-            <div>📦 Provided Artifacts (`guz.zip` — 11.7 GB):</div>
-            <div>&nbsp;&nbsp;├── `ssd.dd` (16.1 GB) — CoreStorage Physical Volume 0 (SSD Slice)</div>
-            <div>&nbsp;&nbsp;├── `hdd.dd` (19.3 GB) — CoreStorage Physical Volume 1 (HDD Slice)</div>
-            <div>&nbsp;&nbsp;└── `trash.dd` (536 MB) — HFS+ Volume holding hidden recovery keys</div>
+            <div>📦 Provided Artifacts (`guz.zip` - 11.7 GB):</div>
+            <div>&nbsp;&nbsp;├── `ssd.dd` (16.1 GB) - CoreStorage Physical Volume 0 (SSD Slice)</div>
+            <div>&nbsp;&nbsp;├── `hdd.dd` (19.3 GB) - CoreStorage Physical Volume 1 (HDD Slice)</div>
+            <div>&nbsp;&nbsp;└── `trash.dd` (536 MB) - HFS+ Volume holding hidden recovery keys</div>
           </div>
         </section>
 

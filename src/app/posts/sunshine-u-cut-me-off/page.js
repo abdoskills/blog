@@ -109,7 +109,7 @@ print("[+] Successfully repaired IHDR height and CRC!")`;
               <span className="text-pink-400">01.</span> Challenge Overview &amp; PNG Structure
             </h2>
             <p className="mb-4">
-              We received a single image named <code className="text-pink-300 bg-pink-950/40 px-1.5 py-0.5 rounded border border-pink-500/20">hereyougo.png</code> depicting a Discord chat. The message prompt at the bottom was abruptly truncated. Combined with the challenge title, this pointed directly to <strong>IHDR height tampering</strong>—a classic steganography technique where the displayed height in the file header is made smaller than the actual compressed image scanlines stored in the <code className="text-zinc-200">IDAT</code> chunk.
+              We received a single image named <code className="text-pink-300 bg-pink-950/40 px-1.5 py-0.5 rounded border border-pink-500/20">hereyougo.png</code> depicting a Discord chat. The message prompt at the bottom was abruptly truncated. Combined with the challenge title, this pointed directly to <strong>IHDR height tampering</strong>: a classic steganography technique where the displayed height in the file header is made smaller than the actual compressed image scanlines stored in the <code className="text-zinc-200">IDAT</code> chunk.
             </p>
 
             <div className="relative w-full aspect-[492/382] max-w-xl mx-auto rounded-2xl overflow-hidden border border-zinc-800/80 my-6 shadow-xl group bg-black">

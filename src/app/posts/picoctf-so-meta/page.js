@@ -104,12 +104,12 @@ print("🎉 Extracted Artist Tag Flag:", flag)`;
           </div>
         </div>
 
-        {/* Section 1: The Intuitive Analogy */}
+        {/* Section 1: PNG Metadata Analysis */}
         <div className="space-y-6 text-zinc-300 leading-relaxed font-sans mb-12">
           <div className="bg-[#07130e] border-l-4 border-emerald-500 p-6 rounded-r-xl shadow-md">
-            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 THE INTUITIVE ANALOGY (The Photographer&apos;s Stamp)</h4>
+            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Forensic Triage: PNG Metadata Chunks (tEXt)</h4>
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
-              When a painter finishes a masterpiece, they sign their signature at the bottom corner of the frame. In digital photos, cameras and graphic editors embed metadata &ldquo;stamps&rdquo; into the file (such as Camera Model, Timestamp, and Artist Name). The title &ldquo;So Meta&rdquo; is a direct hint to check the image&apos;s metadata chunks before trying complex pixel steganography!
+              Before attempting complex LSB or frequency domain steganography on an image, initial triage requires inspecting the file metadata structures. The PNG standard supports auxiliary metadata chunks like <code>tEXt</code>, <code>zTXt</code>, and <code>iTXt</code> for storing key-value pairs (such as Author, Software, or Copyright). In <code>pico_img.png</code>, the plaintext flag is stored directly inside the <code>Artist</code> field of a <code>tEXt</code> chunk.
             </p>
           </div>
         </div>
