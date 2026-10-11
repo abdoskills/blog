@@ -156,7 +156,7 @@ export default function ByteMeForensicsPage() {
         </div>
 
         {/* 2-Column Layout: Main Content + Sticky Navigation Rail */}
-        <div className="flex gap-8 relative">
+        <div className="flex gap-8 relative items-start">
           
           {/* ================= LEFT / MAIN CONTENT AREA ================= */}
           <div className="flex-grow min-w-0 space-y-20">

@@ -79,10 +79,24 @@ export default function CtfsHub() {
       time: "12 min read"
     },
 
-    // --- Latest 2026 Additions ---
+    // --- SunshineCTF 2026 ---
+    {
+      title: "SunshineCTF 2026: Forensics Dossier",
+      slug: "sunshine",
+      href: "/ctfs/sunshine",
+      platform: "SunshineCTF 2026",
+      category: "Multi-Track CTF",
+      points: "5 LABS // 5 FLAGS",
+      tagline: "VoIP Audio, PNG Height, MSKLC Keyboard & PPTM Macros",
+      description: "Full forensics operational dossier: VoIP telephony RTP audio carving, PNG IHDR height repair, MSKLC typewriter snake trail and dead key state machines, and malicious PPTM macro deobfuscation.",
+      image: "/images/sunshine_welcome_call.jpg",
+      tags: ["VoIP", "PNG Forensics", "MSKLC", "PPTM Macros", "SunshineCTF 2026"],
+      time: "5 Writeups"
+    },
     {
       title: "Welcome Call!",
       slug: "sunshine-welcome-call",
+      href: "/ctfs/sunshine#sunshine-welcome-call",
       platform: "SunshineCTF 2026",
       category: "Network Forensics",
       points: "100 PTS",
@@ -95,6 +109,7 @@ export default function CtfsHub() {
     {
       title: "u cut me off",
       slug: "sunshine-u-cut-me-off",
+      href: "/ctfs/sunshine#sunshine-u-cut-me-off",
       platform: "SunshineCTF 2026",
       category: "Steganography",
       points: "150 PTS",
@@ -107,6 +122,7 @@ export default function CtfsHub() {
     {
       title: "suntrail",
       slug: "sunshine-suntrail",
+      href: "/ctfs/sunshine#sunshine-suntrail",
       platform: "SunshineCTF 2026",
       category: "Forensics",
       points: "250 PTS",
@@ -119,6 +135,7 @@ export default function CtfsHub() {
     {
       title: "NAS coal",
       slug: "sunshine-nas-coal",
+      href: "/ctfs/sunshine#sunshine-nas-coal",
       platform: "SunshineCTF 2026",
       category: "Forensics",
       points: "425 PTS",
@@ -131,6 +148,7 @@ export default function CtfsHub() {
     {
       title: "my eyes burn",
       slug: "sunshine-my-eyes-burn",
+      href: "/ctfs/sunshine#sunshine-my-eyes-burn",
       platform: "SunshineCTF 2026",
       category: "Forensics",
       points: "300 PTS",
@@ -240,8 +258,22 @@ export default function CtfsHub() {
 
     // --- Kaspersky CTF 2026 ---
     {
+      title: "Kaspersky CTF 2026: Threat Labs Dossier",
+      slug: "kaspersky",
+      href: "/ctfs/kaspersky",
+      platform: "Kaspersky CTF",
+      category: "Multi-Track CTF",
+      points: "3 LABS // 3 FLAGS",
+      tagline: "Windows RAM, Apple CoreStorage & TLS GREASE Channels",
+      description: "End-to-end pedagogical breakdowns across all 3 advanced Kaspersky CTF operations: Windows 10 RAM PoolParty & Havoc Demon triage, Apple CoreStorage Fusion Drive volume reassembly, and TLS 1.3 GREASE covert channels.",
+      image: "/images/kaspersky_ping_pong_show.jpg",
+      tags: ["Volatility 3", "PoolParty", "CoreStorage", "FileVault", "TLS GREASE", "Kaspersky CTF"],
+      time: "3 Writeups"
+    },
+    {
       title: "Ping Pong Show",
       slug: "kaspersky-ping-pong-show",
+      href: "/ctfs/kaspersky#kaspersky-ping-pong-show",
       platform: "Kaspersky CTF",
       category: "Memory Forensics",
       points: "500 PTS",
@@ -254,6 +286,7 @@ export default function CtfsHub() {
     {
       title: "Ryan Guzling",
       slug: "kaspersky-ryan-guzling",
+      href: "/ctfs/kaspersky#kaspersky-ryan-guzling",
       platform: "Kaspersky CTF",
       category: "macOS DFIR",
       points: "500 PTS",
@@ -266,6 +299,7 @@ export default function CtfsHub() {
     {
       title: "Time to Install Arch",
       slug: "kaspersky-time-to-install-arch",
+      href: "/ctfs/kaspersky#kaspersky-time-to-install-arch",
       platform: "Kaspersky CTF",
       category: "Network Forensics",
       points: "500 PTS",
@@ -276,10 +310,24 @@ export default function CtfsHub() {
       time: "9 min read"
     },
 
-    // --- ASCWG 2026 ---
+    // --- War Games (ASCWG 2026) ---
+    {
+      title: "War Games 2026: ASCWG Operations Dossier",
+      slug: "war-games",
+      href: "/ctfs/war-games",
+      platform: "ASCWG 2026",
+      category: "Multi-Track CTF",
+      points: "7 LABS // 7 FLAGS",
+      tagline: "macOS Mach-O, Windows.db, ICS SCADA, CoinJoin, DeFi & Lattices",
+      description: "Complete operational breakdowns across all 7 official ASCWG 2026 challenges: macOS Mach-O reverse engineering, Windows ESE database carving, ICS telemetry covert channels, Bitcoin CoinJoin de-anonymization, DeFi reentrancy, and lattice cryptography.",
+      image: "/images/thrushes_macho.jpg",
+      tags: ["Mach-O", "Windows.db", "Wireshark", "CoinJoin", "DeFi Reentrancy", "SageMath", "ASCWG 2026"],
+      time: "7 Writeups"
+    },
     {
       title: "The Thrushes",
       slug: "the-thrushes",
+      href: "/ctfs/war-games#the-thrushes",
       platform: "ASCWG 2026",
       category: "macOS Forensics",
       points: "HARD",
@@ -292,6 +340,7 @@ export default function CtfsHub() {
     {
       title: "Search-Dude",
       slug: "search-dude",
+      href: "/ctfs/war-games#search-dude",
       platform: "ASCWG 2026",
       category: "Windows Forensics",
       points: "MEDIUM",
@@ -304,6 +353,7 @@ export default function CtfsHub() {
     {
       title: "Sensor Confession",
       slug: "sensor-confession",
+      href: "/ctfs/war-games#sensor-confession",
       platform: "ASCWG 2026",
       category: "Network Forensics",
       points: "MEDIUM",
@@ -316,6 +366,7 @@ export default function CtfsHub() {
     {
       title: "NightShade Vendor",
       slug: "nightshade-vendor",
+      href: "/ctfs/war-games#nightshade-vendor",
       platform: "ASCWG 2026",
       category: "Blockchain OSINT",
       points: "MEDIUM",
@@ -328,6 +379,7 @@ export default function CtfsHub() {
     {
       title: "Cascaded Fallacy",
       slug: "cascaded-fallacy",
+      href: "/ctfs/war-games#cascaded-fallacy",
       platform: "ASCWG 2026",
       category: "Smart Contracts",
       points: "500 PTS",
@@ -340,6 +392,7 @@ export default function CtfsHub() {
     {
       title: "Crypto Suite",
       slug: "crypto-suite",
+      href: "/ctfs/war-games#crypto-suite",
       platform: "ASCWG 2026",
       category: "Cryptography",
       points: "450 PTS",
@@ -352,6 +405,7 @@ export default function CtfsHub() {
     {
       title: "Sol-Net Node",
       slug: "sol-net",
+      href: "/ctfs/war-games#sol-net",
       platform: "ASCWG 2026",
       category: "Web Security",
       points: "350 PTS",
