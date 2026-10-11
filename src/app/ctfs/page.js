@@ -12,6 +12,73 @@ export default function CtfsHub() {
   const [selectedCategory, setSelectedCategory] = useState("ALL");
 
   const challenges = [
+    // --- Byte Me CTF 2026 (PCCOE) ---
+    {
+      title: "Byte Me CTF 2026: Vormir Expedition",
+      slug: "byte-me",
+      href: "/ctfs/byte-me",
+      platform: "Byte Me CTF 2026",
+      category: "Multi-Track CTF",
+      points: "8 LABS // 11 FLAGS",
+      tagline: "Vormir Expedition: Memory, Audio & Algorithmic QR",
+      description: "Dual-track interactive dossier: Windows x64 kernel memory dump analysis (2.77 GB), bottom-up 32bpp DIB Paint carving, and a 5-level escalation of algorithmic QR puzzle constraint solving.",
+      image: "/images/byteme_top3.png",
+      tags: ["Volatility 3", "Memory Forensics", "QR Solvers", "PCAP Carving", "Audio Forensics", "Byte Me CTF 2026"],
+      time: "8 Writeups"
+    },
+    {
+      title: "Echoes of Vormir (Mem 1-4)",
+      slug: "byteme-echoes-of-vormir",
+      href: "/ctfs/byte-me/forensics#echoes-of-vormir",
+      platform: "Byte Me CTF 2026",
+      category: "Memory Forensics",
+      points: "500 PTS",
+      tagline: "Windows x64 Kernel Dump & MS Paint VAD Carving",
+      description: "Comprehensive investigation of a 2.77 GB Windows memory dump (soul.mem) using Volatility 3. Extracting KUSER_SHARED_DATA timestamps, hunting encoded PowerShell stagers, and carving bottom-up 32bpp DIB canvas bitmaps.",
+      image: "/images/byteme_echoes_sacrifice.png",
+      tags: ["Volatility 3", "Memory Forensics", "VAD DIB Carve", "Windows x64", "Byte Me CTF 2026"],
+      time: "15 min read"
+    },
+    {
+      title: "Sacrifice",
+      slug: "byteme-sacrifice",
+      href: "/ctfs/byte-me/forensics#sacrifice",
+      platform: "Byte Me CTF 2026",
+      category: "Network Forensics",
+      points: "200 PTS",
+      tagline: "Localhost FTP Reconstruction & JPEG Metadata Payload",
+      description: "Forensic analysis of s0ul.pcap capturing an automated exfiltration pipeline over localhost FTP. Carving manifest_final_047.jpg and decoding hidden JPEG comment chunks (0xFF 0xFE).",
+      image: "/images/byteme_echoes_sacrifice.png",
+      tags: ["Wireshark", "FTP Carve", "PCAP Forensics", "JPEG Comment", "Byte Me CTF 2026"],
+      time: "5 min read"
+    },
+    {
+      title: "The Last Memory of Vormir",
+      slug: "byteme-the-last-memory",
+      href: "/ctfs/byte-me/forensics#the-last-memory-of-vormir",
+      platform: "Byte Me CTF 2026",
+      category: "Audio Forensics",
+      points: "300 PTS",
+      tagline: "Speech Reversal Transcription & Appended RIFF Carving",
+      description: "Investigating memory.wav. Reversing stereo PCM audio to recover the Keeper's spoken oath via Whisper, carving trailing RIFF hex payload, and decrypting with repeated-key XOR.",
+      image: "/images/byteme_memory_spec.png",
+      tags: ["Audio Forensics", "Whisper", "Repeated XOR", "RIFF Carving", "Byte Me CTF 2026"],
+      time: "6 min read"
+    },
+    {
+      title: "Missions: Lost Edge & QR Puzzles",
+      slug: "byteme-missions",
+      href: "/ctfs/byte-me/missions",
+      platform: "Byte Me CTF 2026",
+      category: "Misc / QR Forensics",
+      points: "5 LEVELS // 5 FLAGS",
+      tagline: "5 Escalation Tiers: 3x3 to 7x7 Algorithmic Assembly",
+      description: "Reconstructing scattered QR puzzle pieces across 5 escalation tiers: from 3x3 adjacency matching to 7x7 constraint satisfaction solving, rotation handling, and impostor tile filtering.",
+      image: "/images/byteme_l3_montage.png",
+      tags: ["Python", "OpenCV", "SAT / Backtracking", "Super-Tiles", "zxing-cpp", "Byte Me CTF 2026"],
+      time: "12 min read"
+    },
+
     // --- Latest 2026 Additions ---
     {
       title: "Welcome Call!",
@@ -559,7 +626,7 @@ export default function CtfsHub() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-10 text-center">
           <div className="mb-3 inline-flex max-w-full items-center justify-center">
             <span className="font-mono text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-[0.3em] text-center font-bold text-zinc-400">
-              SUNSHINECTF • KASPERSKY • ASCWG • PICOCTF • CYBER WARGAMES
+              BYTE ME CTF • SUNSHINECTF • KASPERSKY • ASCWG • PICOCTF • CYBER WARGAMES
               <span className="animate-blink inline-block w-1.5 h-3 ml-2 align-middle bg-current"></span>
             </span>
           </div>
@@ -660,7 +727,7 @@ export default function CtfsHub() {
             return (
               <Link 
                 key={c.slug}
-                href={`/posts/${c.slug}`} 
+                href={c.href || `/posts/${c.slug}`} 
                 className="bg-[#111114] rounded-xl flex flex-col border border-zinc-800/80 transition-all duration-[500ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.015] hover:shadow-[0_20px_45px_rgba(0,0,0,0.7)] hover:border-zinc-500/80 group overflow-hidden theme-card relative"
               >
                 {/* Vintage CRT Phosphor Top Glow Line */}
