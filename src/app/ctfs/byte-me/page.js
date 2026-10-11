@@ -25,12 +25,12 @@ export default function ByteMeHub() {
       slug: "missions",
       platform: "Byte Me CTF 2026",
       category: "MISC / RECON TRACK",
-      points: "5 SOLVED // 1 UNSOLVED",
+      points: "6 MISSIONS // 5 FLAGS",
       tagline: "Algorithmic QR Assembly • Impostor Elimination • Orbital Telemetry Triage",
-      description: "Full reverse engineering of scattered QR code puzzle pieces across 5 escalation tiers (Levels 0 through 4 Solved), along with post-mortem triage of the unsolved Vormir's Hidden Witness orbital reconnaissance challenge.",
+      description: "Full reverse engineering of scattered QR code puzzle pieces across 5 escalation tiers (Levels 0 through 4), along with reconnaissance telemetry triage of the Vormir's Hidden Witness orbital satellite challenge.",
       image: "/images/byteme_l3_montage.png",
       tags: ["Python", "OpenCV", "SAT / Backtracking", "Super-Tiles", "zxing-cpp", "QR Forensics", "OSINT"],
-      challengesCount: "5 Solved Levels + 1 Unsolved OSINT Dossier",
+      challengesCount: "6 Operations (5 Algorithmic QR Levels + OSINT Recon)",
       href: "/ctfs/byte-me/missions"
     }
   ];
@@ -69,8 +69,8 @@ export default function ByteMeHub() {
             <div className="bg-zinc-900/90 border border-zinc-800 px-3.5 py-1.5 rounded-lg text-zinc-300 flex items-center gap-2">
               <span className="text-emerald-400 font-bold">●</span> 11 Verified Flags Extracted
             </div>
-            <div className="bg-zinc-900/90 border border-zinc-800 px-3.5 py-1.5 rounded-lg text-amber-400 flex items-center gap-2">
-              <span className="text-amber-400 font-bold">▲</span> 1 Unsolved OSINT Dossier
+            <div className="bg-zinc-900/90 border border-zinc-800 px-3.5 py-1.5 rounded-lg text-emerald-400 flex items-center gap-2">
+              <span className="text-emerald-400 font-bold">●</span> Orbital Satellite Recon Track
             </div>
           </div>
         </div>

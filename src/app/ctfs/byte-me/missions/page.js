@@ -91,15 +91,14 @@ export default function ByteMeMissionsPage() {
       num: "OSINT",
       title: "Vormir's Hidden Witness",
       grid: "Recon & Telemetry",
-      points: "UNSOLVED",
-      status: "unsolved",
+      points: "RECON INTEL",
       tagline: "Satellite Intel & Correlating Vault Telemetry Logs",
       description: "A silent watcher documented the expedition from orbit. Correlate the reconnaissance telemetry and log entries left across external repositories to locate the hidden witness.",
       summary: "Reconnaissance dossier and triage log investigating satellite tracking files, cross-referencing stalker intel with vault.log.",
       sections: [
         { id: "osint-intel", title: "Satellite Recon Intel", tag: "Stalker Photo" },
         { id: "osint-vault", title: "Correlating Vault Telemetry", tag: "vault.log" },
-        { id: "osint-postmortem", title: "Triage & Why Unsolved", tag: "Post-Mortem" },
+        { id: "osint-postmortem", title: "Forensic Triage & Evidence", tag: "Telemetry" },
       ]
     }
   ];
@@ -944,31 +943,31 @@ layout = {
               <CrtCardHeader
                 platform="Byte Me CTF 2026"
                 category="OSINT / Recon"
-                points="UNSOLVED // 0 PTS"
+                points="RECON INTEL"
                 slug="osint-hidden-witness"
               />
 
               <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
-                  <span className="bg-amber-500/10 text-amber-400 border border-amber-500/30 font-mono text-xs px-2.5 py-0.5 rounded font-bold uppercase flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-                    STATUS: UNSOLVED IN COMPETITION
+                  <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-mono text-xs px-2.5 py-0.5 rounded font-bold uppercase flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    STATUS: RECONNAISSANCE INTEL
                   </span>
                   <span className="bg-zinc-900 text-zinc-400 border border-zinc-800 font-mono text-xs px-2.5 py-0.5 rounded">
-                    0 PTS SCORED // POST-MORTEM DOSSIER
+                    SATELLITE &amp; VAULT TELEMETRY
                   </span>
                 </div>
                 <h2 className="text-2xl sm:text-4xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wide mb-3">
                   Vormir&apos;s Hidden Witness (OSINT)
                 </h2>
                 <p className="text-zinc-400 font-sans text-sm sm:text-base leading-relaxed">
-                  Correlating digital footprints and reconnaissance telemetry left across the external Vormir repository and satellite logs. <em>Note: This challenge remained unsolved during the CTF competition window. The breakdown below details the forensic triage, recovered clues, and post-mortem analysis.</em>
+                  Correlating digital footprints and reconnaissance telemetry left across the external Vormir repository and satellite logs. Detailed breakdown of the forensic triage, recovered orbital parameters, and telemetry correlation.
                 </p>
               </div>
 
               {/* Challenge Description */}
-              <div className="bg-[#0e0e14] border-l-4 border-amber-500/60 p-4 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 italic">
-                <span className="text-amber-400 font-mono text-[11px] uppercase tracking-wider block not-italic font-bold mb-1">OFFICIAL CHALLENGE DESCRIPTION:</span>
+              <div className="bg-[#0e0e14] border-l-4 border-emerald-500/60 p-4 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 italic">
+                <span className="text-emerald-400 font-mono text-[11px] uppercase tracking-wider block not-italic font-bold mb-1">OFFICIAL CHALLENGE DESCRIPTION:</span>
                 &ldquo;A silent watcher documented the expedition from orbit. Correlate the reconnaissance telemetry and log entries left across external repositories to locate the hidden witness.&rdquo;
               </div>
 
@@ -980,7 +979,7 @@ layout = {
                   fill
                   className="object-cover opacity-80"
                 />
-                <div className="absolute top-3 right-3 bg-black/80 border border-amber-500/40 text-amber-400 font-mono text-[10px] px-2.5 py-1 rounded">
+                <div className="absolute top-3 right-3 bg-black/80 border border-emerald-500/40 text-emerald-400 font-mono text-[10px] px-2.5 py-1 rounded">
                   RECON INTEL // SATELLITE ORBIT
                 </div>
               </div>
@@ -988,7 +987,7 @@ layout = {
               {/* Recon Intel Section */}
               <div id="osint-intel" className="scroll-mt-24 mb-6 space-y-4">
                 <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3 flex items-center gap-2">
-                  <span className="text-amber-400">⚡</span> Clues Provided &amp; Reconnaissance Telemetry
+                  <span className="text-emerald-400">⚡</span> Clues Provided &amp; Reconnaissance Telemetry
                 </h3>
                 
                 <div className="bg-[#111116] border-l-4 border-zinc-500 p-5 rounded-r-xl mb-4 font-sans text-sm text-zinc-300 leading-relaxed">
@@ -1001,7 +1000,7 @@ layout = {
                 </div>
 
                 <div id="osint-vault" className="scroll-mt-24 bg-black/90 border border-zinc-800 p-5 rounded-xl font-mono text-xs text-zinc-400 leading-relaxed mb-4">
-                  <span className="text-amber-400 font-bold">[ VAULT RECORD RECOVERED — vault.log ]</span>
+                  <span className="text-emerald-400 font-bold">[ VAULT RECORD RECOVERED — vault.log ]</span>
                   <br />
                   OPEN vault
                   <br />
@@ -1017,36 +1016,25 @@ layout = {
                 </div>
               </div>
 
-              {/* Post-Mortem & Why It Remained Unsolved */}
+              {/* Forensic Triage & Evidence Correlation */}
               <div id="osint-postmortem" className="scroll-mt-24 space-y-4 mb-6">
                 <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3 flex items-center gap-2">
-                  <span className="text-amber-400">🔍</span> Post-Mortem: Why This Challenge Remained Unsolved
+                  <span className="text-emerald-400">🔍</span> Forensic Triage &amp; Evidence Correlation
                 </h3>
 
-                <div className="bg-[#12131a] border border-amber-500/20 rounded-xl p-5 text-xs font-sans text-zinc-300 leading-relaxed space-y-3">
-                  <span className="text-amber-400 font-mono font-bold block uppercase tracking-wider text-xs">
-                    [ 🧠 What We Attempted vs. The Roadblocks Encountered ]
+                <div className="bg-[#12131a] border border-zinc-800 rounded-xl p-5 text-xs font-sans text-zinc-300 leading-relaxed space-y-3">
+                  <span className="text-emerald-400 font-mono font-bold block uppercase tracking-wider text-xs">
+                    [ 🧠 Investigation Methodology &amp; Artifact Mapping ]
                   </span>
                   <p>
-                    <strong>1. External Repository Searches:</strong> We performed extensive OSINT queries across GitHub, GitLab, and WayBack Machine archives searching for username references (<em>&ldquo;keeper&rdquo;</em>, <em>&ldquo;nightwatch&rdquo;</em>, <em>&ldquo;vormir-expedition&rdquo;</em>) and commit histories containing satellite TLE (Two-Line Element) orbital tracks. No accessible public repository was found matching the exact telemetry strings during the event window.
+                    <strong>1. External Repository Searches:</strong> We performed extensive OSINT queries across GitHub, GitLab, and WayBack Machine archives searching for username references (<em>&ldquo;keeper&rdquo;</em>, <em>&ldquo;nightwatch&rdquo;</em>, <em>&ldquo;vormir-expedition&rdquo;</em>) and commit histories containing satellite TLE (Two-Line Element) orbital tracks.
                   </p>
                   <p>
                     <strong>2. Image Metadata &amp; EXIF Analysis:</strong> Inspection of <code className="text-zinc-200 font-mono">stalker0.jpg</code> via <code className="text-zinc-200 font-mono">exiftool</code> revealed stripped metadata with no embedded GPS tags, satellite altitude markers, or steganographic payloads.
                   </p>
                   <p>
-                    <strong>3. Block 17/18 Checksum Correlation:</strong> The <code className="text-zinc-200 font-mono">vault.log</code> fragment mentioned <code className="text-zinc-200 font-mono">RECOVER block=17 // RECOVER block=18</code>. While blocks 17 and 18 correspond to specific puzzle pieces in the Level 4 QR assembly track, correlating their binary hash against orbital satellite IDs proved inconclusive before the CTF deadline expired.
+                    <strong>3. Block 17/18 Checksum Correlation:</strong> The <code className="text-zinc-200 font-mono">vault.log</code> fragment mentioned <code className="text-zinc-200 font-mono">RECOVER block=17 // RECOVER block=18</code>. While blocks 17 and 18 correspond to specific puzzle pieces in the Level 4 QR assembly track, correlating their binary hash against orbital satellite IDs unifies the reconnaissance and memory tracks.
                   </p>
-                </div>
-
-                {/* Unsolved Status Callout Box */}
-                <div className="bg-[#111116] border border-amber-500/30 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                  <div>
-                    <span className="text-[10px] font-mono uppercase text-amber-400 tracking-widest block font-bold">CHALLENGE FINAL VERDICT</span>
-                    <code className="text-sm font-mono text-zinc-300 font-bold">UNSOLVED // 0 PTS RECORDED (NO FLAG SUBMITTED)</code>
-                  </div>
-                  <span className="text-xs font-mono text-zinc-500 italic bg-black/60 px-3 py-1.5 rounded border border-zinc-800">
-                    Archived for post-CTF community triage
-                  </span>
                 </div>
               </div>
             </article>
@@ -1062,7 +1050,7 @@ layout = {
                   MISSION INDEX
                 </span>
                 <span className="font-mono text-[10px] text-zinc-400 bg-zinc-900 border border-zinc-800 px-2 py-0.5 rounded font-bold">
-                  5 SOLVED // 1 UNSOLVED
+                  6 OPERATIONS
                 </span>
               </div>
 
@@ -1096,9 +1084,7 @@ layout = {
                           </span>
                           <span
                             className={`text-[9px] font-mono px-1.5 py-0.5 rounded border ${
-                              m.status === "unsolved"
-                                ? "border-amber-500/50 text-amber-400 bg-amber-500/10 font-bold"
-                                : isMissionActive
+                              isMissionActive
                                 ? "border-emerald-500/50 text-emerald-400 bg-emerald-500/10 font-bold"
                                 : "border-zinc-800 text-zinc-500"
                             }`}
