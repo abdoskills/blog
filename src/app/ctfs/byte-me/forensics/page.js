@@ -97,7 +97,7 @@ export default function ByteMeForensicsPage() {
       <main className="flex-grow pt-6 pb-24 max-w-7xl mx-auto px-4 sm:px-6 w-full">
         {/* Page Breadcrumbs & Header */}
         <div className="mb-10 text-left border-b border-zinc-800/80 pb-6">
-          <div className="mb-3 inline-flex items-center gap-2 bg-[#111111]/80 backdrop-blur-md border border-zinc-700/50 px-3 py-1 rounded-full text-xs font-mono">
+          <div className="mb-3 inline-flex items-center gap-2 bg-[#111116]/80 backdrop-blur-md border border-zinc-700/50 px-3 py-1 rounded-full text-xs font-mono">
             <Link href="/ctfs" className="text-zinc-400 hover:text-white transition-colors">
               CTF HUB
             </Link>
@@ -113,7 +113,7 @@ export default function ByteMeForensicsPage() {
             Vormir Forensics Dossier
           </h1>
           <p className="text-zinc-400 text-sm sm:text-base font-sans max-w-3xl leading-relaxed">
-            All 3 official forensic investigations in a unified single-page dossier. Every challenge includes comprehensive theoretical foundations, kernel memory &amp; packet structures, anti-honeypot triage, and complete runnable Python/Volatility solver scripts.
+            All 3 official forensic investigations in a unified single-page dossier. Every writeup follows our clean standard structure: <strong>Challenge Name</strong>, <strong>Challenge Description</strong>, <strong>What We Do (Analysis &amp; Theory)</strong>, <strong>Full Runnable Solver Scripts</strong>, and <strong>Verified Flags</strong>.
           </p>
         </div>
 
@@ -134,7 +134,7 @@ export default function ByteMeForensicsPage() {
                 slug="echoes-of-vormir"
               />
 
-              <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-8">
+              <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
                   <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-mono text-xs px-2.5 py-0.5 rounded font-bold uppercase">
                     4 STAGES // 4 FLAGS VERIFIED
@@ -152,7 +152,8 @@ export default function ByteMeForensicsPage() {
               </div>
 
               {/* Scenario Box */}
-              <div className="bg-[#0e0e14] border-l-4 border-zinc-500 p-5 rounded-r-xl mb-8 font-sans text-sm text-zinc-300 leading-relaxed italic">
+              <div className="bg-[#0e0e14] border-l-4 border-zinc-600 p-4 rounded-r-xl mb-8 font-sans text-sm text-zinc-300 italic">
+                <span className="text-zinc-500 font-mono text-[11px] uppercase tracking-wider block not-italic font-bold mb-1">CAMPAIGN NARRATIVE:</span>
                 &ldquo;Vormir remembers. Something happened on a Windows machine before its memory was captured. The evidence is scattered, and not everything left behind is what it seems. Begin by understanding the memory you&apos;ve been given. Then follow the traces left behind by the expedition. Five artifacts remain. The expedition ends when the final record is found.&rdquo;
               </div>
 
@@ -165,6 +166,12 @@ export default function ByteMeForensicsPage() {
                   </h3>
                 </div>
 
+                {/* Challenge Description */}
+                <div className="bg-[#0e0e14] border-l-4 border-zinc-600 p-4 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 italic">
+                  <span className="text-zinc-500 font-mono text-[11px] uppercase tracking-wider block not-italic font-bold mb-1">CHALLENGE DESCRIPTION:</span>
+                  &ldquo;Before following the trail, determine when the machine gave up its secrets. Find the time recorded in the memory image. Flag format: OWASP&#123;YYYY-MM-DD HH:MM:SS&#125;&rdquo;
+                </div>
+
                 {/* Pedagogical Breakdown */}
                 <div className="bg-[#111116] border-l-4 border-emerald-500 p-5 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 leading-relaxed">
                   <h4 className="text-emerald-400 font-bold mb-1.5 font-mono text-xs uppercase tracking-wider flex items-center gap-2">
@@ -175,34 +182,39 @@ export default function ByteMeForensicsPage() {
                   </p>
                 </div>
 
-                <p className="text-zinc-400 text-sm leading-relaxed mb-4">
-                  The briefing asks for the exact time the machine gave up its secrets. Using <strong>Volatility 3</strong>, the <code className="text-zinc-300 font-mono">windows.info</code> plugin queries the kernel header:
-                </p>
-                
-                <div className="bg-black/90 rounded-xl p-4 border border-zinc-800 font-mono text-xs text-zinc-300 overflow-x-auto mb-4">
-                  <span className="text-zinc-500"># Command: Extract Kernel Header and SystemTime</span>
-                  <br />
-                  <span className="text-emerald-400">vol -f soul.mem windows.info</span>
-                  <br />
-                  <br />
-                  <span className="text-zinc-500"># Output:</span>
-                  <br />
-                  <span className="text-zinc-400">Kernel Base      : 0xf8056e600000</span>
-                  <br />
-                  <span className="text-zinc-400">KdVersionBlock   : 0xf8056f20f400</span>
-                  <br />
-                  <span className="text-zinc-400">Major/Minor      : 15.19041 (Windows 10 20H2 / 21H1)</span>
-                  <br />
-                  <span className="text-emerald-400 font-bold">SystemTime       : 2026-10-08 05:07:43+00:00</span>
-                  <br />
-                  <span className="text-zinc-400">NtSystemRoot     : C:\Windows</span>
+                {/* What We Do */}
+                <div className="mb-6 space-y-4">
+                  <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center gap-2">
+                    <span className="text-emerald-400">⚡</span> What We Do: Extracting Kernel Header with Volatility 3
+                  </h4>
+                  <p className="text-zinc-400 text-sm leading-relaxed font-sans">
+                    We query the kernel memory image using the <code className="text-zinc-300 font-mono">windows.info</code> plugin:
+                  </p>
+                  <div className="bg-black/90 rounded-xl p-4 border border-zinc-800 font-mono text-xs text-zinc-300 overflow-x-auto">
+                    <span className="text-zinc-500"># Command: Extract Kernel Header and SystemTime</span>
+                    <br />
+                    <span className="text-emerald-400">vol -f soul.mem windows.info</span>
+                    <br />
+                    <br />
+                    <span className="text-zinc-500"># Output:</span>
+                    <br />
+                    <span className="text-zinc-400">Kernel Base      : 0xf8056e600000</span>
+                    <br />
+                    <span className="text-zinc-400">KdVersionBlock   : 0xf8056f20f400</span>
+                    <br />
+                    <span className="text-zinc-400">Major/Minor      : 15.19041 (Windows 10 20H2 / 21H1)</span>
+                    <br />
+                    <span className="text-emerald-400 font-bold">SystemTime       : 2026-10-08 05:07:43+00:00</span>
+                    <br />
+                    <span className="text-zinc-400">NtSystemRoot     : C:\Windows</span>
+                  </div>
                 </div>
 
                 {/* Expandable Methodology */}
                 <details className="group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-6 transition-all">
                   <summary className="p-4 cursor-pointer font-mono text-xs text-zinc-400 hover:text-white flex items-center justify-between list-none bg-zinc-900/40">
                     <span className="flex items-center gap-2 text-emerald-400 font-bold uppercase">
-                      <span>⚡</span> [ Show Python Timestamp Calculation Script ]
+                      <span>⚡</span> [ Show What We Do: Python Timestamp Calculation Script ]
                     </span>
                     <span className="transition-transform group-open:rotate-180">▼</span>
                   </summary>
@@ -245,6 +257,12 @@ print("Extracted Kernel Timestamp:", filetime_to_dt(raw_kernel_time).strftime("%
                   </h3>
                 </div>
 
+                {/* Challenge Description */}
+                <div className="bg-[#0e0e14] border-l-4 border-zinc-600 p-4 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 italic">
+                  <span className="text-zinc-500 font-mono text-[11px] uppercase tracking-wider block not-italic font-bold mb-1">CHALLENGE DESCRIPTION:</span>
+                  &ldquo;Among everything running on the machine, something doesn&apos;t belong. Find it. Flag format: OWASP&#123;...&#125;&rdquo;
+                </div>
+
                 {/* Pedagogical Breakdown */}
                 <div className="bg-[#111116] border-l-4 border-emerald-500 p-5 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 leading-relaxed">
                   <h4 className="text-emerald-400 font-bold mb-1.5 font-mono text-xs uppercase tracking-wider flex items-center gap-2">
@@ -255,44 +273,45 @@ print("Extracted Kernel Timestamp:", filetime_to_dt(raw_kernel_time).strftime("%
                   </p>
                 </div>
 
-                <p className="text-zinc-400 text-sm leading-relaxed mb-4">
-                  The challenge prompt states: <em>&ldquo;Among everything running on the machine, something doesn&apos;t belong. Find it.&rdquo;</em>
-                  Enumerating the process tree with Volatility reveals a rogue background process:
-                </p>
-
-                <div className="bg-black/90 rounded-xl p-4 border border-zinc-800 font-mono text-xs text-zinc-300 overflow-x-auto mb-4">
-                  <span className="text-zinc-500"># Step 1: Active Process Enumeration</span>
-                  <br />
-                  <span className="text-emerald-400">vol -f soul.mem windows.pslist</span>
-                  <br />
-                  <br />
-                  <span className="text-zinc-400">PID     PPID    ImageFileName    CreateTime                      ExitTime</span>
-                  <br />
-                  <span className="text-white font-bold">2580    6960    SoulHunt_7F31.   2026-10-08 04:48:01.000000 UTC  N/A</span>
-                  <br />
-                  <br />
-                  <span className="text-zinc-500"># Step 2: Extract Full Command Line from PEB</span>
-                  <br />
-                  <span className="text-emerald-400">vol -f soul.mem windows.cmdline --pid 2580</span>
-                  <br />
-                  <br />
-                  <span className="text-zinc-400">PID     Process          Args</span>
-                  <br />
-                  <span className="text-white">2580    SoulHunt_7F31.   {`"C:\\Users\\nightwatch\\Desktop\\SoulHunt_7F31.exe" -NoLogo -NoProfile -NoExit -Command Start-Sleep -Seconds 7200`}</span>
+                {/* What We Do */}
+                <div className="mb-6 space-y-4">
+                  <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center gap-2">
+                    <span className="text-emerald-400">⚡</span> What We Do: Process Listing &amp; PEB Command Line Carving
+                  </h4>
+                  <p className="text-zinc-400 text-sm leading-relaxed font-sans">
+                    Enumerating the process tree and inspecting anomalous process arguments:
+                  </p>
+                  <div className="bg-black/90 rounded-xl p-4 border border-zinc-800 font-mono text-xs text-zinc-300 overflow-x-auto">
+                    <span className="text-zinc-500"># Step 1: Active Process Enumeration</span>
+                    <br />
+                    <span className="text-emerald-400">vol -f soul.mem windows.pslist</span>
+                    <br />
+                    <br />
+                    <span className="text-zinc-400">PID     PPID    ImageFileName    CreateTime                      ExitTime</span>
+                    <br />
+                    <span className="text-white font-bold">2580    6960    SoulHunt_7F31.   2026-10-08 04:48:01.000000 UTC  N/A</span>
+                    <br />
+                    <br />
+                    <span className="text-zinc-500"># Step 2: Extract Full Command Line from PEB</span>
+                    <br />
+                    <span className="text-emerald-400">vol -f soul.mem windows.cmdline --pid 2580</span>
+                    <br />
+                    <br />
+                    <span className="text-zinc-400">PID     Process          Args</span>
+                    <br />
+                    <span className="text-white">2580    SoulHunt_7F31.   {`"C:\\Users\\nightwatch\\Desktop\\SoulHunt_7F31.exe" -NoLogo -NoProfile -NoExit -Command Start-Sleep -Seconds 7200`}</span>
+                  </div>
                 </div>
 
                 {/* Expandable Methodology */}
                 <details className="group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-6 transition-all">
                   <summary className="p-4 cursor-pointer font-mono text-xs text-zinc-400 hover:text-white flex items-center justify-between list-none bg-zinc-900/40">
                     <span className="flex items-center gap-2 text-emerald-400 font-bold uppercase">
-                      <span>⚡</span> [ Show Malware Triage &amp; AMSI Telemetry Analysis ]
+                      <span>⚡</span> [ Show What We Do: Malware Triage &amp; AMSI Telemetry Analysis ]
                     </span>
                     <span className="transition-transform group-open:rotate-180">▼</span>
                   </summary>
                   <div className="p-5 border-t border-zinc-800/70 font-mono text-xs text-zinc-300 bg-black/80 overflow-x-auto space-y-4">
-                    <p className="text-zinc-400 font-sans text-xs">
-                      Inspecting the parent process (<code className="text-zinc-200 font-mono">PID 6960</code>, a PowerShell shell instance) and searching memory for Windows Defender AMSI scan buffers:
-                    </p>
                     <pre className="text-zinc-300">{`# The attacker copied powershell.exe to the desktop under a masqueraded name
 # and invoked an infinite sleep loop to maintain persistence.
 # Grepping memory for Antimalware Scan Interface (AMSI) signatures confirms:
@@ -324,6 +343,12 @@ print("Extracted Kernel Timestamp:", filetime_to_dt(raw_kernel_time).strftime("%
                   </h3>
                 </div>
 
+                {/* Challenge Description */}
+                <div className="bg-[#0e0e14] border-l-4 border-zinc-600 p-4 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 italic">
+                  <span className="text-zinc-500 font-mono text-[11px] uppercase tracking-wider block not-italic font-bold mb-1">CHALLENGE DESCRIPTION:</span>
+                  &ldquo;Some things are easier to remember when they are seen. Find what was left behind. Flag format: OWASP&#123;...&#125;&rdquo;
+                </div>
+
                 {/* Pedagogical Breakdown */}
                 <div className="bg-[#111116] border-l-4 border-emerald-500 p-5 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 leading-relaxed">
                   <h4 className="text-emerald-400 font-bold mb-1.5 font-mono text-xs uppercase tracking-wider flex items-center gap-2">
@@ -334,87 +359,80 @@ print("Extracted Kernel Timestamp:", filetime_to_dt(raw_kernel_time).strftime("%
                   </p>
                 </div>
 
-                <div className="space-y-4 text-zinc-400 text-sm leading-relaxed mb-6 font-sans">
-                  <p>
-                    <strong>1. The Decoy Trap (<code className="text-zinc-200 font-mono">Sacrifice.png</code>):</strong> Dumping files with <code className="text-zinc-300 font-mono">windows.dumpfiles</code> yields a wallpaper opened in Photos (<code className="text-zinc-200 font-mono">PID 4824</code>) reading <code className="text-red-400 font-mono">OWASP&#123;soulstone_memory_84c2&#125;</code>. This string also resides in the system clipboard. The platform rejects this: it is the deliberate honeypot warned in the briefing (<em>&ldquo;not everything left behind is what it seems&rdquo;</em>).
-                  </p>
-                  <p>
-                    <strong>2. The Real Target (<code className="text-zinc-200 font-mono">mspaint.exe</code> PID 1204):</strong> Checking command lines reveals classic Win32 Paint had opened <code className="text-zinc-300 font-mono">Vormir.png</code>. Because the file was fragmented across non-contiguous physical RAM pages, disk file carving returned 0 bytes. We dump all Virtual Address Descriptors (VAD) belonging to PID 1204:
-                  </p>
-                </div>
-
-                <div className="bg-black/90 rounded-xl p-4 border border-zinc-800 font-mono text-xs text-zinc-300 overflow-x-auto mb-4">
-                  <span className="text-zinc-500"># Dump all VAD memory segments for MS Paint</span>
-                  <br />
-                  <span className="text-emerald-400">vol -f soul.mem -o vad_dump windows.vadinfo --pid 1204 --dump</span>
-                  <br />
-                  <br />
-                  <span className="text-zinc-500"># Scoring dump segments for pure white canvas background (0xFF bytes):</span>
-                  <br />
-                  <span className="text-white font-bold">Isolated VAD: pid.1204.vad.0x23840870000-0x23840af4fff.dmp (2,641,920 bytes)</span>
-                </div>
-
-                {/* Stride Autocorrelation Math */}
-                <div className="bg-[#0b0c10] border border-zinc-800 rounded-xl p-5 mb-6">
-                  <h4 className="text-white font-bold font-mono text-xs uppercase mb-2">
-                    Mathematical Stride Autocorrelation:
-                  </h4>
-                  <p className="text-zinc-400 text-xs font-sans leading-relaxed mb-3">
-                    For an unknown raw framebuffer, we calculate autocorrelation across byte offsets $s$:
-                  </p>
-                  <div className="bg-black/80 p-3 rounded font-mono text-xs text-emerald-400 mb-3">
-                    R(s) = sum(B[i] == B[i + s]) for i in 0..N-s
+                {/* What We Do */}
+                <div className="space-y-6 text-zinc-400 text-sm leading-relaxed mb-6 font-sans">
+                  <div>
+                    <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center gap-2 mb-2">
+                      <span className="text-emerald-400">⚡</span> What We Do: 1. Honeypot Rejection &amp; MS Paint VAD Carving
+                    </h4>
+                    <p className="mb-2">
+                      Dumping files with <code className="text-zinc-300 font-mono">windows.dumpfiles</code> yields <code className="text-zinc-200 font-mono">Sacrifice.png</code> opened in Photos (<code className="text-zinc-200 font-mono">PID 4824</code>) reading <code className="text-red-400 font-mono">OWASP&#123;soulstone_memory_84c2&#125;</code>. This string also resides in the system clipboard. The platform rejects this: it is the deliberate honeypot warned in the briefing (<em>&ldquo;not everything left behind is what it seems&rdquo;</em>).
+                    </p>
+                    <p>
+                      Checking command lines reveals classic Win32 Paint had opened <code className="text-zinc-300 font-mono">Vormir.png</code>. We dump all Virtual Address Descriptors (VAD) belonging to PID 1204:
+                    </p>
                   </div>
-                  <p className="text-zinc-400 text-xs font-sans leading-relaxed">
-                    The autocorrelation peak occurs exactly at <strong>stride = 4608 bytes</strong>. With 32 bits per pixel (4 bytes/px), the image width is:
+
+                  <div className="bg-black/90 rounded-xl p-4 border border-zinc-800 font-mono text-xs text-zinc-300 overflow-x-auto">
+                    <span className="text-zinc-500"># Dump all VAD memory segments for MS Paint</span>
                     <br />
-                    <code className="text-zinc-200 font-mono font-bold">Width = 4608 / 4 = 1152 pixels</code>
+                    <span className="text-emerald-400">vol -f soul.mem -o vad_dump windows.vadinfo --pid 1204 --dump</span>
                     <br />
-                    <code className="text-zinc-200 font-mono font-bold">Height = 2,641,920 / 4608 = 573.33 ≈ 573 rows</code>
-                  </p>
-                </div>
+                    <br />
+                    <span className="text-zinc-500"># Scoring dump segments for pure white canvas background (0xFF bytes):</span>
+                    <br />
+                    <span className="text-white font-bold">Isolated VAD: pid.1204.vad.0x23840870000-0x23840af4fff.dmp (2,641,920 bytes)</span>
+                  </div>
 
-                <p className="text-zinc-400 text-sm leading-relaxed mb-4 font-sans">
-                  <strong>3. The Canvas Render &amp; The Missing Tail:</strong> Rendering the 1152x573 bottom-up canvas produces three clean rows of painted black hex characters:
-                </p>
+                  {/* Stride Autocorrelation Math */}
+                  <div className="bg-[#0b0c10] border border-zinc-800 rounded-xl p-5">
+                    <h4 className="text-white font-bold font-mono text-xs uppercase mb-2">
+                      What We Do: 2. Mathematical Stride Autocorrelation &amp; Dimensions:
+                    </h4>
+                    <p className="text-zinc-400 text-xs font-sans leading-relaxed mb-3">
+                      For an unknown raw framebuffer, we calculate autocorrelation across byte offsets $s$:
+                    </p>
+                    <div className="bg-black/80 p-3 rounded font-mono text-xs text-emerald-400 mb-3">
+                      R(s) = sum(B[i] == B[i + s]) for i in 0..N-s
+                    </div>
+                    <p className="text-zinc-400 text-xs font-sans leading-relaxed">
+                      The autocorrelation peak occurs exactly at <strong>stride = 4608 bytes</strong>. With 32 bits per pixel (4 bytes/px), the image width is:
+                      <br />
+                      <code className="text-zinc-200 font-mono font-bold">Width = 4608 / 4 = 1152 pixels</code>
+                      <br />
+                      <code className="text-zinc-200 font-mono font-bold">Height = 2,641,920 / 4608 = 573.33 ≈ 573 rows</code>
+                    </p>
+                  </div>
 
-                <div className="bg-black/90 rounded-xl p-4 border border-zinc-800 font-mono text-xs text-zinc-300 overflow-x-auto mb-4">
-                  <span className="text-zinc-500"># Hex carved from painted canvas:</span>
-                  <br />
-                  <span className="text-zinc-300">Line 1: 4f574153507b736</span>
-                  <br />
-                  <span className="text-zinc-300">Line 2: f756c73746f6e65</span>
-                  <br />
-                  <span className="text-zinc-300">Line 3: 5f7061696e745f3</span>
-                  <br />
-                  <br />
-                  <span className="text-zinc-500"># Notice: Only 45 nibbles (odd length, incomplete trailing byte &apos;3&apos;!).</span>
-                  <br />
-                  <span className="text-zinc-500"># The briefing hints: &quot;...maybe the process didn&apos;t resume?&quot;</span>
-                  <br />
-                  <span className="text-emerald-400"># The text tool in MS Paint never completed rasterizing the 4th line to canvas!</span>
-                </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center gap-2 mb-2">
+                      <span className="text-emerald-400">⚡</span> What We Do: 3. Recovering the Unrendered UTF-16 Text Buffer
+                    </h4>
+                    <p className="mb-2">
+                      Rendering the 1152x573 bottom-up canvas produces three clean rows of painted black hex characters, stopping at 45 nibbles (odd length, incomplete trailing byte &apos;3&apos;!). The text tool in MS Paint never finished rendering the 4th line to canvas.
+                    </p>
+                    <p>
+                      Because the text tool buffer remained in mspaint&apos;s heap, searching for the UTF-16le string <code className="text-zinc-200 font-mono">{"7061696e745f3"}</code> locates the full unrendered string at offset <code className="text-zinc-200 font-mono">0x6cdc75d0</code>:
+                    </p>
+                  </div>
 
-                <p className="text-zinc-400 text-sm leading-relaxed mb-4 font-sans">
-                  <strong>4. Recovering the Unrendered UTF-16 Buffer:</strong> Because the text tool buffer remained in mspaint&apos;s heap, searching for the UTF-16le string <code className="text-zinc-200 font-mono">{"7061696e745f3"}</code> locates the full unrendered string at offset <code className="text-zinc-200 font-mono">0x6cdc75d0</code>:
-                </p>
-
-                <div className="bg-black/90 rounded-xl p-4 border border-zinc-800 font-mono text-xs text-zinc-300 overflow-x-auto mb-4">
-                  <span className="text-zinc-500"># Full UTF-16 string recovered from mspaint heap:</span>
-                  <br />
-                  <span className="text-white font-bold">4f574153507b736f756c73746f6e655f7061696e745f353261667d</span>
-                  <br />
-                  <br />
-                  <span className="text-zinc-500"># Hex to ASCII decode:</span>
-                  <br />
-                  <span className="text-emerald-400 font-bold">OWASP&#123;soulstone_paint_52af&#125;</span>
+                  <div className="bg-black/90 rounded-xl p-4 border border-zinc-800 font-mono text-xs text-zinc-300 overflow-x-auto">
+                    <span className="text-zinc-500"># Full UTF-16 string recovered from mspaint heap:</span>
+                    <br />
+                    <span className="text-white font-bold">4f574153507b736f756c73746f6e655f7061696e745f353261667d</span>
+                    <br />
+                    <br />
+                    <span className="text-zinc-500"># Hex to ASCII decode:</span>
+                    <br />
+                    <span className="text-emerald-400 font-bold">OWASP&#123;soulstone_paint_52af&#125;</span>
+                  </div>
                 </div>
 
                 {/* Expandable Full Python DIB Carver & Heap Search Script */}
                 <details className="group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-6 transition-all">
                   <summary className="p-4 cursor-pointer font-mono text-xs text-zinc-400 hover:text-white flex items-center justify-between list-none bg-zinc-900/40">
                     <span className="flex items-center gap-2 text-emerald-400 font-bold uppercase">
-                      <span>⚡</span> [ Show Complete DIB Carver &amp; UTF-16 Heap Search Script ]
+                      <span>⚡</span> [ Show What We Do: Full DIB Carver &amp; UTF-16 Heap Search Script ]
                     </span>
                     <span className="transition-transform group-open:rotate-180">▼</span>
                   </summary>
@@ -487,6 +505,12 @@ if pos != -1:
                   </h3>
                 </div>
 
+                {/* Challenge Description */}
+                <div className="bg-[#0e0e14] border-l-4 border-zinc-600 p-4 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 italic">
+                  <span className="text-zinc-500 font-mono text-[11px] uppercase tracking-wider block not-italic font-bold mb-1">CHALLENGE DESCRIPTION:</span>
+                  &ldquo;The expedition ends when the final record is found. Flag format: OWASP&#123;...&#125;&rdquo;
+                </div>
+
                 {/* Pedagogical Breakdown */}
                 <div className="bg-[#111116] border-l-4 border-emerald-500 p-5 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 leading-relaxed">
                   <h4 className="text-emerald-400 font-bold mb-1.5 font-mono text-xs uppercase tracking-wider flex items-center gap-2">
@@ -497,26 +521,31 @@ if pos != -1:
                   </p>
                 </div>
 
-                <p className="text-zinc-400 text-sm leading-relaxed mb-4 font-sans">
-                  Carved from the document path <code className="text-zinc-300 font-mono">{"C:\\Users\\nightwatch\\Documents\\Vormir\\expedition.txt"}</code>:
-                </p>
-
-                <div className="bg-black/90 rounded-xl p-4 border border-zinc-800 font-mono text-xs text-zinc-300 overflow-x-auto mb-4">
-                  <span className="text-zinc-500"># expedition.txt Content:</span>
-                  <br />
-                  <span className="text-zinc-400">Location: Vormir</span>
-                  <br />
-                  <span className="text-zinc-400">Status: incomplete</span>
-                  <br />
-                  <br />
-                  <span className="text-zinc-400">Artifact reference:</span>
-                  <br />
-                  <span className="text-white font-bold">4f574153507b736f756c73746f6e655f6e6f74655f336339317d</span>
-                  <br />
-                  <br />
-                  <span className="text-zinc-400">The trail ends with this record.</span>
-                  <br />
-                  <span className="text-zinc-400">If you are reading this, you&apos;ve uncovered what the others missed.</span>
+                {/* What We Do */}
+                <div className="mb-6 space-y-4">
+                  <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center gap-2">
+                    <span className="text-emerald-400">⚡</span> What We Do: Document Path Carving &amp; Hex Decoding
+                  </h4>
+                  <p className="text-zinc-400 text-sm leading-relaxed font-sans">
+                    Carved from the document path <code className="text-zinc-300 font-mono">{"C:\\Users\\nightwatch\\Documents\\Vormir\\expedition.txt"}</code>:
+                  </p>
+                  <div className="bg-black/90 rounded-xl p-4 border border-zinc-800 font-mono text-xs text-zinc-300 overflow-x-auto">
+                    <span className="text-zinc-500"># expedition.txt Content:</span>
+                    <br />
+                    <span className="text-zinc-400">Location: Vormir</span>
+                    <br />
+                    <span className="text-zinc-400">Status: incomplete</span>
+                    <br />
+                    <br />
+                    <span className="text-zinc-400">Artifact reference:</span>
+                    <br />
+                    <span className="text-white font-bold">4f574153507b736f756c73746f6e655f6e6f74655f336339317d</span>
+                    <br />
+                    <br />
+                    <span className="text-zinc-400">The trail ends with this record.</span>
+                    <br />
+                    <span className="text-zinc-400">If you are reading this, you&apos;ve uncovered what the others missed.</span>
+                  </div>
                 </div>
 
                 {/* Flag Box */}
@@ -576,7 +605,7 @@ if pos != -1:
                 slug="sacrifice"
               />
 
-              <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-8">
+              <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
                   <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-mono text-xs px-2.5 py-0.5 rounded font-bold uppercase">
                     SOLVED
@@ -593,6 +622,12 @@ if pos != -1:
                 </p>
               </div>
 
+              {/* Challenge Description */}
+              <div className="bg-[#0e0e14] border-l-4 border-zinc-600 p-4 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 italic">
+                <span className="text-zinc-500 font-mono text-[11px] uppercase tracking-wider block not-italic font-bold mb-1">CHALLENGE DESCRIPTION:</span>
+                &ldquo;Exfiltrated communication was captured in a packet trace. Retrieve the hidden payload. File provided: s0ul.pcap (227,553 bytes).&rdquo;
+              </div>
+
               {/* Pedagogical Breakdown */}
               <div className="bg-[#111116] border-l-4 border-emerald-500 p-5 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 leading-relaxed">
                 <h4 className="text-emerald-400 font-bold mb-1.5 font-mono text-xs uppercase tracking-wider flex items-center gap-2">
@@ -603,75 +638,78 @@ if pos != -1:
                 </p>
               </div>
 
-              {/* Step 1: PCAP Analysis */}
-              <div className="mb-8">
-                <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3">
-                  1. Packet Stream Reconstruction
-                </h3>
-                <p className="text-zinc-400 text-sm leading-relaxed mb-4">
-                  Parsing the 669 packets with <code className="text-zinc-300 font-mono">tshark</code> and Python reveals active TCP communication on loopback (<code className="text-zinc-300 font-mono">127.0.0.1</code>). An automated FTP session logs in as <code className="text-zinc-300 font-mono">vormirkeeper:S0ulK33per2014</code> to a local <code className="text-zinc-300 font-mono">pyftpdlib 2.2.0</code> server:
-                </p>
-                <div className="bg-black/90 rounded-xl p-4 border border-zinc-800 font-mono text-xs text-zinc-300 overflow-x-auto mb-4">
-                  <span className="text-zinc-500"># FTP Transferred Objects over Ephemeral Ports:</span>
-                  <br />
-                  <span className="text-zinc-400">127.0.0.1:37634 &lt;--&gt; 127.0.0.1:45335 (Passive Data Channel)</span>
-                  <br />
-                  <span className="text-emerald-400">STOR manifest_final_047.jpg (155,832 bytes)</span>
-                  <br />
-                  <span className="text-emerald-400">STOR comms.tar (10,240 bytes)</span>
+              {/* What We Do */}
+              <div className="space-y-6 mb-8">
+                {/* Step 1: PCAP Analysis */}
+                <div>
+                  <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3 flex items-center gap-2">
+                    <span className="text-emerald-400">⚡</span> What We Do: 1. Packet Stream Reconstruction
+                  </h3>
+                  <p className="text-zinc-400 text-sm leading-relaxed mb-4 font-sans">
+                    Parsing the 669 packets with <code className="text-zinc-300 font-mono">tshark</code> and Python reveals active TCP communication on loopback (<code className="text-zinc-300 font-mono">127.0.0.1</code>). An automated FTP session logs in as <code className="text-zinc-300 font-mono">vormirkeeper:S0ulK33per2014</code> to a local <code className="text-zinc-300 font-mono">pyftpdlib 2.2.0</code> server:
+                  </p>
+                  <div className="bg-black/90 rounded-xl p-4 border border-zinc-800 font-mono text-xs text-zinc-300 overflow-x-auto">
+                    <span className="text-zinc-500"># FTP Transferred Objects over Ephemeral Ports:</span>
+                    <br />
+                    <span className="text-zinc-400">127.0.0.1:37634 &lt;--&gt; 127.0.0.1:45335 (Passive Data Channel)</span>
+                    <br />
+                    <span className="text-emerald-400">STOR manifest_final_047.jpg (155,832 bytes)</span>
+                    <br />
+                    <span className="text-emerald-400">STOR comms.tar (10,240 bytes)</span>
+                  </div>
                 </div>
-              </div>
 
-              {/* Step 2: JPEG & Zip Overlay Carving */}
-              <div className="mb-8">
-                <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3">
-                  2. JPEG Comment Extraction &amp; Overlay ZIP Carving
-                </h3>
-                <p className="text-zinc-400 text-sm leading-relaxed mb-4">
-                  Extracting <code className="text-zinc-300 font-mono">manifest_final_047.jpg</code> and inspecting its metadata comment header (<code className="text-zinc-300 font-mono">0xFF 0xFE</code>) reveals the password for the appended archive:
-                </p>
-                <div className="bg-black/90 rounded-xl p-4 border border-zinc-800 font-mono text-xs text-zinc-300 overflow-x-auto mb-4">
-                  <span className="text-zinc-500"># Extracted JPEG 0xFF 0xFE Comment Field:</span>
-                  <br />
-                  <span className="text-white font-bold">&quot;This password might be useful XD : th3_ult1m4t3_s4cr1f1s3&quot;</span>
-                  <br />
-                  <br />
-                  <span className="text-zinc-500"># Overlay Carving:</span>
-                  <br />
-                  <span className="text-zinc-400">Carved password-protected ZIP archive starting directly after 0xFF 0xD9 (EOI).</span>
-                  <br />
-                  <span className="text-emerald-400">Unzipped comms.bin using password &quot;th3_ult1m4t3_s4cr1f1s3&quot;.</span>
+                {/* Step 2: JPEG & Zip Overlay Carving */}
+                <div>
+                  <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3 flex items-center gap-2">
+                    <span className="text-emerald-400">⚡</span> What We Do: 2. JPEG Comment Extraction &amp; Overlay ZIP Carving
+                  </h3>
+                  <p className="text-zinc-400 text-sm leading-relaxed mb-4 font-sans">
+                    Extracting <code className="text-zinc-300 font-mono">manifest_final_047.jpg</code> and inspecting its metadata comment header (<code className="text-zinc-300 font-mono">0xFF 0xFE</code>) reveals the password for the appended archive:
+                  </p>
+                  <div className="bg-black/90 rounded-xl p-4 border border-zinc-800 font-mono text-xs text-zinc-300 overflow-x-auto">
+                    <span className="text-zinc-500"># Extracted JPEG 0xFF 0xFE Comment Field:</span>
+                    <br />
+                    <span className="text-white font-bold">&quot;This password might be useful XD : th3_ult1m4t3_s4cr1f1s3&quot;</span>
+                    <br />
+                    <br />
+                    <span className="text-zinc-500"># Overlay Carving:</span>
+                    <br />
+                    <span className="text-zinc-400">Carved password-protected ZIP archive starting directly after 0xFF 0xD9 (EOI).</span>
+                    <br />
+                    <span className="text-emerald-400">Unzipped comms.bin using password &quot;th3_ult1m4t3_s4cr1f1s3&quot;.</span>
+                  </div>
                 </div>
-              </div>
 
-              {/* Step 3: Nested Decompression Pipeline */}
-              <div className="mb-8">
-                <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3">
-                  3. Nested Archive Decompression &amp; Log Triage
-                </h3>
-                <p className="text-zinc-400 text-sm leading-relaxed mb-4">
-                  Inspecting the extracted <code className="text-zinc-300 font-mono">comms.bin</code> by magic byte headers reveals a recursive compression wrapper:
-                </p>
-                <div className="bg-black/90 rounded-xl p-4 border border-zinc-800 font-mono text-xs text-zinc-300 overflow-x-auto mb-4">
-                  <span className="text-zinc-500"># Recursive Magic Byte Decompression:</span>
-                  <br />
-                  <span className="text-zinc-400">1. Gzip (1F 8B 08 08)   -&gt; Decompresses to Bzip2</span>
-                  <br />
-                  <span className="text-zinc-400">2. Bzip2 (42 5A 68)      -&gt; Decompresses to Gzip</span>
-                  <br />
-                  <span className="text-zinc-400">3. Gzip (1F 8B 08 08)   -&gt; Decompresses to TAR archive (comms.tar, 20,480 bytes)</span>
-                  <br />
-                  <br />
-                  <span className="text-zinc-500"># comms/README.txt Lore Clue:</span>
-                  <br />
-                  <span className="text-white">&quot;Two went down. Only one came back. Find the one who didn&apos;t.&quot;</span>
-                  <br />
-                  <br />
-                  <span className="text-zinc-500"># Log: comms/natasha_romanoff/comn.log:</span>
-                  <br />
-                  <span className="text-emerald-400 font-bold">Base64: T1dBU1B7NF81MHUxX2Ywcl80XzUwdTFfdjBybTFyfQ==</span>
-                  <br />
-                  <span className="text-white font-bold">Decoded Flag: OWASP&#123;4_50u1_f0r_4_50u1_v0rm1r&#125;</span>
+                {/* Step 3: Nested Decompression Pipeline */}
+                <div>
+                  <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3 flex items-center gap-2">
+                    <span className="text-emerald-400">⚡</span> What We Do: 3. Nested Archive Decompression &amp; Log Triage
+                  </h3>
+                  <p className="text-zinc-400 text-sm leading-relaxed mb-4 font-sans">
+                    Inspecting the extracted <code className="text-zinc-300 font-mono">comms.bin</code> by magic byte headers reveals a recursive compression wrapper:
+                  </p>
+                  <div className="bg-black/90 rounded-xl p-4 border border-zinc-800 font-mono text-xs text-zinc-300 overflow-x-auto">
+                    <span className="text-zinc-500"># Recursive Magic Byte Decompression:</span>
+                    <br />
+                    <span className="text-zinc-400">1. Gzip (1F 8B 08 08)   -&gt; Decompresses to Bzip2</span>
+                    <br />
+                    <span className="text-zinc-400">2. Bzip2 (42 5A 68)      -&gt; Decompresses to Gzip</span>
+                    <br />
+                    <span className="text-zinc-400">3. Gzip (1F 8B 08 08)   -&gt; Decompresses to TAR archive (comms.tar, 20,480 bytes)</span>
+                    <br />
+                    <br />
+                    <span className="text-zinc-500"># comms/README.txt Lore Clue:</span>
+                    <br />
+                    <span className="text-white">&quot;Two went down. Only one came back. Find the one who didn&apos;t.&quot;</span>
+                    <br />
+                    <br />
+                    <span className="text-zinc-500"># Log: comms/natasha_romanoff/comn.log:</span>
+                    <br />
+                    <span className="text-emerald-400 font-bold">Base64: T1dBU1B7NF81MHUxX2Ywcl80XzUwdTFfdjBybTFyfQ==</span>
+                    <br />
+                    <span className="text-white font-bold">Decoded Flag: OWASP&#123;4_50u1_f0r_4_50u1_v0rm1r&#125;</span>
+                  </div>
                 </div>
               </div>
 
@@ -679,14 +717,11 @@ if pos != -1:
               <details className="group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
                 <summary className="p-4 cursor-pointer font-mono text-xs text-zinc-400 hover:text-white flex items-center justify-between list-none bg-zinc-900/40">
                   <span className="flex items-center gap-2 text-emerald-400 font-bold uppercase">
-                    <span>⚡</span> [ Show Automated PCAP Carver &amp; Decompressor Script ]
+                    <span>⚡</span> [ Show What We Do: Full Automated PCAP Carver &amp; Decompressor Script ]
                   </span>
                   <span className="transition-transform group-open:rotate-180">▼</span>
                 </summary>
                 <div className="p-5 border-t border-zinc-800/70 font-mono text-xs text-zinc-300 bg-black/80 overflow-x-auto space-y-4">
-                  <p className="text-zinc-400 font-sans text-xs">
-                    This standalone Python script extracts the FTP data stream, parses the JPEG comment and ZIP overlay, unpacks the nested archives, and prints the flag:
-                  </p>
                   <pre className="text-zinc-300">{`import gzip, bz2, tarfile, zipfile, io, base64
 
 # Assume raw_stream contains bytes extracted from FTP-DATA port 45335
@@ -747,7 +782,7 @@ def solve_sacrifice(jpeg_bytes):
                 slug="the-last-memory-of-vormir"
               />
 
-              <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-8">
+              <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
                   <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-mono text-xs px-2.5 py-0.5 rounded font-bold uppercase">
                     SOLVED
@@ -762,6 +797,12 @@ def solve_sacrifice(jpeg_bytes):
                 <p className="text-zinc-400 font-sans text-sm sm:text-base leading-relaxed">
                   Recovering the ancient relic left by the Keeper. Reversing audio order, transcribing backward speech, and decrypting appended RIFF cipher data.
                 </p>
+              </div>
+
+              {/* Challenge Description */}
+              <div className="bg-[#0e0e14] border-l-4 border-zinc-600 p-4 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 italic">
+                <span className="text-zinc-500 font-mono text-[11px] uppercase tracking-wider block not-italic font-bold mb-1">CHALLENGE DESCRIPTION:</span>
+                &ldquo;Long before anyone came searching for the Soul Stone, a solitary Keeper watched over the ancient place of Vormir. The Keeper&apos;s duty was not simply to guard the relic; he was bound to it by an oath. Before his disappearance, the Keeper left behind a final recording. What was recorded last may need to be understood first. Decode what he left behind.&rdquo;
               </div>
 
               {/* Pedagogical Breakdown */}
@@ -787,56 +828,59 @@ def solve_sacrifice(jpeg_bytes):
                 </div>
               </div>
 
-              {/* Step 1: Audio Reversing */}
-              <div className="mb-8">
-                <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3">
-                  1. Audio Reversal &amp; Speech Transcription
-                </h3>
-                <p className="text-zinc-400 text-sm leading-relaxed mb-4">
-                  The scenario briefing provides explicit cues: <em>&ldquo;What was recorded last may need to be understood first. Beginnings and endings are not bound by the laws of the outside world.&rdquo;</em>
-                  Reversing the stereo PCM channel (<code className="text-zinc-300 font-mono">data[::-1]</code>) and passing it to speech transcription yields:
-                </p>
-                <div className="bg-[#111116] border border-zinc-800 p-4 rounded-xl font-mono text-sm text-emerald-400 font-bold mb-4">
-                  &ldquo;The key is sacrifice.&rdquo;
+              {/* What We Do */}
+              <div className="space-y-6 mb-8">
+                {/* Step 1: Audio Reversing */}
+                <div>
+                  <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3 flex items-center gap-2">
+                    <span className="text-emerald-400">⚡</span> What We Do: 1. Audio Reversal &amp; Speech Transcription
+                  </h3>
+                  <p className="text-zinc-400 text-sm leading-relaxed mb-4 font-sans">
+                    The scenario briefing provides explicit cues: <em>&ldquo;What was recorded last may need to be understood first. Beginnings and endings are not bound by the laws of the outside world.&rdquo;</em>
+                    Reversing the stereo PCM channel (<code className="text-zinc-300 font-mono">data[::-1]</code>) and passing it to speech transcription yields:
+                  </p>
+                  <div className="bg-[#111116] border border-zinc-800 p-4 rounded-xl font-mono text-sm text-emerald-400 font-bold mb-2">
+                    &ldquo;The key is sacrifice.&rdquo;
+                  </div>
+                  <p className="text-zinc-400 text-xs font-mono">
+                    → Recovered XOR decryption key: <code className="text-white font-bold">sacrifice</code>
+                  </p>
                 </div>
-                <p className="text-zinc-400 text-xs font-mono">
-                  → Recovered XOR decryption key: <code className="text-white font-bold">sacrifice</code>
-                </p>
-              </div>
 
-              {/* Step 2: Carving Trailing RIFF Hex */}
-              <div className="mb-8">
-                <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3">
-                  2. Trailing RIFF Payload Carving &amp; XOR Decryption
-                </h3>
-                <p className="text-zinc-400 text-sm leading-relaxed mb-4">
-                  Inspecting the WAV header reveals an expected chunk size of 682,062 bytes, whereas the file size is 682,275 bytes. Appended at offset 682,062 is a 213-byte trailing hex payload:
-                </p>
-                <div className="bg-black/90 rounded-xl p-4 border border-zinc-800 font-mono text-xs text-zinc-300 overflow-x-auto mb-4">
-                  <span className="text-zinc-500"># Trailing Hex Carved at Offset 682,062:</span>
-                  <br />
-                  <span className="text-zinc-300">21 04 0e 17 04 04 0c 11 45 04 09 1a 52 20 46 1b 06 08 12 08 0d 17 0d 48 63 2d 0a 07 41 05 1d 1b...</span>
-                  <br />
-                  <br />
-                  <span className="text-zinc-500"># Decrypted with key = b&quot;sacrifice&quot;:</span>
-                  <br />
-                  <span className="text-white font-bold">&quot;Remember why I remained. Not for the Stone, but for what held me to it.&quot;</span>
+                {/* Step 2: Carving Trailing RIFF Hex */}
+                <div>
+                  <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3 flex items-center gap-2">
+                    <span className="text-emerald-400">⚡</span> What We Do: 2. Trailing RIFF Payload Carving &amp; XOR Decryption
+                  </h3>
+                  <p className="text-zinc-400 text-sm leading-relaxed mb-4 font-sans">
+                    Inspecting the WAV header reveals an expected chunk size of 682,062 bytes, whereas the file size is 682,275 bytes. Appended at offset 682,062 is a 213-byte trailing hex payload:
+                  </p>
+                  <div className="bg-black/90 rounded-xl p-4 border border-zinc-800 font-mono text-xs text-zinc-300 overflow-x-auto">
+                    <span className="text-zinc-500"># Trailing Hex Carved at Offset 682,062:</span>
+                    <br />
+                    <span className="text-zinc-300">21 04 0e 17 04 04 0c 11 45 04 09 1a 52 20 46 1b 06 08 12 08 0d 17 0d 48 63 2d 0a 07 41 05 1d 1b...</span>
+                    <br />
+                    <br />
+                    <span className="text-zinc-500"># Decrypted with key = b&quot;sacrifice&quot;:</span>
+                    <br />
+                    <span className="text-white font-bold">&quot;Remember why I remained. Not for the Stone, but for what held me to it.&quot;</span>
+                  </div>
                 </div>
-              </div>
 
-              {/* Step 3: Riddle Resolution */}
-              <div className="mb-8">
-                <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3">
-                  3. Relic Resolution &amp; Reversal Logic
-                </h3>
-                <p className="text-zinc-400 text-sm leading-relaxed mb-4">
-                  The Keeper&apos;s oath states: <em>&ldquo;He was bound to it by an oath... And if you reach the relic, remember that Vormir does not reveal its truths in the order you expect.&rdquo;</em>
-                  Reversing the decisive clause (&ldquo;what held me to it&rdquo;) produces the exact flag accepted by the platform:
-                </p>
-                <div className="bg-black/90 rounded-xl p-4 border border-zinc-800 font-mono text-xs text-zinc-300 overflow-x-auto mb-4">
-                  <span className="text-zinc-500"># Key Phrase: &quot;what held me to it&quot;</span>
-                  <br />
-                  <span className="text-emerald-400 font-bold">&quot;what held me to it&quot; in reverse: &quot;ti_ot_em_dleh_tahw&quot;</span>
+                {/* Step 3: Riddle Resolution */}
+                <div>
+                  <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3 flex items-center gap-2">
+                    <span className="text-emerald-400">⚡</span> What We Do: 3. Relic Resolution &amp; Reversal Logic
+                  </h3>
+                  <p className="text-zinc-400 text-sm leading-relaxed mb-4 font-sans">
+                    The Keeper&apos;s oath states: <em>&ldquo;He was bound to it by an oath... And if you reach the relic, remember that Vormir does not reveal its truths in the order you expect.&rdquo;</em>
+                    Reversing the decisive clause (&ldquo;what held me to it&rdquo;) produces the exact flag accepted by the platform:
+                  </p>
+                  <div className="bg-black/90 rounded-xl p-4 border border-zinc-800 font-mono text-xs text-zinc-300 overflow-x-auto">
+                    <span className="text-zinc-500"># Key Phrase: &quot;what held me to it&quot;</span>
+                    <br />
+                    <span className="text-emerald-400 font-bold">&quot;what held me to it&quot; in reverse: &quot;ti_ot_em_dleh_tahw&quot;</span>
+                  </div>
                 </div>
               </div>
 
@@ -844,14 +888,11 @@ def solve_sacrifice(jpeg_bytes):
               <details className="group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
                 <summary className="p-4 cursor-pointer font-mono text-xs text-zinc-400 hover:text-white flex items-center justify-between list-none bg-zinc-900/40">
                   <span className="flex items-center gap-2 text-emerald-400 font-bold uppercase">
-                    <span>⚡</span> [ Show Audio Reverser &amp; XOR Decryptor Script ]
+                    <span>⚡</span> [ Show What We Do: Full Audio Reverser &amp; XOR Decryptor Script ]
                   </span>
                   <span className="transition-transform group-open:rotate-180">▼</span>
                 </summary>
                 <div className="p-5 border-t border-zinc-800/70 font-mono text-xs text-zinc-300 bg-black/80 overflow-x-auto space-y-4">
-                  <p className="text-zinc-400 font-sans text-xs">
-                    This Python script reverses the audio samples and decrypts the trailing hex string using the recovered key:
-                  </p>
                   <pre className="text-zinc-300">{`import scipy.io.wavfile as wavfile
 import struct
 

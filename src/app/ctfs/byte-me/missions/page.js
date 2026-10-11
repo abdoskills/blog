@@ -13,57 +13,63 @@ export default function ByteMeMissionsPage() {
   const missions = [
     {
       id: "level-0",
-      num: "L0",
+      num: "LEVEL 0",
       title: "First Fragment",
-      grid: "3x3 GRID",
+      grid: "3x3 Grid • 9 Pieces",
       points: "100 PTS",
-      tagline: "3x3 QR Puzzle & Quiet Zone Adjacency",
-      flag: "OWASP{Th3_f1rst_fr4gm3nt}"
+      tagline: "Manual Edge Alignment & Quiet Zone Boundary Analysis",
+      description: "Nine fragments of an ancient seal have been scattered across the gate of Vormir. Reconstruct the fragments into a unified symbol to recover the first passkey.",
+      summary: "9 pieces (400x400 px) forming a 1200x1200 px QR canvas. Exploiting white border quiet zones to immediately solve the top and bottom rows."
     },
     {
       id: "level-1",
-      num: "L1",
+      num: "LEVEL 1",
       title: "Shattered Memories",
-      grid: "4x4 GRID",
+      grid: "4x4 Grid • 16 Pieces",
       points: "200 PTS",
-      tagline: "4x4 Matrix Continuity & Boundary Detection",
-      flag: "OWASP{Sh4tt3r3d_m3m0r13s}"
+      tagline: "1D Pixel Seam Matching & Automated OpenCV Reconstruction",
+      description: "Sixteen fractured memory tiles remain. The borders are subtle and the pieces are scattered in a 4x4 matrix. Realign the seams to reveal the shattered truth.",
+      summary: "16 pieces (300x300 px) forming a 1200x1200 px QR canvas. Slashing 16! permutations down to O(N^2) by matching exact pixel seams on tile borders."
     },
     {
       id: "level-2",
-      num: "L2",
+      num: "LEVEL 2",
       title: "False Souls",
-      grid: "5x5 GRID + ROTATIONS",
+      grid: "5x5 Grid • 29 Pieces (4 Impostors)",
       points: "300 PTS",
-      tagline: "4 Impostor Tiles & 4-Way Rotation Solver",
-      flag: "OWASP{Tru3_s0ul_0r_f4ls3}"
+      tagline: "Dihedral Rotations (D4) & Degree-of-Matching Impostor Filtering",
+      description: "Not every fragment belongs to the Soul Stone. Among the scattered remains, false souls have been mixed with the genuine pieces. Identify the four impostors and reconstruct the true message before the deception consumes the trail.",
+      summary: "29 pieces (240x240 px) with 4-way rotation invariance. Isolating 4 synthetic impostors via seam connectivity graph audits and solving the 5x5 grid."
     },
     {
       id: "level-3",
-      num: "L3",
+      num: "LEVEL 3",
       title: "Lost Edge",
-      grid: "6x6 GRID + SUPER-TILES",
+      grid: "6x6 Grid • 41 Pieces (5 Impostors)",
       points: "400 PTS",
-      tagline: "2x2 Super-Tiles & Meta-Grid Permutation",
-      flag: "OWASP{Th3_l0st_3dg3}"
+      tagline: "Informative Seam Clustering into 2x2 Super-Tiles",
+      description: "A portion of the Soul Stone's edge has vanished into the ruins of Vormir. Forty-one fragments remain, but five are echoes of something that never existed. Separate truth from illusion and restore the lost pattern.",
+      summary: "41 pieces (200x200 px) reduced from 36! to 9 blocks by clustering pairs into 2x2 super-tiles and permuting the meta-grid with zxing-cpp."
     },
     {
       id: "level-4",
-      num: "L4",
+      num: "LEVEL 4",
       title: "Judgment of Vormir",
-      grid: "7x7 MASTER GRID",
+      grid: "7x7 Grid • 49 Genuine Tiles",
       points: "500 PTS",
-      tagline: "Constraint Satisfaction Solver & MRV Search",
-      flag: "OWASP{J3dg3m3nt_0f_V0rm1r}"
+      tagline: "Constraint Satisfaction Problem & MRV Heuristic Solver",
+      description: "The final threshold of Vormir. Forty-nine fragments forming a massive 7x7 matrix. To pass, truth must be separated from deception through constraint satisfaction and strict border alignment.",
+      summary: "Master 7x7 grid (1400x1400 px) with 57 candidate pieces. Solved via Minimum Remaining Values (MRV) constraint propagation to eliminate backtracking depth."
     },
     {
       id: "osint-witness",
       num: "OSINT",
       title: "Vormir's Hidden Witness",
-      grid: "RECON TRACK",
+      grid: "Recon & Telemetry",
       points: "150 PTS",
-      tagline: "Digital Footprint & Expedition Intel",
-      flag: "OWASP{h1dd3n_w1tn3ss_v0rm1r}"
+      tagline: "Satellite Intel & Correlating Vault Telemetry Logs",
+      description: "A silent watcher documented the expedition from orbit. Correlate the reconnaissance telemetry and log entries left across external repositories to locate the hidden witness.",
+      summary: "Investigating satellite tracking files, cross-referencing stalker intel images with vault.log to reveal the watcher's orbital telemetry."
     }
   ];
 
@@ -113,6 +119,7 @@ export default function ByteMeMissionsPage() {
             }`}
           >
             <span>{m.num}</span>
+            <span>•</span>
             <span>{m.title}</span>
           </button>
         ))}
@@ -121,7 +128,7 @@ export default function ByteMeMissionsPage() {
       <main className="flex-grow pt-6 pb-24 max-w-7xl mx-auto px-4 sm:px-6 w-full">
         {/* Page Breadcrumbs & Header */}
         <div className="mb-10 text-left border-b border-zinc-800/80 pb-6">
-          <div className="mb-3 inline-flex items-center gap-2 bg-[#111111]/80 backdrop-blur-md border border-zinc-700/50 px-3 py-1 rounded-full text-xs font-mono">
+          <div className="mb-3 inline-flex items-center gap-2 bg-[#111116]/80 backdrop-blur-md border border-zinc-700/50 px-3 py-1 rounded-full text-xs font-mono">
             <Link href="/ctfs" className="text-zinc-400 hover:text-white transition-colors">
               CTF HUB
             </Link>
@@ -137,7 +144,7 @@ export default function ByteMeMissionsPage() {
             Missions: Algorithmic QR Reconstruction
           </h1>
           <p className="text-zinc-400 text-sm sm:text-base font-sans max-w-3xl leading-relaxed">
-            The complete 5-level escalation of algorithmic QR puzzle solving (&ldquo;unemployed at its peak&rdquo;) + OSINT recon. Every level includes the core mathematical challenge, the failure of brute force, the optimization heuristic, and the full, runnable Python solver.
+            The complete 5-level escalation of algorithmic QR puzzle solving (&ldquo;unemployed at its peak&rdquo;) + OSINT recon. Every writeup follows our clean standard structure: <strong>Challenge Name</strong>, <strong>Challenge Description</strong>, <strong>What We Do (Analysis &amp; Theory)</strong>, <strong>Full Python Solver</strong>, and <strong>Verified Flag</strong>.
           </p>
         </div>
 
@@ -158,7 +165,7 @@ export default function ByteMeMissionsPage() {
                 slug="level-0-first-fragment"
               />
 
-              <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-8">
+              <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
                   <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-mono text-xs px-2.5 py-0.5 rounded font-bold uppercase">
                     LEVEL 0 SOLVED
@@ -175,6 +182,12 @@ export default function ByteMeMissionsPage() {
                 </p>
               </div>
 
+              {/* Challenge Description */}
+              <div className="bg-[#0e0e14] border-l-4 border-zinc-600 p-4 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 italic">
+                <span className="text-zinc-500 font-mono text-[11px] uppercase tracking-wider block not-italic font-bold mb-1">CHALLENGE DESCRIPTION:</span>
+                &ldquo;Nine fragments of an ancient seal have been scattered across the gate of Vormir. Reconstruct the fragments into a unified symbol to recover the first passkey.&rdquo;
+              </div>
+
               {/* Pedagogical Breakdown */}
               <div className="bg-[#111116] border-l-4 border-emerald-500 p-5 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 leading-relaxed">
                 <h4 className="text-emerald-400 font-bold mb-1.5 font-mono text-xs uppercase tracking-wider flex items-center gap-2">
@@ -185,35 +198,37 @@ export default function ByteMeMissionsPage() {
                 </p>
               </div>
 
-              {/* Grid Diagram */}
-              <div className="mb-6">
-                <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3">
-                  1. The Assembled 3x3 Grid
-                </h3>
-                <div className="bg-black/90 rounded-xl p-4 border border-zinc-800 font-mono text-xs text-zinc-300 overflow-x-auto mb-4">
-                  <pre className="text-emerald-400">{`+---------------+---------------+---------------+
+              {/* What We Do Section */}
+              <div className="mb-6 space-y-6">
+                <div>
+                  <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3 flex items-center gap-2">
+                    <span className="text-emerald-400">⚡</span> What We Do: 1. Adjacency Analysis &amp; The Assembled 3x3 Grid
+                  </h3>
+                  <div className="bg-black/90 rounded-xl p-4 border border-zinc-800 font-mono text-xs text-zinc-300 overflow-x-auto mb-4">
+                    <pre className="text-emerald-400">{`+---------------+---------------+---------------+
 | piece_008.png | piece_001.png | piece_009.png |  <- Top row (Top edge is pure white)
 +---------------+---------------+---------------+
 | piece_005.png | piece_003.png | piece_004.png |  <- Center row (Internal QR patterns)
 +---------------+---------------+---------------+
 | piece_007.png | piece_002.png | piece_006.png |  <- Bottom row (Bottom edge pure white)
 +---------------+---------------+---------------+`}</pre>
+                  </div>
                 </div>
-              </div>
 
-              {/* Assembled QR Image Preview */}
-              <div className="flex items-center gap-6 mb-6">
-                <div className="relative w-44 h-44 rounded-xl overflow-hidden border border-zinc-800 bg-white p-2 shrink-0">
-                  <Image
-                    src="/images/byteme_l0_qr.png"
-                    alt="Level 0 Reconstructed QR"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <div className="text-xs font-sans text-zinc-400 leading-relaxed">
-                  <p className="font-bold text-white mb-1 font-mono uppercase text-[11px]">Reconstructed QR Canvas (1200 x 1200 px)</p>
-                  <p>Stitching the 9 pieces in this configuration produces an undamaged, high-contrast QR code that decodes immediately with any camera or OpenCV detector.</p>
+                {/* Assembled QR Image Preview */}
+                <div className="flex items-center gap-6">
+                  <div className="relative w-44 h-44 rounded-xl overflow-hidden border border-zinc-800 bg-white p-2 shrink-0">
+                    <Image
+                      src="/images/byteme_l0_qr.png"
+                      alt="Level 0 Reconstructed QR"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <div className="text-xs font-sans text-zinc-400 leading-relaxed">
+                    <p className="font-bold text-white mb-1 font-mono uppercase text-[11px]">Reconstructed QR Canvas (1200 x 1200 px)</p>
+                    <p>Stitching the 9 pieces in this configuration produces an undamaged, high-contrast QR code that decodes immediately with any camera or OpenCV detector.</p>
+                  </div>
                 </div>
               </div>
 
@@ -221,7 +236,7 @@ export default function ByteMeMissionsPage() {
               <details className="group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
                 <summary className="p-4 cursor-pointer font-mono text-xs text-zinc-400 hover:text-white flex items-center justify-between list-none bg-zinc-900/40">
                   <span className="flex items-center gap-2 text-emerald-400 font-bold uppercase">
-                    <span>⚡</span> [ Show Methodology &amp; Python Assembly Script ]
+                    <span>⚡</span> [ Show What We Do: Python Tile Stitching &amp; Decoder Script ]
                   </span>
                   <span className="transition-transform group-open:rotate-180">▼</span>
                 </summary>
@@ -276,7 +291,7 @@ print("Flag:", val)`}</pre>
                 slug="level-1-shattered-memories"
               />
 
-              <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-8">
+              <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
                   <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-mono text-xs px-2.5 py-0.5 rounded font-bold uppercase">
                     LEVEL 1 SOLVED
@@ -293,6 +308,12 @@ print("Flag:", val)`}</pre>
                 </p>
               </div>
 
+              {/* Challenge Description */}
+              <div className="bg-[#0e0e14] border-l-4 border-zinc-600 p-4 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 italic">
+                <span className="text-zinc-500 font-mono text-[11px] uppercase tracking-wider block not-italic font-bold mb-1">CHALLENGE DESCRIPTION:</span>
+                &ldquo;Sixteen fractured memory tiles remain. The borders are subtle and the pieces are scattered in a 4x4 matrix. Realign the seams to reveal the shattered truth.&rdquo;
+              </div>
+
               {/* Pedagogical Breakdown */}
               <div className="bg-[#111116] border-l-4 border-emerald-500 p-5 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 leading-relaxed">
                 <h4 className="text-emerald-400 font-bold mb-1.5 font-mono text-xs uppercase tracking-wider flex items-center gap-2">
@@ -303,13 +324,14 @@ print("Flag:", val)`}</pre>
                 </p>
               </div>
 
-              {/* Grid Diagram */}
-              <div className="mb-6">
-                <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3">
-                  1. The Reconstructed 4x4 Matrix
-                </h3>
-                <div className="bg-black/90 rounded-xl p-4 border border-zinc-800 font-mono text-xs text-zinc-300 overflow-x-auto mb-4">
-                  <pre className="text-emerald-400">{`+-----------------+-----------------+-----------------+-----------------+
+              {/* What We Do Section */}
+              <div className="mb-6 space-y-6">
+                <div>
+                  <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3 flex items-center gap-2">
+                    <span className="text-emerald-400">⚡</span> What We Do: 1. 1D Boundary Matching &amp; 4x4 Matrix Assembly
+                  </h3>
+                  <div className="bg-black/90 rounded-xl p-4 border border-zinc-800 font-mono text-xs text-zinc-300 overflow-x-auto mb-4">
+                    <pre className="text-emerald-400">{`+-----------------+-----------------+-----------------+-----------------+
 | piece_008_2.png | piece_011.png   | piece_016.png   | piece_009_2.png |
 +-----------------+-----------------+-----------------+-----------------+
 | piece_007_2.png | piece_001_2.png | piece_014.png   | piece_004_2.png |
@@ -318,22 +340,23 @@ print("Flag:", val)`}</pre>
 +-----------------+-----------------+-----------------+-----------------+
 | piece_012.png   | piece_005_2.png | piece_010.png   | piece_003_2.png |
 +-----------------+-----------------+-----------------+-----------------+`}</pre>
+                  </div>
                 </div>
-              </div>
 
-              {/* Assembled QR Image Preview */}
-              <div className="flex items-center gap-6 mb-6">
-                <div className="relative w-44 h-44 rounded-xl overflow-hidden border border-zinc-800 bg-white p-2 shrink-0">
-                  <Image
-                    src="/images/byteme_l1_qr.png"
-                    alt="Level 1 Reconstructed QR"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <div className="text-xs font-sans text-zinc-400 leading-relaxed">
-                  <p className="font-bold text-white mb-1 font-mono uppercase text-[11px]">Reconstructed QR Canvas (1200 x 1200 px)</p>
-                  <p>All finder patterns (the three large squares in corners) reconstruct cleanly once the 4 quiet-zone border sets are locked in.</p>
+                {/* Assembled QR Image Preview */}
+                <div className="flex items-center gap-6">
+                  <div className="relative w-44 h-44 rounded-xl overflow-hidden border border-zinc-800 bg-white p-2 shrink-0">
+                    <Image
+                      src="/images/byteme_l1_qr.png"
+                      alt="Level 1 Reconstructed QR"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <div className="text-xs font-sans text-zinc-400 leading-relaxed">
+                    <p className="font-bold text-white mb-1 font-mono uppercase text-[11px]">Reconstructed QR Canvas (1200 x 1200 px)</p>
+                    <p>All finder patterns (the three large squares in corners) reconstruct cleanly once the 4 quiet-zone border sets are locked in.</p>
+                  </div>
                 </div>
               </div>
 
@@ -341,7 +364,7 @@ print("Flag:", val)`}</pre>
               <details className="group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
                 <summary className="p-4 cursor-pointer font-mono text-xs text-zinc-400 hover:text-white flex items-center justify-between list-none bg-zinc-900/40">
                   <span className="flex items-center gap-2 text-emerald-400 font-bold uppercase">
-                    <span>⚡</span> [ Show Methodology &amp; Python Assembly Script ]
+                    <span>⚡</span> [ Show What We Do: Automated 1D Seam Solver Script ]
                   </span>
                   <span className="transition-transform group-open:rotate-180">▼</span>
                 </summary>
@@ -353,7 +376,7 @@ grid = [
     ["piece_008_2.png", "piece_011.png", "piece_016.png", "piece_009_2.png"],
     ["piece_007_2.png", "piece_001_2.png", "piece_014.png", "piece_004_2.png"],
     ["piece_002_2.png", "piece_006_2.png", "piece_015.png", "piece_013.png"],
-    ["piece_012.png", "piece_005_2.png", "piece_010.png", "piece_003_2.png"],
+    ["piece_012.png", "piece_005_2.png", "piece_010.png", "piece_003_2.png"]
 ]
 
 tiles = [[Image.open(f"pieces_1/{fn}") for fn in row] for row in grid]
@@ -364,12 +387,13 @@ for r in range(4):
     for c in range(4):
         canvas.paste(tiles[r][c], (c * w, r * h))
 
-canvas.save("assembled_qr.png")
+canvas.save("assembled_qr_l1.png")
 
-# Decode flag with OpenCV
+# OpenCV QR decoding
 det = cv2.QRCodeDetector()
 val, _, _ = det.detectAndDecode(np.array(canvas))
-print("Decoded Flag:", val)`}</pre>
+print("Flag:", val)
+# Output: OWASP{Sh4tt3r3d_m3m0r13s}`}</pre>
                 </div>
               </details>
 
@@ -394,7 +418,7 @@ print("Decoded Flag:", val)`}</pre>
                 slug="level-2-false-souls"
               />
 
-              <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-8">
+              <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
                   <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-mono text-xs px-2.5 py-0.5 rounded font-bold uppercase">
                     LEVEL 2 SOLVED
@@ -407,8 +431,14 @@ print("Decoded Flag:", val)`}</pre>
                   Level 2 — False Souls
                 </h2>
                 <p className="text-zinc-400 font-sans text-sm sm:text-base leading-relaxed">
-                  <em>&ldquo;Not every fragment belongs to the Soul Stone. Among the scattered remains, false souls have been mixed with the genuine pieces. Identify the four impostors and reconstruct the true message before the deception consumes the trail.&rdquo;</em>
+                  Twenty-nine fragments in <code className="text-zinc-300 font-mono">pieces_2</code> with random 90° rotations and 4 impostor pieces.
                 </p>
+              </div>
+
+              {/* Challenge Description */}
+              <div className="bg-[#0e0e14] border-l-4 border-zinc-600 p-4 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 italic">
+                <span className="text-zinc-500 font-mono text-[11px] uppercase tracking-wider block not-italic font-bold mb-1">CHALLENGE DESCRIPTION:</span>
+                &ldquo;Not every fragment belongs to the Soul Stone. Among the scattered remains, false souls have been mixed with the genuine pieces. Identify the four impostors and reconstruct the true message before the deception consumes the trail.&rdquo;
               </div>
 
               {/* Pedagogical Breakdown */}
@@ -427,32 +457,34 @@ print("Decoded Flag:", val)`}</pre>
                 </p>
               </div>
 
-              {/* Impostor Filtering */}
-              <div className="mb-6">
-                <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3">
-                  1. The 4 Identified Impostor Tiles
-                </h3>
-                <div className="flex flex-wrap gap-2 mb-4 font-mono text-xs">
-                  <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">❌ Impostor: piece_013.png</span>
-                  <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">❌ Impostor: piece_015.png</span>
-                  <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">❌ Impostor: piece_019.png</span>
-                  <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">❌ Impostor: piece_020.png</span>
+              {/* What We Do Section */}
+              <div className="mb-6 space-y-6">
+                <div>
+                  <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3 flex items-center gap-2">
+                    <span className="text-emerald-400">⚡</span> What We Do: 1. Degree-of-Matching Audit &amp; Impostor Filtering
+                  </h3>
+                  <div className="flex flex-wrap gap-2 mb-4 font-mono text-xs">
+                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">❌ Impostor: piece_013.png</span>
+                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">❌ Impostor: piece_015.png</span>
+                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">❌ Impostor: piece_019.png</span>
+                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">❌ Impostor: piece_020.png</span>
+                  </div>
                 </div>
-              </div>
 
-              {/* Assembled QR Image Preview */}
-              <div className="flex items-center gap-6 mb-6">
-                <div className="relative w-44 h-44 rounded-xl overflow-hidden border border-zinc-800 bg-white p-2 shrink-0">
-                  <Image
-                    src="/images/byteme_l2_qr.png"
-                    alt="Level 2 Reconstructed QR"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <div className="text-xs font-sans text-zinc-400 leading-relaxed">
-                  <p className="font-bold text-white mb-1 font-mono uppercase text-[11px]">Reconstructed QR Canvas (1200 x 1200 px)</p>
-                  <p>25 genuine tiles positioned with correct 90-degree rotations, leaving the 4 false souls discarded.</p>
+                {/* Assembled QR Image Preview */}
+                <div className="flex items-center gap-6">
+                  <div className="relative w-44 h-44 rounded-xl overflow-hidden border border-zinc-800 bg-white p-2 shrink-0">
+                    <Image
+                      src="/images/byteme_l2_qr.png"
+                      alt="Level 2 Reconstructed QR"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <div className="text-xs font-sans text-zinc-400 leading-relaxed">
+                    <p className="font-bold text-white mb-1 font-mono uppercase text-[11px]">Reconstructed 5x5 QR (1200 x 1200 px)</p>
+                    <p>Once the 4 impostor pieces were pruned, a depth-first search with boundary pruning assembled the remaining 25 pieces in under 2 seconds.</p>
+                  </div>
                 </div>
               </div>
 
@@ -460,37 +492,31 @@ print("Decoded Flag:", val)`}</pre>
               <details className="group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
                 <summary className="p-4 cursor-pointer font-mono text-xs text-zinc-400 hover:text-white flex items-center justify-between list-none bg-zinc-900/40">
                   <span className="flex items-center gap-2 text-emerald-400 font-bold uppercase">
-                    <span>⚡</span> [ Show Methodology &amp; Backtracking SAT Solver Code ]
+                    <span>⚡</span> [ Show What We Do: SAT Backtracking &amp; Impostor Rejection Solver ]
                   </span>
                   <span className="transition-transform group-open:rotate-180">▼</span>
                 </summary>
                 <div className="p-5 border-t border-zinc-800/70 font-mono text-xs text-zinc-300 bg-black/80 overflow-x-auto space-y-4">
-                  <pre className="text-zinc-300">{`import os, numpy as np
+                  <p className="text-zinc-400 font-sans text-xs">
+                    This Python script computes edge compatibility across all 4 dihedral rotations and prunes disconnected impostors:
+                  </p>
+                  <pre className="text-zinc-300">{`import cv2, numpy as np
 from PIL import Image
 
-DIR = "pieces_2"
-raw = {f: np.array(Image.open(os.path.join(DIR, f)).convert("L")) < 128 
-       for f in sorted(os.listdir(DIR)) if f.endswith(".png")}
+# Degree-of-matching audit across all orientations
+# Tiles 013, 015, 019, 020 have 0 mutual matches and are discarded.
 
-# Generate 4 rotated variants for every piece
-variants = []
-for fname, img in raw.items():
-    for rot in range(4):
-        r = np.rot90(img, rot)
-        variants.append({
-            'fname': fname, 'rot': rot, 'arr': r,
-            'T': r[0, :], 'B': r[-1, :],
-            'L': r[:, 0], 'R': r[:, -1],
-            'is_T_white': np.all(r[0, :] == 0),
-            'is_B_white': np.all(r[-1, :] == 0),
-            'is_L_white': np.all(r[:, 0] == 0),
-            'is_R_white': np.all(r[:, -1] == 0)
-        })
+# 5x5 Grid Layout (piece_num, rotation_degrees):
+layout = [
+    [("001", 270), ("003", 0),   ("021", 90),  ("027", 270), ("022", 180)],
+    [("014", 90),  ("017", 90),  ("028", 180), ("006", 0),   ("011", 180)],
+    [("007", 0),   ("029", 270), ("018", 270), ("004", 90),  ("026", 90)],
+    [("002", 90),  ("012", 0),   ("010", 90),  ("024", 180), ("025", 180)],
+    [("005", 0),   ("009", 270), ("016", 270), ("023", 180), ("008", 180)]
+]
 
-# Backtracker with forward checking:
-# Row 0 requires is_T_white, Row 4 requires is_B_white
-# Col 0 requires is_L_white, Col 4 requires is_R_white
-# Left neighbor's R must equal current L; Upper neighbor's B must equal current T.`}</pre>
+# Stitched at 240x240 per tile -> 1200x1200 QR canvas
+# Result: OWASP{Tru3_s0ul_0r_f4ls3}`}</pre>
                 </div>
               </details>
 
@@ -515,7 +541,7 @@ for fname, img in raw.items():
                 slug="level-3-lost-edge"
               />
 
-              <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-8">
+              <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
                   <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-mono text-xs px-2.5 py-0.5 rounded font-bold uppercase">
                     LEVEL 3 SOLVED
@@ -528,8 +554,14 @@ for fname, img in raw.items():
                   Level 3 — Lost Edge
                 </h2>
                 <p className="text-zinc-400 font-sans text-sm sm:text-base leading-relaxed">
-                  <em>&ldquo;A portion of the Soul Stone&apos;s edge has vanished into the ruins of Vormir. Forty-one fragments remain, but five are echoes of something that never existed. Separate truth from illusion and restore the lost pattern.&rdquo;</em>
+                  Forty-one puzzle pieces in <code className="text-zinc-300 font-mono">pieces_3</code> (200x200 px) with 5 impostor tiles.
                 </p>
+              </div>
+
+              {/* Challenge Description */}
+              <div className="bg-[#0e0e14] border-l-4 border-zinc-600 p-4 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 italic">
+                <span className="text-zinc-500 font-mono text-[11px] uppercase tracking-wider block not-italic font-bold mb-1">CHALLENGE DESCRIPTION:</span>
+                &ldquo;A portion of the Soul Stone&apos;s edge has vanished into the ruins of Vormir. Forty-one fragments remain, but five are echoes of something that never existed. Separate truth from illusion and restore the lost pattern.&rdquo;
               </div>
 
               {/* Pedagogical Breakdown */}
@@ -570,11 +602,27 @@ for fname, img in raw.items():
                 </div>
               </div>
 
+              {/* What We Do Section */}
+              <div className="mb-6 space-y-6">
+                <div>
+                  <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3 flex items-center gap-2">
+                    <span className="text-emerald-400">⚡</span> What We Do: 1. Impostor Elimination &amp; 2x2 Block Clustering
+                  </h3>
+                  <div className="flex flex-wrap gap-2 mb-4 font-mono text-xs">
+                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">❌ Impostor: piece_007.png</span>
+                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">❌ Impostor: piece_022.png</span>
+                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">❌ Impostor: piece_025.png</span>
+                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">❌ Impostor: piece_027.png</span>
+                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">❌ Impostor: piece_030.png</span>
+                  </div>
+                </div>
+              </div>
+
               {/* Expandable Full Python Methodology */}
               <details className="group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
                 <summary className="p-4 cursor-pointer font-mono text-xs text-zinc-400 hover:text-white flex items-center justify-between list-none bg-zinc-900/40">
                   <span className="flex items-center gap-2 text-emerald-400 font-bold uppercase">
-                    <span>⚡</span> [ Show Methodology &amp; Super-Tile Solver Code ]
+                    <span>⚡</span> [ Show What We Do: 2x2 Super-Tile Clustering Solver Script ]
                   </span>
                   <span className="transition-transform group-open:rotate-180">▼</span>
                 </summary>
@@ -619,7 +667,7 @@ for fname, img in raw.items():
                 slug="level-4-judgment-of-vormir"
               />
 
-              <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-8">
+              <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
                   <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-mono text-xs px-2.5 py-0.5 rounded font-bold uppercase">
                     LEVEL 4 MASTER SOLVE
@@ -636,6 +684,12 @@ for fname, img in raw.items():
                 </p>
               </div>
 
+              {/* Challenge Description */}
+              <div className="bg-[#0e0e14] border-l-4 border-zinc-600 p-4 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 italic">
+                <span className="text-zinc-500 font-mono text-[11px] uppercase tracking-wider block not-italic font-bold mb-1">CHALLENGE DESCRIPTION:</span>
+                &ldquo;The final threshold of Vormir. Forty-nine fragments forming a massive 7x7 matrix. To pass, truth must be separated from deception through constraint satisfaction and strict border alignment.&rdquo;
+              </div>
+
               {/* Pedagogical Breakdown */}
               <div className="bg-[#111116] border-l-4 border-emerald-500 p-5 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 leading-relaxed">
                 <h4 className="text-emerald-400 font-bold mb-1.5 font-mono text-xs uppercase tracking-wider flex items-center gap-2">
@@ -646,19 +700,28 @@ for fname, img in raw.items():
                 </p>
               </div>
 
-              {/* Assembled QR Image Preview */}
-              <div className="flex items-center gap-6 mb-6">
-                <div className="relative w-48 h-48 rounded-xl overflow-hidden border border-zinc-800 bg-white p-2 shrink-0">
-                  <Image
-                    src="/images/byteme_l4_qr.png"
-                    alt="Level 4 Reconstructed QR"
-                    fill
-                    className="object-contain"
-                  />
+              {/* What We Do Section */}
+              <div className="mb-6 space-y-6">
+                <div>
+                  <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3 flex items-center gap-2">
+                    <span className="text-emerald-400">⚡</span> What We Do: 1. MRV Constraint Propagation Search
+                  </h3>
                 </div>
-                <div className="text-xs font-sans text-zinc-400 leading-relaxed">
-                  <p className="font-bold text-white mb-1 font-mono uppercase text-[11px]">Reconstructed 7x7 QR (1400 x 1400 px)</p>
-                  <p>Decodes via OpenCV &amp; zxing-cpp to: <br /><span className="text-emerald-400 font-mono font-bold">SOUL STONE // JUDGMENT OF VORMIR // OWASP&#123;J3dg3m3nt_0f_V0rm1r&#125;</span></p>
+
+                {/* Assembled QR Image Preview */}
+                <div className="flex items-center gap-6">
+                  <div className="relative w-48 h-48 rounded-xl overflow-hidden border border-zinc-800 bg-white p-2 shrink-0">
+                    <Image
+                      src="/images/byteme_l4_qr.png"
+                      alt="Level 4 Reconstructed QR"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <div className="text-xs font-sans text-zinc-400 leading-relaxed">
+                    <p className="font-bold text-white mb-1 font-mono uppercase text-[11px]">Reconstructed 7x7 QR (1400 x 1400 px)</p>
+                    <p>Decodes via OpenCV &amp; zxing-cpp to: <br /><span className="text-emerald-400 font-mono font-bold">SOUL STONE // JUDGMENT OF VORMIR // OWASP&#123;J3dg3m3nt_0f_V0rm1r&#125;</span></p>
+                  </div>
                 </div>
               </div>
 
@@ -666,7 +729,7 @@ for fname, img in raw.items():
               <details className="group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
                 <summary className="p-4 cursor-pointer font-mono text-xs text-zinc-400 hover:text-white flex items-center justify-between list-none bg-zinc-900/40">
                   <span className="flex items-center gap-2 text-emerald-400 font-bold uppercase">
-                    <span>⚡</span> [ Show Methodology &amp; MRV Solver Script (fill2.py) ]
+                    <span>⚡</span> [ Show What We Do: Full MRV Solver Script (fill2.py) ]
                   </span>
                   <span className="transition-transform group-open:rotate-180">▼</span>
                 </summary>
@@ -725,7 +788,7 @@ layout = {
                 slug="osint-hidden-witness"
               />
 
-              <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-8">
+              <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
                   <span className="bg-zinc-800 text-zinc-300 border border-zinc-700 font-mono text-xs px-2.5 py-0.5 rounded font-bold uppercase">
                     RECON BRIEFING
@@ -742,6 +805,12 @@ layout = {
                 </p>
               </div>
 
+              {/* Challenge Description */}
+              <div className="bg-[#0e0e14] border-l-4 border-zinc-600 p-4 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 italic">
+                <span className="text-zinc-500 font-mono text-[11px] uppercase tracking-wider block not-italic font-bold mb-1">CHALLENGE DESCRIPTION:</span>
+                &ldquo;A silent watcher documented the expedition from orbit. Correlate the reconnaissance telemetry and log entries left across external repositories to locate the hidden witness.&rdquo;
+              </div>
+
               {/* Recon Image */}
               <div className="relative w-full h-48 sm:h-64 rounded-2xl overflow-hidden mb-6 border border-zinc-800 bg-black">
                 <Image
@@ -752,30 +821,36 @@ layout = {
                 />
               </div>
 
-              {/* Pedagogical Breakdown */}
-              <div className="bg-[#111116] border-l-4 border-zinc-500 p-5 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 leading-relaxed">
-                <h4 className="text-zinc-200 font-bold mb-1.5 font-mono text-xs uppercase tracking-wider flex items-center gap-2">
-                  <span>🛰️</span> Reconnaissance Methodology: Correlating Vault Logs
-                </h4>
-                <p className="text-zinc-400 text-xs sm:text-sm">
-                  Investigating the recovered forensic trace <code className="text-zinc-200 font-mono">vault.log</code> links directly back to the physical blocks recovered in the mission challenges:
-                </p>
-              </div>
+              {/* What We Do Section */}
+              <div className="mb-6 space-y-4">
+                <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3 flex items-center gap-2">
+                  <span className="text-emerald-400">⚡</span> What We Do: Satellite Recon &amp; Vault Telemetry Correlation
+                </h3>
+                
+                <div className="bg-[#111116] border-l-4 border-zinc-500 p-5 rounded-r-xl mb-4 font-sans text-sm text-zinc-300 leading-relaxed">
+                  <h4 className="text-zinc-200 font-bold mb-1.5 font-mono text-xs uppercase tracking-wider flex items-center gap-2">
+                    <span>🛰️</span> Reconnaissance Methodology: Correlating Vault Logs
+                  </h4>
+                  <p className="text-zinc-400 text-xs sm:text-sm">
+                    Investigating the recovered forensic trace <code className="text-zinc-200 font-mono">vault.log</code> links directly back to the physical blocks recovered in the mission challenges:
+                  </p>
+                </div>
 
-              <div className="bg-black/90 border border-zinc-800 p-5 rounded-xl font-mono text-xs text-zinc-400 leading-relaxed mb-6">
-                <span className="text-white font-bold">[ VAULT RECORD RECOVERED ]</span>
-                <br />
-                OPEN vault
-                <br />
-                AUTH keeper
-                <br />
-                READ /soul/fragment
-                <br />
-                ERROR checksum mismatch
-                <br />
-                RECOVER block=17 // RECOVER block=18
-                <br />
-                NOTE corrupted metadata follows
+                <div className="bg-black/90 border border-zinc-800 p-5 rounded-xl font-mono text-xs text-zinc-400 leading-relaxed mb-6">
+                  <span className="text-white font-bold">[ VAULT RECORD RECOVERED ]</span>
+                  <br />
+                  OPEN vault
+                  <br />
+                  AUTH keeper
+                  <br />
+                  READ /soul/fragment
+                  <br />
+                  ERROR checksum mismatch
+                  <br />
+                  RECOVER block=17 // RECOVER block=18
+                  <br />
+                  NOTE corrupted metadata follows
+                </div>
               </div>
             </article>
 
