@@ -110,7 +110,7 @@ export default function PicoCTFWebNet0Writeup() {
             </p>
 
             <div className="p-4 bg-black/60 border border-zinc-800 rounded-xl text-xs font-mono text-zinc-400">
-              [Client Hello] ➔ [Server Hello] ➔ [Certificate] ➔ [Client Key Exchange] ➔ [Application Data (Encrypted)]
+              [Client Hello] -> [Server Hello] -> [Certificate] -> [Client Key Exchange] -> [Application Data (Encrypted)]
             </div>
           </section>
 
@@ -133,7 +133,7 @@ export default function PicoCTFWebNet0Writeup() {
               <div className="p-4 bg-black/50 border border-zinc-800 rounded-xl space-y-1">
                 <strong className="text-amber-400 block text-sm">Step-by-Step Configuration:</strong>
                 <ol className="list-decimal list-inside space-y-1 text-zinc-400 font-sans text-xs">
-                  <li>In Wireshark, press <strong className="text-white">Ctrl + Shift + P</strong> (or go to <em>Edit ➔ Preferences</em>).</li>
+                  <li>In Wireshark, press <strong className="text-white">Ctrl + Shift + P</strong> (or go to <em>Edit -> Preferences</em>).</li>
                   <li>In the left sidebar, click <strong className="text-white">RSA Keys</strong>.</li>
                   <li>Click <strong className="text-cyan-400">Add new keyfile...</strong> and select <code className="text-white">picopico.key</code>.</li>
                   <li>Click <strong className="text-white">OK</strong>.</li>

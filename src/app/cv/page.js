@@ -40,7 +40,7 @@ export default function CVPage() {
               }}
               className="px-4 py-2 bg-emerald-500 text-black font-bold rounded-xl hover:bg-emerald-400 transition-all flex items-center gap-1.5 shadow-[0_0_15px_rgba(16,185,129,0.3)]"
             >
-              <span>🖨️ Print / PDF</span>
+              <span>Print / PDF</span>
             </button>
           </div>
         </div>

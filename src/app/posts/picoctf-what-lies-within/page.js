@@ -35,7 +35,7 @@ extracted_text = bytes(byte_list).decode('latin1', errors='ignore')
 if "picoCTF{" in extracted_text:
     start_idx = extracted_text.index("picoCTF{")
     end_idx = extracted_text.index("}", start_idx) + 1
-    print("🎉 Extracted Flag:", extracted_text[start_idx:end_idx])`;
+    print("[+] Extracted Flag:", extracted_text[start_idx:end_idx])`;
 
   const oneliner = `python -c "from PIL import Image; img=Image.open('buildings.png'); px=img.load(); w,h=img.size; bits=[c&1 for y in range(h) for x in range(w) for c in px[x,y][:3]]; chars=[chr(int(''.join(map(str,bits[i:i+8])),2)) for i in range(0,len(bits),8)]; txt=''.join(chars); print(txt[txt.find('picoCTF{'):txt.find('}',txt.find('picoCTF{'))+1])"`;
 
@@ -116,7 +116,7 @@ if "picoCTF{" in extracted_text:
                   className="flex items-center gap-2 text-cyan-300 hover:text-white font-mono text-sm font-bold bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 px-3 py-2 rounded-lg transition-all"
                 >
                   <svg className="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                  <span>⬇️ Download buildings.png</span>
+                  <span>Download buildings.png</span>
                 </a>
                 <span className="text-[11px] font-mono text-zinc-400 block mt-2">Size: 625 KB • PNG Image</span>
                 <span className="text-[11px] font-mono text-zinc-500 block">Encoding: RGB 8-bit/channel</span>
@@ -131,7 +131,7 @@ if "picoCTF{" in extracted_text:
         {/* Section 1: LSB Steganography Principles */}
         <div className="space-y-6 text-zinc-300 leading-relaxed font-sans mb-12">
           <div className="bg-[#0a1116] border-l-4 border-cyan-500 p-6 rounded-r-xl shadow-md">
-            <h4 className="text-cyan-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Steganography Principle: Least Significant Bit (LSB) Modulation</h4>
+            <h4 className="text-cyan-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">Steganography Principle: Least Significant Bit (LSB) Modulation</h4>
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
               In 24-bit RGB images, each color channel uses an 8-bit integer (0-255). Modifying the least significant bit (bit 0) alters pixel intensity by at most 1 unit, which is imperceptible to human vision and undetectable on standard displays. By packing consecutive ASCII message bits across the LSBs of sequential color channels (RGB planar order), data is hidden without creating visible visual artifacts.
             </p>
@@ -155,7 +155,7 @@ if "picoCTF{" in extracted_text:
      ├── Step 2: Metadata Inspection (ExifTool author/comments) ───────> CLEAN
      ├── Step 3: Plaintext Strings (Check appended EOF strings) ───────> NONE
      ├── Step 4: Signature Carving (Binwalk / Foremost for ZIPs) ──────> NONE
-     └── Step 5: LSB Steganography (zsteg / StegSolve / PIL) ─────────> 🎯 TARGET IDENTIFIED`}
+     └── Step 5: LSB Steganography (zsteg / StegSolve / PIL) ─────────> TARGET IDENTIFIED`}
             </pre>
           </div>
         </div>
@@ -200,7 +200,7 @@ if "picoCTF{" in extracted_text:
             <div className="p-3 bg-black/60 border border-emerald-500/30 rounded-xl font-mono text-xs text-zinc-300 flex flex-col md:flex-row items-center justify-between gap-3">
               <div>
                 <span className="text-zinc-500 block text-[11px]">SCAN VERDICT:</span>
-                <span className="text-emerald-400 font-bold text-sm">🚩 CTF flag detected (80% confidence)</span>
+                <span className="text-emerald-400 font-bold text-sm">CTF flag detected (80% confidence)</span>
               </div>
               <div className="bg-zinc-900 border border-emerald-500/40 px-3 py-1.5 rounded-lg text-emerald-300 font-bold">
                 picoCTF&#123;h1d1ng_1n_th3_b1t5&#125;
@@ -321,7 +321,7 @@ if "picoCTF{" in extracted_text:
           {/* Terminal One-liner */}
           <div className="space-y-2 pt-2">
             <div className="flex justify-between items-center">
-              <span className="font-mono text-xs text-cyan-400 font-bold uppercase">⚡ Terminal One-Liner (PowerShell / Bash):</span>
+              <span className="font-mono text-xs text-cyan-400 font-bold uppercase">Terminal One-Liner (PowerShell / Bash):</span>
               <CopyButton text={oneliner} />
             </div>
             <div className="bg-black border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">

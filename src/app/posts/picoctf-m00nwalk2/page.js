@@ -148,7 +148,7 @@ export default function PicoCTFM00nwalk2Writeup() {
 
             <div className="space-y-2">
               <div className="flex justify-between items-center">
-                <span className="font-mono text-xs text-amber-400 font-bold uppercase">⚡ Terminal Command:</span>
+                <span className="font-mono text-xs text-amber-400 font-bold uppercase">Terminal Command:</span>
                 <CopyButton text={sstvCmd} />
               </div>
               <div className="bg-black/70 border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">
@@ -254,7 +254,7 @@ export default function PicoCTFM00nwalk2Writeup() {
               
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
-                  <span className="font-mono text-xs text-emerald-400 font-bold uppercase">🐧 Linux / Kali CLI:</span>
+                  <span className="font-mono text-xs text-emerald-400 font-bold uppercase">Linux / Kali CLI:</span>
                   <CopyButton text={steghideLinux} />
                 </div>
                 <div className="bg-black/70 border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">
@@ -264,7 +264,7 @@ export default function PicoCTFM00nwalk2Writeup() {
 
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
-                  <span className="font-mono text-xs text-cyan-400 font-bold uppercase">🪟 Windows PowerShell:</span>
+                  <span className="font-mono text-xs text-cyan-400 font-bold uppercase">Windows PowerShell:</span>
                   <CopyButton text={steghidePowerShell} />
                 </div>
                 <div className="bg-black/70 border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">

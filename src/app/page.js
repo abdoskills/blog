@@ -260,9 +260,12 @@ export default function Home() {
               {searchQuery && (
                 <button 
                   onClick={() => setSearchQuery("")}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-zinc-500 hover:text-white font-mono text-xs"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 text-zinc-500 hover:text-white"
+                  aria-label="Clear search"
                 >
-                  ✕
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
                 </button>
               )}
             </div>
@@ -295,7 +298,7 @@ export default function Home() {
               <div>
                 <div className="flex justify-between items-center mb-2.5">
                   <span className="font-mono text-xs text-emerald-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
-                    <span>📁</span> Filter by Category:
+                    Filter by Category:
                   </span>
                   {selectedCategory !== "ALL" && (
                     <button 
@@ -317,7 +320,7 @@ export default function Home() {
                           : "theme-filter-inactive"
                       }`}
                     >
-                      {cat === "ALL" ? "🌟 All Categories" : cat}
+                      {cat === "ALL" ? "All Categories" : cat}
                     </button>
                   ))}
                 </div>
@@ -327,7 +330,7 @@ export default function Home() {
               <div>
                 <div className="flex justify-between items-center mb-2.5">
                   <span className="font-mono text-xs text-zinc-300 font-bold uppercase tracking-wider flex items-center gap-1.5">
-                    <span>🏛️</span> Filter by CTF Platform:
+                    Filter by CTF Platform:
                   </span>
                   {selectedPlatform !== "ALL" && (
                     <button 
@@ -349,7 +352,7 @@ export default function Home() {
                           : "theme-filter-inactive"
                       }`}
                     >
-                      {plat === "ALL" ? "🌐 All Platforms" : plat}
+                      {plat === "ALL" ? "All Platforms" : plat}
                     </button>
                   ))}
                 </div>
@@ -359,7 +362,7 @@ export default function Home() {
               <div>
                 <div className="flex justify-between items-center mb-2.5">
                   <span className="font-mono text-xs text-zinc-300 font-bold uppercase tracking-wider flex items-center gap-1.5">
-                    <span>⚡</span> Filter by Tool / Discipline:
+                    Filter by Tool / Discipline:
                   </span>
                   {selectedTag !== "ALL" && (
                     <button 
@@ -407,7 +410,7 @@ export default function Home() {
                     onClick={clearAllFilters}
                     className="px-3 py-1 bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/30 rounded-lg font-mono text-xs transition-all"
                   >
-                    ✕ Clear Filters
+                    Clear Filters
                   </button>
                 </div>
               )}
@@ -512,7 +515,7 @@ export default function Home() {
 
                       {/* Footer CTA */}
                       <div className="flex justify-between items-center text-[11px] font-mono text-zinc-500 pt-1">
-                        <span>⏱ {c.time}</span>
+                        <span>{c.time}</span>
                         <span className="theme-cta font-bold flex items-center gap-1 transition-colors text-emerald-400 group-hover:text-emerald-300">
                           Open Dossier <span className="transform transition-transform group-hover:translate-x-1">→</span>
                         </span>
@@ -524,7 +527,11 @@ export default function Home() {
             </div>
           ) : (
             <div className="max-w-2xl mx-auto p-12 bg-[#0e0e13]/80 border border-dashed border-zinc-800 rounded-2xl text-center space-y-4">
-              <div className="text-3xl">🔍</div>
+              <div className="flex justify-center text-zinc-600">
+                <svg className="w-8 h-8 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
               <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)]">
                 No Matching CTF Competitions Found
               </h3>

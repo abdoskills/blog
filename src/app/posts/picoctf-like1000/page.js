@@ -23,7 +23,7 @@ for i in range(1000, 0, -1):
 if os.path.exists("filler.txt"):
     os.remove("filler.txt")
 
-print("\\n🎉 Finished! Extracted flag.png.")`;
+print("\\n[+] Finished! Extracted flag.png.")`;
 
   const oneliner = `python -c "import tarfile,os; [([tarfile.open(f'{i}.tar').extractall(), os.remove(f'{i}.tar')] if os.path.exists(f'{i}.tar') else None) for i in range(1000,0,-1)]; os.remove('filler.txt') if os.path.exists('filler.txt') else None; print('Done! flag.png extracted.')"`;
 
@@ -119,7 +119,7 @@ Write-Host "Done! flag.png extracted."`;
                   className="flex items-center gap-2 text-amber-300 hover:text-white font-mono text-sm font-bold bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 px-3 py-2 rounded-lg transition-all"
                 >
                   <svg className="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                  <span>⬇️ Download solve.py</span>
+                  <span>Download solve.py</span>
                 </a>
                 <span className="text-[11px] font-mono text-zinc-400 block mt-2">Size: 10 MB initial archive</span>
                 <span className="text-[11px] font-mono text-zinc-500 block">Type: 1,000 Nested POSIX TARs</span>
@@ -134,7 +134,7 @@ Write-Host "Done! flag.png extracted."`;
         {/* Section 1: Recursive Archive Architecture */}
         <div className="space-y-6 text-zinc-300 leading-relaxed font-sans mb-12">
           <div className="bg-[#14120a] border-l-4 border-amber-500 p-6 rounded-r-xl shadow-md">
-            <h4 className="text-amber-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Forensic Strategy: Automated Recursive Extraction</h4>
+            <h4 className="text-amber-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">Forensic Strategy: Automated Recursive Extraction</h4>
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
               The artifact contains 1,000 sequentially nested POSIX TAR archives (<code>1000.tar</code> down to <code>1.tar</code>), each bundling the next archive alongside junk padding files (<code>filler.txt</code>). Manual extraction with GUI archive tools is inefficient and consumes unnecessary disk space. Instead, an in-memory or streamed Python extraction script walks down the recursion chain and terminates upon encountering the final payload (<code>flag.png</code>).
             </p>
@@ -235,7 +235,7 @@ Write-Host "Done! flag.png extracted."`;
           {/* Terminal One-liner */}
           <div className="space-y-2 pt-2">
             <div className="flex justify-between items-center">
-              <span className="font-mono text-xs text-amber-400 font-bold uppercase">⚡ Terminal One-Liner (PowerShell / Bash):</span>
+              <span className="font-mono text-xs text-amber-400 font-bold uppercase">Terminal One-Liner (PowerShell / Bash):</span>
               <CopyButton text={oneliner} />
             </div>
             <div className="bg-black border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">

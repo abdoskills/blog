@@ -23,7 +23,7 @@ data[0x53:0x5B] = b"\\x00\\x03\\x18\\x51IDAT"
 with open("fixed.png", "wb") as f:
     f.write(data)
 
-print("🎉 Successfully repaired! fixed.png generated.")`;
+print("[+] Successfully repaired! fixed.png generated.")`;
 
   const oneliner = `python -c "d=bytearray(open('mystery','rb').read()); d[0:8]=b'\\x89PNG\\r\\n\\x1a\\n'; d[12:16]=b'IHDR'; d[0x46:0x4A]=b'\\x00\\x00\\x16\\x25'; d[0x53:0x5B]=b'\\x00\\x03\\x18\\x51IDAT'; open('fixed.png','wb').write(d); print('fixed.png generated!')"`;
 
@@ -104,7 +104,7 @@ print("🎉 Successfully repaired! fixed.png generated.")`;
                   className="flex items-center gap-2 text-purple-300 hover:text-white font-mono text-sm font-bold bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 px-3 py-2 rounded-lg transition-all"
                 >
                   <svg className="w-4 h-4 text-purple-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                  <span>⬇️ Download mystery</span>
+                  <span>Download mystery</span>
                 </a>
                 <span className="text-[11px] font-mono text-zinc-400 block mt-2">Size: 202,887 bytes</span>
                 <span className="text-[11px] font-mono text-zinc-500 block">Type: Corrupted PNG Binary</span>
@@ -119,7 +119,7 @@ print("🎉 Successfully repaired! fixed.png generated.")`;
         {/* Section 1: PNG Corruption Triage */}
         <div className="space-y-6 text-zinc-300 leading-relaxed font-sans mb-12">
           <div className="bg-[#0f1118] border-l-4 border-purple-500 p-6 rounded-r-xl shadow-md">
-            <h4 className="text-purple-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Forensic Triage: PNG Chunk Structure Corruption</h4>
+            <h4 className="text-purple-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">Forensic Triage: PNG Chunk Structure Corruption</h4>
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
               When an image viewer fails to render a file, the parser is encountering invalid signatures or checksum mismatches during chunk header validation. In <code>mystery</code>, the file has deliberate byte corruption across the 8-byte file signature, the critical <code>IHDR</code> header length and chunk name, and downstream chunk metadata (<code>pHYs</code> and <code>IDAT</code>), causing parsers like libpng to reject the file immediately.
             </p>
@@ -180,7 +180,7 @@ print("🎉 Successfully repaired! fixed.png generated.")`;
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-mono text-xs pt-2">
               <div className="p-3.5 bg-black/80 rounded-xl border border-emerald-500/30 space-y-1">
-                <span className="text-emerald-400 font-bold block text-sm">✅ Standard Healthy PNG (Reference):</span>
+                <span className="text-emerald-400 font-bold block text-sm">Standard Healthy PNG (Reference):</span>
                 <p className="text-zinc-400 font-sans text-xs">
                   Offset <code className="text-emerald-300">0x00</code>: <code className="text-emerald-300">89 50 4E 47 0D 0A 1A 0A</code> (.PNG\r\n\x1a\n)<br />
                   Offset <code className="text-emerald-300">0x0C</code>: <code className="text-emerald-300">49 48 44 52</code> (Chunk Type: <strong>IHDR</strong>)
@@ -188,7 +188,7 @@ print("🎉 Successfully repaired! fixed.png generated.")`;
               </div>
 
               <div className="p-3.5 bg-black/80 rounded-xl border border-red-500/30 space-y-1">
-                <span className="text-red-400 font-bold block text-sm">❌ Our Sabotaged File (`mystery`):</span>
+                <span className="text-red-400 font-bold block text-sm">Our Sabotaged File (`mystery`):</span>
                 <p className="text-zinc-400 font-sans text-xs">
                   Offset <code className="text-red-300">0x00</code>: <code className="text-red-300">89 65 4E 34 0D 0A B0 AA</code> (.eN4...)<br />
                   Offset <code className="text-red-300">0x0C</code>: <code className="text-red-300">43 22 44 52</code> (Scrambled chunk: <strong>C&quot;DR</strong>)
@@ -197,7 +197,7 @@ print("🎉 Successfully repaired! fixed.png generated.")`;
             </div>
 
             <div className="p-3 bg-purple-950/20 border border-purple-500/30 rounded-lg text-xs font-sans text-purple-200 leading-relaxed">
-              💡 <strong>The Core Forensic Objective:</strong> By comparing our broken <code className="text-white">mystery</code> file directly against this golden hex template, our goal is clear: change the corrupted bytes back to the specification standard, save the repaired file as <code className="text-white">fixed.png</code>, and the visual image along with the secret flag will immediately render!
+              <strong>The Core Forensic Objective:</strong> By comparing our broken <code className="text-white">mystery</code> file directly against this golden hex template, our goal is clear: change the corrupted bytes back to the specification standard, save the repaired file as <code className="text-white">fixed.png</code>, and the visual image along with the secret flag will immediately render!
             </div>
           </div>
         </div>
@@ -234,7 +234,7 @@ print("🎉 Successfully repaired! fixed.png generated.")`;
 
           {/* Prerequisite Box */}
           <div className="bg-[#100d1a] border border-purple-500/20 rounded-xl p-5 space-y-3 font-sans text-sm text-zinc-300">
-            <h4 className="font-mono text-xs font-bold text-purple-300 uppercase tracking-wider">🛠️ Manual Setup Instructions:</h4>
+            <h4 className="font-mono text-xs font-bold text-purple-300 uppercase tracking-wider">Manual Setup Instructions:</h4>
             <ol className="list-decimal list-inside space-y-2 text-zinc-300">
               <li>Open <a href="https://hexed.it/" target="_blank" rel="noopener noreferrer" className="text-purple-400 underline font-mono">https://hexed.it/</a> in Chrome/Edge or open <strong>HxD</strong>.</li>
               <li>Click <strong>Open file</strong> and select <code>mystery</code>.</li>
@@ -331,7 +331,7 @@ print("🎉 Successfully repaired! fixed.png generated.")`;
                 <strong>Why it broke:</strong> The actual image pixel data chunk header was scrambled from <code>IDAT</code> into <code>\xabDET</code> with an invalid length prefix.
               </p>
               <div className="bg-[#0e0a16] p-3 rounded-lg border border-purple-500/20 text-xs text-zinc-400 font-sans mb-2">
-                💡 <em>How we calculate IDAT length: Total file size (202,887 bytes) minus all header and other chunk bytes = 202,833 bytes = <code>0x00031851</code> in hex.</em>
+                <em>How we calculate IDAT length: Total file size (202,887 bytes) minus all header and other chunk bytes = 202,833 bytes = <code>0x00031851</code> in hex.</em>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 font-mono text-xs">
                 <div className="p-3 bg-black/80 rounded-lg border border-red-500/30">
@@ -351,7 +351,7 @@ print("🎉 Successfully repaired! fixed.png generated.")`;
 
           <div className="bg-[#120d1c] border border-purple-500/30 p-4 rounded-xl text-center">
             <p className="text-xs md:text-sm text-zinc-300 font-mono">
-              💾 In HexEd.it, click <strong>Export</strong> &rarr; Save as <code>fixed.png</code> &rarr; Open with Windows Photo Viewer!
+              In HexEd.it, click <strong>Export</strong> &rarr; Save as <code>fixed.png</code> &rarr; Open with Windows Photo Viewer!
             </p>
           </div>
         </div>
@@ -383,7 +383,7 @@ print("🎉 Successfully repaired! fixed.png generated.")`;
           {/* Fast Oneliner */}
           <div className="space-y-2 pt-2">
             <div className="flex justify-between items-center">
-              <span className="font-mono text-xs text-emerald-400 font-bold uppercase">⚡ Terminal One-Liner (PowerShell / Bash):</span>
+              <span className="font-mono text-xs text-emerald-400 font-bold uppercase">Terminal One-Liner (PowerShell / Bash):</span>
               <CopyButton text={oneliner} />
             </div>
             <div className="bg-black border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">

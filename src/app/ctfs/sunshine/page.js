@@ -326,7 +326,7 @@ while True:
     { step: 14, current: "02ee", hex: "0x0073", char: "s", next: "02d4@" },
     { step: 15, current: "02d4", hex: "0x0075", char: "u", next: "02e1@" },
     { step: 16, current: "02e1", hex: "0x006e", char: "n", next: "02b0@" },
-    { step: 17, current: "02b0", hex: "0x007d", char: "}", next: "2600 (☀)" },
+    { step: 17, current: "02b0", hex: "0x007d", char: "}", next: "2600 (Black Sun With Rays)" },
   ];
 
   return (
@@ -407,7 +407,7 @@ while True:
               {/* Step 1 */}
               <div id="sun-call-overview" className="scroll-mt-28 space-y-4 mb-8">
                 <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] flex items-center gap-2">
-                  <span className="text-cyan-400">⚡ Step 1:</span> SIP Handshake &amp; Codec Triage
+                  <span className="text-cyan-400">Step 1:</span> SIP Handshake &amp; Codec Triage
                 </h3>
                 <p className="text-sm text-zinc-300 leading-relaxed font-sans">
                   Analyzing `welcomecall.pcap` reveals a SIP voice call handshake on UDP port 5060. The SDP parameters specify a G.711 mu-law audio stream negotiated between ports 4000 and 4002.
@@ -434,7 +434,7 @@ while True:
               {/* Step 3 */}
               <div id="sun-call-audio" className="scroll-mt-28 space-y-4 mb-8">
                 <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] flex items-center gap-2">
-                  <span className="text-cyan-400">⚡ Step 3:</span> Audio Backmasking in Audacity
+                  <span className="text-cyan-400">Step 3:</span> Audio Backmasking in Audacity
                 </h3>
                 <p className="text-sm text-zinc-300 leading-relaxed font-sans">
                   Playing `call.wav` plays an incomprehensible reversed speech pattern. Loading the file into Audacity, selecting all audio, and applying <strong>Effect &rarr; Reverse</strong> immediately produces clear spoken English: <em>&ldquo;Thank you for playing... The flag is sun open bracket thankyouforplaying close bracket&rdquo;</em>.
@@ -779,7 +779,7 @@ while True:
                   <span className="text-amber-400">02.</span> Dead Key Chaining Mechanics
                 </h3>
                 <p className="text-sm text-zinc-300 leading-relaxed font-sans">
-                  Scancode 29 is mapped to <code className="text-amber-300 font-mono">0060@</code> (entering Dead Key state). The dead key transition outputs another dead key with <code className="text-amber-400 font-bold">@</code>, forming a finite state machine that terminates at <code className="text-amber-300 font-bold font-mono">U+2600 ☀ (Black Sun With Rays)</code>.
+                  Scancode 29 is mapped to <code className="text-amber-300 font-mono">0060@</code> (entering Dead Key state). The dead key transition outputs another dead key with <code className="text-amber-400 font-bold">@</code>, forming a finite state machine that terminates at <code className="text-amber-300 font-bold font-mono">U+2600 (Black Sun With Rays)</code>.
                 </p>
               </div>
 

@@ -175,7 +175,7 @@ def play_ping_pong(host="127.0.0.1", port=1337):
         if b"GameEnd" in data or b"kaspersky{" in data:
             flag_match = re.search(r"kaspersky\\{[^\\}]+\\}", data.decode(errors="ignore"))
             if flag_match:
-                print(f"\\n🎯 FLAG FOUND: {flag_match.group(0)}")
+                print(f"\\n[+] FLAG FOUND: {flag_match.group(0)}")
                 return flag_match.group(0)
 
     s.close()
@@ -212,7 +212,7 @@ def solve_ryan_guzling():
         print(f"  $ {cmd}")
 
     flag = "kaspersky{1_th1nk_1t5_b3tt3r_t0_wr1t3_th3_k3y_0n_p4p3r}"
-    print(f"\\n🎯 FLAG RECOVERED: {flag}")
+    print(f"\\n[+] FLAG RECOVERED: {flag}")
     return flag
 
 if __name__ == "__main__":
@@ -247,7 +247,7 @@ def parse_pcap_and_decrypt(pcap_path="files/task.pcap"):
     print("[+] Reconstructing ChaCha20 state across connection counters...")
     
     flag = "kaspersky{gR34sY_ch4nn3l_n0t_s0_sL1ck}"
-    print(f"\\n🎯 FLAG RECOVERED: {flag}")
+    print(f"\\n[+] FLAG RECOVERED: {flag}")
     return flag
 
 if __name__ == "__main__":
@@ -331,13 +331,13 @@ if __name__ == "__main__":
               {/* Attack Chain */}
               <div id="k-ping-chain" className="scroll-mt-28 bg-[#0e0e13]/90 border border-zinc-800/80 rounded-2xl p-6 space-y-3 mb-8">
                 <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider flex items-center gap-2">
-                  <span className="text-emerald-400">⚡</span> Attack Flow Overview
+                  Attack Flow Overview
                 </h3>
                 <p className="text-sm text-zinc-300 font-sans leading-relaxed">
                   This challenge represents a realistic APT intrusion chain. The flag is not stored as plaintext in memory; you must unravel every link of the operational lifecycle:
                 </p>
                 <div className="p-4 rounded-xl bg-black/60 border border-emerald-500/20 font-mono text-xs text-emerald-300 space-y-1 overflow-x-auto">
-                  <div>📨 Phishing Email in Outlook (`inquiry.js`)</div>
+                  <div>Phishing Email in Outlook (`inquiry.js`)</div>
                   <div>&nbsp;&nbsp;↳ Base64 Decode + RC4 Key (`28258913b8...`) + LZNT1 Decompress</div>
                   <div>&nbsp;&nbsp;↳ Dropped Loader: `%TEMP%\rad5CD3F.exe`</div>
                   <div>&nbsp;&nbsp;↳ PoolParty Variant 7 Injection into `Acrobat.exe` (`ZwSetIoCompletion`)</div>
@@ -345,7 +345,7 @@ if __name__ == "__main__":
                   <div>&nbsp;&nbsp;↳ Modified Havoc Demon C2 Payload (AES-256-CTR)</div>
                   <div>&nbsp;&nbsp;↳ C2 Task Downloads `playwithme.exe` (Protected by `RtlEncryptMemory`)</div>
                   <div>&nbsp;&nbsp;↳ Socket Ping Pong Game (Automated 6:0 Victory Bot)</div>
-                  <div>&nbsp;&nbsp;↳ 🚩 Flag Delivered in Server `GameEnd` Response Packet!</div>
+                  <div>&nbsp;&nbsp;↳ Flag Delivered in Server `GameEnd` Response Packet!</div>
                 </div>
               </div>
 
@@ -420,7 +420,7 @@ if __name__ == "__main__":
               <div id="k-ping-flag" className="scroll-mt-28 space-y-4">
                 <div className="bg-gradient-to-r from-[#0d1410] via-[#091811] to-[#0d1410] border border-emerald-500/60 rounded-2xl p-5 space-y-3">
                   <div className="flex items-center gap-2 font-mono text-xs text-emerald-400 uppercase tracking-widest font-bold">
-                    <span>🏁</span> Challenge Flag
+                    <span>Challenge Flag</span>
                   </div>
                   <div className="font-mono text-sm md:text-base text-white font-bold bg-black/70 p-3 rounded-xl border border-emerald-500/40 select-all break-all flex items-center justify-between gap-2">
                     <code>kaspersky&#123;why_1s_th3r3_4_p1n9_p0n9_g4m3_4r3_u_j0kin9_m3&#125;</code>
@@ -461,13 +461,13 @@ if __name__ == "__main__":
               {/* Concept */}
               <div id="k-ryan-concept" className="scroll-mt-28 bg-[#0e0e13]/90 border border-zinc-800/80 rounded-2xl p-6 space-y-3 mb-8">
                 <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider flex items-center gap-2">
-                  <span className="text-emerald-400">⚡</span> The Core Concept: Apple Fusion Drive
+                  The Core Concept: Apple Fusion Drive
                 </h3>
                 <p className="text-sm text-zinc-300 font-sans leading-relaxed">
                   An Apple Fusion Drive logically binds an SSD and an HDD into a single <strong>CoreStorage Logical Volume Group (LVG)</strong>. If you try to open `ssd.dd` or `hdd.dd` individually, the filesystem appears corrupt because physical blocks are interleaved across both drives.
                 </p>
                 <div className="p-4 rounded-xl bg-black/60 border border-emerald-500/20 font-mono text-xs text-emerald-300 space-y-1 overflow-x-auto">
-                  <div>📦 Provided Artifacts (`guz.zip` - 11.7 GB):</div>
+                  <div>Provided Artifacts (`guz.zip` - 11.7 GB):</div>
                   <div>&nbsp;&nbsp;├── `ssd.dd` (16.1 GB) - CoreStorage Physical Volume 0 (SSD Slice)</div>
                   <div>&nbsp;&nbsp;├── `hdd.dd` (19.3 GB) - CoreStorage Physical Volume 1 (HDD Slice)</div>
                   <div>&nbsp;&nbsp;└── `trash.dd` (536 MB) - HFS+ Volume holding hidden recovery keys</div>
@@ -538,7 +538,7 @@ if __name__ == "__main__":
               <div id="k-ryan-flag" className="scroll-mt-28 space-y-4">
                 <div className="bg-gradient-to-r from-[#0d1410] via-[#091811] to-[#0d1410] border border-emerald-500/60 rounded-2xl p-5 space-y-3">
                   <div className="flex items-center gap-2 font-mono text-xs text-emerald-400 uppercase tracking-widest font-bold">
-                    <span>🏁</span> Challenge Flag
+                    <span>Challenge Flag</span>
                   </div>
                   <div className="font-mono text-sm md:text-base text-white font-bold bg-black/70 p-3 rounded-xl border border-emerald-500/40 select-all break-all flex items-center justify-between gap-2">
                     <code>kaspersky&#123;1_th1nk_1t5_b3tt3r_t0_wr1t3_th3_k3y_0n_p4p3r&#125;</code>
@@ -579,13 +579,13 @@ if __name__ == "__main__":
               {/* Concept */}
               <div id="k-arch-concept" className="scroll-mt-28 bg-[#0e0e13]/90 border border-zinc-800/80 rounded-2xl p-6 space-y-3 mb-8">
                 <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider flex items-center gap-2">
-                  <span className="text-emerald-400">⚡</span> Covert Channel Concept: TLS GREASE
+                  Covert Channel Concept: TLS GREASE
                 </h3>
                 <p className="text-sm text-zinc-300 font-sans leading-relaxed">
                   In modern TLS 1.3 handshakes, <strong>GREASE (Generate Random Extensions And Sustain Extensibility)</strong> values like <code className="text-emerald-300 font-mono">0x0a0a</code> are randomly sent to ensure middleboxes don&apos;t break on unknown extensions. Here, the malware packed 16 bytes of encrypted C2 commands inside the GREASE extension of every handshake:
                 </p>
                 <div className="p-4 rounded-xl bg-black/60 border border-emerald-500/20 font-mono text-xs text-emerald-300 space-y-1 overflow-x-auto">
-                  <div>⚙️ Attack Mechanism:</div>
+                  <div>Attack Mechanism:</div>
                   <div>&nbsp;&nbsp;1. ServerManager loads sideloaded `ntdll.dll` from GAC directory.</div>
                   <div>&nbsp;&nbsp;2. Malicious `DllMain` generates 450 TLS handshakes to `158.160.214.233:443`.</div>
                   <div>&nbsp;&nbsp;3. TLS Session ID holds 12-byte nonce + 4-byte connection counter.</div>
@@ -646,7 +646,7 @@ if __name__ == "__main__":
               <div id="k-arch-flag" className="scroll-mt-28 space-y-4">
                 <div className="bg-gradient-to-r from-[#0d1410] via-[#091811] to-[#0d1410] border border-emerald-500/60 rounded-2xl p-5 space-y-3">
                   <div className="flex items-center gap-2 font-mono text-xs text-emerald-400 uppercase tracking-widest font-bold">
-                    <span>🏁</span> Challenge Flag
+                    <span>Challenge Flag</span>
                   </div>
                   <div className="font-mono text-sm md:text-base text-white font-bold bg-black/70 p-3 rounded-xl border border-emerald-500/40 select-all break-all flex items-center justify-between gap-2">
                     <code>kaspersky&#123;gR34sY_ch4nn3l_n0t_s0_sL1ck&#125;</code>

@@ -23,7 +23,7 @@ def trace_largest_pot(start_address):
 # Concatenate evidence tokens T1-T6 to formulate final SHA-256 flag
 tokens = "TOKEN1_TOKEN2_TOKEN3_TOKEN4_TOKEN5_TOKEN6"
 flag_digest = hashlib.sha256(tokens.encode()).hexdigest()[:32]
-print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
+print(f"[+] Final Flag: ASCWG{{{flag_digest}}}")`;
 
   const oneliner = `python -c "import hashlib; print('ASCWG{' + hashlib.sha256('T1_T2_T3_T4_T5_T6'.encode()).hexdigest()[:32] + '}')"`;
 
@@ -127,7 +127,7 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
           </h3>
 
           <div className="bg-[#100d1a] border-l-4 border-purple-500 p-6 rounded-r-xl my-6 shadow-lg">
-            <h4 className="text-purple-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Blockchain Forensics: Peel Chain Mechanics</h4>
+            <h4 className="text-purple-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">Blockchain Forensics: Peel Chain Mechanics</h4>
             <p className="text-sm text-zinc-300 leading-relaxed">
               A peel chain is a laundering pattern where an address with a large balance repeatedly sends small fractions to payment or cash-out endpoints while forwarding the majority of funds to a fresh change address. In UTXO graph analysis, isolating the largest output value at each transaction hop allows us to track the principal fund stream across multiple hops.
             </p>
@@ -172,7 +172,7 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
             {/* Terminal One-liner */}
             <div className="space-y-2 pt-2">
               <div className="flex justify-between items-center">
-                <span className="font-mono text-xs text-purple-400 font-bold uppercase">⚡ Terminal One-Liner (PowerShell / Bash):</span>
+                <span className="font-mono text-xs text-purple-400 font-bold uppercase">Terminal One-Liner (PowerShell / Bash):</span>
                 <CopyButton text={oneliner} />
               </div>
               <div className="bg-black border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">
@@ -200,10 +200,10 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
           </p>
 
           <div className="bg-[#111111] border-l-4 border-blue-500 p-6 rounded-r-xl my-6 shadow-lg">
-            <h4 className="text-blue-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 THE MIXER ANALOGY</h4>
+            <h4 className="text-blue-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">COINJOIN MECHANICS &amp; ANONYMITY SET</h4>
             <p className="text-sm text-zinc-400 leading-relaxed">
-              A CoinJoin is like 10 people throwing identical $100 bills onto a table, shuffling them around, and each taking one back. If you tracked a criminal&apos;s $100 bill to that table, you have no idea which of the 10 bills he walked away with. <br/><br/>
-              But... what if the criminal walked away with <em>two</em> of those $100 bills, and went to buy a $200 TV with them? By spending them together, the criminal just proved to the whole world that those two specific bills belong to the exact same person. The disguise is ruined!
+              CoinJoin combines multiple transactions into a single batch where multiple participants provide inputs and receive equal-denomination outputs, obscuring individual input-to-output links. <br/><br/>
+              However, if a user later spends multiple equal-denomination outputs together in a single downstream transaction, common-input ownership heuristics de-anonymize the user by linking those distinct outputs back to the same entity.
             </p>
           </div>
 

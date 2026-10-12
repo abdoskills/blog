@@ -17,7 +17,7 @@ for pkt in cap:
         continue
 
 flag = ''.join(flag_chars)
-print("🎉 Reconstructed Sensor Flag:", flag)`;
+print("[+] Reconstructed Sensor Flag:", flag)`;
 
   const oneliner = `tshark -r sensor_dump.pcap -Y "ip.src == 10.0.5.55 && tcp.urgent_pointer > 0" -T fields -e tcp.urgent_pointer | python -c "import sys; print(''.join([chr(int(x.strip(), 16)) for x in sys.stdin if x.strip()]))"`;
 
@@ -118,7 +118,7 @@ print("🎉 Reconstructed Sensor Flag:", flag)`;
           </h3>
 
           <div className="bg-[#111111] border-l-4 border-rose-500 p-6 rounded-r-xl my-6 shadow-lg">
-            <h4 className="text-rose-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Protocol Forensics: Covert Channel via TCP Urgent Pointer</h4>
+            <h4 className="text-rose-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">Protocol Forensics: Covert Channel via TCP Urgent Pointer</h4>
             <p className="text-sm text-zinc-300 leading-relaxed">
               Standard network traffic carries data inside the payload section. When packet payload is empty or filtered, covert channels can encode exfiltrated bytes into uninspected header fields. Here, the malware set the 16-bit TCP Urgent Pointer field on routine sensor heartbeat frames to transmit one ASCII byte per packet.
             </p>
@@ -184,7 +184,7 @@ print("🎉 Reconstructed Sensor Flag:", flag)`;
             {/* Terminal One-liner */}
             <div className="space-y-2 pt-2">
               <div className="flex justify-between items-center">
-                <span className="font-mono text-xs text-rose-400 font-bold uppercase">⚡ Terminal One-Liner (PowerShell / Bash):</span>
+                <span className="font-mono text-xs text-rose-400 font-bold uppercase">Terminal One-Liner (PowerShell / Bash):</span>
                 <CopyButton text={oneliner} />
               </div>
               <div className="bg-black border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">

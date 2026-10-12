@@ -93,7 +93,7 @@ Browser Methods: ['Chrome_Canary_Speed', 'Chrome_Speed', 'Microsoft_Speed']`;
           </p>
 
           <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-zinc-500 pt-4 border-t border-zinc-800/80">
-            <span>⏱ 16 min read</span>
+            <span>16 min read</span>
             <span>•</span>
             <span>Platform: CAT CTF 2026</span>
             <span>•</span>
@@ -551,7 +551,7 @@ Browser Methods: ['Chrome_Canary_Speed', 'Chrome_Speed', 'Microsoft_Speed']`;
         {/* Final Flag Showcase */}
         <section className="mt-14 mb-16 bg-gradient-to-br from-emerald-950/40 via-[#0e0e13] to-black border-2 border-emerald-500/40 rounded-2xl p-6 sm:p-8 backdrop-blur-xl shadow-[0_0_50px_rgba(16,185,129,0.15)]">
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-2xl">🏆</span>
+            <div className="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400"><svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg></div>
             <div>
               <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase">
                 Challenge Complete • Official Flag Captured

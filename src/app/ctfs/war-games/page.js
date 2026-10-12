@@ -192,7 +192,7 @@ aes_key = key_match.group(1).decode() if key_match else "X9q3mR_8VpL2zF!sQw4T*nY
 c2_port = 4433
 
 flag = f"ASCWG{{{c2_ip}:{c2_port}_{aes_key}}}"
-print("🎉 Extracted Flag:", flag)`;
+print("[+] Extracted Flag:", flag)`;
 
   const thrushesOneliner = `python -c "import re; d=open('Signal','rb').read(); ip=re.search(rb'(\\d+\\.\\d+\\.\\d+\\.\\d+)',d).group(1).decode(); k=re.search(rb'([A-Za-z0-9_!*]{32})',d).group(1).decode(); print(f'ASCWG{{{ip}:4433_{k}}}')"`;
 
@@ -209,7 +209,7 @@ ciphertext = bytes.fromhex("a3f1c89b721e5a448f3c11224a99bb012f5a89b0...")
 cipher = AES.new(key, AES.MODE_CBC, iv=b"\\x00"*16)
 decrypted = cipher.decrypt(ciphertext)
 
-print("🎉 Decrypted Flag:", decrypted.decode('utf-8', errors='ignore'))`;
+print("[+] Decrypted Flag:", decrypted.decode('utf-8', errors='ignore'))`;
 
   const searchOneliner = `python -c "from Crypto.Cipher import AES; import hashlib; k=hashlib.sha256('{A92B31C4-7D4F-4A92-B582-82E9104A7F11}'.encode('utf-16le')).digest()[:16]; print(AES.new(k,AES.MODE_CBC,b'\\x00'*16).decrypt(bytes.fromhex('...')).decode('latin1'))"`;
 
@@ -227,7 +227,7 @@ for pkt in cap:
         continue
 
 flag = ''.join(flag_chars)
-print("🎉 Reconstructed Sensor Flag:", flag)`;
+print("[+] Reconstructed Sensor Flag:", flag)`;
 
   const sensorOneliner = `tshark -r sensor_dump.pcap -Y "ip.src == 10.0.5.55 && tcp.urgent_pointer > 0" -T fields -e tcp.urgent_pointer | python -c "import sys; print(''.join([chr(int(x.strip(), 16)) for x in sys.stdin if x.strip()]))"`;
 
@@ -251,7 +251,7 @@ def trace_largest_pot(start_address):
 # Concatenate evidence tokens T1-T6 to formulate final SHA-256 flag
 tokens = "TOKEN1_TOKEN2_TOKEN3_TOKEN4_TOKEN5_TOKEN6"
 flag_digest = hashlib.sha256(tokens.encode()).hexdigest()[:32]
-print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
+print(f"[+] Final Flag: ASCWG{{{flag_digest}}}")`;
 
   const nightshadeOneliner = `python -c "import hashlib; print('ASCWG{' + hashlib.sha256('T1_T2_T3_T4_T5_T6'.encode()).hexdigest()[:32] + '}')"`;
 
@@ -350,7 +350,7 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
                     <div>
                       <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">Provided Artifacts</span>
                       <div className="text-white font-mono text-sm font-bold flex items-center gap-2">
-                        <span>📦 macos_triage.tar.gz</span>
+                        <span>macos_triage.tar.gz</span>
                       </div>
                       <span className="text-[11px] font-mono text-zinc-400 block mt-1">Size: 412 MB • Triage Image</span>
                       <span className="text-[11px] font-mono text-zinc-500 block">Key Binary: Signal.app (Mach-O)</span>
@@ -365,11 +365,11 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
               {/* Stage 1 */}
               <div id="thrushes-stage-1" className="scroll-mt-28 space-y-4 mb-8">
                 <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] flex items-center gap-2">
-                  <span className="text-cyan-400">⚡ Stage 1:</span> Investigating the Triage Image
+                  <span className="text-cyan-400">Stage 1:</span> Investigating the Triage Image
                 </h3>
 
                 <div className="bg-[#0b131a] border-l-4 border-cyan-500 p-5 rounded-r-xl shadow-lg">
-                  <h4 className="text-cyan-400 font-bold mb-1 font-mono text-xs uppercase tracking-wider">💡 Trojanized Signal Binary</h4>
+                  <h4 className="text-cyan-400 font-bold mb-1 font-mono text-xs uppercase tracking-wider">Trojanized Signal Binary</h4>
                   <p className="text-sm text-zinc-300 leading-relaxed font-sans">
                     Inspection of the macOS application bundle revealed that the legitimate Signal binary had been swapped out for a backdoored Mach-O executable. The modified binary intercepts outgoing messages and exfiltrates them over a raw TCP socket to an attacker-controlled C2 server before delivering them to the real Signal service.
                   </p>
@@ -431,7 +431,7 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
                 </div>
                 
                 <div className="flex justify-between items-center pt-2">
-                  <span className="font-mono text-xs text-cyan-400 font-bold uppercase">⚡ Terminal One-Liner (PowerShell / Bash):</span>
+                  <span className="font-mono text-xs text-cyan-400 font-bold uppercase">Terminal One-Liner (PowerShell / Bash):</span>
                   <CopyButton text={thrushesOneliner} />
                 </div>
                 <div className="bg-black border border-zinc-800 rounded-xl p-3 font-mono text-xs text-zinc-300 overflow-x-auto">
@@ -528,7 +528,7 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
                     <div>
                       <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">Provided Artifacts</span>
                       <div className="text-white font-mono text-sm font-bold flex items-center gap-2">
-                        <span>📦 Windows.db / KAPE.zip</span>
+                        <span>Windows.db / KAPE.zip</span>
                       </div>
                       <span className="text-[11px] font-mono text-zinc-400 block mt-1">Size: 285 MB • ESE Database</span>
                       <span className="text-[11px] font-mono text-zinc-500 block">Path: Windows\Windows.edb</span>
@@ -543,11 +543,11 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
               {/* Stage 1 */}
               <div id="search-stage-1" className="scroll-mt-28 space-y-4 mb-8">
                 <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] flex items-center gap-2">
-                  <span className="text-amber-400">⚡ Stage 1:</span> The Execution Anchor
+                  <span className="text-amber-400">Stage 1:</span> The Execution Anchor
                 </h3>
 
                 <div className="bg-[#141008] border-l-4 border-amber-500 p-5 rounded-r-xl shadow-lg">
-                  <h4 className="text-amber-400 font-bold mb-1 font-mono text-xs uppercase tracking-wider">💡 Forensic Analysis: Execution &amp; Artifact Staging</h4>
+                  <h4 className="text-amber-400 font-bold mb-1 font-mono text-xs uppercase tracking-wider">Forensic Analysis: Execution &amp; Artifact Staging</h4>
                   <p className="text-sm text-zinc-300 leading-relaxed font-sans">
                     Windows Program Compatibility Assistant (PCA) keeps execution evidence in the registry and diagnostic stores. While <code>OfficeUpdater.exe</code> execution was confirmed via PCA entries, the binary itself was a decoy dropper. The encrypted payload buffer was staged directly inside the Windows Search database (<code>Windows.db</code>), requiring ESE database parsing to carve the raw ciphertext blob.
                   </p>
@@ -599,7 +599,7 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
                 </div>
                 
                 <div className="flex justify-between items-center pt-2">
-                  <span className="font-mono text-xs text-amber-400 font-bold uppercase">⚡ Terminal One-Liner (PowerShell / Bash):</span>
+                  <span className="font-mono text-xs text-amber-400 font-bold uppercase">Terminal One-Liner (PowerShell / Bash):</span>
                   <CopyButton text={searchOneliner} />
                 </div>
                 <div className="bg-black border border-zinc-800 rounded-xl p-3 font-mono text-xs text-zinc-300 overflow-x-auto">
@@ -684,7 +684,7 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
                     <div>
                       <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">Provided Artifacts</span>
                       <div className="text-white font-mono text-sm font-bold flex items-center gap-2">
-                        <span>📦 sensor_dump.pcap</span>
+                        <span>sensor_dump.pcap</span>
                       </div>
                       <span className="text-[11px] font-mono text-zinc-400 block mt-1">Size: 94 MB • Packet Capture</span>
                       <span className="text-[11px] font-mono text-zinc-500 block">Protocol: TCP Urgent Pointer (URG)</span>
@@ -699,11 +699,11 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
               {/* Stage 1 */}
               <div id="sensor-stage-1" className="scroll-mt-28 space-y-4 mb-8">
                 <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] flex items-center gap-2">
-                  <span className="text-rose-400">⚡ Stage 1:</span> PCAP Triage &amp; Protocol Analysis
+                  <span className="text-rose-400">Stage 1:</span> PCAP Triage &amp; Protocol Analysis
                 </h3>
 
                 <div className="bg-[#111111] border-l-4 border-rose-500 p-5 rounded-r-xl shadow-lg">
-                  <h4 className="text-rose-400 font-bold mb-1 font-mono text-xs uppercase tracking-wider">💡 Protocol Forensics: Covert Channel via TCP Urgent Pointer</h4>
+                  <h4 className="text-rose-400 font-bold mb-1 font-mono text-xs uppercase tracking-wider">Protocol Forensics: Covert Channel via TCP Urgent Pointer</h4>
                   <p className="text-sm text-zinc-300 leading-relaxed font-sans">
                     Standard network traffic carries data inside the payload section. When packet payload is empty or filtered, covert channels can encode exfiltrated bytes into uninspected header fields. Here, the malware set the 16-bit TCP Urgent Pointer field on routine sensor heartbeat frames to transmit one ASCII byte per packet.
                   </p>
@@ -757,7 +757,7 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
                 </div>
                 
                 <div className="flex justify-between items-center pt-2">
-                  <span className="font-mono text-xs text-rose-400 font-bold uppercase">⚡ Terminal One-Liner (PowerShell / Bash):</span>
+                  <span className="font-mono text-xs text-rose-400 font-bold uppercase">Terminal One-Liner (PowerShell / Bash):</span>
                   <CopyButton text={sensorOneliner} />
                 </div>
                 <div className="bg-black border border-zinc-800 rounded-xl p-3 font-mono text-xs text-zinc-300 overflow-x-auto">
@@ -826,7 +826,7 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
                     <div>
                       <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">Provided Artifacts</span>
                       <div className="text-white font-mono text-sm font-bold flex items-center gap-2">
-                        <span>📦 vendor_intel.json</span>
+                        <span>vendor_intel.json</span>
                       </div>
                       <span className="text-[11px] font-mono text-zinc-400 block mt-1">Export: Blockchain Ledger CSV</span>
                       <span className="text-[11px] font-mono text-zinc-500 block">Ledger: Bitcoin UTXO Model</span>
@@ -841,11 +841,11 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
               {/* Stage 1-2 */}
               <div id="nightshade-stage-1" className="scroll-mt-28 space-y-4 mb-8">
                 <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] flex items-center gap-2">
-                  <span className="text-purple-400">⚡ Stage 1 &amp; 2:</span> The Peel-Chain Walk
+                  <span className="text-purple-400">Stage 1 &amp; 2:</span> The Peel-Chain Walk
                 </h3>
 
                 <div className="bg-[#100d1a] border-l-4 border-purple-500 p-5 rounded-r-xl shadow-lg">
-                  <h4 className="text-purple-400 font-bold mb-1 font-mono text-xs uppercase tracking-wider">💡 Blockchain Forensics: Peel Chain Mechanics</h4>
+                  <h4 className="text-purple-400 font-bold mb-1 font-mono text-xs uppercase tracking-wider">Blockchain Forensics: Peel Chain Mechanics</h4>
                   <p className="text-sm text-zinc-300 leading-relaxed font-sans">
                     A peel chain is a laundering pattern where an address with a large balance repeatedly sends small fractions to payment or cash-out endpoints while forwarding the majority of funds to a fresh change address. In UTXO graph analysis, isolating the largest output value at each transaction hop allows us to track the principal fund stream across multiple hops.
                   </p>
@@ -871,7 +871,7 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
                 </div>
                 
                 <div className="flex justify-between items-center pt-2">
-                  <span className="font-mono text-xs text-purple-400 font-bold uppercase">⚡ Terminal One-Liner (PowerShell / Bash):</span>
+                  <span className="font-mono text-xs text-purple-400 font-bold uppercase">Terminal One-Liner (PowerShell / Bash):</span>
                   <CopyButton text={nightshadeOneliner} />
                 </div>
                 <div className="bg-black border border-zinc-800 rounded-xl p-3 font-mono text-xs text-zinc-300 overflow-x-auto">
@@ -882,13 +882,13 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
               {/* Stage 3 */}
               <div id="nightshade-stage-3" className="scroll-mt-28 space-y-4 mb-8">
                 <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] flex items-center gap-2">
-                  <span className="text-purple-400">⚡ Stage 3:</span> CoinJoin De-Anonymization &amp; Multi-Input Clustering
+                  <span className="text-purple-400">Stage 3:</span> CoinJoin De-Anonymization &amp; Multi-Input Clustering
                 </h3>
 
                 <div className="bg-[#111111] border-l-4 border-blue-500 p-5 rounded-r-xl shadow-lg">
-                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs uppercase tracking-wider">💡 THE MIXER ANALOGY</h4>
+                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs uppercase tracking-wider">COINJOIN MECHANICS &amp; ANONYMITY SET</h4>
                   <p className="text-sm text-zinc-400 leading-relaxed font-sans">
-                    A CoinJoin is like 10 people throwing identical $100 bills onto a table, shuffling them around, and each taking one back. If you tracked a criminal&apos;s $100 bill to that table, you have no idea which of the 10 bills he walked away with. But if the criminal walked away with <em>two</em> of those $100 bills, and went to buy a $200 TV with them, he proved to the whole world that those two bills belong to the exact same person. The disguise is ruined!
+                    CoinJoin combines multiple transactions into a single batch where multiple participants provide inputs and receive equal-denomination outputs, obscuring individual input-to-output links. However, if a user later spends multiple equal-denomination outputs together in a single downstream transaction, common-input ownership heuristics de-anonymize the user by linking those distinct outputs back to the same entity.
                   </p>
                 </div>
 
@@ -947,11 +947,11 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
               {/* Stage 1 */}
               <div id="cascaded-stage-1" className="scroll-mt-28 space-y-4 mb-8">
                 <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] flex items-center gap-2">
-                  <span className="text-emerald-400">⚡ Stage 1:</span> GenesisVault &amp; Reentrancy
+                  <span className="text-emerald-400">Stage 1:</span> GenesisVault &amp; Reentrancy
                 </h3>
 
                 <div className="bg-[#111111] border-l-4 border-blue-500 p-5 rounded-r-xl shadow-lg">
-                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">💡 Vulnerability: Checks-Effects-Interactions Violation</h4>
+                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">Vulnerability: Checks-Effects-Interactions Violation</h4>
                   <p className="text-sm text-zinc-400 leading-relaxed font-sans">
                     GenesisVault executed an external ETH transfer before decrementing the user&apos;s internal ledger balance. A malicious fallback function can repeatedly call into the withdrawal function during the execution frame before the state update occurs, draining the vault liquidity.
                   </p>
@@ -967,11 +967,11 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
               {/* Stage 2 */}
               <div id="cascaded-stage-2" className="scroll-mt-28 space-y-4 mb-8">
                 <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] flex items-center gap-2">
-                  <span className="text-emerald-400">⚡ Stage 2:</span> PatchedVault &amp; Broken Access Control
+                  <span className="text-emerald-400">Stage 2:</span> PatchedVault &amp; Broken Access Control
                 </h3>
 
                 <div className="bg-[#111111] border-l-4 border-blue-500 p-5 rounded-r-xl shadow-lg">
-                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">💡 Vulnerability: Missing Caller Ownership Validation</h4>
+                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">Vulnerability: Missing Caller Ownership Validation</h4>
                   <p className="text-sm text-zinc-400 leading-relaxed font-sans">
                     PatchedVault checked whether the provided GhostShare NFT token ID possessed liquidation rights, but failed to verify whether <code>msg.sender</code> actually owned or had approval for that specific token ID. Any caller could supply a valid token ID held by an external user and trigger unauthorized liquidations.
                   </p>
@@ -985,11 +985,11 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
               {/* Stage 3 */}
               <div id="cascaded-stage-3" className="scroll-mt-28 space-y-4 mb-8">
                 <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] flex items-center gap-2">
-                  <span className="text-emerald-400">⚡ Stage 3:</span> SignedVault &amp; Signature Replay
+                  <span className="text-emerald-400">Stage 3:</span> SignedVault &amp; Signature Replay
                 </h3>
 
                 <div className="bg-[#111111] border-l-4 border-blue-500 p-5 rounded-r-xl shadow-lg">
-                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">💡 Vulnerability: EIP-712 Signature Replay (Missing Nonce)</h4>
+                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">Vulnerability: EIP-712 Signature Replay (Missing Nonce)</h4>
                   <p className="text-sm text-zinc-400 leading-relaxed font-sans">
                     SignedVault verified off-chain admin signatures using EIP-712 typed structured data. Because the hash schema lacked a per-user nonce or deadline timestamp, an intercepted signature remained valid indefinitely and was replayed to drain additional funds.
                   </p>
@@ -1005,11 +1005,11 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
               {/* Stage 4 */}
               <div id="cascaded-stage-4" className="scroll-mt-28 space-y-4 mb-8">
                 <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] flex items-center gap-2">
-                  <span className="text-emerald-400">⚡ Stage 4:</span> OracleVault &amp; Price Manipulation
+                  <span className="text-emerald-400">Stage 4:</span> OracleVault &amp; Price Manipulation
                 </h3>
 
                 <div className="bg-[#111111] border-l-4 border-blue-500 p-5 rounded-r-xl shadow-lg">
-                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">💡 Vulnerability: Spot AMM Price Oracle Manipulation</h4>
+                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">Vulnerability: Spot AMM Price Oracle Manipulation</h4>
                   <p className="text-sm text-zinc-400 leading-relaxed font-sans">
                     OracleVault queried instantaneous token reserves from a low-liquidity AMM pool rather than a Time-Weighted Average Price (TWAP) or decentralized oracle feed. By leveraging a flash loan to swap against the pool, the attacker manipulated the spot price within a single transaction block to force bad-debt liquidations.
                   </p>
@@ -1066,11 +1066,11 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
               {/* Part 1 */}
               <div id="crypto-part-1" className="scroll-mt-28 space-y-4 mb-8">
                 <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] flex items-center gap-2">
-                  <span className="text-emerald-400">⚡ 1.</span> Complex Polynomial Root Recovery (Crypto 1)
+                  <span className="text-emerald-400">1.</span> Complex Polynomial Root Recovery (Crypto 1)
                 </h3>
 
                 <div className="bg-[#111111] border-l-4 border-blue-500 p-5 rounded-r-xl shadow-lg">
-                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">💡 Cryptanalysis: Coppersmith&apos;s Small Roots via LLL</h4>
+                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">Cryptanalysis: Coppersmith&apos;s Small Roots via LLL</h4>
                   <p className="text-sm text-zinc-400 leading-relaxed font-sans">
                     When RSA plaintext is partially known or stereotypic, the unknown portion can be expressed as a root of a monic polynomial modulo N. If the root size is bounded (here x &lt; 2^256), Coppersmith&apos;s theorem maps the problem to finding a short vector in a polynomial lattice using LLL, solving for the secret root in polynomial time.
                   </p>
@@ -1098,11 +1098,11 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
               {/* Part 2 */}
               <div id="crypto-part-2" className="scroll-mt-28 space-y-4 mb-8">
                 <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] flex items-center gap-2">
-                  <span className="text-emerald-400">⚡ 2.</span> Flawed ZKP Identification Protocol (Crypto 2)
+                  <span className="text-emerald-400">2.</span> Flawed ZKP Identification Protocol (Crypto 2)
                 </h3>
 
                 <div className="bg-[#111111] border-l-4 border-blue-500 p-5 rounded-r-xl shadow-lg">
-                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">💡 Protocol Analysis: Honest-Verifier ZKP Flaw</h4>
+                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">Protocol Analysis: Honest-Verifier ZKP Flaw</h4>
                   <p className="text-sm text-zinc-400 leading-relaxed font-sans">
                     In interactive identification protocols (like Schnorr or Fiat-Shamir variants), the prover must commit before receiving the verifier&apos;s random challenge. If the verifier emits the challenge prior to receiving the commitment, or allows the prover to dictate challenge ordering, the simulator can forge valid proofs without possessing the private discrete logarithm.
                   </p>
@@ -1118,11 +1118,11 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
               {/* Part 3 */}
               <div id="crypto-part-3" className="scroll-mt-28 space-y-4 mb-8">
                 <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] flex items-center gap-2">
-                  <span className="text-emerald-400">⚡ 3.</span> Supersingular Isogeny Diffie-Hellman (Crypto 3)
+                  <span className="text-emerald-400">3.</span> Supersingular Isogeny Diffie-Hellman (Crypto 3)
                 </h3>
 
                 <div className="bg-[#111111] border-l-4 border-blue-500 p-5 rounded-r-xl shadow-lg">
-                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">💡 Post-Quantum Analysis: SIDH Torsion Point Attack</h4>
+                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">Post-Quantum Analysis: SIDH Torsion Point Attack</h4>
                   <p className="text-sm text-zinc-400 leading-relaxed font-sans">
                     Supersingular Isogeny Diffie-Hellman protocols exchange images of auxiliary torsion points to evaluate shared secrets. Providing auxiliary point images allows an adversary to evaluate the endomorphism ring structure (Castryck-Decru attack style), recovering the private isogeny degree step-by-step using Vélu&apos;s formulas.
                   </p>
@@ -1167,11 +1167,11 @@ print(f"🎉 Final Flag: ASCWG{{{flag_digest}}}")`;
               {/* Stage 1 */}
               <div id="sol-stage-1" className="scroll-mt-28 space-y-4 mb-8">
                 <h3 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] flex items-center gap-2">
-                  <span className="text-yellow-400">⚡ Stage 1:</span> OTP Redirection &amp; Host Override
+                  <span className="text-yellow-400">Stage 1:</span> OTP Redirection &amp; Host Override
                 </h3>
 
                 <div className="bg-[#111111] border-l-4 border-blue-500 p-5 rounded-r-xl shadow-lg">
-                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">💡 Web Security: Host Header Webhook Poisoning</h4>
+                  <h4 className="text-blue-400 font-bold mb-1 font-mono text-xs">Web Security: Host Header Webhook Poisoning</h4>
                   <p className="text-sm text-zinc-400 leading-relaxed font-sans">
                     The backend authentication service generated an outbound OTP webhook request by constructing the callback target from the client-supplied <code>Host</code> header without strict domain allowlisting. By replacing the <code>Host</code> header with an attacker-controlled endpoint while preserving <code>X-Original-Host</code>, the server dispatched the plaintext OTP directly to our listener.
                   </p>

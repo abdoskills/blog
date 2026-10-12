@@ -67,7 +67,7 @@ def play_ping_pong(host="127.0.0.1", port=1337):
         if b"GameEnd" in data or b"kaspersky{" in data:
             flag_match = re.search(r"kaspersky\\{[^\\}]+\\}", data.decode(errors="ignore"))
             if flag_match:
-                print(f"\\n🎯 FLAG FOUND: {flag_match.group(0)}")
+                print(f"\\n[+] FLAG FOUND: {flag_match.group(0)}")
                 return flag_match.group(0)
 
     s.close()
@@ -130,14 +130,14 @@ if __name__ == "__main__":
         {/* Attack Flow Overview */}
         <section className="bg-[#0e0e13]/90 border border-zinc-800/80 rounded-2xl p-6 md:p-8 space-y-4 backdrop-blur-xl mb-12 shadow-xl">
           <h2 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider flex items-center gap-2.5">
-            <span className="text-emerald-400">⚡</span> Attack Flow Overview
+            Attack Flow Overview
           </h2>
           <p className="text-sm md:text-base text-zinc-300 font-sans leading-relaxed">
             This challenge represents a realistic APT intrusion chain. The flag is not stored as plaintext in memory; you must unravel every link of the operational lifecycle:
           </p>
 
           <div className="p-4 rounded-xl bg-black/60 border border-emerald-500/20 font-mono text-xs md:text-sm text-emerald-300 space-y-1.5 overflow-x-auto">
-            <div>📨 Phishing Email in Outlook (`inquiry.js`)</div>
+            <div>Phishing Email in Outlook (`inquiry.js`)</div>
             <div>&nbsp;&nbsp;↳ Base64 Decode + RC4 Key (`28258913b8...`) + LZNT1 Decompress</div>
             <div>&nbsp;&nbsp;↳ Dropped Loader: `%TEMP%\rad5CD3F.exe`</div>
             <div>&nbsp;&nbsp;↳ PoolParty Variant 7 Injection into `Acrobat.exe` (`ZwSetIoCompletion`)</div>
@@ -145,7 +145,7 @@ if __name__ == "__main__":
             <div>&nbsp;&nbsp;↳ Modified Havoc Demon C2 Payload (AES-256-CTR)</div>
             <div>&nbsp;&nbsp;↳ C2 Task Downloads `playwithme.exe` (Protected by `RtlEncryptMemory`)</div>
             <div>&nbsp;&nbsp;↳ Socket Ping Pong Game (Automated 6:0 Victory Bot)</div>
-            <div>&nbsp;&nbsp;↳ 🚩 Flag Delivered in Server `GameEnd` Response Packet!</div>
+            <div>&nbsp;&nbsp;↳ Flag Delivered in Server `GameEnd` Response Packet!</div>
           </div>
         </section>
 
@@ -235,7 +235,7 @@ if __name__ == "__main__":
         {/* Decoded Flag Box */}
         <section className="bg-gradient-to-r from-[#0d1410] via-[#091811] to-[#0d1410] border-2 border-emerald-500/60 rounded-2xl p-6 md:p-8 space-y-4 shadow-[0_0_40px_rgba(16,185,129,0.15)] mb-12">
           <div className="flex items-center gap-2 font-mono text-xs text-emerald-400 uppercase tracking-widest font-bold">
-            <span>🏁</span> Challenge Flag
+            <span>Challenge Flag</span>
           </div>
           <div className="font-mono text-base md:text-xl text-white font-bold bg-black/70 p-4 rounded-xl border border-emerald-500/40 select-all break-all">
             kaspersky&#123;why_1s_th3r3_4_p1n9_p0n9_g4m3_4r3_u_j0kin9_m3&#125;

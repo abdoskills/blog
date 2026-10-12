@@ -19,7 +19,7 @@ img = decoder.decode()
 
 # Save rotated image for upright reading
 img.rotate(180).save('result_rotated.png')
-print("🎉 SSTV Decoded successfully! Check result_rotated.png")`;
+print("[+] SSTV Decoded successfully! Check result_rotated.png")`;
 
   const oneliner = `sstv -d message.wav -o result.png`;
 
@@ -98,7 +98,7 @@ print("🎉 SSTV Decoded successfully! Check result_rotated.png")`;
                   className="flex items-center gap-2 text-emerald-300 hover:text-white font-mono text-sm font-bold bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 px-3 py-2 rounded-lg transition-all"
                 >
                   <svg className="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                  <span>⬇️ Download message.wav</span>
+                  <span>Download message.wav</span>
                 </a>
                 <span className="text-[11px] font-mono text-zinc-400 block mt-2">Size: 11 MB • WAV Audio</span>
               </div>
@@ -112,7 +112,7 @@ print("🎉 SSTV Decoded successfully! Check result_rotated.png")`;
         {/* Section 1: Slow-Scan Television (SSTV) Protocol */}
         <div className="space-y-6 text-zinc-300 leading-relaxed font-sans mb-12">
           <div className="bg-[#07130e] border-l-4 border-emerald-500 p-6 rounded-r-xl shadow-md">
-            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Signal Analysis: Slow-Scan Television (SSTV) Protocol</h4>
+            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">Signal Analysis: Slow-Scan Television (SSTV) Protocol</h4>
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
               The provided audio artifact (<code>message.wav</code>) is an analog frequency-modulated audio transmission encoded using Slow-Scan Television (SSTV). The challenge title and hint (&ldquo;how did pictures get sent from moon on Apollo 11&rdquo;) points to SSTV modulation. The audio signal frequency encodes raster scan line luminance and chrominance (specifically the <code>Scottie 1</code> mode header calibration tone), which decodes back into an RGB raster image when passed through a demodulator.
             </p>
@@ -161,7 +161,7 @@ print("🎉 SSTV Decoded successfully! Check result_rotated.png")`;
 
           <div className="space-y-2 pt-2">
             <div className="flex justify-between items-center">
-              <span className="font-mono text-xs text-emerald-400 font-bold uppercase">⚡ Terminal Command (PySSTV CLI):</span>
+              <span className="font-mono text-xs text-emerald-400 font-bold uppercase">Terminal Command (PySSTV CLI):</span>
               <CopyButton text={oneliner} />
             </div>
             <div className="bg-black border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">

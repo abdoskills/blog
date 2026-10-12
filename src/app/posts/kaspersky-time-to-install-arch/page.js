@@ -51,7 +51,7 @@ def parse_pcap_and_decrypt(pcap_path="files/task.pcap"):
     
     # Decrypted Server Payload containing the final command:
     flag = "kaspersky{gR34sY_ch4nn3l_n0t_s0_sL1ck}"
-    print(f"\\n🎯 FLAG RECOVERED FROM DECRYPTED C2 STREAM:")
+    print(f"\\n[+] FLAG RECOVERED FROM DECRYPTED C2 STREAM:")
     print(f"   {flag}")
     return flag
 
@@ -112,14 +112,14 @@ if __name__ == "__main__":
         {/* Covert Channel Concept */}
         <section className="bg-[#0e0e13]/90 border border-zinc-800/80 rounded-2xl p-6 md:p-8 space-y-4 backdrop-blur-xl mb-12 shadow-xl">
           <h2 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider flex items-center gap-2.5">
-            <span className="text-emerald-400">⚡</span> Covert Channel Concept: TLS GREASE
+            Covert Channel Concept: TLS GREASE
           </h2>
           <p className="text-sm md:text-base text-zinc-300 font-sans leading-relaxed">
             In modern TLS 1.3 handshakes, <strong>GREASE (Generate Random Extensions And Sustain Extensibility)</strong> values like <code className="text-emerald-300 font-mono">0x0a0a</code> are randomly sent to ensure middleboxes don&apos;t break on unknown extensions. Here, the malware abused this mechanism by packing 16 bytes of encrypted C2 commands inside the GREASE extension of every handshake:
           </p>
 
           <div className="p-4 rounded-xl bg-black/60 border border-emerald-500/20 font-mono text-xs md:text-sm text-emerald-300 space-y-1.5 overflow-x-auto">
-            <div>⚙️ Attack Mechanism:</div>
+            <div>Attack Mechanism:</div>
             <div>&nbsp;&nbsp;1. ServerManager loads sideloaded `ntdll.dll` from GAC directory.</div>
             <div>&nbsp;&nbsp;2. Malicious `DllMain` generates 450 TLS handshakes to `158.160.214.233:443`.</div>
             <div>&nbsp;&nbsp;3. TLS Session ID holds 12-byte nonce + 4-byte connection counter.</div>
@@ -211,7 +211,7 @@ if __name__ == "__main__":
         {/* Decoded Flag Box */}
         <section className="bg-gradient-to-r from-[#0d1410] via-[#091811] to-[#0d1410] border-2 border-emerald-500/60 rounded-2xl p-6 md:p-8 space-y-4 shadow-[0_0_40px_rgba(16,185,129,0.15)] mb-12">
           <div className="flex items-center gap-2 font-mono text-xs text-emerald-400 uppercase tracking-widest font-bold">
-            <span>🏁</span> Challenge Flag
+            <span>Challenge Flag</span>
           </div>
           <div className="font-mono text-base md:text-xl text-white font-bold bg-black/70 p-4 rounded-xl border border-emerald-500/40 select-all break-all">
             kaspersky&#123;gR34sY_ch4nn3l_n0t_s0_sL1ck&#125;

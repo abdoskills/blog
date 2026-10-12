@@ -29,7 +29,7 @@ for i in range(5):
 for i in range(11):
     flag[15 + i] = chr(m1[5 + i])
 
-print("🎉 Decoded Flag:", ''.join(flag))`;
+print("[+] Decoded Flag:", ''.join(flag))`;
 
   const oneliner = `python -c "m1=open('mystery.png','rb').read()[-16:]; m2=open('mystery2.png','rb').read()[-2:]; m3=open('mystery3.png','rb').read()[-8:]; f=[chr(m2[0]-21), chr(m3[0]), chr(m3[1]), chr(m2[1]-4), chr(m1[0]), chr(m3[2])] + [chr(m1[1+i]) for i in range(4)] + [chr(m3[3+i]) for i in range(5)] + [chr(m1[5+i]) for i in range(11)]; print(''.join(f))"`;
 
@@ -141,16 +141,16 @@ print("🎉 Decoded Flag:", ''.join(flag))`;
                 </span>
                 <div className="flex flex-col gap-1.5 font-mono text-xs text-white">
                   <a href="/downloads/mystery_binary" download className="text-emerald-400 hover:underline flex items-center gap-1.5">
-                    ⬇️ mystery (ELF 64-bit)
+                    mystery (ELF 64-bit)
                   </a>
                   <a href="/downloads/mystery.png" download className="text-emerald-400 hover:underline flex items-center gap-1.5">
-                    ⬇️ mystery.png
+                    mystery.png
                   </a>
                   <a href="/downloads/mystery2.png" download className="text-emerald-400 hover:underline flex items-center gap-1.5">
-                    ⬇️ mystery2.png
+                    mystery2.png
                   </a>
                   <a href="/downloads/mystery3.png" download className="text-emerald-400 hover:underline flex items-center gap-1.5">
-                    ⬇️ mystery3.png
+                    mystery3.png
                   </a>
                 </div>
               </div>
@@ -164,7 +164,7 @@ print("🎉 Decoded Flag:", ''.join(flag))`;
         {/* Section 1: Multi-File Overlay Distribution */}
         <div className="space-y-6 text-zinc-300 leading-relaxed font-sans mb-12">
           <div className="bg-[#07130e] border-l-4 border-emerald-500 p-6 rounded-r-xl shadow-md">
-            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Forensic Analysis: Multi-File Trailing Overlay Splitting</h4>
+            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">Forensic Analysis: Multi-File Trailing Overlay Splitting</h4>
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
               The binary reads <code>flag.txt</code> and fragments the 26-byte flag string across three separate target PNG images (<code>mystery.png</code>, <code>mystery2.png</code>, and <code>mystery3.png</code>). Each fragment is appended past the standard <code>IEND</code> end-of-file marker. Additionally, specific character transformations are applied (such as adding 21 to index 7 before writing to the second image). Extracting the full flag requires carving the trailing bytes from all three images and reversing the assignment indices.
             </p>
@@ -329,7 +329,7 @@ print("🎉 Decoded Flag:", ''.join(flag))`;
           {/* Fast Oneliner */}
           <div className="space-y-2 pt-2">
             <div className="flex justify-between items-center">
-              <span className="font-mono text-xs text-emerald-400 font-bold uppercase">⚡ Terminal One-Liner (PowerShell / Bash):</span>
+              <span className="font-mono text-xs text-emerald-400 font-bold uppercase">Terminal One-Liner (PowerShell / Bash):</span>
               <CopyButton text={oneliner} />
             </div>
             <div className="bg-black border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">

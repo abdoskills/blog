@@ -98,7 +98,7 @@ eip=00401c20 esp=0061fe40 ebp=0061fea8 iopl=0         nv up ei pl zr na pe nc
         {/* Quick Executive Summary */}
         <div className="bg-gradient-to-r from-amber-500/10 via-purple-500/10 to-cyan-500/10 border border-zinc-800 p-6 rounded-2xl mb-12 space-y-3">
           <div className="flex items-center gap-3">
-            <span className="text-2xl">🎯</span>
+            
             <h2 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] m-0">
               Executive Methodology: The 3-Step Attack Vector
             </h2>
@@ -142,7 +142,7 @@ eip=00401c20 esp=0061fe40 ebp=0061fea8 iopl=0         nv up ei pl zr na pe nc
 
             <div className="p-5 bg-amber-950/20 border border-amber-500/40 rounded-xl text-sm text-zinc-300 space-y-3">
               <div className="flex items-center gap-2">
-                <span className="text-lg">⚠️</span>
+                
                 <strong className="text-amber-400 font-mono uppercase tracking-wider">
                   Why Must 7-Zip Be Used For Extraction?
                 </strong>
@@ -229,7 +229,7 @@ eip=00401c20 esp=0061fe40 ebp=0061fea8 iopl=0         nv up ei pl zr na pe nc
 
               <div className="p-5 bg-purple-950/20 border border-purple-500/40 rounded-xl space-y-3">
                 <div className="flex items-center gap-2">
-                  <span className="text-lg">🔍</span>
+                  
                   <strong className="text-purple-300 font-mono text-sm">
                     How Ghidra Identifies the Hidden Decode Function:
                   </strong>

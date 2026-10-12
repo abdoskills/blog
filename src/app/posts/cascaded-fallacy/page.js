@@ -61,7 +61,7 @@ export default function CascadedFallacyWriteup() {
           </h3>
 
           <div className="bg-[#111111] border-l-4 border-blue-500 p-6 rounded-r-xl my-6 shadow-lg">
-            <h4 className="text-blue-400 font-bold mb-2 font-mono text-sm">💡 Vulnerability: Checks-Effects-Interactions Violation</h4>
+            <h4 className="text-blue-400 font-bold mb-2 font-mono text-sm">Vulnerability: Checks-Effects-Interactions Violation</h4>
             <p className="text-sm text-zinc-400 leading-relaxed">
               GenesisVault executed an external ETH transfer before decrementing the user&apos;s internal ledger balance. A malicious fallback function can repeatedly call into the withdrawal function during the execution frame before the state update occurs, draining the vault liquidity.
             </p>
@@ -101,7 +101,7 @@ export default function CascadedFallacyWriteup() {
           </h3>
 
           <div className="bg-[#111111] border-l-4 border-blue-500 p-6 rounded-r-xl my-6 shadow-lg">
-            <h4 className="text-blue-400 font-bold mb-2 font-mono text-sm">💡 Vulnerability: Missing Caller Ownership Validation</h4>
+            <h4 className="text-blue-400 font-bold mb-2 font-mono text-sm">Vulnerability: Missing Caller Ownership Validation</h4>
             <p className="text-sm text-zinc-400 leading-relaxed">
               PatchedVault checked whether the provided GhostShare NFT token ID possessed liquidation rights, but failed to verify whether <code>msg.sender</code> actually owned or had approval for that specific token ID. Any caller could supply a valid token ID held by an external user and trigger unauthorized liquidations.
             </p>
@@ -118,7 +118,7 @@ export default function CascadedFallacyWriteup() {
           </h3>
 
           <div className="bg-[#111111] border-l-4 border-blue-500 p-6 rounded-r-xl my-6 shadow-lg">
-            <h4 className="text-blue-400 font-bold mb-2 font-mono text-sm">💡 Vulnerability: EIP-712 Signature Replay (Missing Nonce)</h4>
+            <h4 className="text-blue-400 font-bold mb-2 font-mono text-sm">Vulnerability: EIP-712 Signature Replay (Missing Nonce)</h4>
             <p className="text-sm text-zinc-400 leading-relaxed">
               SignedVault verified off-chain admin signatures using EIP-712 typed structured data. Because the hash schema lacked a per-user nonce or deadline timestamp, an intercepted signature remained valid indefinitely and was replayed to drain additional funds.
             </p>
@@ -150,7 +150,7 @@ export default function CascadedFallacyWriteup() {
           </h3>
 
           <div className="bg-[#111111] border-l-4 border-blue-500 p-6 rounded-r-xl my-6 shadow-lg">
-            <h4 className="text-blue-400 font-bold mb-2 font-mono text-sm">💡 Vulnerability: Spot AMM Price Oracle Manipulation</h4>
+            <h4 className="text-blue-400 font-bold mb-2 font-mono text-sm">Vulnerability: Spot AMM Price Oracle Manipulation</h4>
             <p className="text-sm text-zinc-400 leading-relaxed">
               OracleVault queried instantaneous token reserves from a low-liquidity AMM pool rather than a Time-Weighted Average Price (TWAP) or decentralized oracle feed. By leveraging a flash loan to swap against the pool, the attacker manipulated the spot price within a single transaction block to force bad-debt liquidations.
             </p>

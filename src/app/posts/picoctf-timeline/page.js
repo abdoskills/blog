@@ -123,7 +123,7 @@ export default function PicoCTFTimelineWriteup() {
           </div>
 
           <div className="bg-[#131109] border border-amber-500/40 p-4 rounded-xl text-xs font-mono text-amber-200">
-            <strong>⚠ Forensic Field Note:</strong> In Windows PowerShell 5.1, the default redirection operator (<code className="text-amber-300">&gt; body.txt</code>) writes UTF-16 LE with byte-order marks. Perl scripts like <code className="text-amber-300">mactime</code> expect standard ASCII/UTF-8. Always pipe through <code className="text-amber-300">Out-File -Encoding ascii</code> to prevent null-byte corruption!
+            <strong>Forensic Field Note:</strong> In Windows PowerShell 5.1, the default redirection operator (<code className="text-amber-300">&gt; body.txt</code>) writes UTF-16 LE with byte-order marks. Perl scripts like <code className="text-amber-300">mactime</code> expect standard ASCII/UTF-8. Always pipe through <code className="text-amber-300">Out-File -Encoding ascii</code> to prevent null-byte corruption!
           </div>
         </section>
 

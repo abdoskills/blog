@@ -249,7 +249,7 @@ print(f"Extracted {len(rtp_packets)} RTP packets -> call.wav")`;
             </ol>
 
             <div className="bg-[#0b1418] border-l-4 border-cyan-500 p-5 rounded-r-xl my-6">
-              <h4 className="text-cyan-400 font-bold mb-1 font-mono text-sm">🎙️ REVERSED AUDIO TRANSCRIPT</h4>
+              <h4 className="text-cyan-400 font-bold mb-1 font-mono text-sm">REVERSED AUDIO TRANSCRIPT</h4>
               <p className="text-sm text-zinc-300 italic leading-relaxed">
                 &ldquo;Welcome to BSides Orlando. The flag that you are looking for is sun with a left curly bracket. Thank you for playing. Right curly bracket. All lowercase no spaces. Thank you and have a good one.&rdquo;
               </p>

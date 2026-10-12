@@ -49,7 +49,7 @@ export default function AboutPage() {
         {/* Bio Card */}
         <div className="bg-[#0e0e13]/90 border border-zinc-800/80 rounded-2xl p-6 md:p-8 space-y-6 backdrop-blur-xl mb-12 shadow-xl">
           <h2 className="text-xl md:text-2xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider flex items-center gap-2.5">
-            <span className="text-emerald-400">⚡</span> What I Do
+            What I Do
           </h2>
           
           <div className="space-y-4 text-sm md:text-base text-zinc-300 font-sans leading-relaxed">
@@ -66,19 +66,19 @@ export default function AboutPage() {
               href="/cv" 
               className="px-4 py-2 bg-emerald-500 text-black font-bold rounded-xl hover:bg-emerald-400 transition-all flex items-center gap-1.5"
             >
-              <span>📄 View My CV</span>
+              <span>View My CV</span>
             </Link>
             <Link 
               href="/picoctf" 
               className="px-4 py-2 bg-zinc-900 text-zinc-300 border border-zinc-700 hover:border-emerald-500/50 hover:text-white rounded-xl transition-all"
             >
-              <span>🧩 PicoCTF Walkthroughs (13)</span>
+              <span>PicoCTF Walkthroughs (13)</span>
             </Link>
             <Link 
               href="/ascwg" 
               className="px-4 py-2 bg-zinc-900 text-zinc-300 border border-zinc-700 hover:border-emerald-500/50 hover:text-white rounded-xl transition-all"
             >
-              <span>⚔️ ASCWG CTF (4)</span>
+              <span>ASCWG CTF (4)</span>
             </Link>
           </div>
         </div>
@@ -134,7 +134,7 @@ export default function AboutPage() {
               href="/cv" 
               className="px-4 py-2 bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/20 rounded-xl transition-all"
             >
-              Download CV ⬇
+              View CV ↗
             </Link>
           </div>
         </div>

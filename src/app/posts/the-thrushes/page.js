@@ -21,7 +21,7 @@ aes_key = key_match.group(1).decode() if key_match else "X9q3mR_8VpL2zF!sQw4T*nY
 c2_port = 4433
 
 flag = f"ASCWG{{{c2_ip}:{c2_port}_{aes_key}}}"
-print("🎉 Extracted Flag:", flag)`;
+print("[+] Extracted Flag:", flag)`;
 
   const oneliner = `python -c "import re; d=open('Signal','rb').read(); ip=re.search(rb'(\\d+\\.\\d+\\.\\d+\\.\\d+)',d).group(1).decode(); k=re.search(rb'([A-Za-z0-9_!*]{32})',d).group(1).decode(); print(f'ASCWG{{{ip}:4433_{k}}}')"`;
 
@@ -122,7 +122,7 @@ print("🎉 Extracted Flag:", flag)`;
           </h3>
 
           <div className="bg-[#0b131a] border-l-4 border-cyan-500 p-6 rounded-r-xl my-6 shadow-lg">
-            <h4 className="text-cyan-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Trojanized Signal Binary</h4>
+            <h4 className="text-cyan-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">Trojanized Signal Binary</h4>
             <p className="text-sm text-zinc-300 leading-relaxed">
               Inspection of the macOS application bundle revealed that the legitimate Signal binary had been swapped out for a backdoored Mach-O executable. The modified binary intercepts outgoing messages and exfiltrates them over a raw TCP socket to an attacker-controlled C2 server before delivering them to the real Signal service.
             </p>
@@ -185,7 +185,7 @@ print("🎉 Extracted Flag:", flag)`;
             {/* Terminal One-liner */}
             <div className="space-y-2 pt-2">
               <div className="flex justify-between items-center">
-                <span className="font-mono text-xs text-cyan-400 font-bold uppercase">⚡ Terminal One-Liner (PowerShell / Bash):</span>
+                <span className="font-mono text-xs text-cyan-400 font-bold uppercase">Terminal One-Liner (PowerShell / Bash):</span>
                 <CopyButton text={oneliner} />
               </div>
               <div className="bg-black border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">

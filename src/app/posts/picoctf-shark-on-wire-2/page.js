@@ -147,7 +147,7 @@ print("Decoded Network Flag:", flag)`;
                   <svg className="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                   </svg>
-                  <span>⬇️ Download capture.pcap</span>
+                  <span>Download capture.pcap</span>
                 </a>
                 <span className="text-[11px] font-mono text-zinc-400 block mt-2">Size: 115 KB • Packet Capture</span>
                 <span className="text-[11px] font-mono text-zinc-500 block">Type: Wireshark / libpcap</span>
@@ -166,7 +166,7 @@ print("Decoded Network Flag:", flag)`;
           <section className="space-y-4">
             <div className="bg-[#07130e] border-l-4 border-emerald-500 p-6 rounded-r-xl shadow-md">
               <h3 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider m-0">
-                💡 Protocol Forensics: UDP Source Port Covert Channel
+                Protocol Forensics: UDP Source Port Covert Channel
               </h3>
               <p className="text-sm md:text-base text-zinc-300 leading-relaxed m-0">
                 When network payloads are monitored or normalized, covert channels can encode exfiltration data directly into protocol header fields. In this capture, the sender dispatches UDP datagrams to port 22, but modulates the 16-bit <strong>UDP source port</strong> field using an arithmetic offset: <code>source_port = 5000 + ASCII_byte</code>. The transmission is bounded by delimiter packets with port 5000 representing start and end sentinels.
@@ -191,10 +191,10 @@ print("Decoded Network Flag:", flag)`;
 
             <div className="bg-[#140d0e] border border-red-500/30 rounded-2xl p-6 space-y-4">
               <div className="flex items-center gap-2 text-red-400 font-bold font-mono text-xs uppercase tracking-wider">
-                <span>⚠️ Trap Alert: Decoy in UDP Stream 6</span>
+                <span>Trap Alert: Decoy in UDP Stream 6</span>
               </div>
               <p className="text-sm text-zinc-300 font-sans leading-relaxed">
-                In Wireshark, right-clicking any UDP packet and selecting <em>Follow ➔ UDP Stream</em> on <strong>Stream 6</strong> displays what looks like a flag at first glance:
+                In Wireshark, right-clicking any UDP packet and selecting <em>Follow -> UDP Stream</em> on <strong>Stream 6</strong> displays what looks like a flag at first glance:
               </p>
               <div className="p-3 bg-black rounded-lg border border-red-500/40 font-mono text-xs text-red-300">
                 ico&#123;N0t_a_fLag&#125;
@@ -331,7 +331,7 @@ print("Decoded Network Flag:", flag)`;
 
             <div className="p-5 bg-black/70 border border-emerald-500/30 rounded-xl space-y-3">
               <h4 className="text-emerald-400 font-mono text-xs uppercase tracking-wider font-bold m-0">
-                🧮 Why Subtract 5000? (The Mathematical Logic)
+                Why Subtract 5000? (The Mathematical Logic)
               </h4>
               <p className="text-xs text-zinc-300 font-sans leading-relaxed m-0">
                 In standard ASCII, printable characters live between decimal values <strong>32</strong> (&apos; &apos;) and <strong>126</strong> (&apos;~&apos;). For example:
@@ -346,7 +346,7 @@ print("Decoded Network Flag:", flag)`;
                 Operating systems reserve ports 0–1023 for privileged system services. To transmit these characters as valid, non-privileged ephemeral UDP ports, the sender simply added an offset of <strong>5000</strong>:
               </p>
               <div className="p-3 bg-zinc-950 rounded-lg border border-zinc-800 font-mono text-xs text-emerald-400 text-center font-bold">
-                Source Port = 5000 + ASCII_BYTE &nbsp;➔&nbsp; ASCII_BYTE = Source Port - 5000
+                Source Port = 5000 + ASCII_BYTE &nbsp;->&nbsp; ASCII_BYTE = Source Port - 5000
               </div>
             </div>
           </section>
@@ -389,7 +389,7 @@ print("Decoded Network Flag:", flag)`;
             {/* The Human Transcription Trap Alert */}
             <div className="bg-[#141008] border border-amber-500/30 rounded-xl p-5 space-y-2">
               <div className="flex items-center gap-2 text-amber-400 font-bold font-mono text-xs uppercase tracking-wider">
-                <span>⚠️ The Human Transcription Trap</span>
+                <span>The Human Transcription Trap</span>
               </div>
               <p className="text-xs text-zinc-300 font-sans leading-relaxed">
                 Notice in manual conversion: typing 33 decimal numbers by hand from Wireshark into a web converter is prone to human error! Notice that packets 1141 and 1143 are both port <strong className="text-white">5076</strong> (<code className="text-amber-300">5076 - 5000 = 76</code> = <code className="text-amber-300">&apos;L&apos;</code>). If an analyst accidentally skips one identical number or typo-transcribes, the flag submission fails.

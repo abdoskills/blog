@@ -10,7 +10,7 @@ img = Image.open('pico_img.png')
 
 # Extract PNG metadata text chunks
 flag = img.info.get('Artist')
-print("🎉 Extracted Artist Tag Flag:", flag)`;
+print("[+] Extracted Artist Tag Flag:", flag)`;
 
   const oneliner = `python -c "from PIL import Image; print(Image.open('pico_img.png').info.get('Artist'))"`;
 
@@ -93,7 +93,7 @@ print("🎉 Extracted Artist Tag Flag:", flag)`;
                   className="flex items-center gap-2 text-emerald-300 hover:text-white font-mono text-sm font-bold bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 px-3 py-2 rounded-lg transition-all"
                 >
                   <svg className="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                  <span>⬇️ Download pico_img.png</span>
+                  <span>Download pico_img.png</span>
                 </a>
                 <span className="text-[11px] font-mono text-zinc-400 block mt-2">Size: 108 KB • PNG Image</span>
               </div>
@@ -107,7 +107,7 @@ print("🎉 Extracted Artist Tag Flag:", flag)`;
         {/* Section 1: PNG Metadata Analysis */}
         <div className="space-y-6 text-zinc-300 leading-relaxed font-sans mb-12">
           <div className="bg-[#07130e] border-l-4 border-emerald-500 p-6 rounded-r-xl shadow-md">
-            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Forensic Triage: PNG Metadata Chunks (tEXt)</h4>
+            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">Forensic Triage: PNG Metadata Chunks (tEXt)</h4>
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
               Before attempting complex LSB or frequency domain steganography on an image, initial triage requires inspecting the file metadata structures. The PNG standard supports auxiliary metadata chunks like <code>tEXt</code>, <code>zTXt</code>, and <code>iTXt</code> for storing key-value pairs (such as Author, Software, or Copyright). In <code>pico_img.png</code>, the plaintext flag is stored directly inside the <code>Artist</code> field of a <code>tEXt</code> chunk.
             </p>
@@ -171,7 +171,7 @@ picoCTF{s0_m3ta_74af23ab}`}</code></pre>
 
           <div className="space-y-2 pt-2">
             <div className="flex justify-between items-center">
-              <span className="font-mono text-xs text-emerald-400 font-bold uppercase">⚡ Terminal One-Liner (PowerShell / Bash):</span>
+              <span className="font-mono text-xs text-emerald-400 font-bold uppercase">Terminal One-Liner (PowerShell / Bash):</span>
               <CopyButton text={oneliner} />
             </div>
             <div className="bg-black border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">

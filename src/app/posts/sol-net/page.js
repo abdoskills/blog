@@ -61,7 +61,7 @@ export default function SolNetWriteup() {
           </h3>
 
           <div className="bg-[#111111] border-l-4 border-blue-500 p-6 rounded-r-xl my-6 shadow-lg">
-            <h4 className="text-blue-400 font-bold mb-2 font-mono text-sm">💡 Web Security: Host Header Webhook Poisoning</h4>
+            <h4 className="text-blue-400 font-bold mb-2 font-mono text-sm">Web Security: Host Header Webhook Poisoning</h4>
             <p className="text-sm text-zinc-400 leading-relaxed">
               The backend authentication service generated an outbound OTP webhook request by constructing the callback target from the client-supplied <code>Host</code> header without strict domain allowlisting. By replacing the <code>Host</code> header with an attacker-controlled endpoint while preserving <code>X-Original-Host</code>, the server dispatched the plaintext OTP directly to our listener.
             </p>

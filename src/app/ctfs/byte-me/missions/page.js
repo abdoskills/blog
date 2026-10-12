@@ -239,7 +239,7 @@ export default function ByteMeMissionsPage() {
               {/* How to solve */}
               <div className="bg-[#111116] border-l-4 border-emerald-500 p-5 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 leading-relaxed">
                 <h4 className="text-emerald-400 font-bold mb-1.5 font-mono text-xs uppercase tracking-wider flex items-center gap-2">
-                  <span>💡</span> Using QR quiet zones to place border pieces
+                  Using QR quiet zones to place border pieces
                 </h4>
                 <p className="text-zinc-400 text-xs sm:text-sm">
                   QR codes require a solid white margin around the entire active code (called the Quiet Zone).
@@ -257,12 +257,12 @@ export default function ByteMeMissionsPage() {
               {/* Step-by-Step Walkthrough */}
               <div id="lvl0-quiet-zone" className="scroll-mt-24 space-y-4 mb-6">
                 <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center gap-2">
-                  <span className="text-emerald-400">⚡</span> Step-by-Step Triage: Detecting Quiet Zones &amp; Locking Grid Positions
+                  Step-by-Step Triage: Detecting Quiet Zones &amp; Locking Grid Positions
                 </h4>
 
                 {/* INPUT BOX */}
                 <div className="bg-black/90 border border-zinc-800 rounded-xl p-4 font-mono text-xs">
-                  <span className="text-zinc-500 block mb-1 font-bold">[ 📥 INPUT: PYTHON BORDER DETECTOR SCRIPT ]</span>
+                  <span className="text-zinc-500 block mb-1 font-bold">[ INPUT: PYTHON BORDER DETECTOR SCRIPT ]</span>
                   <pre className="text-emerald-400">{`from PIL import Image
 import numpy as np
 
@@ -277,7 +277,7 @@ for i in range(1, 10):
 
                 {/* OUTPUT BOX */}
                 <div className="bg-[#0b0c10] border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">
-                  <span className="text-zinc-500 block mb-1 font-bold">[ 📤 DETECTED BORDER CONSTRAINTS ]</span>
+                  <span className="text-zinc-500 block mb-1 font-bold">[ DETECTED BORDER CONSTRAINTS ]</span>
                   <pre>{`piece_008: Top=True,  Left=True  -> TOP-LEFT CORNER (Row 0, Col 0)
 piece_001: Top=True               -> TOP-MIDDLE      (Row 0, Col 1)
 piece_009: Top=True,  Right=True -> TOP-RIGHT CORNER (Row 0, Col 2)
@@ -292,7 +292,7 @@ piece_006: Bot=True,  Right=True -> BOT-RIGHT CORNER (Row 2, Col 2)`}</pre>
                 {/* The Assembled Grid Diagram */}
                 <div id="lvl0-matrix" className="scroll-mt-24 bg-[#12131a] border border-zinc-700/60 rounded-xl p-4 text-xs font-mono text-zinc-300">
                   <span className="text-emerald-400 font-bold block mb-2 uppercase tracking-wider">
-                    [ 📐 Locked-in 3x3 Grid Matrix ]
+                    [ Locked-in 3x3 Grid Matrix ]
                   </span>
                   <pre className="text-emerald-400">{`+---------------+---------------+---------------+
 | piece_008.png | piece_001.png | piece_009.png |  <- Row 0 (Top Quiet Zone)
@@ -324,7 +324,7 @@ piece_006: Bot=True,  Right=True -> BOT-RIGHT CORNER (Row 2, Col 2)`}</pre>
               <details id="lvl0-solver" className="scroll-mt-24 group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
                 <summary className="p-4 cursor-pointer font-mono text-xs text-zinc-400 hover:text-white flex items-center justify-between list-none bg-zinc-900/40">
                   <span className="flex items-center gap-2 text-emerald-400 font-bold uppercase">
-                    <span>⚡</span> [ Show Complete Standalone Python Stitcher &amp; Decoder Script ]
+                    [ Show Complete Standalone Python Stitcher &amp; Decoder Script ]
                   </span>
                   <span className="transition-transform group-open:rotate-180">▼</span>
                 </summary>
@@ -355,7 +355,7 @@ print("[+] Canvas assembled into assembled_qr_l0.png")
 # 4. Decode payload with OpenCV QRCodeDetector
 detector = cv2.QRCodeDetector()
 flag, _, _ = detector.detectAndDecode(np.array(canvas))
-print(f"[🎯] Decoded Flag: {flag}")
+print(f"[+] Decoded Flag: {flag}")
 # Output: OWASP{Th3_f1rst_fr4gm3nt}`}</pre>
                 </div>
               </details>
@@ -407,7 +407,7 @@ print(f"[🎯] Decoded Flag: {flag}")
               {/* The Concept */}
               <div className="bg-[#111116] border-l-4 border-emerald-500 p-5 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 leading-relaxed">
                 <h4 className="text-emerald-400 font-bold mb-1.5 font-mono text-xs uppercase tracking-wider flex items-center gap-2">
-                  <span>💡</span> Seam matching instead of brute force
+                  Seam matching instead of brute force
                 </h4>
                 <p className="text-zinc-400 text-xs sm:text-sm">
                   With 16 tiles in a 4x4 grid, brute forcing all combinations ($16! \approx 2 \times 10^{13}$) is impossible.
@@ -421,12 +421,12 @@ print(f"[🎯] Decoded Flag: {flag}")
               {/* Step-by-Step Walkthrough */}
               <div id="lvl1-seams" className="scroll-mt-24 space-y-4 mb-6">
                 <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center gap-2">
-                  <span className="text-emerald-400">⚡</span> Step-by-Step Triage: Calculating Boundary Compatibility
+                  Step-by-Step Triage: Calculating Boundary Compatibility
                 </h4>
 
                 {/* INPUT BOX */}
                 <div className="bg-black/90 border border-zinc-800 rounded-xl p-4 font-mono text-xs">
-                  <span className="text-zinc-500 block mb-1 font-bold">[ 📥 INPUT: HORIZONTAL &amp; VERTICAL SEAM MATCHING LOGIC ]</span>
+                  <span className="text-zinc-500 block mb-1 font-bold">[ INPUT: HORIZONTAL &amp; VERTICAL SEAM MATCHING LOGIC ]</span>
                   <pre className="text-emerald-400">{`# For two tiles A and B:
 # Valid horizontal connection (A on top of B):
 is_valid_vertical_seam = np.array_equal(tileA[-1, :], tileB[0, :])
@@ -437,7 +437,7 @@ is_valid_horizontal_seam = np.array_equal(tileA[:, -1], tileB[:, 0])`}</pre>
 
                 {/* OUTPUT BOX */}
                 <div id="lvl1-matrix" className="scroll-mt-24 bg-[#0b0c10] border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">
-                  <span className="text-zinc-500 block mb-1 font-bold">[ 📤 RECONSTRUCTED 4x4 GRID ]</span>
+                  <span className="text-zinc-500 block mb-1 font-bold">[ RECONSTRUCTED 4x4 GRID ]</span>
                   <pre className="text-emerald-400">{`+-----------------+-----------------+-----------------+-----------------+
 | piece_008_2.png | piece_011.png   | piece_016.png   | piece_009_2.png |  <- Row 0
 +-----------------+-----------------+-----------------+-----------------+
@@ -470,7 +470,7 @@ is_valid_horizontal_seam = np.array_equal(tileA[:, -1], tileB[:, 0])`}</pre>
               <details id="lvl1-solver" className="scroll-mt-24 group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
                 <summary className="p-4 cursor-pointer font-mono text-xs text-zinc-400 hover:text-white flex items-center justify-between list-none bg-zinc-900/40">
                   <span className="flex items-center gap-2 text-emerald-400 font-bold uppercase">
-                    <span>⚡</span> [ Show Complete Standalone Python Seam Solver Script ]
+                    [ Show Complete Standalone Python Seam Solver Script ]
                   </span>
                   <span className="transition-transform group-open:rotate-180">▼</span>
                 </summary>
@@ -500,7 +500,7 @@ canvas.save("assembled_qr_l1.png")
 # 3. Decode QR Code
 det = cv2.QRCodeDetector()
 flag, _, _ = det.detectAndDecode(np.array(canvas))
-print(f"[🎯] Decoded Flag: {flag}")
+print(f"[+] Decoded Flag: {flag}")
 # Output: OWASP{Sh4tt3r3d_m3m0r13s}`}</pre>
                 </div>
               </details>
@@ -552,7 +552,7 @@ print(f"[🎯] Decoded Flag: {flag}")
               {/* The Concept */}
               <div className="bg-[#111116] border-l-4 border-emerald-500 p-5 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 leading-relaxed">
                 <h4 className="text-emerald-400 font-bold mb-1.5 font-mono text-xs uppercase tracking-wider flex items-center gap-2">
-                  <span>💡</span> Filtering out impostor tiles
+                  Filtering out impostor tiles
                 </h4>
                 <p className="text-zinc-400 text-xs sm:text-sm">
                   Level 2 adds two complications:
@@ -568,12 +568,12 @@ print(f"[🎯] Decoded Flag: {flag}")
               {/* Step-by-Step Walkthrough */}
               <div id="lvl2-impostors" className="scroll-mt-24 space-y-4 mb-6">
                 <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center gap-2">
-                  <span className="text-emerald-400">⚡</span> Step-by-Step Triage: Degree-of-Matching Audit &amp; 5x5 Grid Placement
+                  Step-by-Step Triage: Degree-of-Matching Audit &amp; 5x5 Grid Placement
                 </h4>
 
                 {/* INPUT BOX */}
                 <div className="bg-black/90 border border-zinc-800 rounded-xl p-4 font-mono text-xs">
-                  <span className="text-zinc-500 block mb-1 font-bold">[ 📥 INPUT: DEGREE-OF-MATCHING AUDIT ALGORITHM ]</span>
+                  <span className="text-zinc-500 block mb-1 font-bold">[ INPUT: DEGREE-OF-MATCHING AUDIT ALGORITHM ]</span>
                   <pre className="text-emerald-400">{`# For every tile T, check if any of its 4 edges matches any edge of any other tile T'
 matches = {tile_id: 0 for tile_id in range(1, 30)}
 for tileA in pool:
@@ -584,12 +584,12 @@ for tileA in pool:
 
                 {/* OUTPUT BOX */}
                 <div className="bg-[#0b0c10] border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">
-                  <span className="text-zinc-500 block mb-1 font-bold">[ 📤 AUDIT RESULTS: THE 4 PRUNED IMPOSTORS ]</span>
+                  <span className="text-zinc-500 block mb-1 font-bold">[ AUDIT RESULTS: THE 4 PRUNED IMPOSTORS ]</span>
                   <div className="flex flex-wrap gap-2 my-2 font-mono text-xs">
-                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded font-bold">❌ Impostor: piece_013.png (0 valid connections)</span>
-                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded font-bold">❌ Impostor: piece_015.png (0 valid connections)</span>
-                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded font-bold">❌ Impostor: piece_019.png (0 valid connections)</span>
-                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded font-bold">❌ Impostor: piece_020.png (0 valid connections)</span>
+                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded font-bold">Impostor: piece_013.png (0 valid connections)</span>
+                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded font-bold">Impostor: piece_015.png (0 valid connections)</span>
+                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded font-bold">Impostor: piece_019.png (0 valid connections)</span>
+                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded font-bold">Impostor: piece_020.png (0 valid connections)</span>
                   </div>
                   <span className="text-zinc-400">Result: 29 pieces - 4 impostors = exactly 25 genuine pieces remaining!</span>
                 </div>
@@ -615,7 +615,7 @@ for tileA in pool:
               <details id="lvl2-solver" className="scroll-mt-24 group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
                 <summary className="p-4 cursor-pointer font-mono text-xs text-zinc-400 hover:text-white flex items-center justify-between list-none bg-zinc-900/40">
                   <span className="flex items-center gap-2 text-emerald-400 font-bold uppercase">
-                    <span>⚡</span> [ Show Complete Standalone Python SAT Backtracking Solver ]
+                    [ Show Complete Standalone Python SAT Backtracking Solver ]
                   </span>
                   <span className="transition-transform group-open:rotate-180">▼</span>
                 </summary>
@@ -645,7 +645,7 @@ canvas.save("assembled_qr_l2.png")
 
 # 4. Decode with OpenCV QRCodeDetector
 flag, _, _ = cv2.QRCodeDetector().detectAndDecode(np.array(canvas))
-print(f"[🎯] Decoded Flag: {flag}")
+print(f"[+] Decoded Flag: {flag}")
 # Output: OWASP{Tru3_s0ul_0r_f4ls3}`}</pre>
                 </div>
               </details>
@@ -697,7 +697,7 @@ print(f"[🎯] Decoded Flag: {flag}")
               {/* The Concept */}
               <div className="bg-[#111116] border-l-4 border-emerald-500 p-5 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 leading-relaxed">
                 <h4 className="text-emerald-400 font-bold mb-1.5 font-mono text-xs uppercase tracking-wider flex items-center gap-2">
-                  <span>💡</span> Clustering tiles into 2x2 blocks
+                  Clustering tiles into 2x2 blocks
                 </h4>
                 <p className="text-zinc-400 text-xs sm:text-sm">
                   With 36 real pieces, standard backtracking would take forever. But internal seams have high-density feature lines with dozens of matching black pixels (<code className="text-zinc-200 font-mono">edge.sum() &gt;= 20</code>).
@@ -711,18 +711,18 @@ print(f"[🎯] Decoded Flag: {flag}")
               {/* Step-by-Step Walkthrough */}
               <div className="space-y-4 mb-6">
                 <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center gap-2">
-                  <span className="text-emerald-400">⚡</span> Step-by-Step Triage: Eliminating Impostors &amp; Clustering Super-Tiles
+                  Step-by-Step Triage: Eliminating Impostors &amp; Clustering Super-Tiles
                 </h4>
 
                 {/* Impostor Filtering */}
                 <div id="lvl3-impostors" className="scroll-mt-24 bg-[#0b0c10] border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300">
-                  <span className="text-zinc-500 block mb-1 font-bold">[ 📤 AUDIT RESULTS: THE 5 ELIMINATED IMPOSTORS ]</span>
+                  <span className="text-zinc-500 block mb-1 font-bold">[ AUDIT RESULTS: THE 5 ELIMINATED IMPOSTORS ]</span>
                   <div className="flex flex-wrap gap-2 my-2 font-mono text-xs">
-                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">❌ Impostor: piece_007.png</span>
-                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">❌ Impostor: piece_022.png</span>
-                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">❌ Impostor: piece_025.png</span>
-                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">❌ Impostor: piece_027.png</span>
-                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">❌ Impostor: piece_030.png</span>
+                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">Impostor: piece_007.png</span>
+                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">Impostor: piece_022.png</span>
+                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">Impostor: piece_025.png</span>
+                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">Impostor: piece_027.png</span>
+                    <span className="bg-red-500/10 text-red-400 border border-red-500/30 px-3 py-1 rounded">Impostor: piece_030.png</span>
                   </div>
                 </div>
 
@@ -755,7 +755,7 @@ print(f"[🎯] Decoded Flag: {flag}")
                 {/* 9 Blocks Categorization */}
                 <div className="bg-[#12131a] border border-zinc-700/60 rounded-xl p-4 text-xs font-mono text-zinc-300">
                   <span className="text-emerald-400 font-bold block mb-1 uppercase tracking-wider">
-                    [ 🧩 Classification of the 9 Super-Blocks ]
+                    [ Classification of the 9 Super-Blocks ]
                   </span>
                   <div>• <strong>Center Block:</strong> Block 7 (0 white border margins)</div>
                   <div>• <strong>Border Blocks:</strong> Blocks 3, 4, 5, 6 (1 white border edge)</div>
@@ -767,7 +767,7 @@ print(f"[🎯] Decoded Flag: {flag}")
               <details id="lvl3-solver" className="scroll-mt-24 group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
                 <summary className="p-4 cursor-pointer font-mono text-xs text-zinc-400 hover:text-white flex items-center justify-between list-none bg-zinc-900/40">
                   <span className="flex items-center gap-2 text-emerald-400 font-bold uppercase">
-                    <span>⚡</span> [ Show Complete Standalone Python Super-Tile &amp; ZXing Solver ]
+                    [ Show Complete Standalone Python Super-Tile &amp; ZXing Solver ]
                   </span>
                   <span className="transition-transform group-open:rotate-180">▼</span>
                 </summary>
@@ -836,7 +836,7 @@ print(f"[🎯] Decoded Flag: {flag}")
               {/* The Concept */}
               <div className="bg-[#111116] border-l-4 border-emerald-500 p-5 rounded-r-xl mb-6 font-sans text-sm text-zinc-300 leading-relaxed">
                 <h4 className="text-emerald-400 font-bold mb-1.5 font-mono text-xs uppercase tracking-wider flex items-center gap-2">
-                  <span>💡</span> Solving constraints with MRV (Minimum Remaining Values)
+                  Solving constraints with MRV (Minimum Remaining Values)
                 </h4>
                 <p className="text-zinc-400 text-xs sm:text-sm">
                   Filling the 7x7 grid sequentially from (0,0) to (6,6) creates too many branches.
@@ -848,7 +848,7 @@ print(f"[🎯] Decoded Flag: {flag}")
               {/* Step-by-Step Walkthrough */}
               <div id="lvl4-mrv" className="scroll-mt-24 space-y-4 mb-6">
                 <h4 className="text-sm font-bold text-white font-mono uppercase tracking-wider flex items-center gap-2">
-                  <span className="text-emerald-400">⚡</span> Step-by-Step Triage: MRV Propagation &amp; 7x7 Grid Assembly
+                  Step-by-Step Triage: MRV Propagation &amp; 7x7 Grid Assembly
                 </h4>
 
                 {/* Assembled QR Image Preview */}
@@ -872,7 +872,7 @@ print(f"[🎯] Decoded Flag: {flag}")
               <details id="lvl4-solver" className="scroll-mt-24 group bg-[#09090d] border border-zinc-800 rounded-xl overflow-hidden mb-8 transition-all">
                 <summary className="p-4 cursor-pointer font-mono text-xs text-zinc-400 hover:text-white flex items-center justify-between list-none bg-zinc-900/40">
                   <span className="flex items-center gap-2 text-emerald-400 font-bold uppercase">
-                    <span>⚡</span> [ Show Complete Standalone Python MRV Solver Script (fill2.py) ]
+                    [ Show Complete Standalone Python MRV Solver Script (fill2.py) ]
                   </span>
                   <span className="transition-transform group-open:rotate-180">▼</span>
                 </summary>
@@ -971,12 +971,12 @@ layout = {
               {/* Recon Intel Section */}
               <div id="osint-intel" className="scroll-mt-24 mb-6 space-y-4">
                 <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3 flex items-center gap-2">
-                  <span className="text-emerald-400">⚡</span> Clues Provided &amp; Reconnaissance Telemetry
+                  Clues Provided &amp; Reconnaissance Telemetry
                 </h3>
                 
                 <div className="bg-[#111116] border-l-4 border-zinc-500 p-5 rounded-r-xl mb-4 font-sans text-sm text-zinc-300 leading-relaxed">
                   <h4 className="text-zinc-200 font-bold mb-1.5 font-mono text-xs uppercase tracking-wider flex items-center gap-2">
-                    <span>🛰️</span> 1. The Orbital Watcher Clues
+                    1. The Orbital Watcher Clues
                   </h4>
                   <p className="text-zinc-400 text-xs sm:text-sm">
                     The prompt explicitly points toward an external repository (e.g., GitHub, GitLab, or Pastebin commits) combined with satellite telemetry. A reconnaissance image (<code className="text-zinc-200 font-mono">stalker0.jpg</code>) and a partial log file trace (<code className="text-zinc-200 font-mono">vault.log</code>) were provided:
@@ -1003,12 +1003,12 @@ layout = {
               {/* Forensic Triage & Evidence Correlation */}
               <div id="osint-postmortem" className="scroll-mt-24 space-y-4 mb-6">
                 <h3 className="text-lg font-bold text-white font-[family-name:var(--font-share-tech)] uppercase mb-3 flex items-center gap-2">
-                  <span className="text-emerald-400">🔍</span> Forensic Triage &amp; Evidence Correlation
+                  Forensic Triage &amp; Evidence Correlation
                 </h3>
 
                 <div className="bg-[#12131a] border border-zinc-800 rounded-xl p-5 text-xs font-sans text-zinc-300 leading-relaxed space-y-3">
                   <span className="text-emerald-400 font-mono font-bold block uppercase tracking-wider text-xs">
-                    [ 🧠 Investigation Methodology &amp; Artifact Mapping ]
+                    [ Investigation Methodology &amp; Artifact Mapping ]
                   </span>
                   <p>
                     <strong>1. External Repository Searches:</strong> We performed extensive OSINT queries across GitHub, GitLab, and WayBack Machine archives searching for username references (<em>&ldquo;keeper&rdquo;</em>, <em>&ldquo;nightwatch&rdquo;</em>, <em>&ldquo;vormir-expedition&rdquo;</em>) and commit histories containing satellite TLE (Two-Line Element) orbital tracks.

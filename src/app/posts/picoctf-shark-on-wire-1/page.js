@@ -101,7 +101,7 @@ for (src, dst, sport, dport), data in streams.items():
                   className="flex items-center gap-2 text-emerald-300 hover:text-white font-mono text-sm font-bold bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 px-3 py-2 rounded-lg transition-all"
                 >
                   <svg className="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                  <span>⬇️ Download capture.pcap</span>
+                  <span>Download capture.pcap</span>
                 </a>
                 <span className="text-[11px] font-mono text-zinc-400 block mt-2">Size: 239 KB • Packet Capture</span>
               </div>
@@ -115,7 +115,7 @@ for (src, dst, sport, dport), data in streams.items():
         {/* Section 1: PCAP Stream Triage */}
         <div className="space-y-6 text-zinc-300 leading-relaxed font-sans mb-12">
           <div className="bg-[#07130e] border-l-4 border-emerald-500 p-6 rounded-r-xl shadow-md">
-            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Network Forensics: UDP Stream Reassembly &amp; Decoy Filtering</h4>
+            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">Network Forensics: UDP Stream Reassembly &amp; Decoy Filtering</h4>
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
               In unencrypted UDP traffic captures, individual packet payloads often look like isolated fragments. Using Wireshark&apos;s Follow UDP Stream feature reconstructs complete conversations between specific endpoints. In this capture, Stream 0 to 5 contain decoy strings and deceptive flags, while inspecting higher stream indices (specifically UDP Stream 6 between <code>10.0.0.2</code> and <code>10.0.0.12</code>) reconstructs the actual plaintext flag.
             </p>
@@ -145,8 +145,8 @@ for (src, dst, sport, dport), data in streams.items():
               </thead>
               <tbody className="divide-y divide-zinc-800/60 text-zinc-300">
                 <tr><td className="p-2.5 text-zinc-400">Stream 4</td><td className="p-2.5">10.0.0.11:9999</td><td className="p-2.5 font-mono">picopicopicopico</td><td className="p-2.5 text-right text-zinc-500">Noise</td></tr>
-                <tr className="bg-emerald-950/30 text-emerald-300 font-bold"><td className="p-2.5 text-emerald-400">Stream 5</td><td className="p-2.5">10.0.0.12:8888</td><td className="p-2.5 font-mono">picoCTF&#123;StaT31355_636f6e6e&#125;</td><td className="p-2.5 text-right text-emerald-400">✅ Real Flag</td></tr>
-                <tr className="bg-red-950/20 text-red-400"><td className="p-2.5">Stream 6</td><td className="p-2.5">10.0.0.13:8888</td><td className="p-2.5 font-mono">picoCTF&#123;N0t_a_fLag&#125;</td><td className="p-2.5 text-right text-red-400">❌ Decoy Trap</td></tr>
+                <tr className="bg-emerald-950/30 text-emerald-300 font-bold"><td className="p-2.5 text-emerald-400">Stream 5</td><td className="p-2.5">10.0.0.12:8888</td><td className="p-2.5 font-mono">picoCTF&#123;StaT31355_636f6e6e&#125;</td><td className="p-2.5 text-right text-emerald-400">Real Flag</td></tr>
+                <tr className="bg-red-950/20 text-red-400"><td className="p-2.5">Stream 6</td><td className="p-2.5">10.0.0.13:8888</td><td className="p-2.5 font-mono">picoCTF&#123;N0t_a_fLag&#125;</td><td className="p-2.5 text-right text-red-400">Decoy Trap</td></tr>
               </tbody>
             </table>
           </div>
@@ -174,7 +174,7 @@ for (src, dst, sport, dport), data in streams.items():
 
           <div className="space-y-2 pt-2">
             <div className="flex justify-between items-center">
-              <span className="font-mono text-xs text-emerald-400 font-bold uppercase">⚡ Terminal One-Liner (PowerShell / Bash):</span>
+              <span className="font-mono text-xs text-emerald-400 font-bold uppercase">Terminal One-Liner (PowerShell / Bash):</span>
               <CopyButton text={oneliner} />
             </div>
             <div className="bg-black border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">

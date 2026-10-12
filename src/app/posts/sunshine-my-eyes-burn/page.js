@@ -66,7 +66,7 @@ while True:
     { step: 14, current: "02ee", hex: "0x0073", char: "s", next: "02d4@" },
     { step: 15, current: "02d4", hex: "0x0075", char: "u", next: "02e1@" },
     { step: 16, current: "02e1", hex: "0x006e", char: "n", next: "02b0@" },
-    { step: 17, current: "02b0", hex: "0x007d", char: "}", next: "2600 (☀)" },
+    { step: 17, current: "02b0", hex: "0x007d", char: "}", next: "2600 (Black Sun With Rays)" },
   ];
 
   const flagText = "sun{praisethesun}";
@@ -119,7 +119,7 @@ while True:
             </div>
             <div className="bg-[#0e0e13]/90 border border-zinc-800 p-4 rounded-xl">
               <span className="text-zinc-500 block mb-1">TERMINAL SYMBOL</span>
-              <span className="text-amber-400 font-bold">U+2600 (☀)</span>
+              <span className="text-amber-400 font-bold">U+2600 (Black Sun With Rays)</span>
             </div>
             <div className="bg-[#0e0e13]/90 border border-zinc-800 p-4 rounded-xl">
               <span className="text-zinc-500 block mb-1">FLAG</span>
@@ -192,7 +192,7 @@ while True:
                 </pre>
               </div>
               <p className="text-zinc-400 text-xs mt-2">
-                This chaining constructs a strict finite state machine. The chain culminates when input <code className="text-amber-300 font-mono">007d</code> (<code className="text-white font-mono">&#125;</code>) in state <code className="text-amber-300 font-mono">02b0</code> produces Unicode point <code className="text-amber-400 font-bold font-mono">U+2600</code>: <strong className="text-amber-300 text-base">☀ (BLACK SUN WITH RAYS)</strong>!
+                This chaining constructs a strict finite state machine. The chain culminates when input <code className="text-amber-300 font-mono">007d</code> (<code className="text-white font-mono">&#125;</code>) in state <code className="text-amber-300 font-mono">02b0</code> produces Unicode point <code className="text-amber-400 font-bold font-mono">U+2600</code>: <strong className="text-amber-300 text-base">(BLACK SUN WITH RAYS)</strong>!
               </p>
             </div>
           </div>

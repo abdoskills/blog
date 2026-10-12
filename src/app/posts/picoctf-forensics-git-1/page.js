@@ -205,13 +205,13 @@ export default function PicoCTFForensicsGit1Writeup() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="bg-[#0a0a0f] border border-zinc-800 p-4 rounded-xl">
-              <h3 className="text-sm font-bold text-white font-mono mb-2">🟢 Method A: CyberChef (GUI)</h3>
+              <h3 className="text-sm font-bold text-white font-mono mb-2">Method A: CyberChef (GUI)</h3>
               <p className="text-xs text-zinc-400 leading-relaxed mb-3">
                 Dump the object to disk via <code className="text-cyan-300">icat ... 65695 &gt; blob.bin</code>, open CyberChef, and apply the <strong className="text-white">Zlib Inflate</strong> recipe to view the flag without programming.
               </p>
             </div>
             <div className="bg-[#0a0a0f] border border-zinc-800 p-4 rounded-xl">
-              <h3 className="text-sm font-bold text-white font-mono mb-2">🔵 Method B: Git Native CLI</h3>
+              <h3 className="text-sm font-bold text-white font-mono mb-2">Method B: Git Native CLI</h3>
               <p className="text-xs text-zinc-400 leading-relaxed mb-3">
                 Git provides its own decompression tool. Running pretty-print auto-inflates any object:
               </p>

@@ -135,7 +135,7 @@ export default function ThreatLabsHub() {
 
                   {/* Footer CTA */}
                   <div className="flex justify-between items-center text-[11px] font-mono text-zinc-500 pt-1">
-                    <span>⏱ {c.time}</span>
+                    <span>{c.time}</span>
                     <span className="theme-cta font-bold flex items-center gap-1 transition-colors">
                       Read Investigation <span className="transform transition-transform group-hover:translate-x-1">→</span>
                     </span>

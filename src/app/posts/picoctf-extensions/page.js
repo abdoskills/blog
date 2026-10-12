@@ -13,7 +13,7 @@ if header == b'\\x89PNG\\r\\n\\x1a\\n':
     with open('flag.png', 'wb') as out_f:
         with open('flag.txt', 'rb') as in_f:
             out_f.write(in_f.read())
-    print("🎉 File successfully recovered as flag.png!")`;
+    print("[+] File successfully recovered as flag.png!")`;
 
   const oneliner = `python -c "import shutil; shutil.copy('flag.txt', 'flag.png'); print('Saved as flag.png')"`;
 
@@ -94,7 +94,7 @@ if header == b'\\x89PNG\\r\\n\\x1a\\n':
                   className="flex items-center gap-2 text-emerald-300 hover:text-white font-mono text-sm font-bold bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 px-3 py-2 rounded-lg transition-all"
                 >
                   <svg className="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                  <span>⬇️ Download flag.txt</span>
+                  <span>Download flag.txt</span>
                 </a>
                 <span className="text-[11px] font-mono text-zinc-400 block mt-2">Size: 9.9 KB • Misnamed File</span>
               </div>
@@ -108,7 +108,7 @@ if header == b'\\x89PNG\\r\\n\\x1a\\n':
         {/* Section 1: Magic Bytes vs Extensions */}
         <div className="space-y-6 text-zinc-300 leading-relaxed font-sans mb-12">
           <div className="bg-[#07130e] border-l-4 border-emerald-500 p-6 rounded-r-xl shadow-md">
-            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Forensic Principle: Magic Bytes vs File Extensions</h4>
+            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">Forensic Principle: Magic Bytes vs File Extensions</h4>
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
               Operating system shells often rely on file extensions to associate default handler applications, but the true file format is determined by its header signature (magic bytes). If a PNG file is renamed with a <code>.txt</code> extension, text editors fail or display binary noise, while inspecting the initial 8 bytes immediately exposes the standard PNG magic signature: <code>89 50 4E 47 0D 0A 1A 0A</code>.
             </p>
@@ -135,7 +135,7 @@ if header == b'\\x89PNG\\r\\n\\x1a\\n':
 
           <div className="space-y-2 pt-2">
             <div className="flex justify-between items-center">
-              <span className="font-mono text-xs text-emerald-400 font-bold uppercase">⚡ Terminal Rename Command:</span>
+              <span className="font-mono text-xs text-emerald-400 font-bold uppercase">Terminal Rename Command:</span>
               <CopyButton text={powershellCommand} />
             </div>
             <div className="bg-black border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">
@@ -166,7 +166,7 @@ if header == b'\\x89PNG\\r\\n\\x1a\\n':
 
           <div className="space-y-2 pt-2">
             <div className="flex justify-between items-center">
-              <span className="font-mono text-xs text-emerald-400 font-bold uppercase">⚡ Terminal One-Liner (PowerShell / Bash):</span>
+              <span className="font-mono text-xs text-emerald-400 font-bold uppercase">Terminal One-Liner (PowerShell / Bash):</span>
               <CopyButton text={oneliner} />
             </div>
             <div className="bg-black border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">

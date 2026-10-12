@@ -42,7 +42,7 @@ export default function CrtCardHeader({
     <div className="w-full flex flex-col rounded-t-xl overflow-hidden border-b border-zinc-800/80 select-none">
       {/* 1. Terminal Window Bar */}
       <div className="flex items-center justify-between px-3.5 py-2 bg-black/75 dark:bg-black/80 light:bg-zinc-200 border-b border-zinc-800/60 font-mono text-[10px]">
-        {/* Retro Window Control Buttons [ - □ ✕ ] */}
+        {/* Retro Window Control Buttons [ - [] X ] */}
         <div className="flex items-center gap-1.5 opacity-70 group-hover:opacity-100 transition-opacity">
           <span className="w-2 h-2 rounded-full bg-zinc-600 group-hover:bg-zinc-400 transition-colors inline-block" />
           <span className="w-2 h-2 rounded-full bg-zinc-600 group-hover:bg-zinc-400 transition-colors inline-block" />

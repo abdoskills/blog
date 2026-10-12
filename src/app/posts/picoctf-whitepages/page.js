@@ -19,7 +19,7 @@ flag_bytes = bytes([
     for i in range(0, len(binary_str) - len(binary_str) % 8, 8)
 ])
 
-print("🎉 Decoded Flag:")
+print("[+] Decoded Flag:")
 print(flag_bytes.decode('utf-8', errors='ignore'))`;
 
   const oneliner = `python -c "t=open('whitepages.txt','rb').read().decode('utf-8').replace('\\u2003','0').replace(' ','1'); print(bytes([int(t[i:i+8],2) for i in range(0,len(t)-len(t)%8,8)]).decode('utf-8',errors='ignore'))"`;
@@ -99,7 +99,7 @@ print(flag_bytes.decode('utf-8', errors='ignore'))`;
                   className="flex items-center gap-2 text-emerald-300 hover:text-white font-mono text-sm font-bold bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 px-3 py-2 rounded-lg transition-all"
                 >
                   <svg className="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                  <span>⬇️ Download whitepages.txt</span>
+                  <span>Download whitepages.txt</span>
                 </a>
                 <span className="text-[11px] font-mono text-zinc-400 block mt-2">Size: 2,770 Bytes • UTF-8 Text</span>
               </div>
@@ -113,7 +113,7 @@ print(flag_bytes.decode('utf-8', errors='ignore'))`;
         {/* Section 1: Whitespace Steganography Analysis */}
         <div className="space-y-6 text-zinc-300 leading-relaxed font-sans mb-12">
           <div className="bg-[#07130e] border-l-4 border-emerald-500 p-6 rounded-r-xl shadow-md">
-            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Forensic Analysis: Unicode Whitespace Steganography</h4>
+            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">Forensic Analysis: Unicode Whitespace Steganography</h4>
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
               When opened in standard text editors, <code>whitepages.txt</code> renders as a blank document. Hex inspection reveals that the 2,770-byte file consists entirely of two alternating whitespace characters: standard ASCII spaces (<code>0x20</code>) and Unicode EM Spaces (UTF-8 bytes <code>E2 80 83</code> / <code>\u2003</code>). Because only two discrete characters exist, they form a binary alphabet (0 and 1) that translates directly into ASCII character bytes.
             </p>
@@ -174,7 +174,7 @@ print(flag_bytes.decode('utf-8', errors='ignore'))`;
 
           <div className="space-y-2 pt-2">
             <div className="flex justify-between items-center">
-              <span className="font-mono text-xs text-emerald-400 font-bold uppercase">⚡ Terminal One-Liner (PowerShell / Bash):</span>
+              <span className="font-mono text-xs text-emerald-400 font-bold uppercase">Terminal One-Liner (PowerShell / Bash):</span>
               <CopyButton text={oneliner} />
             </div>
             <div className="bg-black border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">

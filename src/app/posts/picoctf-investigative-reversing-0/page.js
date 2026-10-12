@@ -18,7 +18,7 @@ flag = (
     ''.join(chr(encoded[i]) for i in range(16, 26))        # Unchanged: "_35f69dab}"
 )
 
-print("🎉 Decoded Flag:", flag)`;
+print("[+] Decoded Flag:", flag)`;
 
   const oneliner = `python -c "d=open('mystery.png','rb').read()[-26:]; print(''.join(chr(d[i]) for i in range(6)) + ''.join(chr(d[i]-5) for i in range(6,15)) + chr(d[15]+3) + ''.join(chr(d[i]) for i in range(16,26)))"`;
 
@@ -125,10 +125,10 @@ print("🎉 Decoded Flag:", flag)`;
                 </span>
                 <div className="flex flex-col gap-1.5 font-mono text-xs text-white">
                   <a href="/downloads/ir0_mystery" download className="text-emerald-400 hover:underline flex items-center gap-1.5">
-                    ⬇️ mystery (ELF 64-bit)
+                    mystery (ELF 64-bit)
                   </a>
                   <a href="/downloads/ir0_mystery.png" download className="text-emerald-400 hover:underline flex items-center gap-1.5">
-                    ⬇️ mystery.png
+                    mystery.png
                   </a>
                 </div>
               </div>
@@ -142,7 +142,7 @@ print("🎉 Decoded Flag:", flag)`;
         {/* Section 1: PNG Overlay Trailing Bytes Analysis */}
         <div className="space-y-6 text-zinc-300 leading-relaxed font-sans mb-12">
           <div className="bg-[#07130e] border-l-4 border-emerald-500 p-6 rounded-r-xl shadow-md">
-            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Forensic Analysis: Trailing Overlay Injection</h4>
+            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">Forensic Analysis: Trailing Overlay Injection</h4>
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
               Standard image parsers terminate processing once the <code>IEND</code> trailer chunk (<code>49 45 4E 44 AE 42 60 82</code>) is reached, ignoring any data appended past that marker. The compiled <code>mystery</code> binary reads <code>flag.txt</code>, applies an arithmetic shift (+5) to byte indices 6 through 15, and appends the transformed stream to the end of <code>mystery.png</code> as an unparsed trailing overlay.
             </p>
@@ -256,7 +256,7 @@ print("🎉 Decoded Flag:", flag)`;
           {/* Terminal One-liner */}
           <div className="space-y-2 pt-2">
             <div className="flex justify-between items-center">
-              <span className="font-mono text-xs text-emerald-400 font-bold uppercase">⚡ Terminal One-Liner (PowerShell / Bash):</span>
+              <span className="font-mono text-xs text-emerald-400 font-bold uppercase">Terminal One-Liner (PowerShell / Bash):</span>
               <CopyButton text={oneliner} />
             </div>
             <div className="bg-black border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">

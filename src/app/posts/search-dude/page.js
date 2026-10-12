@@ -16,7 +16,7 @@ ciphertext = bytes.fromhex("a3f1c89b721e5a448f3c11224a99bb012f5a89b0...")
 cipher = AES.new(key, AES.MODE_CBC, iv=b"\\x00"*16)
 decrypted = cipher.decrypt(ciphertext)
 
-print("🎉 Decrypted Flag:", decrypted.decode('utf-8', errors='ignore'))`;
+print("[+] Decrypted Flag:", decrypted.decode('utf-8', errors='ignore'))`;
 
   const oneliner = `python -c "from Crypto.Cipher import AES; import hashlib; k=hashlib.sha256('{A92B31C4-7D4F-4A92-B582-82E9104A7F11}'.encode('utf-16le')).digest()[:16]; print(AES.new(k,AES.MODE_CBC,b'\\x00'*16).decrypt(bytes.fromhex('...')).decode('latin1'))"`;
 
@@ -117,7 +117,7 @@ print("🎉 Decrypted Flag:", decrypted.decode('utf-8', errors='ignore'))`;
           </h3>
 
           <div className="bg-[#141008] border-l-4 border-amber-500 p-6 rounded-r-xl my-6 shadow-lg">
-            <h4 className="text-amber-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Forensic Analysis: Execution &amp; Artifact Staging</h4>
+            <h4 className="text-amber-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">Forensic Analysis: Execution &amp; Artifact Staging</h4>
             <p className="text-sm text-zinc-300 leading-relaxed">
               Windows Program Compatibility Assistant (PCA) keeps execution evidence in the registry and diagnostic stores. While <code>OfficeUpdater.exe</code> execution was confirmed via PCA entries, the binary itself was a decoy dropper. The encrypted payload buffer was staged directly inside the Windows Search database (<code>Windows.db</code>), requiring ESE database parsing to carve the raw ciphertext blob.
             </p>
@@ -181,7 +181,7 @@ print("🎉 Decrypted Flag:", decrypted.decode('utf-8', errors='ignore'))`;
             {/* Terminal One-liner */}
             <div className="space-y-2 pt-2">
               <div className="flex justify-between items-center">
-                <span className="font-mono text-xs text-amber-400 font-bold uppercase">⚡ Terminal One-Liner (PowerShell / Bash):</span>
+                <span className="font-mono text-xs text-amber-400 font-bold uppercase">Terminal One-Liner (PowerShell / Bash):</span>
                 <CopyButton text={oneliner} />
               </div>
               <div className="bg-black border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">

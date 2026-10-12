@@ -183,7 +183,7 @@ print("[+] Recovered Flag:", "".join(flag))`;
 
             <div className="bg-[#0e0e13] border border-zinc-800 rounded-xl p-5 mb-6 space-y-4 text-sm leading-relaxed">
               <div className="flex items-start gap-3">
-                <span className="text-amber-400 text-lg">⚙️</span>
+                
                 <div>
                   <strong className="text-white">Why &ldquo;QWERTY Sucks&rdquo;? The Mechanical Stagger:</strong>
                   <p className="text-zinc-400 mt-1">
@@ -193,7 +193,7 @@ print("[+] Recovered Flag:", "".join(flag))`;
               </div>
 
               <div className="flex items-start gap-3">
-                <span className="text-amber-400 text-lg">🔗</span>
+                
                 <div>
                   <strong className="text-white">Why You Cannot Read the File Top-to-Bottom:</strong>
                   <p className="text-zinc-400 mt-1">

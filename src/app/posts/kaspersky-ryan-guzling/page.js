@@ -38,7 +38,7 @@ def solve_ryan_guzling():
     print("  -> Flag located in video OpenGraph metadata tags!")
     
     flag = "kaspersky{1_th1nk_1t5_b3tt3r_t0_wr1t3_th3_k3y_0n_p4p3r}"
-    print(f"\\n🎯 FLAG RECOVERED: {flag}")
+    print(f"\\n[+] FLAG RECOVERED: {flag}")
     return flag
 
 if __name__ == "__main__":
@@ -98,14 +98,14 @@ if __name__ == "__main__":
         {/* Core Concept */}
         <section className="bg-[#0e0e13]/90 border border-zinc-800/80 rounded-2xl p-6 md:p-8 space-y-4 backdrop-blur-xl mb-12 shadow-xl">
           <h2 className="text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider flex items-center gap-2.5">
-            <span className="text-emerald-400">⚡</span> The Core Concept: Apple Fusion Drive
+            The Core Concept: Apple Fusion Drive
           </h2>
           <p className="text-sm md:text-base text-zinc-300 font-sans leading-relaxed">
             An Apple Fusion Drive logically binds a fast SSD and a high-capacity HDD into a single <strong>CoreStorage Logical Volume Group (LVG)</strong>. If you try to open `ssd.dd` or `hdd.dd` individually, the filesystem appears corrupt because the physical volume data blocks are interleaved across both drives.
           </p>
 
           <div className="p-4 rounded-xl bg-black/60 border border-emerald-500/20 font-mono text-xs md:text-sm text-emerald-300 space-y-1.5 overflow-x-auto">
-            <div>📦 Provided Artifacts (`guz.zip` - 11.7 GB):</div>
+            <div>Provided Artifacts (`guz.zip` - 11.7 GB):</div>
             <div>&nbsp;&nbsp;├── `ssd.dd` (16.1 GB) - CoreStorage Physical Volume 0 (SSD Slice)</div>
             <div>&nbsp;&nbsp;├── `hdd.dd` (19.3 GB) - CoreStorage Physical Volume 1 (HDD Slice)</div>
             <div>&nbsp;&nbsp;└── `trash.dd` (536 MB) - HFS+ Volume holding hidden recovery keys</div>
@@ -192,7 +192,7 @@ if __name__ == "__main__":
         {/* Decoded Flag Box */}
         <section className="bg-gradient-to-r from-[#0d1410] via-[#091811] to-[#0d1410] border-2 border-emerald-500/60 rounded-2xl p-6 md:p-8 space-y-4 shadow-[0_0_40px_rgba(16,185,129,0.15)] mb-12">
           <div className="flex items-center gap-2 font-mono text-xs text-emerald-400 uppercase tracking-widest font-bold">
-            <span>🏁</span> Challenge Flag
+            <span>Challenge Flag</span>
           </div>
           <div className="font-mono text-base md:text-xl text-white font-bold bg-black/70 p-4 rounded-xl border border-emerald-500/40 select-all break-all">
             kaspersky&#123;1_th1nk_1t5_b3tt3r_t0_wr1t3_th3_k3y_0n_p4p3r&#125;

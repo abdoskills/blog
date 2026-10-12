@@ -204,7 +204,7 @@ $destination = 'coal.bin'
           <details className="group bg-[#0e0e13]/90 border border-zinc-800/90 rounded-xl overflow-hidden transition-all duration-300">
             <summary className="px-6 py-4 cursor-pointer font-mono text-sm text-zinc-300 font-semibold flex items-center justify-between hover:bg-zinc-900/50 transition-colors">
               <span className="flex items-center gap-3">
-                <span className="text-emerald-400">🔍</span>
+                
                 <span>Additional Forensic Tools for .pptm Files</span>
               </span>
               <span className="text-zinc-500 group-open:rotate-180 transition-transform duration-200">▼</span>
@@ -214,7 +214,7 @@ $destination = 'coal.bin'
               
               <div className="bg-black/50 p-4 rounded-lg border border-zinc-800">
                 <h4 className="font-bold text-white mb-2 flex items-center gap-2">
-                  <span className="text-emerald-400">📦</span> 7-Zip Archive Inspection
+                  7-Zip Archive Inspection
                 </h4>
                 <p className="text-zinc-400 mb-2">
                   Since <code className="text-zinc-300 font-mono">.pptm</code> conforms to Office Open XML packaging, any archive utility (7-Zip, unzip) can unpack the contents:
@@ -228,7 +228,7 @@ $destination = 'coal.bin'
 
               <div className="bg-black/50 p-4 rounded-lg border border-zinc-800">
                 <h4 className="font-bold text-white mb-2 flex items-center gap-2">
-                  <span className="text-emerald-400">🐍</span> oledump.py (Didier Stevens)
+                  oledump.py (Didier Stevens)
                 </h4>
                 <p className="text-zinc-400 mb-2">
                   A forensic standard for analyzing individual OLE streams inside <code className="text-zinc-300 font-mono">vbaProject.bin</code>, decompressing VBA source streams, and identifying entry points:
@@ -246,7 +246,7 @@ $destination = 'coal.bin'
           <details className="group bg-[#0e0e13]/90 border border-zinc-800/90 rounded-xl overflow-hidden transition-all duration-300">
             <summary className="px-6 py-4 cursor-pointer font-mono text-sm text-zinc-300 font-semibold flex items-center justify-between hover:bg-zinc-900/50 transition-colors">
               <span className="flex items-center gap-3">
-                <span className="text-emerald-400">🖥️</span>
+                
                 <span>Alternative Method: Visual GUI Walkthrough (Microsoft PowerPoint)</span>
               </span>
               <span className="text-zinc-500 group-open:rotate-180 transition-transform duration-200">▼</span>

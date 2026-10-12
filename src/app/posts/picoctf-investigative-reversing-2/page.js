@@ -19,7 +19,7 @@ for i in range(50):
         val |= (lsb << bit)
     flag.append(chr(val + 5))  # Apply inverse math (+5)
 
-print("🎉 Decoded Flag:", ''.join(flag))`;
+print("[+] Decoded Flag:", ''.join(flag))`;
 
   const oneliner = `python -c "d=open('encoded.bmp','rb').read(); print(''.join(chr(sum(((d[2000+i*8+b]&1)<<b) for b in range(8))+5) for i in range(50)))"`;
 
@@ -126,10 +126,10 @@ char codedChar(int bit, char val, char orig_byte) {
                 </span>
                 <div className="flex flex-col gap-1.5 font-mono text-xs text-white">
                   <a href="/downloads/ir2_mystery" download className="text-emerald-400 hover:underline flex items-center gap-1.5">
-                    ⬇️ mystery (ELF 64-bit)
+                    mystery (ELF 64-bit)
                   </a>
                   <a href="/downloads/ir2_encoded.bmp" download className="text-emerald-400 hover:underline flex items-center gap-1.5">
-                    ⬇️ encoded.bmp (1.5 MB)
+                    encoded.bmp (1.5 MB)
                   </a>
                 </div>
               </div>
@@ -143,7 +143,7 @@ char codedChar(int bit, char val, char orig_byte) {
         {/* Section 1: LSB Bit Extraction Analysis */}
         <div className="space-y-6 text-zinc-300 leading-relaxed font-sans mb-12">
           <div className="bg-[#07130e] border-l-4 border-emerald-500 p-6 rounded-r-xl shadow-md">
-            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">💡 Forensic Analysis: BMP LSB Steganography &amp; Arithmetic Encoding</h4>
+            <h4 className="text-emerald-400 font-bold mb-2 font-mono text-sm uppercase tracking-wider">Forensic Analysis: BMP LSB Steganography &amp; Arithmetic Encoding</h4>
             <p className="text-sm md:text-base text-zinc-300 leading-relaxed">
               Decompilation reveals that the binary embeds flag characters into the pixel raster of an uncompressed Bitmap file (<code>encoded.bmp</code>) using Least Significant Bit (LSB) steganography. For each flag byte, 5 is added arithmetically before the 8 bits are mapped into the parity (LSB) of 8 sequential image bytes starting at offset <code>0x7E3</code>. Reversing the process requires extracting the LSB stream, assembling each 8-bit byte, and subtracting 5.
             </p>
@@ -239,7 +239,7 @@ char codedChar(int bit, char val, char orig_byte) {
           {/* Terminal One-liner */}
           <div className="space-y-2 pt-2">
             <div className="flex justify-between items-center">
-              <span className="font-mono text-xs text-emerald-400 font-bold uppercase">⚡ Terminal One-Liner (PowerShell / Bash):</span>
+              <span className="font-mono text-xs text-emerald-400 font-bold uppercase">Terminal One-Liner (PowerShell / Bash):</span>
               <CopyButton text={oneliner} />
             </div>
             <div className="bg-black border border-zinc-800 rounded-xl p-4 font-mono text-xs text-zinc-300 overflow-x-auto">
