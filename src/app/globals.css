@@ -201,61 +201,60 @@ article, .content-frame {
   box-shadow: 0 0 15px var(--accent-dim) !important;
 }
 
-/* Universal Writeup Elements (Dark Mode Defaults) */
 /* Universal Writeup & Content Elements (Dark Mode Defaults) */
-main [class*="text-emerald"], article [class*="text-emerald"], .content-frame [class*="text-emerald"],
-main [class*="text-cyan"], article [class*="text-cyan"], .content-frame [class*="text-cyan"],
-main [class*="text-amber"], article [class*="text-amber"], .content-frame [class*="text-amber"],
-main [class*="text-teal"], article [class*="text-teal"], .content-frame [class*="text-teal"],
-main [class*="text-green"], article [class*="text-green"], .content-frame [class*="text-green"],
-main [class*="text-yellow"], article [class*="text-yellow"], .content-frame [class*="text-yellow"],
-main [class*="text-pink"], article [class*="text-pink"], .content-frame [class*="text-pink"],
-main [class*="text-blue"], article [class*="text-blue"], .content-frame [class*="text-blue"],
-main [class*="text-sky"], article [class*="text-sky"], .content-frame [class*="text-sky"],
-main [class*="text-purple"], article [class*="text-purple"], .content-frame [class*="text-purple"],
-main span.font-mono[class*="text-"], article span.font-mono[class*="text-"],
-main pre code, article pre code,
-main code[class*="text-"], article code[class*="text-"] {
+html:not([data-theme="light"]) main [class*="text-emerald"], html:not([data-theme="light"]) article [class*="text-emerald"], html:not([data-theme="light"]) .content-frame [class*="text-emerald"],
+html:not([data-theme="light"]) main [class*="text-cyan"], html:not([data-theme="light"]) article [class*="text-cyan"], html:not([data-theme="light"]) .content-frame [class*="text-cyan"],
+html:not([data-theme="light"]) main [class*="text-amber"], html:not([data-theme="light"]) article [class*="text-amber"], html:not([data-theme="light"]) .content-frame [class*="text-amber"],
+html:not([data-theme="light"]) main [class*="text-teal"], html:not([data-theme="light"]) article [class*="text-teal"], html:not([data-theme="light"]) .content-frame [class*="text-teal"],
+html:not([data-theme="light"]) main [class*="text-green"], html:not([data-theme="light"]) article [class*="text-green"], html:not([data-theme="light"]) .content-frame [class*="text-green"],
+html:not([data-theme="light"]) main [class*="text-yellow"], html:not([data-theme="light"]) article [class*="text-yellow"], html:not([data-theme="light"]) .content-frame [class*="text-yellow"],
+html:not([data-theme="light"]) main [class*="text-pink"], html:not([data-theme="light"]) article [class*="text-pink"], html:not([data-theme="light"]) .content-frame [class*="text-pink"],
+html:not([data-theme="light"]) main [class*="text-blue"], html:not([data-theme="light"]) article [class*="text-blue"], html:not([data-theme="light"]) .content-frame [class*="text-blue"],
+html:not([data-theme="light"]) main [class*="text-sky"], html:not([data-theme="light"]) article [class*="text-sky"], html:not([data-theme="light"]) .content-frame [class*="text-sky"],
+html:not([data-theme="light"]) main [class*="text-purple"], html:not([data-theme="light"]) article [class*="text-purple"], html:not([data-theme="light"]) .content-frame [class*="text-purple"],
+html:not([data-theme="light"]) main span.font-mono[class*="text-"], html:not([data-theme="light"]) article span.font-mono[class*="text-"],
+html:not([data-theme="light"]) main pre code, html:not([data-theme="light"]) article pre code,
+html:not([data-theme="light"]) main code[class*="text-"], html:not([data-theme="light"]) article code[class*="text-"] {
   color: var(--accent-text) !important;
 }
 
-main [class*="border-emerald"], article [class*="border-emerald"], .content-frame [class*="border-emerald"],
-main [class*="border-cyan"], article [class*="border-cyan"], .content-frame [class*="border-cyan"],
-main [class*="border-amber"], article [class*="border-amber"], .content-frame [class*="border-amber"],
-main [class*="border-teal"], article [class*="border-teal"], .content-frame [class*="border-teal"],
-main [class*="border-green"], article [class*="border-green"], .content-frame [class*="border-green"],
-main [class*="border-yellow"], article [class*="border-yellow"], .content-frame [class*="border-yellow"],
-main [class*="border-pink"], article [class*="border-pink"], .content-frame [class*="border-pink"],
-main [class*="border-blue"], article [class*="border-blue"], .content-frame [class*="border-blue"],
-main [class*="border-sky"], article [class*="border-sky"], .content-frame [class*="border-sky"],
-main [class*="border-purple"], article [class*="border-purple"], .content-frame [class*="border-purple"] {
+html:not([data-theme="light"]) main [class*="border-emerald"], html:not([data-theme="light"]) article [class*="border-emerald"], html:not([data-theme="light"]) .content-frame [class*="border-emerald"],
+html:not([data-theme="light"]) main [class*="border-cyan"], html:not([data-theme="light"]) article [class*="border-cyan"], html:not([data-theme="light"]) .content-frame [class*="border-cyan"],
+html:not([data-theme="light"]) main [class*="border-amber"], html:not([data-theme="light"]) article [class*="border-amber"], html:not([data-theme="light"]) .content-frame [class*="border-amber"],
+html:not([data-theme="light"]) main [class*="border-teal"], html:not([data-theme="light"]) article [class*="border-teal"], html:not([data-theme="light"]) .content-frame [class*="border-teal"],
+html:not([data-theme="light"]) main [class*="border-green"], html:not([data-theme="light"]) article [class*="border-green"], html:not([data-theme="light"]) .content-frame [class*="border-green"],
+html:not([data-theme="light"]) main [class*="border-yellow"], html:not([data-theme="light"]) article [class*="border-yellow"], html:not([data-theme="light"]) .content-frame [class*="border-yellow"],
+html:not([data-theme="light"]) main [class*="border-pink"], html:not([data-theme="light"]) article [class*="border-pink"], html:not([data-theme="light"]) .content-frame [class*="border-pink"],
+html:not([data-theme="light"]) main [class*="border-blue"], html:not([data-theme="light"]) article [class*="border-blue"], html:not([data-theme="light"]) .content-frame [class*="border-blue"],
+html:not([data-theme="light"]) main [class*="border-sky"], html:not([data-theme="light"]) article [class*="border-sky"], html:not([data-theme="light"]) .content-frame [class*="border-sky"],
+html:not([data-theme="light"]) main [class*="border-purple"], html:not([data-theme="light"]) article [class*="border-purple"], html:not([data-theme="light"]) .content-frame [class*="border-purple"] {
   border-color: var(--accent-border) !important;
 }
 
-main [class*="bg-emerald-500/"], article [class*="bg-emerald-500/"],
-main [class*="bg-emerald-400/"], article [class*="bg-emerald-400/"],
-main [class*="bg-cyan-500/"], article [class*="bg-cyan-500/"],
-main [class*="bg-cyan-400/"], article [class*="bg-cyan-400/"],
-main [class*="bg-amber-500/"], article [class*="bg-amber-500/"],
-main [class*="bg-amber-400/"], article [class*="bg-amber-400/"],
-main [class*="bg-teal-500/"], article [class*="bg-teal-500/"],
-main [class*="bg-green-500/"], article [class*="bg-green-500/"],
-main [class*="bg-yellow-500/"], article [class*="bg-yellow-500/"],
-main [class*="bg-pink-500/"], article [class*="bg-pink-500/"],
-main [class*="bg-blue-500/"], article [class*="bg-blue-500/"],
-main [class*="bg-sky-500/"], article [class*="bg-sky-500/"],
-main [class*="bg-sky-400/"], article [class*="bg-sky-400/"],
-main [class*="bg-purple-500/"], article [class*="bg-purple-500/"] {
+html:not([data-theme="light"]) main [class*="bg-emerald-500/"], html:not([data-theme="light"]) article [class*="bg-emerald-500/"],
+html:not([data-theme="light"]) main [class*="bg-emerald-400/"], html:not([data-theme="light"]) article [class*="bg-emerald-400/"],
+html:not([data-theme="light"]) main [class*="bg-cyan-500/"], html:not([data-theme="light"]) article [class*="bg-cyan-500/"],
+html:not([data-theme="light"]) main [class*="bg-cyan-400/"], html:not([data-theme="light"]) article [class*="bg-cyan-400/"],
+html:not([data-theme="light"]) main [class*="bg-amber-500/"], html:not([data-theme="light"]) article [class*="bg-amber-500/"],
+html:not([data-theme="light"]) main [class*="bg-amber-400/"], html:not([data-theme="light"]) article [class*="bg-amber-400/"],
+html:not([data-theme="light"]) main [class*="bg-teal-500/"], html:not([data-theme="light"]) article [class*="bg-teal-500/"],
+html:not([data-theme="light"]) main [class*="bg-green-500/"], html:not([data-theme="light"]) article [class*="bg-green-500/"],
+html:not([data-theme="light"]) main [class*="bg-yellow-500/"], html:not([data-theme="light"]) article [class*="bg-yellow-500/"],
+html:not([data-theme="light"]) main [class*="bg-pink-500/"], html:not([data-theme="light"]) article [class*="bg-pink-500/"],
+html:not([data-theme="light"]) main [class*="bg-blue-500/"], html:not([data-theme="light"]) article [class*="bg-blue-500/"],
+html:not([data-theme="light"]) main [class*="bg-sky-500/"], html:not([data-theme="light"]) article [class*="bg-sky-500/"],
+html:not([data-theme="light"]) main [class*="bg-sky-400/"], html:not([data-theme="light"]) article [class*="bg-sky-400/"],
+html:not([data-theme="light"]) main [class*="bg-purple-500/"], html:not([data-theme="light"]) article [class*="bg-purple-500/"] {
   background-color: var(--accent-dim) !important;
   color: var(--accent-text) !important;
 }
 
-main div[class*="shadow-[0_0_40px_rgba("], article div[class*="shadow-[0_0_40px_rgba("],
-main div[class*="shadow-[0_0_30px_rgba("], article div[class*="shadow-[0_0_30px_rgba("],
-main div[class*="shadow-[0_0_25px_rgba("], article div[class*="shadow-[0_0_25px_rgba("],
-main div[class*="shadow-[0_0_20px_rgba("], article div[class*="shadow-[0_0_20px_rgba("],
-main div[class*="shadow-[0_0_15px_rgba("], article div[class*="shadow-[0_0_15px_rgba("],
-main section[class*="shadow-[0_0_25px_rgba("], article section[class*="shadow-[0_0_25px_rgba("] {
+html:not([data-theme="light"]) main div[class*="shadow-[0_0_40px_rgba("], html:not([data-theme="light"]) article div[class*="shadow-[0_0_40px_rgba("],
+html:not([data-theme="light"]) main div[class*="shadow-[0_0_30px_rgba("], html:not([data-theme="light"]) article div[class*="shadow-[0_0_30px_rgba("],
+html:not([data-theme="light"]) main div[class*="shadow-[0_0_25px_rgba("], html:not([data-theme="light"]) article div[class*="shadow-[0_0_25px_rgba("],
+html:not([data-theme="light"]) main div[class*="shadow-[0_0_20px_rgba("], html:not([data-theme="light"]) article div[class*="shadow-[0_0_20px_rgba("],
+html:not([data-theme="light"]) main div[class*="shadow-[0_0_15px_rgba("], html:not([data-theme="light"]) article div[class*="shadow-[0_0_15px_rgba("],
+html:not([data-theme="light"]) main section[class*="shadow-[0_0_25px_rgba("], html:not([data-theme="light"]) article section[class*="shadow-[0_0_25px_rgba("] {
   box-shadow: 0 0 35px var(--accent-glow) !important;
 }
 
@@ -264,28 +263,28 @@ h1, h2, h3, h4 {
 }
 
 /* Flag & Decoded Sections in Writeups */
-main section[class*="from-"], article section[class*="from-"],
-main section[class*="bg-gradient-to-r"], article section[class*="bg-gradient-to-r"] {
+html:not([data-theme="light"]) main section[class*="from-"], html:not([data-theme="light"]) article section[class*="from-"],
+html:not([data-theme="light"]) main section[class*="bg-gradient-to-r"], html:not([data-theme="light"]) article section[class*="bg-gradient-to-r"] {
   background: radial-gradient(ellipse at center, rgba(var(--accent-rgb), 0.12) 0%, rgba(13, 13, 18, 0.95) 75%) !important;
   border-color: var(--accent-hover-border) !important;
   box-shadow: 0 0 45px var(--accent-glow) !important;
 }
 
-main section[class*="from-"] > div:first-child, article section[class*="from-"] > div:first-child,
-main section[class*="from-"] .font-mono, article section[class*="from-"] .font-mono {
+html:not([data-theme="light"]) main section[class*="from-"] > div:first-child, html:not([data-theme="light"]) article section[class*="from-"] > div:first-child,
+html:not([data-theme="light"]) main section[class*="from-"] .font-mono, html:not([data-theme="light"]) article section[class*="from-"] .font-mono {
   color: var(--accent-text) !important;
 }
 
-/* Code Blocks & Terminal Boxes in Writeups */
-main pre, article pre,
-main pre.bg-\[\#0a0a0e\], article pre.bg-\[\#0a0a0e\],
-main pre[class*="bg-"], article pre[class*="bg-"] {
+/* Code Blocks & Terminal Boxes in Writeups (Dark Mode Defaults) */
+html:not([data-theme="light"]) main pre, html:not([data-theme="light"]) article pre,
+html:not([data-theme="light"]) main pre.bg-\[\#0a0a0e\], html:not([data-theme="light"]) article pre.bg-\[\#0a0a0e\],
+html:not([data-theme="light"]) main pre[class*="bg-"], html:not([data-theme="light"]) article pre[class*="bg-"] {
   background-color: #0d1117 !important;
   border-color: var(--accent-border) !important;
   box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8), 0 0 15px var(--accent-dim) !important;
 }
 
-main pre code, article pre code {
+html:not([data-theme="light"]) main pre code, html:not([data-theme="light"]) article pre code {
   color: var(--accent-text) !important;
 }
 
@@ -367,7 +366,7 @@ html[data-theme="light"] {
 
 html[data-theme="light"] article,
 html[data-theme="light"] .content-frame {
-  background: rgba(244, 244, 245, 0.96) !important;
+  background: rgba(244, 244, 245, 0.98) !important;
   border: 1px solid #d4d4d8 !important;
   box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.08) !important;
   color: #18181b !important;
@@ -383,13 +382,13 @@ html[data-theme="light"] #cyber-3d-bg {
   background: radial-gradient(ellipse at center, #f4f4f5 0%, #e4e4e7 60%, #d4d4d8 100%) !important;
 }
 
-/* Headings & Text in Light Mode */
+/* Headings & General Text in Light Mode */
 html[data-theme="light"] h1,
 html[data-theme="light"] h2,
 html[data-theme="light"] h3,
-html[data-theme="light"] h4,
 html[data-theme="light"] strong,
 html[data-theme="light"] .text-white,
+html[data-theme="light"] .text-zinc-100,
 html[data-theme="light"] .text-zinc-200,
 html[data-theme="light"] .text-gray-200,
 html[data-theme="light"] .text-gray-100 {
@@ -397,18 +396,71 @@ html[data-theme="light"] .text-gray-100 {
   text-shadow: none !important;
 }
 
-html[data-theme="light"] p,
+html[data-theme="light"] p {
+  color: #27272a !important;
+}
+
 html[data-theme="light"] span.text-zinc-400,
-html[data-theme="light"] span.text-zinc-300,
 html[data-theme="light"] span.text-zinc-500,
 html[data-theme="light"] .text-zinc-400,
-html[data-theme="light"] .text-zinc-300,
 html[data-theme="light"] .text-zinc-500 {
   color: #52525b !important;
 }
 
-/* Cards, Hub Panels, Containers in Light Mode */
+html[data-theme="light"] span.text-zinc-300,
+html[data-theme="light"] .text-zinc-300 {
+  color: #3f3f46 !important;
+}
+
+/* Accessible Rich Jewel Tone Headings in Light Mode */
+html[data-theme="light"] h1[class*="text-emerald"],
+html[data-theme="light"] h2[class*="text-emerald"],
+html[data-theme="light"] h3[class*="text-emerald"],
+html[data-theme="light"] h4[class*="text-emerald"],
+html[data-theme="light"] h5[class*="text-emerald"] {
+  color: #047857 !important;
+}
+
+html[data-theme="light"] h1[class*="text-cyan"],
+html[data-theme="light"] h2[class*="text-cyan"],
+html[data-theme="light"] h3[class*="text-cyan"],
+html[data-theme="light"] h4[class*="text-cyan"],
+html[data-theme="light"] h5[class*="text-cyan"] {
+  color: #0369a1 !important;
+}
+
+html[data-theme="light"] h1[class*="text-amber"],
+html[data-theme="light"] h2[class*="text-amber"],
+html[data-theme="light"] h3[class*="text-amber"],
+html[data-theme="light"] h4[class*="text-amber"],
+html[data-theme="light"] h5[class*="text-amber"] {
+  color: #b45309 !important;
+}
+
+html[data-theme="light"] h1[class*="text-purple"],
+html[data-theme="light"] h2[class*="text-purple"],
+html[data-theme="light"] h3[class*="text-purple"],
+html[data-theme="light"] h4[class*="text-purple"] {
+  color: #6d28d9 !important;
+}
+
+html[data-theme="light"] h1[class*="text-rose"],
+html[data-theme="light"] h2[class*="text-rose"],
+html[data-theme="light"] h3[class*="text-rose"],
+html[data-theme="light"] h4[class*="text-rose"],
+html[data-theme="light"] h1[class*="text-red"],
+html[data-theme="light"] h2[class*="text-red"],
+html[data-theme="light"] h3[class*="text-red"],
+html[data-theme="light"] h4[class*="text-red"] {
+  color: #be123c !important;
+}
+
+/* Callout, Note, Challenge Description, and Explanation Boxes in Light Mode */
 html[data-theme="light"] .theme-card,
+html[data-theme="light"] [class*="bg-\[\#0e0e14\]"],
+html[data-theme="light"] [class*="bg-\[\#111116\]"],
+html[data-theme="light"] [class*="bg-\[\#12131a\]"],
+html[data-theme="light"] [class*="bg-\[\#09090d\]"],
 html[data-theme="light"] [class*="bg-\[\#0e0e13\]"],
 html[data-theme="light"] [class*="bg-\[\#0d0d12\]"],
 html[data-theme="light"] [class*="bg-\[\#111111\]"],
@@ -416,18 +468,186 @@ html[data-theme="light"] [class*="bg-\[\#141008\]"],
 html[data-theme="light"] [class*="bg-\[\#1c170e\]"],
 html[data-theme="light"] [class*="bg-\[\#0a0a0a\]"],
 html[data-theme="light"] [class*="bg-\[\#0e0b06\]"],
-html[data-theme="light"] [class*="bg-\[\#0a0a0e\]"],
 html[data-theme="light"] [class*="bg-\[\#050505\]"],
-html[data-theme="light"] [class*="bg-\[\#050508\]"] {
+html[data-theme="light"] [class*="bg-\[\#050508\]"],
+html[data-theme="light"] [class*="bg-\[\#121217\]"],
+html[data-theme="light"] [class*="bg-\[\#12121a\]"],
+html[data-theme="light"] [class*="bg-\[\#14141e\]"],
+html[data-theme="light"] [class*="bg-\[\#111114\]"],
+html[data-theme="light"] [class*="bg-\[\#111117\]"],
+html[data-theme="light"] [class*="bg-\[\#0b0b10\]"],
+html[data-theme="light"] [class*="bg-\[\#0c0d14\]"],
+html[data-theme="light"] [class*="bg-\[\#08080c\]"],
+html[data-theme="light"] [class*="bg-\[\#09090c\]"],
+html[data-theme="light"] [class*="bg-\[\#090a0d\]"],
+html[data-theme="light"] [class*="bg-\[\#0a0a0f\]"],
+html[data-theme="light"] [class*="bg-\[\#0b0e14\]"],
+html[data-theme="light"] [class*="bg-\[\#0b131a\]"],
+html[data-theme="light"] [class*="bg-\[\#0b1418\]"],
+html[data-theme="light"] [class*="bg-\[\#0b1814\]"],
+html[data-theme="light"] [class*="bg-\[\#0d1217\]"],
+html[data-theme="light"] [class*="bg-\[\#0e0608\]"],
+html[data-theme="light"] [class*="bg-\[\#0e0a16\]"],
+html[data-theme="light"] [class*="bg-\[\#0e0c08\]"],
+html[data-theme="light"] [class*="bg-\[\#0e161c\]"],
+html[data-theme="light"] [class*="bg-\[\#0f1118\]"],
+html[data-theme="light"] [class*="bg-\[\#100b16\]"],
+html[data-theme="light"] [class*="bg-\[\#100d1a\]"],
+html[data-theme="light"] [class*="bg-\[\#120d1c\]"],
+html[data-theme="light"] [class*="bg-\[\#120f08\]"],
+html[data-theme="light"] [class*="bg-\[\#12161b\]"],
+html[data-theme="light"] [class*="bg-\[\#12161c\]"],
+html[data-theme="light"] [class*="bg-\[\#131109\]"],
+html[data-theme="light"] [class*="bg-\[\#140b0b\]"],
+html[data-theme="light"] [class*="bg-\[\#140d0e\]"],
+html[data-theme="light"] [class*="bg-\[\#140e0e\]"],
+html[data-theme="light"] [class*="bg-\[\#140e1c\]"],
+html[data-theme="light"] [class*="bg-\[\#14120a\]"],
+html[data-theme="light"] [class*="bg-\[\#180a0e\]"],
+html[data-theme="light"] [class*="bg-\[\#1a160e\]"],
+html[data-theme="light"] [class*="bg-\[\#1c0e12\]"] {
   background-color: #f4f4f5 !important;
   border-color: #d4d4d8 !important;
   color: #18181b !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
 }
 
 html[data-theme="light"] .theme-card:hover {
   border-color: #71717a !important;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Callout Box Interior Text Styling */
+html[data-theme="light"] [class*="bg-\[\#0e0e14\]"] p,
+html[data-theme="light"] [class*="bg-\[\#111116\]"] p,
+html[data-theme="light"] [class*="bg-\[\#12131a\]"] p,
+html[data-theme="light"] [class*="bg-\[\#0e0e14\]"] span.text-zinc-300,
+html[data-theme="light"] [class*="bg-\[\#111116\]"] span.text-zinc-300,
+html[data-theme="light"] [class*="bg-\[\#12131a\]"] span.text-zinc-300,
+html[data-theme="light"] [class*="bg-\[\#111116\]"] .text-zinc-400,
+html[data-theme="light"] [class*="bg-\[\#12131a\]"] .text-zinc-300 {
+  color: #18181b !important;
+}
+
+/* Challenge Description Box */
+html[data-theme="light"] [class*="bg-\[\#0e0e14\]"] {
+  color: #18181b !important;
+  border-left-color: #71717a !important;
+}
+html[data-theme="light"] [class*="bg-\[\#0e0e14\]"] span[class*="text-zinc-500"],
+html[data-theme="light"] [class*="bg-\[\#0e0e14\]"] span.font-mono {
+  color: #4b5563 !important;
+  font-weight: 700 !important;
+}
+
+/* Guidance Callout Box ("Finding the real system time") */
+html[data-theme="light"] [class*="bg-\[\#111116\]"] {
+  border-left-color: #059669 !important;
+}
+html[data-theme="light"] [class*="bg-\[\#111116\]"] h4,
+html[data-theme="light"] [class*="bg-\[\#111116\]"] [class*="text-emerald"] {
+  color: #047857 !important;
+  font-weight: 700 !important;
+}
+
+/* Result / Explanation Callout Box */
+html[data-theme="light"] [class*="bg-\[\#12131a\]"] {
+  border-color: #cbd5e1 !important;
+}
+html[data-theme="light"] [class*="bg-\[\#12131a\]"] [class*="text-emerald"] {
+  color: #047857 !important;
+  font-weight: 700 !important;
+}
+html[data-theme="light"] [class*="bg-\[\#12131a\]"] [class*="text-cyan"] {
+  color: #0284c7 !important;
+  font-weight: 700 !important;
+}
+
+/* Inline Code Badges in Light Mode */
+html[data-theme="light"] :not(pre) > code,
+html[data-theme="light"] p code,
+html[data-theme="light"] div code:not(pre code) {
+  background-color: #e4e4e7 !important;
+  color: #09090b !important;
+  border: 1px solid #d4d4d8 !important;
+  border-radius: 4px !important;
+  padding: 0.15rem 0.4rem !important;
+  font-weight: 600 !important;
+}
+
+/* ========================================================================= */
+/* TERMINAL WINDOWS, COMMAND BOXES & RAW OUTPUT BLOCKS                       */
+/* ========================================================================= */
+/* Maintain sleek dark developer terminal aesthetic with crisp bright font  */
+
+html[data-theme="light"] [class*="bg-\[\#0b0c10\]"],
+html[data-theme="light"] [class*="bg-\[\#0a0a0e\]"],
+html[data-theme="light"] [class*="bg-black/90"],
+html[data-theme="light"] [class*="bg-black/80"],
+html[data-theme="light"] main pre,
+html[data-theme="light"] article pre,
+html[data-theme="light"] pre {
+  background-color: #121316 !important;
+  border-color: #2e3038 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* CRUCIAL: All text inside <pre> MUST be bright white / light zinc */
+html[data-theme="light"] pre,
+html[data-theme="light"] pre *,
+html[data-theme="light"] pre code,
+html[data-theme="light"] pre code * {
+  color: #f4f4f5 !important;
+  background-color: transparent !important;
+  -webkit-text-fill-color: #f4f4f5 !important;
+}
+
+/* Terminal Header Labels: [ INPUT COMMAND ], [ EXACT RAW OUTPUT ], etc. */
+html[data-theme="light"] [class*="bg-\[\#0b0c10\]"] > span,
+html[data-theme="light"] [class*="bg-black/90"] > span,
+html[data-theme="light"] [class*="bg-black/80"] > span,
+html[data-theme="light"] [class*="bg-\[\#0b0c10\]"] span.text-zinc-500,
+html[data-theme="light"] [class*="bg-black/90"] span.text-zinc-500,
+html[data-theme="light"] [class*="bg-black/80"] span.text-zinc-500,
+html[data-theme="light"] div.font-mono > span.text-zinc-500 {
+  color: #94a3b8 !important;
+  font-weight: 700 !important;
+  -webkit-text-fill-color: #94a3b8 !important;
+}
+
+/* Terminal Input Command text (vol -f soul.mem ...) */
+html[data-theme="light"] [class*="bg-black/90"] span[class*="text-emerald"],
+html[data-theme="light"] [class*="bg-black/80"] span[class*="text-emerald"],
+html[data-theme="light"] [class*="bg-\[\#0b0c10\]"] span[class*="text-emerald"],
+html[data-theme="light"] div.font-mono span[class*="text-emerald"],
+html[data-theme="light"] [class*="bg-black/90"] span[class*="text-cyan"],
+html[data-theme="light"] [class*="bg-black/80"] span[class*="text-cyan"],
+html[data-theme="light"] div.font-mono span[class*="text-cyan"] {
+  color: #34d399 !important;
+  font-weight: 600 !important;
+  -webkit-text-fill-color: #34d399 !important;
+}
+
+/* Expandable code scripts in details */
+html[data-theme="light"] details {
+  background-color: #f4f4f5 !important;
+  border-color: #d4d4d8 !important;
+}
+html[data-theme="light"] details summary {
+  background-color: #e4e4e7 !important;
+  color: #18181b !important;
+  border-bottom: 1px solid #d4d4d8 !important;
+}
+html[data-theme="light"] details summary span[class*="text-emerald"] {
+  color: #047857 !important;
+}
+html[data-theme="light"] details > div:has(pre),
+html[data-theme="light"] details > div[class*="bg-black"] {
+  background-color: #121316 !important;
+  border-color: #2e3038 !important;
+}
+html[data-theme="light"] details > div p {
+  color: #cbd5e1 !important;
 }
 
 /* Navbar & Floating Header in Light Mode */
@@ -451,13 +671,24 @@ html[data-theme="light"] .shadow-\[0_20px_50px_rgba\(0\,0\,0\,0\.9\)\] {
 html[data-theme="light"] .theme-badge,
 html[data-theme="light"] .theme-hero-badge,
 html[data-theme="light"] [class*="animate-glow-pulse"],
-html[data-theme="light"] [class*="bg-black/"],
 html[data-theme="light"] [class*="bg-zinc-900"],
 html[data-theme="light"] [class*="bg-zinc-800"],
 html[data-theme="light"] [class*="bg-\[\#0b101d\]"] {
   background-color: #e4e4e7 !important;
   border-color: #a1a1aa !important;
   color: #09090b !important;
+}
+
+html[data-theme="light"] span.rounded-full[class*="bg-zinc-800"] {
+  background-color: #e4e4e7 !important;
+  color: #047857 !important;
+  border-color: #d4d4d8 !important;
+}
+
+html[data-theme="light"] [class*="bg-emerald-500/"] {
+  background-color: rgba(5, 150, 105, 0.12) !important;
+  color: #047857 !important;
+  border-color: rgba(5, 150, 105, 0.3) !important;
 }
 
 html[data-theme="light"] .theme-hero-badge span,
@@ -519,23 +750,6 @@ html[data-theme="light"] article section[class*="bg-gradient-to-r"] {
   background: radial-gradient(ellipse at center, rgba(var(--accent-rgb), 0.06) 0%, #e4e4e7 80%) !important;
   border-color: #71717a !important;
   box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06) !important;
-}
-
-/* Code Blocks stay clean dark high-contrast terminal for readability */
-html[data-theme="light"] main pre,
-html[data-theme="light"] article pre,
-html[data-theme="light"] main pre.bg-\[\#0a0a0e\],
-html[data-theme="light"] article pre.bg-\[\#0a0a0e\],
-html[data-theme="light"] main pre[class*="bg-"],
-html[data-theme="light"] article pre[class*="bg-"] {
-  background-color: #18181b !important;
-  border-color: #3f3f46 !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
-}
-
-html[data-theme="light"] main pre code,
-html[data-theme="light"] article pre code {
-  color: #f4f4f5 !important;
 }
 
 /* Writeup Metrics Grid & Hero Graphic in Light Mode */
