@@ -23,7 +23,7 @@ export default function Home() {
       points: "8 LABS // 11 FLAGS",
       tagline: "Windows x64 Memory, Paint VAD DIB, RIFF Carving & Algorithmic QR Solvers",
       description: "Dual-track interactive dossier: Windows x64 kernel memory dump analysis (2.77 GB), bottom-up 32bpp DIB Paint carving, reversed speech transcription, and a 5-level escalation of algorithmic QR puzzle constraint solving.",
-      image: "/images/byteme_top3.png",
+      image: "/images/byteme_ctf_banner.jpg",
       tags: ["Volatility 3", "Memory Forensics", "QR Solvers", "PCAP Carving", "Audio Forensics", "Byte Me CTF 2026"],
       time: "8 Writeups",
       includedChallenges: [

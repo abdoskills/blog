@@ -2,6 +2,7 @@ import { Geist, Geist_Mono, Silkscreen, Share_Tech_Mono } from "next/font/google
 import "./globals.css";
 import CyberBackground from "@/components/CyberBackground";
 import ThemeController from "@/components/ThemeController";
+import DynamicTitle from "@/components/DynamicTitle";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,10 +29,9 @@ const shareTech = Share_Tech_Mono({
 export const metadata = {
   metadataBase: new URL("https://www.abdoskills.me"),
   title: {
-    default: "waiting for you",
-    template: "%s | waiting for you",
+    default: "hop in !!",
+    template: "%s | hop in !!",
   },
-  description: "waiting for you",
   keywords: [
     "abdoskills",
     "abdo skills",
@@ -58,7 +58,6 @@ export const metadata = {
   },
   openGraph: {
     title: "waiting for you",
-    description: "waiting for you",
     url: "https://www.abdoskills.me",
     siteName: "waiting for you",
     images: [
@@ -75,7 +74,6 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "waiting for you",
-    description: "waiting for you",
     images: ["/images/waiting_for_you.jpg"],
     creator: "@abdoskills",
   },
@@ -134,6 +132,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="min-h-full flex flex-col relative transition-colors duration-300">
+        <DynamicTitle />
         <CyberBackground />
         <div className="relative z-10 flex flex-col flex-grow">
           {children}
