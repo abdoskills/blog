@@ -200,7 +200,7 @@ export default function CVPage() {
                 </h2>
               </div>
               <p className="text-xs sm:text-[13px] leading-relaxed text-zinc-800 text-justify">
-                Hands-on Junior Cyber Security Specialist specializing in Digital Forensics, Incident Response (DFIR), and Threat Hunting. Experienced in dissecting complex attack lifecycles across Windows and Linux environments by correlating volatile memory dumps, raw disk artifacts, network traffic (TCP/IP), and Windows Event Logs. Proven ability to identify in-memory credential theft (LSASS dumping), detect rootkit persistence in offline registry hives, and uncover fileless WMI malware. Adept at using enterprise forensics tooling (Volatility 3, KAPE, Sysinternals, Eric Zimmerman Tools) and authoring reproducible forensic walkthroughs.
+                Digital Forensics &amp; Incident Response (DFIR) practitioner specializing in host artifact deconstruction, volatile memory analysis, and multi-stage attack lifecycle reconstruction across Windows and Linux environments. Proven track record tracking adversary tradecraft—correlating volatile RAM (Volatility 3), NTFS filesystem telemetry ($MFT/Prefetch), and Sysmon event pipelines to expose in-memory credential harvesting, fileless WMI persistence, and stealth rootkits. Author of 25+ reproducible forensic investigations with an emphasis on automating triage workflows in Python.
               </p>
             </div>
 
@@ -376,7 +376,7 @@ export default function CVPage() {
                 <span>01.</span> Executive Summary
               </h2>
               <p className="text-xs md:text-sm text-zinc-300 leading-relaxed">
-                Hands-on Junior Cyber Security Specialist specializing in Digital Forensics, Incident Response (DFIR), and Threat Hunting. Experienced in dissecting complex attack chains across Windows and Linux environments by correlating volatile memory dumps, raw disk artifacts, network traffic (TCP/IP), and Windows Event Logs. Proven ability to identify credential theft (LSASS dumping), detect rootkit persistence in offline registry hives, and uncover fileless WMI malware.
+                Digital Forensics &amp; Incident Response (DFIR) practitioner specializing in host artifact deconstruction, volatile memory analysis, and multi-stage attack lifecycle reconstruction across Windows and Linux environments. Proven track record tracking adversary tradecraft—correlating volatile RAM (Volatility 3), NTFS filesystem telemetry ($MFT/Prefetch), and Sysmon event pipelines to expose in-memory credential harvesting, fileless WMI persistence, and stealth rootkits. Author of 25+ reproducible forensic investigations with an emphasis on automating triage workflows in Python.
               </p>
             </section>
 
