@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
-import CrtCardHeader from "@/components/CrtCardHeader";
 
 export default function ByteMeHub() {
   const tracks = [
@@ -96,13 +95,18 @@ export default function ByteMeHub() {
                 href={track.href}
                 className="group relative bg-[#0e0e13]/90 rounded-2xl flex flex-col border theme-card transition-all duration-500 hover:-translate-y-2 overflow-hidden backdrop-blur-xl min-w-0 shadow-[0_15px_35px_rgba(0,0,0,0.6)] hover:border-zinc-500"
               >
-                {/* CRT Monitor Header */}
-                <CrtCardHeader
-                  platform={track.platform}
-                  category={track.category}
-                  points={track.points}
-                  slug={track.slug}
-                />
+                {/* Track Banner Image */}
+                {track.image && (
+                  <div className="relative w-full h-48 overflow-hidden bg-black/60 border-b border-zinc-800/80">
+                    <Image
+                      src={track.image}
+                      alt={track.title}
+                      width={600}
+                      height={340}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                )}
 
                 <div className="p-5 sm:p-6 flex flex-col flex-grow relative z-20 min-w-0">
                   <div className="flex justify-between items-center mb-2">

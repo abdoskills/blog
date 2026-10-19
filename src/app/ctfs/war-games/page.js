@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
-import CrtCardHeader from "@/components/CrtCardHeader";
 import CopyButton from "@/components/CopyButton";
 
 export default function WarGamesPage() {
@@ -306,12 +305,6 @@ print(f"[+] Final Flag: ASCWG{{{flag_digest}}}")`;
             {/* CHALLENGE 01: THE THRUSHES                                    */}
             {/* ------------------------------------------------------------- */}
             <article id="the-thrushes" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-              <CrtCardHeader
-                platform="ASCWG 2026"
-                category="macOS Forensics"
-                points="HARD"
-                slug="the-thrushes"
-              />
 
               <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -484,12 +477,6 @@ print(f"[+] Final Flag: ASCWG{{{flag_digest}}}")`;
             {/* CHALLENGE 02: SEARCH-DUDE                                     */}
             {/* ------------------------------------------------------------- */}
             <article id="search-dude" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-              <CrtCardHeader
-                platform="ASCWG 2026"
-                category="Windows Forensics"
-                points="MEDIUM"
-                slug="search-dude"
-              />
 
               <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -640,12 +627,6 @@ print(f"[+] Final Flag: ASCWG{{{flag_digest}}}")`;
             {/* CHALLENGE 03: SENSOR CONFESSION                               */}
             {/* ------------------------------------------------------------- */}
             <article id="sensor-confession" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-              <CrtCardHeader
-                platform="ASCWG 2026"
-                category="Network Forensics"
-                points="MEDIUM"
-                slug="sensor-confession"
-              />
 
               <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -782,12 +763,6 @@ print(f"[+] Final Flag: ASCWG{{{flag_digest}}}")`;
             {/* CHALLENGE 04: NIGHTSHADE VENDOR                               */}
             {/* ------------------------------------------------------------- */}
             <article id="nightshade-vendor" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-              <CrtCardHeader
-                platform="ASCWG 2026"
-                category="Blockchain OSINT"
-                points="MEDIUM"
-                slug="nightshade-vendor"
-              />
 
               <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -920,12 +895,6 @@ print(f"[+] Final Flag: ASCWG{{{flag_digest}}}")`;
             {/* CHALLENGE 05: CASCADED FALLACY                                */}
             {/* ------------------------------------------------------------- */}
             <article id="cascaded-fallacy" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-              <CrtCardHeader
-                platform="ASCWG 2026"
-                category="Smart Contracts"
-                points="500 PTS"
-                slug="cascaded-fallacy"
-              />
 
               <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -1039,12 +1008,6 @@ print(f"[+] Final Flag: ASCWG{{{flag_digest}}}")`;
             {/* CHALLENGE 06: CRYPTO SUITE                                    */}
             {/* ------------------------------------------------------------- */}
             <article id="crypto-suite" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-              <CrtCardHeader
-                platform="ASCWG 2026"
-                category="Cryptography"
-                points="450 PTS"
-                slug="crypto-suite"
-              />
 
               <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -1140,12 +1103,6 @@ print(f"[+] Final Flag: ASCWG{{{flag_digest}}}")`;
             {/* CHALLENGE 07: SOL-NET NODE                                    */}
             {/* ------------------------------------------------------------- */}
             <article id="sol-net" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-              <CrtCardHeader
-                platform="ASCWG 2026"
-                category="Web Security"
-                points="350 PTS"
-                slug="sol-net"
-              />
 
               <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">

@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
-import CrtCardHeader from "@/components/CrtCardHeader";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -490,13 +490,18 @@ export default function Home() {
                     {/* Vintage CRT Phosphor Top Glow Line */}
                     <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-30 pointer-events-none" />
 
-                    {/* CRT Monitor Header with Oscilloscope Waveform & Telemetry */}
-                    <CrtCardHeader 
-                      platform={c.platform}
-                      category={c.category}
-                      points={c.points}
-                      slug={c.slug}
-                    />
+                    {/* Banner Image */}
+                    {c.image ? (
+                      <div className="relative w-full h-44 sm:h-48 overflow-hidden bg-black/60 border-b border-zinc-800/80">
+                        <Image
+                          src={c.image}
+                          alt={c.title}
+                          width={600}
+                          height={340}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
+                    ) : null}
                     
                     {/* Card Body */}
                     <div className="p-5 sm:p-6 flex flex-col flex-grow text-left">

@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
-import CrtCardHeader from "@/components/CrtCardHeader";
 import CopyButton from "@/components/CopyButton";
 
 export default function ByteMeMissionsPage() {
@@ -206,12 +205,6 @@ export default function ByteMeMissionsPage() {
             {/* LEVEL 0: FIRST FRAGMENT                                       */}
             {/* ------------------------------------------------------------- */}
             <article id="level-0" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-              <CrtCardHeader
-                platform="Byte Me CTF 2026"
-                category="Misc / QR Forensics"
-                points="100 PTS"
-                slug="level-0-first-fragment"
-              />
 
               <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -374,12 +367,6 @@ print(f"[+] Decoded Flag: {flag}")
             {/* LEVEL 1: SHATTERED MEMORIES                                   */}
             {/* ------------------------------------------------------------- */}
             <article id="level-1" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-              <CrtCardHeader
-                platform="Byte Me CTF 2026"
-                category="Misc / QR Forensics"
-                points="200 PTS"
-                slug="level-1-shattered-memories"
-              />
 
               <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -519,12 +506,6 @@ print(f"[+] Decoded Flag: {flag}")
             {/* LEVEL 2: FALSE SOULS                                          */}
             {/* ------------------------------------------------------------- */}
             <article id="level-2" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-              <CrtCardHeader
-                platform="Byte Me CTF 2026"
-                category="Backtracking / Impostors"
-                points="300 PTS"
-                slug="level-2-false-souls"
-              />
 
               <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -664,12 +645,6 @@ print(f"[+] Decoded Flag: {flag}")
             {/* LEVEL 3: LOST EDGE                                            */}
             {/* ------------------------------------------------------------- */}
             <article id="level-3" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-              <CrtCardHeader
-                platform="Byte Me CTF 2026"
-                category="Meta-Grid / Super-Tiles"
-                points="400 PTS"
-                slug="level-3-lost-edge"
-              />
 
               <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -803,12 +778,6 @@ print(f"[+] Decoded Flag: {flag}")
             {/* LEVEL 4: JUDGMENT OF VORMIR                                   */}
             {/* ------------------------------------------------------------- */}
             <article id="level-4" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-              <CrtCardHeader
-                platform="Byte Me CTF 2026"
-                category="Constraint Satisfaction / MRV"
-                points="500 PTS"
-                slug="level-4-judgment-of-vormir"
-              />
 
               <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -924,12 +893,6 @@ layout = {
             {/* OSINT: VORMIR'S HIDDEN WITNESS                                */}
             {/* ------------------------------------------------------------- */}
             <article id="osint-witness" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-              <CrtCardHeader
-                platform="Byte Me CTF 2026"
-                category="OSINT / Recon"
-                points="RECON INTEL"
-                slug="osint-hidden-witness"
-              />
 
               <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">

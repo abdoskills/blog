@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
-import CrtCardHeader from "@/components/CrtCardHeader";
 import CopyButton from "@/components/CopyButton";
 
 export default function SunshinePage() {
@@ -380,12 +379,6 @@ while True:
             {/* CHALLENGE 01: WELCOME CALL!                                   */}
             {/* ------------------------------------------------------------- */}
             <article id="sunshine-welcome-call" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-              <CrtCardHeader
-                platform="SunshineCTF 2026"
-                category="Network Forensics"
-                points="100 PTS"
-                slug="sunshine-welcome-call"
-              />
 
               <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -458,12 +451,6 @@ while True:
             {/* CHALLENGE 02: U CUT ME OFF                                    */}
             {/* ------------------------------------------------------------- */}
             <article id="sunshine-u-cut-me-off" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-              <CrtCardHeader
-                platform="SunshineCTF 2026"
-                category="Steganography"
-                points="150 PTS"
-                slug="sunshine-u-cut-me-off"
-              />
 
               <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -552,12 +539,6 @@ while True:
             {/* CHALLENGE 03: SUNTRAIL                                        */}
             {/* ------------------------------------------------------------- */}
             <article id="sunshine-suntrail" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-              <CrtCardHeader
-                platform="SunshineCTF 2026"
-                category="Forensics"
-                points="250 PTS"
-                slug="sunshine-suntrail"
-              />
 
               <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -667,12 +648,6 @@ while True:
             {/* CHALLENGE 04: NAS COAL                                        */}
             {/* ------------------------------------------------------------- */}
             <article id="sunshine-nas-coal" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-              <CrtCardHeader
-                platform="SunshineCTF 2026"
-                category="Forensics"
-                points="425 PTS"
-                slug="sunshine-nas-coal"
-              />
 
               <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -739,12 +714,6 @@ while True:
             {/* CHALLENGE 05: MY EYES BURN                                    */}
             {/* ------------------------------------------------------------- */}
             <article id="sunshine-my-eyes-burn" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-              <CrtCardHeader
-                platform="SunshineCTF 2026"
-                category="Forensics"
-                points="300 PTS"
-                slug="sunshine-my-eyes-burn"
-              />
 
               <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">

@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
-import CrtCardHeader from "@/components/CrtCardHeader";
 import CopyButton from "@/components/CopyButton";
 
 export default function ByteMeForensicsPage() {
@@ -165,12 +164,6 @@ export default function ByteMeForensicsPage() {
             {/* CHALLENGE 01: ECHOES OF VORMIR                                */}
             {/* ------------------------------------------------------------- */}
             <article id="echoes-of-vormir" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-              <CrtCardHeader
-                platform="Byte Me CTF 2026"
-                category="Memory Forensics"
-                points="500 PTS"
-                slug="echoes-of-vormir"
-              />
 
               <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -839,12 +832,6 @@ Well done, traveler.`}</pre>
             {/* CHALLENGE 02: SACRIFICE                                       */}
             {/* ------------------------------------------------------------- */}
             <article id="sacrifice" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-              <CrtCardHeader
-                platform="Byte Me CTF 2026"
-                category="Network Forensics"
-                points="200 PTS"
-                slug="sacrifice"
-              />
 
               <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -1064,12 +1051,6 @@ def solve_sacrifice_challenge(carved_jpeg_bytes):
             {/* CHALLENGE 03: THE LAST MEMORY OF VORMIR                       */}
             {/* ------------------------------------------------------------- */}
             <article id="the-last-memory-of-vormir" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-              <CrtCardHeader
-                platform="Byte Me CTF 2026"
-                category="Audio Forensics"
-                points="300 PTS"
-                slug="the-last-memory-of-vormir"
-              />
 
               <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">

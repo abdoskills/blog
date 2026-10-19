@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
-import CrtCardHeader from "@/components/CrtCardHeader";
 import CopyButton from "@/components/CopyButton";
 
 export default function DeadfacePage() {
@@ -437,7 +436,6 @@ export default function DeadfacePage() {
 
               {/* Challenge 1: Bad Guys Be Bad */}
               <article id="bad-guys-be-bad" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl space-y-6">
-                <CrtCardHeader platform="DEADFACE CTF" category="Traffic Analysis / PCAP" points="100 PTS" slug="bad-guys-be-bad" />
                 
                 <div className="border-b border-zinc-800/80 pb-4">
                   <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -496,7 +494,6 @@ export default function DeadfacePage() {
 
               {/* Challenge 2: Data Go Brrrrr */}
               <article id="data-go-brrrrr" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl space-y-6">
-                <CrtCardHeader platform="DEADFACE CTF" category="Traffic Analysis / Covert Exfil" points="150 PTS" slug="data-go-brrrrr" />
                 
                 <div className="border-b border-zinc-800/80 pb-4">
                   <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -560,7 +557,6 @@ export default function DeadfacePage() {
 
               {/* Challenge 3: Don't Leave Me Hanging */}
               <article id="dont-leave-me-hanging" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl space-y-6">
-                <CrtCardHeader platform="DEADFACE CTF" category="Traffic Analysis / VoIP & Audio" points="250 PTS" slug="dont-leave-me-hanging" />
                 
                 <div className="border-b border-zinc-800/80 pb-4">
                   <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -659,7 +655,6 @@ export default function DeadfacePage() {
 
               {/* Challenge 4: A Pirate's Life for Me Part 1 */}
               <article id="pirates-life-part-1" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl space-y-6">
-                <CrtCardHeader platform="DEADFACE CTF" category="Traffic Analysis / Web Traffic" points="200 PTS" slug="pirates-life-part-1" />
                 
                 <div className="border-b border-zinc-800/80 pb-4">
                   <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -759,7 +754,6 @@ export default function DeadfacePage() {
 
               {/* Challenge 5: Who Goes There? */}
               <article id="who-goes-there" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl space-y-6">
-                <CrtCardHeader platform="DEADFACE CTF" category="Memory Forensics (Volatility 3)" points="400 PTS" slug="who-goes-there" />
                 
                 <div className="border-b border-zinc-800/80 pb-4">
                   <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -848,7 +842,6 @@ export default function DeadfacePage() {
 
               {/* Challenge 6: Hooked */}
               <article id="hooked" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl space-y-6">
-                <CrtCardHeader platform="DEADFACE CTF" category="Digital Forensics / Browser Forensics" points="200 PTS" slug="hooked" />
                 
                 <div className="border-b border-zinc-800/80 pb-4">
                   <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -946,7 +939,6 @@ FROM urls ORDER BY id ASC;</code></pre>
 
               {/* Challenge 7: File Dump 01 */}
               <article id="file-dump-01" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl space-y-6">
-                <CrtCardHeader platform="DEADFACE CTF" category="Digital Forensics / Artifact Inspection & OSINT" points="250 PTS" slug="file-dump-01" />
                 
                 <div className="border-b border-zinc-800/80 pb-4">
                   <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -1066,7 +1058,6 @@ FROM urls ORDER BY id ASC;</code></pre>
 
               {/* Challenge 8: Art Heist - The Forgery */}
               <article id="art-heist-forgery" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl space-y-6">
-                <CrtCardHeader platform="DEADFACE CTF" category="Digital Forensics / Steganography" points="200 PTS" slug="art-heist-forgery" />
                 
                 <div className="border-b border-zinc-800/80 pb-4">
                   <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -1414,7 +1405,6 @@ WHERE altered_score IS NOT NULL;`}</code></pre>
 
               {/* Challenge 17: Ghost of Squares Past */}
               <article id="ghost-of-squares-past" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl space-y-6">
-                <CrtCardHeader platform="DEADFACE CTF" category="OSINT / Historical Geolocation" points="300 PTS" slug="ghost-of-squares-past" />
                 
                 <div className="border-b border-zinc-800/80 pb-4">
                   <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -1551,7 +1541,6 @@ WHERE altered_score IS NOT NULL;`}</code></pre>
 
               {/* Challenge 18: Traffic Accident / Commercial Crash */}
               <article id="traffic-accident" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl space-y-6">
-                <CrtCardHeader platform="DEADFACE CTF" category="OSINT / Vehicle Forensics" points="150 PTS" slug="traffic-accident" />
                 
                 <div className="border-b border-zinc-800/80 pb-4">
                   <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -1653,7 +1642,6 @@ WHERE altered_score IS NOT NULL;`}</code></pre>
 
               {/* Challenge 19: Conduct Unbecoming */}
               <article id="conduct-unbecoming" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl space-y-6">
-                <CrtCardHeader platform="DEADFACE CTF" category="Document & Printer Forensics" points="200 PTS" slug="conduct-unbecoming" />
                 
                 <div className="border-b border-zinc-800/80 pb-4">
                   <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -1726,7 +1714,6 @@ WHERE altered_score IS NOT NULL;`}</code></pre>
 
               {/* Challenge 20: Bedside Manner */}
               <article id="bedside-manner" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl space-y-6">
-                <CrtCardHeader platform="DEADFACE CTF" category="Hardware / Medical Telemetry" points="200 PTS" slug="bedside-manner" />
                 
                 <div className="border-b border-zinc-800/80 pb-4">
                   <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -1778,7 +1765,6 @@ WHERE altered_score IS NOT NULL;`}</code></pre>
 
               {/* Challenge 21: Exfiltration */}
               <article id="exfiltration" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl space-y-6">
-                <CrtCardHeader platform="DEADFACE CTF" category="Steganography / Metadata & Timing Forensics" points="250 PTS" slug="exfiltration" />
                 
                 <div className="border-b border-zinc-800/80 pb-4">
                   <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -1891,7 +1877,6 @@ Flag: deadface&#123;timing-is-everything&#125;</code></pre>
               </div>
 
               <article id="uninvited-guest" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl space-y-6">
-                <CrtCardHeader platform="DEADFACE CTF" category="Network Forensics / SMB Poisoning" points="500 PTS" slug="uninvited-guest" />
                 
                 {/* Challenge Download Bar */}
                 <div className="bg-[#111116] border border-zinc-800 p-3.5 rounded-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">

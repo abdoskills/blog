@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
-import CrtCardHeader from "@/components/CrtCardHeader";
 import CopyButton from "@/components/CopyButton";
 
 export default function KasperskyPage() {
@@ -304,12 +303,6 @@ if __name__ == "__main__":
             {/* CHALLENGE 01: PING PONG SHOW                                  */}
             {/* ------------------------------------------------------------- */}
             <article id="kaspersky-ping-pong-show" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-              <CrtCardHeader
-                platform="Kaspersky CTF 2026"
-                category="Memory Forensics"
-                points="500 PTS"
-                slug="kaspersky-ping-pong-show"
-              />
 
               <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -434,12 +427,6 @@ if __name__ == "__main__":
             {/* CHALLENGE 02: RYAN GUZLING                                    */}
             {/* ------------------------------------------------------------- */}
             <article id="kaspersky-ryan-guzling" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-              <CrtCardHeader
-                platform="Kaspersky CTF 2026"
-                category="macOS DFIR"
-                points="500 PTS"
-                slug="kaspersky-ryan-guzling"
-              />
 
               <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -552,12 +539,6 @@ if __name__ == "__main__":
             {/* CHALLENGE 03: TIME TO INSTALL ARCH                            */}
             {/* ------------------------------------------------------------- */}
             <article id="kaspersky-time-to-install-arch" className="scroll-mt-24 bg-[#0a0a0f]/90 border border-zinc-800 rounded-3xl p-6 sm:p-8 backdrop-blur-xl relative overflow-hidden shadow-2xl">
-              <CrtCardHeader
-                platform="Kaspersky CTF 2026"
-                category="Network Forensics"
-                points="500 PTS"
-                slug="kaspersky-time-to-install-arch"
-              />
 
               <div className="mt-6 border-b border-zinc-800/80 pb-6 mb-6">
                 <div className="flex flex-wrap items-center gap-2 mb-3">

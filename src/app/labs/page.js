@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
-import CrtCardHeader from "@/components/CrtCardHeader";
 
 export default function ThreatLabsHub() {
   const challenges = [
@@ -101,13 +100,18 @@ export default function ThreatLabsHub() {
                 href={`/posts/${c.slug}`} 
                 className="group relative bg-[#0e0e13]/90 rounded-2xl flex flex-col border theme-card transition-all duration-500 hover:-translate-y-1.5 overflow-hidden backdrop-blur-xl min-w-0"
               >
-                {/* CRT Monitor Header with Oscilloscope Waveform & Telemetry */}
-                <CrtCardHeader 
-                  platform={c.platform || "THREAT LABS"}
-                  category={c.category || "INVESTIGATION"}
-                  points={c.points || "ADVANCED"}
-                  slug={c.slug}
-                />
+                {/* Challenge Banner Image */}
+                {c.image && (
+                  <div className="relative w-full h-44 overflow-hidden bg-black/60 border-b border-zinc-800/80">
+                    <Image
+                      src={c.image}
+                      alt={c.title}
+                      width={600}
+                      height={340}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                )}
                 
                 <div className="p-4 sm:p-5 flex flex-col flex-grow relative z-20 min-w-0">
                   <div className="flex justify-between items-center mb-2 min-w-0">
