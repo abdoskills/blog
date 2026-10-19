@@ -12,6 +12,20 @@ export default function CtfsHub() {
   const [selectedCategory, setSelectedCategory] = useState("ALL");
 
   const challenges = [
+    // --- DEADFACE CTF 2026 ---
+    {
+      title: "DEADFACE CTF: Complete Operational Dossier",
+      slug: "deadface",
+      href: "/ctfs/deadface",
+      platform: "DEADFACE CTF",
+      category: "Multi-Track CTF",
+      points: "15 LABS // 25 FLAGS",
+      tagline: "Network PCAP, Memory Dumps, Chrome History, MySQL & OSINT",
+      description: "Comprehensive operational dossier: Wireshark C2/ICMP/VoIP exfiltration, Volatility 3 memory triage, Chrome SQLite phishing link reconstruction, Aurora Health SQL queries, Savannah compass OSINT, and LLMNR/SMB poisoning.",
+      image: "/images/deadface_ctf_banner.jpg",
+      tags: ["DEADFACE CTF", "Volatility 3", "PCAP Forensics", "SQLite Chrome", "SQL Injection / MySQL", "OSINT", "LLMNR / SMB"],
+      time: "21 Writeups"
+    },
     // --- Byte Me CTF 2026 (PCCOE) ---
     {
       title: "Byte Me CTF 2026: Vormir Expedition",
@@ -680,7 +694,7 @@ export default function CtfsHub() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-10 text-center">
           <div className="mb-3 inline-flex max-w-full items-center justify-center">
             <span className="font-mono text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-[0.3em] text-center font-bold text-zinc-400">
-              BYTE ME CTF • SUNSHINECTF • KASPERSKY • ASCWG • PICOCTF • CYBER WARGAMES
+              DEADFACE CTF • BYTE ME CTF • SUNSHINECTF • KASPERSKY • ASCWG • PICOCTF
               <span className="animate-blink inline-block w-1.5 h-3 ml-2 align-middle bg-current"></span>
             </span>
           </div>

@@ -15,6 +15,31 @@ export default function Home() {
   // High-Level CTF Competitions & Tactical Dossiers (Only CTFs on Home Page)
   const ctfCompetitions = [
     {
+      title: "DEADFACE CTF: Complete Operational Dossier",
+      slug: "deadface",
+      href: "/ctfs/deadface",
+      platform: "DEADFACE CTF",
+      category: "Special Dossier",
+      points: "15 LABS // 25 FLAGS",
+      tagline: "Network PCAP, Memory Dumps, Chrome History, MySQL & OSINT",
+      description: "Comprehensive operational dossier across Wireshark HTTP/ICMP/VoIP exfiltration, Volatility 3 kernel memory dumps, Chrome SQLite phishing link reconstruction, Aurora Health SQL queries, Savannah compass OSINT, and LLMNR/SMB poisoning.",
+      image: "/images/deadface_ctf_banner.jpg",
+      tags: ["DEADFACE CTF", "Volatility 3", "PCAP Forensics", "SQLite Chrome", "MySQL Forensics", "OSINT", "LLMNR / SMB"],
+      time: "21 Writeups",
+      includedChallenges: [
+        "Bad Guys Be Bad & Data Go Brrrrr",
+        "Don't Leave Me Hanging (VoIP/IVR)",
+        "A Pirate's Life for Me Part 1",
+        "Who Goes There? (Volatility 3)",
+        "Hooked (Chrome History SQLite)",
+        "File Dump 01 (OpenXML Threat Intel)",
+        "Art Heist - The Forgery",
+        "Aurora Health MySQL Suite (8 Ops)",
+        "Ghost of Squares Past (Savannah OSINT)",
+        "Uninvited Guest (SMB Poisoning Series)"
+      ]
+    },
+    {
       title: "Byte Me CTF 2026: Vormir Expedition",
       slug: "byte-me",
       href: "/ctfs/byte-me",
