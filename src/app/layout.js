@@ -57,15 +57,15 @@ export const metadata = {
     canonical: "https://www.abdoskills.me",
   },
   openGraph: {
-    title: "waiting for you",
+    title: "hop in !!",
     url: "https://www.abdoskills.me",
-    siteName: "waiting for you",
+    siteName: "abdoskills",
     images: [
       {
         url: "/images/waiting_for_you.jpg",
         width: 1200,
         height: 630,
-        alt: "waiting for you",
+        alt: "hop in !!",
       },
     ],
     locale: "en_US",
@@ -73,7 +73,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "waiting for you",
+    title: "hop in !!",
     images: ["/images/waiting_for_you.jpg"],
     creator: "@abdoskills",
   },
