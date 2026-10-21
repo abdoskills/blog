@@ -17,20 +17,6 @@ export default function ThreatLabsHub() {
       image: "/images/cyberdefenders/cyberdefenders_banner.png",
       tags: ["CyberDefenders", "Network Forensics", "ActiveMQ RCE", "CVE-2023-46604", "Wireshark", "Threat Hunting"],
       time: "1 Lab Available"
-    },
-    {
-      title: "ARCHIVED LABS",
-      slug: "archive",
-      href: "/labs/archive",
-      platform: "Legacy Threat Archive",
-      category: "Archived Investigations",
-      points: "4 ARCHIVED LABS",
-      badgeColor: "amber",
-      tagline: "Legacy DFIR, Memory Forensics & Reverse Engineering",
-      description: "Preserved historical technical writeups including Windows 10 RAM PoolParty triage, Apple CoreStorage Fusion Drive recovery, TLS GREASE covert channels, and Phobos ransomware reversing.",
-      image: "/images/phobos_thumbnail.jpg",
-      tags: ["Archive", "Phobos Ransomware", "Memory Forensics", "CoreStorage", "TLS GREASE", "Ghidra"],
-      time: "4 Preserved Guides"
     }
   ];
 
@@ -46,7 +32,7 @@ export default function ThreatLabsHub() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-12 sm:mb-14 text-center">
           <div className="mb-4 inline-flex max-w-full bg-[#111111]/80 backdrop-blur-md border border-emerald-500/40 px-3 sm:px-4 py-1.5 rounded-full animate-glow-pulse">
             <span className="font-mono text-[10px] sm:text-xs text-emerald-400 uppercase tracking-wider sm:tracking-[0.3em] break-words">
-              CYBERDEFENDERS • BLUE TEAM LABS • THREAT ARCHIVE
+              CYBERDEFENDERS • BLUE TEAM LABS • THREAT HUNTING
               <span className="animate-blink inline-block w-1.5 h-3 bg-emerald-400 ml-2 align-middle"></span>
             </span>
           </div>
@@ -62,19 +48,18 @@ export default function ThreatLabsHub() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-8 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 px-3 py-1 rounded-lg font-mono text-xs font-bold uppercase tracking-wider">
-              Lab Tracks
+              Lab Platforms
             </span>
             <h2 className="text-lg sm:text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
-              Investigation Tracks ({labCategories.length})
+              Available Platforms ({labCategories.length})
             </h2>
           </div>
-          <span className="text-xs font-mono text-zinc-500">Active &amp; Archived</span>
+          <span className="text-xs font-mono text-zinc-500">1 Platform</span>
         </div>
 
         {/* Platform Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto px-4 sm:px-6 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 sm:px-6 w-full">
           {labCategories.map((c) => {
-            const isEmerald = c.badgeColor === "emerald";
             return (
               <Link 
                 key={c.slug}
@@ -99,11 +84,7 @@ export default function ThreatLabsHub() {
                     <span className="font-mono text-[11px] text-zinc-400 uppercase tracking-wider truncate">
                       {c.tagline}
                     </span>
-                    <span className={`text-[10px] font-mono px-2 py-0.5 rounded font-bold whitespace-nowrap ${
-                      isEmerald 
-                        ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/30"
-                        : "bg-amber-500/10 text-amber-400 border border-amber-500/30"
-                    }`}>
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded font-bold whitespace-nowrap bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
                       {c.points}
                     </span>
                   </div>
@@ -129,7 +110,7 @@ export default function ThreatLabsHub() {
                   <div className="flex justify-between items-center text-[11px] font-mono text-zinc-500 pt-1">
                     <span>{c.time}</span>
                     <span className="theme-cta font-bold flex items-center gap-1 transition-colors">
-                      {isEmerald ? "Open Platform" : "Browse Archive"} <span className="transform transition-transform group-hover:translate-x-1">→</span>
+                      Open Platform <span className="transform transition-transform group-hover:translate-x-1">→</span>
                     </span>
                   </div>
                 </div>
