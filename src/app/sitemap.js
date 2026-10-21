@@ -5,6 +5,8 @@ export default function sitemap() {
     "",
     "/ctfs",
     "/labs",
+    "/labs/cyberdefenders",
+    "/labs/cyberdefenders/openwire",
     "/about",
     "/cv",
     "/posts/kaspersky-ping-pong-show",

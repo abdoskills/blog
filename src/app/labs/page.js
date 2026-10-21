@@ -3,54 +3,19 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 
 export default function ThreatLabsHub() {
-  const challenges = [
+  const labCategories = [
     {
-      title: "Ping Pong Show",
-      slug: "kaspersky-ping-pong-show",
-      platform: "Kaspersky CTF",
-      category: "Memory Forensics",
-      points: "500 PTS",
-      tagline: "PoolParty & Havoc Demon Reversing",
-      description: "Investigating a 4.5 GB Windows 10 RAM dump. Carving Outlook phishing attachments, reversing PoolParty ThreadPool injection into Acrobat, and decrypting Havoc Demon C2 traffic.",
-      image: "/images/kaspersky_ping_pong_show.jpg",
-      tags: ["Volatility 3", "PoolParty", "Havoc Demon", "AES-CTR", "Outlook MPFS"],
-      time: "10 min read"
-    },
-    {
-      title: "Ryan Guzling",
-      slug: "kaspersky-ryan-guzling",
-      platform: "Kaspersky CTF",
-      category: "macOS DFIR",
-      points: "500 PTS",
-      tagline: "CoreStorage Fusion Drive & FileVault",
-      description: "Reassembling an Apple CoreStorage Fusion Drive split across SSD and HDD images. Carving an HFS+ trash volume to recover the FileVault recovery key and unlock the volume.",
-      image: "/images/kaspersky_ryan_guzling.jpg",
-      tags: ["CoreStorage", "FileVault", "HFS+", "SleuthKit", "hdiutil"],
-      time: "8 min read"
-    },
-    {
-      title: "Time to Install Arch",
-      slug: "kaspersky-time-to-install-arch",
-      platform: "Kaspersky CTF",
-      category: "Network Forensics",
-      points: "500 PTS",
-      tagline: "TLS GREASE Covert Channel & DLL Sideloading",
-      description: "Forensic analysis of a Windows Server 2016 VMDK and PCAP. Spotting GAC DLL sideloading, decoding a covert channel inside TLS GREASE 0x0a0a extensions, and ChaCha20 decryption.",
-      image: "/images/kaspersky_time_to_install_arch.jpg",
-      tags: ["Wireshark", "DLL Sideloading", "TLS GREASE", "ChaCha20", "tshark"],
-      time: "9 min read"
-    },
-    {
-      title: "Phobos Ransomware Analysis",
-      slug: "phobos-ransomware-analysis",
-      platform: "Threat Labs",
-      category: "Reverse Engineering",
-      points: "ADVANCED",
-      tagline: "Unpacking, Decrypting & Threat Intel",
-      description: "Static and dynamic analysis of Phobos ransomware. Decompiling its crypto routine in Ghidra, mapping out persistence keys, and writing custom YARA detection rules.",
-      image: "/images/phobos_thumbnail.jpg",
-      tags: ["Ghidra", "Ransomware DFIR", "x64dbg", "Threat Intel", "YARA"],
-      time: "12 min read"
+      title: "CYBER DEFENDERS",
+      slug: "cyberdefenders",
+      href: "/labs/cyberdefenders",
+      platform: "CyberDefenders",
+      category: "Threat Defense & SOC",
+      points: "1 LAB // 8 QUESTIONS",
+      tagline: "Network Forensics & Threat Hunting Scenarios",
+      description: "Hands-on threat analysis and network forensics scenarios simulating real-world security incidents. From Apache ActiveMQ RCE (CVE-2023-46604) and PCAP stream triage to memory dumps and malware artifact analysis.",
+      image: "/images/cyber_defense_labs.jpg",
+      tags: ["CyberDefenders", "Network Forensics", "ActiveMQ RCE", "CVE-2023-46604", "Wireshark", "Threat Hunting"],
+      time: "1 Operation Available"
     }
   ];
 
@@ -66,7 +31,7 @@ export default function ThreatLabsHub() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-12 sm:mb-14 text-center">
           <div className="mb-4 inline-flex max-w-full bg-[#111111]/80 backdrop-blur-md border border-emerald-500/40 px-3 sm:px-4 py-1.5 rounded-full animate-glow-pulse">
             <span className="font-mono text-[10px] sm:text-xs text-emerald-400 uppercase tracking-wider sm:tracking-[0.3em] break-words">
-              KASPERSKY CTF • CYBERDEFENDERS • BLUE TEAM LABS
+              CYBERDEFENDERS • BLUE TEAM LABS • THREAT HUNTING
               <span className="animate-blink inline-block w-1.5 h-3 bg-emerald-400 ml-2 align-middle"></span>
             </span>
           </div>
@@ -74,7 +39,7 @@ export default function ThreatLabsHub() {
             DFIR &amp; Threat Labs
           </h1>
           <p className="text-zinc-400 text-sm sm:text-base md:text-lg font-sans max-w-2xl mx-auto leading-relaxed">
-            Hands-on deep dives covering enterprise memory analysis, macOS CoreStorage recovery, TLS covert channel decoding, and malware reverse engineering.
+            Hands-on deep dives covering enterprise network PCAP analysis, malware staging triage, vulnerability reverse engineering, and threat hunting.
           </p>
         </div>
 
@@ -82,25 +47,25 @@ export default function ThreatLabsHub() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-8 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 px-3 py-1 rounded-lg font-mono text-xs font-bold uppercase tracking-wider">
-              Lab Investigations
+              Lab Platforms
             </span>
             <h2 className="text-lg sm:text-xl font-bold text-white font-[family-name:var(--font-share-tech)] uppercase tracking-wider">
-              Published Writeups ({challenges.length})
+              Available Platforms ({labCategories.length})
             </h2>
           </div>
-          <span className="text-xs font-mono text-zinc-500">4 Guides</span>
+          <span className="text-xs font-mono text-zinc-500">1 Platform</span>
         </div>
 
-        {/* Challenge Cards Grid */}
+        {/* Platform Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 sm:px-6 w-full">
-          {challenges.map((c) => {
+          {labCategories.map((c) => {
             return (
               <Link 
                 key={c.slug}
-                href={`/posts/${c.slug}`} 
+                href={c.href} 
                 className="group relative bg-[#0e0e13]/90 rounded-2xl flex flex-col border theme-card transition-all duration-500 hover:-translate-y-1.5 overflow-hidden backdrop-blur-xl min-w-0"
               >
-                {/* Challenge Banner Image */}
+                {/* Banner Image */}
                 {c.image && (
                   <div className="relative w-full h-44 overflow-hidden bg-black/60 border-b border-zinc-800/80">
                     <Image
@@ -117,6 +82,9 @@ export default function ThreatLabsHub() {
                   <div className="flex justify-between items-center mb-2 min-w-0">
                     <span className="font-mono text-[11px] text-zinc-400 uppercase tracking-wider truncate">
                       {c.tagline}
+                    </span>
+                    <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono px-2 py-0.5 rounded font-bold">
+                      {c.points}
                     </span>
                   </div>
 
@@ -141,7 +109,7 @@ export default function ThreatLabsHub() {
                   <div className="flex justify-between items-center text-[11px] font-mono text-zinc-500 pt-1">
                     <span>{c.time}</span>
                     <span className="theme-cta font-bold flex items-center gap-1 transition-colors">
-                      Read Investigation <span className="transform transition-transform group-hover:translate-x-1">→</span>
+                      Open Platform <span className="transform transition-transform group-hover:translate-x-1">→</span>
                     </span>
                   </div>
                 </div>
