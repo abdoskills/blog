@@ -13,7 +13,7 @@ export default function CyberDefendersHub() {
       points: "8 QUESTIONS",
       tagline: "Apache ActiveMQ RCE & OpenWire PCAP Triage",
       description: "Investigating an Apache ActiveMQ exploitation on port 61616. Tracking primary and staging C2 servers, analyzing OpenWire protocol headers, identifying dropped reverse shells, and tracing source code patches.",
-      image: "/images/cyberdefenders/Pasted_image_20261021091036.png",
+      image: "/images/cyberdefenders/openwire_banner.png",
       tags: ["Wireshark", "Network Forensics", "Apache ActiveMQ", "CVE-2023-46604", "OpenWire", "PCAP Analysis"],
       downloadFile: "/files/cyberdefenders/153-OpenWire.zip",
       downloadFileName: "153-OpenWire.zip (2.04 MB)",

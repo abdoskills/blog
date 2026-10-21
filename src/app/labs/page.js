@@ -14,7 +14,7 @@ export default function ThreatLabsHub() {
       badgeColor: "emerald",
       tagline: "Network Forensics & Threat Hunting Scenarios",
       description: "Hands-on threat analysis and network forensics scenarios simulating real-world security incidents. From Apache ActiveMQ RCE (CVE-2023-46604) and PCAP stream triage to memory dumps and malware artifact analysis.",
-      image: "/images/cyber_defense_labs.jpg",
+      image: "/images/cyberdefenders/cyberdefenders_banner.png",
       tags: ["CyberDefenders", "Network Forensics", "ActiveMQ RCE", "CVE-2023-46604", "Wireshark", "Threat Hunting"],
       time: "1 Lab Available"
     },

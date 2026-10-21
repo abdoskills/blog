@@ -6,15 +6,71 @@ import Navbar from "@/components/Navbar";
 import CopyButton from "@/components/CopyButton";
 
 export default function OpenWireLabWriteup() {
-  const questionsNav = [
-    { id: "q1", label: "Q1: C2 IP", answer: "146.190.21.91" },
-    { id: "q2", label: "Q2: Port", answer: "61616" },
-    { id: "q3", label: "Q3: Service", answer: "Apache ActiveMQ" },
-    { id: "q4", label: "Q4: Second C2", answer: "128.199.52.72" },
-    { id: "q5", label: "Q5: Shell Name", answer: "docker" },
-    { id: "q6", label: "Q6: Java Class", answer: "java.lang.ProcessBuilder" },
-    { id: "q7", label: "Q7: CVE", answer: "CVE-2023-46604" },
-    { id: "q8", label: "Q8: Patch Method", answer: "BaseDataStreamMarshaller.createThrowable" },
+  const questionCards = [
+    {
+      id: "q1",
+      num: "01",
+      title: "Primary C2 IP",
+      badge: "146.190.21.91",
+      tagline: "High-volume IPv4 traffic & OpenWire stream analysis",
+      category: "C2 Triage"
+    },
+    {
+      id: "q2",
+      num: "02",
+      title: "Exploited Port",
+      badge: "PORT 61616",
+      tagline: "Wireshark ip.src filter & server destination port",
+      category: "Entry Point"
+    },
+    {
+      id: "q3",
+      num: "03",
+      title: "Vulnerable Service",
+      badge: "Apache ActiveMQ",
+      tagline: "WireFormatInfo ProviderName & VirusTotal report",
+      category: "Service Detection"
+    },
+    {
+      id: "q4",
+      num: "04",
+      title: "Second C2 (Staging)",
+      badge: "128.199.52.72",
+      tagline: "HTTP payload download stream & external IP triage",
+      category: "Staging Server"
+    },
+    {
+      id: "q5",
+      num: "05",
+      title: "Dropped Reverse Shell",
+      badge: "docker",
+      tagline: "Disguised reverse shell dropped to disk via HTTP",
+      category: "Payload Analysis"
+    },
+    {
+      id: "q6",
+      num: "06",
+      title: "Invoked Java Class",
+      badge: "ProcessBuilder",
+      tagline: "XML bean definition command execution class",
+      category: "RCE Exploit"
+    },
+    {
+      id: "q7",
+      num: "07",
+      title: "Vulnerability CVE",
+      badge: "CVE-2023-46604",
+      tagline: "ActiveMQ OpenWire Remote Code Execution flaw ID",
+      category: "Vulnerability"
+    },
+    {
+      id: "q8",
+      num: "08",
+      title: "Vendor Patch Method",
+      badge: "createThrowable",
+      tagline: "BaseDataStreamMarshaller GitHub commit validation",
+      category: "Patch Analysis"
+    },
   ];
 
   return (
@@ -35,6 +91,18 @@ export default function OpenWireLabWriteup() {
             </Link>
             <span className="text-zinc-600">/</span>
             <span className="text-emerald-400 uppercase">OPENWIRE LAB</span>
+          </div>
+
+          {/* Banner Graphic */}
+          <div className="mb-8 rounded-2xl overflow-hidden border border-zinc-800 shadow-2xl bg-black/60">
+            <Image
+              src="/images/cyberdefenders/openwire_banner.png"
+              alt="CyberDefenders OpenWire Lab Banner"
+              width={1200}
+              height={630}
+              priority
+              className="w-full h-auto object-cover"
+            />
           </div>
 
           {/* Header */}
@@ -78,7 +146,7 @@ export default function OpenWireLabWriteup() {
           </div>
 
           {/* Download Artifact Box */}
-          <div className="bg-gradient-to-r from-emerald-950/30 to-[#0e0e13] border border-emerald-500/30 rounded-2xl p-5 sm:p-6 mb-10 shadow-lg">
+          <div className="bg-gradient-to-r from-emerald-950/30 to-[#0e0e13] border border-emerald-500/30 rounded-2xl p-5 sm:p-6 mb-4 shadow-lg">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <span className="text-xs font-mono uppercase text-emerald-400 tracking-wider font-bold">
@@ -104,19 +172,69 @@ export default function OpenWireLabWriteup() {
             </div>
           </div>
 
-          {/* Quick Jump Pills */}
-          <div className="mb-10 p-4 rounded-xl bg-[#0e0e13]/80 border border-zinc-800">
-            <span className="text-xs font-mono uppercase text-zinc-400 block mb-2 font-bold">
-              Quick Jump (8 Questions):
-            </span>
-            <div className="flex flex-wrap gap-2">
-              {questionsNav.map((q) => (
+          {/* Official Lab Reference Box */}
+          <div className="bg-[#0e0e13]/90 border border-zinc-800 rounded-xl p-4 mb-10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono">
+            <div className="flex items-center gap-2.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <div>
+                <span className="text-zinc-400">Official Lab Reference: </span>
+                <span className="text-white font-bold">CyberDefenders — OpenWire (Lab #153)</span>
+              </div>
+            </div>
+            <a
+              href="https://cyberdefenders.org/blueteam-ctf-challenges/openwire/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:text-emerald-300 font-mono transition-colors shrink-0"
+            >
+              <span>Open on CyberDefenders.org</span>
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+
+          {/* Question Selection Cards Grid */}
+          <div className="mb-12">
+            <div className="flex items-center justify-between mb-4 pb-2 border-b border-zinc-800">
+              <div className="flex items-center gap-2">
+                <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2.5 py-0.5 rounded text-xs font-mono font-bold uppercase">
+                  Question Triage Grid
+                </span>
+                <span className="text-zinc-400 text-xs font-mono hidden sm:inline">
+                  Select a question card to jump to investigation
+                </span>
+              </div>
+              <span className="text-xs font-mono text-zinc-500">8 Solved Questions</span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+              {questionCards.map((q) => (
                 <a
                   key={q.id}
                   href={`#${q.id}`}
-                  className="px-2.5 py-1 rounded bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 text-xs font-mono text-zinc-300 transition-colors"
+                  className="group relative bg-[#0e0e13]/90 hover:bg-[#12131a] rounded-xl p-3.5 border border-zinc-800/80 hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 shadow-md hover:shadow-emerald-500/10"
                 >
-                  {q.label}
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-mono text-xs text-emerald-400 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">
+                        {q.num}
+                      </span>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-900 text-zinc-400 border border-zinc-800 truncate max-w-[120px]">
+                        {q.badge}
+                      </span>
+                    </div>
+                    <h4 className="text-sm font-bold text-white group-hover:text-emerald-300 transition-colors font-[family-name:var(--font-share-tech)] mb-1">
+                      {q.title}
+                    </h4>
+                    <p className="text-[11px] text-zinc-400 leading-snug line-clamp-2">
+                      {q.tagline}
+                    </p>
+                  </div>
+                  <div className="mt-3 pt-2 border-t border-zinc-800/60 flex items-center justify-between text-[10px] font-mono text-zinc-500">
+                    <span className="text-zinc-400">{q.category}</span>
+                    <span className="text-emerald-400 group-hover:translate-x-0.5 transition-transform font-bold">Jump →</span>
+                  </div>
                 </a>
               ))}
             </div>
