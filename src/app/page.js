@@ -165,7 +165,7 @@ export default function Home() {
       points: "MULTI-CASE DFIR",
       tagline: "Malware Analysis, Ransomware & Threat Hunting",
       description: "Real-world forensic investigations, malware reverse engineering, Phobos ransomware deep dives, and threat hunting writeups from CyberDefenders and practical SOC/DFIR scenarios.",
-      image: "/images/cyber_defense_labs.jpg",
+      image: "/images/dfir_threat_labs_banner.png",
       tags: ["Malware Analysis", "Phobos Ransomware", "Memory Forensics", "Threat Hunting", "DFIR"],
       time: "Lab Guides",
       includedChallenges: [

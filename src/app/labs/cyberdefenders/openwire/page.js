@@ -171,7 +171,7 @@ export default function OpenWireLabWriteup() {
             </div>
 
             <h1 className="text-2xl sm:text-4xl font-extrabold text-white font-[family-name:var(--font-silkscreen)] tracking-wide mb-4">
-              🛡️ CyberDefenders — OpenWire Lab Writeup
+              CyberDefenders — OpenWire Lab Writeup
             </h1>
 
             {/* Key IPs Box */}
