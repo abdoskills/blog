@@ -3,6 +3,7 @@ import "./globals.css";
 import CyberBackground from "@/components/CyberBackground";
 import ThemeController from "@/components/ThemeController";
 import DynamicTitle from "@/components/DynamicTitle";
+import { Analytics } from "@vercel/analytics/react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -130,11 +131,6 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <script
-          defer
-          src="https://cloud.umami.is/script.js"
-          data-website-id="3fbff2bf-6ea4-4a43-b919-d891265b37ec"
-        />
       </head>
       <body className="min-h-full flex flex-col relative transition-colors duration-300">
         <DynamicTitle />
@@ -143,6 +139,7 @@ export default function RootLayout({ children }) {
           {children}
         </div>
         <ThemeController />
+        <Analytics />
       </body>
     </html>
   );
