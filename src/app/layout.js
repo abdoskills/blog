@@ -3,7 +3,7 @@ import "./globals.css";
 import CyberBackground from "@/components/CyberBackground";
 import ThemeController from "@/components/ThemeController";
 import DynamicTitle from "@/components/DynamicTitle";
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
