@@ -10,13 +10,13 @@ export default function ThreatLabsHub() {
       href: "/labs/cyberdefenders",
       platform: "CyberDefenders",
       category: "Threat Defense & SOC",
-      points: "1 ACTIVE LAB",
+      points: "2 ACTIVE LABS",
       badgeColor: "emerald",
       tagline: "Network Forensics & Threat Hunting Scenarios",
-      description: "Hands-on threat analysis and network forensics scenarios simulating real-world security incidents. From Apache ActiveMQ RCE (CVE-2023-46604) and PCAP stream triage to memory dumps and malware artifact analysis.",
+      description: "Hands-on threat analysis and network forensics scenarios simulating real-world security incidents. From WireDive multi-protocol PCAP triage and TLS decryption to Apache ActiveMQ OpenWire RCE (CVE-2023-46604).",
       image: "/images/cyberdefenders/cyberdefenders_banner.png",
-      tags: ["CyberDefenders", "Network Forensics", "ActiveMQ RCE", "CVE-2023-46604", "Wireshark", "Threat Hunting"],
-      time: "1 Lab Available"
+      tags: ["CyberDefenders", "Network Forensics", "WireDive", "TLS Decryption", "ActiveMQ RCE", "Wireshark"],
+      time: "2 Labs Available"
     }
   ];
 

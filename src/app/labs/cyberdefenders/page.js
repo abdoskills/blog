@@ -5,6 +5,21 @@ import Navbar from "@/components/Navbar";
 export default function CyberDefendersHub() {
   const challenges = [
     {
+      title: "WireDive Lab",
+      slug: "wiredive",
+      href: "/labs/cyberdefenders/wiredive",
+      platform: "CyberDefenders",
+      category: "Network Forensics / PCAP Analysis",
+      points: "35 QUESTIONS",
+      tagline: "Multi-Protocol PCAP Triage & TLS Decryption",
+      description: "Comprehensive investigation of 5 packet capture traces. Analyzing DHCP address allocations, DNS lookups, SMB share exfiltration, Linux reverse shells, enterprise Cisco infrastructure (STP, CDP, HSRP, SNMP, TFTP NVRAM configs), and decrypting HTTPS/HTTP2 traffic via TLS master secrets.",
+      image: "/images/cyberdefenders/wiredive_banner.png",
+      tags: ["Wireshark", "Network Forensics", "TLS Decryption", "Cisco IOS", "HTTP/2", "SMB", "PCAP Analysis"],
+      downloadFile: "/files/cyberdefenders/37-WireDive.zip",
+      downloadFileName: "37-WireDive.zip (26.5 MB)",
+      time: "25 min read"
+    },
+    {
       title: "OpenWire Lab",
       slug: "openwire",
       href: "/labs/cyberdefenders/openwire",
@@ -49,10 +64,10 @@ export default function CyberDefendersHub() {
           {/* Metrics */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-xs font-mono">
             <div className="bg-zinc-900/90 border border-zinc-800 px-3.5 py-1.5 rounded-lg text-zinc-300 flex items-center gap-2">
-              <span className="text-emerald-400 font-bold">●</span> 1 Active Investigation
+              <span className="text-emerald-400 font-bold">●</span> 2 Active Investigations
             </div>
             <div className="bg-zinc-900/90 border border-zinc-800 px-3.5 py-1.5 rounded-lg text-zinc-300 flex items-center gap-2">
-              <span className="text-emerald-400 font-bold">●</span> 8 Verified Answers
+              <span className="text-emerald-400 font-bold">●</span> 43 Verified Answers
             </div>
             <div className="bg-zinc-900/90 border border-zinc-800 px-3.5 py-1.5 rounded-lg text-emerald-400 flex items-center gap-2">
               <span className="text-emerald-400 font-bold">●</span> Direct Artifact Downloads
