@@ -10,13 +10,13 @@ export default function ThreatLabsHub() {
       href: "/labs/cyberdefenders",
       platform: "CyberDefenders",
       category: "Threat Defense & SOC",
-      points: "2 ACTIVE LABS",
+      points: "3 ACTIVE LABS",
       badgeColor: "emerald",
-      tagline: "Network Forensics & Threat Hunting Scenarios",
-      description: "Hands-on threat analysis and network forensics scenarios simulating real-world security incidents. From WireDive multi-protocol PCAP triage and TLS decryption to Apache ActiveMQ OpenWire RCE (CVE-2023-46604).",
+      tagline: "Network Forensics, Memory Triage & Threat Hunting",
+      description: "Hands-on threat analysis and forensics scenarios simulating real-world security incidents. From Ulysses Linux rootkit & memory analysis to WireDive multi-protocol triage and Apache ActiveMQ OpenWire RCE.",
       image: "/images/cyberdefenders/cyberdefenders_banner.png",
-      tags: ["CyberDefenders", "Network Forensics", "WireDive", "TLS Decryption", "ActiveMQ RCE", "Wireshark"],
-      time: "2 Labs Available"
+      tags: ["CyberDefenders", "Linux DFIR", "Volatility", "WireDive", "ActiveMQ RCE", "Wireshark"],
+      time: "3 Labs Available"
     }
   ];
 

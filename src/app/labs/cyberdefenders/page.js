@@ -5,6 +5,21 @@ import Navbar from "@/components/Navbar";
 export default function CyberDefendersHub() {
   const challenges = [
     {
+      title: "Ulysses Lab",
+      slug: "ulysses",
+      href: "/labs/cyberdefenders/ulysses",
+      platform: "CyberDefenders",
+      category: "Linux Endpoint + Memory Forensics",
+      points: "11 QUESTIONS",
+      tagline: "Exim4 RCE, Trojaned Rootkit & Memory Triage",
+      description: "Deep-dive Linux intrusion investigation. Analyzing SSH brute force attempts, Exim4 string-expansion RCE (CVE-2010-4344), trojaned Linux rootkits (rk.tar), Volatility volatile memory profiles, and Netcat bulk disk/RAM exfiltration.",
+      image: "/images/cyberdefenders/ulysses_banner.png",
+      tags: ["Linux DFIR", "Volatility", "Exim4", "CVE-2010-4344", "Rootkit Analysis", "Memory Forensics"],
+      downloadFile: "https://cyberdefenders.org/blueteam-ctf-challenges/ulysses/",
+      downloadFileName: "41-Ulysses.zip (436 MB)",
+      time: "15 min read"
+    },
+    {
       title: "WireDive Lab",
       slug: "wiredive",
       href: "/labs/cyberdefenders/wiredive",
@@ -64,10 +79,10 @@ export default function CyberDefendersHub() {
           {/* Metrics */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-xs font-mono">
             <div className="bg-zinc-900/90 border border-zinc-800 px-3.5 py-1.5 rounded-lg text-zinc-300 flex items-center gap-2">
-              <span className="text-emerald-400 font-bold">●</span> 2 Active Investigations
+              <span className="text-emerald-400 font-bold">●</span> 3 Active Investigations
             </div>
             <div className="bg-zinc-900/90 border border-zinc-800 px-3.5 py-1.5 rounded-lg text-zinc-300 flex items-center gap-2">
-              <span className="text-emerald-400 font-bold">●</span> 43 Verified Answers
+              <span className="text-emerald-400 font-bold">●</span> 54 Verified Answers
             </div>
             <div className="bg-zinc-900/90 border border-zinc-800 px-3.5 py-1.5 rounded-lg text-emerald-400 flex items-center gap-2">
               <span className="text-emerald-400 font-bold">●</span> Direct Artifact Downloads

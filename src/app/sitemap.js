@@ -8,6 +8,7 @@ export default function sitemap() {
     "/labs/cyberdefenders",
     "/labs/cyberdefenders/openwire",
     "/labs/cyberdefenders/wiredive",
+    "/labs/cyberdefenders/ulysses",
     "/about",
     "/cv",
     "/posts/kaspersky-ping-pong-show",
