@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import FollowMe from "@/components/FollowMe";
 import CopyButton from "@/components/CopyButton";
 
 export default function PicoCTFC0rruptWriteup() {
@@ -526,6 +527,14 @@ print("[+] Successfully repaired! fixed.png generated.")`;
           </div>
         </div>
 
+
+        {/* Follow Me & Socials */}
+        <FollowMe
+          backHref="/ctfs"
+          backLabel="Back to CTFs Hub"
+          hubHref="/"
+          hubLabel="Home"
+        />
       </article>
     </div>
   );

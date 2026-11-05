@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import CopyButton from "@/components/CopyButton";
+import FollowMe from "@/components/FollowMe";
 
 export default function WireDiveLabWriteup() {
   const [activeOpId, setActiveOpId] = useState("q1");
@@ -3433,6 +3434,13 @@ export default function WireDiveLabWriteup() {
                 </div>
               </section>
 
+              {/* Follow Me & Wrap-Up */}
+              <FollowMe
+                backHref="/labs/cyberdefenders"
+                backLabel="Back to CyberDefenders Labs"
+                hubHref="/labs"
+                hubLabel="Threat Labs Hub"
+              />
             </div>
           </div>
         </div>

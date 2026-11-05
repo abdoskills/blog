@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import FollowMe from "@/components/FollowMe";
 import CopyButton from "@/components/CopyButton";
 
 export default function SearchDudeWriteup() {
@@ -286,6 +287,14 @@ print("[+] Decrypted Flag:", decrypted.decode('utf-8', errors='ignore'))`;
           </div>
 
         </div>
+
+        {/* Follow Me & Socials */}
+        <FollowMe
+          backHref="/ctfs"
+          backLabel="Back to CTFs Hub"
+          hubHref="/"
+          hubLabel="Home"
+        />
       </article>
     </div>
   );

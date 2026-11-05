@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import CopyButton from "@/components/CopyButton";
+import FollowMe from "@/components/FollowMe";
 
 export default function DeadfacePage() {
   const challenges = [
@@ -2631,6 +2632,13 @@ print('Flag:', bytes.fromhex(hex_str).decode())
                     </div>
                   </div>
                 </div>
+                {/* Follow Me & Socials */}
+                <FollowMe
+                  backHref="/ctfs"
+                  backLabel="Back to All CTFs"
+                  hubHref="/"
+                  hubLabel="Home"
+                />
               </article>
 
             </div>

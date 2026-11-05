@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import FollowMe from "@/components/FollowMe";
 import CopyButton from "@/components/CopyButton";
 
 export const metadata = {
@@ -419,6 +420,14 @@ eip=00401c20 esp=0061fe40 ebp=0061fea8 iopl=0         nv up ei pl zr na pe nc
           </section>
 
         </div>
+
+        {/* Follow Me & Socials */}
+        <FollowMe
+          backHref="/ctfs"
+          backLabel="Back to CTFs Hub"
+          hubHref="/"
+          hubLabel="Home"
+        />
       </article>
     </div>
   );

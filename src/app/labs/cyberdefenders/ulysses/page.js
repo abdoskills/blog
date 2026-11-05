@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import CopyButton from "@/components/CopyButton";
+import FollowMe from "@/components/FollowMe";
 
 export default function UlyssesLabWriteup() {
   const [activeOpId, setActiveOpId] = useState("theory-disk-vs-mem");
@@ -1217,6 +1218,13 @@ export default function UlyssesLabWriteup() {
                 </div>
               </div>
 
+              {/* Follow Me & Wrap-Up */}
+              <FollowMe
+                backHref="/labs/cyberdefenders"
+                backLabel="Back to CyberDefenders Labs"
+                hubHref="/labs"
+                hubLabel="Threat Labs Hub"
+              />
             </div>
           </div>
         </div>

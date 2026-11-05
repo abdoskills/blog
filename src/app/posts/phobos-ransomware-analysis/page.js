@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import FollowMe from "@/components/FollowMe";
 
 export default function PhobosWriteup() {
   return (
@@ -190,6 +191,14 @@ export default function PhobosWriteup() {
           <p>The file is permanently corrupted, but the encryption finishes in seconds instead of hours.</p>
 
         </div>
+
+        {/* Follow Me & Socials */}
+        <FollowMe
+          backHref="/ctfs"
+          backLabel="Back to CTFs Hub"
+          hubHref="/"
+          hubLabel="Home"
+        />
       </article>
     </div>
   );

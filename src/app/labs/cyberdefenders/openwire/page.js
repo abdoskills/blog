@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import CopyButton from "@/components/CopyButton";
+import FollowMe from "@/components/FollowMe";
 
 export default function OpenWireLabWriteup() {
   const [activeOpId, setActiveOpId] = useState("q1");
@@ -796,29 +797,13 @@ export default function OpenWireLabWriteup() {
                 </div>
               </section>
 
-              {/* Wrap-Up */}
-              <section className="p-6 rounded-2xl bg-[#0a0a0f] border border-zinc-800 text-center">
-                <h3 className="text-lg font-bold text-white mb-2">
-                  🏁 Wrap-Up
-                </h3>
-                <p className="text-zinc-400 text-sm">
-                  Hope you liked the writeup! &lt;3
-                </p>
-                <div className="mt-6 flex justify-center gap-4">
-                  <Link
-                    href="/labs/cyberdefenders"
-                    className="px-4 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-xs font-mono text-zinc-300 transition-colors"
-                  >
-                    ← Back to CyberDefenders Labs
-                  </Link>
-                  <Link
-                    href="/labs"
-                    className="px-4 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-xs font-mono text-emerald-400 transition-colors"
-                  >
-                    Threat Labs Hub →
-                  </Link>
-                </div>
-              </section>
+              {/* Follow Me & Wrap-Up */}
+              <FollowMe
+                backHref="/labs/cyberdefenders"
+                backLabel="Back to CyberDefenders Labs"
+                hubHref="/labs"
+                hubLabel="Threat Labs Hub"
+              />
 
             </div>
 
