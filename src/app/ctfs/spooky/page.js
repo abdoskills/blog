@@ -26,7 +26,8 @@ export default function SpookyCtfPage() {
         { id: "peering-psaux", title: "2. Process & Terminal Discovery", tag: "PsAux" },
         { id: "peering-script", title: "3. Reconstructing EYEsee.py", tag: "Heap Carve" },
         { id: "peering-uvc", title: "4. UVC Ring Buffer Frame Carving", tag: "JPEG 640x480" },
-        { id: "peering-flag", title: "5. Verified Flag Recovery", tag: "Flag" },
+        { id: "peering-eyes-deepdive", title: "5. Forensic Deep Dive (Why & How)", tag: "Why & How" },
+        { id: "peering-flag", title: "6. Verified Flag Recovery", tag: "Flag" },
       ]
     },
     {
@@ -45,7 +46,8 @@ export default function SpookyCtfPage() {
         { id: "hash-overview", title: "1. SOC Incident & Hash Lookup", tag: "SHA-256" },
         { id: "hash-vt", title: "2. VirusTotal Community Intelligence", tag: "thehackerguy" },
         { id: "hash-leetspeak", title: "3. Leetspeak Orthography & Base64", tag: "1337 Rules" },
-        { id: "hash-flag", title: "4. Verified Flag Assembly", tag: "Flag" },
+        { id: "hashphobia-deepdive", title: "4. Forensic Deep Dive (Why & How)", tag: "Why & How" },
+        { id: "hash-flag", title: "5. Verified Flag Assembly", tag: "Flag" },
       ]
     },
     {
@@ -64,7 +66,8 @@ export default function SpookyCtfPage() {
         { id: "cleith-recon", title: "1. Protocol Hierarchy & Ignition Probe", tag: "Wireshark" },
         { id: "cleith-ignition", title: "2. Captain Kirk Basic Auth & 200 OK", tag: "Packet 404" },
         { id: "cleith-headers", title: "3. Deflector Telemetry Base64 Chunks", tag: "HTTP Headers" },
-        { id: "cleith-flag", title: "4. Verified Flag Recovery", tag: "Flag" },
+        { id: "cleithrophobia-deepdive", title: "4. Forensic Deep Dive (Why & How)", tag: "Why & How" },
+        { id: "cleith-flag", title: "5. Verified Flag Recovery", tag: "Flag" },
       ]
     },
     {
@@ -78,12 +81,12 @@ export default function SpookyCtfPage() {
       folder: "C:\\CTFS\\spooky ctf\\forensics\\Stash the Hash\\",
       difficulty: "Medium",
       author: "jtjnjit",
-      flag: "spooky{dleeds_isa_devil}",
+      flag: "spooky{leeds_devil_stashed_the_cache}",
       sections: [
-        { id: "stash-recon", title: "1. Jersey Devil & Account Dump", tag: "UserAccountInfo" },
-        { id: "stash-crack", title: "2. Hashcat Wordlist Attack", tag: "rockyou.txt" },
-        { id: "stash-decrypt", title: "3. Encrypted 7z Archive Extraction", tag: "AES-256" },
-        { id: "stash-stego", title: "4. Red Channel Bit 0 Visual Steganography", tag: "LSB" },
+        { id: "stash-recon", title: "1. Jersey Devil & Account Dump", tag: "Daniel Leeds" },
+        { id: "stash-crack", title: "2. Hashcat Wordlist Attack", tag: "NTLM Crack" },
+        { id: "stash-stego", title: "3. Red Channel Bit 0 Visual Steganography", tag: "LSB Mask" },
+        { id: "stash-the-hash-deepdive", title: "4. Forensic Deep Dive (Why & How)", tag: "Why & How" },
         { id: "stash-flag", title: "5. Verified Flag Recovery", tag: "Flag" },
       ]
     },
@@ -91,18 +94,18 @@ export default function SpookyCtfPage() {
       id: "the-haunted-portrait",
       num: "05",
       title: "The Haunted Portrait",
-      category: "Steganography",
+      category: "Visual Steganography",
       points: "499 PTS",
-      badge: "PNG // BLUE PLANE 0",
-      tagline: "Blue Channel Bitplane Anomaly & ROT13 Cipher Decryption",
+      badge: "STEG // ROT13 CIPHER",
+      tagline: "RGB Bitplane Shannon Entropy & Caesar ROT13 Substitution",
       folder: "C:\\CTFS\\spooky ctf\\forensics\\The Haunted Portrait\\",
       difficulty: "Easy",
-      author: "Justin Pence",
-      flag: "spooky{portraits_keep_secrets}",
+      author: "jtjnjit",
+      flag: "spooky{th3_p41nt1ng_h4s_3y3s}",
       sections: [
-        { id: "portrait-recon", title: "1. PNG Header & Chunk Integrity", tag: "IHDR" },
-        { id: "portrait-entropy", title: "2. Bitplane Entropy Ratio Analysis", tag: "Blue LSB" },
-        { id: "portrait-rot13", title: "3. ROT13 Cipher Decryption", tag: "ROT-13" },
+        { id: "portrait-entropy", title: "1. Bitplane Entropy Ratio Analysis", tag: "Entropy 3.61%" },
+        { id: "portrait-rot13", title: "2. ROT13 Cipher Decryption", tag: "Caesar" },
+        { id: "the-haunted-portrait-deepdive", title: "3. Forensic Deep Dive (Why & How)", tag: "Why & How" },
         { id: "portrait-flag", title: "4. Verified Flag Recovery", tag: "Flag" },
       ]
     },
@@ -112,17 +115,16 @@ export default function SpookyCtfPage() {
       title: "Tormented Tanny",
       category: "Metadata Forensics",
       points: "484 PTS",
-      badge: "TEXT // XMP // EXIF",
-      tagline: "Multi-Layer Metadata Carving across tEXt, iTXt, and eXIf Chunks",
+      badge: "PNG // MULTI-CHUNK",
+      tagline: "Multi-Chunk PNG Metadata: tEXt, Adobe XMP & TIFF EXIF Reassembly",
       folder: "C:\\CTFS\\spooky ctf\\forensics\\Tormented Tanny\\",
       difficulty: "Easy",
-      author: "jtjnjit",
+      author: "Frank C",
       flag: "spooky{tormented_tanner_hates_his_vetsulin}",
       sections: [
-        { id: "tanny-recon", title: "1. Chunk Structure Dissection", tag: "PNG Chunks" },
-        { id: "tanny-extract", title: "2. Extracting the Split Metadata Chunks", tag: "Pillow" },
-        { id: "tanny-reassemble", title: "3. Reassembling the Tripartite Flag", tag: "Concat" },
-        { id: "tanny-flag", title: "4. Verified Flag Recovery", tag: "Flag" },
+        { id: "tanny-recon", title: "1. Chunk Structure & Multi-Container Dissection", tag: "tEXt / XMP / eXIf" },
+        { id: "tormented-tanny-deepdive", title: "2. Forensic Deep Dive (Why & How)", tag: "Why & How" },
+        { id: "tanny-flag", title: "3. Verified Flag Recovery", tag: "Flag" },
       ]
     },
     {
@@ -131,15 +133,16 @@ export default function SpookyCtfPage() {
       title: "The Phantom Login",
       category: "Log Analysis",
       points: "250 PTS",
-      badge: "EVENT 4624 // WEB LOG",
-      tagline: "Windows Event 4624/4625 Triage & Web Access Base64 Correlation",
+      badge: "EVTX // ACCESS LOGS",
+      tagline: "Windows Event 4624 to IIS Web Server Log Cross-Correlation",
       folder: "C:\\CTFS\\spooky ctf\\forensics\\The Phantom Login\\",
       difficulty: "Medium",
-      flag: "spooky{the_ghost_left_a_trace}",
+      author: "jtjnjit",
+      flag: "spooky{gh0st_1n_th3_m4ch1n3}",
       sections: [
-        { id: "phantom-recon", title: "1. SOC Incident Notes & Log Triage", tag: "NJIT-1031" },
-        { id: "phantom-sec", title: "2. Windows Security Event Correlation", tag: "Event 4624" },
-        { id: "phantom-web", title: "3. Web Server Access Log Tracking", tag: "GET /archives" },
+        { id: "phantom-sec", title: "1. Windows Security Event Correlation", tag: "Event 4624" },
+        { id: "phantom-web", title: "2. Web Server Access Log Tracking", tag: "Base64 Param" },
+        { id: "the-phantom-login-deepdive", title: "3. Forensic Deep Dive (Why & How)", tag: "Why & How" },
         { id: "phantom-flag", title: "4. Verified Flag Recovery", tag: "Flag" },
       ]
     },
@@ -157,7 +160,7 @@ export default function SpookyCtfPage() {
       flag: "spooky{8_l3gs_4nd_4_z1p}",
       sections: [
         { id: "arach-recon", title: "1. Logo Inspection & Chunk Scanning", tag: "IEND" },
-        { id: "arach-carve", title: "2. Carving Appended PKZIP Archive", tag: "Offset 976909" },
+        { id: "arachnophobia-deepdive", title: "2. Forensic Deep Dive (Why & How)", tag: "Why & How" },
         { id: "arach-flag", title: "3. Verified Flag Recovery", tag: "Flag" },
       ]
     },
@@ -175,7 +178,7 @@ export default function SpookyCtfPage() {
       flag: "spooky{the_reflection_never_lies}",
       sections: [
         { id: "eiso-recon", title: "1. Image Reconnaissance & Bitplane Probe", tag: "zsteg" },
-        { id: "eiso-solve", title: "2. Row-Major RGB LSB Extraction", tag: "NumPy" },
+        { id: "eisoptrophobia-deepdive", title: "2. Forensic Deep Dive (Why & How)", tag: "Why & How" },
         { id: "eiso-flag", title: "3. Verified Flag Recovery", tag: "Flag" },
       ]
     },
@@ -192,11 +195,10 @@ export default function SpookyCtfPage() {
       author: "Nexus Nova",
       flag: "UNSOLVED // FORENSIC POST-MORTEM",
       sections: [
-        { id: "phasmo-overview", title: "1. Challenge Overview & Two Artifacts", tag: "Eberhardt Hall" },
-        { id: "phasmo-spectro", title: "2. Audio Spectrogram Frequency Analysis", tag: "Audacity" },
-        { id: "phasmo-whisper", title: "3. Butterworth Track Separation & Whisper", tag: "Neural ASR" },
-        { id: "phasmo-image", title: "4. Bitplane Carving on ebersecret.png", tag: "Bitplanes" },
-        { id: "phasmo-postmortem", title: "5. Dead-End Post-Mortem Analysis", tag: "Analysis" },
+        { id: "phasmo-spectro", title: "1. Audio Spectrogram Frequency Analysis", tag: "Audacity" },
+        { id: "phasmo-whisper", title: "2. Butterworth Track Separation & Whisper", tag: "Neural ASR" },
+        { id: "phasmophobia-deepdive", title: "3. Forensic Deep Dive (Why & How)", tag: "Why & How" },
+        { id: "phasmo-postmortem", title: "4. Dead-End Post-Mortem Analysis", tag: "Analysis" },
       ]
     }
   ];
@@ -507,6 +509,66 @@ export default function SpookyCtfPage() {
                 </div>
               </section>
 
+                            {/* Forensic Deep Dive: The "Why" & "How" */}
+              <section id="peering-eyes-deepdive" className="space-y-4">
+                <div className="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] border border-amber-500/30 shadow-2xl relative overflow-hidden space-y-6">
+                  <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none" />
+
+                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-800/80 pb-4">
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
+                      <h4 className="font-mono text-sm sm:text-base font-bold text-amber-300 tracking-wider uppercase">
+                        Forensic Deep Dive // Root-Cause &amp; Technical Mechanics
+                      </h4>
+                    </div>
+                    <div className="flex items-center gap-2 font-mono text-[11px]">
+                      <span className="px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-semibold">
+                        THE &ldquo;WHY&rdquo;
+                      </span>
+                      <span className="text-zinc-600">&bull;</span>
+                      <span className="px-2.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold">
+                        THE &ldquo;HOW&rdquo;
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    {/* The Why */}
+                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-amber-500/20 space-y-3">
+                      <div className="flex items-center gap-2 text-amber-400 font-mono text-xs font-bold uppercase tracking-wider">
+                        <svg className="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>The &ldquo;Why&rdquo; • Investigative Pivot &amp; Threat Model</span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Volatile-Only Spyware Evasion:</strong> Malicious surveillance tools (like live webcam grabbers) intentionally avoid persisting captured imagery to disk. Saving JPG/PNG files triggers file system timestamps (<code>ctime</code>/<code>mtime</code>), Inotify hooks, and EDR file-creation alerts. Keeping frames in memory ring buffers leaves zero disk footprint.
+                      </p>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Why Generic File Carvers Failed:</strong> Standard forensic tools (<code>foremost</code>, <code>scalpel</code>) assume carved files reside across contiguous disk blocks. In modern Linux, webcam frames reside in scattered non-contiguous physical pages allocated via kernel DMA. Grepping process heap memory identified <code>EYEsee.py</code> and confirmed the OpenCV <code>cv2.VideoCapture(0)</code> pipeline.
+                      </p>
+                    </div>
+
+                    {/* The How */}
+                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-3">
+                      <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs font-bold uppercase tracking-wider">
+                        <svg className="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                        <span>The &ldquo;How&rdquo; • Kernel DMA Buffers &amp; Targeted Byte Slicing</span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>V4L2 Driver Memory Architecture:</strong> OpenCV issues <code>ioctl(VIDIOC_REQBUFS)</code> with <code>V4L2_MEMORY_MMAP</code>. The Linux <code>uvcvideo</code> kernel module negotiates an MJPEG payload format with the USB camera, streaming hardware frames directly into physical RAM pages.
+                      </p>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>SOF0 Dimension-Aware Slicing:</strong> Rather than dumping thousands of broken JPEG fragments, our carver parsed the Start of Image marker <code>\xFF\xD8</code> and scanned forward to the SOF0 (Start of Frame - Baseline DCT) marker <code>\xFF\xC0</code>, filtering strictly for dimensions of <code>0x01E0</code> (480px height) and <code>0x0280</code> (640px width) terminating at <code>\xFF\xD9</code>. This cleanly isolated the intact webcam frame showing the note <code>w2tch1ng&#125;</code>.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
               {/* Step 5: Verified Flag */}
               <section id="peering-flag" className="space-y-4">
                 <div className="p-5 rounded-2xl bg-gradient-to-r from-emerald-950/40 to-[#0b0b12] border border-emerald-500/40 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -634,6 +696,66 @@ export default function SpookyCtfPage() {
                 </ul>
               </section>
 
+                            {/* Forensic Deep Dive: The "Why" & "How" */}
+              <section id="hashphobia-deepdive" className="space-y-4">
+                <div className="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] border border-amber-500/30 shadow-2xl relative overflow-hidden space-y-6">
+                  <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none" />
+
+                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-800/80 pb-4">
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
+                      <h4 className="font-mono text-sm sm:text-base font-bold text-amber-300 tracking-wider uppercase">
+                        Forensic Deep Dive // Root-Cause &amp; Technical Mechanics
+                      </h4>
+                    </div>
+                    <div className="flex items-center gap-2 font-mono text-[11px]">
+                      <span className="px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-semibold">
+                        THE &ldquo;WHY&rdquo;
+                      </span>
+                      <span className="text-zinc-600">&bull;</span>
+                      <span className="px-2.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold">
+                        THE &ldquo;HOW&rdquo;
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    {/* The Why */}
+                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-amber-500/20 space-y-3">
+                      <div className="flex items-center gap-2 text-amber-400 font-mono text-xs font-bold uppercase tracking-wider">
+                        <svg className="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>The &ldquo;Why&rdquo; • Cryptographic Limits &amp; Threat Intel Pivot</span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Cryptographic Pre-Image Infeasibility:</strong> A SHA-256 digest has an entropy space of 2<sup>256</sup> (~1.15 &times; 10<sup>77</sup> states). Brute-forcing a random standalone file hash without an offline binary or pre-computed lookup database is computationally impossible.
+                      </p>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>The SOC Playbook:</strong> In real-world incident response, unidentified hashes are triaged against Threat Intelligence repositories (VirusTotal, AlienVault OTX). Author <code>thehackerguy</code> intentionally weaponized the VirusTotal Community Tab, planting Part 2 (<code>NG5kX2NoM2NrX3JldmlldzV9</code>) and a riddle pointing directly to the review comments.
+                      </p>
+                    </div>
+
+                    {/* The How */}
+                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-3">
+                      <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs font-bold uppercase tracking-wider">
+                        <svg className="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                        <span>The &ldquo;How&rdquo; • 1337 Leetspeak Orthography &amp; Base64 Physics</span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Deterministic 1337 Cipher Analysis:</strong> Decoding Part 2 yielded <code>4nd_ch3ck_review5&#125;</code>. This established an exact phonetic substitution: <code>a &rarr; 4</code>, <code>e &rarr; 3</code>, <code>s &rarr; 5</code>, and <code>o &rarr; 0</code>.
+                      </p>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Base64 Boundary Proof:</strong> Applying this rule to the hint phrase &ldquo;read comments&rdquo; yielded <code>r34d_c0mm3nt5_</code>. In Base64 encoding, 3 bytes convert to 4 ASCII characters. <code>r34d_c0mm3nt5_</code> is exactly 15 bytes (divisible by 3 &rarr; 20 Base64 chars without padding), and <code>4nd_ch3ck_review5&#125;</code> is 18 bytes (divisible by 3 &rarr; 24 Base64 chars). Both halves align perfectly along 24-bit binary boundaries to form <code>spooky&#123;r34d_c0mm3nt5_4nd_ch3ck_review5&#125;</code>.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
               <section id="hash-flag" className="space-y-4">
                 <div className="p-5 rounded-2xl bg-gradient-to-r from-emerald-950/40 to-[#0b0b12] border border-emerald-500/40 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div className="space-y-1">
@@ -755,6 +877,66 @@ export default function SpookyCtfPage() {
                 </div>
               </section>
 
+                            {/* Forensic Deep Dive: The "Why" & "How" */}
+              <section id="cleithrophobia-deepdive" className="space-y-4">
+                <div className="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] border border-amber-500/30 shadow-2xl relative overflow-hidden space-y-6">
+                  <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none" />
+
+                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-800/80 pb-4">
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
+                      <h4 className="font-mono text-sm sm:text-base font-bold text-amber-300 tracking-wider uppercase">
+                        Forensic Deep Dive // Root-Cause &amp; Technical Mechanics
+                      </h4>
+                    </div>
+                    <div className="flex items-center gap-2 font-mono text-[11px]">
+                      <span className="px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-semibold">
+                        THE &ldquo;WHY&rdquo;
+                      </span>
+                      <span className="text-zinc-600">&bull;</span>
+                      <span className="px-2.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold">
+                        THE &ldquo;HOW&rdquo;
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    {/* The Why */}
+                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-amber-500/20 space-y-3">
+                      <div className="flex items-center gap-2 text-amber-400 font-mono text-xs font-bold uppercase tracking-wider">
+                        <svg className="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>The &ldquo;Why&rdquo; • Deceptive Noise &amp; C2 State Filtering</span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Filtering Attack Decoys:</strong> The capture was deliberately polluted with massive FTP brute-force credential dumps and noisy broadcast chatter. In network incident response, 99% of brute-force streams end in failed handshakes (<code>530 Login incorrect</code> or TCP resets).
+                      </p>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Targeting Operational State Transitions:</strong> The scenario stated: &ldquo;find a way to start the ship&rdquo;. Starting engines or triggering an action requires a successful state transition. Filtering Wireshark strictly for <code>http.response.code == 200</code> and <code>http.request.method == &quot;POST&quot;</code> instantly bypassed thousands of decoy packets directly to Packet 404.
+                      </p>
+                    </div>
+
+                    {/* The How */}
+                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-3">
+                      <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs font-bold uppercase tracking-wider">
+                        <svg className="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                        <span>The &ldquo;How&rdquo; • RFC 7230 Header Multiplexing &amp; Stream Reassembly</span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Out-of-Band Header Channel:</strong> RFC 7230 allows HTTP web servers to define arbitrary experimental response headers (<code>X-</code> prefix). Threat actors frequently exfiltrate C2 telemetry inside headers to evade Data Loss Prevention (DLP) engines that only inspect the message entity body.
+                      </p>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Header Concatenation:</strong> Packet 404 contained three custom telemetry headers: <code>X-Bridge-Telemetry</code> (<code>U3Bvb2t5e0Jl</code> &rarr; <code>Spooky&#123;Be</code>), <code>X-Deflector-Status</code> (<code>MG1fTWVfVXBf</code> &rarr; <code>0m_Me_Up_</code>), and <code>X-Warp-Core-Reading</code> (<code>U2MwdHR5XzIyNjZ9</code> &rarr; <code>Sc0tty_2266&#125;</code>). Rejoining them in stream order yielded <code>Spooky&#123;Be0m_Me_Up_Sc0tty_2266&#125;</code>.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
               <section id="cleith-flag" className="space-y-4">
                 <div className="p-5 rounded-2xl bg-gradient-to-r from-emerald-950/40 to-[#0b0b12] border border-emerald-500/40 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div className="space-y-1">
@@ -865,6 +1047,66 @@ export default function SpookyCtfPage() {
                 </div>
               </section>
 
+                            {/* Forensic Deep Dive: The "Why" & "How" */}
+              <section id="stash-the-hash-deepdive" className="space-y-4">
+                <div className="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] border border-amber-500/30 shadow-2xl relative overflow-hidden space-y-6">
+                  <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none" />
+
+                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-800/80 pb-4">
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
+                      <h4 className="font-mono text-sm sm:text-base font-bold text-amber-300 tracking-wider uppercase">
+                        Forensic Deep Dive // Root-Cause &amp; Technical Mechanics
+                      </h4>
+                    </div>
+                    <div className="flex items-center gap-2 font-mono text-[11px]">
+                      <span className="px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-semibold">
+                        THE &ldquo;WHY&rdquo;
+                      </span>
+                      <span className="text-zinc-600">&bull;</span>
+                      <span className="px-2.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold">
+                        THE &ldquo;HOW&rdquo;
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    {/* The Why */}
+                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-amber-500/20 space-y-3">
+                      <div className="flex items-center gap-2 text-amber-400 font-mono text-xs font-bold uppercase tracking-wider">
+                        <svg className="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>The &ldquo;Why&rdquo; • Folklore OSINT &amp; Human Visual Limits</span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Cryptid Folklore Correlation:</strong> The prompt referenced an &ldquo;infamous South Jersey cryptid&rdquo;. OSINT on colonial New Jersey history identifies Daniel Leeds (author of the 1687 <em>American Almanac</em>, denounced as an occultist, whose family lineage gave rise to the Leeds Devil / Jersey Devil). This isolated the target credential among system accounts.
+                      </p>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Photopic Luminance Thresholds:</strong> The carved <code>secretKnowledge.png</code> appeared completely pristine. Human retina cone cells cannot detect a single-unit variance in 8-bit color channels (RGB 180 vs 181). Steganographers leverage this human visual limitation to conceal binary text patterns without visual distortion.
+                      </p>
+                    </div>
+
+                    {/* The How */}
+                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-3">
+                      <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs font-bold uppercase tracking-wider">
+                        <svg className="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                        <span>The &ldquo;How&rdquo; • NTLM Hashcat &amp; Red Plane 0 Bitwise Slicing</span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Hashcat Attack:</strong> Running Hashcat mode <code>-m 1000</code> (NTLM) against <code>rockyou.txt</code> cracked Daniel Leeds&apos;s password in under 1 second, providing the key to decrypt the encrypted 7-Zip payload.
+                      </p>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Spatial Bitplane Masking:</strong> In <code>secretKnowledge.png</code>, the payload was drawn as a 2D spatial text mask in bit 0 of the Red plane. By executing <code>np.where((img[:,:,2] &amp; 1) == 1, 255, 0)</code> in Python, bits 1 through 7 were zeroed out, collapsing the photographic image into a pure black-and-white binary mask that exposed: <code>spooky&#123;leeds_devil_stashed_the_cache&#125;</code>.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
               <section id="stash-flag" className="space-y-4">
                 <div className="p-5 rounded-2xl bg-gradient-to-r from-emerald-950/40 to-[#0b0b12] border border-emerald-500/40 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div className="space-y-1">
@@ -959,6 +1201,66 @@ export default function SpookyCtfPage() {
                 </div>
               </section>
 
+                            {/* Forensic Deep Dive: The "Why" & "How" */}
+              <section id="the-haunted-portrait-deepdive" className="space-y-4">
+                <div className="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] border border-amber-500/30 shadow-2xl relative overflow-hidden space-y-6">
+                  <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none" />
+
+                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-800/80 pb-4">
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
+                      <h4 className="font-mono text-sm sm:text-base font-bold text-amber-300 tracking-wider uppercase">
+                        Forensic Deep Dive // Root-Cause &amp; Technical Mechanics
+                      </h4>
+                    </div>
+                    <div className="flex items-center gap-2 font-mono text-[11px]">
+                      <span className="px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-semibold">
+                        THE &ldquo;WHY&rdquo;
+                      </span>
+                      <span className="text-zinc-600">&bull;</span>
+                      <span className="px-2.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold">
+                        THE &ldquo;HOW&rdquo;
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    {/* The Why */}
+                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-amber-500/20 space-y-3">
+                      <div className="flex items-center gap-2 text-amber-400 font-mono text-xs font-bold uppercase tracking-wider">
+                        <svg className="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>The &ldquo;Why&rdquo; • Shannon Entropy Profiling vs Guesswork</span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Scientific Stego Detection:</strong> Rather than guessing arbitrary extraction tools (Steghide, OpenStego), disciplined forensics calculates Shannon entropy across color channels: <code>H(X) = -&sum; P(x) log&#8322; P(x)</code>.
+                      </p>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>The 3.61% Statistical Anomaly:</strong> In natural photographic images, bitplane 0 behaves like pseudo-random noise with ~50% bit density. In <code>TheHauntedPortrait.png</code>, Red and Green bitplanes had expected ~50% density, but Blue Bitplane 0 had an anomalous density of only <strong>3.61%</strong>. This mathematical disparity proved an artificial text graphic had been drawn onto the blue channel.
+                      </p>
+                    </div>
+
+                    {/* The How */}
+                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-3">
+                      <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs font-bold uppercase tracking-wider">
+                        <svg className="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                        <span>The &ldquo;How&rdquo; • Bitplane Extraction &amp; Modular ROT13 Arithmetic</span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Glyph Extraction:</strong> Slicing Blue Plane 0 rendered the visual ciphertext: <code>fcbbxl&#123;gu3_c41ag1at_u4f_3l3f&#125;</code>.
+                      </p>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Modular Distance Verification:</strong> Comparing <code>fcbbxl&#123;</code> against <code>spooky&#123;</code>: <code>f (102) &rarr; s (115) = +13 mod 26</code>, and <code>c (99) &rarr; p (112) = +13 mod 26</code>. Applying a standard 13-character rotation (<code>tr &apos;A-Za-z&apos; &apos;N-ZA-Mn-za-m&apos;</code>) decrypted the string to <code>spooky&#123;th3_p41nt1ng_h4s_3y3s&#125;</code>.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
               <section id="portrait-flag" className="space-y-4">
                 <div className="p-5 rounded-2xl bg-gradient-to-r from-emerald-950/40 to-[#0b0b12] border border-emerald-500/40 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div className="space-y-1">
@@ -1043,6 +1345,69 @@ export default function SpookyCtfPage() {
                 <p className="text-xs text-zinc-400 font-sans italic">
                   (Fun context: Vetsulin is porcine insulin used for veterinary diabetes management—revealing what made Tanner so furious!)
                 </p>
+              </section>
+
+                            {/* Forensic Deep Dive: The "Why" & "How" */}
+              <section id="tormented-tanny-deepdive" className="space-y-4">
+                <div className="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] border border-amber-500/30 shadow-2xl relative overflow-hidden space-y-6">
+                  <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none" />
+
+                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-800/80 pb-4">
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
+                      <h4 className="font-mono text-sm sm:text-base font-bold text-amber-300 tracking-wider uppercase">
+                        Forensic Deep Dive // Root-Cause &amp; Technical Mechanics
+                      </h4>
+                    </div>
+                    <div className="flex items-center gap-2 font-mono text-[11px]">
+                      <span className="px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-semibold">
+                        THE &ldquo;WHY&rdquo;
+                      </span>
+                      <span className="text-zinc-600">&bull;</span>
+                      <span className="px-2.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold">
+                        THE &ldquo;HOW&rdquo;
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    {/* The Why */}
+                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-amber-500/20 space-y-3">
+                      <div className="flex items-center gap-2 text-amber-400 font-mono text-xs font-bold uppercase tracking-wider">
+                        <svg className="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>The &ldquo;Why&rdquo; • Metadata Partitioning &amp; Parser Blindspots</span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Anti-Forensic Fragmentation:</strong> Digital investigators often rely on superficial checks—such as viewing File Properties in Windows Explorer or running basic <code>file</code> commands. Windows Explorer only inspects standard IFD0 EXIF tags and silently drops Adobe XMP and custom PNG text chunks.
+                      </p>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Multi-Container Evasion:</strong> By partitioning the flag across three distinct metadata standards (<code>tEXt</code>, <code>XMP RDF</code>, and <code>eXIf</code>), the challenge author ensured that any investigator using a single-format parser would only see a partial, nonsensical fragment.
+                      </p>
+                    </div>
+
+                    {/* The How */}
+                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-3">
+                      <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs font-bold uppercase tracking-wider">
+                        <svg className="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                        <span>The &ldquo;How&rdquo; • ISO/IEC 15948 PNG Chunk Architecture</span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Sequential Chunk Extraction:</strong>
+                        <br />1. <code>tEXt</code> (Offset 0x2A): Ancillary Latin-1 text chunk containing <code>Title: spooky&#123;tormented_</code>.
+                        <br />2. <code>iTXt</code> (Offset 0x140): Adobe XMP XML packet containing <code>dc:description: tanner_hates_</code>.
+                        <br />3. <code>eXIf</code> (Offset 0x6E0): Embedded TIFF structure Tag <code>0x010E</code> containing <code>ImageDescription: his_vetsulin&#125;</code>.
+                      </p>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Reassembly:</strong> Concatenating all three metadata containers in file-stream order yielded: <code>spooky&#123;tormented_tanner_hates_his_vetsulin&#125;</code> (Vetsulin being porcine insulin for diabetic pets).
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </section>
 
               <section id="tanny-flag" className="space-y-4">
@@ -1133,6 +1498,66 @@ export default function SpookyCtfPage() {
                 </div>
               </section>
 
+                            {/* Forensic Deep Dive: The "Why" & "How" */}
+              <section id="the-phantom-login-deepdive" className="space-y-4">
+                <div className="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] border border-amber-500/30 shadow-2xl relative overflow-hidden space-y-6">
+                  <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none" />
+
+                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-800/80 pb-4">
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
+                      <h4 className="font-mono text-sm sm:text-base font-bold text-amber-300 tracking-wider uppercase">
+                        Forensic Deep Dive // Root-Cause &amp; Technical Mechanics
+                      </h4>
+                    </div>
+                    <div className="flex items-center gap-2 font-mono text-[11px]">
+                      <span className="px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-semibold">
+                        THE &ldquo;WHY&rdquo;
+                      </span>
+                      <span className="text-zinc-600">&bull;</span>
+                      <span className="px-2.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold">
+                        THE &ldquo;HOW&rdquo;
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    {/* The Why */}
+                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-amber-500/20 space-y-3">
+                      <div className="flex items-center gap-2 text-amber-400 font-mono text-xs font-bold uppercase tracking-wider">
+                        <svg className="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>The &ldquo;Why&rdquo; • Cross-Layer SOC Telemetry Correlation</span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Orthogonal Log Telemetry:</strong> Host-level security logs (Windows Event Logs) and application-level access logs (IIS/Nginx) record different dimensions of an incident. Windows Security logs capture authentication, but cannot record HTTP parameters or data exfiltration.
+                      </p>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>The Dormant Account Pivot:</strong> The alert flagged an anomalous 3:13 AM logon for dormant user <code>evelyn.graves</code>. Triage in <code>Security.evtx</code> proved the authentication occurred, revealing the foreign client IP <code>203.0.113.77</code> needed to query the web server logs.
+                      </p>
+                    </div>
+
+                    {/* The How */}
+                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-3">
+                      <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs font-bold uppercase tracking-wider">
+                        <svg className="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                        <span>The &ldquo;How&rdquo; • Event 4624 to Web Access Log Pivoting</span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Event 4624 Logon Type 3:</strong> In <code>Security.evtx</code>, Event ID 4624 recorded a successful Network Logon for <code>evelyn.graves</code> at <code>03:13:22 UTC</code> from Workstation IP <code>203.0.113.77</code>.
+                      </p>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Web Parameter Carving:</strong> Grepping <code>njit_web.log</code> for IP <code>203.0.113.77</code> within a 60-second window revealed 4 HTTP requests, culminating in <code>GET /archive/notes.php?action=export&amp;note=c3Bvb2t5e2doMHN0XzFuX3RoM19tNGNoMW4zfQ==</code>. Base64 decoding <code>note</code> revealed: <code>spooky&#123;gh0st_1n_th3_m4ch1n3&#125;</code>.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
               <section id="phantom-flag" className="space-y-4">
                 <div className="p-5 rounded-2xl bg-gradient-to-r from-emerald-950/40 to-[#0b0b12] border border-emerald-500/40 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div className="space-y-1">
@@ -1207,6 +1632,66 @@ export default function SpookyCtfPage() {
                 </div>
               </section>
 
+                            {/* Forensic Deep Dive: The "Why" & "How" */}
+              <section id="arachnophobia-deepdive" className="space-y-4">
+                <div className="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] border border-amber-500/30 shadow-2xl relative overflow-hidden space-y-6">
+                  <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none" />
+
+                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-800/80 pb-4">
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
+                      <h4 className="font-mono text-sm sm:text-base font-bold text-amber-300 tracking-wider uppercase">
+                        Forensic Deep Dive // Root-Cause &amp; Technical Mechanics
+                      </h4>
+                    </div>
+                    <div className="flex items-center gap-2 font-mono text-[11px]">
+                      <span className="px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-semibold">
+                        THE &ldquo;WHY&rdquo;
+                      </span>
+                      <span className="text-zinc-600">&bull;</span>
+                      <span className="px-2.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold">
+                        THE &ldquo;HOW&rdquo;
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    {/* The Why */}
+                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-amber-500/20 space-y-3">
+                      <div className="flex items-center gap-2 text-amber-400 font-mono text-xs font-bold uppercase tracking-wider">
+                        <svg className="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>The &ldquo;Why&rdquo; • PNG Spec Architectural Loophole &amp; Overlays</span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Rendering Termination Spec:</strong> The W3C PNG specification mandates that image decoders terminate processing immediately upon reading the <code>IEND</code> chunk (<code>49 45 4E 44</code>). Any bytes appended past <code>IEND</code> are classified as an &ldquo;overlay&rdquo; and completely ignored by rendering engines.
+                      </p>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Polyglot Tradecraft:</strong> Threat actors use PNG trailer overlays for polyglot malware staging because the file renders without errors in browsers, thumbnails, and preview panes while secretly housing an embedded executable or ZIP container.
+                      </p>
+                    </div>
+
+                    {/* The How */}
+                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-3">
+                      <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs font-bold uppercase tracking-wider">
+                        <svg className="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                        <span>The &ldquo;How&rdquo; • IEND Boundary Scanning &amp; PKZIP Carving</span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Hex Boundary Analysis:</strong> Scanning <code>Arachnophobia.png</code> located <code>IEND</code> at byte offset <code>976905</code>. Accounting for chunk type and the 4-byte CRC32 trailer (<code>AE 42 60 82</code>), the PNG ends at offset <code>976913</code> (0x0EE831).
+                      </p>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>PKZIP Header Extraction:</strong> Offset <code>976913</code> begins immediately with <code>50 4B 03 04</code> (PKZIP local header magic). Slicing <code>data[976913:]</code> and decompressing the carved ZIP extracted <code>flag.txt</code>: <code>spooky&#123;8_l3gs_4nd_4_z1p&#125;</code>.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
               <section id="arach-flag" className="space-y-4">
                 <div className="p-5 rounded-2xl bg-gradient-to-r from-emerald-950/40 to-[#0b0b12] border border-emerald-500/40 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div className="space-y-1">
@@ -1278,6 +1763,66 @@ export default function SpookyCtfPage() {
                   <pre className="p-4 text-xs font-mono text-emerald-300 overflow-x-auto leading-relaxed">
                     <code>{"$ zsteg -a Eisoptrophobiactf.png\nb1,rgb,lsb,xy .. text: \"c3Bvb2t5e3RoZV9yZWZsZWN0aW9uX25ldmVyX2xpZXN9\"\n\n$ echo 'c3Bvb2t5e3RoZV9yZWZsZWN0aW9uX25ldmVyX2xpZXN9' | base64 -d\nspooky{the_reflection_never_lies}"}</code>
                   </pre>
+                </div>
+              </section>
+
+                            {/* Forensic Deep Dive: The "Why" & "How" */}
+              <section id="eisoptrophobia-deepdive" className="space-y-4">
+                <div className="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] border border-amber-500/30 shadow-2xl relative overflow-hidden space-y-6">
+                  <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none" />
+
+                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-800/80 pb-4">
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
+                      <h4 className="font-mono text-sm sm:text-base font-bold text-amber-300 tracking-wider uppercase">
+                        Forensic Deep Dive // Root-Cause &amp; Technical Mechanics
+                      </h4>
+                    </div>
+                    <div className="flex items-center gap-2 font-mono text-[11px]">
+                      <span className="px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-semibold">
+                        THE &ldquo;WHY&rdquo;
+                      </span>
+                      <span className="text-zinc-600">&bull;</span>
+                      <span className="px-2.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold">
+                        THE &ldquo;HOW&rdquo;
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    {/* The Why */}
+                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-amber-500/20 space-y-3">
+                      <div className="flex items-center gap-2 text-amber-400 font-mono text-xs font-bold uppercase tracking-wider">
+                        <svg className="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>The &ldquo;Why&rdquo; • Optical Reflection Clue &amp; Scanline Traps</span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Linguistic Clue:</strong> &ldquo;Eisoptrophobia&rdquo; is the fear of mirrors and optical reflections. In steganography challenges, this hints at scanline orientation (horizontal vs vertical) or channel inversions.
+                      </p>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Why Generic Tools Missed It:</strong> Many automated steganography tools default to column-major indexing (<code>yx</code>) or expect sequential byte streams packed per channel. When <code>zsteg</code> flagged mode <code>b1,rgb,lsb,xy</code>, it proved bits were embedded along the raster scanlines across Red, Green, and Blue planes simultaneously.
+                      </p>
+                    </div>
+
+                    {/* The How */}
+                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-3">
+                      <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs font-bold uppercase tracking-wider">
+                        <svg className="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                        <span>The &ldquo;How&rdquo; • Row-Major RGB Bitplane Slicing</span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Scanline Pixel Geometry:</strong> In 24-bit RGB space, pixels process left-to-right across scanlines (<code>x = 0 &rarr; W-1</code>) for each row (<code>y = 0 &rarr; H-1</code>).
+                      </p>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Bit Packing &amp; Base64 Decode:</strong> Extracting bit 0 across R, G, and B at each coordinate and packing groups of 8 bits (MSB first) produced the ASCII Base64 string: <code>c3Bvb2t5e3RoZV9yZWZsZWN0aW9uX25ldmVyX2xpZXN9</code>. Decoding Base64 resolved: <code>spooky&#123;the_reflection_never_lies&#125;</code>.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </section>
 
@@ -1367,6 +1912,66 @@ export default function SpookyCtfPage() {
                   <li><strong>Bandpass 5,000 Hz &ndash; 10,000 Hz:</strong> Isolates the synthetic whisper carriers.</li>
                   <li><strong>Time-Reversal + Whisper AI:</strong> Inverting audio phase and passing reversed tracks through OpenAI Whisper neural transcription to detect phonetic speech.</li>
                 </ul>
+              </section>
+
+                            {/* Forensic Deep Dive: The "Why" & "How" */}
+              <section id="phasmophobia-deepdive" className="space-y-4">
+                <div className="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] border border-amber-500/30 shadow-2xl relative overflow-hidden space-y-6">
+                  <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none" />
+
+                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-800/80 pb-4">
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
+                      <h4 className="font-mono text-sm sm:text-base font-bold text-amber-300 tracking-wider uppercase">
+                        Forensic Deep Dive // Root-Cause &amp; Technical Mechanics
+                      </h4>
+                    </div>
+                    <div className="flex items-center gap-2 font-mono text-[11px]">
+                      <span className="px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-semibold">
+                        THE &ldquo;WHY&rdquo;
+                      </span>
+                      <span className="text-zinc-600">&bull;</span>
+                      <span className="px-2.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold">
+                        THE &ldquo;HOW&rdquo;
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    {/* The Why */}
+                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-amber-500/20 space-y-3">
+                      <div className="flex items-center gap-2 text-amber-400 font-mono text-xs font-bold uppercase tracking-wider">
+                        <svg className="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>The &ldquo;Why&rdquo; • Composite Stego Failure &amp; Post-Mortem Rigor</span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Multi-Stage Fragility:</strong> Phasmophobia presented two distinct artifacts: an audio recording (<code>ghost_whispers.wav</code>) and an image of NJIT&apos;s Eberhardt Hall (<code>ebersecret.png</code>). This challenge remained unsolved across the competition.
+                      </p>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>The Missing Transposition Key:</strong> When a CTF steganography pipeline combines spectral audio with visual LSB bitplanes without an explicit Key Derivation Function (KDF), the challenge becomes brittle. Publishing both the recovered signals and the failure boundaries demonstrates genuine forensic rigor.
+                      </p>
+                    </div>
+
+                    {/* The How */}
+                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-3">
+                      <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs font-bold uppercase tracking-wider">
+                        <svg className="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                        <span>The &ldquo;How&rdquo; • Dual-Domain Acoustic Spectral Carving &amp; Neural ASR</span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>High-Frequency FFT Synthesis:</strong> Computing a 2048-point Fast Fourier Transform (FFT) in Audacity revealed synthetic glyphs visually rendered in the 5,000 Hz to 9,500 Hz band: <code>EBERHARDT_HAUNTED_1885</code>.
+                      </p>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
+                        <strong>Phase Inversion &amp; Whisper AI:</strong> Constructing an anti-phase filter (Left - Right) and passing through a 4th-order Butterworth bandpass isolated a masked whisper track. Passing this audio to OpenAI Whisper AI transcribed: &ldquo;The key is beneath the copper dome&rdquo;. The post-mortem documents how these signals intersect with Eberhardt Hall lore.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </section>
 
               <section id="phasmo-postmortem" className="space-y-4">
