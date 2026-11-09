@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -26,8 +26,7 @@ export default function SpookyCtfPage() {
         { id: "peering-psaux", title: "2. Process & Terminal Discovery", tag: "PsAux" },
         { id: "peering-script", title: "3. Reconstructing EYEsee.py", tag: "Heap Carve" },
         { id: "peering-uvc", title: "4. UVC Ring Buffer Frame Carving", tag: "JPEG 640x480" },
-        { id: "peering-eyes-deepdive", title: "5. Forensic Deep Dive (Why & How)", tag: "Why & How" },
-        { id: "peering-flag", title: "6. Verified Flag Recovery", tag: "Flag" },
+        { id: "peering-flag", title: "5. Verified Flag Recovery", tag: "Flag" },
       ]
     },
     {
@@ -46,8 +45,7 @@ export default function SpookyCtfPage() {
         { id: "hash-overview", title: "1. SOC Incident & Hash Lookup", tag: "SHA-256" },
         { id: "hash-vt", title: "2. VirusTotal Community Intelligence", tag: "thehackerguy" },
         { id: "hash-leetspeak", title: "3. Leetspeak Orthography & Base64", tag: "1337 Rules" },
-        { id: "hashphobia-deepdive", title: "4. Forensic Deep Dive (Why & How)", tag: "Why & How" },
-        { id: "hash-flag", title: "5. Verified Flag Assembly", tag: "Flag" },
+        { id: "hash-flag", title: "4. Verified Flag Assembly", tag: "Flag" },
       ]
     },
     {
@@ -66,8 +64,7 @@ export default function SpookyCtfPage() {
         { id: "cleith-recon", title: "1. Protocol Hierarchy & Ignition Probe", tag: "Wireshark" },
         { id: "cleith-ignition", title: "2. Captain Kirk Basic Auth & 200 OK", tag: "Packet 404" },
         { id: "cleith-headers", title: "3. Deflector Telemetry Base64 Chunks", tag: "HTTP Headers" },
-        { id: "cleithrophobia-deepdive", title: "4. Forensic Deep Dive (Why & How)", tag: "Why & How" },
-        { id: "cleith-flag", title: "5. Verified Flag Recovery", tag: "Flag" },
+        { id: "cleith-flag", title: "4. Verified Flag Recovery", tag: "Flag" },
       ]
     },
     {
@@ -81,12 +78,12 @@ export default function SpookyCtfPage() {
       folder: "C:\\CTFS\\spooky ctf\\forensics\\Stash the Hash\\",
       difficulty: "Medium",
       author: "jtjnjit",
-      flag: "spooky{leeds_devil_stashed_the_cache}",
+      flag: "spooky{dleeds_isa_devil}",
       sections: [
-        { id: "stash-recon", title: "1. Jersey Devil & Account Dump", tag: "Daniel Leeds" },
-        { id: "stash-crack", title: "2. Hashcat Wordlist Attack", tag: "NTLM Crack" },
-        { id: "stash-stego", title: "3. Red Channel Bit 0 Visual Steganography", tag: "LSB Mask" },
-        { id: "stash-the-hash-deepdive", title: "4. Forensic Deep Dive (Why & How)", tag: "Why & How" },
+        { id: "stash-recon", title: "1. Jersey Devil & Account Dump", tag: "UserAccountInfo" },
+        { id: "stash-crack", title: "2. Hashcat Wordlist Attack", tag: "rockyou.txt" },
+        { id: "stash-decrypt", title: "3. Encrypted 7z Archive Extraction", tag: "AES-256" },
+        { id: "stash-stego", title: "4. Red Channel Bit 0 Visual Steganography", tag: "LSB" },
         { id: "stash-flag", title: "5. Verified Flag Recovery", tag: "Flag" },
       ]
     },
@@ -94,18 +91,18 @@ export default function SpookyCtfPage() {
       id: "the-haunted-portrait",
       num: "05",
       title: "The Haunted Portrait",
-      category: "Visual Steganography",
+      category: "Steganography",
       points: "499 PTS",
-      badge: "STEG // ROT13 CIPHER",
-      tagline: "RGB Bitplane Shannon Entropy & Caesar ROT13 Substitution",
+      badge: "PNG // BLUE PLANE 0",
+      tagline: "Blue Channel Bitplane Anomaly & ROT13 Cipher Decryption",
       folder: "C:\\CTFS\\spooky ctf\\forensics\\The Haunted Portrait\\",
       difficulty: "Easy",
-      author: "jtjnjit",
-      flag: "spooky{th3_p41nt1ng_h4s_3y3s}",
+      author: "Justin Pence",
+      flag: "spooky{portraits_keep_secrets}",
       sections: [
-        { id: "portrait-entropy", title: "1. Bitplane Entropy Ratio Analysis", tag: "Entropy 3.61%" },
-        { id: "portrait-rot13", title: "2. ROT13 Cipher Decryption", tag: "Caesar" },
-        { id: "the-haunted-portrait-deepdive", title: "3. Forensic Deep Dive (Why & How)", tag: "Why & How" },
+        { id: "portrait-recon", title: "1. PNG Header & Chunk Integrity", tag: "IHDR" },
+        { id: "portrait-entropy", title: "2. Bitplane Entropy Ratio Analysis", tag: "Blue LSB" },
+        { id: "portrait-rot13", title: "3. ROT13 Cipher Decryption", tag: "ROT-13" },
         { id: "portrait-flag", title: "4. Verified Flag Recovery", tag: "Flag" },
       ]
     },
@@ -115,16 +112,17 @@ export default function SpookyCtfPage() {
       title: "Tormented Tanny",
       category: "Metadata Forensics",
       points: "484 PTS",
-      badge: "PNG // MULTI-CHUNK",
-      tagline: "Multi-Chunk PNG Metadata: tEXt, Adobe XMP & TIFF EXIF Reassembly",
+      badge: "TEXT // XMP // EXIF",
+      tagline: "Multi-Layer Metadata Carving across tEXt, iTXt, and eXIf Chunks",
       folder: "C:\\CTFS\\spooky ctf\\forensics\\Tormented Tanny\\",
       difficulty: "Easy",
-      author: "Frank C",
+      author: "jtjnjit",
       flag: "spooky{tormented_tanner_hates_his_vetsulin}",
       sections: [
-        { id: "tanny-recon", title: "1. Chunk Structure & Multi-Container Dissection", tag: "tEXt / XMP / eXIf" },
-        { id: "tormented-tanny-deepdive", title: "2. Forensic Deep Dive (Why & How)", tag: "Why & How" },
-        { id: "tanny-flag", title: "3. Verified Flag Recovery", tag: "Flag" },
+        { id: "tanny-recon", title: "1. Chunk Structure Dissection", tag: "PNG Chunks" },
+        { id: "tanny-extract", title: "2. Extracting the Split Metadata Chunks", tag: "Pillow" },
+        { id: "tanny-reassemble", title: "3. Reassembling the Tripartite Flag", tag: "Concat" },
+        { id: "tanny-flag", title: "4. Verified Flag Recovery", tag: "Flag" },
       ]
     },
     {
@@ -133,16 +131,15 @@ export default function SpookyCtfPage() {
       title: "The Phantom Login",
       category: "Log Analysis",
       points: "250 PTS",
-      badge: "EVTX // ACCESS LOGS",
-      tagline: "Windows Event 4624 to IIS Web Server Log Cross-Correlation",
+      badge: "EVENT 4624 // WEB LOG",
+      tagline: "Windows Event 4624/4625 Triage & Web Access Base64 Correlation",
       folder: "C:\\CTFS\\spooky ctf\\forensics\\The Phantom Login\\",
       difficulty: "Medium",
-      author: "jtjnjit",
-      flag: "spooky{gh0st_1n_th3_m4ch1n3}",
+      flag: "spooky{the_ghost_left_a_trace}",
       sections: [
-        { id: "phantom-sec", title: "1. Windows Security Event Correlation", tag: "Event 4624" },
-        { id: "phantom-web", title: "2. Web Server Access Log Tracking", tag: "Base64 Param" },
-        { id: "the-phantom-login-deepdive", title: "3. Forensic Deep Dive (Why & How)", tag: "Why & How" },
+        { id: "phantom-recon", title: "1. SOC Incident Notes & Log Triage", tag: "NJIT-1031" },
+        { id: "phantom-sec", title: "2. Windows Security Event Correlation", tag: "Event 4624" },
+        { id: "phantom-web", title: "3. Web Server Access Log Tracking", tag: "GET /archives" },
         { id: "phantom-flag", title: "4. Verified Flag Recovery", tag: "Flag" },
       ]
     },
@@ -160,7 +157,7 @@ export default function SpookyCtfPage() {
       flag: "spooky{8_l3gs_4nd_4_z1p}",
       sections: [
         { id: "arach-recon", title: "1. Logo Inspection & Chunk Scanning", tag: "IEND" },
-        { id: "arachnophobia-deepdive", title: "2. Forensic Deep Dive (Why & How)", tag: "Why & How" },
+        { id: "arach-carve", title: "2. Carving Appended PKZIP Archive", tag: "Offset 976909" },
         { id: "arach-flag", title: "3. Verified Flag Recovery", tag: "Flag" },
       ]
     },
@@ -178,7 +175,7 @@ export default function SpookyCtfPage() {
       flag: "spooky{the_reflection_never_lies}",
       sections: [
         { id: "eiso-recon", title: "1. Image Reconnaissance & Bitplane Probe", tag: "zsteg" },
-        { id: "eisoptrophobia-deepdive", title: "2. Forensic Deep Dive (Why & How)", tag: "Why & How" },
+        { id: "eiso-solve", title: "2. Row-Major RGB LSB Extraction", tag: "NumPy" },
         { id: "eiso-flag", title: "3. Verified Flag Recovery", tag: "Flag" },
       ]
     },
@@ -195,10 +192,11 @@ export default function SpookyCtfPage() {
       author: "Nexus Nova",
       flag: "UNSOLVED // FORENSIC POST-MORTEM",
       sections: [
-        { id: "phasmo-spectro", title: "1. Audio Spectrogram Frequency Analysis", tag: "Audacity" },
-        { id: "phasmo-whisper", title: "2. Butterworth Track Separation & Whisper", tag: "Neural ASR" },
-        { id: "phasmophobia-deepdive", title: "3. Forensic Deep Dive (Why & How)", tag: "Why & How" },
-        { id: "phasmo-postmortem", title: "4. Dead-End Post-Mortem Analysis", tag: "Analysis" },
+        { id: "phasmo-overview", title: "1. Challenge Overview & Two Artifacts", tag: "Eberhardt Hall" },
+        { id: "phasmo-spectro", title: "2. Audio Spectrogram Frequency Analysis", tag: "Audacity" },
+        { id: "phasmo-whisper", title: "3. Butterworth Track Separation & Whisper", tag: "Neural ASR" },
+        { id: "phasmo-image", title: "4. Bitplane Carving on ebersecret.png", tag: "Bitplanes" },
+        { id: "phasmo-postmortem", title: "5. Dead-End Post-Mortem Analysis", tag: "Analysis" },
       ]
     }
   ];
@@ -314,18 +312,6 @@ export default function SpookyCtfPage() {
               </div>
 
               <div className="space-y-1">
-                <a
-                  href="#campaign-roadmap"
-                  className="flex items-center justify-between px-3 py-2 rounded-xl transition-all mb-2 bg-amber-500/10 border border-amber-500/30 text-amber-300 font-bold hover:bg-amber-500/20"
-                >
-                  <span className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-                    <span>Campaign Roadmap</span>
-                  </span>
-                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono">
-                    10 Ops
-                  </span>
-                </a>
                 {challenges.map((ch) => {
                   const isActive = activeChallengeId === ch.id;
                   return (
@@ -374,190 +360,6 @@ export default function SpookyCtfPage() {
           {/* Right Main Content Area */}
           <div className="lg:col-span-8 space-y-16">
             
-                        {/* =========================================================================
-                OPERATIONAL CAMPAIGN ROADMAP // 10 THREAT OBJECTIVES
-            ========================================================================= */}
-            <div id="campaign-roadmap" className="scroll-mt-24 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] border border-amber-500/30 shadow-2xl relative overflow-hidden space-y-8 backdrop-blur-xl">
-              <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
-
-              <div className="flex flex-wrap items-center justify-between gap-4 border-b border-zinc-800/80 pb-5">
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
-                    <span className="text-xs font-mono uppercase tracking-wider text-amber-400 font-bold">
-                      Tactical Operation Map
-                    </span>
-                  </div>
-                  <h2 className="text-2xl sm:text-3xl font-bold text-white font-[family-name:var(--font-share-tech)] tracking-wide">
-                    Operational Campaign Roadmap // 10 Investigation Vectors
-                  </h2>
-                </div>
-                <div className="flex items-center gap-2 font-mono text-xs">
-                  <span className="px-3 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-bold">
-                    9 CAPTURED
-                  </span>
-                  <span className="px-3 py-1 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30 font-bold">
-                    1 POST-MORTEM
-                  </span>
-                  <span className="px-3 py-1 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 font-bold">
-                    4,613 PTS
-                  </span>
-                </div>
-              </div>
-
-              <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                The Spooky CTF Forensics engagement spans ten specialized investigations across host memory, network pcaps, authentication event streams, and spatial bitplane steganography. Click any vector below to jump directly to its complete operational walkthrough:
-              </p>
-
-              {/* 4 Specialized Forensic Domains */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                
-                {/* Domain 1: Host & Volatile Memory */}
-                <div className="p-5 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 space-y-3">
-                  <div className="flex items-center justify-between border-b border-zinc-800 pb-2">
-                    <span className="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider flex items-center gap-2">
-                      <span className="w-2 h-2 rounded bg-amber-400" />
-                      Domain 01 • Host &amp; Memory Forensics
-                    </span>
-                    <span className="text-[11px] font-mono text-zinc-500">2 Operations</span>
-                  </div>
-                  <div className="space-y-2 font-mono text-xs">
-                    <a href="#peering-eyes" className="block p-3 rounded-xl bg-black/40 border border-zinc-800/60 hover:border-amber-500/50 hover:bg-zinc-900/60 transition-all group">
-                      <div className="flex items-center justify-between">
-                        <span className="text-white font-bold group-hover:text-amber-300">01. Peering Eyes</span>
-                        <span className="text-red-400 text-[10px] font-bold">1000 PTS</span>
-                      </div>
-                      <p className="text-[11px] text-zinc-400 font-sans mt-1">
-                        LiME RAM &rarr; Process Heap Carve &rarr; UVC Ring Buffer &rarr; 640x480 SOF0 JPEG
-                      </p>
-                    </a>
-                    <a href="#the-phantom-login" className="block p-3 rounded-xl bg-black/40 border border-zinc-800/60 hover:border-amber-500/50 hover:bg-zinc-900/60 transition-all group">
-                      <div className="flex items-center justify-between">
-                        <span className="text-white font-bold group-hover:text-amber-300">07. The Phantom Login</span>
-                        <span className="text-yellow-400 text-[10px] font-bold">250 PTS</span>
-                      </div>
-                      <p className="text-[11px] text-zinc-400 font-sans mt-1">
-                        Security.evtx Event 4624 &rarr; njit_web.log &rarr; 203.0.113.77 &rarr; Export Note Param
-                      </p>
-                    </a>
-                  </div>
-                </div>
-
-                {/* Domain 2: Threat Intel & Credential Dumping */}
-                <div className="p-5 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 space-y-3">
-                  <div className="flex items-center justify-between border-b border-zinc-800 pb-2">
-                    <span className="text-xs font-mono font-bold text-yellow-400 uppercase tracking-wider flex items-center gap-2">
-                      <span className="w-2 h-2 rounded bg-yellow-400" />
-                      Domain 02 • Threat Intel &amp; OSINT
-                    </span>
-                    <span className="text-[11px] font-mono text-zinc-500">2 Operations</span>
-                  </div>
-                  <div className="space-y-2 font-mono text-xs">
-                    <a href="#hashphobia" className="block p-3 rounded-xl bg-black/40 border border-zinc-800/60 hover:border-yellow-500/50 hover:bg-zinc-900/60 transition-all group">
-                      <div className="flex items-center justify-between">
-                        <span className="text-white font-bold group-hover:text-yellow-300">02. Hashphobia</span>
-                        <span className="text-yellow-400 text-[10px] font-bold">750 PTS</span>
-                      </div>
-                      <p className="text-[11px] text-zinc-400 font-sans mt-1">
-                        SHA-256 Digest &rarr; VirusTotal thehackerguy Intel &rarr; 1337 Leetspeak Alignment
-                      </p>
-                    </a>
-                    <a href="#stash-the-hash" className="block p-3 rounded-xl bg-black/40 border border-zinc-800/60 hover:border-yellow-500/50 hover:bg-zinc-900/60 transition-all group">
-                      <div className="flex items-center justify-between">
-                        <span className="text-white font-bold group-hover:text-yellow-300">04. Stash the Hash</span>
-                        <span className="text-yellow-400 text-[10px] font-bold">750 PTS</span>
-                      </div>
-                      <p className="text-[11px] text-zinc-400 font-sans mt-1">
-                        Daniel Leeds OSINT &rarr; Hashcat NTLM Crack &rarr; Red Plane 0 LSB Masking
-                      </p>
-                    </a>
-                  </div>
-                </div>
-
-                {/* Domain 3: Network Traffic Forensics */}
-                <div className="p-5 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 space-y-3">
-                  <div className="flex items-center justify-between border-b border-zinc-800 pb-2">
-                    <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-2">
-                      <span className="w-2 h-2 rounded bg-cyan-400" />
-                      Domain 03 • Network Traffic Analysis
-                    </span>
-                    <span className="text-[11px] font-mono text-zinc-500">1 Operation</span>
-                  </div>
-                  <div className="space-y-2 font-mono text-xs">
-                    <a href="#cleithrophobia" className="block p-3 rounded-xl bg-black/40 border border-zinc-800/60 hover:border-cyan-500/50 hover:bg-zinc-900/60 transition-all group">
-                      <div className="flex items-center justify-between">
-                        <span className="text-white font-bold group-hover:text-cyan-300">03. Cleithrophobia</span>
-                        <span className="text-yellow-400 text-[10px] font-bold">750 PTS</span>
-                      </div>
-                      <p className="text-[11px] text-zinc-400 font-sans mt-1">
-                        Enterprise PCAP &rarr; FTP Decoy Filter &rarr; Packet 404 POST 200 OK &rarr; Custom X-Headers
-                      </p>
-                    </a>
-                  </div>
-                </div>
-
-                {/* Domain 4: Steganography, Audio & Chunk Forensics */}
-                <div className="p-5 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 space-y-3">
-                  <div className="flex items-center justify-between border-b border-zinc-800 pb-2">
-                    <span className="text-xs font-mono font-bold text-purple-400 uppercase tracking-wider flex items-center gap-2">
-                      <span className="w-2 h-2 rounded bg-purple-400" />
-                      Domain 04 • Visual, Audio &amp; Chunk Forensics
-                    </span>
-                    <span className="text-[11px] font-mono text-zinc-500">5 Operations</span>
-                  </div>
-                  <div className="space-y-2 font-mono text-xs">
-                    <a href="#the-haunted-portrait" className="block p-2.5 rounded-xl bg-black/40 border border-zinc-800/60 hover:border-purple-500/50 hover:bg-zinc-900/60 transition-all group">
-                      <div className="flex items-center justify-between">
-                        <span className="text-white font-bold group-hover:text-purple-300">05. The Haunted Portrait</span>
-                        <span className="text-emerald-400 text-[10px] font-bold">499 PTS</span>
-                      </div>
-                      <p className="text-[10px] text-zinc-400 font-sans mt-0.5">
-                        Blue Plane 0 Shannon Entropy (3.61%) &rarr; Caesar ROT13 Inversion
-                      </p>
-                    </a>
-                    <a href="#tormented-tanny" className="block p-2.5 rounded-xl bg-black/40 border border-zinc-800/60 hover:border-purple-500/50 hover:bg-zinc-900/60 transition-all group">
-                      <div className="flex items-center justify-between">
-                        <span className="text-white font-bold group-hover:text-purple-300">06. Tormented Tanny</span>
-                        <span className="text-emerald-400 text-[10px] font-bold">484 PTS</span>
-                      </div>
-                      <p className="text-[10px] text-zinc-400 font-sans mt-0.5">
-                        PNG Ancillary tEXt + Adobe XMP iTXt + TIFF eXIf Multi-Chunk Parsing
-                      </p>
-                    </a>
-                    <a href="#arachnophobia" className="block p-2.5 rounded-xl bg-black/40 border border-zinc-800/60 hover:border-purple-500/50 hover:bg-zinc-900/60 transition-all group">
-                      <div className="flex items-center justify-between">
-                        <span className="text-white font-bold group-hover:text-purple-300">08. Arachnophobia</span>
-                        <span className="text-emerald-400 text-[10px] font-bold">80 PTS</span>
-                      </div>
-                      <p className="text-[10px] text-zinc-400 font-sans mt-0.5">
-                        IEND Trailer Boundary Scan &rarr; Post-IEND PKZIP Archive Carving
-                      </p>
-                    </a>
-                    <a href="#eisoptrophobia" className="block p-2.5 rounded-xl bg-black/40 border border-zinc-800/60 hover:border-purple-500/50 hover:bg-zinc-900/60 transition-all group">
-                      <div className="flex items-center justify-between">
-                        <span className="text-white font-bold group-hover:text-purple-300">09. Eisoptrophobia</span>
-                        <span className="text-emerald-400 text-[10px] font-bold">50 PTS</span>
-                      </div>
-                      <p className="text-[10px] text-zinc-400 font-sans mt-0.5">
-                        Mirror Reflection Geometry &rarr; Row-Major (xy) RGB Bitplane Slicing
-                      </p>
-                    </a>
-                    <a href="#phasmophobia" className="block p-2.5 rounded-xl bg-black/40 border border-zinc-800/60 hover:border-purple-500/50 hover:bg-zinc-900/60 transition-all group">
-                      <div className="flex items-center justify-between">
-                        <span className="text-white font-bold group-hover:text-purple-300">10. Phasmophobia</span>
-                        <span className="text-purple-400 text-[10px] font-bold">ANALYSIS</span>
-                      </div>
-                      <p className="text-[10px] text-zinc-400 font-sans mt-0.5">
-                        FFT Audio Spectrogram Carving + Butterworth Bandpass &amp; Neural Whisper
-                      </p>
-                    </a>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
             {/* =========================================================================
                 OPERATION 01: PEERING EYES (1000 PTS - HARD MEMORY FORENSICS)
             ========================================================================= */}
@@ -597,39 +399,6 @@ export default function SpookyCtfPage() {
                 <p className="text-xs sm:text-sm text-zinc-300 italic font-sans leading-relaxed">
                   &ldquo;recently EYE have been feeling super paranoid using my computer. almost like someone is watching. Can you make sure EYE am not going crazy!? i swear it feels like people are just taking pictures of me...&rdquo;
                 </p>
-              </div>
-
-              {/* Tactical Investigation Roadmap */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-zinc-950/60 border border-zinc-800/80 space-y-3">
-                <div className="flex items-center justify-between text-[11px] font-mono">
-                  <span className="text-zinc-400 font-bold uppercase tracking-wider flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-                    Investigation Path &amp; Tactical Flow
-                  </span>
-                  <span className="text-amber-400/90 font-semibold">4 PIVOTS • VERIFIED</span>
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs font-mono">
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 01</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">LiME RAM Triage</span>
-                    <span className="text-[10px] text-amber-400/80 mt-1">spooked2.lime (1 GB)</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 02</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">Heap Process Discovery</span>
-                    <span className="text-[10px] text-zinc-400 mt-1">EYEsee.py / cv2</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 03</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">UVC Ring Buffer Scan</span>
-                    <span className="text-[10px] text-cyan-400 mt-1">640x480 SOF0 Marker</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30 flex flex-col justify-between">
-                    <span className="text-[10px] text-emerald-400 font-bold">TARGET FLAG</span>
-                    <span className="text-emerald-300 font-semibold text-[11px] mt-1">Webcam Frame Note</span>
-                    <span className="text-[10px] text-emerald-400 font-mono mt-1">1000 PTS</span>
-                  </div>
-                </div>
               </div>
 
               {/* Step 1: Prompt Triage */}
@@ -738,65 +507,94 @@ export default function SpookyCtfPage() {
                 </div>
               </section>
 
-                            {/* Forensic Deep Dive: The "Why" & "How" */}
-              <section id="peering-eyes-deepdive" className="space-y-4">
-                <div className="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] border border-amber-500/30 shadow-2xl relative overflow-hidden space-y-6">
-                  <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
-                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none" />
-
-                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-800/80 pb-4">
-                    <div className="flex items-center gap-2.5">
-                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
-                      <h4 className="font-mono text-sm sm:text-base font-bold text-amber-300 tracking-wider uppercase">
-                        Forensic Deep Dive // Root-Cause &amp; Technical Mechanics
-                      </h4>
-                    </div>
-                    <div className="flex items-center gap-2 font-mono text-[11px]">
-                      <span className="px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-semibold">
-                        THE &ldquo;WHY&rdquo;
+                            {/* =========================================================
+                  GLOWING INTERACTIVE "IDEA" DISCLOSURE: WHY, HOW & MAP
+              ========================================================= */}
+              <details className="group rounded-2xl border border-amber-500/40 bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] shadow-[0_0_20px_rgba(245,158,11,0.18)] hover:shadow-[0_0_35px_rgba(245,158,11,0.35)] transition-all duration-300 overflow-hidden my-6">
+                <summary className="flex items-center justify-between p-4 sm:p-5 cursor-pointer select-none bg-gradient-to-r from-amber-500/10 via-transparent to-amber-500/5 hover:bg-amber-500/15 transition-all">
+                  <div className="flex items-center gap-3">
+                    <span className="px-3 py-1 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/60 font-mono text-xs font-black tracking-widest uppercase shadow-[0_0_15px_rgba(245,158,11,0.5)] flex items-center gap-1.5 animate-pulse">
+                      <svg className="w-3.5 h-3.5 text-amber-300" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14H8a4 4 0 01-.828-7.915A4 4 0 0116 10a4 4 0 01-4 4z" />
+                      </svg>
+                      IDEA
+                    </span>
+                    <div className="text-left">
+                      <span className="text-sm font-bold text-white font-mono tracking-wide block">
+                        Core Threat Concept // The &ldquo;Why&rdquo;, &ldquo;How&rdquo; &amp; Tactical Map
                       </span>
-                      <span className="text-zinc-600">&bull;</span>
-                      <span className="px-2.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold">
-                        THE &ldquo;HOW&rdquo;
+                      <span className="text-[11px] text-zinc-400 font-sans block">
+                        Click to expand threat rationale, underlying OS mechanics, and tactical flow
                       </span>
                     </div>
                   </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-mono text-amber-400 group-open:hidden">
+                      EXPAND &darr;
+                    </span>
+                    <span className="text-[11px] font-mono text-amber-400 hidden group-open:inline">
+                      COLLAPSE &uarr;
+                    </span>
+                    <svg className="w-4 h-4 text-amber-400 transform group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </summary>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {/* The Why */}
-                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-amber-500/20 space-y-3">
-                      <div className="flex items-center gap-2 text-amber-400 font-mono text-xs font-bold uppercase tracking-wider">
-                        <svg className="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span>The &ldquo;Why&rdquo; • Investigative Pivot &amp; Threat Model</span>
+                <div className="p-5 sm:p-6 border-t border-amber-500/20 space-y-6 bg-black/40">
+                  {/* Tactical Investigation Flow */}
+                  <div className="space-y-2">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-amber-400 font-bold block">
+                      Tactical Investigation Map
+                    </span>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono">
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 01</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">LiME RAM Triage</span>
+                        <span className="text-[10px] text-amber-400/80 mt-1">spooked2.lime (1 GB)</span>
                       </div>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Volatile-Only Spyware Evasion:</strong> Malicious surveillance tools (like live webcam grabbers) intentionally avoid persisting captured imagery to disk. Saving JPG/PNG files triggers file system timestamps (<code>ctime</code>/<code>mtime</code>), Inotify hooks, and EDR file-creation alerts. Keeping frames in memory ring buffers leaves zero disk footprint.
-                      </p>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Why Generic File Carvers Failed:</strong> Standard forensic tools (<code>foremost</code>, <code>scalpel</code>) assume carved files reside across contiguous disk blocks. In modern Linux, webcam frames reside in scattered non-contiguous physical pages allocated via kernel DMA. Grepping process heap memory identified <code>EYEsee.py</code> and confirmed the OpenCV <code>cv2.VideoCapture(0)</code> pipeline.
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 02</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">Heap Process Carving</span>
+                        <span className="text-[10px] text-zinc-400 mt-1">EYEsee.py / cv2</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 03</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">UVC Ring Buffer Scan</span>
+                        <span className="text-[10px] text-cyan-400 mt-1">640x480 SOF0 Marker</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30 flex flex-col justify-between">
+                        <span className="text-[10px] text-emerald-400 font-bold">TARGET FLAG</span>
+                        <span className="text-emerald-300 font-semibold text-[11px] mt-1">Webcam Frame Note</span>
+                        <span className="text-[10px] text-emerald-400 font-mono mt-1">1000 PTS</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Why & How Concept Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-zinc-800/80">
+                    <div className="p-4 rounded-xl bg-zinc-900/50 border border-amber-500/20 space-y-2">
+                      <span className="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                        The &ldquo;Why&rdquo; • Investigative Rationale
+                      </span>
+                      <p className="text-xs text-zinc-300 font-sans leading-relaxed">
+                        Spyware surveillance loops avoid writing images to disk (ext4) to evade file integrity monitoring (<code>fanotify</code>, EDR file creation telemetry). Generic file carvers (<code>foremost</code>) failed because Linux V4L2/UVC webcam buffers reside in non-contiguous 4KB DMA pages scattered across physical RAM.
                       </p>
                     </div>
 
-                    {/* The How */}
-                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-3">
-                      <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs font-bold uppercase tracking-wider">
-                        <svg className="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                        </svg>
-                        <span>The &ldquo;How&rdquo; • Kernel DMA Buffers &amp; Targeted Byte Slicing</span>
-                      </div>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>V4L2 Driver Memory Architecture:</strong> OpenCV issues <code>ioctl(VIDIOC_REQBUFS)</code> with <code>V4L2_MEMORY_MMAP</code>. The Linux <code>uvcvideo</code> kernel module negotiates an MJPEG payload format with the USB camera, streaming hardware frames directly into physical RAM pages.
-                      </p>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>SOF0 Dimension-Aware Slicing:</strong> Rather than dumping thousands of broken JPEG fragments, our carver parsed the Start of Image marker <code>\xFF\xD8</code> and scanned forward to the SOF0 (Start of Frame - Baseline DCT) marker <code>\xFF\xC0</code>, filtering strictly for dimensions of <code>0x01E0</code> (480px height) and <code>0x0280</code> (640px width) terminating at <code>\xFF\xD9</code>. This cleanly isolated the intact webcam frame showing the note <code>w2tch1ng&#125;</code>.
+                    <div className="p-4 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-2">
+                      <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                        The &ldquo;How&rdquo; • Under-The-Hood Mechanics
+                      </span>
+                      <p className="text-xs text-zinc-300 font-sans leading-relaxed">
+                        OpenCV streams MJPEG frames directly into kernel memory via <code>ioctl(VIDIOC_REQBUFS)</code> with <code>V4L2_MEMORY_MMAP</code>. Our targeted byte carver searched for Start of Image (<code>\xff\xd8</code>), filtered for the SOF0 baseline marker (<code>\xff\xc0</code>) with exact dimensions <code>640x480</code>, and sliced to End of Image (<code>\xff\xd9</code>).
                       </p>
                     </div>
                   </div>
                 </div>
-              </section>
+              </details>
 
               {/* Step 5: Verified Flag */}
               <section id="peering-flag" className="space-y-4">
@@ -853,39 +651,6 @@ export default function SpookyCtfPage() {
                 <p className="text-xs sm:text-sm text-zinc-300 italic font-sans leading-relaxed">
                   &ldquo;While interning at the SOC office a coworker said they came across a strange executable. Fearing that you may accidentally run it they sent the hash (f854432d21db979021f45b85384b7f2d6500fa2f62981c87ebba79b3d46f1a7b) and asked you to do some recon.&rdquo;
                 </p>
-              </div>
-
-              {/* Tactical Investigation Roadmap */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-zinc-950/60 border border-zinc-800/80 space-y-3">
-                <div className="flex items-center justify-between text-[11px] font-mono">
-                  <span className="text-zinc-400 font-bold uppercase tracking-wider flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
-                    Investigation Path &amp; Tactical Flow
-                  </span>
-                  <span className="text-yellow-400/90 font-semibold">4 PIVOTS • VERIFIED</span>
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs font-mono">
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 01</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">SHA-256 Digest Triage</span>
-                    <span className="text-[10px] text-zinc-400 mt-1">e14300... Hash</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 02</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">VirusTotal OSINT</span>
-                    <span className="text-[10px] text-yellow-400 mt-1">thehackerguy Intel</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 03</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">1337 Leetspeak Alignment</span>
-                    <span className="text-[10px] text-cyan-400 mt-1">r34d_c0mm3nt5_</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30 flex flex-col justify-between">
-                    <span className="text-[10px] text-emerald-400 font-bold">TARGET FLAG</span>
-                    <span className="text-emerald-300 font-semibold text-[11px] mt-1">Base64 Joint Assembly</span>
-                    <span className="text-[10px] text-emerald-400 font-mono mt-1">750 PTS</span>
-                  </div>
-                </div>
               </div>
 
               <section id="hash-overview" className="space-y-4">
@@ -958,65 +723,94 @@ export default function SpookyCtfPage() {
                 </ul>
               </section>
 
-                            {/* Forensic Deep Dive: The "Why" & "How" */}
-              <section id="hashphobia-deepdive" className="space-y-4">
-                <div className="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] border border-amber-500/30 shadow-2xl relative overflow-hidden space-y-6">
-                  <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
-                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none" />
-
-                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-800/80 pb-4">
-                    <div className="flex items-center gap-2.5">
-                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
-                      <h4 className="font-mono text-sm sm:text-base font-bold text-amber-300 tracking-wider uppercase">
-                        Forensic Deep Dive // Root-Cause &amp; Technical Mechanics
-                      </h4>
-                    </div>
-                    <div className="flex items-center gap-2 font-mono text-[11px]">
-                      <span className="px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-semibold">
-                        THE &ldquo;WHY&rdquo;
+                            {/* =========================================================
+                  GLOWING INTERACTIVE "IDEA" DISCLOSURE: WHY, HOW & MAP
+              ========================================================= */}
+              <details className="group rounded-2xl border border-yellow-500/40 bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] shadow-[0_0_20px_rgba(234,179,8,0.18)] hover:shadow-[0_0_35px_rgba(234,179,8,0.35)] transition-all duration-300 overflow-hidden my-6">
+                <summary className="flex items-center justify-between p-4 sm:p-5 cursor-pointer select-none bg-gradient-to-r from-yellow-500/10 via-transparent to-yellow-500/5 hover:bg-yellow-500/15 transition-all">
+                  <div className="flex items-center gap-3">
+                    <span className="px-3 py-1 rounded-lg bg-yellow-500/20 text-yellow-300 border border-yellow-500/60 font-mono text-xs font-black tracking-widest uppercase shadow-[0_0_15px_rgba(234,179,8,0.5)] flex items-center gap-1.5 animate-pulse">
+                      <svg className="w-3.5 h-3.5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14H8a4 4 0 01-.828-7.915A4 4 0 0116 10a4 4 0 01-4 4z" />
+                      </svg>
+                      IDEA
+                    </span>
+                    <div className="text-left">
+                      <span className="text-sm font-bold text-white font-mono tracking-wide block">
+                        Core Threat Concept // The &ldquo;Why&rdquo;, &ldquo;How&rdquo; &amp; Tactical Map
                       </span>
-                      <span className="text-zinc-600">&bull;</span>
-                      <span className="px-2.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold">
-                        THE &ldquo;HOW&rdquo;
+                      <span className="text-[11px] text-zinc-400 font-sans block">
+                        Click to expand threat rationale, underlying OS mechanics, and tactical flow
                       </span>
                     </div>
                   </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-mono text-yellow-400 group-open:hidden">
+                      EXPAND &darr;
+                    </span>
+                    <span className="text-[11px] font-mono text-yellow-400 hidden group-open:inline">
+                      COLLAPSE &uarr;
+                    </span>
+                    <svg className="w-4 h-4 text-yellow-400 transform group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </summary>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {/* The Why */}
-                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-amber-500/20 space-y-3">
-                      <div className="flex items-center gap-2 text-amber-400 font-mono text-xs font-bold uppercase tracking-wider">
-                        <svg className="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span>The &ldquo;Why&rdquo; • Cryptographic Limits &amp; Threat Intel Pivot</span>
+                <div className="p-5 sm:p-6 border-t border-yellow-500/20 space-y-6 bg-black/40">
+                  {/* Tactical Investigation Flow */}
+                  <div className="space-y-2">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-yellow-400 font-bold block">
+                      Tactical Investigation Map
+                    </span>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono">
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 01</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">SHA-256 Digest Triage</span>
+                        <span className="text-[10px] text-zinc-400 mt-1">e14300... Hash</span>
                       </div>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Cryptographic Pre-Image Infeasibility:</strong> A SHA-256 digest has an entropy space of 2<sup>256</sup> (~1.15 &times; 10<sup>77</sup> states). Brute-forcing a random standalone file hash without an offline binary or pre-computed lookup database is computationally impossible.
-                      </p>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>The SOC Playbook:</strong> In real-world incident response, unidentified hashes are triaged against Threat Intelligence repositories (VirusTotal, AlienVault OTX). Author <code>thehackerguy</code> intentionally weaponized the VirusTotal Community Tab, planting Part 2 (<code>NG5kX2NoM2NrX3JldmlldzV9</code>) and a riddle pointing directly to the review comments.
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 02</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">VirusTotal OSINT</span>
+                        <span className="text-[10px] text-yellow-400 mt-1">thehackerguy Intel</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 03</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">1337 Leetspeak Alignment</span>
+                        <span className="text-[10px] text-cyan-400 mt-1">r34d_c0mm3nt5_</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30 flex flex-col justify-between">
+                        <span className="text-[10px] text-emerald-400 font-bold">TARGET FLAG</span>
+                        <span className="text-emerald-300 font-semibold text-[11px] mt-1">Base64 Joint Assembly</span>
+                        <span className="text-[10px] text-emerald-400 font-mono mt-1">750 PTS</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Why & How Concept Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-zinc-800/80">
+                    <div className="p-4 rounded-xl bg-zinc-900/50 border border-yellow-500/20 space-y-2">
+                      <span className="text-xs font-mono font-bold text-yellow-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
+                        The &ldquo;Why&rdquo; • Investigative Rationale
+                      </span>
+                      <p className="text-xs text-zinc-300 font-sans leading-relaxed">
+                        SHA-256 has an impossible pre-image keyspace (2<sup>256</sup>). Standalone hashes cannot be cracked with dictionaries; SOC incident response playbooks mandate querying crowdsourced Threat Intelligence (VirusTotal, AlienVault OTX) where user <code>thehackerguy</code> left Part 2 and a riddle.
                       </p>
                     </div>
 
-                    {/* The How */}
-                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-3">
-                      <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs font-bold uppercase tracking-wider">
-                        <svg className="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                        </svg>
-                        <span>The &ldquo;How&rdquo; • 1337 Leetspeak Orthography &amp; Base64 Physics</span>
-                      </div>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Deterministic 1337 Cipher Analysis:</strong> Decoding Part 2 yielded <code>4nd_ch3ck_review5&#125;</code>. This established an exact phonetic substitution: <code>a &rarr; 4</code>, <code>e &rarr; 3</code>, <code>s &rarr; 5</code>, and <code>o &rarr; 0</code>.
-                      </p>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Base64 Boundary Proof:</strong> Applying this rule to the hint phrase &ldquo;read comments&rdquo; yielded <code>r34d_c0mm3nt5_</code>. In Base64 encoding, 3 bytes convert to 4 ASCII characters. <code>r34d_c0mm3nt5_</code> is exactly 15 bytes (divisible by 3 &rarr; 20 Base64 chars without padding), and <code>4nd_ch3ck_review5&#125;</code> is 18 bytes (divisible by 3 &rarr; 24 Base64 chars). Both halves align perfectly along 24-bit binary boundaries to form <code>spooky&#123;r34d_c0mm3nt5_4nd_ch3ck_review5&#125;</code>.
+                    <div className="p-4 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-2">
+                      <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                        The &ldquo;How&rdquo; • Under-The-Hood Mechanics
+                      </span>
+                      <p className="text-xs text-zinc-300 font-sans leading-relaxed">
+                        Part 2 (<code>4nd_ch3ck_review5&#125;</code>) revealed a strict 1337 substitution: <code>a&rarr;4</code>, <code>e&rarr;3</code>, <code>s&rarr;5</code>, <code>o&rarr;0</code>. Mapping &ldquo;read comments&rdquo; produces <code>r34d_c0mm3nt5_</code>. In Base64, 15 bytes convert cleanly to 20 chars without padding, matching the 24-bit alignment of Part 2.
                       </p>
                     </div>
                   </div>
                 </div>
-              </section>
+              </details>
 
               <section id="hash-flag" className="space-y-4">
                 <div className="p-5 rounded-2xl bg-gradient-to-r from-emerald-950/40 to-[#0b0b12] border border-emerald-500/40 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -1071,39 +865,6 @@ export default function SpookyCtfPage() {
                 <p className="text-xs sm:text-sm text-zinc-300 italic font-sans leading-relaxed">
                   &ldquo;You are stuck inside of the Enterprise with no way out. The rest of the crew has gone missing. They need help finding a way back to a Federation outpost but the ship is stuck dead in space. Maybe the packet file they have can find a way to start the ship.&rdquo;
                 </p>
-              </div>
-
-              {/* Tactical Investigation Roadmap */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-zinc-950/60 border border-zinc-800/80 space-y-3">
-                <div className="flex items-center justify-between text-[11px] font-mono">
-                  <span className="text-zinc-400 font-bold uppercase tracking-wider flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-                    Investigation Path &amp; Tactical Flow
-                  </span>
-                  <span className="text-cyan-400/90 font-semibold">4 PIVOTS • VERIFIED</span>
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs font-mono">
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 01</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">Enterprise PCAP Triage</span>
-                    <span className="text-[10px] text-zinc-400 mt-1">FTP Decoy Filtering</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 02</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">Ignition Transaction</span>
-                    <span className="text-[10px] text-cyan-400 mt-1">POST /ignite 200 OK</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 03</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">Out-of-Band Headers</span>
-                    <span className="text-[10px] text-amber-400 mt-1">X-Bridge / X-Deflector</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30 flex flex-col justify-between">
-                    <span className="text-[10px] text-emerald-400 font-bold">TARGET FLAG</span>
-                    <span className="text-emerald-300 font-semibold text-[11px] mt-1">Packet 404 Reassembly</span>
-                    <span className="text-[10px] text-emerald-400 font-mono mt-1">750 PTS</span>
-                  </div>
-                </div>
               </div>
 
               <section id="cleith-recon" className="space-y-4">
@@ -1172,65 +933,94 @@ export default function SpookyCtfPage() {
                 </div>
               </section>
 
-                            {/* Forensic Deep Dive: The "Why" & "How" */}
-              <section id="cleithrophobia-deepdive" className="space-y-4">
-                <div className="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] border border-amber-500/30 shadow-2xl relative overflow-hidden space-y-6">
-                  <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
-                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none" />
-
-                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-800/80 pb-4">
-                    <div className="flex items-center gap-2.5">
-                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
-                      <h4 className="font-mono text-sm sm:text-base font-bold text-amber-300 tracking-wider uppercase">
-                        Forensic Deep Dive // Root-Cause &amp; Technical Mechanics
-                      </h4>
-                    </div>
-                    <div className="flex items-center gap-2 font-mono text-[11px]">
-                      <span className="px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-semibold">
-                        THE &ldquo;WHY&rdquo;
+                            {/* =========================================================
+                  GLOWING INTERACTIVE "IDEA" DISCLOSURE: WHY, HOW & MAP
+              ========================================================= */}
+              <details className="group rounded-2xl border border-cyan-500/40 bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] shadow-[0_0_20px_rgba(6,182,212,0.18)] hover:shadow-[0_0_35px_rgba(6,182,212,0.35)] transition-all duration-300 overflow-hidden my-6">
+                <summary className="flex items-center justify-between p-4 sm:p-5 cursor-pointer select-none bg-gradient-to-r from-cyan-500/10 via-transparent to-cyan-500/5 hover:bg-cyan-500/15 transition-all">
+                  <div className="flex items-center gap-3">
+                    <span className="px-3 py-1 rounded-lg bg-cyan-500/20 text-cyan-300 border border-cyan-500/60 font-mono text-xs font-black tracking-widest uppercase shadow-[0_0_15px_rgba(6,182,212,0.5)] flex items-center gap-1.5 animate-pulse">
+                      <svg className="w-3.5 h-3.5 text-cyan-300" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14H8a4 4 0 01-.828-7.915A4 4 0 0116 10a4 4 0 01-4 4z" />
+                      </svg>
+                      IDEA
+                    </span>
+                    <div className="text-left">
+                      <span className="text-sm font-bold text-white font-mono tracking-wide block">
+                        Core Threat Concept // The &ldquo;Why&rdquo;, &ldquo;How&rdquo; &amp; Tactical Map
                       </span>
-                      <span className="text-zinc-600">&bull;</span>
-                      <span className="px-2.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold">
-                        THE &ldquo;HOW&rdquo;
+                      <span className="text-[11px] text-zinc-400 font-sans block">
+                        Click to expand threat rationale, underlying OS mechanics, and tactical flow
                       </span>
                     </div>
                   </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-mono text-cyan-400 group-open:hidden">
+                      EXPAND &darr;
+                    </span>
+                    <span className="text-[11px] font-mono text-cyan-400 hidden group-open:inline">
+                      COLLAPSE &uarr;
+                    </span>
+                    <svg className="w-4 h-4 text-cyan-400 transform group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </summary>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {/* The Why */}
-                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-amber-500/20 space-y-3">
-                      <div className="flex items-center gap-2 text-amber-400 font-mono text-xs font-bold uppercase tracking-wider">
-                        <svg className="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span>The &ldquo;Why&rdquo; • Deceptive Noise &amp; C2 State Filtering</span>
+                <div className="p-5 sm:p-6 border-t border-cyan-500/20 space-y-6 bg-black/40">
+                  {/* Tactical Investigation Flow */}
+                  <div className="space-y-2">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-cyan-400 font-bold block">
+                      Tactical Investigation Map
+                    </span>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono">
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 01</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">Enterprise PCAP Triage</span>
+                        <span className="text-[10px] text-zinc-400 mt-1">FTP Decoy Filtering</span>
                       </div>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Filtering Attack Decoys:</strong> The capture was deliberately polluted with massive FTP brute-force credential dumps and noisy broadcast chatter. In network incident response, 99% of brute-force streams end in failed handshakes (<code>530 Login incorrect</code> or TCP resets).
-                      </p>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Targeting Operational State Transitions:</strong> The scenario stated: &ldquo;find a way to start the ship&rdquo;. Starting engines or triggering an action requires a successful state transition. Filtering Wireshark strictly for <code>http.response.code == 200</code> and <code>http.request.method == &quot;POST&quot;</code> instantly bypassed thousands of decoy packets directly to Packet 404.
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 02</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">Ignition Transaction</span>
+                        <span className="text-[10px] text-cyan-400 mt-1">POST /ignite 200 OK</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 03</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">Out-of-Band Headers</span>
+                        <span className="text-[10px] text-amber-400 mt-1">X-Bridge / X-Deflector</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30 flex flex-col justify-between">
+                        <span className="text-[10px] text-emerald-400 font-bold">TARGET FLAG</span>
+                        <span className="text-emerald-300 font-semibold text-[11px] mt-1">Packet 404 Reassembly</span>
+                        <span className="text-[10px] text-emerald-400 font-mono mt-1">750 PTS</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Why & How Concept Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-zinc-800/80">
+                    <div className="p-4 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-2">
+                      <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                        The &ldquo;Why&rdquo; • Investigative Rationale
+                      </span>
+                      <p className="text-xs text-zinc-300 font-sans leading-relaxed">
+                        Attackers flood network captures with noisy decoys (failed FTP logins, broadcast sweeps). Starting an engine requires a state transition; filtering for successful HTTP responses (<code>http.response.code == 200</code>) immediately isolated Packet 404 from thousands of decoy packets.
                       </p>
                     </div>
 
-                    {/* The How */}
-                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-3">
-                      <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs font-bold uppercase tracking-wider">
-                        <svg className="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                        </svg>
-                        <span>The &ldquo;How&rdquo; • RFC 7230 Header Multiplexing &amp; Stream Reassembly</span>
-                      </div>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Out-of-Band Header Channel:</strong> RFC 7230 allows HTTP web servers to define arbitrary experimental response headers (<code>X-</code> prefix). Threat actors frequently exfiltrate C2 telemetry inside headers to evade Data Loss Prevention (DLP) engines that only inspect the message entity body.
-                      </p>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Header Concatenation:</strong> Packet 404 contained three custom telemetry headers: <code>X-Bridge-Telemetry</code> (<code>U3Bvb2t5e0Jl</code> &rarr; <code>Spooky&#123;Be</code>), <code>X-Deflector-Status</code> (<code>MG1fTWVfVXBf</code> &rarr; <code>0m_Me_Up_</code>), and <code>X-Warp-Core-Reading</code> (<code>U2MwdHR5XzIyNjZ9</code> &rarr; <code>Sc0tty_2266&#125;</code>). Rejoining them in stream order yielded <code>Spooky&#123;Be0m_Me_Up_Sc0tty_2266&#125;</code>.
+                    <div className="p-4 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-2">
+                      <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                        The &ldquo;How&rdquo; • Under-The-Hood Mechanics
+                      </span>
+                      <p className="text-xs text-zinc-300 font-sans leading-relaxed">
+                        Under RFC 7230, HTTP servers can emit arbitrary custom headers (<code>X-</code> prefix). The response body was decoy telemetry, but headers <code>X-Bridge-Telemetry</code>, <code>X-Deflector-Status</code>, and <code>X-Warp-Core-Reading</code> multiplexed the flag fragments out-of-band in Base64.
                       </p>
                     </div>
                   </div>
                 </div>
-              </section>
+              </details>
 
               <section id="cleith-flag" className="space-y-4">
                 <div className="p-5 rounded-2xl bg-gradient-to-r from-emerald-950/40 to-[#0b0b12] border border-emerald-500/40 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -1285,39 +1075,6 @@ export default function SpookyCtfPage() {
                 <p className="text-xs sm:text-sm text-zinc-300 italic font-sans leading-relaxed">
                   &ldquo;A file was found that seems to contain detailed information about an infamous and high-profile cryptid. There account is known to contain forbidden supernatural information. If you can find out what their password is you may be able to obtain this information for yourself&rdquo;
                 </p>
-              </div>
-
-              {/* Tactical Investigation Roadmap */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-zinc-950/60 border border-zinc-800/80 space-y-3">
-                <div className="flex items-center justify-between text-[11px] font-mono">
-                  <span className="text-zinc-400 font-bold uppercase tracking-wider flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
-                    Investigation Path &amp; Tactical Flow
-                  </span>
-                  <span className="text-yellow-400/90 font-semibold">4 PIVOTS • VERIFIED</span>
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs font-mono">
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 01</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">South Jersey Folklore</span>
-                    <span className="text-[10px] text-zinc-400 mt-1">Daniel Leeds Account</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 02</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">Hashcat Wordlist Attack</span>
-                    <span className="text-[10px] text-yellow-400 mt-1">rockyou.txt &rarr; 7z Key</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 03</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">Red Plane 0 LSB Slicing</span>
-                    <span className="text-[10px] text-cyan-400 mt-1">NumPy Bitwise Mask</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30 flex flex-col justify-between">
-                    <span className="text-[10px] text-emerald-400 font-bold">TARGET FLAG</span>
-                    <span className="text-emerald-300 font-semibold text-[11px] mt-1">High-Contrast Text Mask</span>
-                    <span className="text-[10px] text-emerald-400 font-mono mt-1">750 PTS</span>
-                  </div>
-                </div>
               </div>
 
               <section id="stash-recon" className="space-y-4">
@@ -1375,65 +1132,94 @@ export default function SpookyCtfPage() {
                 </div>
               </section>
 
-                            {/* Forensic Deep Dive: The "Why" & "How" */}
-              <section id="stash-the-hash-deepdive" className="space-y-4">
-                <div className="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] border border-amber-500/30 shadow-2xl relative overflow-hidden space-y-6">
-                  <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
-                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none" />
-
-                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-800/80 pb-4">
-                    <div className="flex items-center gap-2.5">
-                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
-                      <h4 className="font-mono text-sm sm:text-base font-bold text-amber-300 tracking-wider uppercase">
-                        Forensic Deep Dive // Root-Cause &amp; Technical Mechanics
-                      </h4>
-                    </div>
-                    <div className="flex items-center gap-2 font-mono text-[11px]">
-                      <span className="px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-semibold">
-                        THE &ldquo;WHY&rdquo;
+                            {/* =========================================================
+                  GLOWING INTERACTIVE "IDEA" DISCLOSURE: WHY, HOW & MAP
+              ========================================================= */}
+              <details className="group rounded-2xl border border-yellow-500/40 bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] shadow-[0_0_20px_rgba(234,179,8,0.18)] hover:shadow-[0_0_35px_rgba(234,179,8,0.35)] transition-all duration-300 overflow-hidden my-6">
+                <summary className="flex items-center justify-between p-4 sm:p-5 cursor-pointer select-none bg-gradient-to-r from-yellow-500/10 via-transparent to-yellow-500/5 hover:bg-yellow-500/15 transition-all">
+                  <div className="flex items-center gap-3">
+                    <span className="px-3 py-1 rounded-lg bg-yellow-500/20 text-yellow-300 border border-yellow-500/60 font-mono text-xs font-black tracking-widest uppercase shadow-[0_0_15px_rgba(234,179,8,0.5)] flex items-center gap-1.5 animate-pulse">
+                      <svg className="w-3.5 h-3.5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14H8a4 4 0 01-.828-7.915A4 4 0 0116 10a4 4 0 01-4 4z" />
+                      </svg>
+                      IDEA
+                    </span>
+                    <div className="text-left">
+                      <span className="text-sm font-bold text-white font-mono tracking-wide block">
+                        Core Threat Concept // The &ldquo;Why&rdquo;, &ldquo;How&rdquo; &amp; Tactical Map
                       </span>
-                      <span className="text-zinc-600">&bull;</span>
-                      <span className="px-2.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold">
-                        THE &ldquo;HOW&rdquo;
+                      <span className="text-[11px] text-zinc-400 font-sans block">
+                        Click to expand threat rationale, underlying OS mechanics, and tactical flow
                       </span>
                     </div>
                   </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-mono text-yellow-400 group-open:hidden">
+                      EXPAND &darr;
+                    </span>
+                    <span className="text-[11px] font-mono text-yellow-400 hidden group-open:inline">
+                      COLLAPSE &uarr;
+                    </span>
+                    <svg className="w-4 h-4 text-yellow-400 transform group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </summary>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {/* The Why */}
-                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-amber-500/20 space-y-3">
-                      <div className="flex items-center gap-2 text-amber-400 font-mono text-xs font-bold uppercase tracking-wider">
-                        <svg className="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span>The &ldquo;Why&rdquo; • Folklore OSINT &amp; Human Visual Limits</span>
+                <div className="p-5 sm:p-6 border-t border-yellow-500/20 space-y-6 bg-black/40">
+                  {/* Tactical Investigation Flow */}
+                  <div className="space-y-2">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-yellow-400 font-bold block">
+                      Tactical Investigation Map
+                    </span>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono">
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 01</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">South Jersey Folklore</span>
+                        <span className="text-[10px] text-zinc-400 mt-1">Daniel Leeds Account</span>
                       </div>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Cryptid Folklore Correlation:</strong> The prompt referenced an &ldquo;infamous South Jersey cryptid&rdquo;. OSINT on colonial New Jersey history identifies Daniel Leeds (author of the 1687 <em>American Almanac</em>, denounced as an occultist, whose family lineage gave rise to the Leeds Devil / Jersey Devil). This isolated the target credential among system accounts.
-                      </p>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Photopic Luminance Thresholds:</strong> The carved <code>secretKnowledge.png</code> appeared completely pristine. Human retina cone cells cannot detect a single-unit variance in 8-bit color channels (RGB 180 vs 181). Steganographers leverage this human visual limitation to conceal binary text patterns without visual distortion.
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 02</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">Hashcat Wordlist Attack</span>
+                        <span className="text-[10px] text-yellow-400 mt-1">rockyou.txt &rarr; 7z Key</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 03</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">Red Plane 0 LSB Slicing</span>
+                        <span className="text-[10px] text-cyan-400 mt-1">NumPy Bitwise Mask</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30 flex flex-col justify-between">
+                        <span className="text-[10px] text-emerald-400 font-bold">TARGET FLAG</span>
+                        <span className="text-emerald-300 font-semibold text-[11px] mt-1">High-Contrast Text Mask</span>
+                        <span className="text-[10px] text-emerald-400 font-mono mt-1">750 PTS</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Why & How Concept Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-zinc-800/80">
+                    <div className="p-4 rounded-xl bg-zinc-900/50 border border-yellow-500/20 space-y-2">
+                      <span className="text-xs font-mono font-bold text-yellow-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
+                        The &ldquo;Why&rdquo; • Investigative Rationale
+                      </span>
+                      <p className="text-xs text-zinc-300 font-sans leading-relaxed">
+                        Lore referenced an &ldquo;infamous South Jersey cryptid&rdquo;. Colonial folklore identifies Daniel Leeds (author of the 1687 <em>American Almanac</em> whose family became the Jersey Devil). Human visual trichromatic cone cells cannot detect a 1-bit intensity variance in an 8-bit color channel (RGB 180 vs 181).
                       </p>
                     </div>
 
-                    {/* The How */}
-                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-3">
-                      <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs font-bold uppercase tracking-wider">
-                        <svg className="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                        </svg>
-                        <span>The &ldquo;How&rdquo; • NTLM Hashcat &amp; Red Plane 0 Bitwise Slicing</span>
-                      </div>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Hashcat Attack:</strong> Running Hashcat mode <code>-m 1000</code> (NTLM) against <code>rockyou.txt</code> cracked Daniel Leeds&apos;s password in under 1 second, providing the key to decrypt the encrypted 7-Zip payload.
-                      </p>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Spatial Bitplane Masking:</strong> In <code>secretKnowledge.png</code>, the payload was drawn as a 2D spatial text mask in bit 0 of the Red plane. By executing <code>np.where((img[:,:,2] &amp; 1) == 1, 255, 0)</code> in Python, bits 1 through 7 were zeroed out, collapsing the photographic image into a pure black-and-white binary mask that exposed: <code>spooky&#123;leeds_devil_stashed_the_cache&#125;</code>.
+                    <div className="p-4 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-2">
+                      <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                        The &ldquo;How&rdquo; • Under-The-Hood Mechanics
+                      </span>
+                      <p className="text-xs text-zinc-300 font-sans leading-relaxed">
+                        Daniel Leeds&apos;s NTLM hash cracked in 1s against <code>rockyou.txt</code>, unlocking the 7-Zip payload. In <code>secretKnowledge.png</code>, executing <code>np.where((img[:,:,2] &amp; 1) == 1, 255, 0)</code> zeroed out bits 1-7, revealing the crisp visual flag mask in the Red channel.
                       </p>
                     </div>
                   </div>
                 </div>
-              </section>
+              </details>
 
               <section id="stash-flag" className="space-y-4">
                 <div className="p-5 rounded-2xl bg-gradient-to-r from-emerald-950/40 to-[#0b0b12] border border-emerald-500/40 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -1490,39 +1276,6 @@ export default function SpookyCtfPage() {
                 </p>
               </div>
 
-              {/* Tactical Investigation Roadmap */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-zinc-950/60 border border-zinc-800/80 space-y-3">
-                <div className="flex items-center justify-between text-[11px] font-mono">
-                  <span className="text-zinc-400 font-bold uppercase tracking-wider flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
-                    Investigation Path &amp; Tactical Flow
-                  </span>
-                  <span className="text-purple-400/90 font-semibold">4 PIVOTS • VERIFIED</span>
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs font-mono">
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 01</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">Header &amp; Chunk Audit</span>
-                    <span className="text-[10px] text-zinc-400 mt-1">Valid 24-bit RGB PNG</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 02</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">Shannon Entropy Profiling</span>
-                    <span className="text-[10px] text-purple-400 mt-1">Blue Plane 0 (3.61%)</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 03</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">Modular Caesar Decipher</span>
-                    <span className="text-[10px] text-cyan-400 mt-1">ROT13 Shift (k=13)</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30 flex flex-col justify-between">
-                    <span className="text-[10px] text-emerald-400 font-bold">TARGET FLAG</span>
-                    <span className="text-emerald-300 font-semibold text-[11px] mt-1">Decrypted Glyph Overlay</span>
-                    <span className="text-[10px] text-emerald-400 font-mono mt-1">499 PTS</span>
-                  </div>
-                </div>
-              </div>
-
               <section id="portrait-entropy" className="space-y-4">
                 <h3 className="text-lg font-bold text-white font-mono flex items-center gap-2">
                   <span className="text-amber-400">01.</span> Bitplane Entropy Ratio Analysis
@@ -1562,65 +1315,94 @@ export default function SpookyCtfPage() {
                 </div>
               </section>
 
-                            {/* Forensic Deep Dive: The "Why" & "How" */}
-              <section id="the-haunted-portrait-deepdive" className="space-y-4">
-                <div className="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] border border-amber-500/30 shadow-2xl relative overflow-hidden space-y-6">
-                  <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
-                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none" />
-
-                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-800/80 pb-4">
-                    <div className="flex items-center gap-2.5">
-                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
-                      <h4 className="font-mono text-sm sm:text-base font-bold text-amber-300 tracking-wider uppercase">
-                        Forensic Deep Dive // Root-Cause &amp; Technical Mechanics
-                      </h4>
-                    </div>
-                    <div className="flex items-center gap-2 font-mono text-[11px]">
-                      <span className="px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-semibold">
-                        THE &ldquo;WHY&rdquo;
+                            {/* =========================================================
+                  GLOWING INTERACTIVE "IDEA" DISCLOSURE: WHY, HOW & MAP
+              ========================================================= */}
+              <details className="group rounded-2xl border border-purple-500/40 bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] shadow-[0_0_20px_rgba(168,85,247,0.18)] hover:shadow-[0_0_35px_rgba(168,85,247,0.35)] transition-all duration-300 overflow-hidden my-6">
+                <summary className="flex items-center justify-between p-4 sm:p-5 cursor-pointer select-none bg-gradient-to-r from-purple-500/10 via-transparent to-purple-500/5 hover:bg-purple-500/15 transition-all">
+                  <div className="flex items-center gap-3">
+                    <span className="px-3 py-1 rounded-lg bg-purple-500/20 text-purple-300 border border-purple-500/60 font-mono text-xs font-black tracking-widest uppercase shadow-[0_0_15px_rgba(168,85,247,0.5)] flex items-center gap-1.5 animate-pulse">
+                      <svg className="w-3.5 h-3.5 text-purple-300" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14H8a4 4 0 01-.828-7.915A4 4 0 0116 10a4 4 0 01-4 4z" />
+                      </svg>
+                      IDEA
+                    </span>
+                    <div className="text-left">
+                      <span className="text-sm font-bold text-white font-mono tracking-wide block">
+                        Core Threat Concept // The &ldquo;Why&rdquo;, &ldquo;How&rdquo; &amp; Tactical Map
                       </span>
-                      <span className="text-zinc-600">&bull;</span>
-                      <span className="px-2.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold">
-                        THE &ldquo;HOW&rdquo;
+                      <span className="text-[11px] text-zinc-400 font-sans block">
+                        Click to expand threat rationale, underlying OS mechanics, and tactical flow
                       </span>
                     </div>
                   </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-mono text-purple-400 group-open:hidden">
+                      EXPAND &darr;
+                    </span>
+                    <span className="text-[11px] font-mono text-purple-400 hidden group-open:inline">
+                      COLLAPSE &uarr;
+                    </span>
+                    <svg className="w-4 h-4 text-purple-400 transform group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </summary>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {/* The Why */}
-                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-amber-500/20 space-y-3">
-                      <div className="flex items-center gap-2 text-amber-400 font-mono text-xs font-bold uppercase tracking-wider">
-                        <svg className="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span>The &ldquo;Why&rdquo; • Shannon Entropy Profiling vs Guesswork</span>
+                <div className="p-5 sm:p-6 border-t border-purple-500/20 space-y-6 bg-black/40">
+                  {/* Tactical Investigation Flow */}
+                  <div className="space-y-2">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-purple-400 font-bold block">
+                      Tactical Investigation Map
+                    </span>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono">
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 01</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">Header &amp; Chunk Audit</span>
+                        <span className="text-[10px] text-zinc-400 mt-1">Valid 24-bit RGB PNG</span>
                       </div>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Scientific Stego Detection:</strong> Rather than guessing arbitrary extraction tools (Steghide, OpenStego), disciplined forensics calculates Shannon entropy across color channels: <code>H(X) = -&sum; P(x) log&#8322; P(x)</code>.
-                      </p>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>The 3.61% Statistical Anomaly:</strong> In natural photographic images, bitplane 0 behaves like pseudo-random noise with ~50% bit density. In <code>TheHauntedPortrait.png</code>, Red and Green bitplanes had expected ~50% density, but Blue Bitplane 0 had an anomalous density of only <strong>3.61%</strong>. This mathematical disparity proved an artificial text graphic had been drawn onto the blue channel.
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 02</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">Shannon Entropy Profiling</span>
+                        <span className="text-[10px] text-purple-400 mt-1">Blue Plane 0 (3.61%)</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 03</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">Modular Caesar Decipher</span>
+                        <span className="text-[10px] text-cyan-400 mt-1">ROT13 Shift (k=13)</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30 flex flex-col justify-between">
+                        <span className="text-[10px] text-emerald-400 font-bold">TARGET FLAG</span>
+                        <span className="text-emerald-300 font-semibold text-[11px] mt-1">Decrypted Glyph Overlay</span>
+                        <span className="text-[10px] text-emerald-400 font-mono mt-1">499 PTS</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Why & How Concept Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-zinc-800/80">
+                    <div className="p-4 rounded-xl bg-zinc-900/50 border border-purple-500/20 space-y-2">
+                      <span className="text-xs font-mono font-bold text-purple-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
+                        The &ldquo;Why&rdquo; • Investigative Rationale
+                      </span>
+                      <p className="text-xs text-zinc-300 font-sans leading-relaxed">
+                        Rather than guessing steganography tools at random, computing Shannon Entropy across individual color bitplanes isolates the anomaly: while natural bitplanes show ~50% random noise, Blue Bitplane 0 had an anomalous density of only <strong>3.61%</strong>.
                       </p>
                     </div>
 
-                    {/* The How */}
-                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-3">
-                      <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs font-bold uppercase tracking-wider">
-                        <svg className="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                        </svg>
-                        <span>The &ldquo;How&rdquo; • Bitplane Extraction &amp; Modular ROT13 Arithmetic</span>
-                      </div>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Glyph Extraction:</strong> Slicing Blue Plane 0 rendered the visual ciphertext: <code>fcbbxl&#123;gu3_c41ag1at_u4f_3l3f&#125;</code>.
-                      </p>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Modular Distance Verification:</strong> Comparing <code>fcbbxl&#123;</code> against <code>spooky&#123;</code>: <code>f (102) &rarr; s (115) = +13 mod 26</code>, and <code>c (99) &rarr; p (112) = +13 mod 26</code>. Applying a standard 13-character rotation (<code>tr &apos;A-Za-z&apos; &apos;N-ZA-Mn-za-m&apos;</code>) decrypted the string to <code>spooky&#123;th3_p41nt1ng_h4s_3y3s&#125;</code>.
+                    <div className="p-4 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-2">
+                      <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                        The &ldquo;How&rdquo; • Under-The-Hood Mechanics
+                      </span>
+                      <p className="text-xs text-zinc-300 font-sans leading-relaxed">
+                        Extracting Blue Plane 0 rendered <code>fcbbxl&#123;gu3_c41ag1at_u4f_3l3f&#125;</code>. Comparing the prefix against <code>spooky&#123;</code> confirmed a modular distance of <code>+13 mod 26</code>. Applying ROT13 inverts the cipher to <code>spooky&#123;th3_p41nt1ng_h4s_3y3s&#125;</code>.
                       </p>
                     </div>
                   </div>
                 </div>
-              </section>
+              </details>
 
               <section id="portrait-flag" className="space-y-4">
                 <div className="p-5 rounded-2xl bg-gradient-to-r from-emerald-950/40 to-[#0b0b12] border border-emerald-500/40 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -1677,39 +1459,6 @@ export default function SpookyCtfPage() {
                 </p>
               </div>
 
-              {/* Tactical Investigation Roadmap */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-zinc-950/60 border border-zinc-800/80 space-y-3">
-                <div className="flex items-center justify-between text-[11px] font-mono">
-                  <span className="text-zinc-400 font-bold uppercase tracking-wider flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    Investigation Path &amp; Tactical Flow
-                  </span>
-                  <span className="text-emerald-400/90 font-semibold">4 PIVOTS • VERIFIED</span>
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs font-mono">
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 01</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">ISO/IEC 15948 PNG Probe</span>
-                    <span className="text-[10px] text-zinc-400 mt-1">Chunk Stream Slicing</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 02</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">Multi-Container Carve</span>
-                    <span className="text-[10px] text-emerald-400 mt-1">tEXt + iTXt XMP + eXIf</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 03</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">Tripartite Reassembly</span>
-                    <span className="text-[10px] text-cyan-400 mt-1">Vetsulin Veterinary Lore</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30 flex flex-col justify-between">
-                    <span className="text-[10px] text-emerald-400 font-bold">TARGET FLAG</span>
-                    <span className="text-emerald-300 font-semibold text-[11px] mt-1">Stream Joint Assembly</span>
-                    <span className="text-[10px] text-emerald-400 font-mono mt-1">484 PTS</span>
-                  </div>
-                </div>
-              </div>
-
               <section id="tanny-recon" className="space-y-4">
                 <h3 className="text-lg font-bold text-white font-mono flex items-center gap-2">
                   <span className="text-amber-400">01.</span> PNG Chunk Structure Dissection
@@ -1741,68 +1490,94 @@ export default function SpookyCtfPage() {
                 </p>
               </section>
 
-                            {/* Forensic Deep Dive: The "Why" & "How" */}
-              <section id="tormented-tanny-deepdive" className="space-y-4">
-                <div className="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] border border-amber-500/30 shadow-2xl relative overflow-hidden space-y-6">
-                  <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
-                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none" />
-
-                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-800/80 pb-4">
-                    <div className="flex items-center gap-2.5">
-                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
-                      <h4 className="font-mono text-sm sm:text-base font-bold text-amber-300 tracking-wider uppercase">
-                        Forensic Deep Dive // Root-Cause &amp; Technical Mechanics
-                      </h4>
-                    </div>
-                    <div className="flex items-center gap-2 font-mono text-[11px]">
-                      <span className="px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-semibold">
-                        THE &ldquo;WHY&rdquo;
+                            {/* =========================================================
+                  GLOWING INTERACTIVE "IDEA" DISCLOSURE: WHY, HOW & MAP
+              ========================================================= */}
+              <details className="group rounded-2xl border border-emerald-500/40 bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] shadow-[0_0_20px_rgba(16,185,129,0.18)] hover:shadow-[0_0_35px_rgba(16,185,129,0.35)] transition-all duration-300 overflow-hidden my-6">
+                <summary className="flex items-center justify-between p-4 sm:p-5 cursor-pointer select-none bg-gradient-to-r from-emerald-500/10 via-transparent to-emerald-500/5 hover:bg-emerald-500/15 transition-all">
+                  <div className="flex items-center gap-3">
+                    <span className="px-3 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/60 font-mono text-xs font-black tracking-widest uppercase shadow-[0_0_15px_rgba(16,185,129,0.5)] flex items-center gap-1.5 animate-pulse">
+                      <svg className="w-3.5 h-3.5 text-emerald-300" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14H8a4 4 0 01-.828-7.915A4 4 0 0116 10a4 4 0 01-4 4z" />
+                      </svg>
+                      IDEA
+                    </span>
+                    <div className="text-left">
+                      <span className="text-sm font-bold text-white font-mono tracking-wide block">
+                        Core Threat Concept // The &ldquo;Why&rdquo;, &ldquo;How&rdquo; &amp; Tactical Map
                       </span>
-                      <span className="text-zinc-600">&bull;</span>
-                      <span className="px-2.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold">
-                        THE &ldquo;HOW&rdquo;
+                      <span className="text-[11px] text-zinc-400 font-sans block">
+                        Click to expand threat rationale, underlying OS mechanics, and tactical flow
                       </span>
                     </div>
                   </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-mono text-emerald-400 group-open:hidden">
+                      EXPAND &darr;
+                    </span>
+                    <span className="text-[11px] font-mono text-emerald-400 hidden group-open:inline">
+                      COLLAPSE &uarr;
+                    </span>
+                    <svg className="w-4 h-4 text-emerald-400 transform group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </summary>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {/* The Why */}
-                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-amber-500/20 space-y-3">
-                      <div className="flex items-center gap-2 text-amber-400 font-mono text-xs font-bold uppercase tracking-wider">
-                        <svg className="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span>The &ldquo;Why&rdquo; • Metadata Partitioning &amp; Parser Blindspots</span>
+                <div className="p-5 sm:p-6 border-t border-emerald-500/20 space-y-6 bg-black/40">
+                  {/* Tactical Investigation Flow */}
+                  <div className="space-y-2">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-bold block">
+                      Tactical Investigation Map
+                    </span>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono">
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 01</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">ISO/IEC 15948 PNG Probe</span>
+                        <span className="text-[10px] text-zinc-400 mt-1">Chunk Stream Slicing</span>
                       </div>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Anti-Forensic Fragmentation:</strong> Digital investigators often rely on superficial checks—such as viewing File Properties in Windows Explorer or running basic <code>file</code> commands. Windows Explorer only inspects standard IFD0 EXIF tags and silently drops Adobe XMP and custom PNG text chunks.
-                      </p>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Multi-Container Evasion:</strong> By partitioning the flag across three distinct metadata standards (<code>tEXt</code>, <code>XMP RDF</code>, and <code>eXIf</code>), the challenge author ensured that any investigator using a single-format parser would only see a partial, nonsensical fragment.
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 02</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">Multi-Container Carve</span>
+                        <span className="text-[10px] text-emerald-400 mt-1">tEXt + iTXt XMP + eXIf</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 03</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">Tripartite Reassembly</span>
+                        <span className="text-[10px] text-cyan-400 mt-1">Vetsulin Veterinary Lore</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30 flex flex-col justify-between">
+                        <span className="text-[10px] text-emerald-400 font-bold">TARGET FLAG</span>
+                        <span className="text-emerald-300 font-semibold text-[11px] mt-1">Stream Joint Assembly</span>
+                        <span className="text-[10px] text-emerald-400 font-mono mt-1">484 PTS</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Why & How Concept Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-zinc-800/80">
+                    <div className="p-4 rounded-xl bg-zinc-900/50 border border-emerald-500/20 space-y-2">
+                      <span className="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                        The &ldquo;Why&rdquo; • Investigative Rationale
+                      </span>
+                      <p className="text-xs text-zinc-300 font-sans leading-relaxed">
+                        Attackers partition data across multiple distinct metadata standards so automated scanners and standard OS file dialogs (which only inspect standard IFD0 EXIF tags) see only fragmented, nonsensical text.
                       </p>
                     </div>
 
-                    {/* The How */}
-                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-3">
-                      <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs font-bold uppercase tracking-wider">
-                        <svg className="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                        </svg>
-                        <span>The &ldquo;How&rdquo; • ISO/IEC 15948 PNG Chunk Architecture</span>
-                      </div>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Sequential Chunk Extraction:</strong>
-                        <br />1. <code>tEXt</code> (Offset 0x2A): Ancillary Latin-1 text chunk containing <code>Title: spooky&#123;tormented_</code>.
-                        <br />2. <code>iTXt</code> (Offset 0x140): Adobe XMP XML packet containing <code>dc:description: tanner_hates_</code>.
-                        <br />3. <code>eXIf</code> (Offset 0x6E0): Embedded TIFF structure Tag <code>0x010E</code> containing <code>ImageDescription: his_vetsulin&#125;</code>.
-                      </p>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Reassembly:</strong> Concatenating all three metadata containers in file-stream order yielded: <code>spooky&#123;tormented_tanner_hates_his_vetsulin&#125;</code> (Vetsulin being porcine insulin for diabetic pets).
+                    <div className="p-4 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-2">
+                      <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                        The &ldquo;How&rdquo; • Under-The-Hood Mechanics
+                      </span>
+                      <p className="text-xs text-zinc-300 font-sans leading-relaxed">
+                        The PNG format stream stores chunks sequentially: <code>tEXt</code> Title (<code>spooky&#123;tormented_</code>), Adobe XMP <code>iTXt</code> description (<code>tanner_hates_</code>), and <code>eXIf</code> ImageDescription (<code>his_vetsulin&#125;</code>). Reassembly yields the full flag.
                       </p>
                     </div>
                   </div>
                 </div>
-              </section>
+              </details>
 
               <section id="tanny-flag" className="space-y-4">
                 <div className="p-5 rounded-2xl bg-gradient-to-r from-emerald-950/40 to-[#0b0b12] border border-emerald-500/40 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -1859,39 +1634,6 @@ export default function SpookyCtfPage() {
                 </p>
               </div>
 
-              {/* Tactical Investigation Roadmap */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-zinc-950/60 border border-zinc-800/80 space-y-3">
-                <div className="flex items-center justify-between text-[11px] font-mono">
-                  <span className="text-zinc-400 font-bold uppercase tracking-wider flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-                    Investigation Path &amp; Tactical Flow
-                  </span>
-                  <span className="text-amber-400/90 font-semibold">4 PIVOTS • VERIFIED</span>
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs font-mono">
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 01</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">Windows Security Audit</span>
-                    <span className="text-[10px] text-zinc-400 mt-1">Event 4624 (LogonType 3)</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 02</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">Foreign IP Correlation</span>
-                    <span className="text-[10px] text-amber-400 mt-1">203.0.113.77 @ 03:13 UTC</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 03</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">Web Access Log Trace</span>
-                    <span className="text-[10px] text-cyan-400 mt-1">GET /archive/notes.php</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30 flex flex-col justify-between">
-                    <span className="text-[10px] text-emerald-400 font-bold">TARGET FLAG</span>
-                    <span className="text-emerald-300 font-semibold text-[11px] mt-1">Base64 Export Parameter</span>
-                    <span className="text-[10px] text-emerald-400 font-mono mt-1">250 PTS</span>
-                  </div>
-                </div>
-              </div>
-
               <section id="phantom-sec" className="space-y-4">
                 <h3 className="text-lg font-bold text-white font-mono flex items-center gap-2">
                   <span className="text-amber-400">01.</span> Windows Security Log Correlation
@@ -1925,65 +1667,94 @@ export default function SpookyCtfPage() {
                 </div>
               </section>
 
-                            {/* Forensic Deep Dive: The "Why" & "How" */}
-              <section id="the-phantom-login-deepdive" className="space-y-4">
-                <div className="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] border border-amber-500/30 shadow-2xl relative overflow-hidden space-y-6">
-                  <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
-                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none" />
-
-                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-800/80 pb-4">
-                    <div className="flex items-center gap-2.5">
-                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
-                      <h4 className="font-mono text-sm sm:text-base font-bold text-amber-300 tracking-wider uppercase">
-                        Forensic Deep Dive // Root-Cause &amp; Technical Mechanics
-                      </h4>
-                    </div>
-                    <div className="flex items-center gap-2 font-mono text-[11px]">
-                      <span className="px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-semibold">
-                        THE &ldquo;WHY&rdquo;
+                            {/* =========================================================
+                  GLOWING INTERACTIVE "IDEA" DISCLOSURE: WHY, HOW & MAP
+              ========================================================= */}
+              <details className="group rounded-2xl border border-amber-500/40 bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] shadow-[0_0_20px_rgba(245,158,11,0.18)] hover:shadow-[0_0_35px_rgba(245,158,11,0.35)] transition-all duration-300 overflow-hidden my-6">
+                <summary className="flex items-center justify-between p-4 sm:p-5 cursor-pointer select-none bg-gradient-to-r from-amber-500/10 via-transparent to-amber-500/5 hover:bg-amber-500/15 transition-all">
+                  <div className="flex items-center gap-3">
+                    <span className="px-3 py-1 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/60 font-mono text-xs font-black tracking-widest uppercase shadow-[0_0_15px_rgba(245,158,11,0.5)] flex items-center gap-1.5 animate-pulse">
+                      <svg className="w-3.5 h-3.5 text-amber-300" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14H8a4 4 0 01-.828-7.915A4 4 0 0116 10a4 4 0 01-4 4z" />
+                      </svg>
+                      IDEA
+                    </span>
+                    <div className="text-left">
+                      <span className="text-sm font-bold text-white font-mono tracking-wide block">
+                        Core Threat Concept // The &ldquo;Why&rdquo;, &ldquo;How&rdquo; &amp; Tactical Map
                       </span>
-                      <span className="text-zinc-600">&bull;</span>
-                      <span className="px-2.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold">
-                        THE &ldquo;HOW&rdquo;
+                      <span className="text-[11px] text-zinc-400 font-sans block">
+                        Click to expand threat rationale, underlying OS mechanics, and tactical flow
                       </span>
                     </div>
                   </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-mono text-amber-400 group-open:hidden">
+                      EXPAND &darr;
+                    </span>
+                    <span className="text-[11px] font-mono text-amber-400 hidden group-open:inline">
+                      COLLAPSE &uarr;
+                    </span>
+                    <svg className="w-4 h-4 text-amber-400 transform group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </summary>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {/* The Why */}
-                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-amber-500/20 space-y-3">
-                      <div className="flex items-center gap-2 text-amber-400 font-mono text-xs font-bold uppercase tracking-wider">
-                        <svg className="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span>The &ldquo;Why&rdquo; • Cross-Layer SOC Telemetry Correlation</span>
+                <div className="p-5 sm:p-6 border-t border-amber-500/20 space-y-6 bg-black/40">
+                  {/* Tactical Investigation Flow */}
+                  <div className="space-y-2">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-amber-400 font-bold block">
+                      Tactical Investigation Map
+                    </span>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono">
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 01</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">Windows Security Audit</span>
+                        <span className="text-[10px] text-zinc-400 mt-1">Event 4624 (LogonType 3)</span>
                       </div>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Orthogonal Log Telemetry:</strong> Host-level security logs (Windows Event Logs) and application-level access logs (IIS/Nginx) record different dimensions of an incident. Windows Security logs capture authentication, but cannot record HTTP parameters or data exfiltration.
-                      </p>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>The Dormant Account Pivot:</strong> The alert flagged an anomalous 3:13 AM logon for dormant user <code>evelyn.graves</code>. Triage in <code>Security.evtx</code> proved the authentication occurred, revealing the foreign client IP <code>203.0.113.77</code> needed to query the web server logs.
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 02</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">Foreign IP Correlation</span>
+                        <span className="text-[10px] text-amber-400 mt-1">203.0.113.77 @ 03:13 UTC</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 03</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">Web Access Log Trace</span>
+                        <span className="text-[10px] text-cyan-400 mt-1">GET /archive/notes.php</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30 flex flex-col justify-between">
+                        <span className="text-[10px] text-emerald-400 font-bold">TARGET FLAG</span>
+                        <span className="text-emerald-300 font-semibold text-[11px] mt-1">Base64 Export Parameter</span>
+                        <span className="text-[10px] text-emerald-400 font-mono mt-1">250 PTS</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Why & How Concept Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-zinc-800/80">
+                    <div className="p-4 rounded-xl bg-zinc-900/50 border border-amber-500/20 space-y-2">
+                      <span className="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                        The &ldquo;Why&rdquo; • Investigative Rationale
+                      </span>
+                      <p className="text-xs text-zinc-300 font-sans leading-relaxed">
+                        Host authentication logs (Security.evtx) and web server access logs are orthogonal. Event 4624 confirms an authentication occurred, but cannot record what was done inside the application. Correlating both pinpointed the attacker&apos;s actions.
                       </p>
                     </div>
 
-                    {/* The How */}
-                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-3">
-                      <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs font-bold uppercase tracking-wider">
-                        <svg className="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                        </svg>
-                        <span>The &ldquo;How&rdquo; • Event 4624 to Web Access Log Pivoting</span>
-                      </div>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Event 4624 Logon Type 3:</strong> In <code>Security.evtx</code>, Event ID 4624 recorded a successful Network Logon for <code>evelyn.graves</code> at <code>03:13:22 UTC</code> from Workstation IP <code>203.0.113.77</code>.
-                      </p>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Web Parameter Carving:</strong> Grepping <code>njit_web.log</code> for IP <code>203.0.113.77</code> within a 60-second window revealed 4 HTTP requests, culminating in <code>GET /archive/notes.php?action=export&amp;note=c3Bvb2t5e2doMHN0XzFuX3RoM19tNGNoMW4zfQ==</code>. Base64 decoding <code>note</code> revealed: <code>spooky&#123;gh0st_1n_th3_m4ch1n3&#125;</code>.
+                    <div className="p-4 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-2">
+                      <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                        The &ldquo;How&rdquo; • Under-The-Hood Mechanics
+                      </span>
+                      <p className="text-xs text-zinc-300 font-sans leading-relaxed">
+                        Querying <code>Security.evtx</code> for dormant user <code>evelyn.graves</code> at 03:13 UTC revealed LogonType 3 from IP <code>203.0.113.77</code>. Grepping <code>njit_web.log</code> for this IP uncovered a GET request with parameter <code>note=c3Bvb2t5...</code> which Base64-decoded into the flag.
                       </p>
                     </div>
                   </div>
                 </div>
-              </section>
+              </details>
 
               <section id="phantom-flag" className="space-y-4">
                 <div className="p-5 rounded-2xl bg-gradient-to-r from-emerald-950/40 to-[#0b0b12] border border-emerald-500/40 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -2040,39 +1811,6 @@ export default function SpookyCtfPage() {
                 </p>
               </div>
 
-              {/* Tactical Investigation Roadmap */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-zinc-950/60 border border-zinc-800/80 space-y-3">
-                <div className="flex items-center justify-between text-[11px] font-mono">
-                  <span className="text-zinc-400 font-bold uppercase tracking-wider flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    Investigation Path &amp; Tactical Flow
-                  </span>
-                  <span className="text-emerald-400/90 font-semibold">4 PIVOTS • VERIFIED</span>
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs font-mono">
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 01</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">PNG Spec Integrity Check</span>
-                    <span className="text-[10px] text-zinc-400 mt-1">Valid Image Rendering</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 02</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">IEND Trailer Scan</span>
-                    <span className="text-[10px] text-emerald-400 mt-1">Offset 976905 (0x0EE829)</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 03</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">PKZIP Overlay Carve</span>
-                    <span className="text-[10px] text-cyan-400 mt-1">Offset 976913 50 4B 03 04</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30 flex flex-col justify-between">
-                    <span className="text-[10px] text-emerald-400 font-bold">TARGET FLAG</span>
-                    <span className="text-emerald-300 font-semibold text-[11px] mt-1">Extracted flag.txt</span>
-                    <span className="text-[10px] text-emerald-400 font-mono mt-1">80 PTS</span>
-                  </div>
-                </div>
-              </div>
-
               <section id="arach-recon" className="space-y-4">
                 <h3 className="text-lg font-bold text-white font-mono flex items-center gap-2">
                   <span className="text-amber-400">01.</span> IEND Chunk Boundary Analysis
@@ -2092,65 +1830,94 @@ export default function SpookyCtfPage() {
                 </div>
               </section>
 
-                            {/* Forensic Deep Dive: The "Why" & "How" */}
-              <section id="arachnophobia-deepdive" className="space-y-4">
-                <div className="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] border border-amber-500/30 shadow-2xl relative overflow-hidden space-y-6">
-                  <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
-                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none" />
-
-                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-800/80 pb-4">
-                    <div className="flex items-center gap-2.5">
-                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
-                      <h4 className="font-mono text-sm sm:text-base font-bold text-amber-300 tracking-wider uppercase">
-                        Forensic Deep Dive // Root-Cause &amp; Technical Mechanics
-                      </h4>
-                    </div>
-                    <div className="flex items-center gap-2 font-mono text-[11px]">
-                      <span className="px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-semibold">
-                        THE &ldquo;WHY&rdquo;
+                            {/* =========================================================
+                  GLOWING INTERACTIVE "IDEA" DISCLOSURE: WHY, HOW & MAP
+              ========================================================= */}
+              <details className="group rounded-2xl border border-emerald-500/40 bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] shadow-[0_0_20px_rgba(16,185,129,0.18)] hover:shadow-[0_0_35px_rgba(16,185,129,0.35)] transition-all duration-300 overflow-hidden my-6">
+                <summary className="flex items-center justify-between p-4 sm:p-5 cursor-pointer select-none bg-gradient-to-r from-emerald-500/10 via-transparent to-emerald-500/5 hover:bg-emerald-500/15 transition-all">
+                  <div className="flex items-center gap-3">
+                    <span className="px-3 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/60 font-mono text-xs font-black tracking-widest uppercase shadow-[0_0_15px_rgba(16,185,129,0.5)] flex items-center gap-1.5 animate-pulse">
+                      <svg className="w-3.5 h-3.5 text-emerald-300" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14H8a4 4 0 01-.828-7.915A4 4 0 0116 10a4 4 0 01-4 4z" />
+                      </svg>
+                      IDEA
+                    </span>
+                    <div className="text-left">
+                      <span className="text-sm font-bold text-white font-mono tracking-wide block">
+                        Core Threat Concept // The &ldquo;Why&rdquo;, &ldquo;How&rdquo; &amp; Tactical Map
                       </span>
-                      <span className="text-zinc-600">&bull;</span>
-                      <span className="px-2.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold">
-                        THE &ldquo;HOW&rdquo;
+                      <span className="text-[11px] text-zinc-400 font-sans block">
+                        Click to expand threat rationale, underlying OS mechanics, and tactical flow
                       </span>
                     </div>
                   </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-mono text-emerald-400 group-open:hidden">
+                      EXPAND &darr;
+                    </span>
+                    <span className="text-[11px] font-mono text-emerald-400 hidden group-open:inline">
+                      COLLAPSE &uarr;
+                    </span>
+                    <svg className="w-4 h-4 text-emerald-400 transform group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </summary>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {/* The Why */}
-                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-amber-500/20 space-y-3">
-                      <div className="flex items-center gap-2 text-amber-400 font-mono text-xs font-bold uppercase tracking-wider">
-                        <svg className="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span>The &ldquo;Why&rdquo; • PNG Spec Architectural Loophole &amp; Overlays</span>
+                <div className="p-5 sm:p-6 border-t border-emerald-500/20 space-y-6 bg-black/40">
+                  {/* Tactical Investigation Flow */}
+                  <div className="space-y-2">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-bold block">
+                      Tactical Investigation Map
+                    </span>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono">
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 01</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">PNG Spec Integrity Check</span>
+                        <span className="text-[10px] text-zinc-400 mt-1">Valid Image Rendering</span>
                       </div>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Rendering Termination Spec:</strong> The W3C PNG specification mandates that image decoders terminate processing immediately upon reading the <code>IEND</code> chunk (<code>49 45 4E 44</code>). Any bytes appended past <code>IEND</code> are classified as an &ldquo;overlay&rdquo; and completely ignored by rendering engines.
-                      </p>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Polyglot Tradecraft:</strong> Threat actors use PNG trailer overlays for polyglot malware staging because the file renders without errors in browsers, thumbnails, and preview panes while secretly housing an embedded executable or ZIP container.
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 02</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">IEND Trailer Scan</span>
+                        <span className="text-[10px] text-emerald-400 mt-1">Offset 976905 (0x0EE829)</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 03</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">PKZIP Overlay Carve</span>
+                        <span className="text-[10px] text-cyan-400 mt-1">Offset 976913 50 4B 03 04</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30 flex flex-col justify-between">
+                        <span className="text-[10px] text-emerald-400 font-bold">TARGET FLAG</span>
+                        <span className="text-emerald-300 font-semibold text-[11px] mt-1">Extracted flag.txt</span>
+                        <span className="text-[10px] text-emerald-400 font-mono mt-1">80 PTS</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Why & How Concept Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-zinc-800/80">
+                    <div className="p-4 rounded-xl bg-zinc-900/50 border border-emerald-500/20 space-y-2">
+                      <span className="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                        The &ldquo;Why&rdquo; • Investigative Rationale
+                      </span>
+                      <p className="text-xs text-zinc-300 font-sans leading-relaxed">
+                        The PNG specification requires image renderers to cease parsing immediately upon reaching the <code>IEND</code> chunk. Any bytes appended past <code>IEND</code> are ignored by browsers, making trailer overlays an ideal polyglot malware vector.
                       </p>
                     </div>
 
-                    {/* The How */}
-                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-3">
-                      <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs font-bold uppercase tracking-wider">
-                        <svg className="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                        </svg>
-                        <span>The &ldquo;How&rdquo; • IEND Boundary Scanning &amp; PKZIP Carving</span>
-                      </div>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Hex Boundary Analysis:</strong> Scanning <code>Arachnophobia.png</code> located <code>IEND</code> at byte offset <code>976905</code>. Accounting for chunk type and the 4-byte CRC32 trailer (<code>AE 42 60 82</code>), the PNG ends at offset <code>976913</code> (0x0EE831).
-                      </p>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>PKZIP Header Extraction:</strong> Offset <code>976913</code> begins immediately with <code>50 4B 03 04</code> (PKZIP local header magic). Slicing <code>data[976913:]</code> and decompressing the carved ZIP extracted <code>flag.txt</code>: <code>spooky&#123;8_l3gs_4nd_4_z1p&#125;</code>.
+                    <div className="p-4 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-2">
+                      <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                        The &ldquo;How&rdquo; • Under-The-Hood Mechanics
+                      </span>
+                      <p className="text-xs text-zinc-300 font-sans leading-relaxed">
+                        Scanning the binary located <code>IEND</code> and its 4-byte CRC at offset 976905-976913. Slicing from offset 976913 immediately hit the PKZIP magic bytes (<code>50 4B 03 04</code>). Unzipping the sliced archive extracted <code>flag.txt</code>.
                       </p>
                     </div>
                   </div>
                 </div>
-              </section>
+              </details>
 
               <section id="arach-flag" className="space-y-4">
                 <div className="p-5 rounded-2xl bg-gradient-to-r from-emerald-950/40 to-[#0b0b12] border border-emerald-500/40 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -2207,39 +1974,6 @@ export default function SpookyCtfPage() {
                 </p>
               </div>
 
-              {/* Tactical Investigation Roadmap */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-zinc-950/60 border border-zinc-800/80 space-y-3">
-                <div className="flex items-center justify-between text-[11px] font-mono">
-                  <span className="text-zinc-400 font-bold uppercase tracking-wider flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    Investigation Path &amp; Tactical Flow
-                  </span>
-                  <span className="text-emerald-400/90 font-semibold">4 PIVOTS • VERIFIED</span>
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs font-mono">
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 01</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">Mirror Reflection Clue</span>
-                    <span className="text-[10px] text-zinc-400 mt-1">Optical Axis &amp; Scanlines</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 02</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">zsteg Mode Probing</span>
-                    <span className="text-[10px] text-emerald-400 mt-1">b1,rgb,lsb,xy Detected</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 03</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">Row-Major Bit Slicing</span>
-                    <span className="text-[10px] text-cyan-400 mt-1">NumPy MSB-First Stream</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30 flex flex-col justify-between">
-                    <span className="text-[10px] text-emerald-400 font-bold">TARGET FLAG</span>
-                    <span className="text-emerald-300 font-semibold text-[11px] mt-1">Base64 Decode</span>
-                    <span className="text-[10px] text-emerald-400 font-mono mt-1">50 PTS</span>
-                  </div>
-                </div>
-              </div>
-
               <section id="eiso-recon" className="space-y-4">
                 <h3 className="text-lg font-bold text-white font-mono flex items-center gap-2">
                   <span className="text-amber-400">01.</span> Zsteg Channel Analysis &amp; Extraction
@@ -2259,65 +1993,94 @@ export default function SpookyCtfPage() {
                 </div>
               </section>
 
-                            {/* Forensic Deep Dive: The "Why" & "How" */}
-              <section id="eisoptrophobia-deepdive" className="space-y-4">
-                <div className="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] border border-amber-500/30 shadow-2xl relative overflow-hidden space-y-6">
-                  <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
-                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none" />
-
-                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-800/80 pb-4">
-                    <div className="flex items-center gap-2.5">
-                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
-                      <h4 className="font-mono text-sm sm:text-base font-bold text-amber-300 tracking-wider uppercase">
-                        Forensic Deep Dive // Root-Cause &amp; Technical Mechanics
-                      </h4>
-                    </div>
-                    <div className="flex items-center gap-2 font-mono text-[11px]">
-                      <span className="px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-semibold">
-                        THE &ldquo;WHY&rdquo;
+                            {/* =========================================================
+                  GLOWING INTERACTIVE "IDEA" DISCLOSURE: WHY, HOW & MAP
+              ========================================================= */}
+              <details className="group rounded-2xl border border-emerald-500/40 bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] shadow-[0_0_20px_rgba(16,185,129,0.18)] hover:shadow-[0_0_35px_rgba(16,185,129,0.35)] transition-all duration-300 overflow-hidden my-6">
+                <summary className="flex items-center justify-between p-4 sm:p-5 cursor-pointer select-none bg-gradient-to-r from-emerald-500/10 via-transparent to-emerald-500/5 hover:bg-emerald-500/15 transition-all">
+                  <div className="flex items-center gap-3">
+                    <span className="px-3 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/60 font-mono text-xs font-black tracking-widest uppercase shadow-[0_0_15px_rgba(16,185,129,0.5)] flex items-center gap-1.5 animate-pulse">
+                      <svg className="w-3.5 h-3.5 text-emerald-300" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14H8a4 4 0 01-.828-7.915A4 4 0 0116 10a4 4 0 01-4 4z" />
+                      </svg>
+                      IDEA
+                    </span>
+                    <div className="text-left">
+                      <span className="text-sm font-bold text-white font-mono tracking-wide block">
+                        Core Threat Concept // The &ldquo;Why&rdquo;, &ldquo;How&rdquo; &amp; Tactical Map
                       </span>
-                      <span className="text-zinc-600">&bull;</span>
-                      <span className="px-2.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold">
-                        THE &ldquo;HOW&rdquo;
+                      <span className="text-[11px] text-zinc-400 font-sans block">
+                        Click to expand threat rationale, underlying OS mechanics, and tactical flow
                       </span>
                     </div>
                   </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-mono text-emerald-400 group-open:hidden">
+                      EXPAND &darr;
+                    </span>
+                    <span className="text-[11px] font-mono text-emerald-400 hidden group-open:inline">
+                      COLLAPSE &uarr;
+                    </span>
+                    <svg className="w-4 h-4 text-emerald-400 transform group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </summary>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {/* The Why */}
-                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-amber-500/20 space-y-3">
-                      <div className="flex items-center gap-2 text-amber-400 font-mono text-xs font-bold uppercase tracking-wider">
-                        <svg className="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span>The &ldquo;Why&rdquo; • Optical Reflection Clue &amp; Scanline Traps</span>
+                <div className="p-5 sm:p-6 border-t border-emerald-500/20 space-y-6 bg-black/40">
+                  {/* Tactical Investigation Flow */}
+                  <div className="space-y-2">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-bold block">
+                      Tactical Investigation Map
+                    </span>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono">
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 01</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">Mirror Reflection Clue</span>
+                        <span className="text-[10px] text-zinc-400 mt-1">Optical Axis &amp; Scanlines</span>
                       </div>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Linguistic Clue:</strong> &ldquo;Eisoptrophobia&rdquo; is the fear of mirrors and optical reflections. In steganography challenges, this hints at scanline orientation (horizontal vs vertical) or channel inversions.
-                      </p>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Why Generic Tools Missed It:</strong> Many automated steganography tools default to column-major indexing (<code>yx</code>) or expect sequential byte streams packed per channel. When <code>zsteg</code> flagged mode <code>b1,rgb,lsb,xy</code>, it proved bits were embedded along the raster scanlines across Red, Green, and Blue planes simultaneously.
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 02</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">zsteg Mode Probing</span>
+                        <span className="text-[10px] text-emerald-400 mt-1">b1,rgb,lsb,xy Detected</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 03</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">Row-Major Bit Slicing</span>
+                        <span className="text-[10px] text-cyan-400 mt-1">NumPy MSB-First Stream</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30 flex flex-col justify-between">
+                        <span className="text-[10px] text-emerald-400 font-bold">TARGET FLAG</span>
+                        <span className="text-emerald-300 font-semibold text-[11px] mt-1">Base64 Decode</span>
+                        <span className="text-[10px] text-emerald-400 font-mono mt-1">50 PTS</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Why & How Concept Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-zinc-800/80">
+                    <div className="p-4 rounded-xl bg-zinc-900/50 border border-emerald-500/20 space-y-2">
+                      <span className="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                        The &ldquo;Why&rdquo; • Investigative Rationale
+                      </span>
+                      <p className="text-xs text-zinc-300 font-sans leading-relaxed">
+                        &ldquo;Eisoptrophobia&rdquo; is the fear of mirrors and optical reflections. Steganography challenges use title hints to signal coordinate space transforms (horizontal scanlines vs column-major orders).
                       </p>
                     </div>
 
-                    {/* The How */}
-                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-3">
-                      <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs font-bold uppercase tracking-wider">
-                        <svg className="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                        </svg>
-                        <span>The &ldquo;How&rdquo; • Row-Major RGB Bitplane Slicing</span>
-                      </div>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Scanline Pixel Geometry:</strong> In 24-bit RGB space, pixels process left-to-right across scanlines (<code>x = 0 &rarr; W-1</code>) for each row (<code>y = 0 &rarr; H-1</code>).
-                      </p>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Bit Packing &amp; Base64 Decode:</strong> Extracting bit 0 across R, G, and B at each coordinate and packing groups of 8 bits (MSB first) produced the ASCII Base64 string: <code>c3Bvb2t5e3RoZV9yZWZsZWN0aW9uX25ldmVyX2xpZXN9</code>. Decoding Base64 resolved: <code>spooky&#123;the_reflection_never_lies&#125;</code>.
+                    <div className="p-4 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-2">
+                      <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                        The &ldquo;How&rdquo; • Under-The-Hood Mechanics
+                      </span>
+                      <p className="text-xs text-zinc-300 font-sans leading-relaxed">
+                        <code>zsteg</code> flagged mode <code>b1,rgb,lsb,xy</code>. Slicing bit 0 across R, G, and B sequentially in row-major order (<code>xy</code>) and packing 8 bits per byte MSB-first produced the Base64 string that decoded directly into the flag.
                       </p>
                     </div>
                   </div>
                 </div>
-              </section>
+              </details>
 
               <section id="eiso-flag" className="space-y-4">
                 <div className="p-5 rounded-2xl bg-gradient-to-r from-emerald-950/40 to-[#0b0b12] border border-emerald-500/40 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -2374,39 +2137,6 @@ export default function SpookyCtfPage() {
                 </p>
               </div>
 
-              {/* Tactical Investigation Roadmap */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-zinc-950/60 border border-zinc-800/80 space-y-3">
-                <div className="flex items-center justify-between text-[11px] font-mono">
-                  <span className="text-zinc-400 font-bold uppercase tracking-wider flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
-                    Investigation Path &amp; Tactical Flow
-                  </span>
-                  <span className="text-purple-400/90 font-semibold">4 PIVOTS • POST-MORTEM</span>
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs font-mono">
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 01</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">Dual-Artifact Threat Triage</span>
-                    <span className="text-[10px] text-zinc-400 mt-1">WAV Audio + PNG Carrier</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 02</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">FFT Spectral Carving</span>
-                    <span className="text-[10px] text-purple-400 mt-1">5-9.5 kHz Synthetic Glyphs</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800/80 flex flex-col justify-between">
-                    <span className="text-[10px] text-zinc-500 font-bold">PIVOT 03</span>
-                    <span className="text-white font-semibold text-[11px] mt-1">Anti-Phase &amp; Neural ASR</span>
-                    <span className="text-[10px] text-cyan-400 mt-1">Butterworth + Whisper AI</span>
-                  </div>
-                  <div className="p-2.5 rounded-xl bg-purple-950/20 border border-purple-500/30 flex flex-col justify-between">
-                    <span className="text-[10px] text-purple-400 font-bold">OUTCOME</span>
-                    <span className="text-purple-300 font-semibold text-[11px] mt-1">Composite Stego Impasse</span>
-                    <span className="text-[10px] text-purple-400 font-mono mt-1">Open Research</span>
-                  </div>
-                </div>
-              </div>
-
               <section id="phasmo-spectro" className="space-y-4">
                 <h3 className="text-lg font-bold text-white font-mono flex items-center gap-2">
                   <span className="text-purple-400">01.</span> Spectrogram Text Carving &amp; Frequency Mapping
@@ -2440,65 +2170,94 @@ export default function SpookyCtfPage() {
                 </ul>
               </section>
 
-                            {/* Forensic Deep Dive: The "Why" & "How" */}
-              <section id="phasmophobia-deepdive" className="space-y-4">
-                <div className="p-6 sm:p-7 rounded-2xl bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] border border-amber-500/30 shadow-2xl relative overflow-hidden space-y-6">
-                  <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
-                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none" />
-
-                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-800/80 pb-4">
-                    <div className="flex items-center gap-2.5">
-                      <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
-                      <h4 className="font-mono text-sm sm:text-base font-bold text-amber-300 tracking-wider uppercase">
-                        Forensic Deep Dive // Root-Cause &amp; Technical Mechanics
-                      </h4>
-                    </div>
-                    <div className="flex items-center gap-2 font-mono text-[11px]">
-                      <span className="px-2.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 font-semibold">
-                        THE &ldquo;WHY&rdquo;
+                            {/* =========================================================
+                  GLOWING INTERACTIVE "IDEA" DISCLOSURE: WHY, HOW & MAP
+              ========================================================= */}
+              <details className="group rounded-2xl border border-purple-500/40 bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] shadow-[0_0_20px_rgba(168,85,247,0.18)] hover:shadow-[0_0_35px_rgba(168,85,247,0.35)] transition-all duration-300 overflow-hidden my-6">
+                <summary className="flex items-center justify-between p-4 sm:p-5 cursor-pointer select-none bg-gradient-to-r from-purple-500/10 via-transparent to-purple-500/5 hover:bg-purple-500/15 transition-all">
+                  <div className="flex items-center gap-3">
+                    <span className="px-3 py-1 rounded-lg bg-purple-500/20 text-purple-300 border border-purple-500/60 font-mono text-xs font-black tracking-widest uppercase shadow-[0_0_15px_rgba(168,85,247,0.5)] flex items-center gap-1.5 animate-pulse">
+                      <svg className="w-3.5 h-3.5 text-purple-300" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14H8a4 4 0 01-.828-7.915A4 4 0 0116 10a4 4 0 01-4 4z" />
+                      </svg>
+                      IDEA
+                    </span>
+                    <div className="text-left">
+                      <span className="text-sm font-bold text-white font-mono tracking-wide block">
+                        Core Threat Concept // The &ldquo;Why&rdquo;, &ldquo;How&rdquo; &amp; Tactical Map
                       </span>
-                      <span className="text-zinc-600">&bull;</span>
-                      <span className="px-2.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold">
-                        THE &ldquo;HOW&rdquo;
+                      <span className="text-[11px] text-zinc-400 font-sans block">
+                        Click to expand threat rationale, underlying OS mechanics, and tactical flow
                       </span>
                     </div>
                   </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-mono text-purple-400 group-open:hidden">
+                      EXPAND &darr;
+                    </span>
+                    <span className="text-[11px] font-mono text-purple-400 hidden group-open:inline">
+                      COLLAPSE &uarr;
+                    </span>
+                    <svg className="w-4 h-4 text-purple-400 transform group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </summary>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {/* The Why */}
-                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-amber-500/20 space-y-3">
-                      <div className="flex items-center gap-2 text-amber-400 font-mono text-xs font-bold uppercase tracking-wider">
-                        <svg className="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span>The &ldquo;Why&rdquo; • Composite Stego Failure &amp; Post-Mortem Rigor</span>
+                <div className="p-5 sm:p-6 border-t border-purple-500/20 space-y-6 bg-black/40">
+                  {/* Tactical Investigation Flow */}
+                  <div className="space-y-2">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-purple-400 font-bold block">
+                      Tactical Investigation Map
+                    </span>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono">
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 01</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">Dual-Artifact Threat Triage</span>
+                        <span className="text-[10px] text-zinc-400 mt-1">WAV Audio + PNG Carrier</span>
                       </div>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Multi-Stage Fragility:</strong> Phasmophobia presented two distinct artifacts: an audio recording (<code>ghost_whispers.wav</code>) and an image of NJIT&apos;s Eberhardt Hall (<code>ebersecret.png</code>). This challenge remained unsolved across the competition.
-                      </p>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>The Missing Transposition Key:</strong> When a CTF steganography pipeline combines spectral audio with visual LSB bitplanes without an explicit Key Derivation Function (KDF), the challenge becomes brittle. Publishing both the recovered signals and the failure boundaries demonstrates genuine forensic rigor.
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 02</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">FFT Spectral Carving</span>
+                        <span className="text-[10px] text-purple-400 mt-1">5-9.5 kHz Synthetic Glyphs</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
+                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 03</span>
+                        <span className="text-white font-semibold text-[11px] mt-1">Anti-Phase &amp; Neural ASR</span>
+                        <span className="text-[10px] text-cyan-400 mt-1">Butterworth + Whisper AI</span>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-purple-950/20 border border-purple-500/30 flex flex-col justify-between">
+                        <span className="text-[10px] text-purple-400 font-bold">OUTCOME</span>
+                        <span className="text-purple-300 font-semibold text-[11px] mt-1">Composite Stego Impasse</span>
+                        <span className="text-[10px] text-purple-400 font-mono mt-1">Open Research</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Why & How Concept Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-zinc-800/80">
+                    <div className="p-4 rounded-xl bg-zinc-900/50 border border-purple-500/20 space-y-2">
+                      <span className="text-xs font-mono font-bold text-purple-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
+                        The &ldquo;Why&rdquo; • Investigative Rationale
+                      </span>
+                      <p className="text-xs text-zinc-300 font-sans leading-relaxed">
+                        Composite audio-visual challenges become brittle when the primary acoustic signal does not supply an unambiguous transposition key for the secondary image bitplane matrix. Documenting verified extractions and dead-ends is standard DFIR practice.
                       </p>
                     </div>
 
-                    {/* The How */}
-                    <div className="p-5 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-3">
-                      <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs font-bold uppercase tracking-wider">
-                        <svg className="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                        </svg>
-                        <span>The &ldquo;How&rdquo; • Dual-Domain Acoustic Spectral Carving &amp; Neural ASR</span>
-                      </div>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>High-Frequency FFT Synthesis:</strong> Computing a 2048-point Fast Fourier Transform (FFT) in Audacity revealed synthetic glyphs visually rendered in the 5,000 Hz to 9,500 Hz band: <code>EBERHARDT_HAUNTED_1885</code>.
-                      </p>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                        <strong>Phase Inversion &amp; Whisper AI:</strong> Constructing an anti-phase filter (Left - Right) and passing through a 4th-order Butterworth bandpass isolated a masked whisper track. Passing this audio to OpenAI Whisper AI transcribed: &ldquo;The key is beneath the copper dome&rdquo;. The post-mortem documents how these signals intersect with Eberhardt Hall lore.
+                    <div className="p-4 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-2">
+                      <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                        The &ldquo;How&rdquo; • Under-The-Hood Mechanics
+                      </span>
+                      <p className="text-xs text-zinc-300 font-sans leading-relaxed">
+                        A 2048-point FFT spectrogram isolated synthetic glyphs (<code>EBERHARDT_HAUNTED_1885</code>) in the 5-9.5 kHz band. Left-right channel phase cancellation paired with Butterworth filtering isolated a whisper track transcribed by OpenAI Whisper AI.
                       </p>
                     </div>
                   </div>
                 </div>
-              </section>
+              </details>
 
               <section id="phasmo-postmortem" className="space-y-4">
                 <h3 className="text-lg font-bold text-white font-mono flex items-center gap-2">
