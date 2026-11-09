@@ -15,6 +15,31 @@ export default function Home() {
   // High-Level CTF Competitions & Tactical Dossiers (Only CTFs on Home Page)
   const ctfCompetitions = [
     {
+      title: "Spooky CTF: Complete Forensics Operational Dossier",
+      slug: "spooky",
+      href: "/ctfs/spooky",
+      platform: "Spooky CTF",
+      category: "Special Dossier",
+      points: "10 OPS // 9 FLAGS",
+      tagline: "Linux LiME Memory, PCAP Telemetry, VirusTotal Threat Intel & Stego",
+      description: "Exhaustive breakdown of 10 forensics operations: Linux kernel LiME memory DMA carving, UVC webcam frame recovery, VirusTotal threat intelligence correlation, USS Enterprise PCAP telemetry headers, NTLM hash cracking, and multi-layer PNG chunk forensics.",
+      image: "/images/spooky_ctf_banner.jpg",
+      tags: ["Spooky CTF", "Volatility 3", "LiME Memory", "UVC Webcam", "Wireshark", "VirusTotal", "Steganography", "Hashcat"],
+      time: "10 Writeups",
+      includedChallenges: [
+        "Peering Eyes (Linux LiME RAM & UVC Frames)",
+        "Hashphobia (VirusTotal SHA-256 Telemetry)",
+        "Cleithrophobia (USS Enterprise PCAP Headers)",
+        "Stash the Hash (NTLM Cracking & Red LSB)",
+        "The Haunted Portrait (Blue LSB & ROT13)",
+        "Tormented Tanny (Tripartite PNG Chunk Forensics)",
+        "The Phantom Login (Event ID 4624 & Web Logs)",
+        "Arachnophobia (Appended PKZIP Carving)",
+        "Eisoptrophobia (Row-Major RGB LSB Stego)",
+        "Phasmophobia (Audio Spectrogram Post-Mortem)"
+      ]
+    },
+    {
       title: "DEADFACE CTF: Complete Operational Dossier",
       slug: "deadface",
       href: "/ctfs/deadface",

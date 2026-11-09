@@ -4,6 +4,12 @@ export default function sitemap() {
   const staticRoutes = [
     "",
     "/ctfs",
+    "/ctfs/spooky",
+    "/ctfs/deadface",
+    "/ctfs/byte-me",
+    "/ctfs/war-games",
+    "/ctfs/kaspersky",
+    "/ctfs/sunshine",
     "/labs",
     "/labs/cyberdefenders",
     "/labs/cyberdefenders/openwire",

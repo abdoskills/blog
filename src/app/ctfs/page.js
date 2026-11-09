@@ -11,6 +11,20 @@ export default function CtfsHub() {
   const [selectedCategory, setSelectedCategory] = useState("ALL");
 
   const challenges = [
+    // --- Spooky CTF 2026 (NJIT) ---
+    {
+      title: "Spooky CTF: Complete Forensics Operational Dossier",
+      slug: "spooky",
+      href: "/ctfs/spooky",
+      platform: "Spooky CTF",
+      category: "Multi-Track CTF",
+      points: "10 OPS // 9 FLAGS",
+      tagline: "Linux LiME Memory, PCAP Telemetry, VirusTotal Threat Intel & Stego",
+      description: "Exhaustive breakdown of 10 forensics operations: Linux kernel LiME memory DMA carving, UVC webcam frame recovery, VirusTotal threat intelligence correlation, USS Enterprise PCAP telemetry headers, NTLM hash cracking, and multi-layer PNG chunk forensics.",
+      image: "/images/spooky_ctf_banner.jpg",
+      tags: ["Spooky CTF", "Volatility 3", "LiME Memory", "UVC Webcam", "Wireshark", "VirusTotal", "Steganography", "Hashcat"],
+      time: "10 Writeups"
+    },
     // --- DEADFACE CTF 2026 ---
     {
       title: "DEADFACE CTF: Complete Operational Dossier",
@@ -640,7 +654,7 @@ export default function CtfsHub() {
 
   // Distinct Platforms with prioritized ordering
   const platforms = useMemo(() => {
-    const priority = ["ALL", "SunshineCTF 2026", "PicoCTF", "ASCWG 2026", "Kaspersky CTF", "Threat Labs"];
+    const priority = ["ALL", "Spooky CTF", "DEADFACE CTF", "Byte Me CTF 2026", "SunshineCTF 2026", "PicoCTF", "ASCWG 2026", "Kaspersky CTF", "Threat Labs"];
     const current = new Set(challenges.map((c) => c.platform));
     const result = priority.filter((p) => p === "ALL" || current.has(p));
     current.forEach((p) => {
