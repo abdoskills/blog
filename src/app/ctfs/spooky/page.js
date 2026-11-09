@@ -30,27 +30,8 @@ export default function SpookyCtfPage() {
       ]
     },
     {
-      id: "hashphobia",
-      num: "02",
-      title: "Hashphobia",
-      category: "Threat Intelligence",
-      points: "750 PTS",
-      badge: "OSINT // VIRUSTOTAL",
-      tagline: "VirusTotal Community Intelligence & 1337 Leetspeak Alignment",
-      folder: "C:\\CTFS\\spooky ctf\\forensics\\Hashphobia\\",
-      difficulty: "Medium",
-      author: "Frank C",
-      flag: "spooky{r34d_c0mm3nt5_4nd_ch3ck_review5}",
-      sections: [
-        { id: "hash-overview", title: "1. SOC Incident & Hash Lookup", tag: "SHA-256" },
-        { id: "hash-vt", title: "2. VirusTotal Community Intelligence", tag: "thehackerguy" },
-        { id: "hash-leetspeak", title: "3. Leetspeak Orthography & Base64", tag: "1337 Rules" },
-        { id: "hash-flag", title: "4. Verified Flag Assembly", tag: "Flag" },
-      ]
-    },
-    {
       id: "cleithrophobia",
-      num: "03",
+      num: "02",
       title: "Cleithrophobia",
       category: "Network Traffic Analysis",
       points: "750 PTS",
@@ -69,7 +50,7 @@ export default function SpookyCtfPage() {
     },
     {
       id: "stash-the-hash",
-      num: "04",
+      num: "03",
       title: "Stash the Hash",
       category: "Credential Dumping",
       points: "750 PTS",
@@ -89,7 +70,7 @@ export default function SpookyCtfPage() {
     },
     {
       id: "the-haunted-portrait",
-      num: "05",
+      num: "04",
       title: "The Haunted Portrait",
       category: "Steganography",
       points: "499 PTS",
@@ -127,7 +108,7 @@ export default function SpookyCtfPage() {
     },
     {
       id: "the-phantom-login",
-      num: "07",
+      num: "05",
       title: "The Phantom Login",
       category: "Log Analysis",
       points: "250 PTS",
@@ -145,7 +126,7 @@ export default function SpookyCtfPage() {
     },
     {
       id: "arachnophobia",
-      num: "08",
+      num: "07",
       title: "Arachnophobia",
       category: "File Carving",
       points: "80 PTS",
@@ -163,7 +144,7 @@ export default function SpookyCtfPage() {
     },
     {
       id: "eisoptrophobia",
-      num: "09",
+      num: "08",
       title: "Eisoptrophobia",
       category: "Steganography",
       points: "50 PTS",
@@ -181,7 +162,7 @@ export default function SpookyCtfPage() {
     },
     {
       id: "phasmophobia",
-      num: "10",
+      num: "09",
       title: "Phasmophobia",
       category: "Audio Steganography",
       points: "UNSOLVED // ANALYSIS",
@@ -261,22 +242,22 @@ export default function SpookyCtfPage() {
           </h1>
 
           <p className="text-sm sm:text-base lg:text-lg text-zinc-400 max-w-3xl font-sans leading-relaxed">
-            Exhaustive operational breakdowns across 10 specialized forensic operations: Linux kernel LiME memory extraction, UVC webcam DMA buffer carving, VirusTotal threat intelligence correlation, USS Enterprise PCAP telemetry reconstruction, Windows NTLM hash cracking, multi-layer PNG metadata dissection, and audio spectrogram track separation.
+            Exhaustive operational breakdowns across 9 pure forensic operations: Linux kernel LiME memory extraction, UVC webcam DMA buffer carving, USS Enterprise PCAP telemetry reconstruction, Windows NTLM hash cracking, multi-layer PNG metadata dissection, and audio spectrogram track separation.
           </p>
 
           {/* Quick Stats Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono text-xs pt-2">
             <div className="p-3 rounded-xl bg-zinc-900/70 border border-zinc-800">
               <span className="text-zinc-500 block uppercase">Total Ops</span>
-              <span className="text-white font-bold text-sm sm:text-base">10 Challenges</span>
+              <span className="text-white font-bold text-sm sm:text-base">9 Operations</span>
             </div>
             <div className="p-3 rounded-xl bg-zinc-900/70 border border-zinc-800">
               <span className="text-zinc-500 block uppercase">Verified Flags</span>
-              <span className="text-emerald-400 font-bold text-sm sm:text-base">9 / 10 Captured</span>
+              <span className="text-emerald-400 font-bold text-sm sm:text-base">8 / 9 Captured</span>
             </div>
             <div className="p-3 rounded-xl bg-zinc-900/70 border border-zinc-800">
               <span className="text-zinc-500 block uppercase">Points Solved</span>
-              <span className="text-amber-400 font-bold text-sm sm:text-base">4,613 PTS</span>
+              <span className="text-amber-400 font-bold text-sm sm:text-base">3,863 PTS</span>
             </div>
             <div className="p-3 rounded-xl bg-zinc-900/70 border border-zinc-800">
               <span className="text-zinc-500 block uppercase">Specialization</span>
@@ -307,7 +288,7 @@ export default function SpookyCtfPage() {
                   Operations Index
                 </span>
                 <span className="px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 text-[10px]">
-                  10 Ops
+                  9 Ops
                 </span>
               </div>
 
@@ -613,222 +594,7 @@ export default function SpookyCtfPage() {
             </article>
 
             {/* =========================================================================
-                OPERATION 02: HASHPHOBIA (750 PTS - THREAT INTEL)
-            ========================================================================= */}
-            <article id="hashphobia" className="scroll-mt-24 p-6 sm:p-8 rounded-3xl bg-[#09090e]/95 border border-zinc-800 shadow-2xl space-y-8 backdrop-blur-xl">
-              
-              <div className="border-b border-zinc-800 pb-6 space-y-3">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <span className="px-3 py-1 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 font-mono text-xs font-bold uppercase tracking-wider">
-                    Operation 02 • Threat Intelligence
-                  </span>
-                  <div className="flex items-center gap-2 font-mono text-xs">
-                    <span className="px-2.5 py-0.5 rounded bg-zinc-900 text-zinc-300 border border-zinc-800">
-                      750 PTS
-                    </span>
-                    <span className="px-2.5 py-0.5 rounded bg-yellow-500/10 text-yellow-400 border border-yellow-500/30 font-bold uppercase">
-                      Medium
-                    </span>
-                  </div>
-                </div>
-
-                <h2 className="text-2xl sm:text-3xl font-bold text-white font-[family-name:var(--font-share-tech)] tracking-wide">
-                  Hashphobia: VirusTotal Intelligence &amp; 1337 Alignment
-                </h2>
-
-                <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-zinc-400 pt-1">
-                  <span>Author: <strong className="text-white">Frank C</strong></span>
-                  <span>•</span>
-                  <span>Target Hash: <code className="text-amber-300 text-[11px]">f854432d21db979021f45b85384b7f2d6500fa2f62981c87ebba79b3d46f1a7b</code></span>
-                </div>
-              </div>
-
-              {/* Challenge Scenario Quote */}
-              <div className="p-4 rounded-2xl bg-zinc-900/60 border-l-4 border-amber-500 space-y-1">
-                <span className="text-[10px] font-mono uppercase tracking-wider text-amber-400 font-bold block">
-                  Investigation Brief
-                </span>
-                <p className="text-xs sm:text-sm text-zinc-300 italic font-sans leading-relaxed">
-                  &ldquo;While interning at the SOC office a coworker said they came across a strange executable. Fearing that you may accidentally run it they sent the hash (f854432d21db979021f45b85384b7f2d6500fa2f62981c87ebba79b3d46f1a7b) and asked you to do some recon.&rdquo;
-                </p>
-              </div>
-
-              <section id="hash-overview" className="space-y-4">
-                <h3 className="text-lg font-bold text-white font-mono flex items-center gap-2">
-                  <span className="text-amber-400">01.</span> Hash Identification &amp; VirusTotal Reconnaissance
-                </h3>
-                <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                  Submitting the SHA-256 hash to VirusTotal identifies an indexed shell script artifact:
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono text-xs">
-                  <div className="p-3 rounded-xl bg-[#050508] border border-zinc-800">
-                    <span className="text-zinc-500 block">File Name:</span>
-                    <span className="text-white font-bold">case-telemetry.sh</span>
-                  </div>
-                  <div className="p-3 rounded-xl bg-[#050508] border border-zinc-800">
-                    <span className="text-zinc-500 block">File Format:</span>
-                    <span className="text-white font-bold">POSIX shell script (138 bytes)</span>
-                  </div>
-                </div>
-              </section>
-
-              <section id="hash-vt" className="space-y-4">
-                <h3 className="text-lg font-bold text-white font-mono flex items-center gap-2">
-                  <span className="text-amber-400">02.</span> Community Comments &amp; Part 2 Recovery
-                </h3>
-                <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                  Checking the VirusTotal <strong>Community</strong> tab reveals a threat intelligence comment posted by user <code>thehackerguy</code>:
-                </p>
-
-                <div className="p-4 rounded-xl bg-zinc-950 border border-zinc-800 font-mono text-xs space-y-1">
-                  <span className="text-zinc-500">Comment by user &apos;thehackerguy&apos;:</span>
-                  <p className="text-emerald-400 font-bold">
-                    &ldquo;Similar to a script to we encountered earlier that printed NG5kX2NoM2NrX3JldmlldzV9&rdquo;
-                  </p>
-                </div>
-
-                <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                  Base64 decoding <code>NG5kX2NoM2NrX3JldmlldzV9</code> yields the second half of the flag:
-                </p>
-
-                <div className="rounded-xl overflow-hidden border border-zinc-800 bg-[#050508]">
-                  <div className="px-4 py-2 bg-zinc-900/80 border-b border-zinc-800 flex justify-between items-center text-xs font-mono">
-                    <span className="text-zinc-400">Base64 Decode Part 2</span>
-                    <CopyButton text={"echo 'NG5kX2NoM2NrX3JldmlldzV9' | base64 -d"} />
-                  </div>
-                  <pre className="p-4 text-xs font-mono text-emerald-300 overflow-x-auto leading-relaxed">
-                    <code>{"$ echo 'NG5kX2NoM2NrX3JldmlldzV9' | base64 -d\n4nd_ch3ck_review5}"}</code>
-                  </pre>
-                </div>
-              </section>
-
-              <section id="hash-leetspeak" className="space-y-4">
-                <h3 className="text-lg font-bold text-white font-mono flex items-center gap-2">
-                  <span className="text-amber-400">03.</span> Strict 1337 Leetspeak Alignment &amp; Part 1 Reassembly
-                </h3>
-                <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                  Notice the exact leetspeak substitution matrix applied in Part 2 (<code>4nd_ch3ck_review5&#125;</code>):
-                </p>
-                <div className="grid grid-cols-3 gap-2 font-mono text-xs text-center">
-                  <div className="p-2 rounded bg-zinc-900 border border-zinc-800"><span className="text-zinc-400">a &rarr; </span><strong className="text-amber-400">4</strong> (4nd)</div>
-                  <div className="p-2 rounded bg-zinc-900 border border-zinc-800"><span className="text-zinc-400">e &rarr; </span><strong className="text-amber-400">3</strong> (ch3ck)</div>
-                  <div className="p-2 rounded bg-zinc-900 border border-zinc-800"><span className="text-zinc-400">s &rarr; </span><strong className="text-amber-400">5</strong> (review5)</div>
-                </div>
-                <p className="text-xs sm:text-sm text-zinc-300 font-sans leading-relaxed">
-                  The first half references reading the comments: <code>spooky&#123;read_comments_</code>. Applying the identical substitution rules:
-                </p>
-                <ul className="list-disc list-inside space-y-1 text-xs sm:text-sm text-zinc-400 font-sans">
-                  <li><code>read</code> &rarr; <code>r34d</code> (both <code>e &rarr; 3</code> and <code>a &rarr; 4</code>)</li>
-                  <li><code>comments</code> &rarr; <code>c0mm3nt5</code> (replacing <code>o &rarr; 0</code>, <code>e &rarr; 3</code>, and <code>s &rarr; 5</code>)</li>
-                </ul>
-              </section>
-
-                            {/* =========================================================
-                  GLOWING INTERACTIVE "IDEA" DISCLOSURE: WHY, HOW & MAP
-              ========================================================= */}
-              <details className="group rounded-2xl border border-yellow-500/40 bg-gradient-to-br from-[#0c0d16] via-[#090a10] to-[#06060a] shadow-[0_0_20px_rgba(234,179,8,0.18)] hover:shadow-[0_0_35px_rgba(234,179,8,0.35)] transition-all duration-300 overflow-hidden my-6">
-                <summary className="flex items-center justify-between p-4 sm:p-5 cursor-pointer select-none bg-gradient-to-r from-yellow-500/10 via-transparent to-yellow-500/5 hover:bg-yellow-500/15 transition-all">
-                  <div className="flex items-center gap-3">
-                    <span className="px-3 py-1 rounded-lg bg-yellow-500/20 text-yellow-300 border border-yellow-500/60 font-mono text-xs font-black tracking-widest uppercase shadow-[0_0_15px_rgba(234,179,8,0.5)] flex items-center gap-1.5 animate-pulse">
-                      <svg className="w-3.5 h-3.5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14H8a4 4 0 01-.828-7.915A4 4 0 0116 10a4 4 0 01-4 4z" />
-                      </svg>
-                      IDEA
-                    </span>
-                    <div className="text-left">
-                      <span className="text-sm font-bold text-white font-mono tracking-wide block">
-                        Core Threat Concept // The &ldquo;Why&rdquo;, &ldquo;How&rdquo; &amp; Tactical Map
-                      </span>
-                      <span className="text-[11px] text-zinc-400 font-sans block">
-                        Click to expand threat rationale, underlying OS mechanics, and tactical flow
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-[11px] font-mono text-yellow-400 group-open:hidden">
-                      EXPAND &darr;
-                    </span>
-                    <span className="text-[11px] font-mono text-yellow-400 hidden group-open:inline">
-                      COLLAPSE &uarr;
-                    </span>
-                    <svg className="w-4 h-4 text-yellow-400 transform group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </div>
-                </summary>
-
-                <div className="p-5 sm:p-6 border-t border-yellow-500/20 space-y-6 bg-black/40">
-                  {/* Tactical Investigation Flow */}
-                  <div className="space-y-2">
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-yellow-400 font-bold block">
-                      Tactical Investigation Map
-                    </span>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono">
-                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
-                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 01</span>
-                        <span className="text-white font-semibold text-[11px] mt-1">SHA-256 Digest Triage</span>
-                        <span className="text-[10px] text-zinc-400 mt-1">e14300... Hash</span>
-                      </div>
-                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
-                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 02</span>
-                        <span className="text-white font-semibold text-[11px] mt-1">VirusTotal OSINT</span>
-                        <span className="text-[10px] text-yellow-400 mt-1">thehackerguy Intel</span>
-                      </div>
-                      <div className="p-2.5 rounded-xl bg-zinc-900/60 border border-zinc-800 flex flex-col justify-between">
-                        <span className="text-[10px] text-zinc-500 font-bold">PIVOT 03</span>
-                        <span className="text-white font-semibold text-[11px] mt-1">1337 Leetspeak Alignment</span>
-                        <span className="text-[10px] text-cyan-400 mt-1">r34d_c0mm3nt5_</span>
-                      </div>
-                      <div className="p-2.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30 flex flex-col justify-between">
-                        <span className="text-[10px] text-emerald-400 font-bold">TARGET FLAG</span>
-                        <span className="text-emerald-300 font-semibold text-[11px] mt-1">Base64 Joint Assembly</span>
-                        <span className="text-[10px] text-emerald-400 font-mono mt-1">750 PTS</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Why & How Concept Grid */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-zinc-800/80">
-                    <div className="p-4 rounded-xl bg-zinc-900/50 border border-yellow-500/20 space-y-2">
-                      <span className="text-xs font-mono font-bold text-yellow-400 uppercase tracking-wider flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
-                        The &ldquo;Why&rdquo; • Investigative Rationale
-                      </span>
-                      <p className="text-xs text-zinc-300 font-sans leading-relaxed">
-                        SHA-256 has an impossible pre-image keyspace (2<sup>256</sup>). Standalone hashes cannot be cracked with dictionaries; SOC incident response playbooks mandate querying crowdsourced Threat Intelligence (VirusTotal, AlienVault OTX) where user <code>thehackerguy</code> left Part 2 and a riddle.
-                      </p>
-                    </div>
-
-                    <div className="p-4 rounded-xl bg-zinc-900/50 border border-cyan-500/20 space-y-2">
-                      <span className="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-                        The &ldquo;How&rdquo; • Under-The-Hood Mechanics
-                      </span>
-                      <p className="text-xs text-zinc-300 font-sans leading-relaxed">
-                        Part 2 (<code>4nd_ch3ck_review5&#125;</code>) revealed a strict 1337 substitution: <code>a&rarr;4</code>, <code>e&rarr;3</code>, <code>s&rarr;5</code>, <code>o&rarr;0</code>. Mapping &ldquo;read comments&rdquo; produces <code>r34d_c0mm3nt5_</code>. In Base64, 15 bytes convert cleanly to 20 chars without padding, matching the 24-bit alignment of Part 2.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </details>
-
-              <section id="hash-flag" className="space-y-4">
-                <div className="p-5 rounded-2xl bg-gradient-to-r from-emerald-950/40 to-[#0b0b12] border border-emerald-500/40 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  <div className="space-y-1">
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-bold block">
-                      Verified Flag:
-                    </span>
-                    <span className="text-base sm:text-lg font-mono font-bold text-white tracking-wide break-all">
-                      spooky&#123;r34d_c0mm3nt5_4nd_ch3ck_review5&#125;
-                    </span>
-                  </div>
-                  <CopyButton text={"spooky{r34d_c0mm3nt5_4nd_ch3ck_review5}"} />
-                </div>
-              </section>
-            </article>
-
-            {/* =========================================================================
-                OPERATION 03: CLEITHROPHOBIA (750 PTS - PCAP ANALYSIS)
+                OPERATION 02: CLEITHROPHOBIA (750 PTS - PCAP ANALYSIS)
             ========================================================================= */}
             <article id="cleithrophobia" className="scroll-mt-24 p-6 sm:p-8 rounded-3xl bg-[#09090e]/95 border border-zinc-800 shadow-2xl space-y-8 backdrop-blur-xl">
               
@@ -1038,7 +804,7 @@ export default function SpookyCtfPage() {
             </article>
 
             {/* =========================================================================
-                OPERATION 04: STASH THE HASH (750 PTS - NTLM & LSB STEGO)
+                OPERATION 03: STASH THE HASH (750 PTS - NTLM & LSB STEGO)
             ========================================================================= */}
             <article id="stash-the-hash" className="scroll-mt-24 p-6 sm:p-8 rounded-3xl bg-[#09090e]/95 border border-zinc-800 shadow-2xl space-y-8 backdrop-blur-xl">
               
@@ -1237,7 +1003,7 @@ export default function SpookyCtfPage() {
             </article>
 
             {/* =========================================================================
-                OPERATION 05: THE HAUNTED PORTRAIT (499 PTS - STEGANOGRAPHY)
+                OPERATION 04: THE HAUNTED PORTRAIT (499 PTS - STEGANOGRAPHY)
             ========================================================================= */}
             <article id="the-haunted-portrait" className="scroll-mt-24 p-6 sm:p-8 rounded-3xl bg-[#09090e]/95 border border-zinc-800 shadow-2xl space-y-8 backdrop-blur-xl">
               
@@ -1772,14 +1538,14 @@ export default function SpookyCtfPage() {
             </article>
 
             {/* =========================================================================
-                OPERATION 08: ARACHNOPHOBIA (80 PTS - FILE CARVING)
+                OPERATION 07: ARACHNOPHOBIA (80 PTS - FILE CARVING)
             ========================================================================= */}
             <article id="arachnophobia" className="scroll-mt-24 p-6 sm:p-8 rounded-3xl bg-[#09090e]/95 border border-zinc-800 shadow-2xl space-y-8 backdrop-blur-xl">
               
               <div className="border-b border-zinc-800 pb-6 space-y-3">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <span className="px-3 py-1 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30 font-mono text-xs font-bold uppercase tracking-wider">
-                    Operation 08 • File Carving
+                    Operation 07 • File Carving
                   </span>
                   <div className="flex items-center gap-2 font-mono text-xs">
                     <span className="px-2.5 py-0.5 rounded bg-zinc-900 text-zinc-300 border border-zinc-800">
@@ -1935,7 +1701,7 @@ export default function SpookyCtfPage() {
             </article>
 
             {/* =========================================================================
-                OPERATION 09: EISOPTROPHOBIA (50 PTS - STEGANOGRAPHY)
+                OPERATION 08: EISOPTROPHOBIA (50 PTS - STEGANOGRAPHY)
             ========================================================================= */}
             <article id="eisoptrophobia" className="scroll-mt-24 p-6 sm:p-8 rounded-3xl bg-[#09090e]/95 border border-zinc-800 shadow-2xl space-y-8 backdrop-blur-xl">
               
@@ -2098,14 +1864,14 @@ export default function SpookyCtfPage() {
             </article>
 
             {/* =========================================================================
-                OPERATION 10: PHASMOPHOBIA (POST-MORTEM TECHNICAL ANALYSIS)
+                OPERATION 09: PHASMOPHOBIA (POST-MORTEM TECHNICAL ANALYSIS)
             ========================================================================= */}
             <article id="phasmophobia" className="scroll-mt-24 p-6 sm:p-8 rounded-3xl bg-[#09090e]/95 border border-zinc-800 shadow-2xl space-y-8 backdrop-blur-xl">
               
               <div className="border-b border-zinc-800 pb-6 space-y-3">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <span className="px-3 py-1 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30 font-mono text-xs font-bold uppercase tracking-wider">
-                    Operation 10 • Audio Steganography &amp; Forensics
+                    Operation 09 • Audio Steganography &amp; Forensics
                   </span>
                   <div className="flex items-center gap-2 font-mono text-xs">
                     <span className="px-2.5 py-0.5 rounded bg-zinc-900 text-zinc-400 border border-zinc-800">
