@@ -59,8 +59,8 @@ export default function CyberDefendersHub() {
         {/* Hub Header */}
         <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-12 sm:mb-14 text-center">
           <div className="mb-4 inline-flex items-center gap-2 bg-[#111111]/80 backdrop-blur-md border border-zinc-700/50 px-3 sm:px-4 py-1.5 rounded-full animate-glow-pulse">
-            <Link href="/labs" className="text-zinc-400 hover:text-white transition-colors text-[10px] sm:text-xs font-mono uppercase tracking-wider">
-              ← THREAT LABS
+            <Link href="/" className="text-zinc-400 hover:text-white transition-colors text-[10px] sm:text-xs font-mono uppercase tracking-wider">
+              ← DOSSIERS
             </Link>
             <span className="text-zinc-600 font-mono text-xs">/</span>
             <span className="font-mono text-[10px] sm:text-xs text-emerald-400 uppercase tracking-wider sm:tracking-[0.25em]">

@@ -18,12 +18,12 @@ export default function CtfsHub() {
       href: "/ctfs/spooky",
       platform: "Spooky CTF",
       category: "Multi-Track CTF",
-      points: "10 OPS // 9 FLAGS",
+      points: "8 OPS // 4,283 PTS",
       tagline: "Linux LiME Memory, PCAP Telemetry, VirusTotal Threat Intel & Stego",
-      description: "Exhaustive breakdown of 10 forensics operations: Linux kernel LiME memory DMA carving, UVC webcam frame recovery, VirusTotal threat intelligence correlation, USS Enterprise PCAP telemetry headers, NTLM hash cracking, and multi-layer PNG chunk forensics.",
+      description: "Exhaustive breakdown of 8 forensics operations: Linux kernel LiME memory DMA carving, UVC webcam frame recovery, Wireshark port 8080 TCP stream following, NTLM hash cracking, Red Plane 0 LSB stego, Base64 web log tokens, tripartite PNG chunk surgery, and appended PKZIP carving.",
       image: "/images/spooky_ctf_banner.jpg",
       tags: ["Spooky CTF", "Volatility 3", "LiME Memory", "UVC Webcam", "Wireshark", "VirusTotal", "Steganography", "Hashcat"],
-      time: "10 Writeups"
+      time: "8 Writeups"
     },
     // --- DEADFACE CTF 2026 ---
     {
@@ -38,6 +38,59 @@ export default function CtfsHub() {
       image: "/images/deadface_ctf_banner.jpg",
       tags: ["DEADFACE CTF", "Volatility 3", "PCAP Forensics", "SQLite Chrome", "SQL Injection / MySQL", "OSINT", "LLMNR / SMB"],
       time: "21 Writeups"
+    },
+    // --- CyberDefenders ---
+    {
+      title: "CyberDefenders: Complete Blue Team & DFIR Dossier",
+      slug: "cyberdefenders",
+      href: "/labs/cyberdefenders",
+      platform: "CyberDefenders",
+      category: "Multi-Track CTF",
+      points: "3 LABS // 54 QUESTIONS",
+      tagline: "Linux Rootkits, PCAP Multi-Protocol Forensics & ActiveMQ RCE",
+      description: "Exhaustive enterprise blue team investigations: Ulysses Linux memory triage & trojaned rootkits, WireDive multi-protocol packet inspection with TLS master secret decryption, and Apache ActiveMQ OpenWire RCE exploit analysis.",
+      image: "/images/cyberdefenders_banner.png",
+      tags: ["CyberDefenders", "Wireshark", "Volatility", "Linux DFIR", "PCAP Analysis", "TLS Decryption", "ActiveMQ RCE", "Rootkit Analysis"],
+      time: "3 Labs // 54 Questions"
+    },
+    {
+      title: "WireDive Lab (35 Questions)",
+      slug: "cyberdefenders-wiredive",
+      href: "/labs/cyberdefenders/wiredive",
+      platform: "CyberDefenders",
+      category: "Network Forensics",
+      points: "35 QUESTIONS",
+      tagline: "Multi-Protocol PCAP Triage & TLS Decryption",
+      description: "Comprehensive investigation of 5 packet capture traces: DHCP address allocations, DNS lookups, SMB share exfiltration, Linux reverse shells, enterprise Cisco infrastructure (STP, CDP, HSRP, SNMP), and decrypting HTTPS/HTTP2 via TLS master secrets.",
+      image: "/images/cyberdefenders/wiredive_banner.png",
+      tags: ["Wireshark", "Network Forensics", "TLS Decryption", "Cisco IOS", "HTTP/2", "SMB", "PCAP Analysis", "CyberDefenders"],
+      time: "25 min read"
+    },
+    {
+      title: "Ulysses Lab (11 Questions)",
+      slug: "cyberdefenders-ulysses",
+      href: "/labs/cyberdefenders/ulysses",
+      platform: "CyberDefenders",
+      category: "Memory Forensics",
+      points: "11 QUESTIONS",
+      tagline: "Exim4 RCE, Trojaned Rootkit & Memory Triage",
+      description: "Deep-dive Linux intrusion investigation: SSH brute force attempts, Exim4 string-expansion RCE (CVE-2010-4344), trojaned Linux rootkits (rk.tar), Volatility volatile memory profiles, and Netcat bulk disk/RAM exfiltration.",
+      image: "/images/cyberdefenders/ulysses_banner.png",
+      tags: ["Linux DFIR", "Volatility", "Exim4", "CVE-2010-4344", "Rootkit Analysis", "Memory Forensics", "CyberDefenders"],
+      time: "15 min read"
+    },
+    {
+      title: "OpenWire Lab (8 Questions)",
+      slug: "cyberdefenders-openwire",
+      href: "/labs/cyberdefenders/openwire",
+      platform: "CyberDefenders",
+      category: "Network Forensics",
+      points: "8 QUESTIONS",
+      tagline: "Apache ActiveMQ RCE & OpenWire PCAP Triage",
+      description: "Investigating Apache ActiveMQ exploitation on port 61616: tracking primary and staging C2 servers, analyzing OpenWire protocol headers, identifying dropped reverse shells, and tracing source code patches.",
+      image: "/images/cyberdefenders/openwire_banner.png",
+      tags: ["Wireshark", "Network Forensics", "Apache ActiveMQ", "CVE-2023-46604", "OpenWire", "PCAP Analysis", "CyberDefenders"],
+      time: "8 min read"
     },
     // --- Byte Me CTF 2026 (PCCOE) ---
     {
@@ -637,24 +690,11 @@ export default function CtfsHub() {
       time: "5 min read"
     },
 
-    // --- Threat Labs & Practical DFIR ---
-    {
-      title: "Phobos Ransomware Analysis",
-      slug: "phobos-ransomware-analysis",
-      platform: "Threat Labs",
-      category: "Reverse Engineering",
-      points: "ADVANCED",
-      tagline: "Unpacking, Decrypting & Threat Intel",
-      description: "Static and dynamic analysis of Phobos ransomware. Decompiling its crypto routine in Ghidra, mapping out persistence keys, and writing custom YARA detection rules.",
-      image: "/images/phobos_thumbnail.jpg",
-      tags: ["Ghidra", "Ransomware DFIR", "x64dbg", "Threat Intel", "YARA", "Threat Labs"],
-      time: "12 min read"
-    }
   ];
 
   // Distinct Platforms with prioritized ordering
   const platforms = useMemo(() => {
-    const priority = ["ALL", "Spooky CTF", "DEADFACE CTF", "Byte Me CTF 2026", "SunshineCTF 2026", "PicoCTF", "ASCWG 2026", "Kaspersky CTF", "Threat Labs"];
+    const priority = ["ALL", "CyberDefenders", "Spooky CTF", "DEADFACE CTF", "Byte Me CTF 2026", "SunshineCTF 2026", "PicoCTF", "ASCWG 2026", "Kaspersky CTF"];
     const current = new Set(challenges.map((c) => c.platform));
     const result = priority.filter((p) => p === "ALL" || current.has(p));
     current.forEach((p) => {

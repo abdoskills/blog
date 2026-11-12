@@ -20,23 +20,21 @@ export default function Home() {
       href: "/ctfs/spooky",
       platform: "Spooky CTF",
       category: "Special Dossier",
-      points: "10 OPS // 9 FLAGS",
+      points: "8 OPS // 4,283 PTS",
       tagline: "Linux LiME Memory, PCAP Telemetry, VirusTotal Threat Intel & Stego",
-      description: "Exhaustive breakdown of 10 forensics operations: Linux kernel LiME memory DMA carving, UVC webcam frame recovery, VirusTotal threat intelligence correlation, USS Enterprise PCAP telemetry headers, NTLM hash cracking, and multi-layer PNG chunk forensics.",
+      description: "Exhaustive breakdown of 8 forensics operations: Linux kernel LiME memory DMA carving, UVC webcam frame recovery, Wireshark port 8080 TCP stream following, NTLM hash cracking, Red Plane 0 LSB stego, Base64 web log tokens, tripartite PNG chunk surgery, and appended PKZIP carving.",
       image: "/images/spooky_ctf_banner.jpg",
       tags: ["Spooky CTF", "Volatility 3", "LiME Memory", "UVC Webcam", "Wireshark", "VirusTotal", "Steganography", "Hashcat"],
-      time: "10 Writeups",
+      time: "8 Writeups",
       includedChallenges: [
         "Peering Eyes (Linux LiME RAM & UVC Frames)",
-        "Hashphobia (VirusTotal SHA-256 Telemetry)",
-        "Cleithrophobia (USS Enterprise PCAP Headers)",
-        "Stash the Hash (NTLM Cracking & Red LSB)",
-        "The Haunted Portrait (Blue LSB & ROT13)",
-        "Tormented Tanny (Tripartite PNG Chunk Forensics)",
+        "Cleithrophobia (Port 8080 TCP Stream Reassembly)",
+        "Stash the Hash (NTLM Cracking & Red Plane 0 LSB)",
         "The Phantom Login (Event ID 4624 & Web Logs)",
+        "Tormented Tanny (Tripartite PNG Chunk Forensics)",
+        "The Haunted Portrait (Blue LSB & ROT13)",
         "Arachnophobia (Appended PKZIP Carving)",
-        "Eisoptrophobia (Row-Major RGB LSB Stego)",
-        "Phasmophobia (Audio Spectrogram Post-Mortem)"
+        "Eisoptrophobia (Row-Major RGB LSB Stego)"
       ]
     },
     {
@@ -62,6 +60,24 @@ export default function Home() {
         "Aurora Health MySQL Suite (8 Ops)",
         "Ghost of Squares Past (Savannah OSINT)",
         "Uninvited Guest (SMB Poisoning Series)"
+      ]
+    },
+    {
+      title: "CyberDefenders: Complete Blue Team & DFIR Dossier",
+      slug: "cyberdefenders",
+      href: "/labs/cyberdefenders",
+      platform: "CyberDefenders",
+      category: "Special Dossier",
+      points: "3 LABS // 54 QUESTIONS",
+      tagline: "Linux Rootkits, PCAP Multi-Protocol Forensics & ActiveMQ RCE",
+      description: "Exhaustive enterprise blue team investigations: Ulysses Linux memory triage & trojaned rootkits, WireDive multi-protocol packet inspection with TLS master secret decryption, and Apache ActiveMQ OpenWire RCE exploit analysis.",
+      image: "/images/cyberdefenders_banner.png",
+      tags: ["CyberDefenders", "Wireshark", "Volatility", "Linux DFIR", "PCAP Analysis", "TLS Decryption", "ActiveMQ RCE", "Rootkit Analysis"],
+      time: "3 Labs // 54 Questions",
+      includedChallenges: [
+        "WireDive (35 Questions // Multi-Protocol PCAP, TLS Decryption, Cisco IOS & SMB)",
+        "Ulysses (11 Questions // Linux Memory Triage, Trojaned Rootkits & Exim4 RCE)",
+        "OpenWire (8 Questions // Apache ActiveMQ RCE & OpenWire PCAP Triage)"
       ]
     },
     {
@@ -179,24 +195,6 @@ export default function Home() {
         "m00nwalk 1-2",
         "WebNet0",
         "Shark on Wire"
-      ]
-    },
-    {
-      title: "DFIR & Threat Defense Labs",
-      slug: "labs",
-      href: "/labs",
-      platform: "Blue Team / CyberDefenders",
-      category: "Hands-On Labs",
-      points: "MULTI-CASE DFIR",
-      tagline: "Malware Analysis, Ransomware & Threat Hunting",
-      description: "Real-world forensic investigations, malware reverse engineering, Phobos ransomware deep dives, and threat hunting writeups from CyberDefenders and practical SOC/DFIR scenarios.",
-      image: "/images/dfir_threat_labs_banner.png",
-      tags: ["Malware Analysis", "Phobos Ransomware", "Memory Forensics", "Threat Hunting", "DFIR"],
-      time: "Lab Guides",
-      includedChallenges: [
-        "Phobos Ransomware Reverse Engineering",
-        "Memory Dump SOC Analysis",
-        "Threat Hunting Incident Scenarios"
       ]
     },
     {

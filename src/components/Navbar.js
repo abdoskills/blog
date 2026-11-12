@@ -83,14 +83,14 @@ export default function Navbar() {
               CTFs
             </Link>
             <Link 
-              href="/labs" 
+              href="/labs/cyberdefenders" 
               className={`px-3 py-1.5 rounded-lg transition-all ${
-                pathname === "/labs" 
+                pathname.startsWith("/labs") 
                   ? "theme-bg-dim theme-text border theme-border font-bold" 
                   : "text-zinc-400 hover:text-white hover:bg-zinc-900"
               }`}
             >
-              Threat Labs
+              CyberDefenders
             </Link>
             <Link 
               href="/about" 
@@ -201,18 +201,18 @@ export default function Navbar() {
                     </Link>
 
                     <Link 
-                      href="/labs"
+                      href="/labs/cyberdefenders"
                       onClick={() => setIsOpen(false)}
                       className="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-sans text-zinc-300 hover:bg-zinc-900/90 hover:text-white transition-all border border-transparent hover:border-zinc-700 group"
                     >
                       <div className="flex items-center gap-2.5">
                         <span className="text-sm font-mono text-zinc-400 group-hover:text-white">&gt;</span>
                         <div>
-                          <strong className="block text-white text-xs font-mono group-hover:text-white">DFIR &amp; Threat Labs</strong>
-                          <span className="text-[11px] text-zinc-500">Malware &amp; Blue Team Investigations</span>
+                          <strong className="block text-white text-xs font-mono group-hover:text-white">CyberDefenders Labs</strong>
+                          <span className="text-[11px] text-zinc-500">WireDive, Ulysses &amp; OpenWire Investigations</span>
                         </div>
                       </div>
-                      <span className="text-xs font-mono text-zinc-400 group-hover:text-white font-bold px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800">LAB</span>
+                      <span className="text-xs font-mono text-zinc-400 group-hover:text-white font-bold px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800">3 LABS</span>
                     </Link>
                   </div>
                 </div>
