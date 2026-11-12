@@ -17,10 +17,6 @@ export default function RedStealerLabWriteup() {
       title: "Malware Category",
       badge: "Trojan",
       tag: "CATEGORY",
-      sections: [
-        { id: "q1-vt", title: "1. VirusTotal Detection Overview" },
-        { id: "q1-msft", title: "2. Microsoft Engine Classification" },
-      ]
     },
     {
       id: "q2",
@@ -28,10 +24,6 @@ export default function RedStealerLabWriteup() {
       title: "Associated File Name",
       badge: "wextract",
       tag: "MASQUERADE",
-      sections: [
-        { id: "q2-details", title: "1. VT Details & Original Filename" },
-        { id: "q2-masq", title: "2. Masquerading (MITRE T1036.005)" },
-      ]
     },
     {
       id: "q3",
@@ -39,10 +31,6 @@ export default function RedStealerLabWriteup() {
       title: "First Submission UTC",
       badge: "2023-10-06 04:41",
       tag: "HISTORY",
-      sections: [
-        { id: "q3-history", title: "1. VirusTotal Submission History" },
-        { id: "q3-threat", title: "2. Threat Intel Timeline Analysis" },
-      ]
     },
     {
       id: "q4",
@@ -50,10 +38,6 @@ export default function RedStealerLabWriteup() {
       title: "MITRE ATT&CK Technique",
       badge: "T1005",
       tag: "MITRE",
-      sections: [
-        { id: "q4-mbc", title: "1. Malware Behavior Catalog" },
-        { id: "q4-stealer", title: "2. T1005: Data from Local System" },
-      ]
     },
     {
       id: "q5",
@@ -61,10 +45,6 @@ export default function RedStealerLabWriteup() {
       title: "Connectivity Check Domain",
       badge: "facebook.com",
       tag: "CANARY",
-      sections: [
-        { id: "q5-dns", title: "1. Dynamic Sandbox DNS Resolutions" },
-        { id: "q5-sandbox", title: "2. Anti-Analysis Egress Testing" },
-      ]
     },
     {
       id: "q6",
@@ -72,10 +52,6 @@ export default function RedStealerLabWriteup() {
       title: "C2 IP & Destination Port",
       badge: "77.91.124.55:19071",
       tag: "C2 SOCKET",
-      sections: [
-        { id: "q6-traffic", title: "1. Memory Network Patterns" },
-        { id: "q6-firewall", title: "2. Non-Standard High Port C2" },
-      ]
     },
     {
       id: "q7",
@@ -83,10 +59,6 @@ export default function RedStealerLabWriteup() {
       title: "Varp0s YARA Rule",
       badge: "detect_Redline_Stealer",
       tag: "YARA",
-      sections: [
-        { id: "q7-bazaar", title: "1. MalwareBazaar Community Signatures" },
-        { id: "q7-pattern", title: "2. In-Memory Bytecode Matching" },
-      ]
     },
     {
       id: "q8",
@@ -94,10 +66,6 @@ export default function RedStealerLabWriteup() {
       title: "Malware Family Alias",
       badge: "RECORDSTEALER",
       tag: "ALIAS",
-      sections: [
-        { id: "q8-malpedia", title: "1. Malpedia / ThreatFox Attribution" },
-        { id: "q8-hunting", title: "2. Cross-Vendor Threat Hunting" },
-      ]
     },
     {
       id: "q9",
@@ -105,10 +73,6 @@ export default function RedStealerLabWriteup() {
       title: "Privilege Escalation DLL",
       badge: "ADVAPI32.dll",
       tag: "PE IMPORTS",
-      sections: [
-        { id: "q9-iat", title: "1. Import Address Table Analysis" },
-        { id: "q9-priv", title: "2. Token Manipulation APIs (AdjustTokenPrivileges)" },
-      ]
     },
   ];
 
@@ -120,7 +84,7 @@ export default function RedStealerLabWriteup() {
         const el = document.getElementById(opIds[i]);
         if (el) {
           const top = el.offsetTop;
-          if (top <= scrollPosition) {
+          if (scrollPosition >= top) {
             setActiveOpId(opIds[i]);
             break;
           }
@@ -128,24 +92,25 @@ export default function RedStealerLabWriteup() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
+    window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [operations]);
 
   const scrollToElement = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    const el = document.getElementById(id);
+    if (el) {
+      const yOffset = -90;
+      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
 
   return (
-    <div className="flex flex-col min-h-screen relative z-10 text-zinc-200 selection:bg-red-500/30 selection:text-red-200">
+    <div className="min-h-screen bg-[#050508] text-zinc-100 flex flex-col font-sans selection:bg-red-500/30 selection:text-red-200">
       <Navbar />
 
-      <main className="flex-grow pt-6 pb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <main className="flex-1 pt-24 pb-20 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto">
           
           {/* Breadcrumbs */}
           <div className="mb-6 flex flex-wrap items-center gap-2 text-xs font-mono text-zinc-400">
@@ -285,37 +250,24 @@ export default function RedStealerLabWriteup() {
             
             {/* Sidebar Navigation */}
             <div className="hidden lg:block lg:col-span-1">
-              <div className="sticky top-24 bg-[#0a0a0f]/90 border border-zinc-800/80 rounded-2xl p-4 backdrop-blur-xl max-h-[calc(100vh-8rem)] overflow-y-auto space-y-3 font-mono text-xs shadow-xl">
+              <div className="sticky top-24 bg-[#0a0a0f]/90 border border-zinc-800/80 rounded-2xl p-4 backdrop-blur-xl max-h-[calc(100vh-8rem)] overflow-y-auto space-y-2 font-mono text-xs shadow-xl">
                 <div className="text-[11px] uppercase tracking-wider text-zinc-400 font-bold px-2 pb-2 border-b border-zinc-800 flex items-center justify-between">
                   <span>Operations Index</span>
                   <span className="text-[10px] text-red-400 font-bold">9 Questions</span>
                 </div>
                 {operations.map((op) => (
-                  <div key={op.id} className="space-y-1">
-                    <button
-                      onClick={() => scrollToElement(op.id)}
-                      className={`w-full text-left px-2.5 py-2 rounded-lg transition-colors flex items-center justify-between text-xs ${
-                        activeOpId === op.id
-                          ? "bg-red-500/20 text-red-400 border border-red-500/30 font-bold"
-                          : "text-zinc-400 hover:text-white hover:bg-zinc-800/50"
-                      }`}
-                    >
-                      <span className="truncate">{op.num}. {op.title}</span>
-                      <span className="text-[10px] text-zinc-500 ml-1 shrink-0">{op.tag}</span>
-                    </button>
-                    {activeOpId === op.id && (
-                      <div className="pl-4 space-y-1 border-l border-zinc-800 ml-3">
-                        {op.sections.map((s) => (
-                          <div
-                            key={s.id}
-                            className="text-[11px] text-zinc-500 truncate py-0.5"
-                          >
-                            {s.title}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+                  <button
+                    key={op.id}
+                    onClick={() => scrollToElement(op.id)}
+                    className={`w-full text-left px-2.5 py-2 rounded-lg transition-colors flex items-center justify-between text-xs ${
+                      activeOpId === op.id
+                        ? "bg-red-500/20 text-red-400 border border-red-500/30 font-bold"
+                        : "text-zinc-400 hover:text-white hover:bg-zinc-800/50"
+                    }`}
+                  >
+                    <span className="truncate">{op.num}. {op.title}</span>
+                    <span className="text-[10px] text-zinc-500 ml-1 shrink-0">{op.tag}</span>
+                  </button>
                 ))}
               </div>
             </div>
@@ -337,29 +289,18 @@ export default function RedStealerLabWriteup() {
                 </div>
 
                 <div className="text-zinc-300 text-sm leading-relaxed space-y-4">
-                  {/* Human Analyst Deep Dive */}
-                  <div className="p-4 rounded-xl bg-zinc-950/70 border border-zinc-800/80 space-y-2">
-                    <span className="text-xs font-mono uppercase text-red-400 font-bold block">
-                      The Human Analyst Perspective // Vendor Categorization:
-                    </span>
-                    <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-                      When triaging an unknown binary in the SOC, the first milestone is establishing vendor consensus. Different antivirus vendors use proprietary naming conventions (e.g. Kasperskly might say <code className="text-red-300">Trojan-Dropper</code>, CrowdStrike might flag <code className="text-red-300">Win/Malicious_Confidence_100%</code>). Here, we need Microsoft&apos;s specific categorization string. A Trojan differs fundamentally from viruses or worms: it doesn&apos;t self-propagate across networks, but instead relies on masquerading or deceptive droppers to gain initial foothold.
-                    </p>
+                  <p>
+                    When you extract the challenge zip file, you&apos;ll find <code>FileHash.txt</code> containing the sample&apos;s SHA-256 hash:
+                  </p>
+
+                  <div className="bg-[#050508] border border-zinc-800 rounded-lg p-3 font-mono text-xs text-amber-300 flex items-center justify-between">
+                    <code className="break-all">248FCC901AFF4E4B4C48C91E4D78A939BF681C9A1BC24ADDC3551B32768F907B</code>
+                    <CopyButton text="248FCC901AFF4E4B4C48C91E4D78A939BF681C9A1BC24ADDC3551B32768F907B" />
                   </div>
 
-                  {/* Operator Notes */}
-                  <div className="p-4 rounded-xl bg-[#0e0e14] border border-zinc-800 space-y-3 font-mono text-xs text-zinc-300">
-                    <span className="text-zinc-500 font-bold block uppercase tracking-wider">Operator Workflow:</span>
-                    <p>
-                      when u install zip file and extract u will find file named <code>filehash.txt</code> open it u will find hash:
-                    </p>
-                    <code className="block p-2 rounded bg-black/60 text-amber-300 break-all border border-zinc-800">
-                      248FCC901AFF4E4B4C48C91E4D78A939BF681C9A1BC24ADDC3551B32768F907B
-                    </code>
-                    <p>
-                      now for q1 go to virus total and search for hash. now u will notice categories is trogan dropper pua.
-                    </p>
-                  </div>
+                  <p>
+                    Pop the hash into VirusTotal to see what we&apos;re dealing with. In the detection overview, you&apos;ll see multiple vendor categories like Trojan, Dropper, and PUA:
+                  </p>
 
                   <div className="my-4 rounded-xl overflow-hidden border border-zinc-800 shadow-xl bg-black/50">
                     <Image
@@ -371,8 +312,8 @@ export default function RedStealerLabWriteup() {
                     />
                   </div>
 
-                  <p className="text-xs sm:text-sm text-zinc-400">
-                    but in q he asked about microsoft soo search for it or <kbd className="px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-200">ctrl + f</kbd> and type microsoft u will find it under arrow u will find trojan and thats first q:
+                  <p>
+                    The question specifically asks what Microsoft identified. Hit <kbd className="px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-200">Ctrl + F</kbd> and search for <code>Microsoft</code>. Under their detection breakdown, Microsoft categorizes the malware as a <strong>Trojan</strong>:
                   </p>
 
                   <div className="my-4 rounded-xl overflow-hidden border border-zinc-800 shadow-xl bg-black/50">
@@ -410,23 +351,13 @@ export default function RedStealerLabWriteup() {
                 </div>
 
                 <div className="text-zinc-300 text-sm leading-relaxed space-y-4">
-                  {/* Human Analyst Deep Dive */}
-                  <div className="p-4 rounded-xl bg-zinc-950/70 border border-zinc-800/80 space-y-2">
-                    <span className="text-xs font-mono uppercase text-red-400 font-bold block">
-                      The Human Analyst Perspective // Why &quot;wextract&quot;?
-                    </span>
-                    <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-                      In the Windows OS, <code className="text-amber-300">wextract.exe</code> is a legitimate, built-in system utility located in <code className="text-zinc-400">System32</code> used by Windows to decompress Cabinet (.cab) files. Threat actors frequently compile infostealers using the internal name or filename of legitimate Windows components (MITRE ATT&amp;CK <strong>T1036.005: Masquerading</strong>). To a hurried sysadmin or tier-1 SOC analyst looking at Task Manager, <code className="text-zinc-300">wextract</code> looks like benign background update activity rather than an infostealer siphoning browser credentials!
-                    </p>
-                  </div>
+                  <p>
+                    Switch over to the <strong>Details</strong> tab on VirusTotal. Under the file metadata and names section, we see the associated filename is <code>wextract.exe</code>.
+                  </p>
 
-                  {/* Operator Notes */}
-                  <div className="p-4 rounded-xl bg-[#0e0e14] border border-zinc-800 space-y-2 font-mono text-xs text-zinc-300">
-                    <span className="text-zinc-500 font-bold block uppercase tracking-wider">Operator Workflow:</span>
-                    <p>
-                      go to details the under it u will find the name. hackers change its name to make it hard for soc team to catch it:
-                    </p>
-                  </div>
+                  <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                    Why <code>wextract</code>? In Windows, <code>wextract.exe</code> is a legitimate system binary located in <code>System32</code> used by the OS to extract Cabinet (.cab) archives. Attackers disguise their malicious payloads under legitimate Windows tool names (MITRE ATT&amp;CK <strong>T1036.005: Masquerading</strong>) to slip past quick glances in Task Manager.
+                  </p>
 
                   <div className="my-4 rounded-xl overflow-hidden border border-zinc-800 shadow-xl bg-black/50">
                     <Image
@@ -463,23 +394,13 @@ export default function RedStealerLabWriteup() {
                 </div>
 
                 <div className="text-zinc-300 text-sm leading-relaxed space-y-4">
-                  {/* Human Analyst Deep Dive */}
-                  <div className="p-4 rounded-xl bg-zinc-950/70 border border-zinc-800/80 space-y-2">
-                    <span className="text-xs font-mono uppercase text-red-400 font-bold block">
-                      The Human Analyst Perspective // Timeline Reconstruction:
-                    </span>
-                    <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-                      The <strong>First Submission</strong> timestamp marks the earliest moment anywhere in the world this exact SHA-256 payload was captured—whether by an automated honeypot, an EDR upload, or an incident responder. In an active breach investigation, correlating this timestamp against internal firewall and web gateway logs tells the SOC whether the victim company was hit by an active, bleeding-edge zero-day campaign or if this is older, commodity malware that bypassed antivirus due to missing signature updates.
-                    </p>
-                  </div>
+                  <p>
+                    Still inside the <strong>Details</strong> tab, scroll down to the <strong>History</strong> section and look at the <strong>First Submission</strong> field.
+                  </p>
 
-                  {/* Operator Notes */}
-                  <div className="p-4 rounded-xl bg-[#0e0e14] border border-zinc-800 space-y-2 font-mono text-xs text-zinc-300">
-                    <span className="text-zinc-500 font-bold block uppercase tracking-wider">Operator Workflow:</span>
-                    <p>
-                      in same page above names ther&apos;s history. Check the First Submission field:
-                    </p>
-                  </div>
+                  <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                    This timestamp records the exact moment this SHA-256 binary was first seen globally on VirusTotal. Correlating this against enterprise proxy and firewall logs helps analysts determine whether an infection is part of an active campaign or older commodity malware.
+                  </p>
 
                   <div className="my-4 rounded-xl overflow-hidden border border-zinc-800 shadow-xl bg-black/50">
                     <Image
@@ -516,23 +437,13 @@ export default function RedStealerLabWriteup() {
                 </div>
 
                 <div className="text-zinc-300 text-sm leading-relaxed space-y-4">
-                  {/* Human Analyst Deep Dive */}
-                  <div className="p-4 rounded-xl bg-zinc-950/70 border border-zinc-800/80 space-y-2">
-                    <span className="text-xs font-mono uppercase text-red-400 font-bold block">
-                      The Human Analyst Perspective // T1005: Data from Local System:
-                    </span>
-                    <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-                      RedLine Stealer is an information stealer purpose-built to loot endpoint data. Under the MITRE ATT&amp;CK framework, the primary collection phase technique is <strong>T1005 (Data from Local System)</strong>. Upon execution, RedLine targets user directories, crawling for stored credentials in Chromium and Gecko-based browsers (stored in SQLite <code className="text-amber-300">Login Data</code> and <code className="text-amber-300">Web Data</code> files), saved credit cards, crypto wallet folders (<code className="text-zinc-400">wallet.dat</code>, Metamask extensions), VPN configurations, and local system hardware specs.
-                    </p>
-                  </div>
+                  <p>
+                    Navigate over to the <strong>Behavior</strong> tab and locate the Malware Behavior Catalog (MBC) / MITRE ATT&amp;CK matrix.
+                  </p>
 
-                  {/* Operator Notes */}
-                  <div className="p-4 rounded-xl bg-[#0e0e14] border border-zinc-800 space-y-2 font-mono text-xs text-zinc-300">
-                    <span className="text-zinc-500 font-bold block uppercase tracking-wider">Operator Workflow:</span>
-                    <p>
-                      go to VirusTotal Behavior tab ➔ Malware Behavior Catalog (MBC) / MITRE ATT&amp;CK table:
-                    </p>
-                  </div>
+                  <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                    RedLine Stealer is engineered to pillage local endpoint data—harvesting browser credentials, SQLite database files (such as <code>Login Data</code> and <code>Web Data</code>), cryptocurrency wallets, and cookies. Under the MITRE ATT&amp;CK framework, collecting data stored on the local system falls under technique <strong>T1005 (Data from Local System)</strong>.
+                  </p>
 
                   <div className="my-4 rounded-xl overflow-hidden border border-zinc-800 shadow-xl bg-black/50">
                     <Image
@@ -569,23 +480,13 @@ export default function RedStealerLabWriteup() {
                 </div>
 
                 <div className="text-zinc-300 text-sm leading-relaxed space-y-4">
-                  {/* Human Analyst Deep Dive */}
-                  <div className="p-4 rounded-xl bg-zinc-950/70 border border-zinc-800/80 space-y-2">
-                    <span className="text-xs font-mono uppercase text-red-400 font-bold block">
-                      The Human Analyst Perspective // The Egress Canary Technique:
-                    </span>
-                    <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-                      Why would an infostealer query <code className="text-red-300">facebook.com</code>? This is known as a <strong>network canary</strong> or egress connectivity test. Malware authors know that attempting to connect immediately to an untrusted Russian or Bulletproof-hosted C2 IP (<code className="text-zinc-400">77.91.124.55</code>) might trip network intrusion detection before the malware even knows if it has active internet. By issuing a DNS query for a massive domain like <code className="text-amber-300">facebook.com</code>, the malware confirms two things: 1) The host has live WAN internet access, and 2) It is not running inside an air-gapped sandbox where all external domains return simulated loopback responses.
-                    </p>
-                  </div>
+                  <p>
+                    In the <strong>Behavior</strong> tab, scroll down to the <strong>DNS Resolutions</strong> section.
+                  </p>
 
-                  {/* Operator Notes */}
-                  <div className="p-4 rounded-xl bg-[#0e0e14] border border-zinc-800 space-y-2 font-mono text-xs text-zinc-300">
-                    <span className="text-zinc-500 font-bold block uppercase tracking-wider">Operator Workflow:</span>
-                    <p>
-                      in behavior tab look at DNS Resolutions. u will see well-known social-media domain:
-                    </p>
-                  </div>
+                  <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                    You&apos;ll see an outbound DNS query resolving <code>facebook.com</code>. Attackers use this as a network canary: before attempting to connect to their untrusted C2 server, the malware resolves a major social media domain to confirm the host has active external internet connectivity and isn&apos;t trapped inside an offline sandbox.
+                  </p>
 
                   <div className="my-4 rounded-xl overflow-hidden border border-zinc-800 shadow-xl bg-black/50">
                     <Image
@@ -622,23 +523,13 @@ export default function RedStealerLabWriteup() {
                 </div>
 
                 <div className="text-zinc-300 text-sm leading-relaxed space-y-4">
-                  {/* Human Analyst Deep Dive */}
-                  <div className="p-4 rounded-xl bg-zinc-950/70 border border-zinc-800/80 space-y-2">
-                    <span className="text-xs font-mono uppercase text-red-400 font-bold block">
-                      The Human Analyst Perspective // High-Port C2 Socket Triage:
-                    </span>
-                    <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-                      RedLine Stealer communicates with its operator panel using raw TCP sockets over high, non-standard ports (here: <code className="text-red-300">19071</code>) utilizing custom binary serialization or Windows Communication Foundation (WCF) protocols. For a SOC analyst, this is an immediate high-fidelity indicator of compromise (IOC): outbound enterprise connections targeting raw public IPs on ephemeral/custom ports like 19071 rarely represent legitimate business traffic. Immediate action: block <code className="text-amber-300">77.91.124.55</code> at the perimeter firewall and query proxy logs to scope all impacted hosts.
-                    </p>
-                  </div>
+                  <p>
+                    Check the network communication and memory patterns under the <strong>Behavior</strong> tab. You&apos;ll see both HTTP and TCP traffic recorded:
+                  </p>
 
-                  {/* Operator Notes */}
-                  <div className="p-4 rounded-xl bg-[#0e0e14] border border-zinc-800 space-y-2 font-mono text-xs text-zinc-300">
-                    <span className="text-zinc-500 font-bold block uppercase tracking-wider">Operator Workflow:</span>
-                    <p>
-                      in memory patterns u will notice 2 (http, tcp). Locate the raw outbound socket connection:
-                    </p>
-                  </div>
+                  <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                    RedLine communicates with its C2 server using raw TCP sockets on high, non-standard ports. Looking at the outbound socket connection reveals the destination IP and port: <code>77.91.124.55:19071</code>. Seeing outbound enterprise traffic to a public IP on a high port like 19071 is an immediate indicator of compromise to block at the perimeter firewall.
+                  </p>
 
                   <div className="my-4 rounded-xl overflow-hidden border border-zinc-800 shadow-xl bg-black/50">
                     <Image
@@ -675,23 +566,9 @@ export default function RedStealerLabWriteup() {
                 </div>
 
                 <div className="text-zinc-300 text-sm leading-relaxed space-y-4">
-                  {/* Human Analyst Deep Dive */}
-                  <div className="p-4 rounded-xl bg-zinc-950/70 border border-zinc-800/80 space-y-2">
-                    <span className="text-xs font-mono uppercase text-red-400 font-bold block">
-                      The Human Analyst Perspective // Hunting with Community YARA:
-                    </span>
-                    <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-                      While hashes are brittle (changing even if a single byte or compile timestamp shifts), <strong>YARA rules</strong> inspect structural characteristics—identifying specific bytecode sequences, unique function names, and memory structures regardless of compilation changes. Platforms like abuse.ch&apos;s <strong>MalwareBazaar</strong> index threat samples matched against vetted community YARA rules, empowering analysts to immediately import proven rules into their EDR/SIEM tools to hunt for other variant infections across the fleet.
-                    </p>
-                  </div>
-
-                  {/* Operator Notes */}
-                  <div className="p-4 rounded-xl bg-[#0e0e14] border border-zinc-800 space-y-2 font-mono text-xs text-zinc-300">
-                    <span className="text-zinc-500 font-bold block uppercase tracking-wider">Operator Workflow:</span>
-                    <p>
-                      so he said in malwarebazaar so we will go there and search by hash again:
-                    </p>
-                  </div>
+                  <p>
+                    The question points us to <strong>MalwareBazaar</strong> (abuse.ch). Head there and search by our sample hash:
+                  </p>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
                     <div className="rounded-xl overflow-hidden border border-zinc-800 shadow-xl bg-black/50">
@@ -713,6 +590,10 @@ export default function RedStealerLabWriteup() {
                       />
                     </div>
                   </div>
+
+                  <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                    Under the YARA rule signatures matched against the sample, look for the rule authored by <strong>Varp0s</strong>. The matching rule name is <code>detect_Redline_Stealer</code>.
+                  </p>
 
                   {/* Answer Box */}
                   <div className="mt-4 p-4 rounded-xl bg-red-950/20 border border-red-500/40 flex items-center justify-between">
@@ -739,23 +620,9 @@ export default function RedStealerLabWriteup() {
                 </div>
 
                 <div className="text-zinc-300 text-sm leading-relaxed space-y-4">
-                  {/* Human Analyst Deep Dive */}
-                  <div className="p-4 rounded-xl bg-zinc-950/70 border border-zinc-800/80 space-y-2">
-                    <span className="text-xs font-mono uppercase text-red-400 font-bold block">
-                      The Human Analyst Perspective // Cross-Referencing Threat Aliases:
-                    </span>
-                    <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-                      Threat intelligence taxonomy is notoriously fragmented. When Proofpoint or Mandiant publish an emergency advisory about an ongoing infostealer campaign, they may refer to RedLine under an alternate campaign name such as <code className="text-red-300">RECORDSTEALER</code>. Platforms like Fraunhofer FKIE&apos;s <strong>Malpedia</strong> act as the central source of truth for cross-vendor nomenclature. Knowing your adversary&apos;s aliases ensures your SOC detection engineering rules don&apos;t miss threat feeds published under different vendor designations.
-                    </p>
-                  </div>
-
-                  {/* Operator Notes */}
-                  <div className="p-4 rounded-xl bg-[#0e0e14] border border-zinc-800 space-y-2 font-mono text-xs text-zinc-300">
-                    <span className="text-zinc-500 font-bold block uppercase tracking-wider">Operator Workflow:</span>
-                    <p>
-                      we will search by malware name: <code>Redline</code> on Malpedia / ThreatFox. Click on RedLine Stealer to inspect the verified aliases:
-                    </p>
-                  </div>
+                  <p>
+                    Different threat intel vendors often track the same malware under different aliases. We search for the malware family name <code>Redline</code> on <strong>Malpedia</strong>:
+                  </p>
 
                   <div className="my-4 rounded-xl overflow-hidden border border-zinc-800 shadow-xl bg-black/50">
                     <Image
@@ -766,6 +633,10 @@ export default function RedStealerLabWriteup() {
                       className="w-full h-auto object-contain"
                     />
                   </div>
+
+                  <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                    Opening the RedLine Stealer profile displays all known vendor designations. Under the aliases section, we find <code>RECORDSTEALER</code>.
+                  </p>
 
                   {/* Answer Box */}
                   <div className="mt-4 p-4 rounded-xl bg-red-950/20 border border-red-500/40 flex items-center justify-between">
@@ -792,31 +663,9 @@ export default function RedStealerLabWriteup() {
                 </div>
 
                 <div className="text-zinc-300 text-sm leading-relaxed space-y-4">
-                  {/* Human Analyst Deep Dive */}
-                  <div className="p-4 rounded-xl bg-zinc-950/70 border border-zinc-800/80 space-y-2">
-                    <span className="text-xs font-mono uppercase text-red-400 font-bold block">
-                      The Human Analyst Perspective // Windows Token Privilege Escalation:
-                    </span>
-                    <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-                      Examining the Portable Executable (PE) <strong>Import Address Table (IAT)</strong> exposes the OS capabilities the binary requests from Windows. The malware explicitly imports <code className="text-amber-300">ADVAPI32.dll</code> (Advanced Windows 32 Base API), calling three key functions in tandem:
-                    </p>
-                    <ul className="list-disc list-inside space-y-1 text-xs text-zinc-400 font-mono pl-2">
-                      <li><code className="text-red-300">OpenProcessToken</code>: Obtains a handle to the current process token.</li>
-                      <li><code className="text-red-300">LookupPrivilegeValueA</code>: Retrieves the LUID for high-privilege tokens (such as <code className="text-zinc-200">SeDebugPrivilege</code>).</li>
-                      <li><code className="text-red-300">AdjustTokenPrivileges</code>: Enables elevated privileges inside the process context.</li>
-                    </ul>
-                    <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed pt-1">
-                      By elevating its token rights, RedLine bypasses access controls, enabling it to open handles to other running user processes, read foreign memory spaces, and dump credentials from protected vaults.
-                    </p>
-                  </div>
-
-                  {/* Operator Notes */}
-                  <div className="p-4 rounded-xl bg-[#0e0e14] border border-zinc-800 space-y-2 font-mono text-xs text-zinc-300">
-                    <span className="text-zinc-500 font-bold block uppercase tracking-wider">Operator Workflow:</span>
-                    <p>
-                      back to VT look under Details ➔ Imports. will see the first dll reveals all sort of info related to privileges:
-                    </p>
-                  </div>
+                  <p>
+                    Back on VirusTotal, go to <strong>Details ➔ Imports</strong> to inspect the Portable Executable (PE) Import Address Table:
+                  </p>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
                     <div className="rounded-xl overflow-hidden border border-zinc-800 shadow-xl bg-black/50">
@@ -838,6 +687,10 @@ export default function RedStealerLabWriteup() {
                       />
                     </div>
                   </div>
+
+                  <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                    The first imported library is <code>ADVAPI32.dll</code>. Looking at the imported API calls reveals token manipulation functions: <code>OpenProcessToken</code>, <code>LookupPrivilegeValueA</code>, and <code>AdjustTokenPrivileges</code>. The malware calls these functions to grant elevated token privileges (like <code>SeDebugPrivilege</code>) to itself so it can access protected memory spaces and dump credentials from running processes.
+                  </p>
 
                   {/* Answer Box */}
                   <div className="mt-4 p-4 rounded-xl bg-red-950/20 border border-red-500/40 flex items-center justify-between">
