@@ -30,9 +30,10 @@ const shareTech = Share_Tech_Mono({
 export const metadata = {
   metadataBase: new URL("https://www.abdoskills.me"),
   title: {
-    default: "hop in !!",
-    template: "%s | hop in !!",
+    default: "abdoskills | Digital Forensics & Incident Response",
+    template: "%s | abdoskills",
   },
+  description: "Digital Forensics & Incident Response (DFIR) operational writeups, CTF walkthroughs, memory analysis, network PCAP forensics, and threat hunting by AbdelRahman Mohamed Hassan.",
   keywords: [
     "abdoskills",
     "abdo skills",
@@ -58,15 +59,16 @@ export const metadata = {
     canonical: "https://www.abdoskills.me",
   },
   openGraph: {
-    title: "hop in !!",
+    title: "abdoskills | Digital Forensics & Incident Response",
+    description: "Digital Forensics & Incident Response (DFIR) operational writeups, CTF walkthroughs, memory analysis, network PCAP forensics, and threat hunting by AbdelRahman Mohamed Hassan.",
     url: "https://www.abdoskills.me",
     siteName: "abdoskills",
     images: [
       {
-        url: "/images/waiting_for_you.jpg",
+        url: "/images/abdoskills_og_banner.jpg",
         width: 1200,
         height: 630,
-        alt: "hop in !!",
+        alt: "abdoskills — DFIR & Threat Defense Dossiers",
       },
     ],
     locale: "en_US",
@@ -74,8 +76,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "hop in !!",
-    images: ["/images/waiting_for_you.jpg"],
+    title: "abdoskills | Digital Forensics & Incident Response",
+    description: "Digital Forensics & Incident Response (DFIR) operational writeups, CTF walkthroughs, memory analysis, network PCAP forensics, and threat hunting by AbdelRahman Mohamed Hassan.",
+    images: ["/images/abdoskills_og_banner.jpg"],
     creator: "@abdoskills",
   },
   robots: {
