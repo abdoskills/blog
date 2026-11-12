@@ -46,12 +46,25 @@ export default function CtfsHub() {
       href: "/labs/cyberdefenders",
       platform: "CyberDefenders",
       category: "Multi-Track CTF",
-      points: "3 LABS // 54 QUESTIONS",
-      tagline: "Linux Rootkits, PCAP Multi-Protocol Forensics & ActiveMQ RCE",
-      description: "Exhaustive enterprise blue team investigations: Ulysses Linux memory triage & trojaned rootkits, WireDive multi-protocol packet inspection with TLS master secret decryption, and Apache ActiveMQ OpenWire RCE exploit analysis.",
+      points: "4 LABS // 63 QUESTIONS",
+      tagline: "RedLine Stealer, Linux Rootkits, PCAP Triage & ActiveMQ RCE",
+      description: "Exhaustive enterprise blue team investigations: RedLine Stealer threat intelligence & C2 triage, Ulysses Linux memory triage & trojaned rootkits, WireDive multi-protocol packet inspection with TLS decryption, and Apache ActiveMQ OpenWire RCE exploit analysis.",
       image: "/images/cyberdefenders_banner.png",
-      tags: ["CyberDefenders", "Wireshark", "Volatility", "Linux DFIR", "PCAP Analysis", "TLS Decryption", "ActiveMQ RCE", "Rootkit Analysis"],
-      time: "3 Labs // 54 Questions"
+      tags: ["CyberDefenders", "Threat Intel", "RedLine Stealer", "VirusTotal", "Wireshark", "Volatility", "Linux DFIR", "PCAP Analysis", "TLS Decryption", "ActiveMQ RCE"],
+      time: "4 Labs // 63 Questions"
+    },
+    {
+      title: "Red Stealer Lab (9 Questions)",
+      slug: "cyberdefenders-red-stealer",
+      href: "/labs/cyberdefenders/red-stealer",
+      platform: "CyberDefenders",
+      category: "Threat Intelligence",
+      points: "9 QUESTIONS",
+      tagline: "RedLine Stealer, C2 Telemetry & VirusTotal Triage",
+      description: "SOC Threat Intelligence investigation of a RedLine Stealer infection. Analyzing malicious SHA-256 hashes, VirusTotal behavioral sandboxes, MITRE ATT&CK T1005 mapping, Facebook egress checks, C2 socket IP:port extraction, MalwareBazaar YARA rules, and ADVAPI32 token privilege escalation.",
+      image: "/images/cyberdefenders/red_stealer_banner.png",
+      tags: ["Threat Intel", "VirusTotal", "RedLine Stealer", "C2 Infrastructure", "YARA", "MalwareBazaar", "MITRE ATT&CK", "CyberDefenders"],
+      time: "10 min read"
     },
     {
       title: "WireDive Lab (35 Questions)",
