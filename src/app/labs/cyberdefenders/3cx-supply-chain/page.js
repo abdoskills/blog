@@ -172,7 +172,7 @@ export default function ThreeCXSupplyChainLabWriteup() {
               {/* SHA-256 Hash Box with Copy */}
               <div className="p-3 rounded-xl bg-zinc-950/80 border border-zinc-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div className="min-w-0">
-                  <span className="text-[10px] font-mono text-zinc-500 block uppercase">Trojanized MSI Hash (SHA-256):</span>
+                  <span className="text-[10px] font-mono text-zinc-500 block uppercase">Target SHA-256 Hash:</span>
                   <code className="text-xs sm:text-sm font-mono text-amber-300 font-bold break-all">
                     59e1edf4d82fae4978e97512b0331b7eb21dd4b838b850ba46794d9c7a2c0983
                   </code>
@@ -215,7 +215,7 @@ export default function ThreeCXSupplyChainLabWriteup() {
                 href="https://cyberdefenders.org/blueteam-ctf-challenges/3cx-supply-chain/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 text-red-400 hover:text-red-300 font-mono transition-colors shrink-0"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 text-red-400 hover:text-red-300 font-mono transition-colors shrink-0"
               >
                 <span>Open on CyberDefenders.org</span>
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -289,38 +289,23 @@ export default function ThreeCXSupplyChainLabWriteup() {
                 </div>
 
                 <div className="text-zinc-300 text-sm leading-relaxed space-y-4">
-                  <p>
-                    When investigating a software supply chain breach, the very first step for any threat intelligence analyst is determining the <strong>blast radius</strong>: which specific software versions were signed with the compromised certificates and pushed through the vendor&apos;s automatic update channels?
+                  <p className="font-mono text-xs sm:text-sm text-red-300">
+                    u should knwo how to think so we will follow these step  Where to search ➔ Why search here ➔ How to search
                   </p>
 
-                  <div className="p-4 rounded-xl bg-zinc-950/80 border border-zinc-800 space-y-2 text-xs">
-                    <span className="text-red-400 font-mono font-bold uppercase block">Threat Intel Guidance: Where &amp; Why to Search</span>
-                    <p className="text-zinc-400">
-                      <strong>Where:</strong> Official vendor advisories and emergency agency alerts (CISA, CrowdStrike, Mandiant).
-                    </p>
-                    <p className="text-zinc-400">
-                      <strong>Why:</strong> In supply chain compromises, attackers poison specific build releases. The affected software vendor and government response bodies publish verified lists of backdoored build numbers.
-                    </p>
-                    <p className="text-zinc-400">
-                      <strong>How:</strong> Search Google for: <code className="text-amber-300">"3CX" "supply chain" "affected versions" windows advisory</code> or reference <a href="https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-101a" target="_blank" rel="noopener noreferrer" className="text-red-400 underline hover:text-red-300">CISA Advisory AA23-101A</a>.
-                    </p>
-                  </div>
-
-                  <p>
-                    Both 3CX&apos;s emergency bulletin and CISA&apos;s alert confirmed that exactly <strong>2</strong> Windows desktop application versions were poisoned by the adversary:
-                  </p>
-
-                  <ul className="list-disc list-inside space-y-1 text-xs text-zinc-400 font-mono pl-2">
-                    <li><code className="text-red-300">18.12.407</code> (Windows Desktop App)</li>
-                    <li><code className="text-red-300">18.12.416</code> (Windows Desktop App)</li>
+                  <ul className="list-disc list-inside space-y-2 text-xs text-zinc-300 font-sans pl-1">
+                    <li>
+                      <strong>Where to search:</strong> Official vendor security bulletins and emergency government/agency advisories (3CX official advisory, CISA Alert AA23-101A).
+                    </li>
+                    <li>
+                      <strong>Why search here:</strong> In a software supply chain breach, the adversary compromises the build pipeline and signs malicious updates with legitimate vendor certificates. The affected vendor and cybersecurity agencies immediately scope the <strong>blast radius</strong> and publish the exact affected version numbers. You should never guess when authoritative advisories publish verified version tables.
+                    </li>
+                    <li>
+                      <strong>How to search:</strong> Search Google for: <code className="text-amber-300 bg-black/50 px-1 py-0.5 rounded font-mono">&quot;3CX&quot; &quot;supply chain&quot; &quot;affected versions&quot; windows advisory</code> or check CISA&apos;s official advisory directly.
+                    </li>
                   </ul>
 
-                  <p className="text-xs text-zinc-500 italic">
-                    Note: While macOS versions (18.11.1213, 18.12.402, 18.12.407, and 18.12.416) were also compromised via trojanized Electron frameworks, the question specifically asks for the number of affected <strong>Windows</strong> versions.
-                  </p>
-
-                  {/* Reference Links */}
-                  <div className="pt-2 flex flex-wrap gap-2 text-xs font-mono">
+                  <div className="pt-1 flex flex-wrap gap-2 text-xs font-mono">
                     <a
                       href="https://www.3cx.com/blog/news/desktopapp-security-alert/"
                       target="_blank"
@@ -340,6 +325,19 @@ export default function ThreeCXSupplyChainLabWriteup() {
                       <svg className="w-3.5 h-3.5 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                     </a>
                   </div>
+
+                  <p className="text-xs sm:text-sm text-zinc-300">
+                    Both advisories confirmed that exactly <strong>2</strong> Windows desktop application versions were compromised:
+                  </p>
+
+                  <ul className="list-disc list-inside space-y-1 text-xs text-zinc-400 font-mono pl-2">
+                    <li><code className="text-red-300">18.12.407</code> (Windows)</li>
+                    <li><code className="text-red-300">18.12.416</code> (Windows)</li>
+                  </ul>
+
+                  <p className="text-xs text-zinc-500 italic">
+                    (Note: While four Mac versions were also trojanized, the question specifically focuses on Windows).
+                  </p>
 
                   {/* Answer Box */}
                   <div className="mt-4 p-4 rounded-xl bg-red-950/20 border border-red-500/40 flex items-center justify-between">
@@ -366,22 +364,17 @@ export default function ThreeCXSupplyChainLabWriteup() {
                 </div>
 
                 <div className="text-zinc-300 text-sm leading-relaxed space-y-4">
-                  <p>
-                    Every Windows Installer (<code>.msi</code>) package generated by build frameworks (such as WiX or Advanced Installer) embeds internal database properties, including the exact compiler generation timestamp. Establishing this creation time allows threat analysts to reconstruct when the build pipeline was poisoned versus when the binary was pushed live.
-                  </p>
-
-                  <div className="p-4 rounded-xl bg-zinc-950/80 border border-zinc-800 space-y-2 text-xs">
-                    <span className="text-red-400 font-mono font-bold uppercase block">Threat Intel Guidance: Where &amp; Why to Search</span>
-                    <p className="text-zinc-400">
-                      <strong>Where:</strong> VirusTotal ➔ <strong>Details</strong> tab ➔ <strong>History</strong> section.
-                    </p>
-                    <p className="text-zinc-400">
-                      <strong>Why:</strong> VirusTotal extracts OLE / MSI Composite Document properties, parsing the internal summary information stream (<code className="text-amber-300">\x05SummaryInformation</code>) that records the official authoring date in UTC.
-                    </p>
-                    <p className="text-zinc-400">
-                      <strong>How:</strong> Search VirusTotal for the sample hash: <code className="text-amber-300">59e1edf4d82fae4978e97512b0331b7eb21dd4b838b850ba46794d9c7a2c0983</code>. Navigate to <strong>Details</strong>, and read the <strong>Creation Time</strong> under <strong>History</strong>.
-                    </p>
-                  </div>
+                  <ul className="list-disc list-inside space-y-2 text-xs text-zinc-300 font-sans pl-1">
+                    <li>
+                      <strong>Where to search:</strong> VirusTotal ➔ <strong>Details</strong> tab ➔ <strong>History</strong> section.
+                    </li>
+                    <li>
+                      <strong>Why search here:</strong> Windows Installer (<code>.msi</code>) packages and Portable Executables (PE) embed internal compilation and database authoring timestamps in their OLE <code>\x05SummaryInformation</code> stream. Comparing this creation time against file submission dates and external log timestamps helps threat hunters determine when the build server was hijacked versus when the tainted update was distributed.
+                    </li>
+                    <li>
+                      <strong>How to search:</strong> Paste the MSI SHA-256 hash (<code className="text-amber-300 bg-black/50 px-1 py-0.5 rounded font-mono break-all">59e1edf4d82fae4978e97512b0331b7eb21dd4b838b850ba46794d9c7a2c0983</code>) into VirusTotal. Click the <strong>Details</strong> tab and scroll down to the <strong>History</strong> section. Look for the <strong>Creation Time</strong> field.
+                    </li>
+                  </ul>
 
                   <div className="my-4 rounded-xl overflow-hidden border border-zinc-800 shadow-xl bg-black/50">
                     <Image
@@ -394,7 +387,7 @@ export default function ThreeCXSupplyChainLabWriteup() {
                   </div>
 
                   <p className="text-xs sm:text-sm text-zinc-400">
-                    Under the <strong>History</strong> block, the creation time recorded for <code>3CXDesktopApp-18.12.416.msi</code> is <code className="text-red-300">2023-03-13 06:33:26 UTC</code>.
+                    Under History, the creation time is recorded as: <code className="text-red-300 font-mono">2023-03-13 06:33:26 UTC</code>.
                   </p>
 
                   {/* Answer Box */}
@@ -422,22 +415,17 @@ export default function ThreeCXSupplyChainLabWriteup() {
                 </div>
 
                 <div className="text-zinc-300 text-sm leading-relaxed space-y-4">
-                  <p>
-                    Software installers package dozens of legitimate dependencies (audio codecs, graphics libraries, Electron runtime components). Supply chain attackers conceal their trojanized implants inside these legitimate bundles so the files land on disk signed and nestled directly in the application folder.
-                  </p>
-
-                  <div className="p-4 rounded-xl bg-zinc-950/80 border border-zinc-800 space-y-2 text-xs">
-                    <span className="text-red-400 font-mono font-bold uppercase block">Threat Intel Guidance: Where &amp; Why to Search</span>
-                    <p className="text-zinc-400">
-                      <strong>Where:</strong> VirusTotal ➔ <strong>Relations</strong> tab ➔ <strong>Bundled Files</strong> table.
-                    </p>
-                    <p className="text-zinc-400">
-                      <strong>Why:</strong> The Relations tab unpacks the MSI archive and scans each extracted sub-binary against security engines, surfacing individual implants with high positive detection ratios.
-                    </p>
-                    <p className="text-zinc-400">
-                      <strong>How:</strong> On the MSI report page, select <strong>Relations</strong>. Use the browser search (<kbd className="px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-200">Ctrl + F</kbd>) to search for <code className="text-amber-300">dll</code>. Sort or inspect the bundled files by detection score.
-                    </p>
-                  </div>
+                  <ul className="list-disc list-inside space-y-2 text-xs text-zinc-300 font-sans pl-1">
+                    <li>
+                      <strong>Where to search:</strong> VirusTotal ➔ <strong>Relations</strong> tab ➔ <strong>Bundled Files</strong> / <strong>Dropped Files</strong>.
+                    </li>
+                    <li>
+                      <strong>Why search here:</strong> An MSI file is essentially a compressed database archive that unpacks numerous files into the target application directory. Attackers hide trojanized DLLs among dozens of legitimate dependencies. VirusTotal automatically extracts these bundled sub-files and scans each one individually, surfacing dropped binaries with high detection ratios.
+                    </li>
+                    <li>
+                      <strong>How to search:</strong> In VirusTotal&apos;s report for the MSI, open the <strong>Relations</strong> tab. Scroll to the <strong>Bundled Files</strong> section. Press <kbd className="px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-200">Ctrl + F</kbd> and type <code className="text-amber-300 font-mono">dll</code> to filter through the extracted libraries. Check which DLLs have significant malicious detection counts.
+                    </li>
+                  </ul>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
                     <div className="rounded-xl overflow-hidden border border-zinc-800 shadow-xl bg-black/50">
@@ -461,18 +449,18 @@ export default function ThreeCXSupplyChainLabWriteup() {
                   </div>
 
                   <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-                    Among the 86 bundled files inside the installer, two prominent Win32 DLLs light up with dozens of malicious vendor detections:
+                    Two Win32 DLLs stand out with high detection scores:
                   </p>
 
                   <ul className="list-disc list-inside space-y-1 text-xs text-zinc-400 font-mono pl-2">
-                    <li><code className="text-red-300">ffmpeg.dll</code> (54 / 70 detections — the initial loader responsible for beaconing and reading encrypted payloads)</li>
-                    <li><code className="text-red-300">d3dcompiler_47.dll</code> (44 / 68 detections — legitimate Microsoft DirectX compiler trojanized with an encrypted shellcode payload appended to its overlay)</li>
+                    <li><code className="text-red-300">ffmpeg.dll</code> (54/70 detections — the primary loader that performs beaconing and reads encrypted shellcode)</li>
+                    <li><code className="text-red-300">d3dcompiler_47.dll</code> (44/68 detections — legitimate Microsoft DirectX compiler with encrypted payload shellcode appended to its overlay)</li>
                   </ul>
 
                   {/* Answer Box */}
                   <div className="mt-4 p-4 rounded-xl bg-red-950/20 border border-red-500/40 flex items-center justify-between">
                     <div>
-                      <span className="text-xs font-mono uppercase text-red-400 font-bold block mb-1">Answer (Comma-separated DLLs)</span>
+                      <span className="text-xs font-mono uppercase text-red-400 font-bold block mb-1">Answer</span>
                       <code className="text-sm sm:text-base font-mono text-red-300 font-bold">ffmpeg.dll, d3dcompiler_47.dll</code>
                     </div>
                     <CopyButton text="ffmpeg.dll, d3dcompiler_47.dll" />
@@ -494,21 +482,28 @@ export default function ThreeCXSupplyChainLabWriteup() {
                 </div>
 
                 <div className="text-zinc-300 text-sm leading-relaxed space-y-4">
-                  <p>
-                    Rather than dropping an obvious standalone executable like <code>malware.exe</code>, advanced persistent threats (APTs) leverage <strong>DLL Side-Loading</strong>. In this mechanism, a completely legitimate, trusted, and often signed executable (here: <code>3CXDesktopApp.exe</code>) searches its local directory for a dependency (<code>ffmpeg.dll</code>) upon launch. The malicious DLL is loaded into the legitimate application process space without triggering endpoint detection alarms.
-                  </p>
+                  <ul className="list-disc list-inside space-y-2 text-xs text-zinc-300 font-sans pl-1">
+                    <li>
+                      <strong>Where to search:</strong> VirusTotal ➔ <strong>Behavior</strong> tab ➔ <strong>MITRE ATT&amp;CK Tactics and Techniques</strong> (under Defense Evasion / Persistence).
+                    </li>
+                    <li>
+                      <strong>Why search here:</strong> When legitimate software launches, it searches specific directories to load required DLLs. If an attacker places a malicious DLL with the expected name in the application directory, the signed program loads the malicious code instead. This technique is known as <strong>DLL Side-Loading</strong>, allowing the adversary to execute code within a trusted process context without triggering suspicious execution alerts.
+                    </li>
+                    <li>
+                      <strong>How to search:</strong> Under the Behavior tab, expand the MITRE ATT&amp;CK taxonomy. Locate the technique mapped under <em>Defense Evasion</em> describing loading dependencies / DLL search order hijacking: <strong>Hijack Execution Flow: DLL Side-Loading</strong>.
+                    </li>
+                  </ul>
 
-                  <div className="p-4 rounded-xl bg-zinc-950/80 border border-zinc-800 space-y-2 text-xs">
-                    <span className="text-red-400 font-mono font-bold uppercase block">Threat Intel Guidance: Where &amp; Why to Search</span>
-                    <p className="text-zinc-400">
-                      <strong>Where:</strong> VirusTotal ➔ <strong>Behavior</strong> tab ➔ MITRE ATT&amp;CK Matrix (Defense Evasion / Persistence).
-                    </p>
-                    <p className="text-zinc-400">
-                      <strong>Why:</strong> Dynamic sandbox engines observe the Windows DLL search order hijacking behavior during execution and automatically tag the corresponding MITRE ATT&amp;CK sub-technique.
-                    </p>
-                    <p className="text-zinc-400">
-                      <strong>How:</strong> Under Behavior, scroll to MITRE ATT&amp;CK tactics and look for <em>Hijack Execution Flow: DLL Side-Loading</em>.
-                    </p>
+                  <div className="pt-1 flex flex-wrap gap-2 text-xs font-mono">
+                    <a
+                      href="https://attack.mitre.org/techniques/T1574/002/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors"
+                    >
+                      <span>MITRE ATT&amp;CK T1574.002 Specification</span>
+                      <svg className="w-3.5 h-3.5 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                    </a>
                   </div>
 
                   <div className="my-4 rounded-xl overflow-hidden border border-zinc-800 shadow-xl bg-black/50">
@@ -522,26 +517,13 @@ export default function ThreeCXSupplyChainLabWriteup() {
                   </div>
 
                   <p className="text-xs sm:text-sm text-zinc-400">
-                    The MITRE ATT&amp;CK framework categorizes DLL Side-Loading under sub-technique ID <code className="text-red-300">T1574.002</code> (parent technique <code className="text-zinc-300">T1574: Hijack Execution Flow</code>).
+                    The MITRE ATT&amp;CK ID is: <code className="text-red-300 font-mono font-bold">T1574.002</code>.
                   </p>
-
-                  {/* Reference Link */}
-                  <div className="pt-2 flex flex-wrap gap-2 text-xs font-mono">
-                    <a
-                      href="https://attack.mitre.org/techniques/T1574/002/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors"
-                    >
-                      <span>MITRE ATT&amp;CK T1574.002 Specification</span>
-                      <svg className="w-3.5 h-3.5 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-                    </a>
-                  </div>
 
                   {/* Answer Box */}
                   <div className="mt-4 p-4 rounded-xl bg-red-950/20 border border-red-500/40 flex items-center justify-between">
                     <div>
-                      <span className="text-xs font-mono uppercase text-red-400 font-bold block mb-1">Answer (MITRE Technique ID)</span>
+                      <span className="text-xs font-mono uppercase text-red-400 font-bold block mb-1">Answer</span>
                       <code className="text-sm sm:text-base font-mono text-red-300 font-bold">T1574.002</code>
                     </div>
                     <CopyButton text="T1574.002" />
@@ -563,22 +545,17 @@ export default function ThreeCXSupplyChainLabWriteup() {
                 </div>
 
                 <div className="text-zinc-300 text-sm leading-relaxed space-y-4">
-                  <p>
-                    Understanding how security vendors classify an implant allows detection engineers to write robust Sigma and YARA rules. While specific campaign names vary across vendors (e.g., Kaspersky might tag <code>Trojan.Win64.DllHijack</code>, while CrowdStrike or Microsoft tag family variants), the primary <strong>threat category</strong> provides the universal functional taxonomy.
-                  </p>
-
-                  <div className="p-4 rounded-xl bg-zinc-950/80 border border-zinc-800 space-y-2 text-xs">
-                    <span className="text-red-400 font-mono font-bold uppercase block">Threat Intel Guidance: Where &amp; Why to Search</span>
-                    <p className="text-zinc-400">
-                      <strong>Where:</strong> VirusTotal ➔ <strong>Detection</strong> tab ➔ <strong>Security Vendors&apos; Analysis</strong>.
-                    </p>
-                    <p className="text-zinc-400">
-                      <strong>Why:</strong> The top bar aggregates the universal threat category labels (Trojan, Worm, Ransomware, Adware) agreed upon across engine heuristics.
-                    </p>
-                    <p className="text-zinc-400">
-                      <strong>How:</strong> Inspect the <em>Threat categories</em> pill badges or review individual vendor detection strings (Antiy-AVL, Kaspersky, ESET).
-                    </p>
-                  </div>
+                  <ul className="list-disc list-inside space-y-2 text-xs text-zinc-300 font-sans pl-1">
+                    <li>
+                      <strong>Where to search:</strong> VirusTotal ➔ <strong>Detection</strong> tab ➔ <strong>Security Vendors&apos; Analysis</strong> and popular threat category badges.
+                    </li>
+                    <li>
+                      <strong>Why search here:</strong> Different antivirus engines use varying names for campaign strains, but they converge on universal functional <strong>threat categories</strong> (e.g., Trojan, Worm, Ransomware, Adware). Identifying the threat category helps SOC teams establish the baseline nature of the threat.
+                    </li>
+                    <li>
+                      <strong>How to search:</strong> Check the <em>Threat categories</em> pills at the top of the Detection tab, or inspect individual vendor strings (such as Antiy-AVL and Kaspersky).
+                    </li>
+                  </ul>
 
                   <div className="my-4 rounded-xl overflow-hidden border border-zinc-800 shadow-xl bg-black/50">
                     <Image
@@ -590,14 +567,19 @@ export default function ThreeCXSupplyChainLabWriteup() {
                     />
                   </div>
 
-                  <p className="text-xs sm:text-sm text-zinc-400">
-                    Both Antiy-AVL (<code className="text-zinc-200">Trojan/Win64.DLLhijack</code>) and Kaspersky (<code className="text-zinc-200">HEUR:Trojan.Win64.DllHijack.gen</code>) unanimously categorize the payload as a <strong>Trojan</strong>.
+                  <p className="text-xs sm:text-sm text-zinc-300">
+                    Notice:
                   </p>
+                  <ul className="list-disc list-inside space-y-1 text-xs text-zinc-400 font-mono pl-2">
+                    <li>Antiy-AVL flags: <code className="text-red-300">Trojan/Win64.DLLhijack</code></li>
+                    <li>Kaspersky flags: <code className="text-red-300">HEUR:Trojan.Win64.DllHijack.gen</code></li>
+                    <li>Threat category pill: <code className="text-zinc-200">trojan</code></li>
+                  </ul>
 
                   {/* Answer Box */}
                   <div className="mt-4 p-4 rounded-xl bg-red-950/20 border border-red-500/40 flex items-center justify-between">
                     <div>
-                      <span className="text-xs font-mono uppercase text-red-400 font-bold block mb-1">Answer (Threat Category)</span>
+                      <span className="text-xs font-mono uppercase text-red-400 font-bold block mb-1">Answer</span>
                       <code className="text-sm sm:text-base font-mono text-red-300 font-bold">Trojan</code>
                     </div>
                     <CopyButton text="Trojan" />
@@ -619,21 +601,28 @@ export default function ThreeCXSupplyChainLabWriteup() {
                 </div>
 
                 <div className="text-zinc-300 text-sm leading-relaxed space-y-4">
-                  <p>
-                    Nation-state threat actors design their payloads to remain dormant when detonated inside automated analysis sandboxes. If the malware detects virtualization artifacts, debugger ports, or sandbox hypervisors, it refuses to decrypt its secondary stage or initiate C2 beaconing.
-                  </p>
+                  <ul className="list-disc list-inside space-y-2 text-xs text-zinc-300 font-sans pl-1">
+                    <li>
+                      <strong>Where to search:</strong> VirusTotal ➔ <strong>Behavior</strong> tab (under <code>ffmpeg.dll</code>) ➔ <strong>MITRE ATT&amp;CK</strong> (Defense Evasion).
+                    </li>
+                    <li>
+                      <strong>Why search here:</strong> Nation-state malware authors implement anti-analysis routines so their malware remains dormant when analyzed inside automated sandbox environments (such as Cuckoo, Any.Run, or corporate mail gateway sandboxes). If the malware detects virtualization or sleep throttling, it aborts execution to avoid exposing its C2 infrastructure.
+                    </li>
+                    <li>
+                      <strong>How to search:</strong> In the Behavior tab for <code>ffmpeg.dll</code>, search for <code className="text-amber-300 font-mono">Virtualization</code> or <code className="text-amber-300 font-mono">Sandbox Evasion</code>. The MITRE framework groups all anti-virtualization and sleep delay checks under one parent technique.
+                    </li>
+                  </ul>
 
-                  <div className="p-4 rounded-xl bg-zinc-950/80 border border-zinc-800 space-y-2 text-xs">
-                    <span className="text-red-400 font-mono font-bold uppercase block">Threat Intel Guidance: Where &amp; Why to Search</span>
-                    <p className="text-zinc-400">
-                      <strong>Where:</strong> VirusTotal ➔ <strong>Behavior</strong> tab (under <code>ffmpeg.dll</code>) ➔ <strong>Defense Evasion</strong>.
-                    </p>
-                    <p className="text-zinc-400">
-                      <strong>Why:</strong> Sandboxes monitor API sleep calls (<code className="text-amber-300">SleepEx</code>, evasive delay loops) and system checks querying hardware strings, mapping them directly to MITRE ATT&amp;CK evasion techniques.
-                    </p>
-                    <p className="text-zinc-400">
-                      <strong>How:</strong> Search for <code className="text-amber-300">Virtualization</code> or <code className="text-amber-300">Sandbox Evasion</code> in the MITRE behavioral summary.
-                    </p>
+                  <div className="pt-1 flex flex-wrap gap-2 text-xs font-mono">
+                    <a
+                      href="https://attack.mitre.org/techniques/T1497/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors"
+                    >
+                      <span>MITRE ATT&amp;CK T1497 Specification</span>
+                      <svg className="w-3.5 h-3.5 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                    </a>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
@@ -658,26 +647,13 @@ export default function ThreeCXSupplyChainLabWriteup() {
                   </div>
 
                   <p className="text-xs sm:text-sm text-zinc-400">
-                    The MITRE ATT&amp;CK technique covering all virtualization and sandbox environment checks is <code className="text-red-300">T1497</code> (specifically sub-technique <code className="text-zinc-300">T1497.003: Time-Based Evasion</code>, where the malware executed a 7-day sleep cycle to outlast automated sandbox runtimes).
+                    The MITRE ATT&amp;CK ID is: <code className="text-red-300 font-mono font-bold">T1497</code> (specifically <code className="text-zinc-300">T1497.003</code> for Time-Based Evasion, where the malware executed extended sleep cycles to outlast sandbox timeouts).
                   </p>
-
-                  {/* Reference Link */}
-                  <div className="pt-2 flex flex-wrap gap-2 text-xs font-mono">
-                    <a
-                      href="https://attack.mitre.org/techniques/T1497/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors"
-                    >
-                      <span>MITRE ATT&amp;CK T1497 Specification</span>
-                      <svg className="w-3.5 h-3.5 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-                    </a>
-                  </div>
 
                   {/* Answer Box */}
                   <div className="mt-4 p-4 rounded-xl bg-red-950/20 border border-red-500/40 flex items-center justify-between">
                     <div>
-                      <span className="text-xs font-mono uppercase text-red-400 font-bold block mb-1">Answer (MITRE Technique ID)</span>
+                      <span className="text-xs font-mono uppercase text-red-400 font-bold block mb-1">Answer</span>
                       <code className="text-sm sm:text-base font-mono text-red-300 font-bold">T1497</code>
                     </div>
                     <CopyButton text="T1497" />
@@ -699,22 +675,17 @@ export default function ThreeCXSupplyChainLabWriteup() {
                 </div>
 
                 <div className="text-zinc-300 text-sm leading-relaxed space-y-4">
-                  <p>
-                    Beyond generic sleep calls, <code>ffmpeg.dll</code> explicitly probes for host system artifacts associated with commercial virtualization software. Hypervisors often expose virtual device driver names, specific registry keys, and communication I/O ports that malware authors target to detect when they are running inside a virtualized security sandbox.
-                  </p>
-
-                  <div className="p-4 rounded-xl bg-zinc-950/80 border border-zinc-800 space-y-2 text-xs">
-                    <span className="text-red-400 font-mono font-bold uppercase block">Threat Intel Guidance: Where &amp; Why to Search</span>
-                    <p className="text-zinc-400">
-                      <strong>Where:</strong> VirusTotal ➔ <code>ffmpeg.dll</code> ➔ <strong>Behavior</strong> tab ➔ <strong>System Checks</strong> (<code className="text-amber-300">T1497.001</code>).
-                    </p>
-                    <p className="text-zinc-400">
-                      <strong>Why:</strong> Dynamic sandbox analysis hooks Windows APIs (such as <code className="text-amber-300">RegOpenKeyEx</code> and <code className="text-amber-300">SetupDiGetClassDevs</code>) to detect when an executable queries hypervisor hardware signatures.
-                    </p>
-                    <p className="text-zinc-400">
-                      <strong>How:</strong> Search the page for <code className="text-amber-300">anti-VM</code>. Look at the description under System Checks: <code className="text-zinc-300">reference anti-VM strings targeting...</code>
-                    </p>
-                  </div>
+                  <ul className="list-disc list-inside space-y-2 text-xs text-zinc-300 font-sans pl-1">
+                    <li>
+                      <strong>Where to search:</strong> VirusTotal ➔ <code>ffmpeg.dll</code> report ➔ <strong>Behavior</strong> tab ➔ <strong>System Checks</strong> (<code className="text-amber-300 font-mono">T1497.001</code>).
+                    </li>
+                    <li>
+                      <strong>Why search here:</strong> Hypervisors expose specific virtual hardware signatures (e.g., VMware I/O communication ports, specific display adapter strings, registry keys like <code>HARDWARE\\DEVICEMAP\\Scsi</code>). Sandboxes monitor API calls that query these hardware signatures to identify targeted hypervisors.
+                    </li>
+                    <li>
+                      <strong>How to search:</strong> In the dynamic analysis summary, look under <em>System Checks</em>. Search the page for <code className="text-amber-300 font-mono">anti-VM</code> to see which hypervisor string the malware referenced.
+                    </li>
+                  </ul>
 
                   <div className="my-4 rounded-xl overflow-hidden border border-zinc-800 shadow-xl bg-black/50">
                     <Image
@@ -727,13 +698,13 @@ export default function ThreeCXSupplyChainLabWriteup() {
                   </div>
 
                   <p className="text-xs sm:text-sm text-zinc-400">
-                    The dynamic behavioral trace specifically flags: <code className="text-red-300">reference anti-VM strings targeting VMware</code>.
+                    The behavioral engine notes: <code className="text-red-300 font-mono">reference anti-VM strings targeting VMWare</code>.
                   </p>
 
                   {/* Answer Box */}
                   <div className="mt-4 p-4 rounded-xl bg-red-950/20 border border-red-500/40 flex items-center justify-between">
                     <div>
-                      <span className="text-xs font-mono uppercase text-red-400 font-bold block mb-1">Answer (Hypervisor Name)</span>
+                      <span className="text-xs font-mono uppercase text-red-400 font-bold block mb-1">Answer</span>
                       <code className="text-sm sm:text-base font-mono text-red-300 font-bold">VMware</code>
                     </div>
                     <CopyButton text="VMware" />
@@ -755,39 +726,19 @@ export default function ThreeCXSupplyChainLabWriteup() {
                 </div>
 
                 <div className="text-zinc-300 text-sm leading-relaxed space-y-4">
-                  <p>
-                    Automated sandboxes often fall short when dealing with multi-component steganographic payloads. In the 3CX campaign, the malicious <code>ffmpeg.dll</code> read encrypted shellcode appended to the overlay of the legitimate <code>d3dcompiler_47.dll</code> binary. Unpacking this stage required identifying the underlying symmetric stream cipher used by the loader.
-                  </p>
+                  <ul className="list-disc list-inside space-y-2 text-xs text-zinc-300 font-sans pl-1">
+                    <li>
+                      <strong>Where to search:</strong> In-depth Threat Intelligence technical blogs and reverse engineering reports from incident response teams (Mandiant/Google Cloud, CrowdStrike, SentinelOne).
+                    </li>
+                    <li>
+                      <strong>Why search here:</strong> Automated sandboxes often cannot decrypt multi-stage steganographic shellcode that relies on custom extraction routines. In the 3CX breach, <code>ffmpeg.dll</code> read encrypted shellcode appended to <code>d3dcompiler_47.dll</code> using a tool called <strong>SIGFLIP</strong>. Incident responders decompiled these routines in Ghidra/IDA Pro and published the exact stream cipher used.
+                    </li>
+                    <li>
+                      <strong>How to search:</strong> Search Google for: <code className="text-amber-300 bg-black/50 px-1 py-0.5 rounded font-mono">&quot;ffmpeg.dll&quot; &quot;3cx&quot; &quot;SIGFLIP&quot; OR &quot;stream cipher&quot; OR &quot;encryption algorithm&quot;</code>, or read Mandiant&apos;s comprehensive incident report.
+                    </li>
+                  </ul>
 
-                  <div className="p-4 rounded-xl bg-zinc-950/80 border border-zinc-800 space-y-2 text-xs">
-                    <span className="text-red-400 font-mono font-bold uppercase block">Threat Intel Guidance: Where &amp; Why to Search</span>
-                    <p className="text-zinc-400">
-                      <strong>Where:</strong> Leading Threat Intelligence blogs from incident responders (Mandiant, CrowdStrike, SentinelOne).
-                    </p>
-                    <p className="text-zinc-400">
-                      <strong>Why:</strong> When malware uses custom steganography and shellcode extraction (tools like <strong>SIGFLIP</strong> and <strong>DAVESHELL</strong>), automated sandboxes cannot automatically determine the cipher without manual reverse engineering in IDA Pro / Ghidra. Incident response firms publish these deep-dive findings.
-                    </p>
-                    <p className="text-zinc-400">
-                      <strong>How:</strong> Search Google for: <code className="text-amber-300">"ffmpeg.dll" "3cx" "SIGFLIP" OR "stream cipher" OR "encryption algorithm"</code>, or consult Mandiant&apos;s comprehensive 3CX writeup.
-                    </p>
-                  </div>
-
-                  <div className="my-4 rounded-xl overflow-hidden border border-zinc-800 shadow-xl bg-black/50">
-                    <Image
-                      src="/images/cyberdefenders/3cx-supply-chain/Pasted_image_20261113161518.png"
-                      alt="Threat Intelligence excerpt detailing SIGFLIP and RC4 stream-cipher"
-                      width={1000}
-                      height={400}
-                      className="w-full h-auto object-contain"
-                    />
-                  </div>
-
-                  <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-                    As detailed in Mandiant&apos;s technical analysis, the malicious DLL utilized an open-source payload steganography utility known as <strong>SIGFLIP</strong>. SIGFLIP locates the embedded shellcode (DAVESHELL) using the sync marker byte sequence <code className="text-amber-300">FEEDFACE</code> and decrypts it using an <strong>RC4 stream-cipher</strong> before executing it in memory.
-                  </p>
-
-                  {/* Reference Links */}
-                  <div className="pt-2 flex flex-wrap gap-2 text-xs font-mono">
+                  <div className="pt-1 flex flex-wrap gap-2 text-xs font-mono">
                     <a
                       href="https://cloud.google.com/blog/topics/threat-intelligence/3cx-software-supply-chain-compromise"
                       target="_blank"
@@ -795,6 +746,15 @@ export default function ThreeCXSupplyChainLabWriteup() {
                       className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors"
                     >
                       <span>Mandiant: 3CX Software Supply Chain Compromise</span>
+                      <svg className="w-3.5 h-3.5 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                    </a>
+                    <a
+                      href="https://www.crowdstrike.com/blog/crowdstrike-falcon-under-attack-3cx-desktop-app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors"
+                    >
+                      <span>CrowdStrike: Falcon Under Attack</span>
                       <svg className="w-3.5 h-3.5 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                     </a>
                     <a
@@ -808,10 +768,27 @@ export default function ThreeCXSupplyChainLabWriteup() {
                     </a>
                   </div>
 
+                  <div className="my-4 rounded-xl overflow-hidden border border-zinc-800 shadow-xl bg-black/50">
+                    <Image
+                      src="/images/cyberdefenders/3cx-supply-chain/Pasted_image_20261113161518.png"
+                      alt="Threat Intelligence excerpt detailing SIGFLIP and RC4 stream-cipher"
+                      width={1000}
+                      height={400}
+                      className="w-full h-auto object-contain"
+                    />
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-[#09090e] border border-zinc-800/80 text-xs text-zinc-300 space-y-2">
+                    <span className="text-zinc-500 font-bold block uppercase tracking-wider font-mono">The technical report details:</span>
+                    <blockquote className="border-l-2 border-red-500/50 pl-3 italic text-zinc-400">
+                      &quot;The loaded malicious DLLs contains and uses SIGFLIP and DAVESHELL to decrypt and load the payload into memory from the other dropped malicious executable. SIGFLIP relies on <strong className="text-amber-300">RC4 stream-cipher</strong> to decrypt the payload of choice and uses the byte sequence FEEDFACE to find the shellcode, in this case DAVESHELL, during the decryption stage.&quot;
+                    </blockquote>
+                  </div>
+
                   {/* Answer Box */}
                   <div className="mt-4 p-4 rounded-xl bg-red-950/20 border border-red-500/40 flex items-center justify-between">
                     <div>
-                      <span className="text-xs font-mono uppercase text-red-400 font-bold block mb-1">Answer (Encryption Cipher)</span>
+                      <span className="text-xs font-mono uppercase text-red-400 font-bold block mb-1">Answer</span>
                       <code className="text-sm sm:text-base font-mono text-red-300 font-bold">RC4</code>
                     </div>
                     <CopyButton text="RC4" />
@@ -834,57 +811,39 @@ export default function ThreeCXSupplyChainLabWriteup() {
 
                 <div className="text-zinc-300 text-sm leading-relaxed space-y-4">
                   <p>
-                    In cybersecurity threat intelligence, attributing an intrusion to an Advanced Persistent Threat (APT) group is never based on a single artifact or speculation. False flag operations and shared open-source tools mean analysts must establish <strong>convergent lines of evidence</strong> across infrastructure, code similarities, initial intrusion vectors, and victimology.
-                  </p>
-
-                  <div className="p-4 rounded-xl bg-zinc-950/80 border border-zinc-800 space-y-2 text-xs">
-                    <span className="text-red-400 font-mono font-bold uppercase block">Threat Intel Guidance: How Analysts Establish Attribution</span>
-                    <p className="text-zinc-400">
-                      <strong>Where:</strong> Forensic post-incident retrospectives published by threat research teams (Mandiant/Google Cloud, CrowdStrike Falcon OverWatch, SentinelLabs, Sophos).
-                    </p>
-                    <p className="text-zinc-400">
-                      <strong>Why:</strong> Incident responders tracking nation-state activity clusters maintain multi-year telemetry databases connecting C2 IP allocations, domain registration patterns, and private malware codebases.
-                    </p>
-                    <p className="text-zinc-400">
-                      <strong>How:</strong> Search: <code className="text-amber-300">"3CX" supply chain attribution "Mandiant" OR "CrowdStrike" "UNC4736" OR "Lazarus"</code>.
-                    </p>
-                  </div>
-
-                  <p className="text-xs sm:text-sm text-zinc-200 font-semibold pt-1">
-                    Security researchers definitively linked the 3CX supply chain attack to the North Korean state-sponsored <strong>Lazarus Group</strong> (tracked by Mandiant as <strong>UNC4736</strong> and CrowdStrike as <strong>Labyrinth Chollima</strong>) through four primary forensic pillars:
+                    When answering attribution in threat intelligence, analysts never rely on a single artifact. Security researchers definitively linked the 3CX supply chain attack to the North Korean state-sponsored <strong>Lazarus Group</strong> (tracked as <strong>UNC4736</strong> by Mandiant and <strong>Labyrinth Chollima</strong> by CrowdStrike) through <strong>four convergent pillars of forensic evidence</strong>:
                   </p>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-2 text-xs">
                     <div className="p-4 rounded-xl bg-[#09090e] border border-zinc-800/90 space-y-2">
-                      <span className="font-mono text-red-400 font-bold block">1. Shared C2 Infrastructure</span>
+                      <span className="font-mono text-red-400 font-bold block">1. Shared Infrastructure:</span>
                       <p className="text-zinc-400 leading-relaxed">
-                        The secondary payload communications initiated by <code className="text-zinc-300">d3dcompiler_47.dll</code> connected to command-and-control servers hosted on IP blocks previously observed in Lazarus campaigns—specifically overlapping with historic <strong>AppleJeus</strong> operations targeting digital asset exchanges.
+                        The secondary payload dropped by <code className="text-zinc-300">d3dcompiler_47.dll</code> reached out to C2 domains hosted on IP addresses previously used by Lazarus. Specifically, these IPs overlapped with earlier <strong>AppleJeus</strong> campaigns targeting cryptocurrency firms.
                       </p>
                     </div>
 
                     <div className="p-4 rounded-xl bg-[#09090e] border border-zinc-800/90 space-y-2">
-                      <span className="font-mono text-red-400 font-bold block">2. Identical Malware Codebase</span>
+                      <span className="font-mono text-red-400 font-bold block">2. Identical Malware Codebase:</span>
                       <p className="text-zinc-400 leading-relaxed">
-                        The trojanized 3CX binaries contained unique string handling routines, custom RC4 decryption functions, and multi-stage loader logic identical to verified Lazarus malware families, specifically <strong>MATA</strong> (Dacls) and <strong>POOLRAT</strong>.
+                        The trojanized 3CX binaries contained exact code patterns, string-handling routines, custom RC4 decryption functions, and multi-stage loader logic identical to known Lazarus malware families like <strong>MATA</strong> (Dacls) and <strong>POOLRAT</strong>.
                       </p>
                     </div>
 
                     <div className="p-4 rounded-xl bg-[#09090e] border border-zinc-800/90 space-y-2">
-                      <span className="font-mono text-red-400 font-bold block">3. Cascading Supply Chain Breach</span>
+                      <span className="font-mono text-red-400 font-bold block">3. Cascading Supply Chain Breach:</span>
                       <p className="text-zinc-400 leading-relaxed">
-                        Mandiant&apos;s incident response investigation uncovered that 3CX was breached via another supply chain compromise: an infected 3CX software engineer had downloaded a compromised version of <strong>Trading Technologies&apos; X_TRADER</strong> application in 2022—an operation attributed directly to Lazarus. Attackers used stolen credentials from this employee to pivot into 3CX&apos;s Windows and macOS build environments.
+                        Mandiant&apos;s incident response investigation traced the initial breach back to <strong>Trading Technologies&apos; X_TRADER</strong> software, which Lazarus had compromised in 2022. The attackers stole credentials from an infected 3CX employee&apos;s machine to pivot into 3CX&apos;s Windows and macOS build environments.
                       </p>
                     </div>
 
                     <div className="p-4 rounded-xl bg-[#09090e] border border-zinc-800/90 space-y-2">
-                      <span className="font-mono text-red-400 font-bold block">4. Surgical Financial Victimology</span>
+                      <span className="font-mono text-red-400 font-bold block">4. Targeted Financial Victimology:</span>
                       <p className="text-zinc-400 leading-relaxed">
-                        While the poisoned 3CX update was automatically distributed to over 600,000 corporate customers worldwide, the threat actors selectively pushed their interactive secondary backdoors only to high-value cryptocurrency, web3, and financial institutions—the signature objective of North Korean financially motivated state operations.
+                        While the poisoned update reached hundreds of thousands of organizations globally, the attackers only deployed second-stage interactive backdoors to high-value cryptocurrency, web3, and financial firms. This selective targeting is a classic signature of North Korean financially motivated state operations.
                       </p>
                     </div>
                   </div>
 
-                  {/* Reference Links */}
                   <div className="pt-2 flex flex-wrap gap-2 text-xs font-mono">
                     <a
                       href="https://cloud.google.com/blog/topics/threat-intelligence/3cx-software-supply-chain-compromise"
@@ -892,16 +851,25 @@ export default function ThreeCXSupplyChainLabWriteup() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors"
                     >
-                      <span>Mandiant: Uncovering UNC4736</span>
+                      <span>Mandiant: Head in the Clouds - Uncovering UNC4736</span>
                       <svg className="w-3.5 h-3.5 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                     </a>
                     <a
-                      href="https://www.crowdstrike.com/blog/crowdstrike-falcon-under-attack-3cx-desktop-app/"
+                      href="https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-101a"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors"
                     >
-                      <span>CrowdStrike: Labyrinth Chollima Attribution</span>
+                      <span>CISA Cybersecurity Advisory AA23-101A</span>
+                      <svg className="w-3.5 h-3.5 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                    </a>
+                    <a
+                      href="https://news.sophos.com/en-us/2023/03/29/3cx-desktop-app-supply-chain-compromise/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors"
+                    >
+                      <span>Sophos: 3CX Desktop App Supply Chain In-Depth</span>
                       <svg className="w-3.5 h-3.5 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                     </a>
                   </div>
@@ -909,7 +877,7 @@ export default function ThreeCXSupplyChainLabWriteup() {
                   {/* Answer Box */}
                   <div className="mt-4 p-4 rounded-xl bg-red-950/20 border border-red-500/40 flex items-center justify-between">
                     <div>
-                      <span className="text-xs font-mono uppercase text-red-400 font-bold block mb-1">Answer (APT Group)</span>
+                      <span className="text-xs font-mono uppercase text-red-400 font-bold block mb-1">Answer</span>
                       <code className="text-sm sm:text-base font-mono text-red-300 font-bold">Lazarus</code>
                     </div>
                     <CopyButton text="Lazarus" />
