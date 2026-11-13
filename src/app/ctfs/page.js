@@ -46,12 +46,25 @@ export default function CtfsHub() {
       href: "/labs/cyberdefenders",
       platform: "CyberDefenders",
       category: "Multi-Track CTF",
-      points: "4 LABS // 63 QUESTIONS",
-      tagline: "RedLine Stealer, Linux Rootkits, PCAP Triage & ActiveMQ RCE",
-      description: "Exhaustive enterprise blue team investigations: RedLine Stealer threat intelligence & C2 triage, Ulysses Linux memory triage & trojaned rootkits, WireDive multi-protocol packet inspection with TLS decryption, and Apache ActiveMQ OpenWire RCE exploit analysis.",
+      points: "5 LABS // 72 QUESTIONS",
+      tagline: "3CX Supply Chain, RedLine Stealer, Linux Rootkits & PCAP Triage",
+      description: "Exhaustive enterprise blue team investigations: 3CX software supply chain compromise (Lazarus / UNC4736), RedLine Stealer threat intelligence & C2 triage, Ulysses Linux memory triage & trojaned rootkits, WireDive multi-protocol packet inspection with TLS decryption, and Apache ActiveMQ OpenWire RCE exploit analysis.",
       image: "/images/cyberdefenders_banner.png",
-      tags: ["CyberDefenders", "Threat Intel", "RedLine Stealer", "VirusTotal", "Wireshark", "Volatility", "Linux DFIR", "PCAP Analysis", "TLS Decryption", "ActiveMQ RCE"],
-      time: "4 Labs // 63 Questions"
+      tags: ["CyberDefenders", "Supply Chain", "Lazarus", "Threat Intel", "RedLine Stealer", "VirusTotal", "Wireshark", "Volatility", "Linux DFIR", "TLS Decryption"],
+      time: "5 Labs // 72 Questions"
+    },
+    {
+      title: "3CX Supply Chain Lab (9 Questions)",
+      slug: "cyberdefenders-3cx-supply-chain",
+      href: "/labs/cyberdefenders/3cx-supply-chain",
+      platform: "CyberDefenders",
+      category: "Threat Intelligence",
+      points: "9 QUESTIONS",
+      tagline: "Lazarus Group, DLL Side-Loading & Anti-Analysis",
+      description: "Forensic threat intelligence investigation of the 3CX desktop software supply chain breach. Inspecting compromised MSI packages, tracking DLL side-loading (T1574.002) of ffmpeg.dll and d3dcompiler_47.dll, analyzing VMware sandbox evasion (T1497), reverse engineering SIGFLIP RC4 stream cipher decryption, and mapping nation-state attribution back to Lazarus Group (UNC4736).",
+      image: "/images/cyberdefenders/3cx_supply_chain_banner.png",
+      tags: ["Supply Chain", "Threat Intel", "Lazarus Group", "DLL Side-Loading", "VirusTotal", "VMware Evasion", "RC4", "CyberDefenders"],
+      time: "12 min read"
     },
     {
       title: "Red Stealer Lab (9 Questions)",

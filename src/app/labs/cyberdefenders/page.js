@@ -5,6 +5,21 @@ import Navbar from "@/components/Navbar";
 export default function CyberDefendersHub() {
   const challenges = [
     {
+      title: "3CX Supply Chain Lab",
+      slug: "3cx-supply-chain",
+      href: "/labs/cyberdefenders/3cx-supply-chain",
+      platform: "CyberDefenders",
+      category: "Threat Intelligence / Supply Chain",
+      points: "9 QUESTIONS",
+      tagline: "Lazarus Group, DLL Side-Loading & Anti-Analysis",
+      description: "Forensic threat intelligence investigation of the 3CX desktop software supply chain breach. Inspecting compromised MSI packages, tracking DLL side-loading (T1574.002) of ffmpeg.dll and d3dcompiler_47.dll, analyzing VMware sandbox evasion (T1497), reverse engineering SIGFLIP RC4 stream cipher decryption, and mapping nation-state attribution back to Lazarus Group (UNC4736).",
+      image: "/images/cyberdefenders/3cx_supply_chain_banner.png",
+      tags: ["Supply Chain", "Threat Intel", "Lazarus Group", "DLL Side-Loading", "VirusTotal", "VMware Evasion", "RC4", "MITRE ATT&CK"],
+      downloadFile: "https://cyberdefenders.org/blueteam-ctf-challenges/3cx-supply-chain/",
+      downloadFileName: "3CX Supply Chain Lab (MSI Artifacts)",
+      time: "12 min read"
+    },
+    {
       title: "Red Stealer Lab",
       slug: "red-stealer",
       href: "/labs/cyberdefenders/red-stealer",
@@ -94,10 +109,10 @@ export default function CyberDefendersHub() {
           {/* Metrics */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-xs font-mono">
             <div className="bg-zinc-900/90 border border-zinc-800 px-3.5 py-1.5 rounded-lg text-zinc-300 flex items-center gap-2">
-              <span className="text-emerald-400 font-bold">●</span> 4 Active Investigations
+              <span className="text-emerald-400 font-bold">●</span> 5 Active Investigations
             </div>
             <div className="bg-zinc-900/90 border border-zinc-800 px-3.5 py-1.5 rounded-lg text-zinc-300 flex items-center gap-2">
-              <span className="text-emerald-400 font-bold">●</span> 63 Verified Answers
+              <span className="text-emerald-400 font-bold">●</span> 72 Verified Answers
             </div>
             <div className="bg-zinc-900/90 border border-zinc-800 px-3.5 py-1.5 rounded-lg text-emerald-400 flex items-center gap-2">
               <span className="text-emerald-400 font-bold">●</span> Direct Artifact Downloads
