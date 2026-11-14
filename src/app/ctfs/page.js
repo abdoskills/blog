@@ -46,12 +46,25 @@ export default function CtfsHub() {
       href: "/labs/cyberdefenders",
       platform: "CyberDefenders",
       category: "Multi-Track CTF",
-      points: "5 LABS // 72 QUESTIONS",
-      tagline: "3CX Supply Chain, RedLine Stealer, Linux Rootkits & PCAP Triage",
-      description: "Exhaustive enterprise blue team investigations: 3CX software supply chain compromise (Lazarus / UNC4736), RedLine Stealer threat intelligence & C2 triage, Ulysses Linux memory triage & trojaned rootkits, WireDive multi-protocol packet inspection with TLS decryption, and Apache ActiveMQ OpenWire RCE exploit analysis.",
+      points: "6 LABS // 80 QUESTIONS",
+      tagline: "BlackEnergy Rootkit, 3CX Supply Chain, RedLine Stealer, Linux Rootkits & PCAP Triage",
+      description: "Exhaustive enterprise blue team investigations: BlackEnergy v2 kernel rootkit & memory injection triage, 3CX software supply chain compromise (Lazarus / UNC4736), RedLine Stealer threat intelligence & C2 triage, Ulysses Linux memory triage & trojaned rootkits, WireDive multi-protocol packet inspection with TLS decryption, and Apache ActiveMQ OpenWire RCE exploit analysis.",
       image: "/images/cyberdefenders_banner.png",
-      tags: ["CyberDefenders", "Supply Chain", "Lazarus", "Threat Intel", "RedLine Stealer", "VirusTotal", "Wireshark", "Volatility", "Linux DFIR", "TLS Decryption"],
-      time: "5 Labs // 72 Questions"
+      tags: ["CyberDefenders", "BlackEnergy", "Supply Chain", "Lazarus", "Threat Intel", "RedLine Stealer", "VirusTotal", "Wireshark", "Volatility", "Linux DFIR", "TLS Decryption"],
+      time: "6 Labs // 80 Questions"
+    },
+    {
+      title: "BlackEnergy Lab (8 Questions)",
+      slug: "cyberdefenders-blackenergy",
+      href: "/labs/cyberdefenders/blackenergy",
+      platform: "CyberDefenders",
+      category: "Memory Forensics",
+      points: "8 QUESTIONS",
+      tagline: "Volatility 2, Kernel Rootkits & DLL Injection",
+      description: "Memory forensics triage of a Windows XP workstation targeted with BlackEnergy v2 malware. Determining the optimal Volatility profile, isolating malicious terminated processes (rootkit.exe, cmd.exe), uncovering svchost.exe memory code injection with PAGE_EXECUTE_READWRITE permissions, tracking the str.sys kernel-mode rootkit driver, and revealing unlinked stealth DLL msxml3r.dll.",
+      image: "/images/cyberdefenders/blackenergy_banner.png",
+      tags: ["Volatility 2", "Memory Forensics", "BlackEnergy", "Rootkit", "Code Injection", "str.sys", "CyberDefenders"],
+      time: "12 min read"
     },
     {
       title: "3CX Supply Chain Lab (9 Questions)",
