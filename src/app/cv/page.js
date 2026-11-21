@@ -152,7 +152,7 @@ export default function CVPage() {
                 AbdelRahman Mohamed Hassan
               </h1>
               <p className="text-sm sm:text-base italic text-zinc-700 font-serif">
-                Junior Cyber Security Specialist
+                Cybersecurity Analyst | DFIR &amp; SOC
               </p>
 
               {/* Centered FlowCV Contact Strip with SVGs */}
@@ -178,6 +178,12 @@ export default function CVPage() {
 
                 <span className="text-zinc-300">•</span>
 
+                <a href="https://abdoskills.me" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-emerald-700 hover:text-emerald-900 transition-colors">
+                  <span className="font-mono font-bold text-xs">abdoskills.me</span>
+                </a>
+
+                <span className="text-zinc-300">•</span>
+
                 <a href="https://linkedin.com/in/abdoskills" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-blue-700 hover:text-blue-900 transition-colors">
                   <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                   <span>linkedin.com/in/abdoskills</span>
@@ -200,7 +206,7 @@ export default function CVPage() {
                 </h2>
               </div>
               <p className="text-xs sm:text-[13px] leading-relaxed text-zinc-800 text-justify">
-                Digital Forensics &amp; Incident Response (DFIR) practitioner specializing in host artifact deconstruction, volatile memory analysis, and multi-stage attack lifecycle reconstruction across Windows and Linux environments. Proven track record tracking adversary tradecraft—correlating volatile RAM (Volatility 3), NTFS filesystem telemetry ($MFT/Prefetch), and Sysmon event pipelines to expose in-memory credential harvesting, fileless WMI persistence, and stealth rootkits. Author of 25+ reproducible forensic investigations with an emphasis on automating triage workflows in Python.
+                Cybersecurity analyst focused on digital forensics, SOC investigations, and incident response. Hands-on work spans memory, network, and disk forensics, Splunk-based SIEM analysis, and alert triage. Published detailed lab and CTF writeups on malware, host, and network investigations, and contributed to selected real-world investigations by correlating endpoint, network, and log evidence.
               </p>
             </div>
 
@@ -216,14 +222,11 @@ export default function CVPage() {
               <div className="space-y-1">
                 <div className="flex justify-between items-baseline">
                   <h3 className="text-xs sm:text-[13px] font-bold text-black">
-                    Enterprise Incident Response Capstone (Operation Ghost Drift)
+                    Enterprise Incident Response Capstone
                   </h3>
-                  <span className="text-[11px] italic text-zinc-600">Lead Investigator</span>
                 </div>
                 <ul className="list-disc list-outside pl-4 space-y-0.5 text-xs sm:text-[12.5px] leading-relaxed text-zinc-800">
-                  <li>Reconstructed a complete enterprise APT attack lifecycle by correlating evidence across 5 operational layers: Network PCAP, RAM dump, NTFS disk image, Registry hives, and Windows Event Logs.</li>
-                  <li>Mathematically proved in-memory credential theft (LSASS dumping) by tracking Sysmon Event ID 10 with target process <code className="text-xs font-mono">lsass.exe</code> and GrantedAccess mask <code className="text-xs font-mono">0x1010</code>.</li>
-                  <li>Uncovered stealth kernel-level rootkit persistence by parsing offline SYSTEM registry hive services for rogue boot-start drivers configured for privilege escalation.</li>
+                  <li>Reconstructed a simulated APT attack chain by correlating network traffic, memory, disk artifacts, and Windows event logs.</li>
                 </ul>
               </div>
 
@@ -231,14 +234,12 @@ export default function CVPage() {
               <div className="space-y-1 pt-1">
                 <div className="flex justify-between items-baseline">
                   <h3 className="text-xs sm:text-[13px] font-bold text-black">
-                    Endpoint Forensics &amp; Threat Hunting Scenarios
+                    Endpoint Forensics &amp; Threat Hunting
                   </h3>
-                  <span className="text-[11px] italic text-zinc-600">Evidence Triage</span>
                 </div>
                 <ul className="list-disc list-outside pl-4 space-y-0.5 text-xs sm:text-[12.5px] leading-relaxed text-zinc-800">
-                  <li>Mapped attacker lateral movement and user execution trails using PECmd (Prefetch), Shellbags, and LNK Jumplist analysis to establish a definitive exfiltration timeline.</li>
-                  <li>Detected deliberate anti-forensics timestomping by calculating sub-millisecond discrepancies between NTFS <code className="text-xs font-mono">$STANDARD_INFORMATION</code> and <code className="text-xs font-mono">$FILE_NAME</code> attributes.</li>
-                  <li>Dissected fileless WMI malware persistence by auditing Sysmon Event IDs 19-21, isolating Base64-encoded PowerShell payloads hidden in CIM event consumers.</li>
+                  <li>Investigated Windows endpoint activity by correlating Prefetch, Shellbags, LNK files, NTFS $MFT records, and Sysmon telemetry to reconstruct execution and attacker behavior.</li>
+                  <li>Examined timestamp anomalies and WMI-related events to identify possible anti-forensic activity and fileless persistence.</li>
                 </ul>
               </div>
 
@@ -246,14 +247,38 @@ export default function CVPage() {
               <div className="space-y-1 pt-1">
                 <div className="flex justify-between items-baseline">
                   <h3 className="text-xs sm:text-[13px] font-bold text-black">
-                    Memory Forensics &amp; Network C2 Dissection
+                    Memory &amp; Network Forensics
                   </h3>
-                  <span className="text-[11px] italic text-zinc-600">Volatile Triage</span>
                 </div>
                 <ul className="list-disc list-outside pl-4 space-y-0.5 text-xs sm:text-[12.5px] leading-relaxed text-zinc-800">
-                  <li>Extracted injected payloads, VAD memory hooks, and stealth unmapped DLLs from raw memory dumps using Volatility 3 plugins (<code className="text-xs font-mono">windows.pslist</code>, <code className="text-xs font-mono">windows.vadinfo</code>, <code className="text-xs font-mono">windows.malfind</code>).</li>
-                  <li>Conducted network packet analysis in Wireshark and tshark to isolate malware beacon intervals, reconstruct HTTP streams, and extract weaponized binary payloads.</li>
+                  <li>Analyzed Windows and Linux memory images with Volatility 2/3 to investigate suspicious processes, injected code, hidden modules, and other memory artifacts.</li>
+                  <li>Examined PCAPs with Wireshark and tshark to reconstruct communication flows, identify suspicious traffic, and extract relevant artifacts across HTTP, DNS, SMB, and TLS.</li>
                 </ul>
+              </div>
+
+              {/* Project 4 */}
+              <div className="space-y-1 pt-1">
+                <div className="flex justify-between items-baseline">
+                  <h3 className="text-xs sm:text-[13px] font-bold text-black">
+                    SOC, SIEM &amp; Threat Intelligence
+                  </h3>
+                </div>
+                <ul className="list-disc list-outside pl-4 space-y-0.5 text-xs sm:text-[12.5px] leading-relaxed text-zinc-800">
+                  <li>Used Splunk to investigate simulated security alerts, correlate events, and document findings supported by log evidence.</li>
+                  <li>Investigated malware infrastructure through IOC enrichment, cross-checking indicators against public threat intelligence and sandbox reports using VirusTotal, Hybrid Analysis, ThreatConnect, and CyberChef.</li>
+                </ul>
+              </div>
+
+              {/* Project 5 */}
+              <div className="space-y-1 pt-1">
+                <div className="flex justify-between items-baseline">
+                  <h3 className="text-xs sm:text-[13px] font-bold text-black">
+                    Independent Research — The Null Scan Problem
+                  </h3>
+                </div>
+                <p className="text-xs sm:text-[12.5px] leading-relaxed text-zinc-800 pl-1">
+                  Authored a literature-backed analysis of when a clean memory scan may fail to rule out process injection; proposed a framework for interpreting negative findings and a controlled validation study.
+                </p>
               </div>
             </div>
 
@@ -296,28 +321,24 @@ export default function CVPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-xs sm:text-[12.5px]">
                 <div>
-                  <span className="font-bold text-black block">Endpoint Forensics</span>
-                  <span className="text-zinc-700">NTFS $MFT, Prefetch, Shellbags, LNK Jumplists, Registry Hives, KAPE, EZTools</span>
+                  <span className="font-bold text-black block">SIEM &amp; Logs</span>
+                  <span className="text-zinc-700">Splunk, Sysmon, Hayabusa, Windows Event Logs</span>
                 </div>
                 <div>
                   <span className="font-bold text-black block">Memory Analysis</span>
-                  <span className="text-zinc-700">Volatility 2 &amp; 3, VAD Tree Carving, DKOM, MemProcFS, WinDbg</span>
+                  <span className="text-zinc-700">Volatility 2/3, Windows and Linux memory analysis</span>
                 </div>
                 <div>
-                  <span className="font-bold text-black block">Threat Hunting</span>
-                  <span className="text-zinc-700">Sysmon (IDs 1, 3, 10, 19-21), Hayabusa, Event Logs, Sigma Rules, Splunk</span>
+                  <span className="font-bold text-black block">Malware Analysis &amp; Threat Intelligence</span>
+                  <span className="text-zinc-700">Ghidra, x64dbg, CyberChef, VirusTotal, Hybrid Analysis, ThreatConnect; malware triage, static and dynamic analysis, OSINT-based IOC enrichment</span>
                 </div>
                 <div>
+                  <span className="font-bold text-black block">Endpoint &amp; Disk Forensics</span>
+                  <span className="text-zinc-700">KAPE, Eric Zimmerman tools, Timeline Explorer, The Sleuth Kit; NTFS $MFT, Prefetch, Shellbags, LNK, Jump Lists</span>
+                </div>
+                <div className="sm:col-span-2">
                   <span className="font-bold text-black block">Network Forensics</span>
-                  <span className="text-zinc-700">Wireshark, TShark, PCAP Stream Reassembly, C2 Beacon Isolation</span>
-                </div>
-                <div>
-                  <span className="font-bold text-black block">Malware Triage</span>
-                  <span className="text-zinc-700">Ghidra, x64dbg, PE-Bear, HxD, Cryptographic Routine Deobfuscation</span>
-                </div>
-                <div>
-                  <span className="font-bold text-black block">Scripting &amp; Tools</span>
-                  <span className="text-zinc-700">Python 3 (Custom Forensic Parsers), PowerShell CLI, Bash, Timeline Explorer</span>
+                  <span className="text-zinc-700">Wireshark, tshark, NetworkMiner; PCAP, HTTP, DNS, SMB, TLS</span>
                 </div>
               </div>
             </div>
@@ -337,9 +358,6 @@ export default function CVPage() {
                 </div>
                 <span className="text-[11px] font-mono text-zinc-500">In Progress</span>
               </div>
-              <p className="text-[11px] text-zinc-600">
-                Foundations: Computer Architecture, Operating System Internals, Data Structures &amp; Algorithms, File Processing, TCP/IP Networking.
-              </p>
             </div>
 
           </div>
@@ -358,14 +376,14 @@ export default function CVPage() {
                     AbdelRahman Mohamed Hassan
                   </h1>
                   <p className="text-emerald-400 font-mono text-xs sm:text-sm mt-1 font-semibold">
-                    Junior Cyber Security Specialist // DFIR &amp; Threat Hunting
+                    Cybersecurity Analyst | DFIR &amp; SOC
                   </p>
                 </div>
 
                 <div className="text-xs font-mono text-zinc-400 space-y-1 text-left sm:text-right">
                   <div>Cairo, Egypt | +20 1098857028</div>
                   <div>AbdelrahmanMHasssan@gmail.com</div>
-                  <div>LinkedIn: in/abdoskills • GitHub: abdoskills</div>
+                  <div>LinkedIn: in/abdoskills • GitHub: abdoskills • abdoskills.me</div>
                 </div>
               </div>
             </header>
@@ -376,7 +394,7 @@ export default function CVPage() {
                 <span>01.</span> Executive Summary
               </h2>
               <p className="text-xs md:text-sm text-zinc-300 leading-relaxed">
-                Digital Forensics &amp; Incident Response (DFIR) practitioner specializing in host artifact deconstruction, volatile memory analysis, and multi-stage attack lifecycle reconstruction across Windows and Linux environments. Proven track record tracking adversary tradecraft—correlating volatile RAM (Volatility 3), NTFS filesystem telemetry ($MFT/Prefetch), and Sysmon event pipelines to expose in-memory credential harvesting, fileless WMI persistence, and stealth rootkits. Author of 25+ reproducible forensic investigations with an emphasis on automating triage workflows in Python.
+                Cybersecurity analyst focused on digital forensics, SOC investigations, and incident response. Hands-on work spans memory, network, and disk forensics, Splunk-based SIEM analysis, and alert triage. Published detailed lab and CTF writeups on malware, host, and network investigations, and contributed to selected real-world investigations by correlating endpoint, network, and log evidence.
               </p>
             </section>
 
@@ -428,30 +446,56 @@ export default function CVPage() {
             {/* Section 03: Projects */}
             <section className="space-y-5">
               <h2 className="text-sm font-bold text-emerald-400 font-mono uppercase tracking-wider border-b border-zinc-800/80 pb-2 flex items-center gap-2">
-                <span>03.</span> Practical Incident Response Labs
+                <span>03.</span> Practical Incident Response Labs &amp; Projects
               </h2>
 
               <div className="space-y-4 text-xs sm:text-sm">
                 <div className="space-y-1.5">
                   <h3 className="text-sm font-bold text-white">
-                    Enterprise Incident Response Capstone (Operation Ghost Drift)
+                    Enterprise Incident Response Capstone
                   </h3>
                   <ul className="list-disc list-inside space-y-1 text-zinc-300 pl-1">
-                    <li>Correlated evidence across 5 layers: PCAP, RAM, NTFS disk, Registry, and Sysmon EVTX.</li>
-                    <li>Proved LSASS memory credential dumping via Sysmon Event ID 10 with GrantedAccess 0x1010.</li>
-                    <li>Uncovered stealth kernel-level rootkit persistence in offline SYSTEM registry hive services.</li>
+                    <li>Reconstructed a simulated APT attack chain by correlating network traffic, memory, disk artifacts, and Windows event logs.</li>
                   </ul>
                 </div>
 
                 <div className="space-y-1.5 pt-2">
                   <h3 className="text-sm font-bold text-white">
-                    Endpoint Forensics &amp; Lateral Movement Triage
+                    Endpoint Forensics &amp; Threat Hunting
                   </h3>
                   <ul className="list-disc list-inside space-y-1 text-zinc-300 pl-1">
-                    <li>Mapped attacker lateral movement using Prefetch (PECmd), Shellbags, and LNK Jumplist analysis.</li>
-                    <li>Detected anti-forensics timestomping by calculating NTFS $STANDARD_INFO vs $FILE_NAME discrepancies.</li>
-                    <li>Isolated fileless WMI malware persistence by auditing Sysmon Event IDs 19-21.</li>
+                    <li>Investigated Windows endpoint activity by correlating Prefetch, Shellbags, LNK files, NTFS $MFT records, and Sysmon telemetry to reconstruct execution and attacker behavior.</li>
+                    <li>Examined timestamp anomalies and WMI-related events to identify possible anti-forensic activity and fileless persistence.</li>
                   </ul>
+                </div>
+
+                <div className="space-y-1.5 pt-2">
+                  <h3 className="text-sm font-bold text-white">
+                    Memory &amp; Network Forensics
+                  </h3>
+                  <ul className="list-disc list-inside space-y-1 text-zinc-300 pl-1">
+                    <li>Analyzed Windows and Linux memory images with Volatility 2/3 to investigate suspicious processes, injected code, hidden modules, and other memory artifacts.</li>
+                    <li>Examined PCAPs with Wireshark and tshark to reconstruct communication flows, identify suspicious traffic, and extract relevant artifacts across HTTP, DNS, SMB, and TLS.</li>
+                  </ul>
+                </div>
+
+                <div className="space-y-1.5 pt-2">
+                  <h3 className="text-sm font-bold text-white">
+                    SOC, SIEM &amp; Threat Intelligence
+                  </h3>
+                  <ul className="list-disc list-inside space-y-1 text-zinc-300 pl-1">
+                    <li>Used Splunk to investigate simulated security alerts, correlate events, and document findings supported by log evidence.</li>
+                    <li>Investigated malware infrastructure through IOC enrichment, cross-checking indicators against public threat intelligence and sandbox reports using VirusTotal, Hybrid Analysis, ThreatConnect, and CyberChef.</li>
+                  </ul>
+                </div>
+
+                <div className="space-y-1.5 pt-2">
+                  <h3 className="text-sm font-bold text-white">
+                    Independent Research — The Null Scan Problem
+                  </h3>
+                  <p className="text-zinc-300 pl-1 leading-relaxed">
+                    Authored a literature-backed analysis of when a clean memory scan may fail to rule out process injection; proposed a framework for interpreting negative findings and a controlled validation study.
+                  </p>
                 </div>
               </div>
             </section>
@@ -464,12 +508,24 @@ export default function CVPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                 <div className="p-3 bg-black/50 border border-zinc-800 rounded-xl space-y-1">
-                  <span className="font-bold text-emerald-300 block">Endpoint Forensics</span>
-                  <p className="text-zinc-300">NTFS $MFT, Prefetch, Shellbags, LNK, Registry Hives, KAPE, EZTools</p>
+                  <span className="font-bold text-emerald-300 block">SIEM &amp; Logs</span>
+                  <p className="text-zinc-300">Splunk, Sysmon, Hayabusa, Windows Event Logs</p>
                 </div>
                 <div className="p-3 bg-black/50 border border-zinc-800 rounded-xl space-y-1">
-                  <span className="font-bold text-emerald-300 block">Memory &amp; Network</span>
-                  <p className="text-zinc-300">Volatility 2 &amp; 3, VAD Carving, Wireshark, TShark, PCAP Stream Reassembly</p>
+                  <span className="font-bold text-emerald-300 block">Memory Forensics</span>
+                  <p className="text-zinc-300">Volatility 2/3, Windows and Linux memory analysis</p>
+                </div>
+                <div className="p-3 bg-black/50 border border-zinc-800 rounded-xl space-y-1">
+                  <span className="font-bold text-emerald-300 block">Malware Analysis &amp; Threat Intel</span>
+                  <p className="text-zinc-300">Ghidra, x64dbg, CyberChef, VirusTotal, Hybrid Analysis, ThreatConnect; malware triage, static and dynamic analysis, OSINT-based IOC enrichment</p>
+                </div>
+                <div className="p-3 bg-black/50 border border-zinc-800 rounded-xl space-y-1">
+                  <span className="font-bold text-emerald-300 block">Endpoint &amp; Disk Forensics</span>
+                  <p className="text-zinc-300">KAPE, Eric Zimmerman tools, Timeline Explorer, The Sleuth Kit; NTFS $MFT, Prefetch, Shellbags, LNK, Jump Lists</p>
+                </div>
+                <div className="p-3 bg-black/50 border border-zinc-800 rounded-xl space-y-1 sm:col-span-2">
+                  <span className="font-bold text-emerald-300 block">Network Forensics</span>
+                  <p className="text-zinc-300">Wireshark, tshark, NetworkMiner; PCAP, HTTP, DNS, SMB, TLS</p>
                 </div>
               </div>
             </section>

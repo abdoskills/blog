@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import FollowMe from "@/components/FollowMe";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -610,6 +611,67 @@ export default function Home() {
               </div>
             </div>
           )}
+        </div>
+
+        {/* Home Page Bottom: Follow Me & Socials */}
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 mt-14">
+          <FollowMe 
+            title="Connect & Follow // Threat Operations"
+            subtitle="Interested in digital forensics, incident response, SOC threat hunting, or CTF collaboration? Let's connect across platforms."
+            hubHref="/cv"
+            hubLabel="View Resume & CV"
+          />
+
+          {/* Bottom Footer Bar with Quick Social Icons */}
+          <footer className="mt-12 pt-8 pb-6 border-t border-zinc-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-zinc-500">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse" />
+              <span className="text-zinc-300 font-bold font-sans">AbdelRahman Mohamed Hassan</span>
+              <span>—</span>
+              <span className="text-zinc-400">DFIR &amp; Threat Defense</span>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <a
+                href="https://github.com/abdoskills"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors"
+                title="GitHub: @abdoskills"
+              >
+                GitHub
+              </a>
+              <span>•</span>
+              <a
+                href="https://www.linkedin.com/in/abdoskills"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-blue-400 transition-colors"
+                title="LinkedIn: in/abdoskills"
+              >
+                LinkedIn
+              </a>
+              <span>•</span>
+              <a
+                href="https://x.com/abdoskills"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-cyan-400 transition-colors"
+                title="X (Twitter): @abdoskills"
+              >
+                X (Twitter)
+              </a>
+              <span>•</span>
+              <a
+                href="/downloads/AbdelRahman_Mohamed_Hassan_CV.pdf"
+                download
+                className="text-emerald-400 hover:text-emerald-300 font-bold transition-colors"
+                title="Download CV"
+              >
+                Download CV (PDF) ↓
+              </a>
+            </div>
+          </footer>
         </div>
 
       </main>
