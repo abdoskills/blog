@@ -22,17 +22,16 @@ export default function Home() {
       href: "/ctfs/nahamcon",
       platform: "NahamCon CTF",
       category: "Special Dossier",
-      points: "4 OPS // 100% SOLVED",
-      tagline: "AI Agent Memory, Audio Spectrography, QuickTime Freelist & RDP Bitmap Cache",
-      description: "Exhaustive breakdown of 4 solved pure digital forensics operations: autonomous agent memory forensics & prompt injection auditing, soundboard audio spectrography & Baconian decoding, QuickTime MP4 freelist slack space thumbnail carving, and Windows RDP persistent bitmap cache reconstruction with BIP-39 HD wallet derivation.",
+      points: "3 OPS // 100% SOLVED",
+      tagline: "AI Agent Memory, Audio Spectrography & QuickTime MP4 Freelist",
+      description: "Exhaustive breakdown of 3 verified pure digital forensics operations: autonomous agent memory forensics & prompt injection auditing (AETHERTRACE), soundboard audio spectrography & Baconian decoding (Glass Harmonic), and QuickTime MP4 freelist slack space thumbnail carving (Dead Air).",
       image: "/images/nahamcon_ctf_banner.jpg",
       tags: ["NahamCon CTF", "AI Forensics", "Audio Spectrogram", "MP4 Slack Space", "RDP Bitmap Cache", "BIP-39 HD Wallet"],
-      time: "4 Writeups",
+      time: "3 Writeups",
       includedChallenges: [
         "AETHERTRACE (AI Memory & Prompt Injection)",
         "Glass Harmonic (Audio Spectrography & Baconian)",
-        "Dead Air (QuickTime MP4 Freelist Slack Carving)",
-        "NEETRhythm (RDP Cache Carving & BIP-39 Ethereum Wallet)"
+        "Dead Air (QuickTime MP4 Freelist Slack Carving)"
       ]
     },
     {

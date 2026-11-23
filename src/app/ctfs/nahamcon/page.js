@@ -124,25 +124,6 @@ export default function NahamConCtfPage() {
         { id: "deadair-work", title: "NOW FOR WORK (Atom Parsing & Carving)" },
         { id: "deadair-summary", title: "Summary & Flag" },
       ]
-    },
-    {
-      id: "neetrhythm",
-      num: "04",
-      title: "NEETRhythm",
-      category: "End-to-End DFIR / HD Wallets",
-      difficulty: "Hard",
-      badge: "RDP CACHE // BIP-39 HD WALLET",
-      tagline: "PyInstaller Reversing, PCAP Book Cipher, RDP Bitmap Carving & BIP-39 Derivation",
-      folder: "C:\\CTFS\\nahamcon ctf\\forwensiocs\\NEETRhythm\\",
-      target: "NEETRhythmGame.exe, capture.pcap, Evidence.zip",
-      flag: "flag{neetrhythm_61f2d2d48004a168}",
-      sections: [
-        { id: "neet-prompt", title: "Scenario & Prompt" },
-        { id: "neet-think", title: "What should u think of ?:" },
-        { id: "neet-basics", title: "Understanding RDP Bitmap Cache & HD Wallets" },
-        { id: "neet-work", title: "NOW FOR WORK (7-Stage Attack Chain)" },
-        { id: "neet-summary", title: "Summary & Flag" },
-      ]
     }
   ];
 
@@ -205,11 +186,11 @@ export default function NahamConCtfPage() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono text-xs pt-2">
             <div className="p-3 rounded-xl bg-zinc-900/70 border border-zinc-800">
               <span className="text-zinc-500 block uppercase">Operations</span>
-              <span className="text-white font-bold text-sm sm:text-base">4 Operations</span>
+              <span className="text-white font-bold text-sm sm:text-base">3 Operations</span>
             </div>
             <div className="p-3 rounded-xl bg-zinc-900/70 border border-zinc-800">
               <span className="text-zinc-500 block uppercase">Solved Rate</span>
-              <span className="text-emerald-400 font-bold text-sm sm:text-base">4 / 4 Solved (100%)</span>
+              <span className="text-emerald-400 font-bold text-sm sm:text-base">3 / 3 Solved (100%)</span>
             </div>
             <div className="p-3 rounded-xl bg-zinc-900/70 border border-zinc-800">
               <span className="text-zinc-500 block uppercase">Methodology</span>
@@ -244,7 +225,7 @@ export default function NahamConCtfPage() {
                   Operations Index
                 </span>
                 <span className="px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-[10px]">
-                  4 Ops
+                  3 Ops
                 </span>
               </div>
 
@@ -824,210 +805,7 @@ print("[+] Decrypted Flag:", flag)`}
             {/* ========================================================================= */}
             {/* OPERATION 04: NEETRHYTHM                                                  */}
             {/* ========================================================================= */}
-            <article id="neetrhythm" className="scroll-mt-24 p-6 sm:p-8 rounded-3xl bg-[#090b10]/95 border border-zinc-800 shadow-2xl space-y-8 backdrop-blur-xl">
-              
-              <div className="border-b border-zinc-800 pb-6 space-y-3">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <span className="px-3 py-1 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 font-mono text-xs font-bold uppercase tracking-wider">
-                    Operation 04 • End-to-End DFIR &amp; HD Wallets
-                  </span>
-                  <span className="px-2.5 py-0.5 rounded bg-zinc-900 text-zinc-300 border border-zinc-800 font-mono text-xs font-bold">
-                    Hard
-                  </span>
-                </div>
-
-                <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-wide">
-                  4. NEETRhythm: 7-Stage DFIR, RDP Bitmap Cache &amp; BIP-39 HD Wallet Recovery
-                </h2>
-
-                <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-zinc-400 pt-1">
-                  <span>Folder: <code className="text-zinc-300">C:\CTFS\nahamcon ctf\forwensiocs\NEETRhythm\</code></span>
-                  <span>•</span>
-                  <span>Targets: <code className="text-cyan-300">NEETRhythmGame/, capture.pcap, Evidence.zip</code></span>
-                </div>
-              </div>
-
-              {/* Flag Card */}
-              <FlagCard 
-                flag="flag{neetrhythm_61f2d2d48004a168}" 
-                note="Unlocked from wallet_vault.zip using derived EIP-55 Ethereum address 0x95222290DD7278Aa3Ddd389Cc1E1d165CC4BAfe5."
-              />
-
-              {/* Scenario & Prompt */}
-              <section id="neet-prompt" className="space-y-4">
-                <h3 className="text-base sm:text-lg font-bold text-white font-mono flex items-center gap-2">
-                  <span className="text-cyan-400">#</span> Scenario &amp; Intrusion Scope:
-                </h3>
-                <div className="p-4 rounded-2xl bg-zinc-900/60 border-l-4 border-cyan-500 space-y-2">
-                  <p className="text-xs sm:text-sm text-zinc-300 italic font-sans leading-relaxed">
-                    &ldquo;An offline community rhythm game called NEETRhythm had been installed on a shared lab workstation for months. When unexpected outbound network connections were flagged by network monitoring, forensic analysts captured the game directory, a PCAP of the network window, and an encrypted evidence archive recovered from an RDP session. Trace the attack from the rhythm game to the attacker&rsquo;s crypto wallet.&rdquo;
-                  </p>
-                </div>
-              </section>
-
-              {/* What should u think of ?: */}
-              <section id="neet-think" className="space-y-4">
-                <h4 className="text-sm sm:text-base font-bold text-cyan-300 font-mono">
-                  What should u think of ? (The Detective Mindset):
-                </h4>
-                <ul className="space-y-3 text-xs sm:text-sm text-zinc-300 font-sans">
-                  <li className="p-3.5 rounded-xl bg-zinc-900/40 border border-zinc-800">
-                    <strong className="text-cyan-300 font-mono block mb-1">1. Mapping the Multi-Stage Kill Chain:</strong>
-                    This is an end-to-end incident response scenario. Malware authors love hiding steganographic payloads inside custom game assets (like song chart notes). If the game beacons out in the PCAP, that C2 channel likely established credentials for lateral movement (RDP).
-                  </li>
-                  <li className="p-3.5 rounded-xl bg-zinc-900/40 border border-zinc-800">
-                    <strong className="text-cyan-300 font-mono block mb-1">2. Understanding the Final Deliverable (Cache0000.bin):</strong>
-                    Inside the encrypted evidence archive sits <code className="text-white">Cache0000.bin</code>. Windows Remote Desktop Client saves cached graphical screen tiles to this file so it doesn&rsquo;t have to retransmit identical pixels. If the attacker opened a notepad or wallet application during their RDP session, those letters are literally etched into those 64x64 pixel bitmap tiles!
-                  </li>
-                </ul>
-              </section>
-
-              {/* Understanding the Technology */}
-              <section id="neet-basics" className="space-y-4">
-                <h4 className="text-sm sm:text-base font-bold text-white font-mono flex items-center gap-2">
-                  <span className="w-1.5 h-4 bg-cyan-400 rounded-full" />
-                  Understanding the Technology: RDP Persistent Bitmap Caches &amp; BIP-39 HD Wallets
-                </h4>
-                <div className="p-4 rounded-2xl bg-[#0d0d14] border border-zinc-800 text-xs sm:text-sm text-zinc-300 space-y-3 font-sans leading-relaxed">
-                  <p>
-                    <strong>RDP Bitmap Caching (RDP8bmp):</strong> To optimize bandwidth over slow networks, Windows RDP splits the screen into 64x64 pixel bitmap tiles and stores them locally on the client machine in <code className="text-white">Cache0000.bin</code>. Using forensic carving tools like <code className="text-white">bmc-tools.py</code>, an investigator can extract all individual tiles and stitch them back together into the original screen layout.
-                  </p>
-                  <p>
-                    <strong>Hierarchical Deterministic (HD) Wallets:</strong> BIP-39 translates a 128-to-256 bit random cryptographic entropy into a human-readable list of 12 or 24 standardized English words. From this seed phrase, BIP-32 and BIP-44 derive hierarchical keypaths (e.g. <code className="text-white">m/44&apos;/60&apos;/0&apos;/0/0</code> for Ethereum). The public address is hashed with Keccak-256 and formatted using <strong>EIP-55</strong> mixed-case checksum capitalisation.
-                  </p>
-                </div>
-              </section>
-
-              {/* NOW FOR WORK */}
-              <section id="neet-work" className="space-y-6">
-                <h4 className="text-sm sm:text-base font-bold text-white font-mono flex items-center gap-2">
-                  <span className="text-emerald-400 font-bold">&gt;&gt;</span> NOW FOR REAL WORK !! (The 7-Stage Intrusion Chain)
-                </h4>
-
-                {/* Stage 1-2 */}
-                <div className="space-y-3">
-                  <h5 className="text-xs sm:text-sm font-bold text-cyan-300 font-mono">
-                    Stage 1 &amp; 2: PyInstaller Reversing &amp; Chart Steganography
-                  </h5>
-                  <p className="text-xs sm:text-sm text-zinc-300">
-                    Unpacking <code className="text-white">NEETRhythmGame.exe</code> with <code className="text-white">pyinstxtractor.py</code> revealed the compiled bytecode <code className="text-white">NEETRhythmGame.pyc</code>. Decompiling it exposed the chart decryption keys:
-                  </p>
-                  <CodeBox
-                    title="Recovered Chart Decryption Routine"
-                    code={`CHART_KEY = b"NEETRhythmKey!!!"
-CHART_IV  = b"NEETRhythmIV!!!!"
-
-def load_chart(path):
-    cipher = AES.new(CHART_KEY, AES.MODE_CBC, CHART_IV)
-    return unpad(cipher.decrypt(open(path, 'rb').read()), 16)`}
-                  />
-                  <p className="text-xs sm:text-sm text-zinc-300">
-                    Decrypting the 5 bundled <code className="text-white">.neet</code> song charts revealed that <code className="text-white">Eggdrasil.neet</code> contained **3,196 type-99 notes**. Type-99 notes were not musical notes; they encoded a hidden Python C2 stager beaconing to <code className="text-cyan-300">192.168.117.1:4444</code>.
-                  </p>
-                </div>
-
-                {/* Stage 3-4 */}
-                <div className="space-y-3">
-                  <h5 className="text-xs sm:text-sm font-bold text-cyan-300 font-mono">
-                    Stage 3 &amp; 4: PCAP Book Cipher Decryption &amp; RDP Credentials
-                  </h5>
-                  <p className="text-xs sm:text-sm text-zinc-300">
-                    Inspecting <code className="text-white">capture.pcap</code> revealed TCP stream traffic to port 4444. The payload was encrypted with a running book cipher XORing <code className="text-cyan-300">0x1337c0de</code> against the Windows binary <code className="text-white">C:\Windows\hh.exe</code>.
-                  </p>
-                  <p className="text-xs sm:text-sm text-zinc-300">
-                    Decoding this stream recovered backdoor RDP credentials:
-                  </p>
-                  <div className="p-3.5 rounded-xl bg-black/60 border border-zinc-800 font-mono text-xs text-amber-300">
-                    desktop-n33tbox\neet : aurahack : P@ssw0rd | UUID: 6923780e-75f2-5ae9-82b9-fbb9476b4229
-                  </div>
-                </div>
-
-                {/* Stage 5-6 */}
-                <div className="space-y-3">
-                  <h5 className="text-xs sm:text-sm font-bold text-cyan-300 font-mono">
-                    Stage 5 &amp; 6: Carving RDP Persistent Bitmap Cache (Cache0000.bin)
-                  </h5>
-                  <p className="text-xs sm:text-sm text-zinc-300">
-                    Using the recovered UUID, we unlocked <code className="text-white">Evidence.zip</code>, extracting <code className="text-cyan-300">Cache0000.bin</code> and an encrypted wallet archive <code className="text-cyan-300">wallet_vault.zip</code>.
-                  </p>
-                  <p className="text-xs sm:text-sm text-zinc-300">
-                    Invoking <code className="text-white">bmc-tools.py</code> carved 64 individual 64x64 pixel tiles from the RDP8bmp cache:
-                  </p>
-
-                  <ScreenshotCard
-                    src="/images/nahamcon/tiles.png"
-                    caption="Figure 10: 64 carved RDP bitmap cache tiles extracted from Cache0000.bin"
-                    alt="RDP Carved Tiles"
-                  />
-
-                  <p className="text-xs sm:text-sm text-zinc-300">
-                    Filtering and horizontally stitching tiles 36 through 63 isolated the active screen area where the attacker had their BIP-39 recovery phrase on screen:
-                  </p>
-
-                  <ScreenshotCard
-                    src="/images/nahamcon/text_tiles.png"
-                    caption="Figure 11: Stitched horizontal text tiles from persistent bitmap cache"
-                    alt="Stitched Text Tiles"
-                  />
-
-                  <ScreenshotCard
-                    src="/images/nahamcon/recovery_phrase.png"
-                    caption="Figure 12: Reconstructed 12-Word BIP-39 Mnemonic Seed Phrase"
-                    alt="BIP-39 Seed Phrase"
-                  />
-
-                  <div className="p-3.5 rounded-xl bg-zinc-900 border border-amber-500/30 text-xs sm:text-sm font-mono text-amber-300">
-                    abandon ability able about above absent absorb abstract absurd abuse access accident
-                  </div>
-                </div>
-
-                {/* Stage 7 */}
-                <div className="space-y-3">
-                  <h5 className="text-xs sm:text-sm font-bold text-cyan-300 font-mono">
-                    Stage 7: BIP-44 HD Wallet Derivation &amp; Flag Recovery
-                  </h5>
-                  <p className="text-xs sm:text-sm text-zinc-300">
-                    The incident note specified that <code className="text-white">wallet_vault.zip</code> was password-protected with the wallet&rsquo;s primary receiving address: the first Ethereum account (<code className="text-cyan-300">m/44&apos;/60&apos;/0&apos;/0/0</code>) with EIP-55 mixed-case checksum capitalisation.
-                  </p>
-
-                  <ScreenshotCard
-                    src="/images/nahamcon/neetrhythm_flag.png"
-                    caption="Figure 13: Terminal execution of solve_wallet.py deriving EIP-55 address and extracting flag.txt"
-                    alt="Terminal solve for NEETRhythm"
-                  />
-
-                  <CodeBox
-                    title="Ethereum HD Wallet Derivation Solver (solve_wallet.py)"
-                    code={`from eth_account import Account
-import zipfile
-
-Account.enable_unaudited_hdwallet_features()
-
-mnemonic = "abandon ability able about above absent absorb abstract absurd abuse access accident"
-acct = Account.from_mnemonic(mnemonic, account_path="m/44'/60'/0'/0/0")
-print("[+] Derived EIP-55 Address:", acct.address)
-# Output: 0x95222290DD7278Aa3Ddd389Cc1E1d165CC4BAfe5
-
-# Unlock wallet_vault.zip
-with zipfile.ZipFile("wallet_vault.zip") as z:
-    z.extractall(pwd=acct.address.encode())
-    with open("flag.txt") as f:
-        print("[+] Flag:", f.read().strip())`}
-                  />
-                </div>
-              </section>
-
-              {/* Summary */}
-              <section id="neet-summary" className="space-y-3 pt-4 border-t border-zinc-800">
-                <h4 className="text-sm font-bold text-zinc-400 uppercase tracking-wider font-mono">
-                  Operation 04 Summary &amp; Forensic Takeaways
-                </h4>
-                <ul className="list-disc list-inside space-y-1 text-xs sm:text-sm text-zinc-400">
-                  <li><strong>RDP Bitmap Cache as a forensic goldmine:</strong> When memory dumps are unavailable, <code className="text-white">Cache0000.bin</code> preserves high-fidelity visual evidence of whatever the adversary saw on their desktop.</li>
-                  <li><strong>Cryptocurrency forensics:</strong> Knowing BIP-32/BIP-39/BIP-44 standards and EIP-55 checksum algorithms allows investigators to trace and unlock encrypted assets from mnemonic seed phrases alone.</li>
-                </ul>
-              </section>
-            </article>
+            
 
           </section>
         </div>

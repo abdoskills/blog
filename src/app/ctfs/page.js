@@ -18,12 +18,12 @@ export default function CtfsHub() {
       href: "/ctfs/nahamcon",
       platform: "NahamCon CTF",
       category: "Multi-Track CTF",
-      points: "4 OPS // 100% SOLVED",
-      tagline: "AI Agent Memory, Audio Spectrography, QuickTime Freelist & RDP Bitmap Cache",
-      description: "Comprehensive DFIR breakdown of 4 solved forensics operations: AI agent memory forensics & prompt injection evasion auditing (AETHERTRACE), high-frequency audio spectrography & 5-bit Baconian decoding (Glass Harmonic), QuickTime MP4 mvhd atom freelist slack space carving (Dead Air), and Windows RDP persistent bitmap cache reconstruction with BIP-39 HD wallet derivation (NEETRhythm).",
+      points: "3 OPS // 100% SOLVED",
+      tagline: "AI Agent Memory, Audio Spectrography & QuickTime MP4 Freelist",
+      description: "Comprehensive DFIR breakdown of 4 solved forensics operations: AI agent memory forensics & prompt injection evasion auditing (AETHERTRACE), high-frequency audio spectrography & 5-bit Baconian decoding (Glass Harmonic), QuickTime MP4 mvhd atom freelist slack space carving (Dead Air).",
       image: "/images/nahamcon_ctf_banner.jpg",
       tags: ["NahamCon CTF", "AI Forensics", "Audio Spectrogram", "MP4 Forensics", "Slack Space", "RDP Cache", "BIP-39", "HD Wallet"],
-      time: "4 Writeups"
+      time: "3 Writeups"
     },
     {
       title: "AETHERTRACE (AI Agent Memory)",
@@ -64,19 +64,7 @@ export default function CtfsHub() {
       tags: ["NahamCon CTF", "MP4 Forensics", "Atom Parsing", "Slack Space", "Freelist Carving"],
       time: "Forensics"
     },
-    {
-      title: "NEETRhythm (RDP Cache & HD Wallet)",
-      slug: "nahamcon-neetrhythm",
-      href: "/ctfs/nahamcon#neetrhythm",
-      platform: "NahamCon CTF",
-      category: "Forensics",
-      points: "Hard",
-      tagline: "RDP Bitmap Cache Carving, BIP-39 Recovery & Ethereum Derivation",
-      description: "End-to-end 7-stage DFIR investigation: PyInstaller extraction, Type-99 chart note stego, PCAP book cipher, RDP credential triage, bmc-tools carving of Cache0000.bin, BIP-39 seed phrase recovery, and EIP-55 Ethereum address wallet unlock.",
-      image: "/images/nahamcon/neetrhythm_flag.png",
-      tags: ["NahamCon CTF", "PyInstaller", "PCAP Analysis", "RDP Cache", "BIP-39", "Ethereum HD Wallet"],
-      time: "Forensics"
-    },
+    
     // --- Spooky CTF 2026 (NJIT) ---
     {
       title: "Spooky CTF: Complete Forensics Operational Dossier",
