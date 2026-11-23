@@ -4,6 +4,7 @@ export default function sitemap() {
   const staticRoutes = [
     "",
     "/ctfs",
+    "/ctfs/nahamcon",
     "/ctfs/spooky",
     "/ctfs/deadface",
     "/ctfs/byte-me",

@@ -11,6 +11,72 @@ export default function CtfsHub() {
   const [selectedCategory, setSelectedCategory] = useState("ALL");
 
   const challenges = [
+    // --- NahamCon CTF 2026 ---
+    {
+      title: "NahamCon CTF: Complete Forensics Operational Dossier",
+      slug: "nahamcon",
+      href: "/ctfs/nahamcon",
+      platform: "NahamCon CTF",
+      category: "Multi-Track CTF",
+      points: "4 OPS // 100% SOLVED",
+      tagline: "AI Agent Memory, Audio Spectrography, QuickTime Freelist & RDP Bitmap Cache",
+      description: "Comprehensive DFIR breakdown of 4 solved forensics operations: AI agent memory forensics & prompt injection evasion auditing (AETHERTRACE), high-frequency audio spectrography & 5-bit Baconian decoding (Glass Harmonic), QuickTime MP4 mvhd atom freelist slack space carving (Dead Air), and Windows RDP persistent bitmap cache reconstruction with BIP-39 HD wallet derivation (NEETRhythm).",
+      image: "/images/nahamcon_ctf_banner.jpg",
+      tags: ["NahamCon CTF", "AI Forensics", "Audio Spectrogram", "MP4 Forensics", "Slack Space", "RDP Cache", "BIP-39", "HD Wallet"],
+      time: "4 Writeups"
+    },
+    {
+      title: "AETHERTRACE (AI Agent Memory)",
+      slug: "nahamcon-aethertrace",
+      href: "/ctfs/nahamcon#aethertrace",
+      platform: "NahamCon CTF",
+      category: "Forensics",
+      points: "Medium",
+      tagline: "AI Agent Memory Forensics & Prompt Injection Auditing",
+      description: "Investigated internal agent AETHER investigating report.pdf. Uncovered indirect prompt injection commanding the agent to execute update.bin and omit actions. Restored pruned memory note mem-8821 via XOR decryption.",
+      image: "/images/nahamcon/aethertrace_solve.png",
+      tags: ["NahamCon CTF", "AI Forensics", "Prompt Injection", "XOR Stream", "Tool Calls"],
+      time: "Forensics"
+    },
+    {
+      title: "Glass Harmonic (Audio Stego)",
+      slug: "nahamcon-glass-harmonic",
+      href: "/ctfs/nahamcon#glass-harmonic",
+      platform: "NahamCon CTF",
+      category: "Forensics",
+      points: "Medium",
+      tagline: "Soundboard Audio Spectrography & 5-Bit Baconian Steganography",
+      description: "Spectrographic analysis of 44.1 kHz engineer soundboard recording. Isolated 700 Hz harmonic pulse intervals, decoded 5-bit Baconian cipher sequence, and decrypted single-byte XOR stream to recover flag.",
+      image: "/images/nahamcon/spectrogram_qr.png",
+      tags: ["NahamCon CTF", "Audio Forensics", "Spectrogram", "Baconian Cipher", "XOR"],
+      time: "Forensics"
+    },
+    {
+      title: "Dead Air (MP4 Slack Carving)",
+      slug: "nahamcon-dead-air",
+      href: "/ctfs/nahamcon#dead-air",
+      platform: "NahamCon CTF",
+      category: "Forensics",
+      points: "Medium",
+      tagline: "QuickTime MP4 Atom Layout & mvhd Freelist Carving",
+      description: "Analyzed corrupted field video transmission. Parsed ISO Base Media container atoms, carved unreferenced slack bytes inside mvhd freelist table, and extracted embedded JPEG thumbnail to isolate visual stego.",
+      image: "/images/nahamcon/step1_mp4_layout.png",
+      tags: ["NahamCon CTF", "MP4 Forensics", "Atom Parsing", "Slack Space", "Freelist Carving"],
+      time: "Forensics"
+    },
+    {
+      title: "NEETRhythm (RDP Cache & HD Wallet)",
+      slug: "nahamcon-neetrhythm",
+      href: "/ctfs/nahamcon#neetrhythm",
+      platform: "NahamCon CTF",
+      category: "Forensics",
+      points: "Hard",
+      tagline: "RDP Bitmap Cache Carving, BIP-39 Recovery & Ethereum Derivation",
+      description: "End-to-end 7-stage DFIR investigation: PyInstaller extraction, Type-99 chart note stego, PCAP book cipher, RDP credential triage, bmc-tools carving of Cache0000.bin, BIP-39 seed phrase recovery, and EIP-55 Ethereum address wallet unlock.",
+      image: "/images/nahamcon/neetrhythm_flag.png",
+      tags: ["NahamCon CTF", "PyInstaller", "PCAP Analysis", "RDP Cache", "BIP-39", "Ethereum HD Wallet"],
+      time: "Forensics"
+    },
     // --- Spooky CTF 2026 (NJIT) ---
     {
       title: "Spooky CTF: Complete Forensics Operational Dossier",
