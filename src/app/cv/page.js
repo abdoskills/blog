@@ -8,6 +8,21 @@ export default function CVPage() {
   const [selectedCert, setSelectedCert] = useState(null);
   const [layoutMode, setLayoutMode] = useState("flowcv"); // 'flowcv' or 'dossier'
 
+  const achievements = [
+    {
+      title: "NahamCon CTF 2026",
+      result: "5th Place",
+      team: "Team 0xL4GH",
+      details: "Top-tier international competitive CTF finish; solved advanced operations across AI agent memory forensics, ISOBMFF atom carving, and freelist slack space extraction."
+    },
+    {
+      title: "IEEE CTF 2026",
+      result: "6th Place",
+      team: "Team Bitx",
+      details: "Competitive triage across high-pressure binary analysis, network stream reconstruction, and system defense scenarios."
+    }
+  ];
+
   const certificates = [
     {
       title: "DFIR Foundations and Techniques — Professional Skills & Readiness",
@@ -144,10 +159,10 @@ export default function CVPage() {
         {/* MODE 1: FLOWCV AUTHENTIC A4 PAPER LAYOUT                         */}
         {/* ================================================================= */}
         {layoutMode === "flowcv" && (
-          <div className="bg-white text-zinc-900 rounded-none sm:rounded-lg shadow-2xl p-7 sm:p-12 md:p-16 space-y-7 border border-zinc-200/80 print:shadow-none print:border-none print:p-0 print:m-0 font-sans">
+          <div className="bg-white text-zinc-900 rounded-none sm:rounded-lg shadow-2xl p-7 sm:p-12 md:p-16 space-y-6 border border-zinc-200/80 print:shadow-none print:border-none print:p-0 print:m-0 font-sans">
             
             {/* FlowCV Centered Header */}
-            <div className="text-center space-y-2 pb-2">
+            <div className="text-center space-y-1.5 pb-2">
               <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-black font-serif">
                 AbdelRahman Mohamed Hassan
               </h1>
@@ -206,35 +221,35 @@ export default function CVPage() {
                 </h2>
               </div>
               <p className="text-xs sm:text-[13px] leading-relaxed text-zinc-800 text-justify">
-                Cybersecurity analyst focused on digital forensics, SOC investigations, and incident response. Hands-on work spans memory, network, and disk forensics, Splunk-based SIEM analysis, and alert triage. Published detailed lab and CTF writeups on malware, host, and network investigations, and contributed to selected real-world investigations by correlating endpoint, network, and log evidence.
+                Cybersecurity analyst focused on digital forensics, incident response, and threat hunting. Hands-on experience investigating Windows endpoints, analyzing memory and network evidence, and correlating security events using Splunk. Published technical writeups covering forensic investigations and CTF challenges, and contributed to real-world investigations through endpoint, network, and log evidence analysis.
               </p>
             </div>
 
-            {/* Section: PROJECTS */}
+            {/* Section: PRACTICAL EXPERIENCE & RESEARCH */}
             <div className="space-y-3">
               <div className="border-b-2 border-black pb-0.5">
                 <h2 className="text-sm font-bold tracking-wider uppercase text-black font-sans">
-                  PROJECTS
+                  PRACTICAL EXPERIENCE &amp; RESEARCH
                 </h2>
               </div>
 
-              {/* Project 1 */}
+              {/* Experience 1 */}
               <div className="space-y-1">
                 <div className="flex justify-between items-baseline">
                   <h3 className="text-xs sm:text-[13px] font-bold text-black">
-                    Enterprise Incident Response Capstone
+                    APT Attack Reconstruction &amp; Incident Response
                   </h3>
                 </div>
                 <ul className="list-disc list-outside pl-4 space-y-0.5 text-xs sm:text-[12.5px] leading-relaxed text-zinc-800">
-                  <li>Reconstructed a simulated APT attack chain by correlating network traffic, memory, disk artifacts, and Windows event logs.</li>
+                  <li>Reconstructed a simulated APT attack chain by correlating memory, network traffic, disk artifacts, and Windows event logs to build an attack timeline.</li>
                 </ul>
               </div>
 
-              {/* Project 2 */}
+              {/* Experience 2 */}
               <div className="space-y-1 pt-1">
                 <div className="flex justify-between items-baseline">
                   <h3 className="text-xs sm:text-[13px] font-bold text-black">
-                    Endpoint Forensics &amp; Threat Hunting
+                    Windows Endpoint Forensics &amp; Threat Hunting
                   </h3>
                 </div>
                 <ul className="list-disc list-outside pl-4 space-y-0.5 text-xs sm:text-[12.5px] leading-relaxed text-zinc-800">
@@ -243,11 +258,11 @@ export default function CVPage() {
                 </ul>
               </div>
 
-              {/* Project 3 */}
+              {/* Experience 3 */}
               <div className="space-y-1 pt-1">
                 <div className="flex justify-between items-baseline">
                   <h3 className="text-xs sm:text-[13px] font-bold text-black">
-                    Memory &amp; Network Forensics
+                    Memory Analysis &amp; Network Traffic Investigation
                   </h3>
                 </div>
                 <ul className="list-disc list-outside pl-4 space-y-0.5 text-xs sm:text-[12.5px] leading-relaxed text-zinc-800">
@@ -256,24 +271,24 @@ export default function CVPage() {
                 </ul>
               </div>
 
-              {/* Project 4 */}
+              {/* Experience 4 */}
               <div className="space-y-1 pt-1">
                 <div className="flex justify-between items-baseline">
                   <h3 className="text-xs sm:text-[13px] font-bold text-black">
-                    SOC, SIEM &amp; Threat Intelligence
+                    Security Event Investigation &amp; Threat Intelligence
                   </h3>
                 </div>
                 <ul className="list-disc list-outside pl-4 space-y-0.5 text-xs sm:text-[12.5px] leading-relaxed text-zinc-800">
-                  <li>Used Splunk to investigate simulated security alerts, correlate events, and document findings supported by log evidence.</li>
+                  <li>Investigated simulated security alerts using Splunk, correlating log events to reconstruct suspicious activity and document findings.</li>
                   <li>Investigated malware infrastructure through IOC enrichment, cross-checking indicators against public threat intelligence and sandbox reports using VirusTotal, Hybrid Analysis, ThreatConnect, and CyberChef.</li>
                 </ul>
               </div>
 
-              {/* Project 5 */}
+              {/* Experience 5 */}
               <div className="space-y-1 pt-1">
                 <div className="flex justify-between items-baseline">
                   <h3 className="text-xs sm:text-[13px] font-bold text-black">
-                    Independent Research — The Null Scan Problem
+                    The Null Scan Problem — Limits of Memory-Based Injection Detection
                   </h3>
                 </div>
                 <p className="text-xs sm:text-[12.5px] leading-relaxed text-zinc-800 pl-1">
@@ -282,7 +297,38 @@ export default function CVPage() {
               </div>
             </div>
 
-            {/* Section: CERTIFICATES & CREDENTIALS (NEW & CURATED) */}
+            {/* Section: COMPETITIVE CYBERSECURITY & ACHIEVEMENTS */}
+            <div className="space-y-2">
+              <div className="border-b-2 border-black pb-0.5">
+                <h2 className="text-sm font-bold tracking-wider uppercase text-black font-sans">
+                  COMPETITIVE CYBERSECURITY &amp; ACHIEVEMENTS
+                </h2>
+              </div>
+
+              <div className="space-y-1.5 text-xs sm:text-[12.5px]">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-baseline gap-0.5">
+                  <div>
+                    <span className="font-bold text-black">NahamCon CTF 2026</span>
+                    <span className="text-zinc-700"> — </span>
+                    <span className="font-semibold text-emerald-800">5th Place</span>
+                    <span className="text-zinc-600"> | Team 0xL4GH</span>
+                  </div>
+                  <span className="text-[11px] font-mono text-zinc-500 shrink-0">2026</span>
+                </div>
+
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-baseline gap-0.5">
+                  <div>
+                    <span className="font-bold text-black">IEEE CTF 2026</span>
+                    <span className="text-zinc-700"> — </span>
+                    <span className="font-semibold text-emerald-800">6th Place</span>
+                    <span className="text-zinc-600"> | Team Bitx</span>
+                  </div>
+                  <span className="text-[11px] font-mono text-zinc-500 shrink-0">2026</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Section: CERTIFICATES & CREDENTIALS */}
             <div className="space-y-2">
               <div className="border-b-2 border-black pb-0.5">
                 <h2 className="text-sm font-bold tracking-wider uppercase text-black font-sans">
@@ -311,7 +357,7 @@ export default function CVPage() {
               </div>
             </div>
 
-            {/* Section: TECHNICAL SKILLS (2-COLUMN FLOWCV GRID) */}
+            {/* Section: TECHNICAL SKILLS (FLOWCV GRID) */}
             <div className="space-y-2">
               <div className="border-b-2 border-black pb-0.5">
                 <h2 className="text-sm font-bold tracking-wider uppercase text-black font-sans">
@@ -321,11 +367,11 @@ export default function CVPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-xs sm:text-[12.5px]">
                 <div>
-                  <span className="font-bold text-black block">SIEM &amp; Logs</span>
+                  <span className="font-bold text-black block">SIEM &amp; Log Analysis</span>
                   <span className="text-zinc-700">Splunk, Sysmon, Hayabusa, Windows Event Logs</span>
                 </div>
                 <div>
-                  <span className="font-bold text-black block">Memory Analysis</span>
+                  <span className="font-bold text-black block">Memory Forensics</span>
                   <span className="text-zinc-700">Volatility 2/3, Windows and Linux memory analysis</span>
                 </div>
                 <div>
@@ -336,9 +382,13 @@ export default function CVPage() {
                   <span className="font-bold text-black block">Endpoint &amp; Disk Forensics</span>
                   <span className="text-zinc-700">KAPE, Eric Zimmerman tools, Timeline Explorer, The Sleuth Kit; NTFS $MFT, Prefetch, Shellbags, LNK, Jump Lists</span>
                 </div>
-                <div className="sm:col-span-2">
+                <div>
                   <span className="font-bold text-black block">Network Forensics</span>
                   <span className="text-zinc-700">Wireshark, tshark, NetworkMiner; PCAP, HTTP, DNS, SMB, TLS</span>
+                </div>
+                <div>
+                  <span className="font-bold text-black block">Network Security &amp; Firewalls</span>
+                  <span className="text-zinc-700">Fortinet FortiGate (Fundamentals), Sophos Firewall, Firewall Policies, NAT &amp; Port Forwarding, Routing &amp; VLANs, SSL/IPsec VPN Concepts, Firewall Log Analysis &amp; Troubleshooting</span>
                 </div>
               </div>
             </div>
@@ -354,9 +404,9 @@ export default function CVPage() {
               <div className="flex justify-between items-baseline text-xs sm:text-[12.5px]">
                 <div>
                   <span className="font-bold text-black">Higher Technological Institute (HTI)</span>
-                  <span className="text-zinc-700"> — Bachelor of Science in Computer Science</span>
+                  <span className="text-zinc-700"> | Computer Science</span>
                 </div>
-                <span className="text-[11px] font-mono text-zinc-500">In Progress</span>
+                <span className="text-[11px] font-mono text-zinc-500">2025 – 2029</span>
               </div>
             </div>
 
@@ -394,14 +444,93 @@ export default function CVPage() {
                 <span>01.</span> Executive Summary
               </h2>
               <p className="text-xs md:text-sm text-zinc-300 leading-relaxed">
-                Cybersecurity analyst focused on digital forensics, SOC investigations, and incident response. Hands-on work spans memory, network, and disk forensics, Splunk-based SIEM analysis, and alert triage. Published detailed lab and CTF writeups on malware, host, and network investigations, and contributed to selected real-world investigations by correlating endpoint, network, and log evidence.
+                Cybersecurity analyst focused on digital forensics, incident response, and threat hunting. Hands-on experience investigating Windows endpoints, analyzing memory and network evidence, and correlating security events using Splunk. Published technical writeups covering forensic investigations and CTF challenges, and contributed to real-world investigations through endpoint, network, and log evidence analysis.
               </p>
             </section>
 
-            {/* Section 02: Credentials */}
+            {/* Section 02: Competitive Achievements */}
             <section className="space-y-4">
               <h2 className="text-sm font-bold text-emerald-400 font-mono uppercase tracking-wider border-b border-zinc-800/80 pb-2 flex items-center gap-2">
-                <span>02.</span> Verified Credentials &amp; Certifications
+                <span>02.</span> Competitive Cybersecurity &amp; Achievements
+              </h2>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {achievements.map((item, idx) => (
+                  <div key={idx} className="p-4 rounded-xl border bg-black/40 border-zinc-800/80 space-y-1.5">
+                    <div className="flex justify-between items-start gap-2">
+                      <span className="font-mono text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                        {item.result}
+                      </span>
+                      <span className="font-mono text-[11px] text-zinc-400 font-semibold">{item.team}</span>
+                    </div>
+                    <h3 className="text-sm font-bold text-white">{item.title}</h3>
+                    <p className="text-xs text-zinc-400 leading-relaxed">{item.details}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Section 03: Practical Experience & Research */}
+            <section className="space-y-5">
+              <h2 className="text-sm font-bold text-emerald-400 font-mono uppercase tracking-wider border-b border-zinc-800/80 pb-2 flex items-center gap-2">
+                <span>03.</span> Practical Experience &amp; Research
+              </h2>
+
+              <div className="space-y-4 text-xs sm:text-sm">
+                <div className="space-y-1.5">
+                  <h3 className="text-sm font-bold text-white">
+                    APT Attack Reconstruction &amp; Incident Response
+                  </h3>
+                  <ul className="list-disc list-inside space-y-1 text-zinc-300 pl-1">
+                    <li>Reconstructed a simulated APT attack chain by correlating memory, network traffic, disk artifacts, and Windows event logs to build an attack timeline.</li>
+                  </ul>
+                </div>
+
+                <div className="space-y-1.5 pt-2">
+                  <h3 className="text-sm font-bold text-white">
+                    Windows Endpoint Forensics &amp; Threat Hunting
+                  </h3>
+                  <ul className="list-disc list-inside space-y-1 text-zinc-300 pl-1">
+                    <li>Investigated Windows endpoint activity by correlating Prefetch, Shellbags, LNK files, NTFS $MFT records, and Sysmon telemetry to reconstruct execution and attacker behavior.</li>
+                    <li>Examined timestamp anomalies and WMI-related events to identify possible anti-forensic activity and fileless persistence.</li>
+                  </ul>
+                </div>
+
+                <div className="space-y-1.5 pt-2">
+                  <h3 className="text-sm font-bold text-white">
+                    Memory Analysis &amp; Network Traffic Investigation
+                  </h3>
+                  <ul className="list-disc list-inside space-y-1 text-zinc-300 pl-1">
+                    <li>Analyzed Windows and Linux memory images with Volatility 2/3 to investigate suspicious processes, injected code, hidden modules, and other memory artifacts.</li>
+                    <li>Examined PCAPs with Wireshark and tshark to reconstruct communication flows, identify suspicious traffic, and extract relevant artifacts across HTTP, DNS, SMB, and TLS.</li>
+                  </ul>
+                </div>
+
+                <div className="space-y-1.5 pt-2">
+                  <h3 className="text-sm font-bold text-white">
+                    Security Event Investigation &amp; Threat Intelligence
+                  </h3>
+                  <ul className="list-disc list-inside space-y-1 text-zinc-300 pl-1">
+                    <li>Investigated simulated security alerts using Splunk, correlating log events to reconstruct suspicious activity and document findings.</li>
+                    <li>Investigated malware infrastructure through IOC enrichment, cross-checking indicators against public threat intelligence and sandbox reports using VirusTotal, Hybrid Analysis, ThreatConnect, and CyberChef.</li>
+                  </ul>
+                </div>
+
+                <div className="space-y-1.5 pt-2">
+                  <h3 className="text-sm font-bold text-white">
+                    The Null Scan Problem — Limits of Memory-Based Injection Detection
+                  </h3>
+                  <p className="text-zinc-300 pl-1 leading-relaxed">
+                    Authored a literature-backed analysis of when a clean memory scan may fail to rule out process injection; proposed a framework for interpreting negative findings and a controlled validation study.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            {/* Section 04: Credentials */}
+            <section className="space-y-4">
+              <h2 className="text-sm font-bold text-emerald-400 font-mono uppercase tracking-wider border-b border-zinc-800/80 pb-2 flex items-center gap-2">
+                <span>04.</span> Verified Credentials &amp; Certifications
               </h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -443,72 +572,15 @@ export default function CVPage() {
               </div>
             </section>
 
-            {/* Section 03: Projects */}
-            <section className="space-y-5">
-              <h2 className="text-sm font-bold text-emerald-400 font-mono uppercase tracking-wider border-b border-zinc-800/80 pb-2 flex items-center gap-2">
-                <span>03.</span> Practical Incident Response Labs &amp; Projects
-              </h2>
-
-              <div className="space-y-4 text-xs sm:text-sm">
-                <div className="space-y-1.5">
-                  <h3 className="text-sm font-bold text-white">
-                    Enterprise Incident Response Capstone
-                  </h3>
-                  <ul className="list-disc list-inside space-y-1 text-zinc-300 pl-1">
-                    <li>Reconstructed a simulated APT attack chain by correlating network traffic, memory, disk artifacts, and Windows event logs.</li>
-                  </ul>
-                </div>
-
-                <div className="space-y-1.5 pt-2">
-                  <h3 className="text-sm font-bold text-white">
-                    Endpoint Forensics &amp; Threat Hunting
-                  </h3>
-                  <ul className="list-disc list-inside space-y-1 text-zinc-300 pl-1">
-                    <li>Investigated Windows endpoint activity by correlating Prefetch, Shellbags, LNK files, NTFS $MFT records, and Sysmon telemetry to reconstruct execution and attacker behavior.</li>
-                    <li>Examined timestamp anomalies and WMI-related events to identify possible anti-forensic activity and fileless persistence.</li>
-                  </ul>
-                </div>
-
-                <div className="space-y-1.5 pt-2">
-                  <h3 className="text-sm font-bold text-white">
-                    Memory &amp; Network Forensics
-                  </h3>
-                  <ul className="list-disc list-inside space-y-1 text-zinc-300 pl-1">
-                    <li>Analyzed Windows and Linux memory images with Volatility 2/3 to investigate suspicious processes, injected code, hidden modules, and other memory artifacts.</li>
-                    <li>Examined PCAPs with Wireshark and tshark to reconstruct communication flows, identify suspicious traffic, and extract relevant artifacts across HTTP, DNS, SMB, and TLS.</li>
-                  </ul>
-                </div>
-
-                <div className="space-y-1.5 pt-2">
-                  <h3 className="text-sm font-bold text-white">
-                    SOC, SIEM &amp; Threat Intelligence
-                  </h3>
-                  <ul className="list-disc list-inside space-y-1 text-zinc-300 pl-1">
-                    <li>Used Splunk to investigate simulated security alerts, correlate events, and document findings supported by log evidence.</li>
-                    <li>Investigated malware infrastructure through IOC enrichment, cross-checking indicators against public threat intelligence and sandbox reports using VirusTotal, Hybrid Analysis, ThreatConnect, and CyberChef.</li>
-                  </ul>
-                </div>
-
-                <div className="space-y-1.5 pt-2">
-                  <h3 className="text-sm font-bold text-white">
-                    Independent Research — The Null Scan Problem
-                  </h3>
-                  <p className="text-zinc-300 pl-1 leading-relaxed">
-                    Authored a literature-backed analysis of when a clean memory scan may fail to rule out process injection; proposed a framework for interpreting negative findings and a controlled validation study.
-                  </p>
-                </div>
-              </div>
-            </section>
-
-            {/* Section 04: Skills */}
+            {/* Section 05: Skills */}
             <section className="space-y-3">
               <h2 className="text-sm font-bold text-emerald-400 font-mono uppercase tracking-wider border-b border-zinc-800/80 pb-2 flex items-center gap-2">
-                <span>04.</span> Technical Competencies
+                <span>05.</span> Technical Competencies
               </h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                 <div className="p-3 bg-black/50 border border-zinc-800 rounded-xl space-y-1">
-                  <span className="font-bold text-emerald-300 block">SIEM &amp; Logs</span>
+                  <span className="font-bold text-emerald-300 block">SIEM &amp; Log Analysis</span>
                   <p className="text-zinc-300">Splunk, Sysmon, Hayabusa, Windows Event Logs</p>
                 </div>
                 <div className="p-3 bg-black/50 border border-zinc-800 rounded-xl space-y-1">
@@ -516,17 +588,36 @@ export default function CVPage() {
                   <p className="text-zinc-300">Volatility 2/3, Windows and Linux memory analysis</p>
                 </div>
                 <div className="p-3 bg-black/50 border border-zinc-800 rounded-xl space-y-1">
-                  <span className="font-bold text-emerald-300 block">Malware Analysis &amp; Threat Intel</span>
+                  <span className="font-bold text-emerald-300 block">Malware Analysis &amp; Threat Intelligence</span>
                   <p className="text-zinc-300">Ghidra, x64dbg, CyberChef, VirusTotal, Hybrid Analysis, ThreatConnect; malware triage, static and dynamic analysis, OSINT-based IOC enrichment</p>
                 </div>
                 <div className="p-3 bg-black/50 border border-zinc-800 rounded-xl space-y-1">
                   <span className="font-bold text-emerald-300 block">Endpoint &amp; Disk Forensics</span>
                   <p className="text-zinc-300">KAPE, Eric Zimmerman tools, Timeline Explorer, The Sleuth Kit; NTFS $MFT, Prefetch, Shellbags, LNK, Jump Lists</p>
                 </div>
-                <div className="p-3 bg-black/50 border border-zinc-800 rounded-xl space-y-1 sm:col-span-2">
+                <div className="p-3 bg-black/50 border border-zinc-800 rounded-xl space-y-1">
                   <span className="font-bold text-emerald-300 block">Network Forensics</span>
                   <p className="text-zinc-300">Wireshark, tshark, NetworkMiner; PCAP, HTTP, DNS, SMB, TLS</p>
                 </div>
+                <div className="p-3 bg-black/50 border border-zinc-800 rounded-xl space-y-1">
+                  <span className="font-bold text-emerald-300 block">Network Security &amp; Firewalls</span>
+                  <p className="text-zinc-300">Fortinet FortiGate (Fundamentals), Sophos Firewall, Firewall Policies, NAT &amp; Port Forwarding, Routing &amp; VLANs, SSL/IPsec VPN Concepts, Firewall Log Analysis &amp; Troubleshooting</p>
+                </div>
+              </div>
+            </section>
+
+            {/* Section 06: Education */}
+            <section className="space-y-3">
+              <h2 className="text-sm font-bold text-emerald-400 font-mono uppercase tracking-wider border-b border-zinc-800/80 pb-2 flex items-center gap-2">
+                <span>06.</span> Education
+              </h2>
+
+              <div className="p-4 bg-black/50 border border-zinc-800 rounded-xl flex flex-col sm:flex-row justify-between items-start sm:items-baseline gap-1 text-xs sm:text-sm">
+                <div>
+                  <span className="font-bold text-white">Higher Technological Institute (HTI)</span>
+                  <span className="text-zinc-400"> | Computer Science</span>
+                </div>
+                <span className="font-mono text-xs text-emerald-400 font-semibold">2025 – 2029</span>
               </div>
             </section>
 

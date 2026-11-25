@@ -72,7 +72,7 @@ export default function Navbar() {
               <span className="transform transition-transform group-hover:-translate-x-1">←</span>
             )}
             <span className="font-bold text-white tracking-wider font-[family-name:var(--font-silkscreen)] text-lg">
-              Skills
+              abdoskills
             </span>
           </Link>
         </div>
